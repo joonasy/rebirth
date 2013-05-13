@@ -1,0 +1,37 @@
+
+/*  ====================
+    Headings
+    ====================  */
+
+/*  Headings  */
+    #{headers(all)} {
+        font: {
+            family:  $headings-font-family;
+            weight:  $headings-font-weight;
+        }
+        margin-top:0;
+        @extend %base-margin-bottom;
+    }
+
+    h1 { font-size: em(36); line-height:1.333; }
+    h2 { font-size: em(30); line-height:1.666; }
+    h3 { font-size: em(24); line-height:1.5; }
+    h4 { font-size: em(20); line-height:1.666; }
+    h5 { font-size: em(16); line-height:1.5; }
+    h6 { font-size: em(14); line-height:1.666; }
+
+/*  Heading styles  */
+    .h-style-1 { font-size: em(96); }
+    .h-style-2 { font-size: em(72); }
+    .h-style-3 { font-size: em(48); }
+
+/*  Paragraphs  */
+    p {
+        margin-top:0;
+        @extend %base-margin-bottom-x2;
+    }
+    b, strong   { font-weight:800; }
+
+/*  Font styles  */
+    %font-style-1 {}
+    %font-style-2 {}

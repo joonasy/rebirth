@@ -1,0 +1,7 @@
+*.DS_Store
+*.scssc
+sass-cache/
+
+build/
+source/sftp-config.json
+sftp-config.json

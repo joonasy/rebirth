@@ -1,0 +1,18 @@
+
+/*  ===================
+    Lists
+    ===================  */
+
+/*  Reset lists  */
+    nav ul, %reset-list {
+        list-style: none;
+        margin:0;
+        padding:0;
+    }
+
+/*  Default list settings  */
+    ul, ol, dd {
+        @extend %base-margin-bottom;
+        @extend %base-margin-left-x2;
+        list-style:disc;
+    }

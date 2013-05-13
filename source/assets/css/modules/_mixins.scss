@@ -1,0 +1,166 @@
+
+//  ===================
+//      My mixins
+//  ===================
+
+    // Convert px to em's
+    @function em($pixels, $context: $base-font-size) {
+        @return #{$pixels/$context}em;
+    }
+
+    // Font sizing /w vertical rhythm
+    @mixin font-size($font-size, $line-height:true){
+        font-size:$font-size+px;
+        font-size:($font-size / $base-font-size)*1rem;
+        @if $line-height == true{
+            line-height:ceil($font-size / $base-line-height) * ($base-line-height / $font-size);
+        }
+    }
+
+    // Placeholder text
+    @mixin placeholder($color: $placeholderText) {
+        &:-moz-placeholder {
+            color: $color;
+        }
+        &::-webkit-input-placeholder {
+            color: $color;
+        }
+    }
+
+    // Tap highlight color
+    @mixin tap-color($color:rgba(0,0,0,0)) {
+        -webkit-tap-highlight-color:    $color;
+        tap-highlight-color:            $color;
+    }
+
+    // Triangle shortcut
+    @mixin triangle($direction-h, $direction-w, $color, $width, $height) {
+        width: 0;
+        height: 0;
+        @if $direction-h == top {
+            border-top: $height solid $color;
+            border-bottom: $height solid transparent;
+        }
+        @else {
+            border-bottom: $height solid $color;
+            border-top: $height solid transparent;
+        }
+        @if $direction-w == right {
+            border-right: $width solid $color;
+            border-left: $width solid transparent;
+        }
+        @else {
+            border-left: $width solid $color;
+            border-right: $width solid transparent;
+        }
+    }
+
+    // Arrow mixin
+    // http://bit.ly/11ghU5B
+    @mixin arrow($arrow-edge, $arrow-location, $arrow-color, $border-color: $arrow-color){
+
+        @if $arrow-edge == top{
+
+            @extend %arrow--top;
+
+            &:before{
+                border-bottom-color:$border-color!important;
+            }
+
+            &:after{
+                border-bottom-color:$arrow-color!important;
+            }
+
+            @if $arrow-location == left{
+                @extend %arrow--left;
+            }
+
+            @if $arrow-location == center{
+                @extend %arrow--center;
+            }
+
+            @if $arrow-location == right{
+                @extend %arrow--right;
+            }
+
+        }
+
+        @if $arrow-edge == right{
+
+            @extend %arrow--far;
+
+            &:before{
+                border-left-color:$border-color!important;
+            }
+
+            &:after{
+                border-left-color:$arrow-color!important;
+            }
+
+            @if $arrow-location == top{
+                @extend %arrow--upper;
+            }
+
+            @if $arrow-location == center{
+                @extend %arrow--middle;
+            }
+
+            @if $arrow-location == bottom{
+                @extend %arrow--lower;
+            }
+
+        }
+
+        @if $arrow-edge == bottom{
+
+            @extend %arrow--bottom;
+
+            &:before{
+                border-top-color:$border-color!important;
+            }
+
+            &:after{
+                border-top-color:$arrow-color!important;
+            }
+
+            @if $arrow-location == left{
+                @extend %arrow--left;
+            }
+
+            @if $arrow-location == center{
+                @extend %arrow--center;
+            }
+
+            @if $arrow-location == right{
+                @extend %arrow--right;
+            }
+
+        }
+
+        @if $arrow-edge == left{
+
+            @extend %arrow--near;
+
+            &:before{
+                border-right-color:$border-color!important;
+            }
+
+            &:after{
+                border-right-color:$arrow-color!important;
+            }
+
+            @if $arrow-location == top{
+                @extend %arrow--upper;
+            }
+
+            @if $arrow-location == center{
+                @extend %arrow--middle;
+            }
+
+            @if $arrow-location == bottom{
+                @extend %arrow--lower;
+            }
+
+        }
+
+    }

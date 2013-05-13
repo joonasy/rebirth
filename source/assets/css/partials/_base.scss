@@ -1,0 +1,37 @@
+
+//  ====================
+//  Modules & variables
+//  ====================
+
+    // Import modules
+    @import "compass";
+    @import "compass/css3/user-interface";
+    @import "modules/all-modules";
+
+    // Base typography
+    $base-font-size:   16;
+    $base-line-height: 24;
+    $basehold: $base-line-height;
+
+    $base-font-family:        Helvetica, Arial, sans-serif;
+    $headings-font-family:                         inherit;
+    $headings-font-weight:                             800;
+    $alt-font-family:                              inherit;
+    $alt-font-weight:                               normal;
+
+    // Spacing
+    $base-space: em($base-line-height);
+    $base-space-x2: em($base-line-height*2);
+    $base-space-half: em($base-line-height/2);
+    $edge-space: 6%;
+
+    // Border-radius
+    $base-border-radius: 3px;
+
+    // Elements
+    $use-grid: false; // _grid.scss
+    $use-responsive-grid: false; // _grid.scss
+    $use-buttons: false; // _buttons.scss
+
+
+
