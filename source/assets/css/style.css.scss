@@ -3,24 +3,31 @@
 //  All project files
 //  ====================
 
-    // Modules and variables
+    // Normalize
+    @import "vendor/normalize";
+
+    // Base modules & variables
     @import "partials/base";
 
-    // Partials
-    @import "partials/normalize";
-    @import "partials/global";
-    @import "partials/typography";
-    @import "partials/quotes";
-    @import "partials/links";
-    @import "partials/grid";
-    @import "partials/layout";
-    @import "partials/lists";
-    @import "partials/media";
-    @import "partials/sprites";
-    @import "partials/buttons";
-    @import "partials/responsive";
-    @import "partials/other";
+    // Global
+    @import "partials/base/global";
+    @import "partials/base/links";
+    @import "partials/base/lists";
+    @import "partials/base/media";
 
-    // Third-party
-    // @import "vendor/file"
+    // Shared
+    @import "partials/shared/typography/typography";
+    @import "partials/shared/typography/headings";
+    @import "partials/shared/typography/font-styles";
+
+    @import "partials/shared/classes";
+    @import "partials/shared/grid";
+    @import "partials/shared/sprites";
+    @import "partials/shared/buttons";
+    @import "partials/shared/hide-show";
+    @import "partials/shared/responsive";
+    @import "partials/shared/other";
+
+    // Sections
+    @import "partials/sections/layout";
 

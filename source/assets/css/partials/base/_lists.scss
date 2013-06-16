@@ -11,8 +11,13 @@
     }
 
 /*  Default list settings  */
-    ul, ol, dd {
-        @extend %base-margin-bottom;
-        @extend %base-margin-left-x2;
+    ul, ol, dl {
+        margin-bottom:$base-space;
+        margin-left:$base-space-half;
+    }
+    ul {
         list-style:disc;
+    }
+    ol {
+        list-style:decimal;
     }

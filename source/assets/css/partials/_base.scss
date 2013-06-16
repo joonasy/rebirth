@@ -22,15 +22,17 @@
     // Spacing
     $base-space: em($base-line-height);
     $base-space-x2: em($base-line-height*2);
+    $base-space-x3: em($base-line-height*3);
+    $base-space-x4: em($base-line-height*4);
     $base-space-half: em($base-line-height/2);
+    $base-space-third: em($base-line-height/3);
+    $base-space-fourth: em($base-line-height/4);
     $edge-space: 6%;
 
     // Border-radius
     $base-border-radius: 3px;
 
     // Elements
-    $use-grid: false; // _grid.scss
-    $use-responsive-grid: false; // _grid.scss
     $use-buttons: false; // _buttons.scss
 
 

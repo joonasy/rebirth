@@ -1,0 +1,35 @@
+
+/*  ===================
+    Base typography
+    ===================  */
+
+/*  Paragraphs  */
+    p {
+        margin-top:0;
+        margin-bottom:$base-space;
+    }
+    b, strong {
+        font-weight:800;
+    }
+
+/*  Horizontal ruler  */
+    hr {
+        display: block;
+        height: 1px;
+        border: 0;
+        border-top: 1px solid #ccc;
+        padding: 0;
+        margin-top:0;
+        margin-bottom:$base-space;
+    }
+
+/*  Word break: all
+    * use e.g. in long displayed links  */
+    .word-break-all {
+        -ms-word-break: break-all;
+        word-break: break-all;
+        word-break: break-word;
+        -webkit-hyphens: auto;
+        -moz-hyphens: auto;
+        hyphens: auto;
+    }

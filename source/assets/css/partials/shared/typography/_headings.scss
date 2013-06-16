@@ -1,0 +1,49 @@
+/*  ====================
+    Headings
+    ====================  */
+
+/*  Headings  */
+    #{headers(all)} {
+        font: {
+            family:  $headings-font-family;
+            weight:  $headings-font-weight;
+        }
+        @extend %base-margin-bottom;
+        margin-top:0;
+    }
+
+    h1 {
+        font-size: em(36);
+        line-height:1.333;
+    }
+    h2 {
+        font-size: em(30);
+        line-height:1.666;
+    }
+    h3 {
+        font-size: em(24);
+        line-height:1.5;
+    }
+    h4 {
+        font-size: em(20);
+        line-height:1.666;
+    }
+    h5 {
+        font-size: em(16);
+        line-height:1.5;
+    }
+    h6 {
+        font-size: em(14);
+        line-height:1.666;
+    }
+
+/*  Heading styles  */
+    .h-style-1 {
+        font-size: em(96);
+    }
+    .h-style-2 {
+        font-size: em(72);
+    }
+    .h-style-3 {
+        font-size: em(48);
+    }

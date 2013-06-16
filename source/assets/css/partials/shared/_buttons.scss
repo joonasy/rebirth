@@ -4,7 +4,7 @@
     Buttons
     ===================  */
 
-    .btn{
+    .btn {
         display:inline-block;
         vertical-align:middle;
         white-space:nowrap;
@@ -21,58 +21,54 @@
         border-radius:$brand-round;
     }
 
-    .btn{
-
-        &,
-        &:hover{
+    .btn {
+        &, &:hover {
             text-decoration:none;
         }
-
-        &:active,
-        &:focus{
+        &:active, &:focus {
             outline:none;
         }
     }
 
     /*  Sizes  */
-        .btn--small{
+        .btn--small {
             padding-right:0.5em;
             padding-left: 0.5em;
             line-height:2;
         }
 
-        .btn--large{
+        .btn--large {
             padding-right:1.5em;
             padding-left: 1.5em;
             line-height:4;
         }
 
-        .btn--huge{
+        .btn--huge {
             padding-right:2em;
             padding-left: 2em;
             line-height:5;
         }
-        .btn--full{
+        .btn--full {
             width:100%;
             padding-right:0;
             padding-left: 0;
             text-align:center;
         }
 
-    /*  Font sizes  */
-        .btn--1{
-            font-size:3rem;
+    /*  Button font sizes  */
+        .btn--1 {
+            font-size:3em;
         }
 
-        .btn--2{
-            font-size:2rem;
+        .btn--2 {
+            font-size:2em;
         }
 
-        .btn--3{
-            font-size:1rem;
+        .btn--3 {
+            font-size:1em;
         }
 
-        .btn--natural{
+        .btn--natural {
             vertical-align:baseline;
             font-size:inherit;
             line-height:inherit;
@@ -85,18 +81,18 @@
         .btn--secondary {}
         .btn--tertiary {}
 
-        .btn--positive{
+        .btn--positive {
             background-color:#4A993E;
             color:#fff;
         }
 
-        .btn--negative{
+        .btn--negative {
             background-color:#b33630;
             color:#fff;
         }
 
         .btn--inactive {
-            &, &:hover,&:active,&:focus {
+            &,&:hover,&:active,&:focus {
                 text-decoration:none;
                 background-color:#ddd;
                 color:#777;

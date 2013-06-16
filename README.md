@@ -2,6 +2,14 @@
 
 This site uses my (@joonasy) personal "boilerplate", which contains snippets and ideas from various sources such as Normalize.css, HTML5 Boilerplate, Bootstrap, Foundation, SMACSS etc. By default this template supports: IE6<, Mobile first -ideology and progressive enhancement. Template requires Sass (.scss), Middleman and Compass.
 
+== CHANGELOG 16 June 2013
+
+* Better structuring logic learned from tampere.fi -project.
+
+== CHANGELOG 13 May 2013
+
+* Converted the html boilerplate to middleman boilerplate. Lot's of changes.. OOCSS, BEM, directory structure etc.
+
 == CHANGELOG 15 April 2013
 
 * Switched to SMACSS approach. All the .scss files are now separated into specific categories and combined in a master file.
@@ -20,7 +28,7 @@ This site uses my (@joonasy) personal "boilerplate", which contains snippets and
 
 == CHANGELOG Feb 7, 2013
 
-* Removed the old approach serving IE it's own stylsheet without media queries. I'm using respond.js again. Reason: much cleaner <head> and faster Sass compiling.
+* Removed the old approach serving IE it's own stylesheet without media queries. I'm using respond.js again. Reason: much cleaner <head> and faster Sass compiling.
 * Updated vendors
 
 == CHANGELOG Nov 28, 2012
