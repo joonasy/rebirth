@@ -1,0 +1,56 @@
+!!!5
+/ [if lt IE 7] <html class='no-js lt-ie9 lt-ie8 lt-ie7 preload no-fontface no-touch'>
+/ [if (IE 7)&!(IEMobile)] <html class='no-js ie7 lt-ie9 lt-ie8 preload no-fontface no-touch'>
+/ [if (IE 8)&!(IEMobile)] <html class='no-js ie8 lt-ie9 preload no-fontface no-touch'>
+/ [if gt IE 8]<!--> <html class="no-js preload no-fontface no-touch">
+
+%head
+    /
+        Build: #{File.mtime(current_page.source_file).strftime("%d.%m.%Y %H:%M:%S")}
+        Site by Joonas Y. @joonasy
+    %title= page_title
+    %meta{:name => "description", :content => page_description}
+    %meta{:charset => "utf-8"}
+    %meta{"http-equiv" => "X-UA-Compatible", :content => "IE=edge,chrome=1"}
+    %meta{"http-equiv" => "cleartype", :content => "on"}
+    %meta{:name => "viewport", :content => "width=device-width,initial-scale=1"}
+    -# iOS / Fav icons
+        %link{:rel => "apple-touch-icon-precomposed", :sizes => "144x144", :href => "#{siteUrl}/assets/img/touch/apple-touch-icon-144x144-precomposed.png" }
+        %link{:rel => "apple-touch-icon-precomposed", :sizes => "114x114", :href => "#{siteUrl}/assets/img/touch/apple-touch-icon-114x114-precomposed.png" }
+        %link{:rel => "apple-touch-icon-precomposed", :sizes => "72x72", :href => "#{siteUrl}/assets/img/touch/apple-touch-icon-72x72-precomposed.png" }
+        %link{:rel => "apple-touch-icon-precomposed", :href => "#{siteUrl}/assets/img/touch/apple-touch-icon-precomposed.png" }
+        %link{:rel => "shortcut icon", :href => "#{siteUrl}/assets/img/touch/apple-touch-icon-precomposed.png" }
+    -#  iOS web apps
+        %meta{:name => "apple-mobile-web-app-capable", :content => "yes"}
+        %meta{:name => "apple-mobile-web-app-status-bar-style", :content => "black"}
+    %meta{:name => "apple-mobile-web-app-title", :content => "Prototype"}
+    :javascript
+        var siteUrl = "#{siteUrl}";
+    = javascript_include_tag "head"
+    = stylesheet_link_tag "style"
+    -# Remove following if using modernizr
+    /[if lte IE 8]
+        %script{:src => "http://html5shiv.googlecode.com/svn/trunk/html5.js"}
+
+%body{:class => "#{@bodyclass}"}
+    /[if lt IE 7]
+        %p.notifyframe You are using an <strong>outdated</strong> browser. <a href="http://browsehappy.com/">Upgrade to a different browser</a> or <a href="http://www.google.com/chromeframe/?redirect=true">install Google Chrome Frame</a> to improve your experience.
+    %noscript{:class => 'jsframe notifyframe'} <strong>Your JavaScript is disabled!</strong> <a href="http://enable-javascript.com/">Please activate it</a>
+
+    %header
+
+    %div{:role => "main"}= yield
+
+    %footer
+
+    = javascript_include_tag "vendor/jquery.min.js"
+    -# %script{:src => "//ajax.googleapis.com/ajax/libs/jquery/1.10.1/jquery.min.js"}
+    :javascript
+        window.jQuery || document.write('<script src="'+siteUrl+'/assets/js/vendor/jquery.min.js"><\/script>')
+    = javascript_include_tag "app"
+    :javascript
+        var _gaq=[['_setAccount','UA-XXXXX-X'],['_trackPageview']];
+        (function(d,t){var g=d.createElement(t),s=d.getElementsByTagName(t)[0];
+        g.src=('https:'==location.protocol?'//ssl':'//www')+'.google-analytics.com/ga.js';
+        s.parentNode.insertBefore(g,s)}(document,'script'));
+</html>

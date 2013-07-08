@@ -1,0 +1,27 @@
+
+/**
+ * ========================================
+ * LISTS
+ * ========================================
+ */
+
+/* Reset lists */
+nav ul, %reset-list {
+  list-style: none;
+  margin:0;
+  padding:0;
+}
+
+/* Default list settings */
+ul, ol, dl {
+  margin-bottom:$base-space;
+  margin-left:$base-space-half;
+}
+
+ul {
+  list-style:disc;
+}
+
+ol {
+  list-style:decimal;
+}

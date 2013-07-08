@@ -1,0 +1,25 @@
+
+/**
+ * ========================================
+ * MEDIA
+ * ========================================
+ */
+
+img, embed, object {
+  max-width:100%;
+}
+
+/* Image align & spacing */
+img {
+  &.alignright {
+    margin-bottom: $base-space;
+    margin-left: $base-space;
+  }
+  &.alignleft {
+    margin-bottom: $base-space;
+    margin-right: $base-space;
+  }
+  &.aligncenter {
+    margin-bottom: $base-space;
+  }
+}

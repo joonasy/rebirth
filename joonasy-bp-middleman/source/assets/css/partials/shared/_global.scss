@@ -1,0 +1,55 @@
+
+/**
+ * ========================================
+ * GLOBAL CLASSES
+ * ========================================
+ */
+
+.preload * {
+  @include transition(none !important);
+}
+
+/* Clearfix */
+.cf {
+  *zoom:1;
+  &:before, &:after {
+    content:"";
+    display:table
+  }
+  &:after {
+    clear:both
+  }
+}
+
+/* Floating and positioning */
+.alignleft {
+  float:left;
+}
+
+.alignright {
+  float:right;
+}
+
+.aligncenter {
+  display:block;
+  margin-left:auto;
+  margin-right:auto;
+}
+
+/* Transitions */
+%global-transition {
+  @include transition(all .2s ease-in-out);
+}
+
+%alt-transition-property {
+  @include transition-property(color, background);
+}
+
+%no-transition {
+  @include transition(none !important);
+}
+
+/* Backface visibility */
+%backface-visibility {
+  @include backface-visibility(hidden);
+}
