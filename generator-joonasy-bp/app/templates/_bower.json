@@ -1,6 +1,11 @@
 {
-  "name": "package",
+  "name": "<%= _.slugify(appname) %>",
   "version": "0.0.0",
-  "dependencies": {}
+  "dependencies": {
+    "modernizr": "~2.6.2",
+    "enquire": "~2.0.2",
+    "respond": "~1.2.0",
+    "fastclick": "~0.6.9"
+  },
+  "devDependencies": {}
 }
-
