@@ -23,9 +23,6 @@ var AppGenerator = module.exports = function Appgenerator(args, options, config)
   /* Importing file-content as a string */
   //this.indexFile = this.readFileAsString(path.join(this.sourceRoot(), 'index.html'));
 
-  // this.mainCoffeeFile = 'console.log "\'Allo from CoffeeScript!"';
-
-
   this.on('end', function () {
     /* You can trigger the installation of Bower dependencies using: */
     this.installDependencies({ skipInstall: options['skip-install'] });
@@ -39,7 +36,7 @@ util.inherits(AppGenerator, yeoman.generators.Base);
 AppGenerator.prototype.askFor = function askFor() {
   var cb = this.async();
 
-  // welcome message
+  // Welcome message
   console.log(this.yeoman);
   console.log('Out of the box I include Joonasy Boilerplate, jQuery and Modernizr.');
 
@@ -51,7 +48,7 @@ AppGenerator.prototype.askFor = function askFor() {
   }];
 
   this.prompt(prompts, function (props) {
-    this.autoprefixer = props.autoprefixer;
+    //this.autoprefixer = props.autoprefixer;
     cb();
   }.bind(this));
 
