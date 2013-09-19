@@ -418,8 +418,8 @@ module.exports = function (grunt) {
 
   grunt.registerTask('test', [
       'clean:server',
-      'concurrent:test',<% if (autoprefixer) { %>
-      'autoprefixer',<% } %>
+      'concurrent:test',
+      'autoprefixer',
       'connect:test',<% if (testFramework === 'mocha') { %>
       'mocha'<% } else if (testFramework === 'jasmine') { %>
       'jasmine'<% } %>
