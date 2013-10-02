@@ -394,8 +394,7 @@ module.exports = function (grunt) {
         'compass',
         'imagemin',
         'svgmin',
-        'htmlmin',
-        'preprocess:dist' /* Finds the NODE_ENV (@if etc.) blocks in html */
+        'htmlmin'
       ]
     }
   });
@@ -439,7 +438,8 @@ module.exports = function (grunt) {
     'uglify',
     'copy:dist',
     'rev',
-    'usemin' /* Replaces the asset blocks and their reference to a single file */
+    'usemin', /* Replaces the asset blocks and their reference to a single file */
+    'preprocess:dist' /* Finds the NODE_ENV (@if etc.) blocks in html */
   ]);
 
   grunt.registerTask('default', [
