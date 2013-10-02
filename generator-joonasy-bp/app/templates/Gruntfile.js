@@ -8,11 +8,10 @@ var mountFolder = function (connect, dir) {
 };
 
 
-
 module.exports = function (grunt) {
   require('matchdep').filterDev('grunt-*').forEach(grunt.loadNpmTasks);
 
-  /* configurable paths */
+  /* Configurable paths */
   var yeomanConfig = {
       app: 'app',
       dist: 'build'
@@ -29,17 +28,13 @@ module.exports = function (grunt) {
      */
     watch: {
       jade: {
-        files: ['<%= yeoman.app %>/{,*/}*.jade'],
+        files: ['<%%= yeoman.app %>/{,*/}*.jade'],
         tasks: ['jade', 'preprocess:dev']
       },
       compass: {
         files: ['<%%= yeoman.app %>/assets/css/{,**/}*.{scss,sass}'],
         tasks: ['compass:server', 'autoprefixer']
-      },
-      styles: {
-        files: ['<%%= yeoman.app %>/assets/css/{,*/}*.css'],
-        tasks: ['copy:styles', 'autoprefixer']
-      },
+      }
       livereload: {
         options: {
           livereload: LIVERELOAD_PORT
@@ -162,12 +157,12 @@ module.exports = function (grunt) {
           pretty: true,
           data: {
             debug: true,
-            timestamp: "<%= new Date().getTime() %>"
+            timestamp: "<%%= new Date().getTime() %%>"
           }
         },
         files: [{
           expand: true,
-          cwd: '<%= yeoman.app %>',
+          cwd: '<%%= yeoman.app %>',
           dest: '.tmp',
           src: '*.jade',
           ext: '.html'
@@ -178,19 +173,25 @@ module.exports = function (grunt) {
      * COMPASS
      *
      * https://github.com/gruntjs/grunt-contrib-compass
+     *
+     * For relative images:
+     * httpImagesPath: '../images',
+     * httpGeneratedImagesPath: '../images'
      */
     compass: {
       options: {
-        sassDir: '<%%= yeoman.app %>/assets/css',
+        sassDir: '<%= yeoman.app %>/assets/css',
         cssDir: '.tmp/assets/css',
-        generatedImagesDir: '.tmp/assets/img/generated',
-        imagesDir: '<%%= yeoman.app %>/assets/img',
-        javascriptsDir: '<%%= yeoman.app %>/assets/js',
-        fontsDir: '<%%= yeoman.app %>/assets/fonts',
-        importPath: '<%%= yeoman.app %>/assets/vendor',
-        httpImagesPath: '/images',
-        httpGeneratedImagesPath: '/images/generated',
-        httpFontsPath: '/assets/fonts',
+
+        imagesDir: '<%= yeoman.app %>/assets/images',
+        generatedImagesDir: '<%= yeoman.app %>/assets/images',
+        httpImagesPath: '/assets/images',
+        httpGeneratedImagesPath: '/assets/images',
+
+        fontsDir: '<%= yeoman.app %>/assets/fonts',
+        httpFontsPath: '../fonts',
+        javascriptsDir: '<%= yeoman.app %>/assets/js',
+        importPath: '<%= yeoman.app %>/assets/vendor',
         relativeAssets: false
       },
       dist: {},
@@ -231,6 +232,7 @@ module.exports = function (grunt) {
         files: {
           src: [
             '<%%= yeoman.dist %>/assets/js/{,*/}*.js',
+            '!<%= yeoman.dist %>/assets/js/vendor/jquery.min.js',
             '<%%= yeoman.dist %>/assets/css/{,*/}*.css',
             '<%%= yeoman.dist %>/assets/img/{,*/}*.{png,jpg,jpeg,gif,webp}',
             '<%%= yeoman.dist %>/assets/fonts/*'
@@ -244,24 +246,23 @@ module.exports = function (grunt) {
      * https://github.com/jsoverson/grunt-preprocess
      */
     preprocess: {
-      options: {
-        context: {}
-      },
       dev: {
-        src: ['.tmp/{,*/}*.html'],
+        src: '.tmp/{,*/}*.html',
         options: {
           inline: true,
           context: {
-            development: true
+            development: true,
+            production: false
           }
         }
       },
       dist: {
-        src: ['<%= yeoman.dist %>/{,*/}*.html'],
+        src: '<%= yeoman.dist %>/{,*/}*.html',
         options: {
           inline: true,
           context: {
-            development: false
+            development: false,
+            production: true
           }
         }
       }
@@ -298,7 +299,7 @@ module.exports = function (grunt) {
         files: [{
           expand: true,
           cwd: '<%%= yeoman.app %>/assets/img',
-          src: '{,*/}*.{png,jpg,jpeg}',
+          src: '*.{png,jpg,jpeg}',
           dest: '<%%= yeoman.dist %>/assets/img'
         }]
       }
@@ -364,15 +365,16 @@ module.exports = function (grunt) {
           src: [
             '*.{ico,png,txt}',
             '.htaccess',
+            'sftp-config.json',
             'assets/img/{,*/}*.{webp,gif}',
             'assets/fonts/*'
           ]
         }, {
           expand: true,
-          cwd: '.tmp/assets/img',
-          dest: '<%= yeoman.dist %>/assets/img',
+          cwd: '<%= yeoman.app %>',
+          dest: '<%= yeoman.dist %>',
           src: [
-            'generated/*'
+            'assets/js/vendor/jquery.min.js'
           ]
         }]
       }
@@ -392,7 +394,8 @@ module.exports = function (grunt) {
         'compass',
         'imagemin',
         'svgmin',
-        'htmlmin'
+        'htmlmin',
+        'preprocess:dist' /* Finds the NODE_ENV (@if etc.) blocks in html */
       ]
     }
   });
@@ -409,7 +412,6 @@ module.exports = function (grunt) {
         'clean:server',
         'concurrent:server',
         'preprocess:dev',
-        //'autoprefixer',
         'connect:livereload',
         'open',
         'watch'
