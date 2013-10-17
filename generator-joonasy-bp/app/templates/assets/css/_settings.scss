@@ -1,0 +1,54 @@
+
+// ========================================
+// SETTINGS & VARIABLES
+// ========================================
+
+// Base typography
+$base-font-size:   16;
+$base-line-height: 24;
+$base-font-family: Helvetica, Arial, sans-serif;
+$base-font-family-alt: inherit;
+$base-font-weight-alt: normal;
+$headings-font-family: inherit;
+$headings-font-weight: 800;
+
+// Spacing
+$base-space: em($base-line-height);
+$base-space-x2: em($base-line-height*2);
+$base-space-x3: em($base-line-height*3);
+$base-space-x4: em($base-line-height*4);
+$base-space-1-2: em($base-line-height/2);
+$base-space-1-3: em($base-line-height/3);
+$base-space-1-4: em($base-line-height/4);
+$base-edge-space: 6%;
+
+// Media Query breakpoints
+$bp-small: 320;
+$bp-small-landscape: 480;
+$bp-medium: 768;
+$bp-large: 1024;
+$bp-larger: 1200;
+
+// Base colors
+$color-bg: #fff;
+$color-text: #444;
+$color-dark: #000;
+$color-light: #fff;
+
+// Brand colors
+$color-brand:  #23bfe2;
+
+// Grays
+$color-gray-darkest: #121212;
+$color-gray-darker: #222;
+$color-gray-dark: #333;
+$color-gray: #555;
+$color-gray-light: #a2a2a2;
+$color-gray-lighter: #ccc;
+$color-gray-lightest: #E6E6E6;
+
+// Border-radius
+$base-border-radius: 3px;
+
+// Elements
+$use-buttons: false;

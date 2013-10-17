@@ -1,15 +1,16 @@
 
-/* ========================================
- * LINKS & SELECTION
- * ======================================== */
-
+/**
+ * Links & selection
+ */
 a {
   color: $color-brand;
   text-decoration:none;
   &:active {
     color: $color-brand;
   }
-  &:hover {}
+  &:hover {
+
+  }
   &:focus {
     outline: 0;
   }

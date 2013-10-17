@@ -3,9 +3,8 @@
  * BASE
  * ======================================== */
 
-/* Html, body */
 html {
-  @include tap-color;
+  @include color-tap;
   background-color: $color-bg;
   color: $color-text;
   font: {
@@ -14,17 +13,19 @@ html {
   }
   line-height: $base-line-height / $base-font-size;
   overflow-y:scroll;
-  @if $basehold {
-    background-image: url(http://basehold.it/i/#{$basehold});
-  }
 }
 
-/* Base margin-bottom */
-%base-margin-bottom,
-hgroup,
-blockquote, address,
-table,
-fieldset,figure,
-pre {
-  margin-bottom:$base-space;
+/**
+ * Apply a natural box layout model to all elements
+ */
+*, *:before, *:after {
+  box-sizing: border-box;
+}
+
+/**
+ * Shared spacing
+ */
+hgroup, blockquote, address,
+table, fieldset,figure, pre {
+  @extend %base-margin-bottom;
 }

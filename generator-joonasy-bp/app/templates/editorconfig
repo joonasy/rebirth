@@ -16,7 +16,7 @@ end_of_line = lf
 charset = utf-8
 # Breaks some .jade comments is set to true
 # trim_trailing_whitespace = true
-insert_final_newline = false
+insert_final_newline = false 
 
 [*.md]
 trim_trailing_whitespace = false

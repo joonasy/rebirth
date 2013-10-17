@@ -1,0 +1,95 @@
+
+/* ========================================
+ * GLOBAL & SHARED
+ * ========================================
+ *
+ * Here are classes and placeholders that
+ * don't fit well in other places.
+ */
+
+/**
+ * Disable transitions onload
+ */
+.preload * {
+  @extend %transition-none;
+}
+
+/**
+ * Remove default list settings
+ */
+%list-unstyle {
+  list-style: none;
+  margin:0;
+  padding:0;
+}
+
+/**
+ * Clearfix
+ */
+.cf {
+  *zoom:1;
+
+  &:before, &:after {
+    content:"";
+    display:table
+  }
+  &:after {
+    clear:both
+  }
+}
+
+/**
+ * Transitions
+ */
+%transition-global {
+  transition: all .2s ease;
+}
+
+%transition-property-alt {
+  transition-property:color, background;
+}
+
+%transition-none {
+  transition:none !important;
+}
+
+%backface-visibility-hidden {
+  @include backface-visibility(hidden);
+}
+
+/**
+ * Hide and show
+ */
+/* Large screen */
+%bp-small-visible,
+%bp-medium-visible,
+%bp-large-hidden {
+  display:none !important;
+}
+%bp-large-visible {
+  display:inherit !important;
+}
+
+/* Medium screen */
+@include breakpoint(medium-only) {
+  %bp-large-hidden,
+  %bp-medium-visible {
+    display:inherit !important;
+  }
+  %bp-large-visible,
+  %bp-medium-hidden {
+    display:none !important;
+  }
+}
+
+/* Small screen */
+@include breakpoint(small) {
+  %bp-large-hidden,
+  %bp-small-visible {
+    display:inherit !important;
+  }
+  %bp-large-visible,
+  %bp-small-hidden {
+    display:none !important;
+  }
+}

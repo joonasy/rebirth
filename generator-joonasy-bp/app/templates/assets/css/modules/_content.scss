@@ -1,0 +1,21 @@
+
+/* ========================================
+ * CONTENT
+ * ======================================== */
+
+.content {
+  /**
+   * Image floating and spacing. Usually needed in the content area.
+   */
+  img {
+    @extend %base-margin-bottom;
+
+    &.align-right {
+      margin-left: $base-space;
+    }
+
+    &.align-left {
+      margin-right: $base-space;
+    }
+  }
+}

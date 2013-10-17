@@ -1,7 +1,8 @@
 
 /* ========================================
- * SPRITES
+ * SPACING
  * ======================================== */
 
-//@import "sprite/*.png";
-//$img-low-sprite-dimensions: true;
+%base-margin-bottom {
+  margin-bottom:$base-space;
+}

@@ -1,0 +1,20 @@
+
+/**
+ * Lists
+ */
+nav ul {
+  @extend %list-unstyle;
+}
+
+ul, ol, dl {
+  @extend %base-margin-bottom;
+  margin-left:$base-space-1-2;
+}
+
+ul {
+  list-style:disc;
+}
+
+ol {
+  list-style:decimal;
+}
