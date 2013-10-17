@@ -1,0 +1,106 @@
+@if $use-buttons == true {
+
+/* ========================================
+ * BUTTONS
+ * ======================================== */
+
+.btn {
+  display:inline-block;
+  vertical-align:middle;
+  white-space:nowrap;
+  font-family:inherit;
+  font-size:100%;
+  cursor:pointer;
+  border:none;
+  margin:0;
+  padding-top:   0;
+  padding-bottom:0;
+  line-height:3;
+  padding-right:1em;
+  padding-left: 1em;
+  border-radius:$brand-round;
+}
+
+.btn {
+  &, &:hover {
+    text-decoration:none;
+  }
+  &:active, &:focus {
+    outline:none;
+  }
+}
+
+/* Sizes */
+.btn--small {
+  padding-right:0.5em;
+  padding-left: 0.5em;
+  line-height:2;
+}
+
+.btn--large {
+  padding-right:1.5em;
+  padding-left: 1.5em;
+  line-height:4;
+}
+
+.btn--huge {
+  padding-right:2em;
+  padding-left: 2em;
+  line-height:5;
+}
+
+.btn--full {
+  width:100%;
+  padding-right:0;
+  padding-left: 0;
+  text-align:center;
+}
+
+/* Button font sizes */
+.btn--1 {
+  font-size:3em;
+}
+
+.btn--2 {
+  font-size:2em;
+}
+
+.btn--3 {
+  font-size:1em;
+}
+
+.btn--natural {
+  vertical-align:baseline;
+  font-size:inherit;
+  line-height:inherit;
+  padding-right:0.5em;
+  padding-left: 0.5em;
+}
+
+/*  Functions  */
+.btn--primary {}
+
+.btn--secondary {}
+
+.btn--tertiary {}
+
+.btn--positive {
+  background-color:#4A993E;
+  color:#fff;
+}
+
+.btn--negative {
+  background-color:#b33630;
+  color:#fff;
+}
+
+.btn--inactive {
+  &,&:hover,&:active,&:focus {
+    text-decoration:none;
+    background-color:#ddd;
+    color:#777;
+    cursor:text;
+  }
+}
+
+}

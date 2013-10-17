@@ -1,0 +1,42 @@
+
+/* ========================================
+ * HELPERS
+ * ========================================
+ *
+ * Define any of the placholders
+ * as classes if needed.
+ */
+
+/**
+ * Floating
+ */
+.align-left {
+  float:left;
+}
+
+.align-right {
+  float:right;
+}
+
+.align-center {
+  display:block;
+  margin-left:auto;
+  margin-right:auto;
+}
+
+/**
+ * Typography helpers to break long words.
+ * Use e.g. in long links.
+ */
+%text-break {
+  -ms-word-break: break-all;
+  word-break: break-all;
+  word-break: break-word;
+  -webkit-hyphens: auto;
+  -moz-hyphens: auto;
+  hyphens: auto;
+}
+
+%text-truncate {
+  @include truncate(100%);
+}
