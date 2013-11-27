@@ -22,7 +22,7 @@
   }
 
   // e.g. iPhone landscape and up
-  @elseif $media == "small-landscape" {
+  @elseif $media == "small-landscape-up" {
     @if $remove-mq {
       @content;
     } @else {
@@ -30,15 +30,15 @@
     }
   }
 
-  // e.g. Nexus portrait and down to mobile
-  @elseif $media == "small-medium-down" {
+  // e.g. iPad portrait, Nexus portrait and down to mobile
+  @elseif $media == "medium-down" {
     @if $remove-mq == false {
       @media only screen and (max-width: $breakpoint-medium - 1) { @content; }
     }
   }
 
   // e.g. iPad portrait and up
-  @elseif $media == "medium" {
+  @elseif $media == "medium-up" {
     @if $remove-mq {
       @content;
     } @else {
@@ -53,8 +53,8 @@
     }
   }
 
-  // e.g. iPad landscape and desktop pc
-  @else if $media == "large" {
+  // e.g. iPad landscape and old desktop pc
+  @else if $media == "large-up" {
     @if $remove-mq {
       @content;
     } @else {
@@ -62,8 +62,8 @@
     }
   }
 
-  // e.g. Large desktop pc
-  @else if $media == "xlarge" {
+  // e.g. Desktop pc
+  @else if $media == "xlarge-up" {
     @if $remove-mq {
       @content;
     } @else {
