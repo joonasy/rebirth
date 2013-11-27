@@ -1,58 +1,18 @@
-
 /* ========================================
  * HEADINGS
  * ======================================== */
 
-#{headers(all)} {
-  @extend %base-margin-bottom;
-  margin-top:0;
-  font: {
-    family:  $headings-font-family;
-    weight:  $headings-font-weight;
-  }
-}
-
-h1 {
-  font-size: em(36);
-  line-height:1.333;
-}
-
-h2 {
-  font-size: em(30);
-  line-height:1.666;
-}
-
-h3 {
-  font-size: em(24);
-  line-height:1.5;
-}
-
-h4 {
-  font-size: em(20);
-  line-height:1.666;
-}
-
-h5 {
-  font-size: em(16);
-  line-height:1.5;
-}
-
-h6 {
-  font-size: em(14);
-  line-height:1.666;
-}
-
 /**
  * Heading styles
  */
-.heading-1 {
+.heading-xlg {
   font-size: em(96);
 }
 
-.heading-2 {
+.heading-lg {
   font-size: em(72);
 }
 
-.heading-3 {
+.heading-md {
   font-size: em(48);
 }

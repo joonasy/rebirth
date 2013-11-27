@@ -1,9 +1,7 @@
 doctype 5
-<!--[if lt IE 8]>      <html class="no-js lt-ie9 lt-ie8 preload"> <![endif]-->
-<!--[if IE 8]>         <html class="no-js lt-ie9 preload"> <![endif]-->
-<!--[if gt IE 8]><!--> <html class="no-js preload"> <!--<![endif]-->
+<html class="no-js is-loading">
 
--var siteUrl = "http://localhost:9000"
+- var siteUrl = "http://localhost:9000"
 
 head
   title Prototype
@@ -24,10 +22,17 @@ head
     meta(name="apple-mobile-web-app-capable", :content="yes")
     meta(name="apple-mobile-web-app-status-bar-style", :content="black")
     meta(name="apple-mobile-web-app-title", :content="Prototype")
+  
+  // build:css({.tmp,app}) assets/css/app-ie.css 
+  //if lte IE 8
+    link(href="/assets/css/app-ie.css", rel="stylesheet") 
+  // endbuild 
 
-  // build:css({.tmp,app}) assets/css/style.css
-  link(href="/assets/css/style.css", rel="stylesheet", type="text/css")
-  // endbuild
+  // build:css({.tmp,app}) assets/css/app.css 
+  //if gt IE 8 
+    <!-->
+    link(href="/assets/css/app.css", rel="stylesheet")
+  // endbuild 
 
   // @if development 
   script(src="/assets/vendor/modernizr/modernizr.js")
@@ -38,26 +43,17 @@ head
   // @if production 
   script(src="/assets/js/vendor/modernizr-custom.js")
   // @endif
-  script(src="/assets/vendor/respond/respond.src.js")
   script(src="/assets/vendor/enquire/dist/enquire.js")
   script(src="/assets/js/scripts-head.js")
   script(src="/assets/js/head.js")
   // endbuild
 
-  //- NOTE: If Modernizr isn't used, remember:
-    script(src="/assets/vendor/matchmedia/matchMedia.js")
-    script(src="/assets/vendor/matchmedia/matchMedia.addListener.js")
-    //if lte IE 8
-      script(src="//html5shiv.googlecode.com/svn/trunk/html5.js")
-
 body
-  //if lt IE 8
-      p.notifyframe You are using an <strong>outdated</strong> browser. <a href="http://browsehappy.com/">Upgrade to a different browser</a> or <a href="http://www.google.com/chromeframe/?redirect=true">install Google Chrome Frame</a> to improve your experience.
+  //if lt IE 8 
+    p.notifyframe You are using an <strong>outdated</strong> browser. <a href="http://browsehappy.com/">Upgrade to a different browser</a> or <a href="http://www.google.com/chromeframe/?redirect=true">install Google Chrome Frame</a> to improve your experience.
   noscript(class="jsframe notifyframe") <strong>Your JavaScript is disabled!</strong> <a href="http://enable-javascript.com/">Please activate it</a>
 
-  h1 Prototype
-
-  footer
+  // Content here
 
   // @if development 
   script(src="/assets/js/vendor/jquery.min.js")

@@ -132,6 +132,8 @@ module.exports = function (grunt) {
      */
     compass: {
       options: {
+        require: ['sass-globbing'],
+
         sassDir: '<%= loc.app %>/assets/css',
         cssDir: '.tmp/assets/css',
 
@@ -149,7 +151,7 @@ module.exports = function (grunt) {
       dist: {},
       server: {
         options: {
-          debugInfo: true
+          debugInfo: false
         }
       }
     },
@@ -317,6 +319,7 @@ module.exports = function (grunt) {
     modernizr: {
       devFile: '<%= loc.app %>/assets/vendor/modernizr/modernizr.js',
       outputFile: '<%= loc.app %>/assets/js/vendor/modernizr-custom.js',
+      parseFiles: true,
       files: [
           '<%= loc.app %>/assets/js/{,*/}*.js',
           '<%= loc.app %>/assets/css/{,*/}*.css',
@@ -340,8 +343,7 @@ module.exports = function (grunt) {
           'domprefixes': false
       },
       /* No need for the uglify as it is handled in the useminPrepare */
-      uglify: false, 
-      parseFiles: true
+      uglify: false
     },
     /**
      * COPY

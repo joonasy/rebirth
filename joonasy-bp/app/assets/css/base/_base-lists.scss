@@ -1,14 +1,12 @@
-
 /**
  * Lists
  */
 nav ul {
-  @extend %list-unstyle;
+  @include list-reset;
 }
 
 ul, ol, dl {
-  @extend %base-margin-bottom;
-  margin-left:$base-space-1-2;
+  margin:0 0 $base-space $base-space;
 }
 
 ul {

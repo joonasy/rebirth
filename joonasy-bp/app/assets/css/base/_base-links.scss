@@ -1,15 +1,12 @@
-
 /**
  * Links & selection
  */
 a {
   color: $color-brand;
-  text-decoration:none;
+  text-decoration: none;
+
   &:active {
     color: $color-brand;
-  }
-  &:hover {
-
   }
   &:focus {
     outline: 0;
@@ -20,20 +17,20 @@ a {
   background: $color-brand;
   color: $color-light;
 }
-
+  
 ::selection {
   background: $color-brand;
   color: $color-light;
 }
-
+  
 img::selection {
   background: transparent;
 }
-
+  
 img::-moz-selection {
   background: transparent;
 }
-
+  
 ::selection:window-inactive {
   background: lighten($color-dark, 50%);
 }
