@@ -1,44 +1,86 @@
-
-'use strict';
-
 module.exports = function (grunt) {
-
-  require('time-grunt')(grunt);
-  require('load-grunt-tasks')(grunt);
-
   grunt.initConfig({
     /**
-     * PATHS
-     */ 
-    loc: {
-        app: 'app',
-        dist: 'dist'
+     * Settings
+     */
+    pkg: grunt.file.readJSON('package.json'),
+    path: {
+      src: 'src',
+      dist: 'dist',
+      tmp: '.tmp'
+    },
+    meta: {
+      banner:
+        '/*!\n' +
+        ' * <%= pkg.name %> - v<%= pkg.version %> - <%= grunt.template.today("yyyy-mm-dd") %>\n' +
+        ' * <%= pkg.homepage %>\n' +
+        ' *\n' +
+        ' * Copyright (c) <%= grunt.template.today("yyyy") %> <%= pkg.author %>\n' +
+        ' * Available under the <%= pkg.licenses.type %> license\n' +
+        ' */\n'
+    },
+
+    /**
+     * Assemble
+     */
+    assemble: {
+      options: {
+        data: ['<%= path.src %>/data/*.{json,yml}'],
+        flatten: true,
+        helpers: '<%= path.src %>/templates/helpers/**/*.js',
+        layout: 'layout.hbs',
+        layoutdir: '<%= path.src %>/templates/layouts',
+        partials: '<%= path.src %>/templates/includes/*.hbs',
+        permalinks: {
+          structure: ':slug/index.html'
+        }
+      },
+      dev: {
+        options: {
+          assets: 'assets',
+          dev: true,
+          prod: false
+        },
+        files: [{
+          expand: true,
+          cwd: '<%= path.src %>/templates/pages',
+          src: '**/*.hbs',
+          dest: '<%= path.tmp %>'
+        }]
+      },
+      dist: {
+        options: {
+          assets: '<%= path.dist %>/assets',
+          dev: false,
+          prod: true
+        },
+        src: '<%= path.src %>/templates/pages/**/*.hbs',
+        dest: '<%= path.dist %>'
+      }
     },
     /**
-     * LIVERELOAD
+     * Livereload
      *
      * Run predefined tasks whenever watched file patterns
      * are added, changed or deleted.
      * https://github.com/gruntjs/grunt-contrib-livereload
      */
     watch: {
-      jade: {
-        files: ['<%= loc.app %>/{,*/}*.jade'],
-        tasks: ['jade', 'preprocess:dev']
+      options: {
+        livereload: '<%= connect.options.livereload %>'
+      },
+      assemble: {
+        files: ['<%= path.src %>/**/*.{hbs,yml,json}'],
+        tasks: ['assemble:dev']
       },
       compass: {
-        files: ['<%= loc.app %>/assets/css/{,**/}*.{scss,sass}'],
-        tasks: ['compass:server', 'autoprefixer']
+        files: ['<%= path.src %>/assets/css/**/*.{scss,sass}'],
+        tasks: ['compass:dev', 'autoprefixer']
       },
-      livereload: {
-        options: {
-          livereload: '<%= connect.options.livereload %>'
-        },
+      other: {
         files: [
-          '.tmp/*.html',
-          '.tmp/assets/css/{,*/}*.css',
-          '{.tmp,<%= loc.app %>}/assets/js/{,**/}*.js',
-          '<%= loc.app %>/assets/img/{,*/}*.{png,jpg,jpeg,gif,webp,svg}'
+          '<%= path.src %>/assets/{,**/}*.js',
+          '<%= path.src %>/assets/img/**/*.{png,jpg,jpeg,gif,webp,svg}'
         ]
       }
     },
@@ -51,28 +93,25 @@ module.exports = function (grunt) {
     connect: {
       options: {
         port: 9000,
-        livereload: 35729, /* Keep it custom! */
-        /* change this to '0.0.0.0' to access the server from outside */
-        hostname: 'localhost'
+        livereload: 1337,
+        hostname: '0.0.0.0'
       },
-      livereload: {
+      dev: {
         options: {
-          open: true,
           base: [
-            '.tmp',
-            '<%= loc.app %>'
+            '<%= path.tmp %>',
+            '<%= path.src %>'
           ]
         }
       },
       dist: {
         options: {
-          open: true,
-          base: '<%= loc.dist %>'
+          base: '<%= path.dist %>'
         }
       }
     },
     /**
-     * CLEAN
+     * Clean
      *
      * Clean files and folders.
      * https://github.com/gruntjs/grunt-contrib-clean
@@ -82,84 +121,64 @@ module.exports = function (grunt) {
         files: [{
           dot: true,
           src: [
-            '.tmp',
-            '<%= loc.dist %>/*',
-            '!<%= loc.dist %>/.git*'
+            '<%= path.dist %>/*'
           ]
         }]
       },
-      server: '.tmp',
+      tmp: '<%= path.tmp %>',
       dev: {
         files: [{
           src: [
-            '<%= loc.app %>/assets/js/vendor/modernizr-custom.js'
+            '<%= path.src %>/assets/js/vendor/modernizr-custom.js'
           ]
         }]
       }
     },
     /**
-     * JADE
-     *
-     * https://gist.github.com/kevva/5201657
-     * https://github.com/gruntjs/grunt-contrib-jade
-     */
-    jade: {
-      dist: {
-        options: {
-          pretty: true,
-          data: {
-            debug: true
-            //timestamp: "<%= new Date().getTime() %>"
-          }
-        },
-        files: [{
-          expand: true,
-          cwd: '<%= loc.app %>',
-          dest: '.tmp',
-          src: '*.jade',
-          ext: '.html'
-        }]
-      }
-    },
-    /**
-     * COMPASS
+     * Compass
      *
      * https://github.com/gruntjs/grunt-contrib-compass
      *
      * For relative images:
-     * httpImagesPath: '../images',
-     * httpGeneratedImagesPath: '../images'
+     * httpImagesPath: '../img',
+     * httpGeneratedImagesPath: '../img'
      */
     compass: {
       options: {
-        require: ['sass-globbing'],
+        sassDir: '<%= path.src %>/assets/css',
+        cssDir: '<%= path.tmp %>/assets/css',
 
-        sassDir: '<%= loc.app %>/assets/css',
-        cssDir: '.tmp/assets/css',
+        imagesDir: '<%= path.src %>/assets/img',
+        generatedImagesDir: '<%= path.src %>/assets/img',
+        httpImagesPath: '/assets/img',
+        httpGeneratedImagesPath: '/assets/img',
 
-        imagesDir: '<%= loc.app %>/assets/images',
-        generatedImagesDir: '<%= loc.app %>/assets/images',
-        httpImagesPath: '/assets/images',
-        httpGeneratedImagesPath: '/assets/images',
-
-        fontsDir: '<%= loc.app %>/assets/fonts',
+        fontsDir: '<%= path.src %>/assets/fonts',
         httpFontsPath: '../fonts',
-        javascriptsDir: '<%= loc.app %>/assets/js',
-        importPath: '<%= loc.app %>/assets/vendor',
-        relativeAssets: false
+        javascriptsDir: '<%= path.src %>/assets/js',
+        importPath: '<%= path.src %>/assets/bower_components',
+        relativeAssets: false,
+
+        raw: '::Sass::Script::Number.precision = 10\n'
+
       },
-      dist: {},
-      server: {
+      dist: {
         options: {
+          environment: 'production'
+        }
+      },
+      dev: {
+        options: {
+          environment: 'development',
           debugInfo: false
         }
       }
     },
     /**
-     * AUTOPREFIXER
+     * Autoprefixer
      *
      * Parse CSS and add vendor prefixes to rules using values from the
-     * Can I Use website. Based on Autoprefixer.
+     * Can I Use website.
      * https://github.com/nDmitry/grunt-autoprefixer
      */
     autoprefixer: {
@@ -169,98 +188,63 @@ module.exports = function (grunt) {
       dist: {
         files: [{
           expand: true,
-          cwd: '.tmp/assets/css/',
-          src: '{,*/}*.css',
-          dest: '.tmp/assets/css/'
+          cwd: '<%= path.tmp %>/assets/css/',
+          src: '*.css',
+          dest: '<%= path.tmp %>/assets/css/'
         }]
       }
     },
+
     /**
-     * REV
+     * Usemin
      *
-     * Static file asset revisioning through content hashing
-     * https://github.com/cbas/grunt-rev
-     */
-    rev: {
-      dist: {
-        files: {
-          src: [
-            '<%= loc.dist %>/assets/js/{,*/}*.js',
-            '!<%= loc.dist %>/assets/js/vendor/jquery.min.js',
-            '!<%= loc.dist %>/assets/js/vendor/modernizr-custom.js',
-            '<%= loc.dist %>/assets/css/{,*/}*.css',
-            '<%= loc.dist %>/assets/img/{,*/}*.{png,jpg,jpeg,gif,webp}',
-            '<%= loc.dist %>/assets/fonts/*'
-          ]
-        }
-      }
-    },
-    /**
-     * PREPROCESS
-     *
-     * https://github.com/jsoverson/grunt-preprocess
-     */
-    preprocess: {
-      dev: {
-        src: '.tmp/{,*/}*.html',
-        options: {
-          inline: true,
-          context: {
-            development: true,
-            production: false
-          }
-        }
-      },
-      dist: {
-        src: '<%= loc.dist %>/{,*/}*.html',
-        options: {
-          inline: true,
-          context: {
-            development: false,
-            production: true
-          }
-        }
-      }
-    },
-    /**
-     * USEMIN
-     *
-     * Replaces references to non-optimized scripts or stylesheets into a
+     * Replaces references to non-optimized scripts or css into a
      * set of HTML files (or any templates/views)
      * https://github.com/yeoman/grunt-usemin
      */
     useminPrepare: {
       options: {
-        dest: '<%= loc.dist %>'
+        dest: '<%= path.dist %>'
       },
-      //html: '<%= loc.app %>/index.html'
-      html: '.tmp/{,**/}*.html'
+      html: '<%= path.dist %>/**/*.html'
     },
     usemin: {
       options: {
-        dirs: ['<%= loc.dist %>']
+        assetsDirs: ['<%= path.dist %>/**/**/']
       },
-      html: ['<%= loc.dist %>/{,**/}*.html'],
-      css: ['<%= loc.dist %>/assets/css/{,**/}*.css']
+      html: ['<%= path.dist %>/{,**/}*.html'],
+      css: ['<%= path.dist %>/assets/css/*.css']
     },
+    cssmin: {
+      options: {
+        banner: '<%= meta.banner %>'
+      }
+    },
+    uglify: {
+      options: {
+        banner: '<%= meta.banner %>'
+      }
+    },
+
     /**
-     * IMAGEMIN
+     * Imagemin
      *
-     * Minify PNG and JPEG images
+     * Minify PNG and JPEG img
      * https://github.com/gruntjs/grunt-contrib-imagemin
      */
     imagemin: {
       dist: {
         files: [{
           expand: true,
-          cwd: '<%= loc.app %>/assets/img',
+          cwd: '<%= path.src %>/assets/img',
           src: '{,*/}*.{png,jpg,jpeg}',
-          dest: '<%= loc.dist %>/assets/img'
+          dest: '<%= path.dist %>/assets/img'
         }]
       }
     },
+
     /**
-     * SVGMIN
+     * Svgmin
      *
      * Minify SVG
      * https://github.com/sindresorhus/grunt-svgmin
@@ -269,70 +253,43 @@ module.exports = function (grunt) {
       dist: {
         files: [{
           expand: true,
-          cwd: '<%= loc.app %>/assets/img',
+          cwd: '<%= path.src %>/assets/img',
           src: '{,*/}*.svg',
-          dest: '<%= loc.dist %>/assets/img'
+          dest: '<%= path.dist %>/assets/img'
         }]
       }
     },
+
     /**
-     * HTMLMIN
+     * Modernizr
      *
-     * Minifies HTML using html-minifier and copies the .html files
-     * https://github.com/gruntjs/grunt-contrib-htmlmin
-     */
-    htmlmin: {
-      dist: {
-        options: {
-          /*removeCommentsFromCDATA: true,
-          // https://github.com/loc/grunt-usemin/issues/44
-          //collapseWhitespace: true,
-          collapseBooleanAttributes: true,
-          removeAttributeQuotes: true,
-          removeRedundantAttributes: true,
-          useShortDoctype: true,
-          removeEmptyAttributes: true,
-          removeOptionalTags: true*/
-        },
-        files: [{
-          expand: true,
-          //cwd: '<%= loc.app %>',
-          cwd: '.tmp',
-          src: '{,*/}*.html',
-          dest: '<%= loc.dist %>'
-        }]
-      }
-    },
-    /**
-     * MODERNIZR
-     * 
-     * Sifts through your project files, gathers up your references 
+     * Sifts through your project files, gathers up your references
      * to Modernizr tests and outputs a lean, mean Modernizr machine.
      * https://github.com/Modernizr/grunt-modernizr
      *
-     * Do the checks and create the temporary modernizr-custom.js 
+     * Do the checks and create the temporary modernizr-custom.js
      * before configuring the asset block in the useminPrepare task. This way
-     * the custom modernizr concat/uglify with the other .js files. The temp
-     * file isn't included in development process thanks to preprocess:dev 
-     * (@if production) block.
-     */ 
+     * the custom modernizr concat/uglify with the other .js files.
+     */
     modernizr: {
-      devFile: '<%= loc.app %>/assets/vendor/modernizr/modernizr.js',
-      outputFile: '<%= loc.app %>/assets/js/vendor/modernizr-custom.js',
-      parseFiles: true,
-      files: [
-          '<%= loc.app %>/assets/js/{,*/}*.js',
-          '<%= loc.app %>/assets/css/{,*/}*.css',
-          '!<%= loc.app %>/assets/js/vendor/modernizr-custom.js'
-      ],
-      'extra': {
+      dist: {
+        devFile: '<%= path.src %>/assets/bower_components/modernizr/modernizr.js',
+        outputFile: '<%= path.src %>/assets/js/vendor/modernizr-custom.js',
+        parseFiles: true,
+        files: {
+          src: [
+            '<%= path.src %>/assets/js/{,*/}*.js',
+            '<%= path.dist %>/assets/css/{,*/}*.css'
+          ]
+        },
+        'extra': {
           'shiv': true,
           'printshiv': false,
           'load': false,
           'mq': false,
           'cssclasses': true
-      },
-      'extensibility': {
+        },
+        'extensibility': {
           'addtest': false,
           'prefixed': false,
           'teststyles': false,
@@ -341,14 +298,15 @@ module.exports = function (grunt) {
           'hasevents': false,
           'prefixes': false,
           'domprefixes': false
-      },
-      /* No need for the uglify as it is handled in the useminPrepare */
-      uglify: false
+        },
+        /* No need for the uglify as it is handled in the useminPrepare */
+        uglify: false
+      }
     },
+
     /**
-     * COPY
+     * Copy
      *
-     * Copy files and folders.
      * Put files not handled in other tasks here
      * https://github.com/gruntjs/grunt-contrib-copy
      */
@@ -357,83 +315,96 @@ module.exports = function (grunt) {
         files: [{
           expand: true,
           dot: true,
-          cwd: '<%= loc.app %>',
-          dest: '<%= loc.dist %>',
+          cwd: '<%= path.src %>',
+          dest: '<%= path.dist %>',
           src: [
             '*.{ico,png,txt}',
             '.htaccess',
-            'sftp-config.json',
             'assets/img/{,*/}*.{webp,gif}',
             'assets/fonts/*'
           ]
         }, {
           expand: true,
-          cwd: '<%= loc.app %>',
-          dest: '<%= loc.dist %>',
+          cwd: '<%= path.src %>',
+          dest: '<%= path.dist %>',
           src: [
             'assets/js/vendor/jquery.min.js'
           ]
         }]
       }
     },
+
     /**
-     * CONCURRENT
+     * Rev
      *
-     * Run grunt tasks concurrently
-     * https://github.com/sindresorhus/grunt-concurrent
+     * Static file asset revisioning through content hashing
+     * https://github.com/cbas/grunt-rev
      */
-    concurrent: {
-      server: [
-        'compass',
-        'jade'
-      ],
-      dist: [
-        'compass',
-        'imagemin',
-        'svgmin',
-        'htmlmin'
-      ]
-    }
+    rev: {
+      options: {
+        length: 12
+      },
+      dist: {
+        files: {
+          src: [
+            '<%= path.dist %>/assets/js/{,*/}*.js',
+            '!<%= path.dist %>/assets/js/vendor/jquery.min.js',
+            '!<%= path.dist %>/assets/js/vendor/modernizr-custom.js',
+            '<%= path.dist %>/assets/css/{,*/}*.css',
+            '<%= path.dist %>/assets/img/{,*/}*.{png,jpg,jpeg,gif,webp}',
+            '<%= path.dist %>/assets/fonts/*'
+          ]
+        }
+      }
+    },
+
+    /* ========================================
+     * Deployment
+     * ======================================== */
+
+
   });
 
+  /**
+   * Load tasks
+   */
+  grunt.loadNpmTasks('assemble');
+  require('load-grunt-tasks')(grunt);
+  require('time-grunt')(grunt);
+
+  /**
+   * Register tasks
+   */
   grunt.registerTask('server', function (target) {
-      if (target === 'dist') {
-          return grunt.task.run(['build', 'connect:dist:keepalive']);
-      }
-      /**
-       * Register, run and load external tasks.
-       * https://github.com/gruntjs/grunt/wiki/grunt.task
-       */
-      grunt.task.run([
-        'clean:server',
-        'concurrent:server',
-        'preprocess:dev',
-        'connect:livereload',
-        'watch'
-      ]);
+    if (target === 'dist') {
+      return grunt.task.run(['build', 'connect:dist:keepalive']);
+    }
+
+    grunt.task.run([
+      'clean:tmp',
+      'assemble:dev',
+      'compass:dev',
+      'autoprefixer',
+      'connect:dev',
+      'watch'
+    ]);
   });
 
   grunt.registerTask('build', [
-    'clean:dist',         /* Cleans the destination folder */
-    'jade',               /* Processes Jade */
-    'modernizr',          /* Process the modernizr-custom.js before combining asset blocks */
-    'useminPrepare',      /* Finds the asset blocks in html */
-    'concurrent:dist',    /* Compass, Imagemin, Svgmin, Htmlmin */
-    'preprocess:dist',    /* Finds the NODE_ENV (@if etc.) blocks in html */
-    'autoprefixer',       /* Autoprefixes compiled css */
-    'concat',             /* Concatenates files */
+    'clean:dist',
+    'assemble:dist',
+    'compass:dist',
+    'imagemin:dist',
+    'svgmin:dist',
+    'copy:dist',
+    'modernizr:dist',
+    'useminPrepare',
+    'autoprefixer',
+    'concat',
     'cssmin',
     'uglify',
-    'copy:dist',
     'rev',
-    'usemin',             /* Replaces the asset blocks and their reference to a single file */
-    'preprocess:dist',    /* Finds the NODE_ENV (@if etc.) blocks in html */
+    'usemin',
     'clean:dev'
-  ]);
-
-  grunt.registerTask('default', [
-    'jshint',
-    'test',
-    'build'
   ]);
 };
