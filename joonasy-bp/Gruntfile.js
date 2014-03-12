@@ -58,12 +58,9 @@ module.exports = function (grunt) {
         dest: '<%= path.dist %>'
       }
     },
+
     /**
      * Livereload
-     *
-     * Run predefined tasks whenever watched file patterns
-     * are added, changed or deleted.
-     * https://github.com/gruntjs/grunt-contrib-livereload
      */
     watch: {
       options: {
@@ -84,11 +81,9 @@ module.exports = function (grunt) {
         ]
       }
     },
+
     /**
-     * CONNECT
-     *
-     * Start a connect web server.
-     * https://github.com/gruntjs/grunt-contrib-connect
+     * Connect server
      */
     connect: {
       options: {
@@ -110,11 +105,9 @@ module.exports = function (grunt) {
         }
       }
     },
+
     /**
      * Clean
-     *
-     * Clean files and folders.
-     * https://github.com/gruntjs/grunt-contrib-clean
      */
     clean: {
       dist: {
@@ -134,10 +127,9 @@ module.exports = function (grunt) {
         }]
       }
     },
+
     /**
      * Compass
-     *
-     * https://github.com/gruntjs/grunt-contrib-compass
      *
      * For relative images:
      * httpImagesPath: '../img',
@@ -174,12 +166,9 @@ module.exports = function (grunt) {
         }
       }
     },
+
     /**
      * Autoprefixer
-     *
-     * Parse CSS and add vendor prefixes to rules using values from the
-     * Can I Use website.
-     * https://github.com/nDmitry/grunt-autoprefixer
      */
     autoprefixer: {
       options: {
@@ -197,10 +186,6 @@ module.exports = function (grunt) {
 
     /**
      * Usemin
-     *
-     * Replaces references to non-optimized scripts or css into a
-     * set of HTML files (or any templates/views)
-     * https://github.com/yeoman/grunt-usemin
      */
     useminPrepare: {
       options: {
@@ -215,11 +200,19 @@ module.exports = function (grunt) {
       html: ['<%= path.dist %>/{,**/}*.html'],
       css: ['<%= path.dist %>/assets/css/*.css']
     },
+
+    /**
+     * Cssmin
+     */
     cssmin: {
       options: {
         banner: '<%= meta.banner %>'
       }
     },
+
+    /**
+     * Uglify
+     */
     uglify: {
       options: {
         banner: '<%= meta.banner %>'
@@ -228,9 +221,6 @@ module.exports = function (grunt) {
 
     /**
      * Imagemin
-     *
-     * Minify PNG and JPEG img
-     * https://github.com/gruntjs/grunt-contrib-imagemin
      */
     imagemin: {
       dist: {
@@ -245,9 +235,6 @@ module.exports = function (grunt) {
 
     /**
      * Svgmin
-     *
-     * Minify SVG
-     * https://github.com/sindresorhus/grunt-svgmin
      */
     svgmin: {
       dist: {
@@ -262,14 +249,6 @@ module.exports = function (grunt) {
 
     /**
      * Modernizr
-     *
-     * Sifts through your project files, gathers up your references
-     * to Modernizr tests and outputs a lean, mean Modernizr machine.
-     * https://github.com/Modernizr/grunt-modernizr
-     *
-     * Do the checks and create the temporary modernizr-custom.js
-     * before configuring the asset block in the useminPrepare task. This way
-     * the custom modernizr concat/uglify with the other .js files.
      */
     modernizr: {
       dist: {
@@ -299,16 +278,12 @@ module.exports = function (grunt) {
           'prefixes': false,
           'domprefixes': false
         },
-        /* No need for the uglify as it is handled in the useminPrepare */
         uglify: false
       }
     },
 
     /**
      * Copy
-     *
-     * Put files not handled in other tasks here
-     * https://github.com/gruntjs/grunt-contrib-copy
      */
     copy: {
       dist: {
@@ -321,13 +296,7 @@ module.exports = function (grunt) {
             '*.{ico,png,txt}',
             '.htaccess',
             'assets/img/{,*/}*.{webp,gif}',
-            'assets/fonts/*'
-          ]
-        }, {
-          expand: true,
-          cwd: '<%= path.src %>',
-          dest: '<%= path.dist %>',
-          src: [
+            'assets/fonts/*',
             'assets/js/vendor/jquery.min.js'
           ]
         }]
@@ -336,9 +305,6 @@ module.exports = function (grunt) {
 
     /**
      * Rev
-     *
-     * Static file asset revisioning through content hashing
-     * https://github.com/cbas/grunt-rev
      */
     rev: {
       options: {
@@ -356,13 +322,7 @@ module.exports = function (grunt) {
           ]
         }
       }
-    },
-
-    /* ========================================
-     * Deployment
-     * ======================================== */
-
-
+    }
   });
 
   /**
@@ -370,7 +330,6 @@ module.exports = function (grunt) {
    */
   grunt.loadNpmTasks('assemble');
   require('load-grunt-tasks')(grunt);
-  require('time-grunt')(grunt);
 
   /**
    * Register tasks
