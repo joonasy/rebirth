@@ -1,0 +1,27 @@
+/* ========================================
+ * Primary navigation
+ * ======================================== */
+
+.nav-primary {
+  $root: ".nav-primary";
+
+  &__item {
+    float: left;
+
+    > a {
+
+      &:hover {
+
+      }
+    }
+
+    &.is-active {
+      > a {
+
+        &:hover {
+
+        }
+      }
+    }
+  }
+}

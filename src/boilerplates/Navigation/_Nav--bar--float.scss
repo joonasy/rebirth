@@ -1,0 +1,102 @@
+/* ========================================
+ * Floating navigation modifier
+ * ========================================
+ *
+ * @extends `.Nav--bar {}` in _Nav--Bar.scss
+ */
+
+.Nav--bar--float {
+  @include breakpoint("nav-transform-point") {
+
+    .Nav-self { display: block; }
+    .Nav-trigger { display: none; }
+
+    .Nav-self > .Nav-item {
+      float: left;
+
+      > .Nav-link {
+        border-top: none;
+        display: inline-block;
+        padding-left: $nav-bar-padding;
+        padding-right: $nav-bar-padding;
+      }
+
+      > .Nav-subTrigger {
+        border: none;
+        padding-left: $nav-bar-padding;
+        padding-right: $nav-bar-padding;
+        margin-left: -$nav-bar-padding;
+        width: auto;
+      }
+    }
+
+    .Nav-link { width: auto; }
+
+    .Nav-sub {
+      left: 0;
+      position: absolute;
+      top: 100%;
+
+      /**
+       * Fourth and deeper levels
+       *
+       * These are hidden by default because dropdown navigations
+       * deeper than three levels aren't very elegant in desktop
+       * widths. Prefer another solution such as separate
+       * navigation for sub pages.
+       *
+       * However if this solution is required then reverse comment the following
+       * and adjust the nav to your needs.
+       */
+      @include breakpoint("nav-transform-point") {
+        ul, .Nav-subTrigger { display: none !important; }
+
+        // .Nav-item:hover > & {
+        //   display: block;
+        // }
+
+        // .Nav-link {
+        //   width: 80%;
+        //   &:only-child { width: 100%; }
+        // }
+
+        // .Nav-subTrigger { width: 20%; }
+
+        // .Nav-item.is-open, .Nav-subTrigger {
+        //   .icon-css--arrowDown--xs {
+        //     @include icon-css--arrowRight--xs();
+        //   }
+        // }
+
+        // ul {
+        //   top: 0;
+        //   left: 100%;
+
+        //   .Nav-link,
+        //   .Nav-subTrigger {
+        //     padding-top: $nav-padding;
+        //     padding-bottom: $nav-padding;
+        //   }
+
+        //   ul, ul ul, ul ul ul {
+        //     .Nav-link {
+        //       padding-left: $nav-padding;
+        //     }
+        //   }
+        // }
+      }
+    }
+
+
+    /* ======
+     * States
+     * ====== */
+
+    .Nav-self > .Nav-item {
+      .no-touch &:hover .Nav-sub,
+      .touch &.is-open > .Nav-sub  {
+        display: block;
+      }
+    }
+  }
+}

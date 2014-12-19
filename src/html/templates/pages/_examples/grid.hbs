@@ -1,0 +1,242 @@
+<style>
+  body {
+    max-width: 1200px;
+    margin: 48px auto 48px auto;
+    padding: 24px;
+  }
+  .grid {
+    margin-bottom: 24px;
+  }
+  .demo-equal > .grid__item {
+    padding-bottom: 76px;
+  }
+  .demo-2 > .grid__item p {
+    background-color: lightcoral;
+  }
+  .demo-2 > .grid__item:nth-child(odd) p {
+    background-color: lightblue;
+  }
+  .demo-3 {
+    background-color: #fff;
+  }
+  .absolute-equal-element {
+    position: absolute;
+    bottom: 0;
+    left: 1.5em;
+    right: 1.5em;
+  }
+</style>
+
+<div class="grid">
+
+  <div class="grid__item">
+    <h1>Default</h1>
+  </div>
+
+  <div class="grid__item m-w-4-12">
+    <p>
+      Lorem ipsum dolor sit amet, consectetur adipisicing elit. Consequatur nostrum amet sit, corporis omnis cupiditate laudantium error assumenda eius. At, quibusdam, modi! Ratione vitae aliquid facere veritatis similique culpa! Quos.
+    </p>
+  </div>
+
+  <div class="grid__item m-w-4-12">
+    <div class="grid">
+
+      <div class="grid__item m-w-6-12">
+        <p>Nested. Lorem ipsum dolor sit amet, consectetur adipisicing elit.</p>
+      </div>
+
+      <div class="grid__item m-w-6-12">
+        <p>Nested. Lorem ipsum dolor sit amet, consectetur adipisicing elit. Atque, commodi, quos, a odit architecto perspiciatis ut est eligendi ad exercitationem distinctio doloribus excepturi aliquid. Incidunt, rerum repellat quod ullam magnam?</p>
+      </div>
+
+    </div>
+  </div>
+
+  <div class="grid__item m-w-4-12">
+    <p>
+      Lorem ipsum dolor sit amet, consectetur adipisicing elit. Consequatur nostrum amet sit, corporis omnis cupiditate laudantium error assumenda eius. At, quibusdam, modi! Ratione vitae aliquid facere veritatis similique culpa! Quos.
+    </p>
+  </div>
+
+</div>
+
+<div class="grid grid--s">
+
+  <div class="grid__item">
+    <h1>Small</h1>
+  </div>
+
+  <div class="grid__item s-w-3-12">
+    <p>
+      Lorem ipsum dolor sit amet, consectetur adipisicing elit. Consequatur nostrum amet sit, corporis omnis cupiditate laudantium error assumenda eius. At, quibusdam, modi! Ratione vitae aliquid facere veritatis similique culpa! Quos.
+    </p>
+  </div>
+
+  <div class="grid__item s-w-3-12">
+    <p>
+      Lorem ipsum dolor sit amet, consectetur adipisicing elit. Consequatur nostrum amet sit, corporis omnis cupiditate laudantium error assumenda eius. At, quibusdam, modi! Ratione vitae aliquid facere veritatis similique culpa! Quos.
+    </p>
+  </div>
+
+  <div class="grid__item s-w-3-12">
+    <p>
+      Lorem ipsum dolor sit amet, consectetur adipisicing elit. Consequatur nostrum amet sit, corporis omnis cupiditate laudantium error assumenda eius. At, quibusdam, modi! Ratione vitae aliquid facere veritatis similique culpa! Quos.
+    </p>
+  </div>
+
+  <div class="grid__item s-w-3-12">
+    <p>
+      Lorem ipsum dolor sit amet, consectetur adipisicing elit. Consequatur nostrum amet sit, corporis omnis cupiditate laudantium error assumenda eius. At, quibusdam, modi! Ratione vitae aliquid facere veritatis similique culpa! Quos.
+    </p>
+  </div>
+
+</div>
+
+<div class="grid grid--l">
+
+  <div class="grid__item">
+    <h1>Large</h1>
+  </div>
+
+  <div class="grid__item s-w-3-12">
+    <p>
+      Lorem ipsum dolor sit amet, consectetur adipisicing elit. Consequatur nostrum amet sit, corporis omnis cupiditate laudantium error assumenda eius. At, quibusdam, modi! Ratione vitae aliquid facere veritatis similique culpa! Quos.
+    </p>
+  </div>
+
+  <div class="grid__item s-w-3-12">
+    <p>
+      Lorem ipsum dolor sit amet, consectetur adipisicing elit. Consequatur nostrum amet sit, corporis omnis cupiditate laudantium error assumenda eius. At, quibusdam, modi! Ratione vitae aliquid facere veritatis similique culpa! Quos.
+    </p>
+  </div>
+
+  <div class="grid__item s-w-3-12">
+    <p>
+      Lorem ipsum dolor sit amet, consectetur adipisicing elit. Consequatur nostrum amet sit, corporis omnis cupiditate laudantium error assumenda eius. At, quibusdam, modi! Ratione vitae aliquid facere veritatis similique culpa! Quos.
+    </p>
+  </div>
+
+  <div class="grid__item s-w-3-12">
+    <p>
+      Lorem ipsum dolor sit amet, consectetur adipisicing elit. Consequatur nostrum amet sit, corporis omnis cupiditate laudantium error assumenda eius. At, quibusdam, modi! Ratione vitae aliquid facere veritatis similique culpa! Quos.
+    </p>
+  </div>
+
+</div>
+
+<div class="grid grid--full demo-2">
+
+  <div class="grid__item">
+    <h1>Full</h1>
+  </div>
+
+  <div class="grid__item s-w-3-12">
+    <p>
+      Lorem ipsum dolor sit amet, consectetur adipisicing elit. Consequatur nostrum amet sit, corporis omnis cupiditate laudantium error assumenda eius. At, quibusdam, modi! Ratione vitae aliquid facere veritatis similique culpa! Quos.
+    </p>
+  </div>
+
+  <div class="grid__item s-w-3-12">
+    <p>
+      Lorem ipsum dolor sit amet, consectetur adipisicing elit. Consequatur nostrum amet sit, corporis omnis cupiditate laudantium error assumenda eius. At, quibusdam, modi! Ratione vitae aliquid facere veritatis similique culpa! Quos.
+    </p>
+  </div>
+
+  <div class="grid__item s-w-3-12">
+    <p>
+      Lorem ipsum dolor sit amet, consectetur adipisicing elit. Consequatur nostrum amet sit, corporis omnis cupiditate laudantium error assumenda eius. At, quibusdam, modi! Ratione vitae aliquid facere veritatis similique culpa! Quos.
+    </p>
+  </div>
+
+  <div class="grid__item s-w-3-12">
+    <p>
+      Lorem ipsum dolor sit amet, consectetur adipisicing elit. Consequatur nostrum amet sit, corporis omnis cupiditate laudantium error assumenda eius. At, quibusdam, modi! Ratione vitae aliquid facere veritatis similique culpa! Quos.
+    </p>
+  </div>
+
+</div>
+
+<div class="grid s-grid--equal demo-2 demo-equal">
+
+  <div class="grid__item s-w-3-12">
+    <h1>Equal height</h1>
+    <p>
+      Lorem ipsum dolor sit amet, consectetur adipisicing elit. Consequatur nostrum amet sit, corporis omnis cupiditate laudantium error assumenda eius. At, quibusdam, modi! Ratione vitae aliquid facere veritatis similique culpa! Quos. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Non autem hoc: igitur ne illud quidem. Cum audissem Antiochum, Brute, ut solebam, cum M. Ergo instituto veterum, quo etiam Stoici utuntur, hinc capiamus exordium.
+    </p>
+    <div class="absolute-equal-element">
+      Absolutely positioned element at the bottom.
+    </div>
+  </div>
+
+  <div class="grid__item s-w-3-12">
+    <p>
+      Lorem ipsum dolor sit amet, consectetur adipisicing elit. Consequatur nostrum amet sit, corporis omnis cupiditate laudantium error assumenda eius. At, quibusdam, modi! Ratione vitae aliquid facere veritatis similique culpa! Quos.
+    </p>
+    <div class="absolute-equal-element">
+      Absolutely positioned element at the bottom.
+    </div>
+  </div>
+
+  <div class="grid__item s-w-3-12">
+    <p>
+      Lorem ipsum dolor sit amet, consectetur adipisicing elit. Consequatur nostrum amet sit, corporis omnis cupiditate laudantium error assumenda eius. At, quibusdam, modi! Ratione vitae aliquid facere veritatis similique culpa! Quos.
+    </p>
+    <div class="absolute-equal-element">
+      Absolutely positioned element at the bottom.
+    </div>
+  </div>
+
+  <div class="grid__item s-w-3-12">
+    <p>
+      Lorem ipsum dolor sit amet, consectetur adipisicing elit. Consequatur nostrum amet sit, corporis omnis cupiditate laudantium error assumenda eius. At, quibusdam, modi! Ratione vitae aliquid facere veritatis similique culpa! Quos.
+    </p>
+    <div class="absolute-equal-element">
+      Absolutely positioned element at the bottom.
+    </div>
+  </div>
+
+</div>
+
+<div class="grid s-grid--ruler demo-3 demo-equal">
+
+  <div class="grid__item s-w-3-12">
+    <h1>With rulers</h1>
+    <p>
+      Lorem ipsum dolor sit amet, consectetur adipisicing elit. Consequatur nostrum amet sit, corporis omnis cupiditate laudantium error assumenda eius. At, quibusdam, modi! Ratione vitae aliquid facere veritatis similique culpa! Quos. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Non autem hoc: igitur ne illud quidem. Cum audissem Antiochum, Brute, ut solebam, cum M. Ergo instituto veterum, quo etiam Stoici utuntur, hinc capiamus exordium. Quid ergo aliud.
+    </p>
+    <div class="absolute-equal-element">
+      <div class="absolute-equal-element__inner">
+        Absolutely positioned element at the bottom.
+      </div>
+    </div>
+  </div>
+
+  <div class="grid__item s-w-3-12">
+    <p>
+      Lorem ipsum dolor sit amet, consectetur adipisicing elit. Consequatur nostrum amet sit, corporis omnis cupiditate laudantium error assumenda eius. At, quibusdam, modi! Ratione vitae aliquid facere veritatis similique culpa! Quos.
+    </p>
+    <div class="absolute-equal-element">
+      Absolutely positioned element at the bottom.
+    </div>
+  </div>
+
+  <div class="grid__item s-w-3-12">
+    <p>
+      Lorem ipsum dolor sit amet, consectetur adipisicing elit. Consequatur nostrum amet sit, corporis omnis cupiditate laudantium error assumenda eius. At, quibusdam, modi! Ratione vitae aliquid facere veritatis similique culpa! Quos.
+    </p>
+    <div class="absolute-equal-element">
+      Absolutely positioned element at the bottom.
+    </div>
+  </div>
+
+  <div class="grid__item s-w-3-12">
+    <p>
+      Lorem ipsum dolor sit amet, consectetur adipisicing elit. Consequatur nostrum amet sit, corporis omnis cupiditate laudantium error assumenda eius. At, quibusdam, modi! Ratione vitae aliquid facere veritatis similique culpa! Quos.
+    </p>
+    <div class="absolute-equal-element">
+      Absolutely positioned element at the bottom.
+    </div>
+  </div>
+
+</div>

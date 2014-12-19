@@ -1,0 +1,22 @@
+/* ========================================
+ * Global
+ * ======================================== */
+
+/**
+ * Few global states
+ */
+.app-is-loading * { transition:none !important; }
+
+/**
+ * Clearfix
+ */
+%cf, .cf { @include clearfix(); }
+
+/**
+ * List reset
+ */
+%reset-list {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}

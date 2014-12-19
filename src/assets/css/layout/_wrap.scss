@@ -1,0 +1,17 @@
+/* ========================================
+ * Wrap
+ * ======================================== */
+
+.wrap {
+  $root: '.wrap';
+  max-width: $wrap-width + base-space(4);
+  margin-left: auto;
+  margin-right: auto;
+  padding-left: $edge-space;
+  padding-right: $edge-space;
+
+  @include breakpoint("large-up") {
+    padding-left: base-space(2);
+    padding-right: base-space(2);
+  }
+}

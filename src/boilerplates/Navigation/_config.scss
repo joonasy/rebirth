@@ -1,0 +1,39 @@
+/* ========================================
+ * Navbar
+ * ======================================== */
+
+$nav-bar-padding: base-space(0.5, px);
+$nav-bar-bg-color: darken(#ffffff, 2);
+
+$nav-bar-trigger-color: #ffffff;
+$nav-bar-trigger-bg-color: $color-brand-primary;
+$nav-bar-trigger-sub-bg-color: $color-brand-primary;
+$nav-bar-trigger-sub-border-color: $color-border-primary;
+
+$nav-bar-link-color: $color-text;
+$nav-bar-link-bg-color: darken(#ffffff, 2);
+$nav-bar-link-border-color: darken($nav-bar-link-bg-color, 5);
+
+$nav-bar-sub-trigger-border-width: 1px;
+$nav-bar-sub-trigger-width: 48px - $nav-bar-sub-trigger-border-width;
+$nav-bar-sub-trigger-color: $color-text;
+$nav-bar-sub-trigger-bg-color: $nav-bar-link-bg-color;
+$nav-bar-sub-trigger-border-color: $nav-bar-link-border-color;
+
+$nav-bar-sub-link-color: inherit;
+$nav-bar-sub-link-bg-color: darken($nav-bar-link-bg-color, 4);
+$nav-bar-sub-link-border-color: darken($nav-bar-link-border-color, 8);
+$nav-bar-sub-sub-trigger-color: inherit;
+$nav-bar-sub-sub-trigger-bg-color: darken($nav-bar-link-bg-color, 4);
+$nav-bar-sub-sub-trigger-border-color: darken($nav-bar-link-border-color, 8);
+
+$nav-bar-deeper-level-bg-color: darken($nav-bar-sub-sub-trigger-bg-color, 8);
+$nav-bar-deeper-level-link-color: inherit;
+$nav-bar-deeper-level-link-bg-color: transparent;
+$nav-bar-deeper-level-link-border-color: darken($nav-bar-link-border-color, 16);
+$nav-bar-deeper-level-sub-trigger-color: inherit;
+$nav-bar-deeper-level-sub-trigger-bg-color: transparent;
+$nav-bar-deeper-level-sub-trigger-border-color: darken($nav-bar-link-border-color, 16);
+
+$nav-bar-link-hover-color: $color-link;
+$nav-bar-sub-trigger-hover-color: $color-link;

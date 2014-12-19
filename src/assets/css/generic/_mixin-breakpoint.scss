@@ -1,0 +1,104 @@
+/* ========================================
+ * Breakpoint mixin
+ * ========================================
+ *
+ * Default usage: @include breakpoint("medium-up") {}
+ * Custom usage: @include breakpoint(false, 200) {}
+ *
+ */
+
+@mixin breakpoint($media: false, $min-width: false, $max-width: false, $min-height: false, $max-height: false) {
+
+  // e.g. old feature phones
+  @if $media == "xxsmall-down" {
+    @media only screen and (max-width: $breakpoint-xs - 1) { @content; }
+  }
+
+  // e.g. iPhone landscape and down
+  @elseif $media == "xsmall-down" {
+    @media only screen and (max-width: $breakpoint-s - 1) { @content; }
+  }
+
+  // e.g. Nexus portrait and up
+  @elseif $media == "small-up" {
+    @media only screen and (min-width: $breakpoint-s) { @content; }
+  }
+
+  // e.g. Small handheld devices
+  @elseif $media == "small-down" {
+    @media only screen and (max-width: $breakpoint-s - 1) { @content; }
+  }
+
+  // e.g. iPad portrait and up
+  @elseif $media == "medium-up" or $media == "nav-floating-point" {
+    @media only screen and (min-width: $breakpoint-m) { @content; }
+  }
+
+  // e.g. iPad portrait only
+  @elseif $media == "medium-only" {
+    @media only screen and (min-width: $breakpoint-m) and (max-width: $breakpoint-l - 1) { @content; }
+  }
+
+  // e.g. iPad portrait and down to mobile
+  @else if $media == "medium-down" {
+    @media only screen and (max-width: $breakpoint-l - 1) { @content; }
+  }
+
+  // e.g. iPad portrait orientation switch to landspace and up
+  @elseif $media == "medium-large" {
+    @media only screen and (min-width: $breakpoint-ml) { @content; }
+  }
+
+  // e.g. iPad landscape and up
+  @else if $media == "large-up" {
+    @media only screen and (min-width: $breakpoint-l) { @content; }
+  }
+
+  // e.g. Desktop pc and up
+  @else if $media == "xlarge-up" {
+    @media only screen and (min-width: $breakpoint-xl) { @content; }
+  }
+
+  // Custom breakpoints
+  @elseif $min-width and $max-width  {
+    @media only screen and (min-width: $min-width) and (max-width: $max-width) { @content; }
+  }
+  @elseif $min-width and $min-height {
+    @media only screen and (min-width: $min-width) and (min-height: $min-height) { @content; }
+  }
+  @elseif $min-width and $max-height {
+    @media only screen and (min-width: $min-width) and (max-height: $max-height) { @content; }
+  }
+  @elseif $max-width and $min-height {
+    @media only screen and (max-width: $max-width) and (min-height: $min-height) { @content; }
+  }
+  @elseif $max-width and $max-height {
+    @media only screen and (max-width: $max-width) and (max-height: $max-height) { @content; }
+  }
+
+  @elseif $min-width {
+    @media only screen and (min-width: $min-width) { @content; }
+  }
+  @elseif $max-width {
+    @media only screen and (max-width: $max-width) { @content; }
+  }
+  @elseif $min-height {
+    @media only screen and (min-height: $min-height) { @content; }
+  }
+  @elseif $max-height {
+    @media only screen and (max-height: $max-height) { @content; }
+  }
+}
+
+/**
+ * High-resolution display
+ */
+@mixin breakpoint-hdpi($ratio: 1.5) {
+  @media only screen and (-webkit-min-device-pixel-ratio: $ratio),
+  only screen and (min--moz-device-pixel-ratio: $ratio),
+  only screen and (-o-min-device-pixel-ratio: #{$ratio}/1),
+  only screen and (min-resolution: #{round($ratio*96)}dpi),
+  only screen and (min-resolution: #{$ratio}dppx) {
+    @content;
+  }
+}

@@ -1,9 +1,0 @@
-*.DS_Store
-
-build
-
-.sass-cache/
-sass-cache/
-*.scssc
-
-sftp-config.json

@@ -1,0 +1,162 @@
+/* ========================================
+ * Css shaped icons
+ * ======================================== */
+
+$icon-css--sm: scale(0.82);
+$icon-css--xs: scale(0.72);
+
+%icon-css,
+.icon-css {
+  position: relative;
+  display: inline-block;
+  text-align: left;
+}
+
+%icon-css--sm,
+.icon-css--sm {
+  @extend %icon-css;
+  transform: $icon-css--sm;
+}
+
+%icon-css--xs,
+.icon-css--xs {
+  @extend %icon-css;
+  transform: $icon-css--xs;
+}
+
+
+/* ======
+ * Arrows
+ * ====== */
+
+@mixin icon-css--arrow-up() {
+  width: 10px;
+  height: 16px;
+
+  &:before, &:after {
+    display: block;
+    content: "";
+    position: absolute;
+  }
+
+  &:before {
+    top: 0;
+    left: 4px;
+    width: 2px;
+    height: 16px;
+    background: $color-text;
+  }
+
+  &:after {
+    width: 10px;
+    height: 10px;
+    top: 0;
+    border-top: 2px solid;
+    border-left: 2px solid;
+    color: $color-text;
+    transform: rotate(45deg);
+  }
+}
+
+@mixin icon-css--arrow-up--xs() {
+  @include icon-css--arrow-up();
+  transform: $icon-css--xs rotate(0);
+}
+
+%icon-css--arrow-up,
+.icon-css--arrow-up {
+  @include icon-css--arrow-up();
+}
+
+%icon-css--arrow-up--xs,
+.icon-css--arrow-up--xs {
+  @extend %icon-css--arrow-up;
+  @include icon-css--arrow-up--xs();
+}
+
+@mixin icon-css--arrow-right() { transform: rotate(-270deg); }
+@mixin icon-css--arrow-right--xs() { transform: $icon-css--xs rotate(-270deg); }
+
+%icon-css--arrow-right,
+.icon-css--arrow-right {
+  @extend %icon-css--arrow-up;
+  @include icon-css--arrow-right();
+}
+
+%icon-css--arrow-right--xs,
+.icon-css--arrow-right--xs {
+  @extend %icon-css--arrow-up;
+  @include icon-css--arrow-right--xs();
+}
+
+@mixin icon-css--arrow-down() { transform: rotate(180deg); }
+@mixin icon-css--arrow-down--xs() { transform: $icon-css--xs rotate(180deg); }
+
+%icon-css--arrow-down,
+.icon-css--arrow-down {
+  @extend %icon-css--arrow-up;
+  @include icon-css--arrow-down();
+}
+
+%icon-css--arrow-down--xs,
+.icon-css--arrow-down--xs {
+  @extend %icon-css--arrow-up;
+  @include icon-css--arrow-down--xs();
+}
+
+@mixin icon-css--arrow-left() { transform: rotate(-90deg); }
+@mixin icon-css--arrow-left--xs() { transform: $icon-css--xs rotate(-90deg); }
+
+%icon-css--arrow-left,
+.icon-css--arrow-left {
+  @extend %icon-css--arrow-up;
+  @include icon-css--arrow-left();
+}
+
+%icon-css--arrow-left--xs,
+.icon-css--arrow-left--xs {
+  @extend %icon-css--arrow-up;
+  @include icon-css--arrow-left--xs();
+}
+
+
+/* ======
+ * Hamburger
+ * ====== */
+
+.icon-css--hamburger {
+  width: 24px;
+  top: -8px;
+  border-top: 2px solid;
+  border-top-color: $color-text;
+  transition: border-color $transition-duration / 2;
+  user-select: none;
+
+  &:before, &:after {
+    display: block;
+    content: "";
+    height: 2px;
+    width: 24px;
+    position: absolute;
+    background-color: $color-text;
+    transition:
+      background-color $transition-duration,
+      transform $transition-duration;
+
+  }
+
+  &:before {
+    top: -8px;
+    transform-origin: top left;
+  }
+  &:after {
+    top: 4px;
+    transform-origin: bottom left;
+  }
+
+  .is-open & {
+    border-top-color: transparent !important;
+    &:before { transform: translate(3px, -3px) rotate(45deg); }
+    &:after { transform: translate(3px, 1px)  rotate(-45deg); }
+  }
+}

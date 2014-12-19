@@ -1,0 +1,76 @@
+/* ========================================
+ * Helpers
+ * ======================================== */
+
+/**
+ * Mobile up responsive visibility helper
+ */
+.s-visible, .s-visible--inline,
+.m-visible, .m-visible--inline,
+.l-visible, .l-visible--inline,
+.xl-visible, .xl-visible--inline { display: none !important; }
+
+@include breakpoint("small-up") {
+  .s-visible  {
+    display: inherit !important;
+
+    [class*="grid--equal"] > &.grid__item,
+    [class*="grid--ruler"] > &.grid__item { display: table-cell !important; }
+  }
+
+  .s-visible--inline { display: inline !important; }
+  .s-hidden { display: none !important; }
+}
+
+@include breakpoint("medium-up") {
+  .m-visible {
+    display: inherit !important;
+
+    [class*="grid--equal"] > &.grid__item,
+    [class*="grid--ruler"] > &.grid__item { display: table-cell !important; }
+  }
+
+  .m-visible--inline { display: inline !important; }
+  .m-hidden { display: none !important; }
+}
+
+@include breakpoint("large-up") {
+  .l-visible {
+    display: inherit !important;
+
+    [class*="grid--equal"] > &.grid__item,
+    [class*="grid--ruler"] > &.grid__item { display: table-cell !important; }
+  }
+
+  .l-visible--inline { display: inline !important; }
+  .l-hidden { display: none !important; }
+}
+
+@include breakpoint("xlarge-up") {
+  .xl-visible {
+    display: inherit !important;
+
+    [class*="grid--equal"] > &.grid__item,
+    [class*="grid--ruler"] > &.grid__item { display: table-cell !important; }
+  }
+
+  .xl-visible--inline { display: inline !important; }
+  .xl-hidden { display: none !important; }
+}
+
+
+/**
+ * Centering helper
+ */
+.center {
+  &--table {
+    display: table;
+    height: 100%;
+    width: 100%;
+
+    .center__item {
+      display: table-cell;
+      vertical-align: middle;
+    }
+  }
+}

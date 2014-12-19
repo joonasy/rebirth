@@ -1,0 +1,35 @@
+/* ========================================
+ * Widths
+ * ======================================== */
+
+@mixin width($namespace: "") {
+  .#{$namespace}w-1-12  { width: 8.333%; }
+  .#{$namespace}w-2-12  { width: 16.666%; }
+  .#{$namespace}w-3-12  { width: 25%; }
+  .#{$namespace}w-4-12  { width: 33.333%; }
+  .#{$namespace}w-5-12  { width: 41.666% }
+  .#{$namespace}w-6-12  { width: 50%; }
+  .#{$namespace}w-7-12  { width: 58.333%; }
+  .#{$namespace}w-8-12  { width: 66.666%; }
+  .#{$namespace}w-9-12  { width: 75%; }
+  .#{$namespace}w-10-12 { width: 83.333%; }
+  .#{$namespace}w-11-12 { width: 91.666%; }
+}
+
+@include width();
+
+@if $width-responsive == true {
+  @include breakpoint("small-up"){
+    @include width(s-);
+  }
+
+  @include breakpoint("medium-up"){
+    @include width(m-);
+  }
+
+  @include breakpoint("large-up"){
+    @include width(l-);
+  }
+}
+
+
