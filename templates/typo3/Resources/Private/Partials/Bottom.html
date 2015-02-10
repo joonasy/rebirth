@@ -3,15 +3,13 @@
 
 <f:if condition="{settings.dev}">
   <f:then>
-    <!-- Vendor -->
-    <v:asset.script path="EXT:<project-name>_templates/Resources/Private/Assets/javascripts/vendor/jquery.min.js" rewrite="false" standalone="true"></v:asset.script>
+    <!-- Vendors -->
+    <v:asset.script path="EXT:<project-name>_templates/bower_components/jquery/dist/jquery.js" rewrite="false" standalone="true"></v:asset.script>
     <v:asset.script path="EXT:<project-name>_templates/bower_components/fastclick/lib/fastclick.js" rewrite="false" standalone="true"></v:asset.script>
 
-    <!-- Config -->
-    <v:asset.script path="EXT:<project-name>_templates/Resources/Private/Assets/javascripts/config.js" rewrite="false" standalone="true"></v:asset.script>
-
     <!-- Components -->
-    <v:asset.script path="EXT:<project-name>_templates/Resources/Private/Assets/javascripts/components/App.Component.js" rewrite="false" standalone="true"></v:asset.script>
+    <v:asset.script path="EXT:<project-name>_templates/Resources/Private/Assets/javascripts/components/Toggle.js" rewrite="false" standalone="true"></v:asset.script>
+    <v:asset.script path="EXT:<project-name>_templates/Resources/Private/Assets/javascripts/components/Component.js" rewrite="false" standalone="true"></v:asset.script>
 
     <!-- App (init) -->
     <v:asset.script path="EXT:<project-name>_templates/Resources/Private/Assets/javascripts/app.js" rewrite="false" standalone="true"></v:asset.script>
@@ -21,7 +19,7 @@
   </f:then>
   <f:else>
     <v:asset.script path="//ajax.googleapis.com/ajax/libs/jquery/2.1.3/jquery.min.js" external="true" standalone="true"></v:asset.script>
-    <v:asset.script external="true" standalone="true">window.jQuery || document.write('<script src="<v:extension.path.resources></v:extension.path.resources>Assets/javascripts/vendor/jquery.min.js"><\/script>')</v:asset.script>
+    <v:asset.script external="true" standalone="true">window.jQuery || document.write('<script src="<v:extension.path.resources></v:extension.path.resources>Assets/javascripts/vendors/jquery.min.js"><\/script>')</v:asset.script>
     <v:asset.script path="EXT:<project-name>_templates/Resources/Public/Assets/javascripts/app.min.js"></v:asset.script>
   </f:else>
 </f:if>

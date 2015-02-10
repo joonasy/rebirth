@@ -1,10 +1,11 @@
 {
-  "name": "Prototype",
+  "name": "Boilerplate",
   "version": "1.0.0",
   "dependencies": {
     "modernizr": "latest",
     "fastclick": "latest",
-    "normalize.scss": "latest"
+    "normalize.scss": "latest",
+    "jquery": "latest"
   },
   "devDependencies": {}
 }

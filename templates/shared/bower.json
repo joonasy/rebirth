@@ -4,7 +4,8 @@
   "dependencies": {
     "modernizr": "latest",
     "fastclick": "latest",
-    "normalize.scss": "latest"
+    "normalize.scss": "latest",
+    "jquery": "latest"
   },
   "devDependencies": {}
 }
