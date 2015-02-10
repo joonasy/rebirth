@@ -12,7 +12,7 @@ $(function() {
   /**
    * Declare page as loaded
    */
-  $window.on("load", function() {
-    $html.removeClass('app-is-loading').addClass('app-is-loaded');
+  $(window).on("load", function() {
+    $(html).removeClass('app-is-loading').addClass('app-is-loaded');
   });
 });
