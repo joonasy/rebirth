@@ -1,0 +1,28 @@
+/* ========================================
+ * ButtonCollection
+ * ========================================
+ *
+ * @extends `.ButtonCollection{}` in _ButtonCollection.scss
+ */
+
+%ButtonCollection--horizontal {
+  > .Button {
+    border-right: 1px solid $color-borderPrimary;
+
+    &:first-of-type { border-radius: $borderRadius 0 0 $borderRadius; }
+    &:last-of-type {
+      border-radius: 0 $borderRadius $borderRadius 0;
+      border-right: none;
+    }
+  }
+}
+
+.ButtonCollection--horizontal {
+  @extend %cf;
+  @extend %ButtonCollection--horizontal;
+
+  > .Button {
+    display: block;
+    float: left;
+  }
+}

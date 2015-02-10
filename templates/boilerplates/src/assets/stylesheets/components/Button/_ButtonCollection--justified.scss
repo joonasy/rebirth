@@ -1,0 +1,29 @@
+/* ========================================
+ * ButtonCollection justified
+ * ========================================
+ *
+ * @extends `.ButtonCollection{}` in _ButtonCollection.scss
+ */
+
+.ButtonCollection--justified {
+  @extend %ButtonCollection--horizontal;
+  border-collapse: separate;
+  display: table;
+  table-layout: fixed;
+  width: 100%;
+
+  > .Button {
+    border-radius: 0;
+    border-right: 1px solid $color-borderPrimary;
+    display: table-cell;
+    float: none;
+
+    &:first-of-type { border-radius: $borderRadius 0 0 $borderRadius; }
+    &:last-of-type {
+      border-radius: 0 $borderRadius $borderRadius 0;
+      border-right: none;
+    }
+
+    &:not([class*="Width"]) { width: 1%; }
+  }
+}

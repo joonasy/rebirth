@@ -1,0 +1,44 @@
+---
+title: FormAndFormCollection
+resourcePath: components/form/
+stylesheets:
+  - Form-import
+  - FormCollection-import
+---
+
+<div class="e-wrap e-wrap--center">
+  <div class="e-wrap-inner">
+    <div class="e-wrap-inner-item">
+
+      <!--
+        Default forms
+       -->
+
+      <!--
+       .FormCollection
+       -->
+      <div class="FormCollection FormCollection--parent mrg--btm--l">
+        <div class="FormCollection-item">
+          <div class="FormCollection">
+            <div class="Form-addon">
+              @
+            </div>
+            <input class="Form-item" type="text" pick-a-date="arrivalDate" pick-a-date-options="dateOptions" data-value="{{ currentDate }}"  />
+          </div>
+        </div>
+        <div class="FormCollection-item">
+          <div class="FormCollection">
+            <div class="Form-addon">
+              @
+            </div>
+            <input class="Form-item" type="text" pick-a-time="arrivalTime" pick-a-time-options="timeOptions" value="12:00" />
+          </div>
+        </div>
+      </div>
+      <!--
+       / .FormCollection
+       -->
+
+    </div>
+  </div>
+</div>

@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html class="no-js app-is-loading e">
+  <head>
+    <meta charset="utf-8">
+    <title>{{#if page.title}}{{page.title}} - {{/if}} {{app.title}}</title>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <meta name="description" content="{{app.meta.description}}">
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+
+    <!-- build:css(.tmp) {{assets}}/example/example.min.css -->
+      <link href="{{assets}}/stylesheets/example/example.css" rel="stylesheet">
+    <!-- endbuild -->
+
+    {{#if page.stylesheets}}
+      <!-- build:css(.tmp) {{../assets}}/stylesheets/{{page.title}}.min.css -->
+        {{#each page.stylesheets}}
+          <link href="{{../assets}}/stylesheets/{{../page.resourcePath}}{{.}}.css" rel="stylesheet">
+        {{/each}}
+      <!-- endbuild -->
+    {{/if}}
+
+    {{#dev}}
+      <script src="{{assets}}/bower_components/modernizr/modernizr.js"></script>
+    {{/dev}}
+
+    <script>
+      var App = App || {};
+      App.URL = "{{app.url}}";
+      {{#dev}}
+        App.URL = "http://0.0.0.0:9000";
+      {{/dev}}
+    </script>
+
+    <!-- build:js(../) {{assets}}/javascripts/head.min.js-->
+      {{#prod}}
+        <script src="{{assets}}/javascripts/vendor/modernizr-custom.js"></script>
+      {{/prod}}
+      <script src="{{assets}}/javascripts/head.js"></script>
+    <!-- endbuild-->
+  </head>
+  <body>
+    <!--[if lte IE 8]>
+      <p class="ieframe">Hei, käytät <strong>tietoturvatonta</strong> selainta. <a href="http://browsehappy.com/">Päivitä uuteen selaimeen</a>, kiitokset!</p>
+    <![endif]-->

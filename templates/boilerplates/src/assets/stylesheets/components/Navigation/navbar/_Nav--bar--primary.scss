@@ -1,0 +1,96 @@
+/* ========================================
+ * Primary navigation bar coloring
+ * ========================================
+ *
+ * @extends `.Nav--bar {}` in _Nav--bar.scss
+ */
+
+.Nav--bar--primary {
+  .Nav-link {
+    border-top-color: $Navbar-linkBorderColor;
+    background-color: $Navbar-linkBgColor;
+    color: $Navbar-linkColor;
+
+    &:hover {
+      color: $Navbar-linkHoverColor !important;
+    }
+  }
+
+  .Nav-subTrigger {
+    color: $Navbar-subTriggerColor;
+    border-color: $Navbar-subTriggerBorderColor;
+    background-color: $Navbar-subTriggerBgColor;
+
+    > .IconCss--arrowDown--xs {
+      &:before { background: $Navbar-subTriggerColor; }
+      &:after { color: $Navbar-subTriggerColor; }
+    }
+
+    &:hover {
+      color: $Navbar-subTriggerHoverColor !important;
+
+      > .IconCss--arrowDown--xs {
+        &:before { background: $Navbar-subTriggerHoverColor !important; }
+        &:after { color: $Navbar-subTriggerHoverColor !important; }
+      }
+    }
+  }
+
+  .Nav-trigger {
+    &-link {
+      background-color: $Navbar-triggerBgColor;
+      color: $Navbar-triggerColor;
+    }
+
+    &-sub {
+      background-color: $Navbar-triggerSubBgColor;
+      border-color: $Navbar-triggerSubBorderColor;
+
+      > .IconCss--hamburger {
+        border-top-color: $Navbar-triggerColor;
+
+        &:before, &:after {
+          background-color: $Navbar-triggerColor;
+        }
+      }
+    }
+  }
+
+  .Nav-sub {
+    .Nav-link  {
+      background-color: $Navbar-subLinkBgColor;
+      border-color: $Navbar-subLinkBorderColor;
+      color: $Navbar-subLinkColor;
+    }
+
+    .Nav-subTrigger {
+      color: $Navbar-subSubTriggerColor;
+      background-color: $Navbar-subSubTriggerBgColor;
+      border-color: $Navbar-subSubTriggerBorderColor;
+
+      .IconCss--arrowDown--xs {
+        &:before { background-color: $Navbar-linkColor; }
+        &:after  { color: $Navbar-linkColor; }
+      }
+    }
+
+    /**
+     * Third and deeper levels
+     */
+    ul {
+      background-color: $Navbar-deeperLevelBgColor;
+
+      .Nav-link {
+        color: $Navbar-deeperLevelLinkColor;
+        background-color: $Navbar-deeperLevelLinkBgColor;
+        border-color: $Navbar-deeperLevelLinkBorderColor;
+      }
+
+      .Nav-subTrigger {
+        color: $Navbar-deeperLevelSubTriggerColor;
+        background-color: $Navbar-deeperLevelSubTriggerBgColor;
+        border-color: $Navbar-deeperLevelSubTriggerBorderColor;
+      }
+    }
+  }
+}

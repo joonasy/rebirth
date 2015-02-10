@@ -1,0 +1,33 @@
+/* ========================================
+ * Equal height columns
+ * ======================================== */
+
+@mixin Grid-equal($gutter: 1) {
+  display: table;
+  height: 100%;
+
+  > .Grid-item {
+    display: table-cell;
+    float: none;
+    height: 100%;
+    vertical-align: top;
+  }
+}
+
+.s-Grid--equal {
+  @include breakpoint("small-up") {
+    @include Grid-equal();
+  }
+}
+
+.m-Grid--equal {
+  @include breakpoint("medium-up") {
+    @include Grid-equal();
+  }
+}
+
+.l-Grid--equal {
+  @include breakpoint("large-up") {
+    @include Grid-equal();
+  }
+}

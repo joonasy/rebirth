@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html class="no-js app-is-loading">
+  <head>
+    <meta charset="utf-8">
+    <title>{{app.title}} {{#if page.title}}| {{page.title}}{{/if}}</title>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <meta name="description" content="{{app.meta.description}}">
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+
+    <!--
+      Place in the root root:
+        favicon.ico
+        apple-touch-icon-precomposed.png (180x180 http://bit.ly/1fco6h9)
+        touch-icon.png
+
+      Otherwise:
+        <link rel="apple-touch-icon-precomposed" href="apple-touch-icon-precomposed.png">
+        <link rel="shortcut icon" href="favicon.ico">
+
+      Always:
+        <link rel="icon" sizes="192x192" href="touch-icon.png"> (http://bit.ly/1C6Tw5J)
+    -->
+
+    <!-- build:css(.tmp) {{assets}}/stylesheets/app.min.css -->
+      <link href="{{assets}}/stylesheets/app.css" rel="stylesheet">
+    <!-- endbuild -->
+
+    {{#dev}}
+      <script src="{{assets}}/bower_components/modernizr/modernizr.js"></script>
+    {{/dev}}
+
+    <script>
+      var App = App || {};
+      App.URL = "{{app.url}}";
+
+      {{#dev}}
+        App.URL = "http://0.0.0.0:9000";
+      {{/dev}}
+    </script>
+
+    <!-- build:js(.) {{assets}}/javascripts/head.min.js-->
+      {{#prod}}
+        <script src="{{assets}}/javascripts/vendor/modernizr-custom.js"></script>
+      {{/prod}}
+      <script src="{{assets}}/javascripts/head.js"></script>
+    <!-- endbuild-->
+
+  </head>
+  <body>
+    <!--[if lte IE 8]>
+      <p class="ieframe">Hei, käytät <strong>tietoturvatonta</strong> selainta. <a href="http://browsehappy.com/">Päivitä uuteen selaimeen</a>, kiitokset!</p>
+    <![endif]-->

@@ -1,0 +1,10 @@
+{
+  "name": "Prototype",
+  "version": "1.0.0",
+  "dependencies": {
+    "modernizr": "latest",
+    "fastclick": "latest",
+    "normalize.scss": "latest"
+  },
+  "devDependencies": {}
+}

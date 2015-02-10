@@ -1,0 +1,44 @@
+/* ========================================
+ * Equal height columns with rulers
+ * ======================================== */
+
+@mixin Grid-ruler($gutter: 2) {
+  display: table;
+  height: 100%;
+  margin-left: -(baseSpace($gutter, px));
+  table-layout: fixed;
+  width: 100%;
+  width: calc(100% + #{(baseSpace($gutter * 2, px))});
+
+  > .Grid-item {
+    border-color: $color-borderPrimary;
+    border-left: 1px solid;
+    display: table-cell;
+    float: none;
+    height: 100%;
+    padding: 0 baseSpace($gutter, px);
+    vertical-align: top;
+
+    &:first-child {
+      border-left: none;
+    }
+  }
+}
+
+.s-Grid--ruler {
+  @include breakpoint("smallUp") {
+    @include Grid-ruler();
+  }
+}
+
+.m-Grid--ruler {
+  @include breakpoint("mediumUp") {
+    @include Grid-ruler();
+  }
+}
+
+.l-Grid--ruler {
+  @include breakpoint("largeUp") {
+    @include Grid-ruler();
+  }
+}

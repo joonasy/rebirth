@@ -1,0 +1,76 @@
+/* ========================================
+ * Floating navigation bar modifier
+ * ========================================
+ *
+ * @extends `.Nav--bar {}` in _Nav--Bar.scss
+ */
+
+.Nav--bar--horizontal {
+  @include breakpoint("navTransform") {
+
+    .Nav-self { display: block; }
+    .Nav-trigger { display: none; }
+
+    > ul > .Nav-item {
+      float: left;
+      position: relative;
+
+      > .Nav-link {
+        border-top: none;
+        display: inline-block;
+        padding-left: $Navbar-padding;
+        padding-right: $Navbar-padding;
+      }
+
+      > .Nav-subTrigger {
+        border: none;
+        padding-left: $Navbar-padding;
+        padding-right: $Navbar-padding;
+        margin-left: -$Navbar-padding;
+        width: auto;
+      }
+
+      &.is-open {
+        > .Nav-subTrigger > .IconCss--arrowDown--xs {
+          @include IconCss--arrowDown--xs();
+          top: 0;
+        }
+      }
+    }
+
+    .Nav-link { width: auto; }
+
+    .Nav-sub {
+      left: 0;
+      position: absolute;
+      top: 100%;
+
+      /**
+       * Fourth and deeper levels
+       *
+       * These are hidden by default because dropdown navigations
+       * deeper than three levels aren't very elegant in desktop
+       * widths. Prefer another solution such as separate
+       * navigation for sub pages.
+       */
+      ul, .Nav-subTrigger { display: none !important; }
+    }
+
+
+    /* ======
+     * States
+     * ====== */
+
+    > ul > .Nav-item {
+      .no-touch &:hover .Nav-sub,
+      .no-touch &:hover.is-open .Nav-sub,
+      .touch &.is-open > .Nav-sub  {
+        display: block;
+      }
+
+      .no-touch &.is-open > .Nav-sub {
+        display: none;
+      }
+    }
+  }
+}

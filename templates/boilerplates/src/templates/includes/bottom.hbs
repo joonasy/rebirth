@@ -1,0 +1,25 @@
+    <script src="{{assets}}/javascripts/vendor/jquery.min.js"></script>
+
+    <!-- build:js(../) {{assets}}/javascripts/app.min.js -->
+      <script src="{{assets}}/bower_components/fastclick/lib/fastclick.js"></script>
+      <script src="{{assets}}/javascripts/config.js"></script>
+      <script src="{{assets}}/javascripts/components/App.Toggle.js"></script>
+      <script src="{{assets}}/javascripts/components/App.Component.js"></script>
+      <script src="{{assets}}/javascripts/app.js"></script>
+    <!-- endbuild -->
+
+    {{#if page.javascripts}}
+      <!-- build:js(src) {{assets}}/javascripts/{{page.title}}.min.js -->
+        {{#each page.javascripts}}
+          <script src="{{../assets}}/javascripts/{{../page.resourcePath}}{{.}}.js"></script>
+        {{/each}}
+      <!-- endbuild -->
+    {{/if}}
+
+    {{#if page.bottomScript}}
+      <script>
+        {{page.bottomScript}}
+      </script>
+    {{/if}}
+  </body>
+</html>

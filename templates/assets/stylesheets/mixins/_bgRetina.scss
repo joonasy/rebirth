@@ -1,0 +1,17 @@
+// ========================================
+// HiDPI background
+// ========================================
+
+@mixin bgRetina($file: "", $fileRetina: "", $contain: false) {
+  background-image: image-url($file);
+
+  @include breakpoint("retina") {
+    background-image: image-url($fileRetina);
+
+    @if $contain == true {
+      background-size: contain;
+    } @else {
+      background-size: (image-width($fileRetina) / 2) (image-height($fileRetina) / 2);
+    }
+  }
+}

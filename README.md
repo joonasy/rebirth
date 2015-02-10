@@ -87,7 +87,7 @@ But, as with anything, the specifics are somewhat irrelevant—consistency is ke
 // Example 
 
 .Component, .Component--modifier,
-.some-selector {
+.someSelector {
   @extend %cf;
   @include dropdown();
   background-color: $color-brand-primary;

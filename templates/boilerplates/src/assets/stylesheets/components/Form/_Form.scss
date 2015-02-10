@@ -1,0 +1,77 @@
+/* ========================================
+ * Form
+ * ======================================== */
+
+.Form {
+  position: relative;
+
+  /* ======
+   * Elements
+   * ====== */
+
+  &-label {
+    display: block;
+    font-size: $base-fontSize-s;
+    line-height: $base-lineHeight-s;
+    margin: -3px 0 8px 0;
+  }
+
+  &-addon, &-item {
+    background-color: #ffffff;
+    border-radius: $borderRadius;
+    color: $color-text;
+    font-size: $base-fontSize-s;
+    line-height: $base-lineHeight-s;
+    min-height: 44px;
+    padding: 10px 16px;
+  }
+
+  &-item {
+    @include placeholderColor($color-textLight);
+    margin-bottom: baseSpace();
+    width: 100%;
+    min-width: 240px;
+    outline: 0;
+    border: 0;
+    transition: color $transitionDuration,
+                border-color $transitionDuration,
+                background-color $transitionDuration;
+
+    &:focus {
+      @include placeholderColor($color-text);
+      background-color: $color-bgLightest;
+      color: $color-text;
+    }
+
+    .touch & { font-size: 16px; }
+
+    &--center {
+      text-align: center;
+    }
+  }
+
+  &-addon {
+    text-align: center;
+  }
+
+  input[type],
+  textarea {
+    &.Form-item {
+      -webkit-appearance: none;
+      -moz-appearance: none;
+    }
+  }
+
+  select {
+    &.Form-item {
+      color: $color-textLight;
+    }
+  }
+
+  textarea {
+    &.Form-item {
+      min-height: 200px;
+      max-width: 100%;
+    }
+  }
+}

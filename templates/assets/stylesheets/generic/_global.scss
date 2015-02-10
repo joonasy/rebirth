@@ -1,0 +1,17 @@
+/* ========================================
+ * Global placeholders and classes
+ * ======================================== */
+
+/**
+ * Clearfix
+ */
+%cf { @include clearfix(); }
+
+/**
+ * List reset
+ */
+%resetList {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}

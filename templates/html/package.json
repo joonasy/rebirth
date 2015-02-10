@@ -1,0 +1,31 @@
+{
+  "author": "Author",
+  "name": "<project-name>",
+  "version": "1.0.0",
+  "homepage": "http://<project-name>.com",
+  "description": "<project-name>",
+  "repository": {},
+  "readme": "Website for <project-name>",
+  "dependencies": {},
+  "devDependencies": {
+    "assemble": ">=0.0.0",
+    "grunt": ">=0.0.0",
+    "grunt-contrib-copy": ">=0.0.0",
+    "grunt-contrib-concat": ">=0.0.0",
+    "grunt-contrib-uglify": ">=0.0.0",
+    "grunt-contrib-compass": ">=0.0.0",
+    "grunt-contrib-cssmin": ">=0.0.0",
+    "grunt-contrib-connect": ">=0.0.0",
+    "grunt-contrib-clean": ">=0.0.0",
+    "grunt-contrib-imagemin": ">=0.0.0",
+    "grunt-contrib-watch": ">=0.0.0",
+    "grunt-modernizr": ">=0.0.0",
+    "grunt-rev": ">=0.0.0",
+    "grunt-autoprefixer": ">=0.0.0",
+    "grunt-usemin": ">=0.0.0",
+    "load-grunt-tasks": ">=0.0.0"
+  },
+  "engines": {
+    "node": ">=0.12.0"
+  }
+}

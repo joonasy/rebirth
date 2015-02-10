@@ -1,0 +1,46 @@
+// ========================================
+// Vertical and horizontal centering
+// ========================================
+//
+// 1. Vertical and horizontal centering.
+// 2. Horizontal centering.
+// 3. Vertical centering.
+// 4. Centering both horizontally and vertically with `table` requires
+//   `table-descendant` and `table-descendant-item` child elements.
+//
+//    <div class="table">
+//      <div class="table-descendant">
+//        <div class="table-descendant-item">
+//          ...
+//        </div>
+//      </div>
+//    </div>
+
+@mixin center($style: "absolute") {
+  @if $style == "absolute" { // [1.]
+    margin: auto;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 50%;
+  } @elseif $style == "table" { // [4.]
+    display: table;
+    height: 100%;
+    width: 100%;
+  } @elseif $style == "table-descendant" { // [4.] [3.]
+    display: table-cell;
+    text-align: center;
+    vertical-align: middle;
+  } @elseif $style == "table-descendant-item" // [4.]
+    or $style == "text-item" { // [2.]
+    display: inline-block;
+    text-align: left;
+  } @elseif $style == "margin" { // [2.]
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+  } @elseif $style == "text" { // [2.]
+    text-align: center;
+  }
+}

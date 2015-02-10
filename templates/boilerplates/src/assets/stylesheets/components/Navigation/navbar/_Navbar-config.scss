@@ -1,0 +1,40 @@
+// ========================================
+// Navbar
+// ========================================
+
+$Navbar-padding: baseSpace(0.5, px);
+$Navbar-bgColor: darken(#ffffff, 2);
+
+// Default `.Nav--bar--primary` colors
+$Navbar-triggerColor: #ffffff;
+$Navbar-triggerBgColor: $color-brandPrimary;
+$Navbar-triggerSubBgColor: $color-brandPrimary;
+$Navbar-triggerSubBorderColor: rgba(#ffffff, 0.5);
+
+$Navbar-linkColor: $color-text;
+$Navbar-linkBgColor: darken(#ffffff, 2);
+$Navbar-linkBorderColor: darken($Navbar-linkBgColor, 5);
+
+$Navbar-subTriggerBorderWidth: 1px;
+$Navbar-subTriggerWidth: 48px - $Navbar-subTriggerBorderWidth;
+$Navbar-subTriggerColor: $color-text;
+$Navbar-subTriggerBgColor: $Navbar-linkBgColor;
+$Navbar-subTriggerBorderColor: $Navbar-linkBorderColor;
+
+$Navbar-subLinkColor: inherit;
+$Navbar-subLinkBgColor: darken($Navbar-linkBgColor, 4);
+$Navbar-subLinkBorderColor: darken($Navbar-linkBorderColor, 8);
+$Navbar-subSubTriggerColor: inherit;
+$Navbar-subSubTriggerBgColor: darken($Navbar-linkBgColor, 4);
+$Navbar-subSubTriggerBorderColor: darken($Navbar-linkBorderColor, 8);
+
+$Navbar-deeperLevelBgColor: darken($Navbar-subSubTriggerBgColor, 8);
+$Navbar-deeperLevelLinkColor: inherit;
+$Navbar-deeperLevelLinkBgColor: transparent;
+$Navbar-deeperLevelLinkBorderColor: darken($Navbar-linkBorderColor, 16);
+$Navbar-deeperLevelSubTriggerColor: inherit;
+$Navbar-deeperLevelSubTriggerBgColor: transparent;
+$Navbar-deeperLevelSubTriggerBorderColor: darken($Navbar-linkBorderColor, 16);
+
+$Navbar-linkHoverColor: $color-link;
+$Navbar-subTriggerHoverColor: $color-link;

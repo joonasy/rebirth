@@ -1,0 +1,157 @@
+// ========================================
+// Typography
+// ========================================
+
+$base-fontSize: 16px;
+$base-lineHeightPx: 24px;
+$base-lineHeight: $base-lineHeightPx / $base-fontSize;
+
+$base-fontSize-l: 18px;
+$base-lineHeight-l: 26px / $base-fontSize-l;
+
+$base-fontSize-s: 14px;
+$base-lineHeight-s: 20px / $base-fontSize-s;
+
+$base-fontSize-xs: 12px;
+$base-lineHeight-xs: 18px / $base-fontSize-xs;
+
+$base-fontFamily: "Helvetica Neue", Helvetica, Arial, sans-serif;
+$base-fontWeightStrong: 800;
+
+$heading-fontFamily: inherit;
+$heading-fontWeight: 800;
+$heading-fontWeight-alt: 800;
+
+$heading-xl: 62px;
+$heading-m: 52px;
+$heading-s: 42px;
+
+$h1-fontSize: 32px;
+$h2-fontSize: 26px;
+$h3-fontSize: 22px;
+$h4-fontSize: 20px;
+$h5-fontSize: 18px;
+
+
+
+
+// ========================================
+// Media query breakpoints
+// ========================================
+
+$breakpoint-xs: 320px;
+$breakpoint-s: 600px;
+$breakpoint-m: 768px;
+$breakpoint-ml: 900px;
+$breakpoint-l: 1024px;
+$breakpoint-xl: 1200px;
+
+
+
+
+// ========================================
+// Spacing
+// ========================================
+
+$base-space: $base-lineHeightPx;
+$base-edgeSpace: 6.25%;
+
+
+
+
+// ========================================
+// Default colors
+// ========================================
+
+// Grays
+$color-grayDarkest: #121212;
+$color-grayDarker: #222;
+$color-grayDark: #333;
+$color-gray: #555;
+$color-grayLight: #a2a2a2;
+$color-grayLighter: #ccc;
+$color-grayLightest: #E6E6E6;
+
+// Brand colors
+$color-brandPrimary: #00AAE7;
+
+// Base colors
+$color-dark: #000000;
+$color-light: #ffffff;
+
+// Background colors
+$color-htmlBg: #ffffff;
+$color-bgLightest: darken(#ffffff, 2);
+
+// Text colors
+$color-text: #444444;
+$color-textLight: lighten(#444444, 10);
+
+// Heading color
+$color-heading: inherit;
+
+// Link colors
+$color-link: $color-brandPrimary;
+$color-linkHover: darken($color-link, 15%);
+
+// Border colors
+$color-borderPrimary: $color-grayLightest;
+
+// State colors
+$color-success: #5cb85c;
+$color-warning: #f0ad4e;
+$color-danger: #d9534f;
+$color-info: #5bc0de;
+
+
+
+
+// ========================================
+// `IconCss.scss` component settings
+// ========================================
+
+$IconCss-s: scale(0.85);
+$IconCss-xs: scale(0.75);
+
+
+
+
+// ========================================
+// Various global settings
+// ========================================
+//
+// 1. Used mainly by `.Wrap` in _Wrap.scss but can be used anywhere wrappin
+//    of layout or other elements is necessary.
+// 2. Used by `.Container` in _Container.scss but can be used anywhere global
+//    layout settings are needed.
+
+$wrapWidth: 960px; // [1.]
+$containerWidth: 1200px; // [2.]
+$borderRadius: 3px;
+$transitionDuration: 0.15s;
+$transitionDelay: $transitionDuration;
+
+// Easings
+$easeOutSine: cubic-bezier(0.39, 0.575, 0.565, 1);
+$easeInOutSine: cubic-bezier(0.445, 0.05, 0.55, 0.95);
+$easeInQuad: cubic-bezier(0.55, 0.085, 0.68, 0.53);
+$easeOutQuad: cubic-bezier(0.25, 0.46, 0.45, 0.94);
+$easeInOutQuad: cubic-bezier(0.455, 0.03, 0.515, 0.955);
+$easeInCubic: cubic-bezier(0.55, 0.055, 0.675, 0.19);
+$easeOutCubic: cubic-bezier(0.215, 0.61, 0.355, 1);
+$easeInOutCubic: cubic-bezier(0.645, 0.045, 0.355, 1);
+$easeInQuart: cubic-bezier(0.895, 0.03, 0.685, 0.22);
+$easeOutQuart: cubic-bezier(0.165, 0.84, 0.44, 1);
+$easeInOutQuart: cubic-bezier(0.77, 0, 0.175, 1);
+$easeInQuint: cubic-bezier(0.755, 0.05, 0.855, 0.06);
+$easeOutQuint: cubic-bezier(0.23, 1, 0.32, 1);
+$easeInOutQuint: cubic-bezier(0.86, 0, 0.07, 1);
+$easeInExpo: cubic-bezier(0.95, 0.05, 0.795, 0.035);
+$easeOutExpo: cubic-bezier(0.19, 1, 0.22, 1);
+$easeInOutExpo: cubic-bezier(1, 0, 0, 1);
+$easeInCirc: cubic-bezier(0.6, 0.04, 0.98, 0.335);
+$easeOutCirc: cubic-bezier(0.075, 0.82, 0.165, 1);
+$easeInOutCirc: cubic-bezier(0.785, 0.135, 0.15, 0.86);
+$easeInBack: cubic-bezier(0.6, -0.28, 0.735, 0.045);
+$easeOutBack: cubic-bezier(0.175, 0.885, 0.32, 1.275);
+$easeInOutBack: cubic-bezier(0.68, -0.55, 0.265, 1.55);

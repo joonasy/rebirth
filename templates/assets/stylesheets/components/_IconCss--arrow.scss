@@ -1,0 +1,66 @@
+/* ========================================
+ * CSS shaped arrow icons
+ * ========================================
+ *
+ * Other components may extend or use mixins here so include this
+ * component before other components in _config.scss.
+ */
+
+[class*="IconCss--arrow"] {
+  display: inline-block;
+  height: 10px;
+  position: relative;
+  width: 10px;
+
+  &:after, &:before {
+    content: "";
+    display: block;
+    position: absolute;
+  }
+
+  &:before {
+    background-color: $color-text;
+    height: 16px;
+    left: 4px;
+    top: 0;
+    width: 1px;
+  }
+
+  &:after {
+    border-left: 1px solid;
+    border-top: 1px solid;
+    color: $color-text;
+    height: 9px;
+    top: 0;
+    transform: rotate(45deg);
+    width: 9px;
+  }
+}
+
+@mixin IconCss--arrowUp--xs() { transform: $IconCss-xs rotate(0); }
+%IconCss--arrowUp--xs,
+.IconCss--arrowUp--xs { @include IconCss--arrowUp--xs(); }
+
+@mixin IconCss--arrowRight() { transform: rotate(-270deg); }
+%IconCss--arrowRight,
+.IconCss--arrowRight { @include IconCss--arrowRight(); }
+
+@mixin IconCss--arrowRight--xs() { transform: $IconCss-xs rotate(-270deg); }
+%IconCss--arrowRight--xs,
+.IconCss--arrowRight--xs { @include IconCss--arrowRight--xs(); }
+
+@mixin IconCss--arrowDown() { transform: $IconCss-xs rotate(-270deg); }
+%IconCss--arrowDown,
+.IconCss--arrowDown { @include IconCss--arrowDown(); }
+
+@mixin IconCss--arrowDown--xs() { transform: $IconCss-xs rotate(180deg); }
+%IconCss--arrowDown--xs,
+.IconCss--arrowDown--xs { @include IconCss--arrowDown--xs(); }
+
+@mixin IconCss--arrowLeft() { transform: rotate(-90deg); }
+%IconCss--arrowLeft,
+.IconCss--arrowLeft { @include IconCss--arrowLeft(); }
+
+@mixin IconCss--arrowLeft--xs() { transform: $IconCss-xs rotate(-90deg); }
+%IconCss--arrowLeft--xs,
+.IconCss--arrowLeft--xs { @include IconCss--arrowLeft--xs(); }

@@ -1,0 +1,15 @@
+plugin.tx_<project-name>templates.view {
+  templateRootPath = {$plugin.tx_<project-name>templates.view.templateRootPath}
+  partialRootPath = {$plugin.tx_<project-name>templates.view.partialRootPath}
+  layoutRootPath = {$plugin.tx_<project-name>templates.view.layoutRootPath}
+}
+
+[globalString = ENV:HTTP_HOST = <project-name>.dev]
+  plugin.tx_<project-name>templates.settings.dev = 1
+[END]
+
+config.htmlTag_setParams = class="no-js app-is-loading"
+config.concatenateJs = 1
+config.concatenateCss = 1
+config.compressCss = 1
+config.compressJs = 1

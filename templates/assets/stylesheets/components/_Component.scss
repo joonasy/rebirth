@@ -1,0 +1,12 @@
+/* ========================================
+ * Component
+ * ========================================
+ *
+ * @extends `.Component{}` in _Component.scss.
+ */
+
+.Component {
+  &-elementName {}
+  &--modifierName {}
+  &.is-stateName {}
+}

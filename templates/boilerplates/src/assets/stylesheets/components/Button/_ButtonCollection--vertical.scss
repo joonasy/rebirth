@@ -1,0 +1,23 @@
+/* ========================================
+ * ButtonCollection
+ * ========================================
+ *
+ * @extends `.ButtonCollection{}` in _ButtonCollection.scss
+ */
+
+.ButtonCollection--vertical {
+  @extend %cf;
+
+  > .Button {
+    border-bottom: 1px solid $color-borderPrimary;
+    border-radius: 0;
+    clear: both;
+    float: left;
+
+    &:first-of-type { border-radius: $borderRadius $borderRadius 0 0; }
+    &:last-of-type {
+      border-radius: 0 0 $borderRadius $borderRadius;
+      border-bottom: none;
+    }
+  }
+}

@@ -1,0 +1,37 @@
+/* ========================================
+ * Example styles
+ * ======================================== */
+
+@import "app";
+
+$htmlBgColor: #eaeaea;
+$wrapWidth: 960px;
+
+html.e {
+  @include baseline-grid-background(rem($base-space), darken($htmlBgColor, 10));
+  background-color: $htmlBgColor;
+
+  &.is-dark {}
+}
+
+html, body { height: 100%; }
+
+.e {
+  &-wrap {
+    border: 1px solid darken($htmlBgColor, 10);
+    margin: 0 auto;
+    max-width: $wrapWidth;
+
+    &--center {
+      @include center("table");
+
+      .e-wrap-inner {
+        @include center("table-descendant");
+
+        &-item {
+          @include center("table-descendant-item");
+        }
+      }
+    }
+  }
+}

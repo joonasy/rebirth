@@ -1,0 +1,149 @@
+---
+title: Navbar
+resourcePath: components/navigation/navbar/
+stylesheets:
+  - ../Nav-import
+  - Navbar-import
+javascripts:
+  - App.Navbar
+bottomScript:
+  App.Navbar.init();
+---
+
+<nav class="Nav Nav--bar Nav--bar--horizontal Nav--bar--primary" id="js-Navbar">
+
+  <!-- Trigger -->
+  <div class="Nav-trigger" id="js-Navbar-trigger">
+    <span class="Nav-trigger-link" href="#">Valikko</span>
+    <span class="Nav-trigger-sub">
+      <i class="IconCss IconCss--hamburger"></i>
+    </span>
+  </div>
+  <!-- /Trigger -->
+
+  <ul class="Nav-self">
+
+    <li class="Nav-item">
+      <a class="Nav-link" href="index.html">1. Elementti (1. taso)</a>
+    </li>
+
+    <li class="Nav-item">
+      <a class="Nav-link" href="#">1. Elementti (1. taso)</a>
+    </li>
+
+    <li class="Nav-item">
+      <a class="Nav-link" href="#">2. Elementti (1. taso)</a>
+      <span class="Nav-subTrigger">
+        <i class="IconCss IconCss--arrowDown--xs"></i>
+      </span>
+      <ul class="Nav-sub">
+        <li class="Nav-item">
+          <a class="Nav-link" href="#">2.1. Elementti (2. taso)</a>
+        </li>
+        <li class="Nav-item">
+          <a class="Nav-link" href="#">2.2. Elementti (2. taso)</a>
+        </li>
+      </ul>
+    </li>
+
+    <li class="Nav-item">
+      <a class="Nav-link" href="#">3. Elementti (1. taso)</a>
+      <span class="Nav-subTrigger">
+        <i class="IconCss IconCss--arrowDown--xs"></i>
+      </span>
+
+      <!-- Dropdown -->
+      <ul class="Nav-sub">
+        <li class="Nav-item">
+          <a class="Nav-link" href="#">3.1. Elementti (2. taso)</a>
+        </li>
+        <li class="Nav-item">
+          <a class="Nav-link" href="#">3.2. Elementti (2. taso)</a>
+          <span class="Nav-subTrigger">
+            <i class="IconCss IconCss--arrowDown--xs"></i>
+          </span>
+          <!-- Dropdown -->
+          <ul class="Nav-sub">
+            <li class="Nav-item">
+              <a class="Nav-link" href="#">3.2.1. Elementti (3. taso)</a>
+              <span class="Nav-subTrigger">
+                <i class="IconCss IconCss--arrowDown--xs"></i>
+              </span>
+              <!-- Dropdown -->
+              <ul class="Nav-sub">
+                <li class="Nav-item">
+                  <a class="Nav-link" href="#">3.2.1.1. Elementti (4. taso)</a>
+                </li>
+                <li class="Nav-item">
+                  <a class="Nav-link" href="#">3.2.1.2. Elementti (4. taso)</a>
+                </li>
+              </ul>
+              <!-- /Dropdown -->
+            </li>
+            <li class="Nav-item">
+              <a class="Nav-link" href="#">3.2.2. Elementti (3. taso)</a>
+              <span class="Nav-subTrigger">
+                <i class="IconCss IconCss--arrowDown--xs"></i>
+              </span>
+              <!-- Dropdown -->
+              <ul class="Nav-sub">
+                <li class="Nav-item">
+                  <a class="Nav-link" href="#">3.2.2.1. Elementti (4. taso)</a>
+                </li>
+                <li class="Nav-item">
+                  <a class="Nav-link" href="#">3.2.2.2. Elementti (4. taso)</a>
+                  <span class="Nav-subTrigger">
+                    <i class="IconCss IconCss--arrowDown--xs"></i>
+                  </span>
+                  <!-- Dropdown -->
+                  <ul class="Nav-sub">
+                    <li class="Nav-item">
+                      <a class="Nav-link" href="#">3.2.2.2.1. Elementti (5. taso)</a>
+                    </li>
+                    <li class="Nav-item">
+                      <a class="Nav-link" href="#">3.2.2.2.2. Elementti (5. taso)</a>
+                      <span class="Nav-subTrigger">
+                        <i class="IconCss IconCss--arrowDown--xs"></i>
+                      </span>
+                      <!-- Dropdown -->
+                      <ul class="Nav-sub">
+                        <li class="Nav-item">
+                          <a class="Nav-link" href="#">3.2.2.2.2.1. Elementti (6. taso)</a>
+                        </li>
+                        <li class="Nav-item">
+                          <a class="Nav-link" href="#">3.2.2.2.2.2.1. Elementti (6. taso) &hellip;</a>
+                        </li>
+                      </ul>
+                      <!-- /Dropdown -->
+                    </li>
+                  </ul>
+                  <!-- /Dropdown -->
+                </li>
+              </ul>
+              <!-- /Dropdown -->
+            </li>
+          </ul>
+          <!-- /Dropdown -->
+        </li>
+
+        <li class="Nav-item">
+          <a class="Nav-link" href="#">3.3. Elementti (2. taso)</a>
+          <span class="Nav-subTrigger">
+            <i class="IconCss IconCss--arrowDown--xs"></i>
+          </span>
+          <!-- Dropdown -->
+          <ul class="Nav-sub">
+            <li class="Nav-item">
+              <a class="Nav-link" href="#">3.3.1. Elementti (3. taso)</a>
+            </li>
+            <li class="Nav-item">
+              <a class="Nav-link" href="#">3.2.2. Elementti (3. taso)</a>
+            </li>
+          </ul>
+          <!-- /Dropdown -->
+        </li>
+      </ul>
+      <!-- /Dropdown -->
+    </li>
+  </ul>
+</nav>

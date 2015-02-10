@@ -1,0 +1,14 @@
+// ========================================
+// Truncating text
+// ========================================
+//
+// Force overly long spans of text to truncate
+// e.g.: @include truncate(80%);
+// Where $truncation-boundary is a united measurement.
+
+@mixin textTruncate($truncation-boundary: 100%){
+  max-width: $truncation-boundary;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}

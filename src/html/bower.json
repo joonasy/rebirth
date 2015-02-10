@@ -1,9 +1,0 @@
-{
-  "name": "Prototype",
-  "version": "0.0.0",
-  "dependencies": {
-    "modernizr": "latest",
-    "fastclick": "latest"
-  },
-  "devDependencies": {}
-}
