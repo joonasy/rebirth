@@ -12,20 +12,6 @@ var $html = $('html'),
     $window = $(window);
 
 /**
- * Breakpoints
- */
-App.Bp = {
-  SMALL_UP_NUM: 500,
-  SMALL_UP: 'screen and (min-width: 500px)',
-  MEDIUM_UP_NUM: 768,
-  MEDIUM_UP: 'screen and (min-width: 768px)',
-  LARGE_UP_NUM: 1024,
-  LARGE_UP: 'screen and (min-width: 1024px)',
-  XLARGE_UP_NUM: 1200,
-  XLARGE_UP: 'screen and (min-width: 1200px)'
-};
-
-/**
  * Get new window sizes on resize event and
  * scroll position on scroll events
  */
