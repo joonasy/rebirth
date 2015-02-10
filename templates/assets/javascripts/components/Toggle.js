@@ -36,7 +36,7 @@ var App = App || {};
     }
 
     clickTrigger = function(e) {
-      var $this = $(this), // Trigger
+      var $this = $(this),
           isToggled;
 
       if(config.unToggleOtherToggles) {
