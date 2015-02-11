@@ -1,20 +1,11 @@
+# ======
+# Defaults
+# ======
+
 .sass-cache
-.scssc
 .DS_Store
+.tmp
+npm-debug.log
 
-/node_modules
-/src/assets/bower_components
-
-/build
-/dist
-/.tmp
-/_work
-
-/local-config.php
-/content/plugins/
-/_sql
-/_db
-/_databases
-
-
-
+node_modules/
+bower_components/
