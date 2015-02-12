@@ -1,6 +1,11 @@
 {
-  "name": "package",
-  "version": "0.0.0",
-  "dependencies": {}
+  "name": "<%= appName %>",
+  "version": "1.0.0",
+  "dependencies": {
+    "modernizr": "latest",
+    "fastclick": "latest",
+    "normalize.scss": "latest",
+    "jquery": "latest"
+  }
 }
 

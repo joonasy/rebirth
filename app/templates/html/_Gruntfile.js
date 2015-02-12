@@ -16,9 +16,9 @@ module.exports = function (grunt) {
     meta: {
       banner:
         '/*!\n' +
-        ' * <%= pkg.name %> - v<%= pkg.version %> - Build at <%= grunt.template.today("dd.mm.yyyy HH:MM") %>\n' +
-        ' * <%= pkg.homepage %>\n' +
-        ' * Copyright (c) <%= grunt.template.today("yyyy") %> <%= pkg.author %> | Site by Mediasignal\n' +
+        ' * <%%= pkg.name %> - v<%%= pkg.version %> - Build at <%%= grunt.template.today("dd.mm.yyyy HH:MM") %>\n' +
+        ' * <%%= pkg.homepage %>\n' +
+        ' * Copyright (c) <%%= grunt.template.today("yyyy") %> <%%= pkg.author %> | Site by Mediasignal\n' +
         ' */\n'
     },
 
@@ -27,12 +27,12 @@ module.exports = function (grunt) {
      */
     assemble: {
       options: {
-        data: ['<%= path.src %>/data/*.{json,yml}'],
+        data: ['<%%= path.src %>/data/*.{json,yml}'],
         flatten: true,
-        helpers: '<%= path.src %>/templates/helpers/**/*.js',
+        helpers: '<%%= path.src %>/templates/helpers/**/*.js',
         layout: 'layout.hbs',
-        layoutdir: '<%= path.src %>/templates/layouts',
-        partials: '<%= path.src %>/templates/includes/*.hbs',
+        layoutdir: '<%%= path.src %>/templates/layouts',
+        partials: '<%%= path.src %>/templates/includes/*.hbs',
         permalinks: {
           structure: ':slug/index.html'
         }
@@ -45,19 +45,19 @@ module.exports = function (grunt) {
         },
         files: [{
           expand: true,
-          cwd: '<%= path.src %>/templates/pages',
+          cwd: '<%%= path.src %>/templates/pages',
           src: '**/*.hbs',
-          dest: '<%= path.tmp %>'
+          dest: '<%%= path.tmp %>'
         }]
       },
       dist: {
         options: {
-          assets: '<%= path.dist %>/assets',
+          assets: '<%%= path.dist %>/assets',
           dev: false,
           prod: true
         },
-        src: '<%= path.src %>/templates/pages/**/*.hbs',
-        dest: '<%= path.dist %>'
+        src: '<%%= path.src %>/templates/pages/**/*.hbs',
+        dest: '<%%= path.dist %>'
       }
     },
 
@@ -66,20 +66,20 @@ module.exports = function (grunt) {
      */
     watch: {
       options: {
-        livereload: '<%= connect.options.livereload %>'
+        livereload: '<%%= connect.options.livereload %>'
       },
       assemble: {
-        files: ['<%= path.src %>/**/*.{hbs,yml,json}'],
+        files: ['<%%= path.src %>/**/*.{hbs,yml,json}'],
         tasks: ['assemble:dev']
       },
       compass: {
-        files: ['<%= path.src %>/assets/stylesheets/**/*.{scss,sass}'],
+        files: ['<%%= path.src %>/assets/stylesheets/**/*.{scss,sass}'],
         tasks: ['compass', 'autoprefixer']
       },
       other: {
         files: [
-          '<%= path.src %>/assets/vendor/*.js',
-          '<%= path.src %>/assets/img/**/*.{png,jpg,jpeg,gif,webp,svg}'
+          '<%%= path.src %>/assets/vendor/*.js',
+          '<%%= path.src %>/assets/img/**/*.{png,jpg,jpeg,gif,webp,svg}'
         ]
       }
     },
@@ -96,15 +96,15 @@ module.exports = function (grunt) {
       dev: {
         options: {
           base: [
-            '<%= path.tmp %>',
-            '<%= path.src %>',
+            '<%%= path.tmp %>',
+            '<%%= path.src %>',
             './'
           ]
         }
       },
       dist: {
         options: {
-          base: '<%= path.dist %>'
+          base: '<%%= path.dist %>'
         }
       }
     },
@@ -117,15 +117,15 @@ module.exports = function (grunt) {
         files: [{
           dot: true,
           src: [
-            '<%= path.dist %>/*'
+            '<%%= path.dist %>/*'
           ]
         }]
       },
-      tmp: '<%= path.tmp %>',
+      tmp: '<%%= path.tmp %>',
       dev: {
         files: [{
           src: [
-            '<%= path.src %>/assets/javascripts/vendor/modernizr-custom.js'
+            '<%%= path.src %>/assets/javascripts/vendor/modernizr-custom.js'
           ]
         }]
       }
@@ -140,17 +140,17 @@ module.exports = function (grunt) {
      */
     compass: {
       options: {
-        sassDir: '<%= path.src %>/assets/stylesheets',
-        cssDir: '<%= path.tmp %>/assets/stylesheets',
+        sassDir: '<%%= path.src %>/assets/stylesheets',
+        cssDir: '<%%= path.tmp %>/assets/stylesheets',
 
-        imagesDir: '<%= path.src %>/assets/img',
-        generatedImagesDir: '<%= path.src %>/assets/img',
+        imagesDir: '<%%= path.src %>/assets/img',
+        generatedImagesDir: '<%%= path.src %>/assets/img',
         httpImagesPath: '/assets/img',
         httpGeneratedImagesPath: '/assets/img',
 
-        fontsDir: '<%= path.src %>/assets/fonts',
+        fontsDir: '<%%= path.src %>/assets/fonts',
         httpFontsPath: '../fonts',
-        javascriptsDir: '<%= path.src %>/assets/js',
+        javascriptsDir: '<%%= path.src %>/assets/js',
         relativeAssets: false,
 
         raw: '::Sass::Script::Number.precision = 10\n',
@@ -170,9 +170,9 @@ module.exports = function (grunt) {
       dist: {
         files: [{
           expand: true,
-          cwd: '<%= path.tmp %>/assets/stylesheets/',
+          cwd: '<%%= path.tmp %>/assets/stylesheets/',
           src: '*.css',
-          dest: '<%= path.tmp %>/assets/stylesheets/'
+          dest: '<%%= path.tmp %>/assets/stylesheets/'
         }]
       }
     },
@@ -182,16 +182,16 @@ module.exports = function (grunt) {
      */
     useminPrepare: {
       options: {
-        dest: '<%= path.dist %>'
+        dest: '<%%= path.dist %>'
       },
-      html: '<%= path.dist %>/*.html'
+      html: '<%%= path.dist %>/*.html'
     },
     usemin: {
       options: {
-        assetsDirs: ['<%= path.dist %>/**/']
+        assetsDirs: ['<%%= path.dist %>/**/']
       },
-      html: ['<%= path.dist %>/{,**/}*.html'],
-      css: ['<%= path.dist %>/assets/stylesheets/*.css']
+      html: ['<%%= path.dist %>/{,**/}*.html'],
+      css: ['<%%= path.dist %>/assets/stylesheets/*.css']
     },
 
     /**
@@ -199,7 +199,7 @@ module.exports = function (grunt) {
      */
     cssmin: {
       options: {
-        banner: '<%= meta.banner %>'
+        banner: '<%%= meta.banner %>'
       }
     },
 
@@ -208,7 +208,7 @@ module.exports = function (grunt) {
      */
     uglify: {
       options: {
-        banner: '<%= meta.banner %>',
+        banner: '<%%= meta.banner %>',
         compress: {
           drop_console: true
         }
@@ -222,9 +222,9 @@ module.exports = function (grunt) {
       dist: {
         files: [{
           expand: true,
-          cwd: '<%= path.src %>/assets/img',
+          cwd: '<%%= path.src %>/assets/img',
           src: '{,*/}*.{png,jpg,jpeg,svg}',
-          dest: '<%= path.dist %>/assets/img'
+          dest: '<%%= path.dist %>/assets/img'
         }]
       }
     },
@@ -234,14 +234,14 @@ module.exports = function (grunt) {
      */
     modernizr: {
       dist: {
-        devFile: '<%= path.src %>/assets/bower_components/modernizr/modernizr.js',
-        outputFile: '<%= path.src %>/assets/javascripts/vendor/modernizr-custom.js',
+        devFile: '<%%= path.src %>/assets/bower_components/modernizr/modernizr.js',
+        outputFile: '<%%= path.src %>/assets/javascripts/vendor/modernizr-custom.js',
         parseFiles: true,
         files: {
           src: [
-            '<%= path.src %>/assets/javascripts/{,*/}*.js',
-            '<%= path.tmp %>/assets/stylesheets/{,*/}*.css',
-            '!<%= path.src %>/assets/javascripts/vendor/*.js'
+            '<%%= path.src %>/assets/javascripts/{,*/}*.js',
+            '<%%= path.tmp %>/assets/stylesheets/{,*/}*.css',
+            '!<%%= path.src %>/assets/javascripts/vendor/*.js'
           ]
         },
         'extra': {
@@ -273,8 +273,8 @@ module.exports = function (grunt) {
         files: [{
           expand: true,
           dot: true,
-          cwd: '<%= path.src %>',
-          dest: '<%= path.dist %>',
+          cwd: '<%%= path.src %>',
+          dest: '<%%= path.dist %>',
           src: [
             '*.{ico,png,txt}',
             '.htaccess',
@@ -296,12 +296,12 @@ module.exports = function (grunt) {
       dist: {
         files: {
           src: [
-            '<%= path.dist %>/assets/javascripts/{,*/}*.js',
-            '!<%= path.dist %>/assets/javascripts/vendor/jquery.min.js',
-            '!<%= path.dist %>/assets/javascripts/vendor/modernizr-custom.js',
-            '<%= path.dist %>/assets/stylesheets/{,*/}*.css',
-            '<%= path.dist %>/assets/img/{,*/}*.{png,jpg,jpeg,gif,webp}',
-            '<%= path.dist %>/assets/fonts/*'
+            '<%%= path.dist %>/assets/javascripts/{,*/}*.js',
+            '!<%%= path.dist %>/assets/javascripts/vendor/jquery.min.js',
+            '!<%%= path.dist %>/assets/javascripts/vendor/modernizr-custom.js',
+            '<%%= path.dist %>/assets/stylesheets/{,*/}*.css',
+            '<%%= path.dist %>/assets/img/{,*/}*.{png,jpg,jpeg,gif,webp}',
+            '<%%= path.dist %>/assets/fonts/*'
           ]
         }
       }

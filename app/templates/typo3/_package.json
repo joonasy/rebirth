@@ -1,11 +1,10 @@
 {
-  "author": "<project-name>",
-  "name": "<project-name>",
+  "author": "<%= generatorAuthor %>",
+  "name": "<%= appName %>",
   "version": "1.0.0",
-  "homepage": "http://<project-name>.com",
-  "description": "<project-name>",
+  "homepage": "<%= appHomepage %>",
+  "description": "<%= appDescription %>",
   "repository": {},
-  "readme": "Website for <project-name>",
   "dependencies": {},
   "devDependencies": {
     "grunt": ">=0.0.0",
