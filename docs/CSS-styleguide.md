@@ -1,24 +1,6 @@
-# Mediasignal boilerplate
+# CSS Styleguide
 
-This is mediasignals starting point for new web projects. It contains methods and ideas from various sources such as [BEM](https://bem.info/), [HTML5BP](http://html5boilerplate.com/), [Bootstrap](http://getbootstrap.com), [Foundation](http://foundation.zurb.com/), [INUITCSS](https://github.com/inuitcss), [SMACSS](https://smacss.com/), [OOCSS](http://oocss.org/), [SUIT CSS](https://github.com/suitcss/suit). By default this template supports: IE9+, Mobile first -ideology and progressive enhancement.
-
-This boilerplate is a long term process to figure out the best approaches that suit best for our workflow. We'll keep adding and removing logic from what we have learned from various projects.
-
-
-***
-
-
-## Requirements
-
-* [Sass](http://sass-lang.com/) + [Compass](http://compass-style.org/) ([Ruby](https://www.ruby-lang.org/en/))
-* [Node.js](http://nodejs.org/) / [Npm](https://www.npmjs.org/)
-* [Grunt](http://gruntjs.com/)
-* [Bower](http://bower.io/)
-
-
-## Styleguide
-
-* CSS Architecture
+* Architecture
   * Overview
   * Syntax
     * Stylesheet rules
