@@ -35,9 +35,11 @@ This style guide will be converted to html docs later.
 
 Yeoman helps you to kickstart new projects, prescribing best practices and tools to help you stay productive.
 
-###
-  
+### TODO
 
+* Add templates to typo
+* Lot's of shit
+  
 
 ## License
 
