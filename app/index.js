@@ -18,28 +18,13 @@ var MscGenerator = yeoman.generators.Base.extend({
   constructor: function () {
     yeoman.generators.Base.apply(this, arguments);
 
-    /**
-     * Application path etc.
-     */
     this.pkg = require('../package.json');
 
-    this.appDir = './'; // Install dir
-    this.appRoot = path.basename(process.cwd(this.appDir));
+    this.appRoot = path.basename(process.cwd());
 
     this.generatorDate = moment().format('DD.M.YYYY HH:MM');
     this.generatorAuthor = this.pkg.author.name;
     this.generatorRepository = this.pkg.repository;
-
-    this.option('dir', {
-      desc: 'Choose in which directory to write the files',
-      type: String,
-      required: false
-    });
-
-    if(this.options.dir) {
-      this.appDir = './'+this.options.dir;
-      this.appRoot = path.basename(this.appDir);
-    }
   },
 
   /**
@@ -61,7 +46,7 @@ var MscGenerator = yeoman.generators.Base.extend({
       type: 'input',
       name: 'name',
       message: 'Project name:',
-      default: path.basename(process.cwd(this.appDir))
+      default: path.basename(process.cwd())
     }, function(answers) {
 
       this.appName = this._.dasherize(this._.slugify(answers.name));
@@ -74,11 +59,7 @@ var MscGenerator = yeoman.generators.Base.extend({
   askFor: function () {
     var done = this.async();
     var appRoot = this.appRoot;
-    var appDir = this.options.dir ? './'+this.options.dir : this.appDir;
 
-    /**
-     * What kind of project we are building?
-     */
     this.prompt([{
       type: 'list',
       name: 'projectType',
@@ -97,14 +78,14 @@ var MscGenerator = yeoman.generators.Base.extend({
           if (answers.projectType === 'typoProject') {
             console.log(
               chalk.green('  ❯'),
-              'Your project will be installed in', chalk.cyan(appDir), '\n' +
+              'Your project will be installed in', chalk.cyan('./'), '\n' +
               chalk.green('  ❯'),
               'Your Typo3 extension path is', chalk.cyan(appRoot)
             );
           } else if (answers.projectType === 'htmlProject') {
             console.log(
               chalk.green('  ❯'), 'Your project will be installed in',
-              chalk.cyan(appDir)
+              chalk.cyan('./')
             );
 
             return true;
@@ -131,7 +112,6 @@ var MscGenerator = yeoman.generators.Base.extend({
         default: false
       }
     ], function(answers) {
-      //console.log(answers);
       this.projectType = answers.projectType;
       this.typoProject = this.projectType === 'typoProject';
       this.htmlProject = this.projectType === 'htmlProject';
@@ -146,7 +126,13 @@ var MscGenerator = yeoman.generators.Base.extend({
    */
   config: function() {
     if(this.typoProject) {
-      this.config.set('assetsPath', this.appDir+'Resources/Private/Assets');
+      /* Desination paths */
+      this.config.set('configurationPath', 'Configuration');
+      this.config.set('assetsPath', 'Resources/Private/Assets');
+    }
+
+    if(this.htmlProject) {
+      //this.config.set('assetsPath', 'Resources/Private/Assets');
     }
   },
 
@@ -155,11 +141,11 @@ var MscGenerator = yeoman.generators.Base.extend({
    */
   gruntfile: function() {
     if(this.typoProject) {
-      this.template('typo3/_Gruntfile.js', this.appDir+'Gruntfile.js');
+      this.template('typo3/_Gruntfile.js', 'Gruntfile.js');
     }
 
     if(this.htmlProject) {
-      this.template('html/_Gruntfile.js', this.appDir+'Gruntfile.js');
+      this.template('html/_Gruntfile.js', 'Gruntfile.js');
     }
   },
 
@@ -171,21 +157,41 @@ var MscGenerator = yeoman.generators.Base.extend({
     if (this.designAssets) {
       this.fs.copy(
         this.templatePath('shared/_design'),
-        this.destinationPath(this.appDir+'_design')
+        this.destinationPath('_design')
       )
       this.mkdir('_design/materials')
     }
 
     if(this.typoProject) {
-      //this.template('typo3/_Gruntfile.js', this.appDir+'Gruntfile.js');
       this.fs.copy(
         this.templatePath('assets'),
         this.config.get('assetsPath')
       )
     }
+  },
 
-    // if(this.htmlProject) {
-    // }
+  /**
+   * Setup bower
+   */
+  bower: function() {
+    this.template('shared/_bower.json', 'bower.json');
+  },
+
+  /**
+   * Copy other files
+   */
+  other: function() {
+    this.fs.copy(
+      this.templatePath('shared/editorconfig'),
+      this.destinationPath('.editorconfig')
+    );
+
+    if(this.typoProject) {
+      this.template(
+        'typo3/Configuration/TypoScript/_setup.txt',
+        this.config.get('configurationPath')+'/TypoScript/setup.txt'
+      );
+    }
   },
 
   install: function () {
@@ -196,7 +202,6 @@ var MscGenerator = yeoman.generators.Base.extend({
 
   log: function() {
     // this.log('AppName: ', this.appName);
-    // console.log('appDir: ', this.appDir);
     // console.log('appRoot: ', this.appRoot);
     // console.log('projectType: ', this.projectType);
     // console.log(this.appDir);
