@@ -126,6 +126,10 @@ var MscGenerator = yeoman.generators.Base.extend({
    */
   config: function() {
     if(this.typoProject) {
+      /* Source pahts */
+      // this.typoPath = 'typo3';
+      // this.typoScriptPath = 'typo3/Configuration/TypoScript';
+
       /* Desination paths */
       this.config.set('configurationPath', 'Configuration');
       this.config.set('assetsPath', 'Resources/Private/Assets');
@@ -188,8 +192,33 @@ var MscGenerator = yeoman.generators.Base.extend({
 
     if(this.typoProject) {
       this.template(
-        'typo3/Configuration/TypoScript/_setup.txt',
+        this.templatePath('typo3/Configuration/TypoScript/_setup.txt'),
         this.config.get('configurationPath')+'/TypoScript/setup.txt'
+      );
+
+      this.template(
+        this.templatePath('typo3/Configuration/TypoScript/_constants.txt'),
+        this.config.get('configurationPath')+'/TypoScript/constants.txt'
+      );
+
+      this.fs.copy(
+        this.templatePath('typo3/Resources/Private/Layouts/Page.html'),
+        this.destinationPath('Resources/Private/Layouts/Page.html')
+      );
+
+      this.fs.copy(
+        this.templatePath('typo3/Resources/Private/Layouts/Page.html'),
+        this.destinationPath('Resources/Private/Layouts/Page.html')
+      );
+
+      this.template(
+        this.templatePath('typo3/Resources/Private/Partials/_Top.html'),
+        this.destinationPath('Resources/Private/Partials/Top.html')
+      );
+
+      this.template(
+        this.templatePath('typo3/Resources/Private/Partials/_Bottom.html'),
+        this.destinationPath('Resources/Private/Partials/Bottom.html')
       );
     }
   },
