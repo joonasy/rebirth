@@ -2,6 +2,12 @@
  * Base
  * ======================================== */
 
+@-webkit-viewport   { width: device-width; }
+@-moz-viewport      { width: device-width; }
+@-ms-viewport       { width: device-width; }
+@-o-viewport        { width: device-width; }
+@viewport           { width: device-width; }
+
 html {
   background-color: $color-htmlBg;
   color: $color-text;
@@ -12,6 +18,8 @@ html {
 
   -webkit-tap-highlight-color: transparent;
   -webkit-touch-callout: none;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
   tap-highlight-color: transparent;
 }
 

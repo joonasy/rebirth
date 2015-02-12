@@ -1,7 +1,7 @@
 /* ========================================
- * Gruntfile for <%= appNameHumanized %> <%= appDir %>
+ * Gruntfile for `<%= appNameHumanize %>`
  * ========================================
- *
+ * <%= config.getAll() %>
  * @generated <%= (generatorDate) %> using `<%= pkg.name %> v<%= pkg.version %>`
  * @url <%= (generatorRepository) %>
  */
@@ -14,9 +14,9 @@ module.exports = function (grunt) {
      */
     pkg: grunt.file.readJSON('package.json'),
     path: {
+      tmp: '.tmp',
       private: 'Resources/Private',
       public: 'Resources/Public',
-      tmp: '.tmp',
       template: '/typo3conf/ext/<%= appRoot %>'
     },
     meta: {
