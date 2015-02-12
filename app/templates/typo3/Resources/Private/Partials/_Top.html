@@ -1,43 +1,23 @@
 {namespace flux=FluidTYPO3\Flux\ViewHelpers}
 {namespace v=FluidTYPO3\Vhs\ViewHelpers}
 
-<v:page.header.meta name="description" content="{page.description}"  />
 <v:page.header.meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
 <v:page.header.meta name="viewport" content="width=device-width,initial-scale=1" />
-
-<!--
-  Place in the root:
-    favicon.ico
-    apple-touch-icon-precomposed.png (180x180 http://bit.ly/1fco6h9)
-    touch-icon.png
-
-  Otherwise:
-    <link rel="apple-touch-icon-precomposed" href="apple-touch-icon-precomposed.png">
-    <link rel="shortcut icon" href="favicon.ico">
-
-  Always:
-    <link rel="icon" sizes="192x192" href="touch-icon.png"> (http://bit.ly/1C6Tw5J)
--->
 
 <f:if condition="{settings.dev}">
   <f:then>
     <!-- Stylesheets -->
-    <v:asset.style path="EXT:<project-name>_templates/Resources/Private/Assets/stylesheets/app.css" rewrite="false" standalone="true"></v:asset.style>
+    <v:asset.style path="EXT:<%= appRoot %>/Resources/Private/Assets/stylesheets/app.css" rewrite="false" standalone="true"></v:asset.style>
 
     <!-- Javascripts -->
-    <v:asset.script path="EXT:<project-name>_templates/bower_components/modernizr/modernizr.js" rewrite="false" standalone="true" allowMoveToFooter="false"></v:asset.script>
-    <v:asset.script path="EXT:<project-name>_templates/Resources/Private/Assets/javascripts/head.js" rewrite="false" standalone="true" allowMoveToFooter="false"></v:asset.script>
+    <v:asset.script path="EXT:<%= appRoot %>/bower_components/modernizr/modernizr.js" rewrite="false" standalone="true" allowMoveToFooter="false"></v:asset.script>
+    <v:asset.script path="EXT:<%= appRoot %>/Resources/Private/Assets/javascripts/head.js" rewrite="false" standalone="true" allowMoveToFooter="false"></v:asset.script>
   </f:then>
   <f:else>
-    <v:asset.style path="EXT:<project-name>_templates/Resources/Public/Assets/stylesheets/app.min.css"></v:asset.style>
-    <v:asset.script path="EXT:<project-name>_templates/Resources/Public/Assets/javascripts/head.min.js" allowMoveToFooter="false"></v:asset.script>
+    <v:asset.style path="EXT:<%= appRoot %>/Resources/Public/Assets/stylesheets/app.min.css"></v:asset.style>
+    <v:asset.script path="EXT:<%= appRoot %>/Resources/Public/Assets/javascripts/head.min.js" allowMoveToFooter="false"></v:asset.script>
   </f:else>
 </f:if>
-
-<script>
-  var App = App || {};
-  App.URL = "<v:site.url></v:site.url>";
-</script>
 
 <!--[if lte IE 8]>
   <p class="ieframe">Hei, käytät <strong>tietoturvatonta</strong> selainta. <a href="http://browsehappy.com/">Päivitä uuteen selaimeen</a>, kiitokset!</p>
