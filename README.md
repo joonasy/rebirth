@@ -1,4 +1,4 @@
-# Mediasignal boilerplate (Work in progress) [Repo](https://bitbucket.org/mediasignal/generator-msc.git)
+# Mediasignal Web Starter kit (generator-msc) [Repo](https://bitbucket.org/mediasignal/generator-msc.git)
 
 This is Mediasignals style guide and Yeoman generator for new web projects (typo3/html). It contains methods and ideas from various sources such as [BEM](https://bem.info/), [HTML5BP](http://html5boilerplate.com/), [Bootstrap](http://getbootstrap.com), [Foundation](http://foundation.zurb.com/), [INUITCSS](https://github.com/inuitcss), [SMACSS](https://smacss.com/), [OOCSS](http://oocss.org/), [SUIT CSS](https://github.com/suitcss/suit). By default this template supports: IE9+, Mobile first -ideology and progressive enhancement.
 
