@@ -19,12 +19,22 @@ var MscGenerator = yeoman.generators.Base.extend({
     yeoman.generators.Base.apply(this, arguments);
 
     this.pkg = require('../package.json');
-
     this.appRoot = path.basename(process.cwd());
-
     this.generatorDate = moment().format('DD.M.YYYY HH:MM');
     this.generatorAuthor = this.pkg.author.name;
     this.generatorRepository = this.pkg.repository;
+
+    this.argument('dir', {
+      type: String,
+      required: false
+    });
+
+    this.dir = this._.dasherize(this._.slugify(this.dir));
+
+    if(this.dir) {
+      this.destinationRoot(this.dir);
+      this.appRoot = this.dir;
+    }
   },
 
   /**
@@ -59,6 +69,7 @@ var MscGenerator = yeoman.generators.Base.extend({
   askFor: function () {
     var done = this.async();
     var appRoot = this.appRoot;
+    var dir = this.dir;
 
     this.prompt([{
       type: 'list',
@@ -78,7 +89,7 @@ var MscGenerator = yeoman.generators.Base.extend({
           if (answers.projectType === 'typoProject') {
             console.log(
               chalk.green('  ❯'),
-              'Your project will be installed in', chalk.cyan('./'), '\n' +
+              'Your project will be installed in', chalk.cyan('./'+dir), '\n' +
               chalk.green('  ❯'),
               'Your Typo3 extension path is', chalk.cyan(appRoot)
             );
@@ -126,11 +137,6 @@ var MscGenerator = yeoman.generators.Base.extend({
    */
   config: function() {
     if(this.typoProject) {
-      /* Source pahts */
-      // this.typoPath = 'typo3';
-      // this.typoScriptPath = 'typo3/Configuration/TypoScript';
-
-      /* Desination paths */
       this.config.set('configurationPath', 'Configuration');
       this.config.set('assetsPath', 'Resources/Private/Assets');
     }
@@ -145,11 +151,17 @@ var MscGenerator = yeoman.generators.Base.extend({
    */
   gruntfile: function() {
     if(this.typoProject) {
-      this.template('typo3/_Gruntfile.js', 'Gruntfile.js');
+      this.template(
+        'typo3/_Gruntfile.js',
+        this.destinationPath('Gruntfile.js')
+      );
     }
 
     if(this.htmlProject) {
-      this.template('html/_Gruntfile.js', 'Gruntfile.js');
+      this.template(
+        'html/_Gruntfile.js',
+        this.destinationPath('Gruntfile.js')
+      );
     }
   },
 
