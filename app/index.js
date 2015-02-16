@@ -70,6 +70,7 @@ var MscGenerator = yeoman.generators.Base.extend({
     var done = this.async();
     var appRoot = this.appRoot;
     var dir = this.dir;
+    var log = this.log;
 
     this.prompt([{
       type: 'list',
@@ -87,46 +88,66 @@ var MscGenerator = yeoman.generators.Base.extend({
       }, {
         when: function (answers) {
           if (answers.projectType === 'typoProject') {
-            console.log(
+            log(
               chalk.green('  ❯'),
               'Your project will be installed in', chalk.cyan('./'+dir), '\n' +
               chalk.green('  ❯'),
               'Your Typo3 extension path is', chalk.cyan(appRoot)
             );
           } else if (answers.projectType === 'htmlProject') {
-            console.log(
-              chalk.green('  ❯'), 'Your project will be installed in',
-              chalk.cyan('./')
-            );
-
             return true;
           }
         },
         type: 'input',
-        name: 'sourcePath',
-        message: 'Source path for your code (development):',
+        name: 'srcPath',
+        message: 'Source path for your code (folder for development):',
         default: 'src'
       }, {
+        when: function (answers) {
+          if (answers.projectType === 'htmlProject') {
+            log(
+              chalk.green('  ❯'), 'Your project will be installed in',
+              chalk.cyan('./'+dir), '\n' +
+              chalk.green('  ❯'),
+              'Your development path is', chalk.cyan(answers.srcPath)
+            );
+          }
+        }
+      }, {
         type: 'input',
-        name: 'homepage',
+        name: 'url',
         message: 'Project URL (production):',
-        default: this.appName + '.com'
+        default: 'http://' + this.appName + '.com'
       }, {
         type: 'input',
         name: 'description',
         message: 'Project description:',
         default: 'Website for '+ this.appNameHumanize
       }, {
-        type: 'confirm',
-        name: 'designAssets',
-        message: 'Do you need design assets (psd etc.):',
-        default: false
+        type: 'checkbox',
+        name: 'assets',
+        message: 'What assets do you need?',
+        choices: [{
+          name: 'Stylesheets and JavaScripts',
+          value: 'cssJs',
+          checked: true
+        },{
+          name: 'Design material (.psd)',
+          value: 'design',
+          checked: false
+        }]
       }
     ], function(answers) {
       this.projectType = answers.projectType;
       this.typoProject = this.projectType === 'typoProject';
       this.htmlProject = this.projectType === 'htmlProject';
-      this.designAssets = answers.designAssets;
+
+      this.appURL = answers.url;
+      this.appDescription = answers.description;
+      this.appSourcePath = answers.srcPath;
+
+      this.cssAndJsAssets = answers.assets.indexOf('cssJs') !== -1;
+      this.designAssets = answers.assets.indexOf('design') !== -1;
 
       done();
     }.bind(this));
@@ -137,12 +158,12 @@ var MscGenerator = yeoman.generators.Base.extend({
    */
   config: function() {
     if(this.typoProject) {
-      this.config.set('configurationPath', 'Configuration');
       this.config.set('assetsPath', 'Resources/Private/Assets');
     }
 
     if(this.htmlProject) {
-      //this.config.set('assetsPath', 'Resources/Private/Assets');
+      this.config.set('sourcePath', this.appSourcePath);
+      this.config.set('assetsPath', this.config.get('sourcePath')+'/assets');
     }
   },
 
@@ -166,6 +187,25 @@ var MscGenerator = yeoman.generators.Base.extend({
   },
 
   /**
+   * Setup package.json
+   */
+  packageJSON: function () {
+    if(this.typoProject) {
+      this.template(
+        'typo3/_package.json',
+        this.destinationPath('package.json')
+      );
+    }
+
+    if(this.htmlProject) {
+      this.template(
+        'html/_package.json',
+        this.destinationPath('package.json')
+      );
+    }
+  },
+
+  /**
    * Setup assets
    */
   assets: function() {
@@ -178,7 +218,14 @@ var MscGenerator = yeoman.generators.Base.extend({
       this.mkdir('_design/materials')
     }
 
-    if(this.typoProject) {
+    if(this.typoProject && this.cssAndJsAssets) {
+      this.fs.copy(
+        this.templatePath('assets'),
+        this.config.get('assetsPath')
+      )
+    }
+
+    if(this.htmlProject && this.cssAndJsAssets) {
       this.fs.copy(
         this.templatePath('assets'),
         this.config.get('assetsPath')
@@ -205,21 +252,21 @@ var MscGenerator = yeoman.generators.Base.extend({
     if(this.typoProject) {
       this.template(
         this.templatePath('typo3/Configuration/TypoScript/_setup.txt'),
-        this.config.get('configurationPath')+'/TypoScript/setup.txt'
+        this.destinationPath('Configuration/TypoScript/setup.txt')
       );
 
       this.template(
         this.templatePath('typo3/Configuration/TypoScript/_constants.txt'),
-        this.config.get('configurationPath')+'/TypoScript/constants.txt'
+        this.destinationPath('Configuration/TypoScript/constants.txt')
+      );
+
+      this.template(
+        this.templatePath('typo3/Resources/Private/Templates/Page/_Default.html'),
+        this.destinationPath('Resources/Private/Templates/Page/Default.html')
       );
 
       this.fs.copy(
-        this.templatePath('typo3/Resources/Private/Layouts/Page.html'),
-        this.destinationPath('Resources/Private/Layouts/Page.html')
-      );
-
-      this.fs.copy(
-        this.templatePath('typo3/Resources/Private/Layouts/Page.html'),
+        this.templatePath('typo3/Resources/Private/Layouts/_Page.html'),
         this.destinationPath('Resources/Private/Layouts/Page.html')
       );
 
@@ -233,6 +280,33 @@ var MscGenerator = yeoman.generators.Base.extend({
         this.destinationPath('Resources/Private/Partials/Bottom.html')
       );
     }
+
+    if(this.htmlProject) {
+      this.template(
+        this.templatePath('html/src/_app.json'),
+        this.destinationPath(this.config.get('sourcePath')+'/app.json')
+      );
+
+      this.template(
+        this.templatePath('html/src/pages/_index.hbs'),
+        this.destinationPath(this.config.get('sourcePath')+'/pages/index.hbs')
+      );
+
+      this.fs.copy(
+        this.templatePath('html/src/layouts/_layout.hbs'),
+        this.destinationPath(this.config.get('sourcePath')+'/layouts/layout.hbs')
+      );
+
+      this.fs.copy(
+        this.templatePath('html/src/includes/_top.hbs'),
+        this.destinationPath(this.config.get('sourcePath')+'/includes/top.hbs')
+      );
+
+      this.fs.copy(
+        this.templatePath('html/src/includes/_bottom.hbs'),
+        this.destinationPath(this.config.get('sourcePath')+'/includes/bottom.hbs')
+      );
+    }
   },
 
   install: function () {
@@ -242,10 +316,6 @@ var MscGenerator = yeoman.generators.Base.extend({
   },
 
   log: function() {
-    // this.log('AppName: ', this.appName);
-    // console.log('appRoot: ', this.appRoot);
-    // console.log('projectType: ', this.projectType);
-    // console.log(this.appDir);
     console.log(this.config.getAll());
   }
 });
