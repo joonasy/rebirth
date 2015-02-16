@@ -1,15 +1,20 @@
 /* ========================================
- * Gruntfile
- * ======================================== */
+ * Gruntfile for `<%= appNameHumanize %>`
+ * ========================================
+ *
+ * @generated <%= (generatorDate) %> using `<%= pkg.name %> v<%= pkg.version %>`
+ * @url <%= (generatorRepository) %>
+ */
 
 module.exports = function (grunt) {
   grunt.initConfig({
+
     /**
      * Settings
      */
     pkg: grunt.file.readJSON('package.json'),
     path: {
-      src: 'src',
+      src: '<%= appSourcePath %>',
       dist: 'dist',
       tmp: '.tmp'
     },
@@ -18,7 +23,7 @@ module.exports = function (grunt) {
         '/*!\n' +
         ' * <%%= pkg.name %> - v<%%= pkg.version %> - Build at <%%= grunt.template.today("dd.mm.yyyy HH:MM") %>\n' +
         ' * <%%= pkg.homepage %>\n' +
-        ' * Copyright (c) <%%= grunt.template.today("yyyy") %> <%%= pkg.author %> | Site by Mediasignal\n' +
+        ' * Copyright (c) <%%= grunt.template.today("yyyy") %> <%%= pkg.name %> | Site by <%= generatorAuthor %>\n' +
         ' */\n'
     },
 
@@ -27,15 +32,12 @@ module.exports = function (grunt) {
      */
     assemble: {
       options: {
-        data: ['<%%= path.src %>/data/*.{json,yml}'],
+        data: ['<%%= path.src %>/*.{json,yml}'],
         flatten: true,
-        helpers: '<%%= path.src %>/templates/helpers/**/*.js',
+        helpers: '<%%= path.src %>/helpers/**/*.js',
         layout: 'layout.hbs',
-        layoutdir: '<%%= path.src %>/templates/layouts',
-        partials: '<%%= path.src %>/templates/includes/*.hbs',
-        permalinks: {
-          structure: ':slug/index.html'
-        }
+        layoutdir: '<%%= path.src %>/layouts',
+        partials: '<%%= path.src %>/includes/*.hbs'
       },
       dev: {
         options: {
@@ -45,7 +47,7 @@ module.exports = function (grunt) {
         },
         files: [{
           expand: true,
-          cwd: '<%%= path.src %>/templates/pages',
+          cwd: '<%%= path.src %>/pages',
           src: '**/*.hbs',
           dest: '<%%= path.tmp %>'
         }]
@@ -56,8 +58,12 @@ module.exports = function (grunt) {
           dev: false,
           prod: true
         },
-        src: '<%%= path.src %>/templates/pages/**/*.hbs',
-        dest: '<%%= path.dist %>'
+        files: [{
+          expand: true,
+          cwd: '<%%= path.src %>/pages',
+          src: '**/*.hbs',
+          dest: '<%%= path.dist %>'
+        }]
       }
     },
 
@@ -149,13 +155,13 @@ module.exports = function (grunt) {
         httpGeneratedImagesPath: '/assets/img',
 
         fontsDir: '<%%= path.src %>/assets/fonts',
-        httpFontsPath: '../fonts',
+        httpFontsPath: '/assets/fonts',
         javascriptsDir: '<%%= path.src %>/assets/js',
         relativeAssets: false,
 
         raw: '::Sass::Script::Number.precision = 10\n',
 
-        importPath: 'bower_components/'
+        importPath: 'bower_components'
       },
       dev: {}
     },
@@ -165,7 +171,7 @@ module.exports = function (grunt) {
      */
     autoprefixer: {
       options: {
-        browsers: ['last 2 version']
+        browsers: ['last 2 version', 'ie 9']
       },
       dist: {
         files: [{
@@ -190,7 +196,7 @@ module.exports = function (grunt) {
       options: {
         assetsDirs: ['<%%= path.dist %>/**/']
       },
-      html: ['<%%= path.dist %>/{,**/}*.html'],
+      html: ['<%%= path.dist %>/**/*.html'],
       css: ['<%%= path.dist %>/assets/stylesheets/*.css']
     },
 
@@ -234,7 +240,7 @@ module.exports = function (grunt) {
      */
     modernizr: {
       dist: {
-        devFile: '<%%= path.src %>/assets/bower_components/modernizr/modernizr.js',
+        devFile: 'bower_components/modernizr/modernizr.js',
         outputFile: '<%%= path.src %>/assets/javascripts/vendor/modernizr-custom.js',
         parseFiles: true,
         files: {
