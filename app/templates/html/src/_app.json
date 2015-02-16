@@ -1,0 +1,6 @@
+{
+    "title": "<%= appName %>",
+    "author": "<%= generatorAuthor %>",
+    "description": "<%= appDescription %>",
+    "url": "<%= appURL %>"
+}

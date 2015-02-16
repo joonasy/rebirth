@@ -4,7 +4,7 @@
     <meta charset="utf-8">
     <title>{{app.title}} {{#if page.title}}| {{page.title}}{{/if}}</title>
     <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
-    <meta name="description" content="{{app.meta.description}}">
+    <meta name="description" content="{{app.description}}">
     <meta name="viewport" content="width=device-width,initial-scale=1">
 
     <!-- build:css(.tmp) {{assets}}/stylesheets/app.min.css -->
@@ -12,7 +12,7 @@
     <!-- endbuild -->
 
     {{#dev}}
-      <script src="{{assets}}/bower_components/modernizr/modernizr.js"></script>
+      <script src="bower_components/modernizr/modernizr.js"></script>
     {{/dev}}
 
     <script>
