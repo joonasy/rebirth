@@ -1,7 +1,7 @@
 /* ========================================
  * Gruntfile for `<%= appNameHumanize %>`
  * ========================================
- * <%= config.getAll() %>
+ *
  * @generated <%= (generatorDate) %> using `<%= pkg.name %> v<%= pkg.version %>`
  * @url <%= (generatorRepository) %>
  */
@@ -58,11 +58,11 @@ module.exports = function (grunt) {
 
         imagesDir: '<%%= path.private %>/Assets/images/',
         generatedImagesDir: '<%%= path.private %>/Assets/images/',
-        httpImagesPath: '<%%= path.template %>/<%%= path.private %>/Assets/images/',
-        httpGeneratedImagesPath: '<%%= path.template %>/<%%= path.tmp %>/Assets/images/',
+        httpImagesPath: '<%%= path.extension %>/<%%= path.private %>/Assets/images/',
+        httpGeneratedImagesPath: '<%%= path.extension %>/<%%= path.tmp %>/Assets/images/',
 
         fontsDir: '<%%= path.private %>/Assets/fonts/',
-        httpFontsPath: '<%%= path.template %>/<%%= path.private %>/Assets/fonts/',
+        httpFontsPath: '<%%= path.extension %>/<%%= path.private %>/Assets/fonts/',
         relativeAssets: false,
 
         raw: '::Sass::Script::Number.precision = 10\n',
@@ -72,9 +72,9 @@ module.exports = function (grunt) {
       dev: {},
       dist: {
         options: {
-          httpImagesPath: '<%%= path.template %>/<%%= path.public %>/Assets/images/',
-          httpGeneratedImagesPath: '<%%= path.template %>/<%%= path.public %>/Assets/images/',
-          httpFontsPath: '<%%= path.template %>/<%%= path.public %>/Assets/fonts/'
+          httpImagesPath: '<%%= path.extension %>/<%%= path.public %>/Assets/images/',
+          httpGeneratedImagesPath: '<%%= path.extension %>/<%%= path.public %>/Assets/images/',
+          httpFontsPath: '<%%= path.extension %>/<%%= path.public %>/Assets/fonts/'
         },
       }
     },

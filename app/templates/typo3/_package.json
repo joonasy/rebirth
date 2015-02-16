@@ -1,10 +1,9 @@
 {
-  "author": "<%= generatorAuthor %>",
   "name": "<%= appName %>",
   "version": "1.0.0",
-  "homepage": "<%= appHomepage %>",
+  "author": "<%= generatorAuthor %>",
+  "homepage": "<%= appURL %>",
   "description": "<%= appDescription %>",
-  "repository": {},
   "dependencies": {},
   "devDependencies": {
     "grunt": ">=0.0.0",
