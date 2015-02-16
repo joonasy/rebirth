@@ -127,14 +127,7 @@ module.exports = function (grunt) {
           ]
         }]
       },
-      tmp: '<%%= path.tmp %>',
-      dev: {
-        files: [{
-          src: [
-            '<%%= path.src %>/assets/javascripts/vendor/modernizr-custom.js'
-          ]
-        }]
-      }
+      tmp: '<%%= path.tmp %>'
     },
 
     /**
@@ -241,13 +234,12 @@ module.exports = function (grunt) {
     modernizr: {
       dist: {
         devFile: 'bower_components/modernizr/modernizr.js',
-        outputFile: '<%%= path.src %>/assets/javascripts/vendor/modernizr-custom.js',
+        outputFile: '<%%= path.tmp %>/assets/javascripts/vendor/modernizr.custom.js',
         parseFiles: true,
         files: {
           src: [
-            '<%%= path.src %>/assets/javascripts/{,*/}*.js',
-            '<%%= path.tmp %>/assets/stylesheets/{,*/}*.css',
-            '!<%%= path.src %>/assets/javascripts/vendor/*.js'
+            '<%%= path.src %>/assets/javascripts/**/*.js',
+            '<%%= path.tmp %>/assets/stylesheets/*.css'
           ]
         },
         'extra': {
@@ -351,7 +343,6 @@ module.exports = function (grunt) {
     'cssmin',
     'uglify',
     'rev',
-    'usemin',
-    'clean:dev'
+    'usemin'
   ]);
 };
