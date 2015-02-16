@@ -234,7 +234,7 @@ module.exports = function (grunt) {
     modernizr: {
       dist: {
         devFile: 'bower_components/modernizr/modernizr.js',
-        outputFile: '<%%= path.tmp %>/assets/javascripts/vendor/modernizr.custom.js',
+        outputFile: '<%%= path.tmp %>/assets/javascripts/vendor/modernizr.build.js',
         parseFiles: true,
         files: {
           src: [
