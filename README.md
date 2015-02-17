@@ -83,8 +83,13 @@ Please discuss about new ideas and things that you think should be modified. Cur
 
 ## Todo
 
+* JavaScript style guide
+* Sub generators for starters
+* Rest of the CSS style guiding
+* Test CSS components 
+* Testing for everything
+* Gitignores and readmes to generator
 
-  
 
 ## License
 
