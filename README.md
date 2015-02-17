@@ -6,12 +6,19 @@ This startekit contains methods and ideas from various sources such as [BEM](htt
 
 This project is a long term process to figure out the best approaches that suit best for our workflow. We'll keep altering logic from what we have learned from various projects. This starter kit is **not a framework** but it contains some predefined components that are meant to be modified based on your project needs.
 
-## Styleguide
+## Getting started
 
-Please read and understand all of the following before doing anything. This style guide will be converted to html docs later.
+Please read and understand all of the following before doing anything. All of these documents will be converted to html docs later on.
 
-* [CSS Styleguide (work in progress)](docs/CSS-styleguide.md)
-* [JS Styleguide (nothing yet)](docs/JS-styleguide.md)
+### Styleguides
+
+* [CSS styleguide (work in progress)](docs/CSS-styleguide.md)
+* [JS styleguide (nothing yet)](docs/JS-styleguide.md)
+
+### Project types
+
+* [Typo3 (work in progress)](docs/project-types.md#typo3)
+* [Html (work in progress)](docs/project-types.md#html)
 
 ## Requirements
 
@@ -23,7 +30,7 @@ Install all the requirements before installing the generator.
 * [Grunt](http://gruntjs.com/) ```npm install -g grunt-cli```
 * [Bower](http://bower.io/) ```npm install -g bower```
 
-## Installing and usage
+## Installing
 
 **1.** Install ```generator-msc```: 
 
@@ -37,8 +44,9 @@ or alternatively make a new directory, cd into it and run the generator:
 
     mkdir my-new-project && cd $_ && yo msc
 
+## Usage
 
-**3.** Run ```grunt``` for building and ```grunt dev``` for developing.
+Run ```grunt``` for building and ```grunt dev``` for developing.
 
 ## Contribute
 
@@ -59,26 +67,13 @@ Please discuss about new ideas and things that you think should be modified. Cur
     |── docs [7.]
     |   CSS-styleguide.md
 
-* **[1.]** index.js
-  This file contains all the generator settings. Read more about building generators at [Yeoman docs](http://yeoman.io/authoring/) and [Yeoman API](http://yeoman.github.io/generator/).
-
-* **[2.]** assets
-  This directory contains all the default stylesheets and javascripts that are always copied to project folder.
-
-* **[3.] ** [project-type]
-  These directories contain all project type related files. [Read more about project types](http://#).
-
-* **[4.]** shared
-  Various shared project type files.
-
-* **[5.]** starters
-  This directory contains all the boilerplate stylesheets and javascripts that may be copied to your project folder. This directory is also used as a base for developing starters and building docs. [Read more about making starters](http://#).
-
-* **[6.]** component
-  Component sub-generator.
-
-* **[7.]** docs
-  Documents and instructions. This directory and all of its contents will later be converted to a HTML document, and this directory will be a build folder for starters and docs (starters [5.]).
+* **[1.]** This file contains all the generator settings. Read more about building generators at [Yeoman docs](http://yeoman.io/authoring/) and [Yeoman API](http://yeoman.github.io/generator/).
+* **[2.]** Contains all the default stylesheets and javascripts that are always copied to project folder.
+* **[3.]** These directories contain all project type related files. [Read more about project types](http://#).
+* **[4.]** Various shared project type files.
+* **[5.]** Contains all the boilerplate stylesheets and javascripts that may be copied to your project folder. This directory is also used as a base for developing starters and building docs. [Read more about making starters](http://#).
+* **[6.]** Component sub-generator.
+* **[7.]** Documents and instructions. This directory and all of its contents will be  later converted to a HTML document, and this directory will be a build folder for starters and docs (*starters [5.]*).
 
 
 ## Todo
