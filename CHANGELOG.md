@@ -1,9 +1,9 @@
 # Changelog
 
-## 2015-01-17
+## 2015-2-17
 * Project is now converted to (Mediasignal) Yeoman generator (generator-msc). Please read all the new project docs ```README.md & docs/*``` .
 * Default assets (CSS/JS) modified a lot. See ```app/templates/assets/```
-* CSS style guide added
+* CSS styleguide added
 * CSS starters (components, helpers etc.) added ```app/templates/starters/src/assets/stylesheets/```
 * JS starters added ```app/templates/starters/src/assets/javascripts/```
 * IE support 9+
