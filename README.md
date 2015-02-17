@@ -12,13 +12,13 @@ Please read and understand all of the following before doing anything. All of th
 
 ### Styleguides
 
-* [CSS styleguide (work in progress)](docs/CSS-styleguide.md)
-* [JS styleguide (nothing yet)](docs/JS-styleguide.md)
+* [CSS styleguide (work in progress)](https://bitbucket.org/mediasignal/generator-msc/src/90566b12eab4d8fdd9d79e781b4d388e4ccd9a5b/docs/CSS-styleguide.md)
+* [JS styleguide (nothing yet)](https://bitbucket.org/mediasignal/generator-msc/src/90566b12eab4d8fdd9d79e781b4d388e4ccd9a5b/docs/JS-styleguide.md)
 
 ### Project workflow
 
-* [Typo3 (work in progress)](docs/project-types.md#typo3)
-* [Html (work in progress)](docs/project-types.md#html)
+* [Typo3 (work in progress)](https://bitbucket.org/mediasignal/generator-msc/src/90566b12eab4d8fdd9d79e781b4d388e4ccd9a5b/docs/project-types.md#typo3)
+* [Html (work in progress)](https://bitbucket.org/mediasignal/generator-msc/src/90566b12eab4d8fdd9d79e781b4d388e4ccd9a5b/docs/project-types.md#html)
 
 ## Requirements
 
@@ -52,7 +52,7 @@ Run ```grunt``` for building and ```grunt dev``` for developing.
 
 Please discuss about new ideas and things that you think should be modified. Currently all the styleguiding, components (CSS/JS) and generator logic has been made by Joonas Ylitalo [@joonasy](https://twitter.com/joonasy).
 
-[Learn more about contributing](docs/contribute.md)
+[Learn more about contributing](https://bitbucket.org/mediasignal/generator-msc/src/90566b12eab4d8fdd9d79e781b4d388e4ccd9a5b/docs/contribute.md)
 
 ## Todo
 
