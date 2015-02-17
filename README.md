@@ -1,44 +1,89 @@
-# Mediasignal Web Starter kit (generator-msc) [Repo](https://bitbucket.org/mediasignal/generator-msc.git)
+# Mediasignal Web Starter Kit ([generator-msc](https://bitbucket.org/mediasignal/generator-msc.git))
 
-This is Mediasignals style guide and Yeoman generator for new web projects (typo3/html). It contains methods and ideas from various sources such as [BEM](https://bem.info/), [HTML5BP](http://html5boilerplate.com/), [Bootstrap](http://getbootstrap.com), [Foundation](http://foundation.zurb.com/), [INUITCSS](https://github.com/inuitcss), [SMACSS](https://smacss.com/), [OOCSS](http://oocss.org/), [SUIT CSS](https://github.com/suitcss/suit). By default this template supports: IE9+, Mobile first -ideology and progressive enhancement.
+> Mediasignals style guide and Yeoman generator for new web projects (Typo3/Html). 
 
-This is a long term process to figure out the best approaches that suit best for our workflow. We'll keep adding and removing logic from what we have learned from various projects.
+This startekit contains methods and ideas from various sources such as [BEM](https://bem.info/), [HTML5BP](http://html5boilerplate.com/), [Bootstrap](http://getbootstrap.com), [Foundation](http://foundation.zurb.com/), [INUITCSS](https://github.com/inuitcss), [SMACSS](https://smacss.com/), [OOCSS](http://oocss.org/), [SUIT CSS](https://github.com/suitcss/suit). By default this template supports IE9+, Mobile first -ideology and progressive enhancement.
 
-## Getting Started
+This project is a long term process to figure out the best approaches that suit best for our workflow. We'll keep altering logic from what we have learned from various projects. This starter kit is **not a framework** but it contains some predefined components that are meant to be modified based on your project needs.
 
-Please read and understand all the following instructions before doing anything.
+## Styleguide
 
-*CSS Styleguide*
+Please read and understand all of the following before doing anything. This style guide will be converted to html docs later.
 
 * [CSS Styleguide (work in progress)](docs/CSS-styleguide.md)
-* [CSS Styleguide](docs/CSS-styleguide.md)
-
-This style guide will be converted to html docs later.
-
-*JS Styleguide*
 * [JS Styleguide (nothing yet)](docs/JS-styleguide.md)
 
-*Requirements*
+## Requirements
 
-* [Yeoman](http://yeoman.io/) (for scaffolding the project)
-* [Sass](http://sass-lang.com/) + [Compass](http://compass-style.org/) ([Ruby](https://www.ruby-lang.org/en/))
-* [Node.js](http://nodejs.org/) / [Npm](https://www.npmjs.org/)
-* [Grunt](http://gruntjs.com/)
-* [Bower](http://bower.io/)
+Install all the requirements before installing the generator.
 
-*Yeoman generator project structure*
+* [Node.js](http://nodejs.org/) ([Npm](https://www.npmjs.org/)) 
+* [Compass](http://compass-style.org/) ([Ruby](https://www.ruby-lang.org/en/)) ```gem install compass```
+* [Yeoman](http://yeoman.io/) ```npm install -g yo```
+* [Grunt](http://gruntjs.com/) ```npm install -g grunt-cli```
+* [Bower](http://bower.io/) ```npm install -g bower```
 
-...
+## Installing and usage
+
+**1.** Install ```generator-msc```: 
+
+    npm install -g generator-msc
+
+**2.** Run the generator in your current directory or optionally pass a new install location (Note that if you are building a *Typo3 project*, your project folder will be used as your *extension path*):
+
+    yo msc [my-new-project-directory]
+
+or alternatively make a new directory, cd into it and run the generator:
+
+    mkdir my-new-project && cd $_ && yo msc
 
 
-### What is Yeoman?
+**3.** Run ```grunt``` for building and ```grunt dev``` for developing.
 
-Yeoman helps you to kickstart new projects, prescribing best practices and tools to help you stay productive.
+## Contribute
 
-### TODO
+Please discuss about new ideas and things that you think should be modified. Currently all the styleguiding, components (CSS/JS) and generator logic has been made by Joonas Ylitalo [@joonasy](https://twitter.com/joonasy).
 
-* Add templates to typo
-* Lot's of shit
+**Generator structure**
+
+    |── app 
+    |   |── templates
+    |   |   index.js     [1.]
+    |   |   |── assets   [2.]
+    |   |   |── html     [3.]
+    |   |   |── shared   [4.]
+    |   |   |── starters [5.]
+    |   |   |── typo3    [3.]
+    |── component [6.]
+    |   ...
+    |── docs [7.]
+    |   CSS-styleguide.md
+
+* **[1.]** index.js
+  This file contains all the generator settings. Read more about building generators at [Yeoman docs](http://yeoman.io/authoring/) and [Yeoman API](http://yeoman.github.io/generator/).
+
+* **[2.]** assets
+  This directory contains all the default stylesheets and javascripts that are always copied to project folder.
+
+* **[3.] ** [project-type]
+  These directories contain all project type related files. [Read more about project types](http://#).
+
+* **[4.]** shared
+  Various shared project type files.
+
+* **[5.]** starters
+  This directory contains all the boilerplate stylesheets and javascripts that may be copied to your project folder. This directory is also used as a base for developing starters and building docs. [Read more about making starters](http://#).
+
+* **[6.]** component
+  Component sub-generator.
+
+* **[7.]** docs
+  Documents and instructions. This directory and all of its contents will later be converted to a HTML document, and this directory will be a build folder for starters and docs (starters [5.]).
+
+
+## Todo
+
+
   
 
 ## License
