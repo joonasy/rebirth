@@ -330,7 +330,7 @@ module.exports = function (grunt) {
     ]);
   });
 
-  grunt.registerTask('build', [
+  grunt.registerTask('default', [
     'clean:dist',
     'assemble:dist',
     'compass',

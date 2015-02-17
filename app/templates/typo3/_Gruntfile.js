@@ -269,7 +269,7 @@ module.exports = function (grunt) {
     'watch'
   ]);
 
-  grunt.registerTask('build', [
+  grunt.registerTask('default', [
     'clean:dist',
     'imagemin:dist',
     'compass:dist',
