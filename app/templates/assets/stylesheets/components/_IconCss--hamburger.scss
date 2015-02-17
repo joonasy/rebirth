@@ -7,7 +7,6 @@
   display: inline-block;
   position: relative;
   top: -7px;
-  transition: border-color $transitionDuration / 2;
   user-select: none;
   width: 24px;
 
@@ -17,26 +16,9 @@
     display: block;
     height: 2px;
     position: absolute;
-    transition:
-      background-color $transitionDuration,
-      transform $transitionDuration;
     width: 24px;
   }
 
-  &:before {
-    top: -7px;
-    transform-origin: top left;
-  }
-
-  &:after {
-    top: 3px;
-    transform-origin: bottom left;
-  }
-
-  .is-open & {
-    border-top-color: transparent !important;
-
-    &:before { transform: translate(4px, -4px) rotate(45deg); }
-    &:after { transform: translate(4px, 2px)  rotate(-45deg); }
-  }
+  &:before { top: -7px; }
+  &:after { top: 3px; }
 }
