@@ -1,5 +1,17 @@
 # Changelog
 
+## 2015-01-17
+* Project is now converted to (Mediasignal) Yeoman generator (generator-msc). Please read all the new project docs ```README.md & docs/*``` .
+* Default assets (CSS/JS) modified a lot. See ```app/templates/assets/```
+* CSS style guide added
+* CSS starters (components, helpers etc.) added ```app/templates/starters/src/assets/stylesheets/```
+* JS starters added ```app/templates/starters/src/assets/javascripts/```
+* IE support 9+
+* Forced enquire.js, respond.js  and config.js removed
+* [Assemble.io](http://assemble.io) is now the default Html project builder 
+  * Jade -> Handlebars
+* Manual normalize.scss and jquery replaced with Bower components
+
 ## 2013-10-18
 * Now I'll be using the preconfigured grunt/bower config for future projects (/joonasy-bp). Yeoman is nice but it think configuring it is unnecesserary step at least for now. I should make some bash script for creating projects.
   * E.g. mkdir prototype && cp -a joonasy-bp/joonasy-bp/. prototype/ && cd prototype && npm install && bower install 
