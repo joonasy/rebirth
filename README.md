@@ -34,7 +34,7 @@ Install all the requirements before installing the generator.
 
 **1.** Install ```generator-msc```: 
 
-    npm install -g git+https://bitbucket.org/mediasignal/mediasignal-web-starter-kit.git
+    npm install -g generator-msc
 
 **2.** Run the generator in your current directory or optionally pass a new install location (Note that if you are building a *Typo3 project*, your project folder will be used as your *extension path*):
 
