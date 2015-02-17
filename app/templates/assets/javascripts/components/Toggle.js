@@ -52,17 +52,17 @@ var App = App || {};
         }
       }
 
-      var firstClick = $this.hasClass('first-touch');
+      var firstClick = $this.hasClass('is-firstTouch');
       var whyToDisable = $this.siblings(config.disableFirstClickOnTouch).length;
 
       if (config.disableFirstClickOnTouch && whyToDisable
         && !firstClick && Modernizr.touch) {
 
-        $this.addClass('first-touch')
+        $this.addClass('is-firstTouch')
         e.preventDefault();
 
         setTimeout(function(){
-          $this.removeClass('first-touch')
+          $this.removeClass('is-firstTouch')
         }, 950);
       }
 
