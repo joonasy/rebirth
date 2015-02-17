@@ -1,10 +1,10 @@
 # Mediasignal Web Starter Kit ([generator-msc](https://bitbucket.org/mediasignal/generator-msc.git))
 
-> Mediasignals styleguide and Yeoman generator for new web projects (Typo3/Html). 
+> Mediasignals combined styleguide, starter kit and Yeoman generator for new web projects (Typo3/Html). 
 
 This startekit contains methods and ideas from various sources such as [BEM](https://bem.info/), [HTML5BP](http://html5boilerplate.com/), [Bootstrap](http://getbootstrap.com), [Foundation](http://foundation.zurb.com/), [INUITCSS](https://github.com/inuitcss), [SMACSS](https://smacss.com/), [OOCSS](http://oocss.org/), [SUIT CSS](https://github.com/suitcss/suit). By default this template supports IE9+, Mobile first -ideology and progressive enhancement.
 
-This project is a long term process to figure out the best approaches that suit best for our workflow. We'll keep altering logic from what we have learned from various projects. This starter kit is **not a framework** but it contains some predefined components that are meant to be modified based on your project needs.
+This starter kit is **not a framework** but it contains some predefined components that are meant to be modified based on your project needs.
 
 ## Getting started
 
