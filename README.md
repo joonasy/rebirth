@@ -6,6 +6,16 @@ This startekit contains methods and ideas from various sources such as [BEM](htt
 
 This starter kit is **not a framework** but it contains some predefined components that are meant to be modified based on your project needs.
 
+## Features
+
+* CSS Autoprefixing
+* Built-in preview server with LiveReload
+* Automatically compile Sass
+* Automatically wire up your Bower components with [grunt-wiredep](https://github.com/yeoman/generator-webapp#third-party-dependencies).
+* Image Optimization (via OptiPNG, pngquant, jpegtran and gifsicle)
+* Autobuild modernizr based on project needs
+* Combine media queries
+
 ## Getting started
 
 Please read and understand all of the following before doing anything. All of these documents will be converted to html docs later on.
