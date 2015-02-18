@@ -158,7 +158,7 @@ var MscGenerator = yeoman.generators.Base.extend({
    */
   config: function() {
     if(this.typoProject) {
-      this.config.set('assetsPath', 'Resources/Private/Assets');
+      this.config.set('assetsPath', 'Assets');
     }
 
     if(this.htmlProject) {

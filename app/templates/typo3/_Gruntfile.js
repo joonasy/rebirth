@@ -17,7 +17,7 @@ module.exports = function (grunt) {
       tmp: '.tmp',
       private: 'Resources/Private',
       public: 'Resources/Public',
-      template: '/typo3conf/ext/<%= appRoot %>'
+      extension: '/typo3conf/ext/<%= appRoot %>'
     },
     meta: {
       banner:
@@ -36,14 +36,14 @@ module.exports = function (grunt) {
         livereload: 35729
       },
       compass: {
-        files: ['<%%= path.private %>/Assets/stylesheets/**/*.{scss,sass}'],
+        files: ['Assets/stylesheets/**/*.{scss,sass}'],
         tasks: ['compass:dev', 'autoprefixer']
       },
       other: {
         files: [
           '<%%= path.private %>/**/*.html',
-          '<%%= path.private %>/Assets/{,**/}*.js',
-          '<%%= path.private %>/Assets/images/**/*.{png,jpg,jpeg,gif,webp,svg}'
+          'Assets/{,**/}*.js',
+          'Assets/images/**/*.{png,jpg,jpeg,gif,webp,svg}'
         ]
       }
     },
@@ -53,16 +53,16 @@ module.exports = function (grunt) {
      */
     compass: {
       options: {
-        sassDir: '<%%= path.private %>/Assets/stylesheets/',
-        cssDir: '<%%= path.tmp %>/Assets/stylesheets/',
+        sassDir: 'Assets/stylesheets/',
+        cssDir: 'Assets/stylesheets/',
 
-        imagesDir: '<%%= path.private %>/Assets/images/',
-        generatedImagesDir: '<%%= path.private %>/Assets/images/',
-        httpImagesPath: '<%%= path.extension %>/<%%= path.private %>/Assets/images/',
+        imagesDir: 'Assets/images/',
+        generatedImagesDir: 'Assets/images/',
+        httpImagesPath: '<%%= path.extension %>/Assets/images/',
         httpGeneratedImagesPath: '<%%= path.extension %>/<%%= path.tmp %>/Assets/images/',
 
-        fontsDir: '<%%= path.private %>/Assets/fonts/',
-        httpFontsPath: '<%%= path.extension %>/<%%= path.private %>/Assets/fonts/',
+        fontsDir: 'Assets/fonts/',
+        httpFontsPath: '<%%= path.extension %>/Assets/fonts/',
         relativeAssets: false,
 
         raw: '::Sass::Script::Number.precision = 10\n',
@@ -106,7 +106,7 @@ module.exports = function (grunt) {
           cwd: './',
           src: [
             '<%%= path.tmp %>/Assets/images/**/*.{png,jpg,jpeg,svg}',
-            '<%%= path.private %>/Assets/images/*.{png,jpg,jpeg,svg}'
+            'Assets/images/*.{png,jpg,jpeg,svg}'
           ],
           dest: '<%%= path.public %>/Assets/images'
         }]
@@ -119,13 +119,13 @@ module.exports = function (grunt) {
     modernizr: {
       dist: {
         devFile: 'bower_components/modernizr/modernizr.js',
-        outputFile: '<%%= path.tmp %>/Assets/vendor/modernizr-build.js',
+        outputFile: '<%%= path.tmp %>/Assets/javascripts/vendor/modernizr.build.js',
         parseFiles: true,
         files: {
           src: [
-            '<%%= path.private %>/Assets/javascripts/{,*/}*.js',
-            '<%%= path.tmp %>/Assets/stylesheets/{,*/}*.css',
-            '!<%%= path.tmp %>/Assets/javascripts/vendor/*.js'
+            'Assets/javascripts/**/*.js',
+            '!Assets/javascripts/vendor/*.js',
+            '<%%= path.tmp %>/Assets/stylesheets/*.css'
           ]
         },
         extra: {
@@ -157,14 +157,14 @@ module.exports = function (grunt) {
         files: {
           '<%%= path.tmp %>/Assets/javascripts/head.js': [
             '<%%= path.tmp %>/Assets/javascripts/vendor/modernizr-build.js',
-            '<%%= path.private %>/Assets/javascripts/head.js'
+            'Assets/javascripts/head.js'
           ],
           '<%%= path.tmp %>/Assets/javascripts/app.js': [
             'bower_components/fastclick/lib/fastclick.js',
-            '<%%= path.private %>/Assets/javascripts/vendors/*.js',
-            '<%%= path.private %>/Assets/javascripts/components/*.js',
-            '!<%%= path.private %>/Assets/javascripts/components/Component.js',
-            '<%%= path.private %>/Assets/javascripts/app.js'
+            'Assets/javascripts/vendors/*.js',
+            'Assets/javascripts/components/*.js',
+            '!Assets/javascripts/components/Component.js',
+            'Assets/javascripts/app.js'
           ]
         }
       }
