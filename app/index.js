@@ -302,7 +302,7 @@ var MscGenerator = yeoman.generators.Base.extend({
         this.destinationPath(this.config.get('sourcePath')+'/includes/top.hbs')
       );
 
-      this.fs.copy(
+      this.template(
         this.templatePath('html/src/includes/_bottom.hbs'),
         this.destinationPath(this.config.get('sourcePath')+'/includes/bottom.hbs')
       );
