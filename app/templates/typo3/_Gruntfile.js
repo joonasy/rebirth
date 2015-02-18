@@ -35,6 +35,13 @@ module.exports = function (grunt) {
       options: {
         livereload: 35729
       },
+      bower: {
+        files: ['bower.json'],
+        tasks: ['wiredep']
+      },
+      gruntfile: {
+        files: ['Gruntfile.js']
+      },
       compass: {
         files: ['Assets/stylesheets/**/*.{scss,sass}'],
         tasks: ['compass:dev', 'autoprefixer']
@@ -53,28 +60,28 @@ module.exports = function (grunt) {
      */
     compass: {
       options: {
-        sassDir: 'Assets/stylesheets/',
-        cssDir: 'Assets/stylesheets/',
+        sassDir: 'Assets/stylesheets',
+        cssDir: '<%%= path.tmp %>/Assets/stylesheets',
 
-        imagesDir: 'Assets/images/',
-        generatedImagesDir: 'Assets/images/',
-        httpImagesPath: '<%%= path.extension %>/Assets/images/',
-        httpGeneratedImagesPath: '<%%= path.extension %>/<%%= path.tmp %>/Assets/images/',
+        imagesDir: 'Assets/images',
+        generatedImagesDir: 'Assets/images',
+        httpImagesPath: '<%%= path.extension %>/Assets/images',
+        httpGeneratedImagesPath: '<%%= path.extension %>/<%%= path.tmp %>/Assets/images',
 
-        fontsDir: 'Assets/fonts/',
-        httpFontsPath: '<%%= path.extension %>/Assets/fonts/',
+        fontsDir: 'Assets/fonts',
+        httpFontsPath: '<%%= path.extension %>/Assets/fonts',
         relativeAssets: false,
 
         raw: '::Sass::Script::Number.precision = 10\n',
 
-        importPath: 'bower_components/'
+        importPath: 'bower_components'
       },
       dev: {},
       dist: {
         options: {
-          httpImagesPath: '<%%= path.extension %>/<%%= path.public %>/Assets/images/',
-          httpGeneratedImagesPath: '<%%= path.extension %>/<%%= path.public %>/Assets/images/',
-          httpFontsPath: '<%%= path.extension %>/<%%= path.public %>/Assets/fonts/'
+          httpImagesPath: '<%%= path.extension %>/<%%= path.public %>/Assets/images',
+          httpGeneratedImagesPath: '<%%= path.extension %>/<%%= path.public %>/Assets/images',
+          httpFontsPath: '<%%= path.extension %>/<%%= path.public %>/Assets/fonts'
         },
       }
     },
@@ -156,7 +163,7 @@ module.exports = function (grunt) {
       dist: {
         files: {
           '<%%= path.tmp %>/Assets/javascripts/head.js': [
-            '<%%= path.tmp %>/Assets/javascripts/vendor/modernizr-build.js',
+            '<%%= path.tmp %>/Assets/javascripts/vendor/modernizr.build.js',
             'Assets/javascripts/head.js'
           ],
           '<%%= path.tmp %>/Assets/javascripts/app.js': [
@@ -253,6 +260,33 @@ module.exports = function (grunt) {
         }]
       }
     },
+
+    /**
+     * Wiredep
+     */
+    wiredep: {
+      src: {
+        src: [
+          '<%%= path.private %>/Partials/Top.html',
+          '<%%= path.private %>/Partials/Bottom.html'
+        ],
+        options: {
+          ignorePath: /..\/..\/..\//,
+          exclude: [
+            'bower_components/modernizr/',
+            'bower_components/jquery'
+          ],
+          fileTypes: {
+            html: {
+              replace: {
+                js: '<v:asset.script path="EXT:<%= appRoot %>/{{filePath}}" rewrite="false" standalone="true"></v:asset.script>',
+                css: '<v:asset.style path="EXT:<%= appRoot %>/{{filePath}}" rewrite="false" standalone="true"></v:asset.style>'
+              }
+            }
+          }
+        }
+      }
+    }
   });
 
   /**
@@ -265,12 +299,14 @@ module.exports = function (grunt) {
    */
   grunt.registerTask('dev', [
     'compass:dev',
+    'wiredep',
     'autoprefixer',
     'watch'
   ]);
 
   grunt.registerTask('default', [
     'clean:dist',
+    'wiredep',
     'imagemin:dist',
     'compass:dist',
     'modernizr:dist',
