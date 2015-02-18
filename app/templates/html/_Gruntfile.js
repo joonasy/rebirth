@@ -78,6 +78,13 @@ module.exports = function (grunt) {
         files: ['<%%= path.src %>/**/*.{hbs,yml,json}'],
         tasks: ['assemble:dev']
       },
+      bower: {
+        files: ['bower.json'],
+        tasks: ['wiredep']
+      },
+      gruntfile: {
+        files: ['Gruntfile.js']
+      },
       compass: {
         files: ['<%%= path.src %>/assets/stylesheets/**/*.{scss,sass}'],
         tasks: ['compass', 'autoprefixer']
@@ -142,10 +149,10 @@ module.exports = function (grunt) {
         sassDir: '<%%= path.src %>/assets/stylesheets',
         cssDir: '<%%= path.tmp %>/assets/stylesheets',
 
-        imagesDir: '<%%= path.src %>/assets/img',
-        generatedImagesDir: '<%%= path.src %>/assets/img',
-        httpImagesPath: '/assets/img',
-        httpGeneratedImagesPath: '/assets/img',
+        imagesDir: '<%%= path.src %>/assets/images',
+        generatedImagesDir: '<%%= path.src %>/assets/images',
+        httpImagesPath: '/assets/images',
+        httpGeneratedImagesPath: '/assets/images',
 
         fontsDir: '<%%= path.src %>/assets/fonts',
         httpFontsPath: '/assets/fonts',
@@ -292,9 +299,9 @@ module.exports = function (grunt) {
       dist: {
         files: [{
           expand: true,
-          cwd: '<%= path.tmp %>/assets/stylesheets/',
+          cwd: '<%%= path.tmp %>/assets/stylesheets/',
           src: ['*.css'],
-          dest: '<%= path.tmp %>/assets/stylesheets/'
+          dest: '<%%= path.tmp %>/assets/stylesheets/'
         }],
         options: {
           log: true
@@ -321,6 +328,22 @@ module.exports = function (grunt) {
           ]
         }
       }
+    },
+
+    /**
+     * Wiredep
+     */
+    wiredep: {
+      src: {
+        src: '<%%= path.src %>/includes/bottom.hbs',
+        options: {
+          ignorePath: /\..\/\../,
+          exclude: [
+            'bower_components/modernizr/',
+            'bower_components/jquery'
+          ]
+        }
+      }
     }
   });
 
@@ -335,11 +358,12 @@ module.exports = function (grunt) {
    */
   grunt.registerTask('dev', function (target) {
     if (target === 'dist') {
-      return grunt.task.run(['build', 'connect:dist:keepalive']);
+      return grunt.task.run(['default', 'connect:dist:keepalive']);
     }
 
     grunt.task.run([
       'clean:tmp',
+      'wiredep',
       'assemble:dev',
       'compass',
       'autoprefixer',
@@ -350,6 +374,7 @@ module.exports = function (grunt) {
 
   grunt.registerTask('default', [
     'clean:dist',
+    'wiredep',
     'assemble:dist',
     'compass',
     'imagemin:dist',
