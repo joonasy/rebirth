@@ -21,7 +21,7 @@ module.exports = function (grunt) {
     meta: {
       banner:
         '/*!\n' +
-        ' * <%%= pkg.name %> - v<%%= pkg.version %> - Build at <%%= grunt.template.today("dd.mm.yyyy HH:MM") %>\n' +
+        ' * <%%= pkg.name %> - v<%%= pkg.version %> - Build on <%%= grunt.template.today("dd.mm.yyyy HH:MM") %>\n' +
         ' * <%%= pkg.homepage %>\n' +
         ' * Copyright (c) <%%= grunt.template.today("yyyy") %> <%%= pkg.name %> | Site by <%= generatorAuthor %>\n' +
         ' */\n'
@@ -239,6 +239,7 @@ module.exports = function (grunt) {
         files: {
           src: [
             '<%%= path.src %>/assets/javascripts/**/*.js',
+            '!<%%= path.src %>/assets/javascripts/vendor/*.css',
             '<%%= path.tmp %>/assets/stylesheets/*.css'
           ]
         },
@@ -281,6 +282,23 @@ module.exports = function (grunt) {
             'assets/javascripts/vendor/jquery.min.js'
           ]
         }]
+      }
+    },
+
+    /**
+     * Combine media queries
+     */
+    cmq: {
+      dist: {
+        files: [{
+          expand: true,
+          cwd: '<%= path.tmp %>/assets/stylesheets/',
+          src: ['*.css'],
+          dest: '<%= path.tmp %>/assets/stylesheets/'
+        }],
+        options: {
+          log: true
+        }
       }
     },
 
@@ -340,6 +358,7 @@ module.exports = function (grunt) {
     'useminPrepare',
     'autoprefixer',
     'concat',
+    'cmq:dist',
     'cssmin',
     'uglify',
     'rev',
