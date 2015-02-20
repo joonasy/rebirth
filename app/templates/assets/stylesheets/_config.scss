@@ -119,19 +119,20 @@ $IconCss-xs: scale(0.75);
 // ========================================
 // Various global settings
 // ========================================
-//
-// 1. Used mainly by `.Wrap` in _Wrap.scss but can be used anywhere wrappin
-//    of layout or other elements is necessary.
-// 2. Used by `.Container` in _Container.scss but can be used anywhere global
-//    layout settings are needed.
 
-$wrapWidth: 960px; // [1.]
-$containerWidth: 1200px; // [2.]
+$wrapWidth: 960px;
+$containerWidth: 1200px;
 $borderRadius: 3px;
+
+
+
+
+// ========================================
+// Easings and transitions
+// ========================================
 $transitionDuration: 0.15s;
 $transitionDelay: $transitionDuration;
 
-// Easings
 $easeOutSine: cubic-bezier(0.39, 0.575, 0.565, 1);
 $easeInOutSine: cubic-bezier(0.445, 0.05, 0.55, 0.95);
 $easeInQuad: cubic-bezier(0.55, 0.085, 0.68, 0.53);

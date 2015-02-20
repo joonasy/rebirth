@@ -5,7 +5,7 @@
  * @extends `.Nav--bar {}` in _Nav--Bar.scss
  */
 
-.Nav--bar--horizontal {
+.Nav--bar.-align-horizontal {
   @include breakpoint("navTransform") {
 
     .Nav-self { display: block; }

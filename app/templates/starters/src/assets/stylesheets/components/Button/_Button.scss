@@ -31,13 +31,8 @@
 .Button {
   @extend %Button;
 
-  > .Icon, > .IconCss {
-    margin: 0 1px;
-  }
-
-  > img {
-    vertical-align: middle;
-  }
+  > .Icon, > .IconCss { margin: 0 1px; }
+  > img { vertical-align: middle; }
 
   &-hiddenFormItem {
     display: block;
