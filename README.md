@@ -11,7 +11,7 @@ This starter kit is **not a framework** but it contains some predefined componen
 * CSS Autoprefixing
 * Built-in preview server with LiveReload
 * Automatically compile Sass
-* Automatically wire up your Bower components with [grunt-wiredep](https://github.com/yeoman/generator-webapp#third-party-dependencies).
+* Automatically wire up your Bower components
 * Image Optimization (via OptiPNG, pngquant, jpegtran and gifsicle)
 * Autobuild modernizr based on project needs
 * Combine media queries
