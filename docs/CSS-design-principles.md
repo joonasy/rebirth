@@ -26,7 +26,7 @@ outer rendering context.
 ## Cohesion
 
 The functionality and presentation defined by a component must be semantically
-related. Components do not have direct influence over each other.
+related. Components do not have direct influence over each other except some core components which are extendable (@extend).
 
 <a name="composition"></a>
 ## Composable and configurable
@@ -63,9 +63,7 @@ about the system.
 <a name="documentation"></a>
 ## Documentation
 
-Write small, independent components that are well documented to describe how
-the components should be used, and why specific CSS properties are needed in
-the implementation. Do not assume that CSS is self-documenting.
+If possible, write small, independent components that are well documented to describe how the components should be used, and why specific CSS properties are needed in the implementation. Do not assume that CSS is self-documenting.
 
 ## Related reading
 
