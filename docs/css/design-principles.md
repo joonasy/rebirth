@@ -7,14 +7,6 @@ A component-based system allows for the implementation and composition of
 loosely coupled, independent units into well-defined composite objects.
 Components are encapsulated but are able to interoperate via interfaces/events.
 
-1. [Modularity](#modularity)
-2. [Cohesion](#cohesion)
-3. [Composition and configuration](#composition)
-4. [Loose coupling](#coupling)
-5. [Soft encapsulation](#encapsulation)
-6. [Documentation](#documentation)
-
-<a name="modularity"></a>
 ## Modularity
 
 Each component should have a single focus and contain everything necessary to
@@ -22,13 +14,11 @@ realise a specific part of the UI. Components may contain HTML,
 CSS, JavaScript, and associated assets without making assumptions about the
 outer rendering context.
 
-<a name="cohesion"></a>
 ## Cohesion
 
 The functionality and presentation defined by a component must be semantically
 related. Components do not have direct influence over each other except some core components which are extendable (@extend).
 
-<a name="composition"></a>
 ## Composable and configurable
 
 Composability is concerned with the inter-relationships of components.
@@ -37,7 +27,6 @@ combinations, as required.
 
 Configuration is done via interfaces that are provided and used by components.
 
-<a name="coupling"></a>
 ## Loose coupling
 
 Components should not directly modify the presentation or behaviour of their
@@ -48,7 +37,6 @@ Attempting to reuse too much code across components can increase their
 coupling. Isolation is more important than avoiding the repetition of
 superficially similar code.
 
-<a name="encapsulation"></a>
 ## Soft encapsulation
 
 The implementation of a component should not be exposed to other components.
@@ -60,7 +48,6 @@ Complexity is a significant problem for large, adaptive applications. The more
 you can reduce the entanglement of your components, the easier it is to reason
 about the system.
 
-<a name="documentation"></a>
 ## Documentation
 
 If possible, write small, independent components that are well documented to describe how the components should be used, and why specific CSS properties are needed in the implementation. Do not assume that CSS is self-documenting.

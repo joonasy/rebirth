@@ -12,20 +12,11 @@ We rely on structured class names, BEM-like naming, and meaningful hyphens (i.e.
 
 The primary architectural division is between helpers and components.
 
-**Table of contents**
-
-* helperName
-* ComponentName
-* ComponentName--modifierName
-* ComponentName-descendantName
-* ComponentName.is-stateOfComponent
-* ComponentName.-chainable-modifierName
-* ---
-* reserved namespaces (prefixes), suffixes and other keywords
 
 ## Helpers
 
 Low-level structural and positional traits. Helpers can be applied directly to any element within a component.
+
 
 ### helperName
 
@@ -39,9 +30,9 @@ Helpers must use a camelCase name. Helpers may also have modifiers and responsiv
   4. Sets up large text in medium Media Query breakpoint
 --> 
 <div class="Component marginTop--m cf"> <!-- [1.] -->
-  <div class="Component-item alignLeft padding--m"> <!-- [2.] -->
-    <img src="…" alt="…" class="l-center"> <!-- [3.] -->
-    <p class="m-text--l"> <!-- [4.] -->
+  <div class="Component-item floatLeft padding--m"> <!-- [2.] -->
+    <img src="…" alt="…" class="m-center--block"> <!-- [3.] -->
+    <p class="m-textSize--l"> <!-- [4.] -->
       …
     </p>
   </div>  
@@ -49,9 +40,9 @@ Helpers must use a camelCase name. Helpers may also have modifiers and responsiv
 ```
 
 
-### Responsive helpers …
+### Responsive helpers
 
-Certain utilities have responsive variants using the patterns: s-<name>, m-<name>, and lg-<name> for small, medium, and large Media Query breakpoints.
+Certain helpers have responsive variants using the patterns: s-<name>, m-<name>, and lg-<name> for small, medium, and large Media Query breakpoints.
 
 
 ## Components
@@ -65,6 +56,7 @@ This has several benefits when reading and writing HTML and CSS:
 * It helps to distinguish between the classes for the root of the component, descendant elements, and modifications.
 * It keeps the specificity of selectors low.
 * It helps to decouple presentation semantics from document semantics.
+
 
 ### ComponentName
 
@@ -80,7 +72,7 @@ The component's name must be written in [PascalCase](http://c2.com/cgi/wiki?Pasc
 </section>
 ```
 
-<a name="ComponentName--modifierName"></a>
+
 ### ComponentName--modifierName
 
 A component modifier (or component variation) is a class that modifies the presentation of the base component in some form (e.g., for a certain configuration of the component). Component modifiers also modify their descendants by nesting, however if descendants need altering variations then modify the [descendants](#ComponentName-descendantName) directly. Modifier names must be written in camelCase and be separated from the component name by two hyphens. The class should be included in the HTML in addition to the base component class. 
@@ -99,7 +91,7 @@ A component modifier (or component variation) is a class that modifies the prese
 </button>
 ```
 
-<a name="-chainable-modifierName"></a>
+
 ### ComponentName.-chainable-modifierName
 
 > Chainable modifiers are like helpers but component specific. 
@@ -124,8 +116,46 @@ The golden rule is that **chainable modifiers should never modify the same CSS p
   <span class="Button-item">…</span>
 </button>
 ```
- 
-<a name="ComponentName-descendantName"></a>
+
+Chainable modifiers also accept responsive variations.
+
+```html
+// wrong
+<div class="Button -size-s -size-l">
+</div>
+
+// right
+<div class="Button -size-s -m-size-l">
+</div>
+```
+
+## ComponentName.is-stateOfComponent
+
+Use `is-stateName` to reflect changes to a component's state. The state name
+must be camel case. **Never style these classes directly; they should always be
+used as an adjoining class.**
+
+This means that the same state names can be used in multiple contexts, but
+every component must define its own styles for the state (as they are scoped to
+the component).
+
+```css
+.Block {
+  …
+
+  &.is-open {
+    @extend %is-open;
+  }
+}
+```
+
+```html
+<article class="Block is-open">
+  …
+</article>
+```
+
+
 ### ComponentName-descendantName
 
 A component descendant is a class that is attached to a descendant node of a
@@ -136,7 +166,9 @@ written in CamelCase.
 Parent [Component modifiers](#ComponentName--modifierName) also modify their descendants by nesting, however in some cases (rarely) descendants may need direct variations (`1.`). Be careful in these situations not to override direct descendant modifiers with the parent modifier (`2.`).
 
 ```css
-/* Core block */
+/**
+ * Core block
+ */ 
 .Block {
   …
 
@@ -153,7 +185,9 @@ Parent [Component modifiers](#ComponentName--modifierName) also modify their des
   &-footer {}
 }
 
-/* Primary block modifier */
+/**
+ * Primary block modifier
+ */ 
 .Block--primary {
   …
 
@@ -185,29 +219,90 @@ Parent [Component modifiers](#ComponentName--modifierName) also modify their des
 </article>
 ```
 
-<a name="is-stateOfComponent"></a>
-## ComponentName.is-stateOfComponent
 
-Use `is-stateName` to reflect changes to a component's state. The state name
-must be camel case. **Never style these classes directly; they should always be
-used as an adjoining class.**
+### ComponentNameCollection
 
-This means that the same state names can be used in multiple contexts, but
-every component must define its own styles for the state (as they are scoped to
-the component).
+> Components are descendants of component collections.
+
+Some components need parent components to work properly. Component collections override Component specific settings. Component collections also use chainable modifiers.
 
 ```css
-.Block {
+/**
+ * Button collection for Buttons
+ */ 
+.ButtonCollection {
   …
 
-  &.is-open {
-    @extend %is-open;
-  }
+  .Button {}
+
+  &.-type-horizontal {
+    …
+
+    .Button {}
+  } 
 }
 ```
 
 ```html
-<article class="Block Block-is-open">
-  …
-</article>
+<div class="ButtonCollection -type-horizontal">
+  <button class="Button">
+    …
+  </button>
+  <button class="Button">
+    …
+  </button>
+</div>
 ```
+
+
+## Reserved namespaces
+
+The following namespaces are reserved for specific use.
+
+### Responsive variations
+
+* `[x...]s-`: Small viewports (e.g. Mobile phones)
+* `m-`: Medium viewport (e.g. Tablets)
+* `[x...]l-`: Large viewports (e.g. Desktop computers)
+ 
+Responsive prefixes activate responsive settings in the given viewport (mobile first method). These prefixes are mainly used by helpers but can also be used by Components (e.g. _Width_ component).
+
+```css
+// layout/_Width.scss
+@inlude breakpoint("mediumUp") {
+  .m-Width--6-12 { width: 50%; }
+}
+
+@inlude breakpoint("xLargeUp") {
+  .xl-Width--4-12 { width: 33.333%; }
+}
+```
+
+```html
+<div class="Grid -type-fill">
+  <div class="Grid-item m-Width--6-12 xl-Width--4-12 s-visible">
+    <div class="Component l-textSize--l">
+      …
+    </div>
+  </div>
+  <div class="Grid-item m-Width--6-12 xl-Width--8-12">
+    <div class="Component xl-marginTop--l">
+      …
+    </div>
+  </div>
+</div>
+```
+
+
+### Prefixes and suffixes for chainable modifiers
+
+* `-size-<sizeSuffix>`: Size suffixes are `[x...]s`, `m` and `[x...]l`.
+* `-type-<modifierType>`: e.g. horizontal
+
+
+### Global prefixes, suffixes and modifiers
+
+* `--primary`, `--secondary`, `--tertiary`, `--quaternary`, `--quinary`, `--senary`, `--septenary`, `--octonary`, `--nonary`, `--denary`: For defining variations
+* `base-`, `color-`, `heading-`, `breakpoint-`
+* `-[x...]s`, `-m`, `-ml`, `-[x...]l`: Extra small, medium, medium large, extra large and so on...
+

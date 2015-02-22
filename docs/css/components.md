@@ -69,11 +69,12 @@ component name in the variable name:
 
 ```css
 // _config.scss
-MyPants-borderWidth: 5px;
+$MyPants-borderWidth: 5px;
 
-// _MyPants.scss
+// components/_MyPants.scss
 .MyPants {
-  border-width: MyPants-borderWidth;
+  border-width: $MyPants-borderWidth;
+  property: value;
 }
 ```
 
