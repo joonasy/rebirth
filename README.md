@@ -22,13 +22,13 @@ Please read and understand all of the following before doing anything. All of th
 
 ### Styleguides
 
-* [CSS styleguide (work in progress)](https://bitbucket.org/mediasignal/generator-msc/src/90566b12eab4d8fdd9d79e781b4d388e4ccd9a5b/docs/CSS-styleguide.md)
-* [JS styleguide (nothing yet)](https://bitbucket.org/mediasignal/generator-msc/src/90566b12eab4d8fdd9d79e781b4d388e4ccd9a5b/docs/JS-styleguide.md)
+* [CSS styleguide (work in progress)](https://bitbucket.org/mediasignal/mediasignal-web-starter-kit/src/ea971d0b8aa672395f18d95a2b102eaae9d90c3e/docs/css/)
+* [JS styleguide (nothing yet)]()
 
 ### Project workflow
 
-* [Typo3 (work in progress)](https://bitbucket.org/mediasignal/generator-msc/src/90566b12eab4d8fdd9d79e781b4d388e4ccd9a5b/docs/project-types.md#typo3)
-* [Html (work in progress)](https://bitbucket.org/mediasignal/generator-msc/src/90566b12eab4d8fdd9d79e781b4d388e4ccd9a5b/docs/project-types.md#html)
+* [Typo3 (work in progress)](docs/project-types/#typo3)
+* [Html (work in progress)](docs/project-types/#html)
 
 ## Requirements
 
