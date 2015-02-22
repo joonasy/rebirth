@@ -34,5 +34,6 @@ This styleguide outlines our internal standards for writing CSS (and more specif
         * ComponentName-descendantName
         * ComponentNameCollection
     * Reserved namespaces and other keywords
-      * Responsive variations
-      * Prefixes
+        * Responsive variations
+        * Prefixes and suffixes for chainable modifiers
+        * Global prefixes, suffixes and modifier names
