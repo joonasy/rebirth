@@ -40,11 +40,6 @@ Helpers must use a camelCase name. Helpers may also have modifiers and responsiv
 ```
 
 
-### Responsive helpers
-
-Certain helpers have responsive variants using the patterns: s-<name>, m-<name>, and lg-<name> for small, medium, and large Media Query breakpoints.
-
-
 ## Components
 
 The CSS responsible for component-specific styling.
@@ -117,7 +112,7 @@ The golden rule is that **chainable modifiers should never modify the same CSS p
 </button>
 ```
 
-Chainable modifiers also accept responsive variations.
+Chainable modifiers also accept responsive variants.
 
 ```html
 // wrong
@@ -259,13 +254,13 @@ Some components need parent components to work properly. Component collections o
 
 The following namespaces are reserved for specific use.
 
-### Responsive variations
+### Responsive variants
 
-* `[x...]s-`: Small viewports (e.g. Mobile phones)
-* `m-`: Medium viewport (e.g. Tablets)
-* `[x...]l-`: Large viewports (e.g. Desktop computers)
- 
-Responsive prefixes activate responsive settings in the given viewport (mobile first method). These prefixes are mainly used by helpers but can also be used by Components (e.g. _Width_ component).
+* `[x...]s-<name>`: Small viewports (e.g. Mobile phones)
+* `m-<name>`: Medium viewport (e.g. Tablets)
+* `[x...]l-<name>`: Large viewports (e.g. Desktop computers)
+
+Responsive variants are activated in the given Media Query breakpoint (mobile first ideology). These prefixes are mainly used by helpers but can also be used by chainable component modifiers (rarely) and components (e.g. _Width_ component).
 
 ```css
 // layout/_Width.scss
@@ -279,7 +274,7 @@ Responsive prefixes activate responsive settings in the given viewport (mobile f
 ```
 
 ```html
-<div class="Grid -type-fill">
+<div class="Grid -m-type-fill">
   <div class="Grid-item m-Width--6-12 xl-Width--4-12 s-visible">
     <div class="Component l-textSize--l">
       …
@@ -296,13 +291,16 @@ Responsive prefixes activate responsive settings in the given viewport (mobile f
 
 ### Prefixes and suffixes for chainable modifiers
 
-* `-size-<sizeSuffix>`: Size suffixes are `[x...]s`, `m` and `[x...]l`.
-* `-type-<modifierType>`: e.g. horizontal
+* `-size-<sizeSuffix>`: Sizing suffixes are `[x...]s`, `m` and `[x...]l`.
+* `-type-<modifierType>`: Modifiertype could be e.g. `horizontal`
 
 
 ### Global prefixes, suffixes and modifiers
 
-* `--primary`, `--secondary`, `--tertiary`, `--quaternary`, `--quinary`, `--senary`, `--septenary`, `--octonary`, `--nonary`, `--denary`: For defining variations
-* `base-`, `color-`, `heading-`, `breakpoint-`
+* `--primary`, `--secondary`, `--tertiary`, `--quaternary`, `--quinary`, `--senary`, `--septenary`, `--octonary`, `--nonary`, `--denary`: For defining modifiers
+* `base-`: Base settings (font sizes, margins etc.)
+* `color-`: Default colors
+* `heading-`: Default headings
+* `breakpoint-`: Breakpoints
 * `-[x...]s`, `-m`, `-ml`, `-[x...]l`: Extra small, medium, medium large, extra large and so on...
 
