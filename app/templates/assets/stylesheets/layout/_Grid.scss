@@ -13,19 +13,19 @@
   /**
    * Sizing
    */
-  &--full {
+  &.-size-fill {
     margin-left: 0;
 
     > .Grid-item { padding-left: 0; }
   }
 
-  &--l {
+  &.-size-l {
     margin-left: -(baseSpace(2, px));
 
     > .Grid-item { padding-left: baseSpace(2, px); }
   }
 
-  &--xl {
+  &.size-xl {
     margin-left: -(baseSpace(4, px));
 
     > .Grid-item { padding-left: baseSpace(4, px); }
