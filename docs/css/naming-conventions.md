@@ -158,7 +158,7 @@ component. It's responsible for applying presentation directly to the
 descendant on behalf of a particular component. descendant names must be
 written in CamelCase. 
 
-Parent [Component modifiers](#ComponentName--modifierName) also modify their descendants by nesting, however in some cases (rarely) descendants may need direct variations (`1.`). Be careful in these situations not to override direct descendant modifiers with the parent modifier (`2.`).
+Parent [Component modifiers](#ComponentName--modifierName) also modify their descendants by nesting, however in some cases (rarely) descendants may need direct modifiers (`1.`). Be careful in these situations not to override direct descendant modifiers with the parent modifier (`2.`).
 
 ```css
 /**
