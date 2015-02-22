@@ -8,7 +8,7 @@ A good naming convention will tell you and your team
 * where a class can be used;
 * what (else) a class might be related to.
 
-We rely on structured class names, BEM-like naming, and meaningful hyphens (i.e., not using hyphens merely to separate words). This helps to work around the current limits of applying CSS to the DOM (i.e., the lack of style encapsulation), and to better communicate the relationships between classes.
+We rely on structured class names, BEM-like naming, and meaningful hyphens (i.e., not using hyphens merely to separate words) except for separating numbers. This helps to work around the current limits of applying CSS to the DOM (i.e., the lack of style encapsulation), and to better communicate the relationships between classes.
 
 The primary architectural division is between helpers and components.
 
