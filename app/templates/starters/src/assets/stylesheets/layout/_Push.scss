@@ -14,13 +14,11 @@
   .#{$namespace}Push--9-12  { left: 75%; }
   .#{$namespace}Push--10-12 { left: 83.333%; }
   .#{$namespace}Push--11-12 { left: 91.666%; }
-  .#{$namespace}Push--12-12 { left: 100%; }
 }
-
-@include Push();
 
 [class*="Push--"] { position: relative; }
 
-@include breakpoint("smallUp"){ @include Push(s-); }
-@include breakpoint("mediumUp"){ @include Push(m-); }
-@include breakpoint("largeUp"){ @include Push(l-); }
+@include Push();
+@include breakpoint("smallUp") { @include Push(s-); }
+@include breakpoint("mediumUp") { @include Push(m-); }
+@include breakpoint("largeUp") { @include Push(l-); }

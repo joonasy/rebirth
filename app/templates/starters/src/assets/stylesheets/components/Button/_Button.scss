@@ -32,7 +32,6 @@
   @extend %Button;
 
   > .Icon, > .IconCss { margin: 0 1px; }
-  > img { vertical-align: middle; }
 
   &-hiddenFormItem {
     display: block;
@@ -62,7 +61,7 @@
     color: #ffffff;
   }
 
-  &--full {
+  &--fill {
     display: block;
     width: 100%;
   }

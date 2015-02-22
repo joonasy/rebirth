@@ -17,15 +17,6 @@
 }
 
 @include Width();
-
-@include breakpoint("smallUp"){
-  @include Width(s-);
-}
-
-@include breakpoint("mediumUp"){
-  @include Width(m-);
-}
-
-@include breakpoint("largeUp"){
-  @include Width(l-);
-}
+@include breakpoint("smallUp"){ @include Width(s-); }
+@include breakpoint("mediumUp"){ @include Width(m-); }
+@include breakpoint("largeUp"){ @include Width(l-); }

@@ -16,10 +16,10 @@ html {
   line-height: $base-lineHeight;
   min-width: 300px;
 
+  -moz-osx-font-smoothing: grayscale;
   -webkit-tap-highlight-color: transparent;
   -webkit-touch-callout: none;
   -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
   tap-highlight-color: transparent;
 }
 
