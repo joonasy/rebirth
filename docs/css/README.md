@@ -24,14 +24,15 @@ This styleguide outlines our internal standards for writing CSS (and more specif
 * [Components](components.md)
 * [Helpers](helpers.md)
 * [Naming conventions](naming-conventions.md)
-    * helperName
-    * ComponentName
-    * ComponentName--modifierName
-    * ComponentName.-chainable-modifierName
-    * ComponentName.is-stateOfComponent
-    * ComponentName-descendantName
-    * ComponentNameCollection
+    * Helpers
+        * helperName
+    * Components
+        * ComponentName
+        * ComponentName--modifierName
+        * ComponentName.-chainable-modifierName
+        * ComponentName.is-stateOfComponent
+        * ComponentName-descendantName
+        * ComponentNameCollection
     * Reserved namespaces and other keywords
       * Responsive variations
       * Prefixes
-    
