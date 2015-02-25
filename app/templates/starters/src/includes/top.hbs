@@ -20,7 +20,7 @@
     {{/if}}
 
     {{#dev}}
-      <script src="{{assets}}/bower_components/modernizr/modernizr.js"></script>
+      <script src="/bower_components/modernizr/modernizr.js"></script>
     {{/dev}}
 
     <script>
@@ -31,9 +31,9 @@
       {{/dev}}
     </script>
 
-    <!-- build:js(../) {{assets}}/javascripts/head.min.js-->
+    <!-- build:js {{assets}}/javascripts/head.min.js-->
       {{#prod}}
-        <script src="{{assets}}/javascripts/vendor/modernizr-custom.js"></script>
+        <script src=".tmp/javascripts/vendor/modernizr.build.js"></script>
       {{/prod}}
       <script src="{{assets}}/javascripts/head.js"></script>
     <!-- endbuild-->

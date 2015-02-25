@@ -31,15 +31,12 @@ module.exports = function (grunt) {
      */
     assemble: {
       options: {
-        data: ['<%= path.src %>/data/*.{json,yml}'],
+        data: ['<%= path.src %>/*.{json,yml}'],
         flatten: true,
-        helpers: '<%= path.src %>/templates/helpers/**/*.js',
+        helpers: '<%= path.src %>/helpers/**/*.js',
         layout: 'layout.hbs',
-        layoutdir: '<%= path.src %>/templates/layouts',
-        partials: '<%= path.src %>/templates/includes/*.hbs',
-        permalinks: {
-          structure: ':slug/index.html'
-        }
+        layoutdir: '<%= path.src %>/layouts',
+        partials: '<%= path.src %>/includes/*.hbs'
       },
       dev: {
         options: {
@@ -49,7 +46,7 @@ module.exports = function (grunt) {
         },
         files: [{
           expand: true,
-          cwd: '<%= path.src %>/templates/pages',
+          cwd: '<%= path.src %>/pages',
           src: '**/*.hbs',
           dest: '<%= path.tmp %>'
         }]
@@ -60,7 +57,7 @@ module.exports = function (grunt) {
           dev: false,
           prod: true
         },
-        src: '<%= path.src %>/templates/pages/**/*.hbs',
+        src: '<%= path.src %>/pages/**/*.hbs',
         dest: '<%= path.dist %>/'
       }
     },
@@ -104,7 +101,8 @@ module.exports = function (grunt) {
           base: [
             '<%= path.tmp %>',
             '<%= path.src %>',
-            '../'
+            '../',
+            './'
           ]
         }
       },
@@ -241,14 +239,14 @@ module.exports = function (grunt) {
      */
     modernizr: {
       dist: {
-        devFile: '../assets/bower_components/modernizr/modernizr.js',
-        outputFile: '../assets/javascripts/vendor/modernizr-custom.js',
+        devFile: 'bower_components/modernizr/modernizr.js',
+        outputFile: '<%%= path.tmp %>/assets/javascripts/vendor/modernizr.build.js',
         parseFiles: true,
         files: {
           src: [
-            '<%= path.src %>/assets/javascripts/{,*/}*.js',
-            '<%= path.tmp %>/assets/stylesheets/{,*/}*.css',
-            '!<%= path.src %>/assets/javascripts/vendor/*.js'
+            '<%%= path.src %>/assets/javascripts/**/*.js',
+            '!<%%= path.src %>/assets/javascripts/vendor/*.css',
+            '<%%= path.tmp %>/assets/stylesheets/*.css'
           ]
         },
         'extra': {
@@ -324,7 +322,7 @@ module.exports = function (grunt) {
   /**
    * Register tasks
    */
-  grunt.registerTask('server', function (target) {
+  grunt.registerTask('dev', function (target) {
     if (target === 'dist') {
       return grunt.task.run(['build', 'connect:dist:keepalive']);
     }
