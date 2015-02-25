@@ -32,7 +32,8 @@
 
       &.is-open {
         > .Nav-subTrigger > .IconCss--arrowDown--xs {
-          @include IconCss--arrowDown--xs();
+          //@include IconCss--arrowDown--xs();
+          //@include IconCss("arrowDown", "xs");
           top: 0;
         }
       }
