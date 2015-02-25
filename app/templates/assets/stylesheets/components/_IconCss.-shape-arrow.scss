@@ -6,7 +6,7 @@
  * component before other components in _config.scss.
  */
 
-[class*="IconCss--arrow"] {
+[class*="IconCss -shape-arrow"] {
   display: inline-block;
   height: 10px;
   position: relative;
@@ -35,6 +35,10 @@
     transform: rotate(45deg);
     width: 9px;
   }
+}
+
+@mixin iconCss($type: "default", $shape: "arrow") {
+
 }
 
 @mixin IconCss--arrowUp--xs() { transform: $IconCss-xs rotate(0); }
