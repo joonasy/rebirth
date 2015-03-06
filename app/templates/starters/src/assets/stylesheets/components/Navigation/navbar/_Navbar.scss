@@ -13,7 +13,7 @@
    */
   .Navbar-item { @extend %clearfix; }
 
-    .Navbar-link {
+    .Navbar-link, %Navbar-link {
       border-top: 1px solid;
       cursor: pointer;
       display: block;
@@ -26,7 +26,7 @@
       &:only-child { width: 100%; }
     }
 
-    .Navbar-subTrigger {
+    .Navbar-subTrigger, %Navbar-subTrigger {
       border-top: 1px solid;
       border-left: 1px solid;
       cursor: pointer;
@@ -51,14 +51,14 @@
   .Navbar-trigger { @extend %clearfix; }
 
     .Navbar-trigger-link {
-      @extend .Navbar-link;
+      @extend %Navbar-link;
       border: none;
       padding-right: $Navbar-padding;
       text-align: right;
     }
 
     .Navbar-trigger-sub {
-      @extend .Navbar-subTrigger;
+      @extend %Navbar-subTrigger;
       border-top: none;
     }
 
@@ -108,7 +108,6 @@
     > .Navbar-sub { @extend %is-visible; }
     > .Navbar-subTrigger > .Navbar-subTrigger-icon {
       @include shapeArrow('up', $color-text, $IconCss-s);
-      //top: -3px;
     }
   }
 }
