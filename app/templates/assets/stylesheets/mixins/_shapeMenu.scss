@@ -1,0 +1,24 @@
+// ========================================
+// CSS menu shape (a.k.a "hamburger")
+// ========================================
+
+@mixin shapeMenu($color: $color-text) {
+  border-top: 2px solid $color;
+  display: inline-block;
+  position: relative;
+  top: -2px;
+  user-select: none;
+  width: 20px;
+
+  &:before, &:after {
+    background-color: $color;
+    content: "";
+    display: block;
+    height: 2px;
+    position: absolute;
+    width: 20px;
+  }
+
+  &:before { top: -7px; }
+  &:after { top: 3px; }
+}

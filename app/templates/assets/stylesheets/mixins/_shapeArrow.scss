@@ -1,0 +1,48 @@
+// ========================================
+// CSS arrow shape
+// ========================================
+
+@mixin shapeArrow($direction: 'up', $color: $color-text, $scale: null) {
+  display: inline-block;
+  height: 15px;
+  position: relative;
+  width: 10px;
+
+  @if $scale {
+    $scale: scale($scale);
+  }
+
+  @if $direction == 'right' {
+    transform: rotate(-270deg) $scale;
+  } @elseif $direction == 'down' {
+    transform: rotate(180deg) $scale;
+  } @elseif $direction == 'left' {
+    transform: rotate(-90deg) $scale;
+  } @else {
+    transform: $scale;
+  }
+
+  &:after, &:before {
+    content: '';
+    display: block;
+    position: absolute;
+  }
+
+  &:before {
+    background-color: $color;
+    height: 16px;
+    left: 4px;
+    top: 0;
+    width: 1px;
+  }
+
+  &:after {
+    color: $color;
+    border-left: 1px solid;
+    border-top: 1px solid;
+    height: 9px;
+    top: 0;
+    transform: rotate(45deg);
+    width: 9px;
+  }
+}
