@@ -75,7 +75,8 @@ module.exports = function (grunt) {
       },
       compass: {
         files: [
-          '<%= path.src %>/assets/stylesheets/**/*.{scss,sass}'
+          '<%= path.src %>/assets/stylesheets/**/*.{scss,sass}',
+          '../assets/stylesheets/**/*.{scss,sass}'
         ],
         tasks: ['compass', 'autoprefixer']
       },
@@ -92,8 +93,8 @@ module.exports = function (grunt) {
      */
     connect: {
       options: {
-        port: 9010,
-        livereload: 2337,
+        port: 9000,
+        livereload: 1337,
         hostname: '0.0.0.0'
       },
       dev: {
