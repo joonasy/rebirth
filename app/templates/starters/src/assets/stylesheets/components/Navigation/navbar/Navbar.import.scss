@@ -1,11 +1,7 @@
-@import "config-shared";
+@import 'config.docs';
 
-// Dependencies
-@import "components/IconCss--arrow";
-@import "components/IconCss--hamburger";
+@import 'Navbar.config';
 
-@import "Navbar.config";
-
-@import "Nav--bar";
-@import "Nav--bar.-align-horizontal";
-@import "Nav--bar--primary";
+@import 'Navbar';
+@import 'Navbar.-transform-horizontal';
+@import 'Navbar.-color-primary';
