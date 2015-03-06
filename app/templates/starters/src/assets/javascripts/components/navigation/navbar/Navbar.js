@@ -9,15 +9,15 @@ App.Navbar = function($) {
   var self = {};
 
   self.init = function() {
-    var $navPrimary = $('#js-Navbar'),
-        $navPrimaryTrigger = $('#js-Navbar-trigger', $navPrimary),
-        $navItem = $('.Nav-item', $navPrimary),
-        $navLink = $('.Nav-link', $navPrimary),
-        $navSubTrigger = $('.Nav-subTrigger', $navPrimary);
+    var $navBar = $('#js-Navbar'),
+        $navBarTrigger = $('#js-Navbar-trigger', $navBar),
+        $navItem = $('.Navbar-item', $navBar),
+        $navLink = $('.Navbar-link', $navBar),
+        $navSubTrigger = $('.Navbar-subTrigger', $navBar);
 
     App.Toggle({
-      trigger: $navPrimaryTrigger,
-      element: $navPrimary
+      trigger: $navBarTrigger,
+      element: $navBar
     });
 
     App.Toggle({
