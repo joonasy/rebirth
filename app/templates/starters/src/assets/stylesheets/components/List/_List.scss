@@ -3,7 +3,7 @@
  * ======================================== */
 
 .List {
-  @extend %cf;
+  @extend %clearfix;
   @extend %reset-list;
   margin-bottom: base-space();
 

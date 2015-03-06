@@ -3,7 +3,7 @@
  * ======================================== */
 
 .Grid {
-  @extend %cf;
+  @extend %clearfix;
   list-style: none;
   margin-bottom: 0;
   margin-left: -(baseSpace(1, px));
