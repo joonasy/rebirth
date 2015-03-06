@@ -7,7 +7,7 @@
 $htmlBgColor: #eaeaea;
 $wrapWidth: 960px;
 
-html.e {
+html.docs {
   @include baseline-grid-background(rem($base-space), darken($htmlBgColor, 10));
   background-color: $htmlBgColor;
 
@@ -16,7 +16,7 @@ html.e {
 
 html, body { height: 100%; }
 
-.e {
+.docs {
   &-wrap {
     border: 1px solid darken($htmlBgColor, 10);
     margin: 0 auto;
@@ -25,7 +25,7 @@ html, body { height: 100%; }
     &--center {
       @include center("table");
 
-      .e-wrap-inner {
+      .docs-wrap-inner {
         @include center("table-descendant");
 
         &-item {
