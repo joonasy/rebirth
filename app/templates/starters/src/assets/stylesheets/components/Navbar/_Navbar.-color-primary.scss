@@ -1,6 +1,9 @@
 /* ========================================
  * Primary navigation bar coloring
- * ======================================== */
+ * ========================================
+ *
+ * @extends `.Navbar {}` in _Navbar.scss
+ */
 
 .Navbar.-color-primary {
   background-color: $Navbar-bgColor;

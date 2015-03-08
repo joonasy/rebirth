@@ -2,46 +2,39 @@
  * Floating navigation bar modifier
  * ========================================
  *
- * @extends `.Nav--bar {}` in _Nav--bar.scss
+ * @extends `.Navbar {}` in _Navbar.scss
  */
 
-.Nav--bar.-transform-horizontal {
+.Navbar.-transform-horizontal {
 
   @include breakpoint("navTransform") {
 
-    .Nav-self { display: block; }
-    .Nav-trigger { display: none; }
+    .Navbar-self { display: block; }
+    .Navbar-trigger { display: none; }
 
-    > ul > .Nav-item {
+    > ul > .Navbar-item {
       float: left;
       position: relative;
 
-      > .Nav-link {
+      > .Navbar-link {
         border-top: none;
         display: inline-block;
         padding-left: $Navbar-padding;
         padding-right: $Navbar-padding;
       }
 
-      > .Nav-subTrigger {
+      > .Navbar-subTrigger {
         border: none;
         padding-left: $Navbar-padding;
         padding-right: $Navbar-padding;
         margin-left: -$Navbar-padding;
         width: auto;
       }
-
-      &.is-open {
-        > .Nav-subTrigger > .IconCss--arrowDown--xs {
-          @include shapeArrow($direction: 'down', $scale: $IconCss-s);
-          top: 0;
-        }
-      }
     }
 
-    .Nav-link { width: auto; }
+    .Navbar-link { width: auto; }
 
-    .Nav-sub {
+    .Navbar-sub {
       left: 0;
       position: absolute;
       top: 100%;
@@ -54,7 +47,10 @@
        * widths. Prefer another solution such as separate
        * navigation for sub pages.
        */
-      ul, .Nav-subTrigger { display: none !important; }
+      ul,
+      .Navbar-subTrigger {
+        display: none !important;
+      }
     }
 
 
@@ -62,15 +58,19 @@
      * States
      * ====== */
 
-    > ul > .Nav-item {
-      .no-touch &:hover .Nav-sub,
-      .no-touch &:hover.is-open .Nav-sub,
-      .touch &.is-open > .Nav-sub  {
+    > ul > .Navbar-item {
+      .no-touch &:hover .Navbar-sub,
+      .no-touch &:hover.is-open .Navbar-sub,
+      .touch &.is-open > .Navbar-sub  {
         display: block;
       }
 
-      .no-touch &.is-open > .Nav-sub {
-        display: none;
+      .no-touch &.is-open {
+
+        > .Navbar-sub { display: none; }
+        > .Navbar-subTrigger > .Navbar-subTrigger-icon {
+          @include shapeArrow($direction: 'down', $scale: $IconCss-s);
+        }
       }
     }
   }
