@@ -1,0 +1,107 @@
+/* ========================================
+ * Navigation bar
+ * ======================================== */
+
+.Navbar {
+  @extend %clearfix;
+  user-select: none;
+}
+
+  .Navbar-self {
+    @extend %is-hidden;
+
+    .Navbar.is-open & { @extend %is-visible; }
+  }
+
+  /**
+   * Navbar items and links
+   */
+  .Navbar-item {
+    @extend %clearfix;
+  }
+
+    .Navbar-link {
+      border-top: 1px solid;
+      cursor: pointer;
+      display: block;
+      float: left;
+      min-height: baseSpace(2);
+      padding: $Navbar-padding $Navbar-padding * 2;
+      width: 87%;
+      width: calc(100% - #{$Navbar-subTriggerWidth});
+
+      &:only-child { width: 100%; }
+    }
+
+    .Navbar-subTrigger {
+      border-top: 1px solid;
+      border-left: 1px solid;
+      cursor: pointer;
+      display: table;
+      float: left;
+      min-height: baseSpace(2);
+      padding: $Navbar-padding 0;
+      text-align: center;
+      width: 13%;
+      width: calc(#{$Navbar-subTriggerWidth});
+    }
+
+      .Navbar-subTrigger-icon {
+        @include shapeArrow('down', $color-text, $IconCss-s);
+        top: -2px;
+        vertical-align: middle;
+
+        .Navbar-item.is-open > .Navbar-subTrigger > & {
+          @include shapeArrow('up', $color-text, $IconCss-s);
+        }
+      }
+
+  /**
+   * Navbar trigger (mobile)
+   */
+  .Navbar-trigger { @extend %clearfix; }
+
+    .Navbar-trigger-link {
+      @extend .Navbar-link;
+      border: none;
+      padding-right: $Navbar-padding;
+      text-align: right;
+    }
+
+    .Navbar-trigger-sub {
+      @extend .Navbar-subTrigger;
+      border-top: none;
+    }
+
+      .Navbar-trigger-sub-icon {
+        @include shapeMenu();
+        vertical-align: middle;
+      }
+
+  /**
+   * Sub navbar items and links
+   */
+  .Navbar-sub {
+    @extend %clearfix;
+    @extend %is-hidden;
+    clear: both;
+
+    .Navbar-item.is-open > & { @extend %is-visible; }
+
+    /**
+     * Third and deeper level
+     */
+    ul {
+      ul {
+        .Navbar-link { padding-left: $Navbar-padding * 2.5; }
+
+        ul {
+          .Navbar-link { padding-left: $Navbar-padding * 3.5; }
+
+          ul {
+            .Navbar-link { padding-left: $Navbar-padding * 4.5; }
+          }
+        }
+      }
+    }
+  }
