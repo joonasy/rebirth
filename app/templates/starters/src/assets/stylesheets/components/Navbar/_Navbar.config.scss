@@ -15,8 +15,7 @@ $Navbar-linkColor: $color-text;
 $Navbar-linkBgColor: darken(#ffffff, 2);
 $Navbar-linkBorderColor: darken($Navbar-linkBgColor, 5);
 
-$Navbar-subTriggerBorderWidth: 1px;
-$Navbar-subTriggerWidth: 48px - $Navbar-subTriggerBorderWidth;
+$Navbar-subTriggerWidth: 48px;
 $Navbar-subTriggerColor: $color-text;
 $Navbar-subTriggerBgColor: $Navbar-linkBgColor;
 $Navbar-subTriggerBorderColor: $Navbar-linkBorderColor;

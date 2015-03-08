@@ -89,9 +89,11 @@ module.exports = function (grunt) {
         files: ['<%%= path.src %>/assets/stylesheets/**/*.{scss,sass}'],
         tasks: ['compass', 'autoprefixer']
       },
+      javascript: {
+        files: ['<%= path.src %>/assets/javascripts/**/*.js']
+      },
       other: {
         files: [
-          '<%%= path.src %>/assets/vendor/*.js',
           '<%%= path.src %>/assets/img/**/*.{png,jpg,jpeg,gif,webp,svg}'
         ]
       }

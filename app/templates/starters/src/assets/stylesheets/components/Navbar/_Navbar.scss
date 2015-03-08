@@ -16,11 +16,9 @@
   /**
    * Navbar items and links
    */
-  .Navbar-item {
-    @extend %clearfix;
-  }
+  .Navbar-item { @extend %clearfix; }
 
-    .Navbar-link {
+    .Navbar-link, %Navbar-link {
       border-top: 1px solid;
       cursor: pointer;
       display: block;
@@ -33,11 +31,11 @@
       &:only-child { width: 100%; }
     }
 
-    .Navbar-subTrigger {
+    .Navbar-subTrigger, %Navbar-subTrigger {
       border-top: 1px solid;
       border-left: 1px solid;
       cursor: pointer;
-      display: table;
+      display: block;
       float: left;
       min-height: baseSpace(2);
       padding: $Navbar-padding 0;
@@ -48,8 +46,6 @@
 
       .Navbar-subTrigger-icon {
         @include shapeArrow('down', $color-text, $IconCss-s);
-        top: -2px;
-        vertical-align: middle;
 
         .Navbar-item.is-open > .Navbar-subTrigger > & {
           @include shapeArrow('up', $color-text, $IconCss-s);
@@ -62,14 +58,14 @@
   .Navbar-trigger { @extend %clearfix; }
 
     .Navbar-trigger-link {
-      @extend .Navbar-link;
+      @extend %Navbar-link;
       border: none;
       padding-right: $Navbar-padding;
       text-align: right;
     }
 
     .Navbar-trigger-sub {
-      @extend .Navbar-subTrigger;
+      @extend %Navbar-subTrigger;
       border-top: none;
     }
 
@@ -88,9 +84,6 @@
 
     .Navbar-item.is-open > & { @extend %is-visible; }
 
-    /**
-     * Third and deeper level
-     */
     ul {
       ul {
         .Navbar-link { padding-left: $Navbar-padding * 2.5; }

@@ -1,6 +1,6 @@
 # DO NOT USE YET! Mediasignal Web Starter Kit ([generator-msc](https://bitbucket.org/mediasignal/generator-msc.git))
 
-> Mediasignals combined styleguide, starter kit and Yeoman generator for new web projects (Typo3/Html). 
+> Mediasignals combined styleguide, starter kit and Yeoman generator for new web projects (Typo3/Html).
 
 This startekit contains methods and ideas from various sources such as [BEM](https://bem.info/), [HTML5BP](http://html5boilerplate.com/), [Bootstrap](http://getbootstrap.com), [Foundation](http://foundation.zurb.com/), [INUITCSS](https://github.com/inuitcss), [SMACSS](https://smacss.com/), [OOCSS](http://oocss.org/), [SUIT CSS](https://github.com/suitcss/suit). By default this template supports IE9+, Mobile first -ideology and progressive enhancement.
 
@@ -27,14 +27,14 @@ Please read and understand all of the following before doing anything. All of th
 
 ### Project workflow
 
-* [Typo3 (work in progress)](docs/project-types/#typo3)
+* [Typo3 (work in progress)](https://bitbucket.org/mediasignal/mediasignal-web-starter-kit/src/master/docs/project-types/typo3)
 * [Html (work in progress)](docs/project-types/#html)
 
 ## Requirements
 
 Install all the requirements before installing the generator.
 
-* [Node.js](http://nodejs.org/) ([Npm](https://www.npmjs.org/)) 
+* [Node.js](http://nodejs.org/) ([Npm](https://www.npmjs.org/))
 * [Compass](http://compass-style.org/) ([Ruby](https://www.ruby-lang.org/en/)) ```gem install compass```
 * [Yeoman](http://yeoman.io/) ```npm install -g yo```
 * [Grunt](http://gruntjs.com/) ```npm install -g grunt-cli```
@@ -42,7 +42,7 @@ Install all the requirements before installing the generator.
 
 ## Installing
 
-**1.** Install ```generator-msc```: 
+**1.** Install ```generator-msc```:
 
     npm install -g generator-msc
 
@@ -69,7 +69,7 @@ Please discuss about new ideas and things that you think should be modified. Cur
 * JavaScript styleguide
 * Sub generators for starters
 * Rest of the CSS style guiding
-* Test CSS components 
+* Test CSS components
 * Testing for everything
 * Gitignores and readmes to generator
 

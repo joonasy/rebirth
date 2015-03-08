@@ -6,7 +6,7 @@
  */
 
 .ButtonCollection--vertical {
-  @extend %cf;
+  @extend %clearfix;
 
   > .Button {
     border-bottom: 1px solid $color-borderPrimary;

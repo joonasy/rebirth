@@ -2,10 +2,11 @@
  * Floating navigation bar modifier
  * ========================================
  *
- * @extends `.Nav--bar {}` in _Nav--Bar.scss
+ * @extends `.Nav--bar {}` in _Nav--bar.scss
  */
 
-.Nav--bar.-align-horizontal {
+.Nav--bar.-transform-horizontal {
+
   @include breakpoint("navTransform") {
 
     .Nav-self { display: block; }
@@ -32,8 +33,7 @@
 
       &.is-open {
         > .Nav-subTrigger > .IconCss--arrowDown--xs {
-          //@include IconCss--arrowDown--xs();
-          //@include IconCss("arrowDown", "xs");
+          @include shapeArrow($direction: 'down', $scale: $IconCss-s);
           top: 0;
         }
       }
