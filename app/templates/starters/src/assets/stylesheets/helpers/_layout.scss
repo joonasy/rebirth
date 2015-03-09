@@ -1,0 +1,14 @@
+/* ========================================
+ * Layout helpers
+ * ======================================== */
+
+/**
+ * Clearfix
+ */
+.clearfix { @include clearfix(); }
+
+/**
+ * Floats
+ */
+.floatLeft { float: left !important; }
+.floatRight { float: right !important; }

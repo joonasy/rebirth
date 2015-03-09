@@ -1,6 +1,9 @@
 /* ========================================
  * Mobile up responsive visibility helper
- * ======================================== */
+ * ========================================
+ *
+ * Hide visually and from screen readers
+ */
 
 .hidden,
 .s-visible, .s-visible--i, .s-visible--ib, .s-visible--tc,
@@ -10,7 +13,7 @@
   display: none !important;
 }
 
-@include breakpoint("smallUp") {
+@include breakpoint('smallUp') {
   .s-visible  { display: inherit !important; }
   .s-visible--i { display: inline !important; }
   .s-visible--ib { display: inline-block !important; }
@@ -18,7 +21,7 @@
   .s-hidden { display: none !important; }
 }
 
-@include breakpoint("mediumUp") {
+@include breakpoint('mediumUp') {
   .m-visible { display: inherit !important; }
   .m-visible--i { display: inline !important; }
   .m-visible--ib { display: inline-block !important; }
@@ -26,7 +29,7 @@
   .m-hidden { display: none !important; }
 }
 
-@include breakpoint("largeUp") {
+@include breakpoint('largeUp') {
   .l-visible { display: inherit !important; }
   .l-visible--i { display: inline !important; }
   .l-visible--ib { display: inline-block !important; }
@@ -34,7 +37,7 @@
   .l-hidden { display: none !important; }
 }
 
-@include breakpoint("xLargeUp") {
+@include breakpoint('xLargeUp') {
   .xl-visible { display: inherit !important; }
   .xl-visible--i { display: inline !important; }
   .xl-visible--ib { display: inline-block !important; }
