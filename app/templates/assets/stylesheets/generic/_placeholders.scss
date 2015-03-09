@@ -1,5 +1,5 @@
 /* ========================================
- * Global placeholders and classes
+ * Global placeholders
  * ======================================== */
 
 /**
@@ -15,3 +15,8 @@
   margin: 0;
   padding: 0;
 }
+
+/**
+ * Fill the space absolutely
+ */
+%sizeFillAbsolute { @include sizeFillAbsolute(); }
