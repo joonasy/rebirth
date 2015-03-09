@@ -3,32 +3,22 @@
  * ======================================== */
 
 .Hero {
-  max-width: $app-width - $l-r-Header-width;
   position: relative;
   width: 100%;
   z-index: 0;
-
-  .slick-list,
-  .slick-track {
-    height: 100%;
-  }
-
-  .slick-list { z-index: 0; }
 
   &-item {
     display: table;
     height: 100%;
     position: relative;
     width: 100%;
-
-    &.slick-slide { display: table; }
   }
 
     &-content {
       display: table-cell;
       height: 100%;
-      padding-bottom: base-space(2);
-      padding-top: base-space(2);
+      padding-bottom: baseSpace(2);
+      padding-top: baseSpace(2);
       position: relative;
       vertical-align: middle;
       width: 100%;
@@ -58,57 +48,11 @@
       right: 0;
       bottom: 0;
       background: linear-gradient(
-        rgba(#000000, 0.5) 0%,
-        rgba($color-brand-primary-dark, 0) 20%,
-        rgba($color-brand-primary-dark, 0) 30%,
-        rgba($color-brand-primary-dark, 0.93) 87%
+        rgba(#000000, 0.2) 0%,
+        rgba(#000000, 0.8) 100%
       );
-
-      @include breakpoint("medium-up") {
-        background: linear-gradient(
-          rgba(#000000, 0) 0%,
-          rgba($color-brand-primary-dark, 0) 50%,
-          rgba($color-brand-primary-dark, 0.93) 100%
-        );
-      }
-
-      &--dark {
-        background: linear-gradient(
-          rgba(#000000, 0) 0%,
-          rgba(#000000, 0.6) 100%
-        );
-      }
-
-      .no-cssgradients & {
-        background: image-url('hero-overlay.png') bottom left repeat-x;
-      }
     }
 
-  &-exploreBtn {
-    display: none;
-
-    @include breakpoint("large-up") {
-      bottom: base-space();
-      display: block;
-      position: absolute;
-      right: base-space();
-      z-index: 100;
-    }
-  }
-
-  &-newsList {
-    display: none;
-
-    @include breakpoint("large-up") {
-      background-color: #ffffff;
-      display: block;
-      padding: base-space(0.75) base-space(0.75);
-      position: absolute;
-      right: 0;
-      top: 0;
-      z-index: 100;
-    }
-  }
 
 
   /* ======
@@ -122,7 +66,7 @@
     height: 100%;
     max-height: 640px;
 
-    @include breakpoint("medium-up") {
+    @include breakpoint('medium-up') {
       max-height: 960px;
     }
   }
@@ -135,7 +79,7 @@
       height: 440px;
     }
 
-    @include breakpoint("large-up") {
+    @include breakpoint('large-up') {
       .Hero-item {
         height: 640px;
       }
@@ -151,14 +95,14 @@
     }
 
     &.Hero--btm .Hero-content {
-      padding-bottom: base-space();
+      padding-bottom: baseSpace();
 
-      @include breakpoint("medium-up") {
-        padding-bottom: base-space(1.5);
+      @include breakpoint('medium-up') {
+        padding-bottom: baseSpace(1.5);
       }
     }
 
-    @include breakpoint("medium-up") {
+    @include breakpoint('medium-up') {
       .Hero-item {
         height: 440px;
       }
@@ -171,29 +115,6 @@
   &--btm {
     .Hero-content {
       vertical-align: bottom;
-    }
-  }
-
-  /**
-   * Small separator after
-   */
-  &--separate--after--s {
-    border-bottom: 5px solid #ffffff;
-  }
-
-  /**
-   * Small separator before
-   */
-  &--separate--before--s {
-    border-top: 5px solid #ffffff;
-  }
-
-  /**
-   * Right aligned bg
-   */
-  &--bg--right {
-    .Hero-bg {
-      background-position: right;
     }
   }
 }
