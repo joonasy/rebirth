@@ -66,7 +66,7 @@
     height: 100%;
     max-height: 640px;
 
-    @include breakpoint('medium-up') {
+    @include breakpoint('mediumUp') {
       max-height: 960px;
     }
   }
@@ -79,7 +79,7 @@
       height: 440px;
     }
 
-    @include breakpoint('large-up') {
+    @include breakpoint('largeUp') {
       .Hero-item {
         height: 640px;
       }
@@ -97,12 +97,12 @@
     &.Hero--btm .Hero-content {
       padding-bottom: baseSpace();
 
-      @include breakpoint('medium-up') {
+      @include breakpoint('mediumUp') {
         padding-bottom: baseSpace(1.5);
       }
     }
 
-    @include breakpoint('medium-up') {
+    @include breakpoint('mediumUp') {
       .Hero-item {
         height: 440px;
       }
