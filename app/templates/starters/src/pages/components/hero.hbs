@@ -1,0 +1,63 @@
+---
+title: Hero
+resourcePath: components/hero/
+stylesheets:
+  - Hero.import
+javascripts:
+  #- Hero
+bottomScript:
+  #App.Navbar.init();
+---
+
+<div class="Hero Hero--m">
+  <style>
+    .hero-2 { background-image: url(http://lorempixel.com/640/440/city); }
+
+    @media screen and (min-width: 768px) {
+      .hero-2  {
+        background-image: url(http://lorempixel.com/1680/440/city);
+      }
+    }
+  </style>
+  <div class="Hero-item">
+    <div class="Hero-content">
+      <div class="Wrap">
+        <div class="Grid Grid--l">
+          <div class="Grid-item">
+            <h2 class="Heading color--light">
+              KATEPAL KATTOLAATTA -
+              <span class="text--normal">
+                Hyvä katemateriaali istuu maisemaan ja lisää talosi tyylikkyyttä.
+              </span>
+            </h2>
+          </div>
+          <div class="Grid-item m-Width--6-12">
+            <div class="color--light">
+            <p>
+              Nykyaikaiset bitumikattolaatat ja bitumikermit ovat osoittaneet
+              kestävyytensä niin trooppisen kuumissa kuin hyytävän kylmissäkin sääolosuhteissa. Siksi esimerkiksi USA:ssa yli 80% talojen katoista on bitumilaattakattoja!
+            </p>
+            <p>
+              Kestävyys ei kuitenkaan ole ainoa syy, miksi bitumikattolaatta on modernin rakentajan tyylikäs, viisas valinta. Kokonaisuus ratkaisee - kestävyyden lisäksi myös uusien kattolaattojen näyttävyys, asentamisen helppous,
+              järkevät kustannukset sekä vaivattomuus kaiken kaikkiaan vaikuttavat päätöksentekoon.
+            </p>
+            </div>
+          </div>
+          <div class="Grid-item m-Width--6-12">
+            <div class="color--light">
+            <p>
+              Katepal-kattolaatoissa yhdistyvät kiven kestävyys sekä bitumin tiiviys ja erinomaiset jousto-ominaisuudet. Kaikki saumakohdat peittyvät limityksen ansiosta, joten katto on vedenpitävä myös naulaus- ja saumakohdista. Kestävyyttä on myös se, että laatan pinta ei kuoriudu eikä ruostu.
+            </p>
+            <p>
+              Karhean kivisirotepinnan päälle kertynyt lumi ja jää pysyvät talvisin katolla eivätkä putoa kulkuväylille tai istutusten päälle. Sateen sattuessa ja kovallakin tuulella kattolaatta on miellyttävän hiljainen.
+            </p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="Hero-bg hero-2"></div>
+    <div class="Hero-overlay Hero-overlay--full"></div>
+  </div>
+</div>
