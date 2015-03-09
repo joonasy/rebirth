@@ -1,6 +1,11 @@
 // ========================================
-// Truncating text
+// Text related mixins
 // ========================================
+
+
+// ======
+// Truncate text
+// ======
 //
 // Force overly long spans of text to truncate
 // e.g.: @include truncate(80%);
@@ -11,4 +16,15 @@
   white-space: nowrap;
   overflow: hidden;
   text-overflow: ellipsis;
+}
+
+
+// ======
+// Image replacement / text hiding
+// ======
+
+@mixin textHide() {
+  text-indent: 100%;
+  white-space: nowrap;
+  overflow: hidden;
 }

@@ -19,8 +19,8 @@
 @import 'mixins/shapeArrow';
 @import 'mixins/shapeMenu';
 @import 'mixins/spriteRetina';
-@import 'mixins/textHide';
-@import 'mixins/textTruncate';
+@import 'mixins/size';
+@import 'mixins/text';
 @import 'mixins/triangle';
 @import 'mixins/utility';
 
@@ -29,7 +29,7 @@
 
 // Base
 @import 'generic/base';
-@import 'generic/global';
+@import 'generic/placeholders';
 @import 'generic/states';
 
 // Components
