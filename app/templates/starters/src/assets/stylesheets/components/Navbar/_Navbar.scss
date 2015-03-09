@@ -7,51 +7,6 @@
   user-select: none;
 }
 
-  .Navbar-self {
-    @extend %is-hidden;
-
-    .Navbar.is-open & { @extend %is-visible; }
-  }
-
-  /**
-   * Navbar items and links
-   */
-  .Navbar-item { @extend %clearfix; }
-
-    .Navbar-link, %Navbar-link {
-      border-top: 1px solid;
-      cursor: pointer;
-      display: block;
-      float: left;
-      min-height: baseSpace(2);
-      padding: $Navbar-padding $Navbar-padding * 2;
-      width: 87%;
-      width: calc(100% - #{$Navbar-subTriggerWidth});
-
-      &:only-child { width: 100%; }
-    }
-
-    .Navbar-subTrigger, %Navbar-subTrigger {
-      border-top: 1px solid;
-      border-left: 1px solid;
-      cursor: pointer;
-      display: block;
-      float: left;
-      min-height: baseSpace(2);
-      padding: $Navbar-padding 0;
-      text-align: center;
-      width: 13%;
-      width: calc(#{$Navbar-subTriggerWidth});
-    }
-
-      .Navbar-subTrigger-icon {
-        @include shapeArrow('down', $color-text, $IconCss-s);
-
-        .Navbar-item.is-open > .Navbar-subTrigger > & {
-          @include shapeArrow('up', $color-text, $IconCss-s);
-        }
-      }
-
   /**
    * Navbar trigger (mobile)
    */
@@ -75,26 +30,74 @@
       }
 
   /**
-   * Sub navbar items and links
+   * Navbar
    */
-  .Navbar-sub {
-    @extend %clearfix;
-    @extend %is-hidden;
-    clear: both;
+  .Navbar-self {
+    display: none;
 
-    .Navbar-item.is-open > & { @extend %is-visible; }
+    .Navbar.is-open & { display: block; }
+  }
 
-    ul {
+    /**
+     * Navbar items and links
+     */
+    .Navbar-item { @extend %clearfix; }
+
+      .Navbar-link, %Navbar-link {
+        border-top: 1px solid;
+        cursor: pointer;
+        display: block;
+        float: left;
+        min-height: baseSpace(2);
+        padding: $Navbar-padding $Navbar-padding * 2;
+        width: 87%;
+        width: calc(100% - #{$Navbar-subTriggerWidth});
+
+        &:only-child { width: 100%; }
+      }
+
+      .Navbar-subTrigger, %Navbar-subTrigger {
+        border-top: 1px solid;
+        border-left: 1px solid;
+        cursor: pointer;
+        display: block;
+        float: left;
+        min-height: baseSpace(2);
+        padding: $Navbar-padding 0;
+        text-align: center;
+        width: 13%;
+        width: calc(#{$Navbar-subTriggerWidth});
+      }
+
+        .Navbar-subTrigger-icon {
+          @include shapeArrow('down', $color-text, $IconCss-s);
+
+          .Navbar-item.is-open > .Navbar-subTrigger > & {
+            @include shapeArrow('up', $color-text, $IconCss-s);
+          }
+        }
+
+    /**
+     * Sub navbar items and links
+     */
+    .Navbar-sub {
+      @extend %clearfix;
+      display: none;
+      clear: both;
+
+      .Navbar-item.is-open > & { display: block; }
+
       ul {
-        .Navbar-link { padding-left: $Navbar-padding * 2.5; }
-
         ul {
-          .Navbar-link { padding-left: $Navbar-padding * 3.5; }
+          .Navbar-link { padding-left: $Navbar-padding * 2.5; }
 
           ul {
-            .Navbar-link { padding-left: $Navbar-padding * 4.5; }
+            .Navbar-link { padding-left: $Navbar-padding * 3.5; }
+
+            ul {
+              .Navbar-link { padding-left: $Navbar-padding * 4.5; }
+            }
           }
         }
       }
     }
-  }

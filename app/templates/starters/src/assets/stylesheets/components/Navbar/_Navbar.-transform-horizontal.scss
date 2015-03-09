@@ -7,71 +7,67 @@
 
 .Navbar.-transform-horizontal {
 
-  @include breakpoint("navTransform") {
+  @include breakpoint('navTransform') {
 
-    .Navbar-self { display: block; }
     .Navbar-trigger { display: none; }
+    .Navbar-self { display: block; }
 
-    > ul > .Navbar-item {
-      float: left;
-      position: relative;
+      > ul > .Navbar-item {
+        float: left;
+        position: relative;
 
-      > .Navbar-link {
-        border-top: none;
-        display: inline-block;
-        padding-left: $Navbar-padding;
-        padding-right: $Navbar-padding;
+        > .Navbar-link {
+          border-top: none;
+          display: inline-block;
+          padding-left: $Navbar-padding;
+          padding-right: $Navbar-padding;
+        }
+
+        > .Navbar-subTrigger {
+          border: none;
+          padding-left: $Navbar-padding;
+          padding-right: $Navbar-padding;
+          margin-left: -$Navbar-padding;
+          width: auto;
+        }
       }
 
-      > .Navbar-subTrigger {
-        border: none;
-        padding-left: $Navbar-padding;
-        padding-right: $Navbar-padding;
-        margin-left: -$Navbar-padding;
-        width: auto;
+        .Navbar-link { width: auto; }
+
+        .no-touch & .Navbar-item.is-open > .Navbar-subTrigger
+        > .Navbar-subTrigger-icon {
+          @include shapeArrow($direction: 'down', $scale: $IconCss-s);
+        }
+
+      .Navbar-sub {
+        left: 0;
+        position: absolute;
+        top: 100%;
+
+        /**
+         * Fourth and deeper levels
+         *
+         * These are hidden by default because dropdown navigations
+         * deeper than three levels aren't very elegant in desktop
+         * widths. Prefer another solution such as separate
+         * navigation for sub pages.
+         */
+        ul,
+        .Navbar-subTrigger {
+          display: none !important;
+        }
       }
-    }
-
-    .Navbar-link { width: auto; }
-
-    .Navbar-sub {
-      left: 0;
-      position: absolute;
-      top: 100%;
 
       /**
-       * Fourth and deeper levels
-       *
-       * These are hidden by default because dropdown navigations
-       * deeper than three levels aren't very elegant in desktop
-       * widths. Prefer another solution such as separate
-       * navigation for sub pages.
+       * Sub navigation states
        */
-      ul,
-      .Navbar-subTrigger {
-        display: none !important;
-      }
-    }
-
-
-    /* ======
-     * States
-     * ====== */
-
-    > ul > .Navbar-item {
-      .no-touch &:hover .Navbar-sub,
-      .no-touch &:hover.is-open .Navbar-sub,
-      .touch &.is-open > .Navbar-sub  {
+      .no-touch & .Navbar-item:hover > .Navbar-sub,
+      .no-touch & .Navbar-item:hover.is-open > .Navbar-sub {
         display: block;
       }
 
-      .no-touch &.is-open {
-
-        > .Navbar-sub { display: none; }
-        > .Navbar-subTrigger > .Navbar-subTrigger-icon {
-          @include shapeArrow($direction: 'down', $scale: $IconCss-s);
-        }
+      .no-touch & .Navbar-item.is-open > .Navbar-sub {
+        display: none;
       }
-    }
   }
 }
