@@ -15,19 +15,19 @@
 }
 
 .s-Grid--equal {
-  @include breakpoint("small-up") {
+  @include breakpoint('small-up') {
     @include Grid-equal();
   }
 }
 
 .m-Grid--equal {
-  @include breakpoint("medium-up") {
+  @include breakpoint('medium-up') {
     @include Grid-equal();
   }
 }
 
 .l-Grid--equal {
-  @include breakpoint("large-up") {
+  @include breakpoint('large-up') {
     @include Grid-equal();
   }
 }

@@ -2,7 +2,7 @@
  * CSS shaped arrow icons
  * ======================================== */
 
-[class^="IconCss"][class*="-shape-arrow"] {
+[class^='IconCss'][class*='-shape-arrow'] {
   @include shapeArrow($direction: false);
 }
 

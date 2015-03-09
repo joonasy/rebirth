@@ -2,10 +2,10 @@
 // Font sizing with vertical rhythm
 // ========================================
 
-@mixin fontSize($fontSize, $lineHeight: "rhythm"){
+@mixin fontSize($fontSize, $lineHeight: 'rhythm'){
   font-size: ($fontSize / $base-font-size) * 1rem;
 
-  @if $lineHeight == "rhythm" {
+  @if $lineHeight == 'rhythm' {
     line-height: ($fontSize / $base-lineHeight) * ($base-lineHeight / $fontSize);
   } @else {
     line-height: $lineHeight;

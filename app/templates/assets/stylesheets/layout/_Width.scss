@@ -2,7 +2,7 @@
  * Widths
  * ======================================== */
 
-@mixin Width($namespace: "") {
+@mixin Width($namespace: '') {
   .#{$namespace}Width--1-12  { width: 8.333%; }
   .#{$namespace}Width--2-12  { width: 16.666%; }
   .#{$namespace}Width--3-12  { width: 25%; }
@@ -17,6 +17,6 @@
 }
 
 @include Width();
-@include breakpoint("smallUp"){ @include Width(s-); }
-@include breakpoint("mediumUp"){ @include Width(m-); }
-@include breakpoint("largeUp"){ @include Width(l-); }
+@include breakpoint('smallUp'){ @include Width(s-); }
+@include breakpoint('mediumUp'){ @include Width(m-); }
+@include breakpoint('largeUp'){ @include Width(l-); }

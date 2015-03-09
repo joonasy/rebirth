@@ -78,7 +78,7 @@
       top: 0;
     }
 
-    > [class*="IconCss--arrow"] {
+    > [class*='IconCss--arrow'] {
       top: 17px;
       position: absolute;
     }
@@ -88,14 +88,14 @@
     padding-left: 36px;
 
     > .Icon:first-of-type { left: 0; }
-    > [class*="IconCss--arrow"]:first-of-type { left: 15px; }
+    > [class*='IconCss--arrow']:first-of-type { left: 15px; }
   }
 
   &--iconRight {
     padding-right: 36px;
 
     > .Icon:last-of-type { right: 0; }
-    > [class*="IconCss--arrow"]:last-of-type { right: 15px; }
+    > [class*='IconCss--arrow']:last-of-type { right: 15px; }
   }
 }
 

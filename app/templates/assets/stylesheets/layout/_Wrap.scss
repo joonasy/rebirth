@@ -9,7 +9,7 @@
   padding-right: $base-edgeSpace;
   max-width: $wrapWidth + baseSpace(4, px);
 
-  @include breakpoint("largeUp") {
+  @include breakpoint('largeUp') {
     padding-left: baseSpace(2, px);
     padding-right: baseSpace(2, px);
   }

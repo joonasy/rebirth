@@ -2,7 +2,7 @@
  * Pull
  * ======================================== */
 
-@mixin Pull($namespace: "") {
+@mixin Pull($namespace: '') {
   .#{$namespace}Pull--1-12  { right: 8.333%; }
   .#{$namespace}Pull--2-12  { right: 16.666%; }
   .#{$namespace}Pull--3-12  { right: 25%; }
@@ -16,9 +16,9 @@
   .#{$namespace}Pull--11-12 { right: 91.666%; }
 }
 
-[class*="Pull--"] { position: relative; }
+[class*='Pull--'] { position: relative; }
 
 @include Pull();
-@include breakpoint("smallUp") { @include Pull(s-); }
-@include breakpoint("mediumUp") { @include Pull(m-); }
-@include breakpoint("largeUp") { @include Pull(l-); }
+@include breakpoint('smallUp') { @include Pull(s-); }
+@include breakpoint('mediumUp') { @include Pull(m-); }
+@include breakpoint('largeUp') { @include Pull(l-); }

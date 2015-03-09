@@ -3,63 +3,63 @@
 // ========================================
 //
 // @usage
-//   Default usage: @include breakpoint("mediumUp") {}
-//   Custom usage: @include breakpoint(false, $min-width: "1337px") {}
+//   Default: @include breakpoint('mediumUp') {}
+//   Custom: @include breakpoint(false, $min-width: '1337px') {}
 
 @mixin breakpoint($media: false, $min-width: false, $max-width: false, $min-height: false, $max-height: false, $ratio: 2) {
 
   // e.g. old feature phones
-  @if $media == "xxSmallDown" {
+  @if $media == 'xxSmallDown' {
     @media only screen and (max-width: $breakpoint-xs - 1) { @content; }
   }
 
   // e.g. iPhone landscape and down
-  @elseif $media == "xSmallDown" {
+  @elseif $media == 'xSmallDown' {
     @media only screen and (max-width: $breakpoint-s - 1) { @content; }
   }
 
   // e.g. Nexus portrait and up
-  @elseif $media == "smallUp" {
+  @elseif $media == 'smallUp' {
     @media only screen and (min-width: $breakpoint-s) { @content; }
   }
 
   // e.g. Small handheld devices
-  @elseif $media == "smallDown" {
+  @elseif $media == 'smallDown' {
     @media only screen and (max-width: $breakpoint-s - 1) { @content; }
   }
 
   // e.g. iPad portrait and up
-  @elseif $media == "mediumUp" {
+  @elseif $media == 'mediumUp' {
     @media only screen and (min-width: $breakpoint-m) { @content; }
   }
 
   // e.g. iPad portrait only
-  @elseif $media == "mediumOnly" {
+  @elseif $media == 'mediumOnly' {
     @media only screen and (min-width: $breakpoint-m) and (max-width: $breakpoint-l - 1) { @content; }
   }
 
   // e.g. iPad portrait and down to mobile
-  @else if $media == "mediumDown" {
+  @else if $media == 'mediumDown' {
     @media only screen and (max-width: $breakpoint-l - 1) { @content; }
   }
 
   // e.g. iPad portrait orientation switch to landspace and up
-  @elseif $media == "mediumLarge" {
+  @elseif $media == 'mediumLarge' {
     @media only screen and (min-width: $breakpoint-ml) { @content; }
   }
 
   // e.g. iPad landscape and up
-  @else if $media == "largeUp" or $media == "navTransform" {
+  @else if $media == 'largeUp' or $media == 'navTransform' {
     @media only screen and (min-width: $breakpoint-l) { @content; }
   }
 
   // e.g. Desktop pc and up
-  @else if $media == "xLargeUp" {
+  @else if $media == 'xLargeUp' {
     @media only screen and (min-width: $breakpoint-xl) { @content; }
   }
 
   // High resolution
-  @elseif $media == "retina" {
+  @elseif $media == 'retina' {
     @media (-webkit-min-device-pixel-ratio: #{$ratio}), (min-resolution: #{$ratio}dppx) {
       @content;
     }

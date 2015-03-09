@@ -6,7 +6,7 @@
   padding-bottom: baseSpace();
   padding-top: baseSpace();
 
-  @include breakpoint("mediumUp") {
+  @include breakpoint('mediumUp') {
     padding-bottom: baseSpace(2);
     padding-top: baseSpace(2);
   }
