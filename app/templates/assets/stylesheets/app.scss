@@ -12,29 +12,28 @@
 @import 'mixins/baseSpace';
 @import 'mixins/bgRetina';
 @import 'mixins/breakpoint';
+@import 'mixins/color';
+@import 'mixins/display';
 @import 'mixins/center';
 @import 'mixins/clearfix';
 @import 'mixins/fontSize';
-@import 'mixins/placeholderColor';
+@import 'mixins/position';
 @import 'mixins/shapeArrow';
 @import 'mixins/shapeMenu';
 @import 'mixins/spriteRetina';
-@import 'mixins/textHide';
-@import 'mixins/textTruncate';
+@import 'mixins/text';
 @import 'mixins/triangle';
 @import 'mixins/utility';
 
 // Config
 @import 'config';
 
-// Base
+// Generic
 @import 'generic/base';
-@import 'generic/global';
-@import 'generic/states';
+@import 'generic/placeholder';
 
 // Components
 @import 'components/Ieframe';
-
 
 // Layout based components
 @import 'layout/Grid';
