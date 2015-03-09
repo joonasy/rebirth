@@ -5,8 +5,13 @@
 .Navbar {
   @extend %clearfix;
   user-select: none;
+}
 
-  .Navbar-self { @extend %is-hidden; }
+  .Navbar-self {
+    @extend %is-hidden;
+
+    .Navbar.is-open & { @extend %is-visible; }
+  }
 
   /**
    * Navbar items and links
@@ -30,7 +35,7 @@
       border-top: 1px solid;
       border-left: 1px solid;
       cursor: pointer;
-      display: table;
+      display: block;
       float: left;
       min-height: baseSpace(2);
       padding: $Navbar-padding 0;
@@ -41,8 +46,10 @@
 
       .Navbar-subTrigger-icon {
         @include shapeArrow('down', $color-text, $IconCss-s);
-        top: -2px;
-        vertical-align: middle;
+
+        .Navbar-item.is-open > .Navbar-subTrigger > & {
+          @include shapeArrow('up', $color-text, $IconCss-s);
+        }
       }
 
   /**
@@ -75,15 +82,10 @@
     @extend %is-hidden;
     clear: both;
 
-    /**
-     * Third level
-     */
-    ul {
+    .Navbar-item.is-open > & { @extend %is-visible; }
 
-      /**
-       * Deeper levels
-       */
-      ul  {
+    ul {
+      ul {
         .Navbar-link { padding-left: $Navbar-padding * 2.5; }
 
         ul {
@@ -96,18 +98,3 @@
       }
     }
   }
-
-
-  /* ======
-   * States
-   * ====== */
-
-  &.is-open .Navbar-self { @extend %is-visible; }
-
-  .Navbar-item.is-open {
-    > .Navbar-sub { @extend %is-visible; }
-    > .Navbar-subTrigger > .Navbar-subTrigger-icon {
-      @include shapeArrow('up', $color-text, $IconCss-s);
-    }
-  }
-}
