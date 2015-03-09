@@ -3,61 +3,92 @@ title: Hero
 resourcePath: components/hero/
 stylesheets:
   - Hero.import
-javascripts:
-  #- Hero
-bottomScript:
-  #App.Navbar.init();
 ---
 
-<div class="Hero Hero--m">
+<div class="Hero -size-full">
   <style>
-    .hero-2 { background-image: url(http://lorempixel.com/640/440/city); }
+    @media screen and (max-width: 767px) {
+      .Hero-figure--1 { background-image: url(http://lorempixel.com/g/640/440/cats); }
+    }
 
-    @media screen and (min-width: 768px) {
-      .hero-2  {
-        background-image: url(http://lorempixel.com/1680/440/city);
-      }
+    @media screen and (min-width: 768px) and (max-width: 1023px) {
+      .Hero-figure--1 { background-image: url(http://lorempixel.com/g/1280/880/cats); }
+    }
+
+    @media screen and (min-width: 1024px) {
+      .Hero-figure--1 { background-image: url(http://lorempixel.com/g/1680/1320/cats); }
     }
   </style>
+
   <div class="Hero-item">
     <div class="Hero-content">
       <div class="Wrap">
-        <div class="Grid Grid--l">
-          <div class="Grid-item">
-            <h2 class="Heading color--light">
-              KATEPAL KATTOLAATTA -
-              <span class="text--normal">
-                Hyvä katemateriaali istuu maisemaan ja lisää talosi tyylikkyyttä.
-              </span>
-            </h2>
-          </div>
-          <div class="Grid-item m-Width--6-12">
-            <div class="color--light">
-            <p>
-              Nykyaikaiset bitumikattolaatat ja bitumikermit ovat osoittaneet
-              kestävyytensä niin trooppisen kuumissa kuin hyytävän kylmissäkin sääolosuhteissa. Siksi esimerkiksi USA:ssa yli 80% talojen katoista on bitumilaattakattoja!
-            </p>
-            <p>
-              Kestävyys ei kuitenkaan ole ainoa syy, miksi bitumikattolaatta on modernin rakentajan tyylikäs, viisas valinta. Kokonaisuus ratkaisee - kestävyyden lisäksi myös uusien kattolaattojen näyttävyys, asentamisen helppous,
-              järkevät kustannukset sekä vaivattomuus kaiken kaikkiaan vaikuttavat päätöksentekoon.
-            </p>
-            </div>
-          </div>
-          <div class="Grid-item m-Width--6-12">
-            <div class="color--light">
-            <p>
-              Katepal-kattolaatoissa yhdistyvät kiven kestävyys sekä bitumin tiiviys ja erinomaiset jousto-ominaisuudet. Kaikki saumakohdat peittyvät limityksen ansiosta, joten katto on vedenpitävä myös naulaus- ja saumakohdista. Kestävyyttä on myös se, että laatan pinta ei kuoriudu eikä ruostu.
-            </p>
-            <p>
-              Karhean kivisirotepinnan päälle kertynyt lumi ja jää pysyvät talvisin katolla eivätkä putoa kulkuväylille tai istutusten päälle. Sateen sattuessa ja kovallakin tuulella kattolaatta on miellyttävän hiljainen.
-            </p>
-            </div>
-          </div>
+        <div class="m-Width--6-12">
+          <h1>Full hero</h1>
+          <p>I'm temporary hero page and content with background and overlay. Lorem ipsum dolor sit amet, consectetur adipisicing elit. Repellendus nulla id voluptas facere quam laboriosam doloribus dolor alias delectus nam at molestias tempora veritatis praesentium velit reiciendis, quibusdam similique accusantium?</p>
         </div>
       </div>
     </div>
-
-    <div class="Hero-bg hero-2"></div>
-    <div class="Hero-overlay Hero-overlay--full"></div>
+    <div class="Hero-figure Hero-figure--1"></div>
   </div>
+
 </div>
+
+<div class="Hero -size-l">
+  <style>
+    @media screen and (max-width: 767px) {
+      .Hero-figure--2 { background-image: url(http://lorempixel.com/g/640/441/cats); }
+    }
+
+    @media screen and (min-width: 768px) and (max-width: 1023px) {
+      .Hero-figure--2 { background-image: url(http://lorempixel.com/g/1280/881/cats); }
+    }
+
+    @media screen and (min-width: 1024px) {
+      .Hero-figure--2 { background-image: url(http://lorempixel.com/g/1680/1321/cats); }
+    }
+  </style>
+
+  <div class="Hero-item">
+    <div class="Hero-content">
+      <div class="Wrap">
+        <div class="m-Width--6-12">
+          <h1>Large hero</h1>
+          <p>I'm temporary hero page and content with background and overlay. Lorem ipsum dolor sit amet, consectetur adipisicing elit. Repellendus nulla id voluptas facere quam laboriosam doloribus dolor alias delectus nam at molestias tempora veritatis praesentium velit reiciendis, quibusdam similique accusantium?</p>
+        </div>
+      </div>
+    </div>
+    <div class="Hero-figure Hero-figure--2"></div>
+  </div>
+
+</div>
+
+<div class="Hero -size-m">
+  <style>
+    @media screen and (max-width: 767px) {
+      .Hero-figure--3 { background-image: url(http://lorempixel.com/g/640/442/cats); }
+    }
+
+    @media screen and (min-width: 768px) and (max-width: 1023px) {
+      .Hero-figure--3 { background-image: url(http://lorempixel.com/g/1280/882/cats); }
+    }
+
+    @media screen and (min-width: 1024px) {
+      .Hero-figure--3 { background-image: url(http://lorempixel.com/g/1680/1322/cats); }
+    }
+  </style>
+
+  <div class="Hero-item">
+    <div class="Hero-content">
+      <div class="Wrap">
+        <div class="m-Width--6-12">
+          <h1>Medium hero</h1>
+          <p>I'm temporary hero page and content with background and overlay. Lorem ipsum dolor sit amet, consectetur adipisicing elit. Repellendus nulla id voluptas facere quam laboriosam doloribus dolor alias delectus nam at molestias tempora veritatis praesentium velit reiciendis, quibusdam similique accusantium?</p>
+        </div>
+      </div>
+    </div>
+    <div class="Hero-figure Hero-figure--3"></div>
+  </div>
+
+</div>
+
