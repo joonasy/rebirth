@@ -162,7 +162,7 @@ module.exports = function (grunt) {
 
         importPath: [
           '../assets/stylesheets',
-          '<%= path.src %>/assets/stylesheets/example',
+          '<%= path.src %>/assets/stylesheets/docs',
           'bower_components/'
         ],
 
