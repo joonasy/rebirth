@@ -27,7 +27,7 @@
   }
 
   &-item {
-    @include placeholderColor($color-textLight);
+    @include colorPlaceholder($color-textLight);
     margin-bottom: baseSpace();
     width: 100%;
     min-width: 240px;
@@ -38,7 +38,7 @@
                 background-color $transitionDuration;
 
     &:focus {
-      @include placeholderColor($color-text);
+      @include colorPlaceholder($color-text);
       background-color: $color-bgLightest;
       color: $color-text;
     }

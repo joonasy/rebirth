@@ -7,13 +7,14 @@
 @import 'mixins/breakpoint';
 @import 'mixins/center';
 @import 'mixins/clearfix';
+@import 'mixins/color';
+@import 'mixins/display';
 @import 'mixins/fontSize';
-@import 'mixins/placeholderColor';
+@import 'mixins/position';
 @import 'mixins/shapeArrow';
 @import 'mixins/shapeMenu';
 @import 'mixins/spriteRetina';
-@import 'mixins/textHide';
-@import 'mixins/textTruncate';
+@import 'mixins/text';
 @import 'mixins/triangle';
 @import 'mixins/utility';
 
@@ -21,7 +22,4 @@
 @import 'config';
 
 // Generic
-@import 'generic/global';
-@import 'generic/states';
-
-//@import 'components/IconCss.-shape-arrow';
+@import 'generic/placeholder';

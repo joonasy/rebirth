@@ -1,8 +1,20 @@
 /* ========================================
- * Example styles
+ * Docs
  * ======================================== */
 
-@import "app";
+/**
+ * Import all default config and material
+ */
+@import 'app';
+
+/**
+ * Import all alternative helpers
+ */
+@import 'helpers/display';
+@import 'helpers/displayResponsive';
+@import 'helpers/layout';
+@import 'helpers/position';
+@import 'helpers/text';
 
 $htmlBgColor: #eaeaea;
 $wrapWidth: 960px;
@@ -23,13 +35,13 @@ html, body { height: 100%; }
     max-width: $wrapWidth;
 
     &--center {
-      @include center("table");
+      @include center('table');
 
       .docs-wrap-inner {
-        @include center("table-descendant");
+        @include center('table-descendant');
 
         &-item {
-          @include center("table-descendant-item");
+          @include center('table-descendant-item');
         }
       }
     }
