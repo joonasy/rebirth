@@ -25,22 +25,6 @@
       &:after { color: $Navbar-subTriggerColor; }
     }
 
-  .Navbar-trigger-link {
-    background-color: $Navbar-triggerBgColor;
-    color: $Navbar-triggerColor;
-  }
-
-    .Navbar-trigger-sub {
-      background-color: $Navbar-triggerSubBgColor;
-      border-color: $Navbar-triggerSubBorderColor;
-    }
-
-      .Navbar-trigger-sub-icon {
-        border-top-color: $Navbar-triggerColor;
-
-        &:before, &:after { background-color: $Navbar-triggerColor; }
-      }
-
   .Navbar-sub {
     .Navbar-link  {
       background-color: $Navbar-subLinkBgColor;
@@ -78,4 +62,20 @@
       }
     }
   }
+
+  .Navbar-trigger-inner {
+    background-color: $Navbar-triggerBgColor;
+    color: $Navbar-triggerColor;
+  }
+
+    .Navbar-trigger-sub {
+      background-color: $Navbar-triggerSubBgColor;
+      border-color: $Navbar-triggerSubBorderColor;
+    }
+
+      .Navbar-trigger-sub-icon {
+        border-top-color: $Navbar-triggerColor;
+
+        &:before, &:after { background-color: $Navbar-triggerColor; }
+      }
 }

@@ -8,29 +8,7 @@
 }
 
   /**
-   * Navbar trigger (mobile)
-   */
-  .Navbar-trigger { @extend %clearfix; }
-
-    .Navbar-trigger-link {
-      @extend %Navbar-link;
-      border: none;
-      padding-right: $Navbar-padding;
-      text-align: right;
-    }
-
-    .Navbar-trigger-sub {
-      @extend %Navbar-subTrigger;
-      border-top: none;
-    }
-
-      .Navbar-trigger-sub-icon {
-        @include shapeMenu();
-        vertical-align: middle;
-      }
-
-  /**
-   * Navbar
+   * Navbar content
    */
   .Navbar-self {
     display: none;
@@ -101,3 +79,30 @@
         }
       }
     }
+
+  /**
+   * Navbar trigger (mobile)
+   */
+  .Navbar-trigger { @extend %clearfix; }
+
+    .Navbar-trigger-inner {
+      @extend %Navbar-link;
+      border-top: 0;
+    }
+
+      .Navbar-trigger-title {
+        font-weight: $base-fontWeightStrong;
+        float: left;
+      }
+
+      .Navbar-trigger-link { float: right; }
+
+    .Navbar-trigger-sub {
+      @extend %Navbar-subTrigger;
+      border-top: 0;
+    }
+
+      .Navbar-trigger-sub-icon {
+        @include shapeMenu();
+        vertical-align: middle;
+      }
