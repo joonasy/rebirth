@@ -5,7 +5,7 @@
 @mixin Grid-ruler($gutter: 2) {
   display: table;
   height: 100%;
-  margin-left: -($base-space * $gutter));
+  margin-left: -($base-space * $gutter);
   table-layout: fixed;
   width: 100%;
   width: calc(100% + #{($base-space * $gutter * 2)});
