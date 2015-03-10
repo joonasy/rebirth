@@ -5,7 +5,9 @@
 /**
  * Fill the space absolutely
  */
-.positionAbsoluteFill { @include positionAbsoluteFill(!important); }
+.positionAbsoluteFill {
+  @include positionAbsoluteFill(!important);
+}
 
 /**
  * 1. Make sure fixed elements are promoted into a new layer, for performance
@@ -16,5 +18,10 @@
   backface-visibility: hidden; /* [1.] */
 }
 
-.positionRelative { position: relative !important; }
-.positionStatic { position: static !important; }
+.positionRelative {
+  position: relative !important;
+}
+
+.positionStatic {
+  position: static !important;
+}

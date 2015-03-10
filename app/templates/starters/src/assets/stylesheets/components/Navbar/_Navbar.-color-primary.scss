@@ -26,6 +26,7 @@
     }
 
   .Navbar-sub {
+
     .Navbar-link  {
       background-color: $Navbar-subLinkBgColor;
       border-color: $Navbar-subLinkBorderColor;
@@ -39,8 +40,14 @@
     }
 
       .Navbar-subTrigger-icon {
-        &:before { background-color: $Navbar-linkColor; }
-        &:after  { color: $Navbar-linkColor; }
+
+        &:before {
+          background-color: $Navbar-linkColor;
+        }
+
+        &:after  {
+          color: $Navbar-linkColor;
+        }
       }
 
     ul {
@@ -73,6 +80,8 @@
       .Navbar-trigger-sub-icon {
         border-top-color: $Navbar-triggerColor;
 
-        &:before, &:after { background-color: $Navbar-triggerColor; }
+        &:before, &:after {
+          background-color: $Navbar-triggerColor;
+        }
       }
 }

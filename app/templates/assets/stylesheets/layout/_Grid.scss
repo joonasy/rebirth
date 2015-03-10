@@ -8,7 +8,9 @@
   margin-bottom: 0;
   margin-left: -($base-space);
 
-  > .Grid { margin-left: 0; }
+  > .Grid {
+    margin-left: 0;
+  }
 
   /**
    * Sizing
@@ -16,19 +18,25 @@
   &.-size-fill {
     margin-left: 0;
 
-    > .Grid-item { padding-left: 0; }
+    > .Grid-item {
+      padding-left: 0;
+    }
   }
 
   &.-size-l {
     margin-left: -($base-space * 2);
 
-    > .Grid-item { padding-left: $base-space * 2; }
+    > .Grid-item {
+      padding-left: $base-space * 2;
+    }
   }
 
   &.size-xl {
     margin-left: -($base-space * 4);
 
-    > .Grid-item { padding-left: $base-space * 4; }
+    > .Grid-item {
+      padding-left: $base-space * 4;
+    }
   }
 }
 

@@ -26,12 +26,14 @@
 }
 
 .s-Grid--ruler {
+
   @include breakpoint('smallUp') {
     @include Grid-ruler();
   }
 }
 
 .m-Grid--ruler {
+
   @include breakpoint('mediumUp') {
     @include Grid-ruler();
   }

@@ -18,7 +18,9 @@
   vertical-align: middle;
   white-space: nowrap;
 
-  &:hover, &:focus { text-decoration: none; }
+  &:hover, &:focus {
+    text-decoration: none;
+  }
 
   &.is-disabled,
   &[disabled], fieldset[disabled] & {

@@ -46,8 +46,13 @@ ul, ol, dl {
 /**
  * Lists
  */
-ul, ol, dl { padding: 0 0 0 rem($base-space); }
-nav ul { @extend %resetList; }
+ul, ol, dl {
+  padding: 0 0 0 rem($base-space);
+}
+
+nav ul {
+  @extend %resetList;
+}
 
 /**
  * Links & selection
@@ -56,9 +61,17 @@ a {
   color: $color-link;
   text-decoration: none;
 
-  &:active { color: $color-link; }
-  &:focus { outline: 0; }
-  &:hover { color: $color-linkHover; }
+  &:active {
+    color: $color-link;
+  }
+
+  &:focus {
+    outline: 0;
+  }
+
+  &:hover {
+    color: $color-linkHover;
+  }
 }
 
 ::-moz-selection {
@@ -71,14 +84,26 @@ a {
   color: $color-light;
 }
 
-img::selection { background: transparent; }
-img::-moz-selection { background: transparent; }
-::selection:window-inactive { background: lighten($color-dark, 50%); }
+img::selection {
+  background: transparent;
+}
+
+img::-moz-selection {
+  background: transparent;
+}
+
+::selection:window-inactive {
+  background: lighten($color-dark, 50%);
+}
 
 /**
  * Media
  */
-img, embed, object { max-width: 100%; }
+img,
+embed,
+object {
+  max-width: 100%;
+}
 
 img {
   height: auto;
@@ -88,8 +113,13 @@ img {
 /**
  * Typography
  */
-p { margin: 0 0 rem($base-space); }
-b, strong { font-weight: 800; }
+p {
+  margin: 0 0 rem($base-space);
+}
+
+b, strong {
+  font-weight: $base-fontWeightStrong;
+}
 
 hr {
   border: 0;

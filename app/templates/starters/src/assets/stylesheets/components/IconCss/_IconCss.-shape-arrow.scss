@@ -8,24 +8,32 @@
 
 .IconCss {
   &.-shape-arrowUp {
-    &.-size-s {  transform: scale($IconCss-s); }
+    &.-size-s {
+      transform: scale($IconCss-s);
+    }
   }
 
   &.-shape-arrowRight {
     transform: rotate(-270deg);
 
-    &.-size-s { transform: rotate(-270deg) scale($IconCss-s); }
+    &.-size-s {
+      transform: rotate(-270deg) scale($IconCss-s);
+    }
   }
 
   &.-shape-arrowDown {
     transform: rotate(180deg);
 
-    &.-size-s { transform: rotate(180deg) scale($IconCss-s); }
+    &.-size-s {
+      transform: rotate(180deg) scale($IconCss-s);
+    }
   }
 
   &.-shape-arrowLeft {
     transform: rotate(-90deg);
 
-    &.-size-s { transform: rotate(-90deg) scale($IconCss-s); }
+    &.-size-s {
+      transform: rotate(-90deg) scale($IconCss-s);
+    }
   }
 }

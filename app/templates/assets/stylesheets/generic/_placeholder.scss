@@ -5,7 +5,9 @@
 /**
  * Clearfix
  */
-%clearfix { @include clearfix(); }
+%clearfix {
+  @include clearfix();
+}
 
 /**
  * List reset
@@ -28,4 +30,6 @@
 /**
  * Position placeholders
  */
-%positionAbsoluteFill { @include positionAbsoluteFill(); }
+%positionAbsoluteFill {
+  @include positionAbsoluteFill();
+}

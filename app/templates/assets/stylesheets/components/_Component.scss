@@ -6,7 +6,9 @@
  */
 
 .Component {
-  &-elementName {}
-  &--modifierName {}
   &.is-stateName {}
 }
+
+.Component-variationName {}
+
+.Component.-modifierName {}

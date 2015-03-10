@@ -14,7 +14,9 @@
     /**
      * Navbar
      */
-    .Navbar-self { float: left; }
+    .Navbar-self {
+      float: left;
+    }
 
     /**
      * Navbar trigger (mobile)
@@ -29,7 +31,12 @@
         padding-right: ($Navbar-padding * 2);
       }
 
-      .Navbar-trigger-text { display: none; }
-      .Navbar-trigger-sub { display: none; }
+      .Navbar-trigger-text {
+        display: none;
+      }
+
+      .Navbar-trigger-sub {
+        display: none;
+      }
   }
 }
