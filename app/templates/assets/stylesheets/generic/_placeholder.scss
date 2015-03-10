@@ -17,6 +17,15 @@
 }
 
 /**
+ * Disabled
+ */
+%disabled {
+  cursor: not-allowed;
+  pointer-events: none;
+  opacity: 0.5;
+}
+
+/**
  * Position placeholders
  */
 %positionAbsoluteFill { @include positionAbsoluteFill(); }
