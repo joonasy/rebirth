@@ -10,7 +10,11 @@
   @include breakpoint('navTransform') {
 
     .Navbar-trigger { display: none; }
-    .Navbar-self { display: block; }
+
+    .Navbar-self {
+      display: block;
+      padding-left: $Navbar-padding;
+    }
 
       > ul > .Navbar-item {
         float: left;
