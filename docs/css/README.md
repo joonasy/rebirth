@@ -28,7 +28,7 @@ This styleguide outlines our internal standards for writing CSS (and more specif
         * helperName
     * Components
         * ComponentName
-        * ComponentName--modifierName
+        * ComponentName--variationName
         * ComponentName.-chainable-modifierName
         * ComponentName.is-stateOfComponent
         * ComponentName-descendantName
