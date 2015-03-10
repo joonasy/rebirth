@@ -7,14 +7,14 @@
   .Hero-item {
     color: #fff;
     display: table;
-    height: baseSpace(10, 'px');
+    height: rem($base-space);
     z-index: 0;
   }
 
     .Hero-content {
       display: table-cell;
-      padding-bottom: baseSpace(2);
-      padding-top: baseSpace(2);
+      padding-bottom: rem($base-space);
+      padding-top: rem($base-space);
       position: relative;
       vertical-align: middle;
       z-index: 2;
@@ -35,38 +35,38 @@
       }
 
 
-  /* ======
-   * Sizing
-   * ====== */
+/* ======
+ * Sizing
+ * ====== */
 
-  .Hero {
+.Hero {
 
-    /**
-     * Full hero
-     */
-    &.-size-full {
-      .Hero-item { height: 100vh; }
-    }
+  /**
+   * Full hero
+   */
+  &.-size-full {
+    .Hero-item { height: 100vh; }
+  }
 
-    /**
-     * Large hero
-     */
-    &.-size-l {
-      .Hero-item { height: baseSpace(18, 'px'); }
+  /**
+   * Large hero
+   */
+  &.-size-l {
+    .Hero-item { height: rem($base-space * 18); }
 
-      @include breakpoint('mediumUp') {
-        .Hero-item { height: baseSpace(28, 'px'); }
-      }
-    }
-
-    /**
-     * Medium hero
-     */
-    &.-size-m {
-      .Hero-item { height: baseSpace(14, 'px'); }
-
-      @include breakpoint('mediumUp') {
-        .Hero-item { height: baseSpace(18, 'px'); }
-      }
+    @include breakpoint('mediumUp') {
+      .Hero-item { height: rem($base-space * 28); }
     }
   }
+
+  /**
+   * Medium hero
+   */
+  &.-size-m {
+    .Hero-item { height: rem($base-space * 14); }
+
+    @include breakpoint('mediumUp') {
+      .Hero-item { height: rem($base-space * 18); }
+    }
+  }
+}
