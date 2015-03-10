@@ -40,13 +40,13 @@ html {
 hgroup, blockquote, address,
 table, fieldset, figure, pre,
 ul, ol, dl {
-  margin: 0 0 baseSpace();
+  margin: 0 0 rem($base-space);
 }
 
 /**
  * Lists
  */
-ul, ol, dl { padding: 0 0 0 baseSpace(); }
+ul, ol, dl { padding: 0 0 0 rem($base-space); }
 nav ul { @extend %resetList; }
 
 /**
@@ -88,7 +88,7 @@ img {
 /**
  * Typography
  */
-p { margin: 0 0 baseSpace(); }
+p { margin: 0 0 rem($base-space); }
 b, strong { font-weight: 800; }
 
 hr {
@@ -96,7 +96,7 @@ hr {
   border-top: 1px solid $color-borderPrimary;
   display: block;
   height: 1px;
-  margin-bottom: baseSpace();
+  margin-bottom: rem($base-space);
   margin-top: 0;
   padding: 0;
 }
@@ -108,7 +108,7 @@ hr {
   color: $color-heading;
   font-family: $heading-fontFamily;
   font-weight: $heading-fontWeight;
-  margin: 0 0 baseSpace();
+  margin: 0 0 rem($base-space);
 }
 
 h1, .h1 { @include fontSize($h1-fontSize); }

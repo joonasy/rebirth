@@ -7,10 +7,10 @@
   margin-right: auto;
   padding-left: $base-edgeSpace;
   padding-right: $base-edgeSpace;
-  max-width: $wrapWidth + baseSpace(4, px);
+  max-width: $wrapWidth + ($base-space * 4);
 
   @include breakpoint('largeUp') {
-    padding-left: baseSpace(2, px);
-    padding-right: baseSpace(2, px);
+    padding-left: $base-space * 2;
+    padding-right: $base-space * 2;
   }
 }

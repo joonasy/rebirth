@@ -3,11 +3,11 @@
  * ======================================== */
 
 .Container {
-  padding-bottom: baseSpace();
-  padding-top: baseSpace();
+  padding-bottom: rem($base-space);
+  padding-top: rem($base-space);
 
   @include breakpoint('mediumUp') {
-    padding-bottom: baseSpace(2);
-    padding-top: baseSpace(2);
+    padding-bottom: rem($base-space * 2);
+    padding-top: rem($base-space * 2);
   }
 }
