@@ -1,0 +1,16 @@
+// ========================================
+// Button
+// ========================================
+
+$Button-padding: $base-space;
+$Button-borderWidth: 1px;
+$Button-borderRadius: $borderRadius;
+
+$ButtonPrimary-color: #ffffff;
+$ButtonPrimary-typeBorderColor: $color-brandPrimary;
+$ButtonPrimary-borderColor: $color-brandPrimary;
+$ButtonPrimary-bgColor: $color-brandPrimary;
+$ButtonPrimary-colorHover: $ButtonPrimary-color;
+$ButtonPrimary-bgColorHover: darken($color-brandPrimary, 5);
+
+$ButtonCollection-borderColor: rgba(#ffffff, 0.25);

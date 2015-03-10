@@ -1,16 +1,151 @@
 /* ========================================
- * ButtonCollection
+ * Button collection
  * ========================================
  *
  * @overrides `.Button{}` in _Button.scss
  */
 
 .ButtonCollection {
-  margin-bottom: baseSpace();
+  margin-bottom: rem($base-space);
 
   > .Button {
-    border: none;
-    border-radius: 0;
     margin-bottom: 0;
+  }
+}
+
+
+/* ======
+ * Button align
+ * ====== */
+
+.ButtonCollection.-align-vertical {
+  @extend %clearfix;
+  display: inline-block;
+
+  > .Button {
+    display: block;
+    padding-bottom: rem(($Button-padding / 2) - 1px);
+  }
+}
+
+.ButtonCollection.-align-horizontal {
+  @extend %clearfix;
+
+  > .Button {
+    display: block;
+    float: left;
+  }
+}
+
+.ButtonCollection.-align-justified {
+  border-collapse: separate;
+  display: table;
+  table-layout: fixed;
+  width: 100%;
+
+  > .Button {
+    display: table-cell;
+
+    &:not([class*='Width']) { width: 1%; }
+  }
+}
+
+
+/* ======
+ * Button type
+ * ====== */
+
+.ButtonCollection.-type-border,
+%ButtonCollection.-type-border {
+
+  &.-align-horizontal, &.-align-justified {
+
+    > .Button {
+      border-left-width: 0;
+
+      &:first-child {
+        border-left-width: $Button-borderWidth;
+      }
+    }
+  }
+
+  &.-align-vertical {
+
+    > .Button {
+      border-bottom-width: 0;
+
+      &:last-child {
+        border-bottom-width: $Button-borderWidth;
+      }
+    }
+  }
+}
+
+.ButtonCollection.-type-round {
+
+  > .Button {
+    border-radius: 0;
+  }
+
+  &.-align-horizontal, &.-align-justified {
+
+    > .Button {
+      border-left: 1px solid $ButtonCollection-borderColor;
+
+      &:first-child {
+        border-left: 0;
+        border-radius: $Button-borderRadius 0 0 $Button-borderRadius;
+      }
+
+      &:last-child {
+        border-radius: 0 $Button-borderRadius $Button-borderRadius 0;
+      }
+    }
+  }
+
+  &.-align-vertical {
+
+    > .Button {
+      border-bottom:  1px solid $ButtonCollection-borderColor;
+
+      &:first-child {
+        border-radius: $Button-borderRadius $Button-borderRadius 0 0;
+      }
+
+      &:last-child {
+        border-radius: 0 0 $Button-borderRadius $Button-borderRadius;
+        border-bottom: 0;
+      }
+    }
+  }
+}
+
+.ButtonCollection.-type-borderRound {
+  @extend %ButtonCollection.-type-border;
+
+  &.-align-horizontal, &.-align-justified {
+
+    > .Button {
+      &:first-child {
+        border-radius: $Button-borderRadius 0 0 $Button-borderRadius;
+      }
+
+      &:last-child {
+        border-radius: 0 $Button-borderRadius $Button-borderRadius 0;
+      }
+    }
+  }
+
+  &.-align-vertical {
+
+    > .Button {
+      &:first-child {
+        border-radius: $Button-borderRadius $Button-borderRadius 0 0;
+      }
+
+      &:last-child {
+        border-radius: 0 0 $Button-borderRadius $Button-borderRadius;
+      }
+    }
   }
 }

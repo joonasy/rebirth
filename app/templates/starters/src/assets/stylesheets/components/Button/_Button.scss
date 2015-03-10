@@ -2,109 +2,68 @@
  * Button
  * ======================================== */
 
-%Button {
+.Button {
   background-color: transparent;
   border: 0;
-  border-radius: $borderRadius;
   cursor: pointer;
   display: inline-block;
   font-weight: $base-fontWeightStrong;
-  margin-bottom: baseSpace();
+  margin-bottom: rem($base-space);
   outline: 0;
-  padding: 12px baseSpace();
+  padding: rem($Button-padding / 2) rem($Button-padding);
   position: relative;
   text-align: center;
   transition: $transitionDuration;
   user-select: none;
   vertical-align: middle;
   white-space: nowrap;
-  -webkit-font-smoothing: antialiased;
 
   &:hover, &:focus { text-decoration: none; }
 
   &.is-disabled,
   &[disabled], fieldset[disabled] & {
-    @extend %is-disabled;
+    @extend %disabled;
   }
 }
 
-.Button {
-  @extend %Button;
 
-  > .Icon, > .IconCss { margin: 0 1px; }
+/* ======
+ * Variations
+ * ====== */
 
-  &-hiddenFormItem {
-    display: block;
-    height: 100%;
-    left: 0;
-    opacity: 0;
-    position: absolute;
-    top: 0;
-    width: 100%;
-    -moz-appearance: none;
-    -webkit-appearance: none;
+.Button--primary {
+  background-color: $ButtonPrimary-bgColor;
+  color: $ButtonPrimary-color;
+
+  &:hover, &:focus {
+    background-color: $ButtonPrimary-bgColorHover;
+    color: $ButtonPrimary-colorHover;
   }
 
-  &--primary {
-    background-color: #ffffff;
-    box-shadow: 0 2px rgba(#000000, 0.15);
-    color: $color-brandPrimary;
+  &.-type-border {
+    background-color: transparent;
+    border-color: $ButtonPrimary-borderColor;
+    color: $ButtonPrimary-typeBorderColor;
 
     &:hover, &:focus {
-      background-color: $color-bgLightest;
+      background-color: $ButtonPrimary-bgColorHover;
+      color: $ButtonPrimary-colorHover;
     }
-  }
-
-  &--success {
-    background-color: $color-success;
-    box-shadow: 0 2px rgba(#000000, 0.15);
-    color: #ffffff;
-  }
-
-  &--fill {
-    display: block;
-    width: 100%;
-  }
-
-  &--xs {
-    padding-left: 6px;
-    padding-right: 6px;
-  }
-
-  &--iconLeft, &--iconRight {
-    > .Icon {
-      position: absolute;
-      padding: 15px;
-      top: 0;
-    }
-
-    > [class*='IconCss--arrow'] {
-      top: 17px;
-      position: absolute;
-    }
-  }
-
-  &--iconLeft {
-    padding-left: 36px;
-
-    > .Icon:first-of-type { left: 0; }
-    > [class*='IconCss--arrow']:first-of-type { left: 15px; }
-  }
-
-  &--iconRight {
-    padding-right: 36px;
-
-    > .Icon:last-of-type { right: 0; }
-    > [class*='IconCss--arrow']:last-of-type { right: 15px; }
   }
 }
 
-%Button--block,
-.Button--block {
-  border: 2px solid #ffffff;
-  border-radius: 50%;
-  height: em(33px);
-  padding: 0;
-  width: em(33px);
-  line-height: em(29px);
+
+/* ======
+ * Modifiers
+ * ====== */
+
+.Button.-type-round {
+  border-radius: $Button-borderRadius;
+}
+
+.Button.-type-border {
+  border-width: $Button-borderWidth;
+  border-style: solid;
+  padding-top: rem(($Button-padding / 2) - 1px);
+  padding-bottom: rem(($Button-padding / 2) - 1px);
 }
