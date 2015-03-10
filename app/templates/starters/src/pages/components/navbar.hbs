@@ -1,117 +1,117 @@
 ---
 title: Navbar
-resourcePath: components/navbar/
-stylesheets:
-  - Navbar.import
-javascripts:
-  - Navbar
 bottomScript:
   App.Navbar.init();
 ---
 
-<nav class="Navbar -color-primary -transform-horizontal -transform-keep-title" id="js-Navbar">
+<div class="docs-Container Container">
+  <div class="docs-Wrap Wrap">
+    <nav class="Navbar -color-primary -transform-horizontal -transform-horizontal-keepTitle" id="js-Navbar">
 
-  <div class="Navbar-trigger" id="js-Navbar-trigger">
-    <span class="Navbar-trigger-inner">
-      <span class="Navbar-trigger-title">Otsikko</span>
-      <span class="Navbar-trigger-link">Menu</span>
-    </span>
-    <span class="Navbar-trigger-sub">
-      <i class="Navbar-trigger-sub-icon"></i>
-    </span>
-  </div>
+      <div class="Navbar-trigger">
+        <span class="Navbar-trigger-inner">
+          <span class="Navbar-trigger-title">Otsikko</span>
+          <span class="Navbar-trigger-text">Menu</span>
+        </span>
+        <span class="Navbar-trigger-sub" id="js-Navbar-trigger">
+          <i class="Navbar-trigger-sub-icon"></i>
+        </span>
+      </div>
 
-  <ul class="Navbar-self">
+      <ul class="Navbar-self">
 
-    <li class="Navbar-item">
-      <a class="Navbar-link" href="/">1. element (1. level)</a>
-    </li>
-
-    <li class="Navbar-item">
-      <a class="Navbar-link" href="/">1. element (1. level)</a>
-    </li>
-
-    <li class="Navbar-item">
-      <a class="Navbar-link" href="/">2. element (1. level)</a>
-      <span class="Navbar-subTrigger">
-        <i class="Navbar-subTrigger-icon"></i>
-      </span>
-      <ul class="Navbar-sub">
         <li class="Navbar-item">
-          <a class="Navbar-link" href="#">2.1. element (2. level)</a>
+          <a class="Navbar-link" href="/">1. element (1. level)</a>
         </li>
-        <li class="Navbar-item">
-          <a class="Navbar-link" href="#">2.2. element (2. level)</a>
-        </li>
-      </ul>
-    </li>
 
-    <li class="Navbar-item">
-      <a class="Navbar-link" href="#">3. element (1. level)</a>
-      <span class="Navbar-subTrigger">
-        <i class="Navbar-subTrigger-icon"></i>
-      </span>
-
-      <!-- Dropdown -->
-      <ul class="Navbar-sub">
         <li class="Navbar-item">
-          <a class="Navbar-link" href="#">3.1. element (2. level)</a>
+          <a class="Navbar-link" href="/">1. element (1. level)</a>
         </li>
+
         <li class="Navbar-item">
-          <a class="Navbar-link" href="#">3.2. element (2. level)</a>
+          <a class="Navbar-link" href="/">2. element (1. level)</a>
           <span class="Navbar-subTrigger">
             <i class="Navbar-subTrigger-icon"></i>
           </span>
+          <ul class="Navbar-sub">
+            <li class="Navbar-item">
+              <a class="Navbar-link" href="#">2.1. element (2. level)</a>
+            </li>
+            <li class="Navbar-item">
+              <a class="Navbar-link" href="#">2.2. element (2. level)</a>
+            </li>
+          </ul>
+        </li>
+
+        <li class="Navbar-item">
+          <a class="Navbar-link" href="#">3. element (1. level)</a>
+          <span class="Navbar-subTrigger">
+            <i class="Navbar-subTrigger-icon"></i>
+          </span>
+
           <!-- Dropdown -->
           <ul class="Navbar-sub">
             <li class="Navbar-item">
-              <a class="Navbar-link" href="#">3.2.1. element (3. level)</a>
-              <span class="Navbar-subTrigger">
-                <i class="Navbar-subTrigger-icon"></i>
-              </span>
-              <!-- Dropdown -->
-              <ul class="Navbar-sub">
-                <li class="Navbar-item">
-                  <a class="Navbar-link" href="#">3.2.1.1. element (4. level)</a>
-                </li>
-                <li class="Navbar-item">
-                  <a class="Navbar-link" href="#">3.2.1.2. element (4. level)</a>
-                </li>
-              </ul>
-              <!-- /Dropdown -->
+              <a class="Navbar-link" href="#">3.1. element (2. level)</a>
             </li>
             <li class="Navbar-item">
-              <a class="Navbar-link" href="#">3.2.2. element (3. level)</a>
+              <a class="Navbar-link" href="#">3.2. element (2. level)</a>
               <span class="Navbar-subTrigger">
                 <i class="Navbar-subTrigger-icon"></i>
               </span>
               <!-- Dropdown -->
               <ul class="Navbar-sub">
                 <li class="Navbar-item">
-                  <a class="Navbar-link" href="#">3.2.2.1. element (4. level)</a>
-                </li>
-                <li class="Navbar-item">
-                  <a class="Navbar-link" href="#">3.2.2.2. element (4. level)</a>
+                  <a class="Navbar-link" href="#">3.2.1. element (3. level)</a>
                   <span class="Navbar-subTrigger">
                     <i class="Navbar-subTrigger-icon"></i>
                   </span>
                   <!-- Dropdown -->
                   <ul class="Navbar-sub">
                     <li class="Navbar-item">
-                      <a class="Navbar-link" href="#">3.2.2.2.1. element (5. level)</a>
+                      <a class="Navbar-link" href="#">3.2.1.1. element (4. level)</a>
                     </li>
                     <li class="Navbar-item">
-                      <a class="Navbar-link" href="#">3.2.2.2.2. element (5. level)</a>
+                      <a class="Navbar-link" href="#">3.2.1.2. element (4. level)</a>
+                    </li>
+                  </ul>
+                  <!-- /Dropdown -->
+                </li>
+                <li class="Navbar-item">
+                  <a class="Navbar-link" href="#">3.2.2. element (3. level)</a>
+                  <span class="Navbar-subTrigger">
+                    <i class="Navbar-subTrigger-icon"></i>
+                  </span>
+                  <!-- Dropdown -->
+                  <ul class="Navbar-sub">
+                    <li class="Navbar-item">
+                      <a class="Navbar-link" href="#">3.2.2.1. element (4. level)</a>
+                    </li>
+                    <li class="Navbar-item">
+                      <a class="Navbar-link" href="#">3.2.2.2. element (4. level)</a>
                       <span class="Navbar-subTrigger">
                         <i class="Navbar-subTrigger-icon"></i>
                       </span>
                       <!-- Dropdown -->
                       <ul class="Navbar-sub">
                         <li class="Navbar-item">
-                          <a class="Navbar-link" href="#">3.2.2.2.2.1. element (6. level)</a>
+                          <a class="Navbar-link" href="#">3.2.2.2.1. element (5. level)</a>
                         </li>
                         <li class="Navbar-item">
-                          <a class="Navbar-link" href="#">3.2.2.2.2.2.1. element (6. level) &hellip;</a>
+                          <a class="Navbar-link" href="#">3.2.2.2.2. element (5. level)</a>
+                          <span class="Navbar-subTrigger">
+                            <i class="Navbar-subTrigger-icon"></i>
+                          </span>
+                          <!-- Dropdown -->
+                          <ul class="Navbar-sub">
+                            <li class="Navbar-item">
+                              <a class="Navbar-link" href="#">3.2.2.2.2.1. element (6. level)</a>
+                            </li>
+                            <li class="Navbar-item">
+                              <a class="Navbar-link" href="#">3.2.2.2.2.2.1. element (6. level) &hellip;</a>
+                            </li>
+                          </ul>
+                          <!-- /Dropdown -->
                         </li>
                       </ul>
                       <!-- /Dropdown -->
@@ -122,28 +122,27 @@ bottomScript:
               </ul>
               <!-- /Dropdown -->
             </li>
-          </ul>
-          <!-- /Dropdown -->
-        </li>
 
-        <li class="Navbar-item">
-          <a class="Navbar-link" href="#">3.3. element (2. level)</a>
-          <span class="Navbar-subTrigger">
-            <i class="Navbar-subTrigger-icon"></i>
-          </span>
-          <!-- Dropdown -->
-          <ul class="Navbar-sub">
             <li class="Navbar-item">
-              <a class="Navbar-link" href="#">3.3.1. element (3. level)</a>
-            </li>
-            <li class="Navbar-item">
-              <a class="Navbar-link" href="#">3.2.2. element (3. level)</a>
+              <a class="Navbar-link" href="#">3.3. element (2. level)</a>
+              <span class="Navbar-subTrigger">
+                <i class="Navbar-subTrigger-icon"></i>
+              </span>
+              <!-- Dropdown -->
+              <ul class="Navbar-sub">
+                <li class="Navbar-item">
+                  <a class="Navbar-link" href="#">3.3.1. element (3. level)</a>
+                </li>
+                <li class="Navbar-item">
+                  <a class="Navbar-link" href="#">3.2.2. element (3. level)</a>
+                </li>
+              </ul>
+              <!-- /Dropdown -->
             </li>
           </ul>
           <!-- /Dropdown -->
         </li>
       </ul>
-      <!-- /Dropdown -->
-    </li>
-  </ul>
-</nav>
+    </nav>
+  </div>
+</div>

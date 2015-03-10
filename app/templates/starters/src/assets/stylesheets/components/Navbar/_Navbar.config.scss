@@ -2,14 +2,14 @@
 // Navbar
 // ========================================
 
-$Navbar-padding: baseSpace(0.5, px);
+$Navbar-padding: $base-space / 2;
 $Navbar-bgColor: darken(#ffffff, 2);
 
 // Default `.Nav--bar--primary` colors
 $Navbar-triggerColor: #ffffff;
 $Navbar-triggerBgColor: $color-brandPrimary;
 $Navbar-triggerSubBgColor: $color-brandPrimary;
-$Navbar-triggerSubBorderColor: rgba(#ffffff, 0.5);
+$Navbar-triggerSubBorderColor: rgba(#ffffff, 0.25);
 
 $Navbar-linkColor: $color-text;
 $Navbar-linkBgColor: darken(#ffffff, 2);

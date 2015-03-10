@@ -7,7 +7,7 @@
  * _Navbar.-transform-horizontal.scss
  */
 
-.Navbar.-transform-horizontal.-transform-keep-title {
+.Navbar.-transform-horizontal.-transform-horizontal-keepTitle {
 
   @include breakpoint('navTransform') {
 
@@ -24,8 +24,12 @@
       float: left;
     }
 
-      .Navbar-trigger-inner { width: auto; }
-      .Navbar-trigger-link { display: none; }
+      .Navbar-trigger-inner {
+        width: auto;
+        padding-right: ($Navbar-padding * 2);
+      }
+
+      .Navbar-trigger-text { display: none; }
       .Navbar-trigger-sub { display: none; }
   }
 }

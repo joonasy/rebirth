@@ -13,25 +13,31 @@
   .Navbar-self {
     display: none;
 
-    .Navbar.is-open & { display: block; }
+    .Navbar.is-open & {
+      display: block;
+    }
   }
 
     /**
      * Navbar items and links
      */
-    .Navbar-item { @extend %clearfix; }
+    .Navbar-item {
+      @extend %clearfix;
+    }
 
       .Navbar-link, %Navbar-link {
         border-top: 1px solid;
         cursor: pointer;
         display: block;
         float: left;
-        min-height: baseSpace(2);
-        padding: $Navbar-padding $Navbar-padding * 2;
+        min-height: rem($base-space);
+        padding: $Navbar-padding ($Navbar-padding * 2);
         width: 87%;
         width: calc(100% - #{$Navbar-subTriggerWidth});
 
-        &:only-child { width: 100%; }
+        &:only-child {
+          width: 100%;
+        }
       }
 
       .Navbar-subTrigger, %Navbar-subTrigger {
@@ -40,7 +46,7 @@
         cursor: pointer;
         display: block;
         float: left;
-        min-height: baseSpace(2);
+        min-height: rem($base-space);
         padding: $Navbar-padding 0;
         text-align: center;
         width: 13%;
@@ -63,17 +69,19 @@
       display: none;
       clear: both;
 
-      .Navbar-item.is-open > & { display: block; }
+      .Navbar-item.is-open > & {
+        display: block;
+      }
 
       ul {
         ul {
-          .Navbar-link { padding-left: $Navbar-padding * 2.5; }
+          .Navbar-link { padding-left: ($Navbar-padding * 2.5); }
 
           ul {
-            .Navbar-link { padding-left: $Navbar-padding * 3.5; }
+            .Navbar-link { padding-left: ($Navbar-padding * 3.5); }
 
             ul {
-              .Navbar-link { padding-left: $Navbar-padding * 4.5; }
+              .Navbar-link { padding-left: ($Navbar-padding * 4.5); }
             }
           }
         }
@@ -83,19 +91,29 @@
   /**
    * Navbar trigger (mobile)
    */
-  .Navbar-trigger { @extend %clearfix; }
+  .Navbar-trigger {
+    @extend %clearfix;
+  }
 
     .Navbar-trigger-inner {
       @extend %Navbar-link;
       border-top: 0;
+      cursor: default;
+      padding-right: $Navbar-padding;
     }
+
+      .Navbar-trigger-title, .Navbar-trigger-text {
+        @include textTruncate();
+      }
 
       .Navbar-trigger-title {
         font-weight: $base-fontWeightStrong;
         float: left;
       }
 
-      .Navbar-trigger-link { float: right; }
+      .Navbar-trigger-text {
+        float: right;
+      }
 
     .Navbar-trigger-sub {
       @extend %Navbar-subTrigger;
