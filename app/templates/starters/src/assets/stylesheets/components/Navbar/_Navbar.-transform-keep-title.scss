@@ -1,0 +1,31 @@
+/* ========================================
+ * Keep title in larger widths
+ * ========================================
+ *
+ * @extends `.Navbar {}` in _Navbar.scss
+ * @extends `.Navbar.-transform-horizontal {}` in
+ * _Navbar.-transform-horizontal.scss
+ */
+
+.Navbar.-transform-horizontal.-transform-keep-title {
+
+  @include breakpoint('navTransform') {
+
+    /**
+     * Navbar
+     */
+    .Navbar-self { float: left; }
+
+    /**
+     * Navbar trigger (mobile)
+     */
+    .Navbar-trigger {
+      display: block;
+      float: left;
+    }
+
+      .Navbar-trigger-inner { width: auto; }
+      .Navbar-trigger-link { display: none; }
+      .Navbar-trigger-sub { display: none; }
+  }
+}
