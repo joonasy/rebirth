@@ -20,7 +20,7 @@ Low-level structural and positional traits. Helpers can be applied directly to a
 
 ### helperName
 
-Helpers must use a camelCase name. Helpers may also have modifiers and responsive variants like components do. What follows is an example of how various helpers can be used to create a simple structure within or without a component.
+Helpers must use a camelCase name. Helpers may also have variations and responsive variants like components do. What follows is an example of how various helpers can be used to create a simple structure within or without a component.
 
 ```html
 <!--
@@ -44,7 +44,7 @@ Helpers must use a camelCase name. Helpers may also have modifiers and responsiv
 
 The CSS responsible for component-specific styling.
 
-Syntax: `[<prefix>-]<ComponentName>[--modifierName|-chainable-modifierName|-descendantName]`
+Syntax: `[<prefix>-]<ComponentName>[--variationName|-chainable-modifierName|-descendantName]`
 
 This has several benefits when reading and writing HTML and CSS:
 
@@ -68,15 +68,15 @@ The component's name must be written in [PascalCase](http://c2.com/cgi/wiki?Pasc
 ```
 
 
-### ComponentName--modifierName
+### ComponentName--variationName
 
-A component modifier (or component variation) is a class that modifies the presentation of the base component in some form (e.g., for a certain configuration of the component). Component modifiers also modify their descendants by nesting, however if descendants need altering variations then modify the [descendants](#ComponentName-descendantName) directly. Modifier names must be written in camelCase and be separated from the component name by two hyphens. The class should be included in the HTML in addition to the base component class. 
+A component variation (or component modifier) is a class that modifies the presentation of the base component in some form (e.g., for a certain configuration of the component). Component variations also modify their descendants by nesting, however if descendants need altering variations then modify the [descendants](#ComponentName-descendantName) directly. Variation names must be written in camelCase and be separated from the component name by two hyphens. The class should be included in the HTML in addition to the base component class. 
 
 ```css
 /* Core button component */
 .Button {}
 
-/* Primary button modifier */
+/* Primary button variation */
 .Button--primary {}
 ```
 
@@ -89,25 +89,22 @@ A component modifier (or component variation) is a class that modifies the prese
 
 ### ComponentName.-chainable-modifierName
 
-> Chainable modifiers are like helpers but component specific. 
-
-Chainable modifiers are denoted by a leading hyphen `-`, a namespace (prefix) and a descriptor for the modification. As the name would indicate, chainable modifiers provide us with the ability to configure a module in the HTML with a short, concise syntax. Chainable component modifiers also modify their descendants by nesting.
+Chainable modifiers are denoted by a leading hyphen `-`, a namespace (prefix) and a descriptor for the modification. As the name would indicate, chainable modifiers provide us with the ability to configure a module in the HTML with a short, concise syntax. Chainable component modifiers can be added to component variations and collections and may also modify their descendants by nesting.   
 
 The golden rule is that **chainable modifiers should never modify the same CSS property twice**. This is to ensure that styles don’t get clobbered and that the order in which they are applied is irrelevant. 
 
 ```css
 /* Core button */
-.Button {
-  …
+.Button {}
 
-  &.-size-l {}
+/* Chainable modifiers */
+.Button.-size-l {}
 
-  &.-align-center {}
-}
+.Button.-type-round {}
 ```
 
 ```html
-<button class="Button Button--primary -size-l -align-center" type="button"
+<button class="Button Button--primary -size-l -type-round" type="button"
   <span class="Button-item">…</span>
 </button>
 ```
@@ -115,13 +112,32 @@ The golden rule is that **chainable modifiers should never modify the same CSS p
 Chainable modifiers also accept responsive variants.
 
 ```html
-// wrong
-<div class="Button -size-s -size-l">
-</div>
-
-// right
 <div class="Button -size-s -m-size-l">
 </div>
+```
+
+Chainable modifiers may also extend variations.
+
+```css
+.Button--primary {
+  &.-type-round {
+    …
+  }
+}
+```
+
+Chainable modifiers can also be added to component collections.
+
+```css
+.ButtonCollection {
+  …
+  
+  &.-type-round {
+    …
+
+    > .Button {}
+  }
+}
 ```
 
 ## ComponentName.is-stateOfComponent
@@ -156,29 +172,27 @@ the component).
 A component descendant is a class that is attached to a descendant node of a
 component. It's responsible for applying presentation directly to the
 descendant on behalf of a particular component. descendant names must be
-written in CamelCase. 
+written in camelCase. 
 
-Parent [Component modifiers](#ComponentName--modifierName) also modify their descendants by nesting, however in some cases (rarely) descendants may need direct modifiers (`1.`). Be careful in these situations not to override direct descendant modifiers with the parent modifier (`2.`).
+Parent [Component variations](#ComponentName--variationName) also modify their descendants by nesting, however in some cases (rarely) descendants may need direct variations (`1.`). Be careful in these situations not to override direct descendant variations with the parent variation (`2.`).
 
 ```css
 /**
  * Core block
  */ 
-.Block {
-  …
+.Block {}
 
-  &-header {}
+  .Block-header {}
 
-    &-image {}
+    .Block-image {}
 
-  &-content {}
+  .Block-content {}
 
-    &-text {
-      &--meta {} // [1.] Example of direct descendant modifier
-    }
+    .Block-text {}
 
-  &-footer {}
-}
+      .Block-text--meta {} // [1.] Example of direct descendant variation
+
+.Block-footer {}
 
 /**
  * Primary block modifier
@@ -192,7 +206,7 @@ Parent [Component modifiers](#ComponentName--modifierName) also modify their des
 
   .Block-text {}
 
-    .Block-text {} // [2.] Be careful not to override direct modifiers
+    .Block-text--meta {} // [2.] Be careful not to override direct variation
 
   .Block-footer {}
 }
@@ -219,7 +233,7 @@ Parent [Component modifiers](#ComponentName--modifierName) also modify their des
 
 > Components are descendants of component collections.
 
-Some components need parent components to work properly. Component collections override Component specific settings. Component collections also use chainable modifiers.
+Some components need parent components to work properly. Component collections override component specific settings. Component collections also use chainable modifiers.
 
 ```css
 /**
@@ -228,12 +242,12 @@ Some components need parent components to work properly. Component collections o
 .ButtonCollection {
   …
 
-  .Button {}
+  > .Button {}
 
   &.-type-horizontal {
     …
 
-    .Button {}
+    > .Button {}
   } 
 }
 ```
