@@ -8,7 +8,7 @@
 .FormCollection {
   display: table;
   position: relative;
-  margin-bottom: baseSpace();
+  margin-bottom: rem($base-space);
   border-collapse: separate;
   width: 100%;
 

@@ -28,7 +28,7 @@
 
   &-item {
     @include colorPlaceholder($color-textLight);
-    margin-bottom: baseSpace();
+    margin-bottom: rem($base-space);
     width: 100%;
     min-width: 240px;
     outline: 0;
