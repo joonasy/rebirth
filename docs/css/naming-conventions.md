@@ -131,7 +131,7 @@ Chainable modifiers can also be added to component collections.
 ```css
 .ButtonCollection {
   …
-  
+
   &.-type-round {
     …
 
@@ -311,10 +311,10 @@ Responsive variants are activated in the given Media Query breakpoint (mobile fi
 
 ### Global prefixes, suffixes and modifiers
 
-* `--primary`, `--secondary`, `--tertiary`, `--quaternary`, `--quinary`, `--senary`, `--septenary`, `--octonary`, `--nonary`, `--denary`: For defining modifiers
+* `--primary`, `--secondary`, `--tertiary`, `--quaternary`, `--quinary`, `--senary`, `--septenary`, `--octonary`, `--nonary`, `--denary`: For defining variations
 * `base-`: Base settings (font sizes, margins etc.)
 * `color-`: Default colors
 * `heading-`: Default headings
-* `breakpoint-`: Breakpoints
+* `breakpoint-`: Default breakpoints
 * `-[x...]s`, `-m`, `-ml`, `-[x...]l`: Extra small, medium, medium large, extra large and so on...
 
