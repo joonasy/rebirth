@@ -3,10 +3,10 @@
 // ========================================
 
 @mixin fontSize($fontSize, $lineHeight: 'rhythm'){
-  font-size: ($fontSize / $base-font-size) * 1rem;
+  font-size: ($fontSize / $base-fontSize) * 1rem;
 
   @if $lineHeight == 'rhythm' {
-    line-height: ($fontSize / $base-lineHeight) * ($base-lineHeight / $fontSize);
+    line-height: ceil($fontSize / $base-lineHeightPx) * ($base-lineHeightPx / $fontSize);
   } @else {
     line-height: $lineHeight;
   }
