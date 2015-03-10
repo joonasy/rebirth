@@ -1,8 +1,16 @@
     <!-- build:js(../) {{assets}}/javascripts/app.min.js -->
+      {{!-- Defaults --}}
       <script src="/bower_components/jquery/dist/jquery.js"></script>
       <script src="/bower_components/fastclick/lib/fastclick.js"></script>
       <script src="/assets/javascripts/components/Toggle.js"></script>
       <script src="/assets/javascripts/app.js"></script>
+
+      {{!-- Components --}}
+      <script src="/assets/javascripts/components/navbar/Navbar.js"></script>
+
+      {{!-- Docs --}}
+      <script src="/assets/javascripts/docs/components/Docs.Navbar.js"></script>
+      <script src="/assets/javascripts/docs/docs.js"></script>
     <!-- endbuild -->
 
     {{#if page.javascripts}}

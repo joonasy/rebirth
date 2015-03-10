@@ -2,9 +2,9 @@
 <html class="no-js app-is-loading docs">
   <head>
     <meta charset="utf-8">
-    <title>{{#if page.title}}{{page.title}} - {{/if}} {{app.title}}</title>
+    <title>{{#if page.title}}{{page.title}} - {{/if}} {{docs.title}}</title>
     <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
-    <meta name="description" content="{{app.meta.description}}">
+    <meta name="description" content="{{docs.meta.description}}">
     <meta name="viewport" content="width=device-width,initial-scale=1">
 
     <!-- build:css(.tmp) {{assets}}/docs/stylesheets/docs.min.css -->
@@ -22,14 +22,6 @@
     {{#dev}}
       <script src="/bower_components/modernizr/modernizr.js"></script>
     {{/dev}}
-
-    <script>
-      var App = App || {};
-      App.URL = "{{app.url}}";
-      {{#dev}}
-        App.URL = "http://0.0.0.0:9000";
-      {{/dev}}
-    </script>
 
     <!-- build:js {{assets}}/javascripts/head.min.js-->
       {{#prod}}
