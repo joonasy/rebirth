@@ -93,7 +93,7 @@ A component modifier (or component variation) is a class that modifies the prese
 
 Chainable modifiers are denoted by a leading hyphen `-`, a namespace (prefix) and a descriptor for the modification. As the name would indicate, chainable modifiers provide us with the ability to configure a module in the HTML with a short, concise syntax. Chainable component modifiers also modify their descendants by nesting.
 
-The golden rule is that **chainable modifiers should never modify the same CSS property twice and only single namespaced chainable modifier sould be used for a given module**. This is to ensure that styles don’t get clobbered and that the order in which they are applied is irrelevant. 
+The golden rule is that **chainable modifiers should never modify the same CSS property twice**. This is to ensure that styles don’t get clobbered and that the order in which they are applied is irrelevant. 
 
 ```css
 /* Core button */
