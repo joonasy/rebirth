@@ -1,0 +1,48 @@
+/* ========================================
+ * Margin helpers
+ * ======================================== */
+
+/**
+ * All margins
+ */
+.margin { margin: rem($base-space) !important; }
+.margin--s { margin: rem($base-space / 2) !important; }
+.margin--m { margin: rem($base-space * 2) !important; }
+.margin--l { margin: rem($base-space * 4) !important; }
+.no-margin { margin: 0 !important; }
+
+/**
+ * Margin top
+ */
+.marginTop { margin-top: rem($base-space) !important; }
+.marginTop--s { margin-top: rem($base-space / 2) !important; }
+.marginTop--m { margin-top: rem($base-space * 2) !important; }
+.marginTop--l { margin-top: rem($base-space * 4) !important; }
+.no-marginTop { margin-top: 0 !important; }
+
+/**
+ * Margin right
+ */
+.marginRight { margin-right: rem($base-space) !important; }
+.marginRight--s { margin-right: rem($base-space / 2) !important; }
+.marginRight--m { margin-right: rem($base-space * 2) !important; }
+.marginRight--l { margin-right: rem($base-space * 4) !important; }
+.no-marginRight { margin-right: 0 !important; }
+
+/**
+ * Margin bottom
+ */
+.marginBottom { margin-bottom: rem($base-space) !important; }
+.marginBottom--s { margin-bottom: rem($base-space / 2) !important; }
+.marginBottom--m { margin-bottom: rem($base-space * 2) !important; }
+.marginBottom--l { margin-bottom: rem($base-space * 4) !important; }
+.no-marginBottom { margin-bottom: 0 !important; }
+
+/**
+ * Margin left
+ */
+.marginLeft { margin-left: rem($base-space) !important; }
+.marginLeft--s { margin-left: rem($base-space / 2) !important; }
+.marginLeft--m { margin-left: rem($base-space * 2) !important; }
+.marginLeft--l { margin-left: rem($base-space * 4) !important; }
+.no-marginLeft { margin-bottom: 0 !important; }

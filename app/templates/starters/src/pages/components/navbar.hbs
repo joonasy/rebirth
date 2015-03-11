@@ -1,21 +1,19 @@
 ---
 title: Navbar
-bottomScript:
-  App.Navbar.init();
 ---
 
 <div class="docs-Container Container">
   <div class="docs-Wrap Wrap">
-    <nav class="Navbar -color-primary -transform-horizontal -transform-horizontal-keepTitle" id="js-Navbar">
+    <nav class="Navbar -color-primary -transform-horizontal -transform-horizontal--keepTitle" id="js-Navbar">
 
       <div class="Navbar-trigger">
-        <span class="Navbar-trigger-inner">
-          <span class="Navbar-trigger-title">Otsikko</span>
-          <span class="Navbar-trigger-text">Menu</span>
-        </span>
-        <span class="Navbar-trigger-sub" id="js-Navbar-trigger">
+        <div class="Navbar-trigger-inner">
+          <span class="Navbar-trigger-title">Heading</span>
+          <span class="Navbar-trigger-text js-Navbar-trigger">Menu</span>
+        </div>
+        <div class="Navbar-trigger-sub js-Navbar-trigger">
           <i class="Navbar-trigger-sub-icon"></i>
-        </span>
+        </div>
       </div>
 
       <ul class="Navbar-self">

@@ -1,0 +1,51 @@
+/* ========================================
+ * Padding helpers - medium vw
+ * ======================================== */
+
+@include breakpoint('mediumUp') {
+
+  /**
+   * All paddings
+   */
+  .m-padding { padding: rem($base-space) !important; }
+  .m-padding--s { padding: rem($base-space / 2) !important; }
+  .m-padding--m { padding: rem($base-space * 2) !important; }
+  .m-padding--l { padding: rem($base-space * 4) !important; }
+  .m-no-padding { padding: 0 !important; }
+
+  /**
+   * Padding top
+   */
+  .m-paddingTop { padding-top: rem($base-space) !important; }
+  .m-paddingTop--s { padding-top: rem($base-space / 2) !important; }
+  .m-paddingTop--m { padding-top: rem($base-space * 2) !important; }
+  .m-paddingTop--l { padding-top: rem($base-space * 4) !important; }
+  .m-no-paddingTop { padding-top: 0 !important; }
+
+  /**
+   * Padding right
+   */
+  .m-paddingRight { padding-right: rem($base-space) !important; }
+  .m-paddingRight--s { padding-right: rem($base-space / 2) !important; }
+  .m-paddingRight--m { padding-right: rem($base-space * 2) !important; }
+  .m-paddingRight--l { padding-right: rem($base-space * 4) !important; }
+  .m-no-paddingRight { padding-right: 0 !important; }
+
+  /**
+   * Padding bottom
+   */
+  .m-paddingBottom { padding-bottom: rem($base-space) !important; }
+  .m-paddingBottom--s { padding-bottom: rem($base-space / 2) !important; }
+  .m-paddingBottom--m { padding-bottom: rem($base-space * 2) !important; }
+  .m-paddingBottom--l { padding-bottom: rem($base-space * 4) !important; }
+  .m-no-paddingBottom { padding-bottom: 0 !important; }
+
+  /**
+   * Padding left
+   */
+  .m-paddingLeft { padding-left: rem($base-space) !important; }
+  .m-paddingLeft--s { padding-left: rem($base-space / 2) !important; }
+  .m-paddingLeft--m { padding-left: rem($base-space * 2) !important; }
+  .m-paddingLeft--l { padding-left: rem($base-space * 4) !important; }
+  .m-no-paddingLeft { padding-bottom: 0 !important; }
+}

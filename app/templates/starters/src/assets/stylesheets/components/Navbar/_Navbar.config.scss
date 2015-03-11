@@ -5,17 +5,22 @@
 $Navbar-padding: $base-space / 2;
 $Navbar-bgColor: darken(#ffffff, 2);
 
-// Default `.Nav--bar--primary` colors
+// Default `.Navbar.color-primary` colors
 $Navbar-triggerColor: #ffffff;
 $Navbar-triggerBgColor: $color-brandPrimary;
-$Navbar-triggerSubBgColor: $color-brandPrimary;
-$Navbar-triggerSubBorderColor: rgba(#ffffff, 0.25);
+
+$Navbar-triggerTitleBgColor: $color-brandPrimary;
+$Navbar-triggerTitleColor: #ffffff;
+
+$Navbar-triggerSubColor: $color-brandPrimary;
+$Navbar-triggerSubBgColor: darken(#ffffff, 5);
+$Navbar-triggerSubBorderColor: rgba(#000000, 0);
 
 $Navbar-linkColor: $color-text;
 $Navbar-linkBgColor: darken(#ffffff, 2);
 $Navbar-linkBorderColor: darken($Navbar-linkBgColor, 5);
 
-$Navbar-subTriggerWidth: 48px;
+$Navbar-subTriggerWidth: $base-space * 2;
 $Navbar-subTriggerColor: $color-text;
 $Navbar-subTriggerBgColor: $Navbar-linkBgColor;
 $Navbar-subTriggerBorderColor: $Navbar-linkBorderColor;
