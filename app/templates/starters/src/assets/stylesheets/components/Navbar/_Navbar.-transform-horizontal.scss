@@ -77,3 +77,42 @@
       }
   }
 }
+
+
+/* ======
+ * Keep title in larger widths
+ * ====== */
+
+.Navbar.-transform-horizontal.-transform-horizontal--keepTitle {
+
+  @include breakpoint('navTransform') {
+
+    /**
+     * Navbar
+     */
+    .Navbar-self {
+      float: left;
+    }
+
+    /**
+     * Navbar trigger (mobile)
+     */
+    .Navbar-trigger {
+      display: block;
+      float: left;
+    }
+
+      .Navbar-trigger-inner {
+        width: auto;
+      }
+
+      .Navbar-trigger-text {
+        display: none;
+      }
+
+      .Navbar-trigger-sub {
+        display: none;
+      }
+  }
+}
+
