@@ -14,12 +14,14 @@ App.Hero = function($) {
     _fixObjectFit();
   }
 
-  self.componentFunction = function() {}
-
   /**
    * Fix CSS3 object-fit for browsers that don't support it but support
    * `background-size: cover`. Responsive images require lazysizes
    * (or similar) plugin until srcset is supported well.
+   *
+   * http://caniuse.com/#search=object-fit
+   * http://caniuse.com/#search=srcset
+   * http://caniuse.com/#search=background-size
    */
   _fixObjectFit = function() {
 
