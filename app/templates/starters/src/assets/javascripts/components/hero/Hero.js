@@ -7,39 +7,42 @@ var App = App || {};
 App.Hero = function($) {
 
   var self = {},
-      $hero = $('.js-Hero');
+      $hero = $('.js-Hero'),
+      $heroFigure = $('.Hero-figure', $hero);
 
   self.init = function() {
-    fixObjectFit();
+    _fixObjectFit();
   }
 
   self.componentFunction = function() {}
 
   /**
-   * Fix object-fit for browsers that don't support it but support
-   * background-size: cover
+   * Fix CSS3 object-fit for browsers that don't support it but support
+   * `background-size: cover`. Responsive images require lazysizes
+   * (or similar) plugin until srcset is supported well.
    */
-  fixObjectFit = function() {
-    if(!Modernizr['object-fit']) {
-      $.each($hero, function() {
-        var $this = $(this),
-            $figure = $this.find('.Hero-figure', $hero),
-            $img = $figure.find('img'),
-            $imgUrl = $img.data('src-bg');
+  _fixObjectFit = function() {
 
-        $img.hide();
-        $figure.css({
-          'background-size': 'cover',
-          'background-image': 'url('+$imgUrl+')'
+    if(Modernizr['object-fit']) {
+
+      var setupBgImg = function(e) {
+        $(e.target).on('load', function(){
+
+          if($(e.target).parent().is($heroFigure)) {
+            var $targetImg = $(e.target), // .Hero-figure img
+                $parent = $targetImg.parent(); // .Hero-figure
+
+            $targetImg.hide();
+            $parent.css({
+              'background-size': 'cover',
+              'background-image': 'url('+e.target.currentSrc+')'
+            });
+          }
         });
-      });
+      }
+
+      $(document).on('lazybeforeunveil', setupBgImg);
     }
-
-    document.addEventListener('lazybeforeunveil', function(e){
-      console.log(e);
-      console.log(e.srcElement.currentSrc);
-
-    }, false);
   }
 
   return {
