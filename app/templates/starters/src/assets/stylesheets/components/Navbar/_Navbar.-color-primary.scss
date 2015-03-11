@@ -72,16 +72,22 @@
     color: $Navbar-triggerColor;
   }
 
+    .Navbar-trigger-title {
+      background-color: $Navbar-triggerTitleBgColor;
+      color: $Navbar-triggerTitleColor;
+    }
+
     .Navbar-trigger-sub {
       background-color: $Navbar-triggerSubBgColor;
       border-color: $Navbar-triggerSubBorderColor;
+      color: $Navbar-triggerSubColor;
     }
 
       .Navbar-trigger-sub-icon {
-        border-top-color: $Navbar-triggerColor;
+        border-top-color: $Navbar-triggerSubColor;
 
         &:before, &:after {
-          background-color: $Navbar-triggerColor;
+          background-color: $Navbar-triggerSubColor;
         }
       }
 }

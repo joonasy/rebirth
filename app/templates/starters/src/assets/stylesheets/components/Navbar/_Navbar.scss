@@ -96,17 +96,21 @@
   }
 
     .Navbar-trigger-inner {
-      @extend %Navbar-link;
-      border-top: 0;
-      cursor: default;
-      padding-right: $Navbar-padding;
+      @extend %clearfix;
+      float: left;
+      width: 87%;
+      width: calc(100% - #{$Navbar-subTriggerWidth});
     }
 
       .Navbar-trigger-title, .Navbar-trigger-text {
-        @include textTruncate();
+        display: block;
+        float: left;
+        min-height: rem($base-space);
+        padding: $Navbar-padding ($Navbar-padding * 2);
       }
 
       .Navbar-trigger-title {
+        @include textTruncate();
         font-weight: $base-fontWeightStrong;
         float: left;
       }
