@@ -10,6 +10,7 @@
     color: #fff;
     display: table;
     height: rem($base-space);
+    width: 100%;
     z-index: 0;
   }
 
@@ -19,15 +20,26 @@
       padding-top: rem($base-space);
       position: relative;
       vertical-align: middle;
+      width: 100%;
       z-index: 2;
     }
 
       .Hero-figure {
         @extend %positionAbsoluteFill;
-        background-position: center;
-        background-size: cover;
+        margin-bottom: 0;
+        overflow: hidden;
         z-index: 0;
 
+        img {
+          display: block;
+          height: 100%;
+          object-fit: cover;
+          width: 100%;
+        }
+
+        /**
+         * Simple overlay
+         */
         &:before {
           @extend %positionAbsoluteFill;
           background-color: rgba(#000000, 0.5);
@@ -43,18 +55,12 @@
 
 .Hero {
 
-  /**
-   * Full hero
-   */
   &.-size-full {
     .Hero-item {
       height: 100vh;
     }
   }
 
-  /**
-   * Large hero
-   */
   &.-size-l {
     .Hero-item {
       height: rem($base-space * 18);
@@ -67,9 +73,6 @@
     }
   }
 
-  /**
-   * Medium hero
-   */
   &.-size-m {
     .Hero-item {
       height: rem($base-space * 14);
@@ -79,6 +82,28 @@
       .Hero-item {
         height: rem($base-space * 18);
       }
+    }
+  }
+}
+
+
+/* ======
+ * Aligning
+ * ====== */
+
+.Hero {
+
+  &.-align-top {
+    .Hero-content {
+      padding-top: rem($base-space * 2);
+      vertical-align: top;
+    }
+  }
+
+  &.-align-bottom {
+    .Hero-content {
+      padding-bottom: rem($base-space * 2);
+      vertical-align: bottom;
     }
   }
 }
