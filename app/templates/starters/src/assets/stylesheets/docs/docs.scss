@@ -17,6 +17,14 @@
 @import 'helpers/display';
 @import 'helpers/displayResponsive';
 @import 'helpers/layout';
+@import 'helpers/margin';
+@import 'helpers/s-margin';
+@import 'helpers/m-margin';
+@import 'helpers/l-margin';
+@import 'helpers/padding';
+@import 'helpers/s-padding';
+@import 'helpers/m-padding';
+@import 'helpers/l-padding';
 @import 'helpers/position';
 @import 'helpers/text';
 
@@ -32,25 +40,13 @@ html.docs {
 
 html, body { height: 100%; }
 
-// .docs {
-//   &-wrap {
-//     border: 1px solid darken($htmlBgColor, 10);
-//     margin: 0 auto;
-//     max-width: $wrapWidth;
-
-//     &--center {
-//       @include center('table');
-
-//       .docs-wrap-inner {
-//         @include center('table-descendant');
-
-//         &-item {
-//           @include center('table-descendant-item');
-//         }
-//       }
-//     }
-//   }
-// }
+.docs-Hero {
+  &.-size-full {
+    .Hero-item {
+      height: calc(100vh - #{$base-space * 2}); /* Height of the navbar */
+    }
+  }
+}
 
 .docs-Navbar {
   position: relative;
