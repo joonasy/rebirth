@@ -25,12 +25,12 @@
       @extend %clearfix;
     }
 
-      .Navbar-link, %Navbar-link {
+      .Navbar-link {
         border-top: 1px solid;
         cursor: pointer;
         display: block;
         float: left;
-        min-height: rem($base-space);
+        min-height: rem($base-space * 2);
         padding: $Navbar-padding ($Navbar-padding * 2);
         width: 87%;
         width: calc(100% - #{$Navbar-subTriggerWidth});
@@ -46,7 +46,7 @@
         cursor: pointer;
         display: block;
         float: left;
-        min-height: rem($base-space);
+        min-height: rem($base-space * 2);
         padding: $Navbar-padding 0;
         text-align: center;
         width: 13%;
@@ -105,7 +105,7 @@
       .Navbar-trigger-title, .Navbar-trigger-text {
         display: block;
         float: left;
-        min-height: rem($base-space);
+        min-height: rem($base-space * 2);
         padding: $Navbar-padding ($Navbar-padding * 2);
       }
 
