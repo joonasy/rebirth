@@ -9,11 +9,11 @@
 @import 'components/Navbar/Navbar.import';
 @import 'components/Hero/Hero.import';
 @import 'components/Button/Button.import';
-//@import 'components/List/List.import';
-//@import 'components/List/Form.import';
+@import 'components/Button/ButtonCollection.import';
+@import 'components/Form/Form.import';
+@import 'components/Form/FormCollection.import';
 
-
-// Import all alternative helpers
+// Import all helpers
 @import 'helpers/display';
 @import 'helpers/displayResponsive';
 @import 'helpers/layout';
@@ -28,7 +28,7 @@
 @import 'helpers/position';
 @import 'helpers/text';
 
-$htmlBgColor: #ffffff;
+$htmlBgColor: darken(#ffffff, 5);
 $wrapWidth: 960px;
 
 html.docs {
