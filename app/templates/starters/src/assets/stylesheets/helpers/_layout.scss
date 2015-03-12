@@ -24,38 +24,38 @@
  * Centering absolutely
  */
 .centerAbsolute {
-  @include center('absolute');
+  @include center('absolute', !important);
 }
 
 /**
  * Centering with table
  */
 .centerTable {
-  @include center('table');
+  @include center('table', !important);
 }
 
   .centerTable-cell {
-    @include center('table-cell');
+    @include center('table-cell', !important);
   }
 
     .centerTable-cell-item {
-      @include center('table-cell-item');
+      @include center('table-cell-item', !important);
     }
 
 /**
  * Centering with margin (requires width)
  */
 .centerMargin {
-  @include center('margin');
+  @include center('margin', !important);
 }
 
 /**
  * Centering with inline-block and text
  */
 .centerText {
-  @include center('text');
+  @include center('text', !important);
 }
 
   .centerText-item {
-    @include center('text-item');
+    @include center('text-item', !important);
   }
