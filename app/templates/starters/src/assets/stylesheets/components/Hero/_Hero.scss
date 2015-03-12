@@ -7,11 +7,9 @@
 }
 
   .Hero-item {
-    color: #fff;
     display: table;
-    height: rem($base-space);
+    height: rem($base-space * 10);
     width: 100%;
-    z-index: 0;
   }
 
     .Hero-content {
@@ -26,6 +24,7 @@
 
       .Hero-figure {
         @extend %positionAbsoluteFill;
+        background-size: cover; /* Fallback */
         margin-bottom: 0;
         overflow: hidden;
         z-index: 0;
@@ -36,16 +35,12 @@
           object-fit: cover;
           width: 100%;
         }
+      }
 
-        /**
-         * Simple overlay
-         */
-        &:before {
-          @extend %positionAbsoluteFill;
-          background-color: rgba(#000000, 0.5);
-          content: '';
-          z-index: 1;
-        }
+      .Hero-overlay {
+        @extend %positionAbsoluteFill;
+        content: '';
+        z-index: 1;
       }
 
 
@@ -104,6 +99,32 @@
     .Hero-content {
       padding-bottom: rem($base-space * 2);
       vertical-align: bottom;
+    }
+  }
+}
+
+
+/* ======
+ * Coloring
+ * ====== */
+
+.Hero {
+
+  &.-color-lightOnDark {
+    background-color: #ffffff;
+    color: #ffffff;
+
+    .Hero-overlay {
+      background-color: rgba(#000000, 0.5);
+    }
+  }
+
+  &.-color-darkOnLight {
+    background-color: $color-text;
+    color: $color-text;
+
+    .Hero-overlay {
+      background-color: rgba(#ffffff, 0.75);
     }
   }
 }
