@@ -16,31 +16,33 @@
 //      </div>
 //    </div>
 
-@mixin center($style: 'absolute') {
+@mixin center($style: 'absolute', $important: null) {
+  @if $important { $important: !important; }
+
   @if $style == 'absolute' { // [1.]
-    margin: auto;
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-    width: 50%;
+    margin: auto $important;
+    position: absolute $important;
+    top: 50% $important;
+    left: 50% $important;
+    transform: translate(-50%, -50%) $important;
+    width: 50% $important;
   } @elseif $style == 'table' { // [4.]
-    display: table;
-    height: 100%;
-    width: 100%;
+    display: table $important;
+    height: 100% $important;
+    width: 100% $important;
   } @elseif $style == 'table-cell' { // [4.] [3.]
-    display: table-cell;
-    text-align: center;
-    vertical-align: middle;
+    display: table-cell $important;
+    text-align: center $important;
+    vertical-align: middle $important;
   } @elseif $style == 'table-cell-item' // [4.]
     or $style == 'text-item' { // [2.]
-    display: inline-block;
-    text-align: left;
+    display: inline-block $important;
+    text-align: left $important;
   } @elseif $style == 'margin' { // [2.]
-    display: block;
-    margin-left: auto;
-    margin-right: auto;
+    display: block $important;
+    margin-left: auto $important;
+    margin-right: auto $important;
   } @elseif $style == 'text' { // [2.]
-    text-align: center;
+    text-align: center $important;
   }
 }
