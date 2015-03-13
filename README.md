@@ -1,4 +1,4 @@
-# DO NOT USE YET! Mediasignal Web Starter Kit ([generator-msc](https://bitbucket.org/mediasignal/generator-msc.git))
+# Mediasignal Web Starter Kit ([generator-msc](https://bitbucket.org/mediasignal/generator-msc.git))
 
 > Mediasignals combined styleguide, starter kit and Yeoman generator for new web projects (Typo3/Html).
 
