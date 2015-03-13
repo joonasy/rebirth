@@ -47,7 +47,7 @@ module.exports = function (grunt) {
         tasks: ['compass:dev', 'autoprefixer']
       },
       javascript: {
-        files: ['<%%= path.src %>/assets/javascripts/**/*.js']
+        files: ['Assets/javascripts/**/*.js']
       },
       other: {
         files: [
