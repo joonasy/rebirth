@@ -187,6 +187,13 @@ var MscGenerator = yeoman.generators.Base.extend({
   },
 
   /**
+   * Setup README.md
+   */
+  readme: function() {
+    this.template('shared/_README.md', 'README.md');
+  },
+
+  /**
    * Setup package.json
    */
   packageJSON: function () {
@@ -266,8 +273,8 @@ var MscGenerator = yeoman.generators.Base.extend({
       );
 
       this.fs.copy(
-        this.templatePath('typo3/Resources/Private/Layouts/_Page.html'),
-        this.destinationPath('Resources/Private/Layouts/Page.html')
+        this.templatePath('typo3/Resources/Private/Layouts/_App.html'),
+        this.destinationPath('Resources/Private/Layouts/App.html')
       );
 
       this.template(
