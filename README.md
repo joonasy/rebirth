@@ -66,9 +66,9 @@ Please discuss about new ideas and things that you think should be modified. Cur
 
 ## Todo
 
+* SASS structure and rest of the CSS styleguide
 * JavaScript styleguide
 * Sub generators for starters
-* Rest of the CSS style guiding
 * Test CSS components
 * Testing for everything
 * Gitignores and readmes to generator

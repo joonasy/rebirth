@@ -1,5 +1,11 @@
 # Changelog
 
+## 0.0.7 (2015-3-13)
+* CSS styleguide done ```docs/css```
+* Buttons, Navbar, Hero components are ready ```app/templates/starters/src/assets/stylesheets/components```
+* Bunch of helpers added ```app/templates/starters/src/assets/stylesheets/helpers```
+* Components and other css now follow the new styleguide syntax and structure
+
 ## 0.0.6 (2015-2-17)
 * Project is now converted to (Mediasignal) Yeoman generator (generator-msc). Please read all the new project docs ```README.md & docs/*``` .
 * Default assets (CSS/JS) modified a lot. See ```app/templates/assets/```
