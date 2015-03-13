@@ -99,8 +99,8 @@ module.exports = function (grunt) {
         files: [{
           expand: true,
           cwd: '<%%= path.tmp %>/Assets/stylesheets',
-          src: '/*.css',
-          dest: '<%%= path.tmp %>/Assets/stylesheets/'
+          src: '*.css',
+          dest: '<%%= path.tmp %>/Assets/stylesheets'
         }]
       }
     },
