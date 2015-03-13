@@ -22,13 +22,13 @@ Please read and understand all of the following before doing anything. All of th
 
 ### Styleguides
 
-* [CSS styleguide (work in progress)](https://bitbucket.org/mediasignal/mediasignal-web-starter-kit/src/ea971d0b8aa672395f18d95a2b102eaae9d90c3e/docs/css/)
+* [CSS styleguide (work in progress)](https://bitbucket.org/mediasignal/mediasignal-web-starter-kit/src/master/docs/css/)
 * [JS styleguide (nothing yet)]()
 
 ### Project workflow
 
 * [Typo3 (work in progress)](https://bitbucket.org/mediasignal/mediasignal-web-starter-kit/src/master/docs/project-types/typo3)
-* [Html (work in progress)](docs/project-types/#html)
+* [Html (work in progress)](https://bitbucket.org/mediasignal/mediasignal-web-starter-kit/src/master/docs/project-types/html)
 
 ## Requirements
 
@@ -62,7 +62,7 @@ Run ```grunt``` for building and ```grunt dev``` for developing.
 
 Please discuss about new ideas and things that you think should be modified. Currently all the styleguiding, components (CSS/JS) and generator logic has been made by Joonas Ylitalo [@joonasy](https://twitter.com/joonasy).
 
-[Learn more about contributing](https://bitbucket.org/mediasignal/generator-msc/src/90566b12eab4d8fdd9d79e781b4d388e4ccd9a5b/docs/contribute.md)
+[Learn more about contributing](https://bitbucket.org/mediasignal/mediasignal-web-starter-kit/src/master/docs/contribute.md)
 
 ## Todo
 
