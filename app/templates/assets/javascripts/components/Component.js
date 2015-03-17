@@ -6,15 +6,13 @@ var App = App || {};
 
 App.Component = function($) {
 
-  var self = {},
-      trigger,
-      element;
+  var self = {};
 
   self.init = function() {}
 
-  self.componentFunction = function() {}
+  self.publicFunction = function() {}
 
-  privateFunction = function() {}
+  _privateFunction = function() {}
 
   return {
     init: self.init
