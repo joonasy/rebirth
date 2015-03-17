@@ -4,7 +4,7 @@
 
 ## Instructions 
 
-Please read [Mediasignal Web Starter Kit](https://bitbucket.org/mediasignal/generator-msc.git) guide.
+Please read [Mediasignal Web Starter Kit](https://bitbucket.org/mediasignal/mediasignal-web-starter-kit) guide.
 
 ## Requirements
 
