@@ -88,14 +88,14 @@
 
 .Hero {
 
-  &.-align-top {
+  &.-alignContent-top {
     .Hero-content {
       padding-top: rem($base-space * 2);
       vertical-align: top;
     }
   }
 
-  &.-align-bottom {
+  &.-alignContent-bottom {
     .Hero-content {
       padding-bottom: rem($base-space * 2);
       vertical-align: bottom;
