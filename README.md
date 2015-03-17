@@ -64,12 +64,18 @@ Please discuss about new ideas and things that you think should be modified. Cur
 
 [Learn more about contributing](https://bitbucket.org/mediasignal/mediasignal-web-starter-kit/src/master/docs/contribute.md)
 
-## Todo
+## Todo (in random order)
 
 * SASS structure and rest of the CSS styleguide
-* JavaScript styleguide
+* All necessary CSS components
 * Sub generators for starters
-* Test CSS components
+* CSS modular scale
+* Some sort of integration/forking with [generator-typo3](https://github.com/Milanowicz/generator-typo3)
+* Livereload to browserify
+* Use Libsass
+* Dedloyment settings
+* JavaScript styleguide
+* Tests for CSS components
 * Testing for everything
 * Gitignores and readmes to generator
 
