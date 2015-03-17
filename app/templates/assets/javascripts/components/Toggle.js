@@ -105,6 +105,10 @@ var App = App || {};
 
           $(this).removeClass(value.elementClass);
         });
+
+        if(value.triggerClass) {
+          value.trigger.removeClass(value.triggerClass);
+        }
       });
     };
 
