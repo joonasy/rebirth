@@ -9,7 +9,7 @@ App.Navbar = function($) {
   var self = {};
 
   self.init = function() {
-    var $navBar = $('#js-Navbar'),
+    var $navBar = $('.js-Navbar'),
         $navBarTrigger = $('.js-Navbar-trigger', $navBar),
         $navItem = $('.Navbar-item', $navBar),
         $navLink = $('.Navbar-link', $navBar),
