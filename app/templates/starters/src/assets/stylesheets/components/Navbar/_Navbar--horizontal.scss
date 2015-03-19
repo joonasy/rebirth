@@ -1,11 +1,11 @@
 /* ========================================
- * Floating navigation bar modifier
+ * Horizontal variation
  * ========================================
  *
  * @extends `.Navbar {}` in _Navbar.scss
  */
 
-.Navbar.-transform-horizontal {
+.Navbar--horizontal {
 
   @include breakpoint('navTransform') {
 
@@ -40,7 +40,7 @@
 
         .no-touch & .Navbar-item.is-open > .Navbar-subTrigger
         > .Navbar-subTrigger-icon {
-          @include shapeArrow($direction: 'down', $scale: $IconCss-s);
+          @include shapeArrow('down');
         }
 
       .Navbar-sub {
@@ -83,7 +83,7 @@
  * Keep title in larger widths
  * ====== */
 
-.Navbar.-transform-horizontal.-transform-horizontal--keepTitle {
+.Navbar--horizontal.-keep-title {
 
   @include breakpoint('navTransform') {
 
