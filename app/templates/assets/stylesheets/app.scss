@@ -8,6 +8,9 @@
 @import 'compass';
 @import 'normalize.scss/normalize';
 
+// Config
+@import 'config';
+
 // Mixins
 @import 'mixins/bgRetina';
 @import 'mixins/breakpoint';
@@ -17,15 +20,14 @@
 @import 'mixins/clearfix';
 @import 'mixins/fontSize';
 @import 'mixins/position';
-@import 'mixins/shapeArrow';
-@import 'mixins/shapeMenu';
 @import 'mixins/spriteRetina';
 @import 'mixins/text';
-@import 'mixins/triangle';
 @import 'mixins/utility';
 
-// Config
-@import 'config';
+// UI element mixins
+@import 'mixins/shapeArrow';
+@import 'mixins/shapeMenu';
+@import 'mixins/shapeTriangle';
 
 // Generic
 @import 'generic/base';
