@@ -27,26 +27,26 @@
 
       .Navbar-link {
         border-top: 1px solid;
+        border-right: 1px solid;
         cursor: pointer;
         display: block;
         float: left;
-        min-height: rem($base-space * 2);
+        min-height: $base-space * 2;
         padding: $Navbar-padding ($Navbar-padding * 2);
         width: 87%;
         width: calc(100% - #{$Navbar-subTriggerWidth});
 
         &:only-child {
           width: 100%;
+          border-right: 0;
         }
       }
 
       .Navbar-subTrigger, %Navbar-subTrigger {
         border-top: 1px solid;
-        border-left: 1px solid;
         cursor: pointer;
         display: block;
         float: left;
-        min-height: rem($base-space * 2);
         padding: $Navbar-padding 0;
         text-align: center;
         width: 13%;
@@ -54,10 +54,10 @@
       }
 
         .Navbar-subTrigger-icon {
-          @include shapeArrow('down', $color-text, $IconCss-s);
+          @include shapeArrow('down', $color-text);
 
           .Navbar-item.is-open > .Navbar-subTrigger > & {
-            @include shapeArrow('up', $color-text, $IconCss-s);
+            transform: rotate(0);
           }
         }
 
@@ -105,7 +105,7 @@
       .Navbar-trigger-title, .Navbar-trigger-text {
         display: block;
         float: left;
-        min-height: rem($base-space * 2);
+        min-height: $base-space * 2;
         padding: $Navbar-padding ($Navbar-padding * 2);
       }
 
@@ -128,3 +128,23 @@
         @include shapeMenu();
         vertical-align: middle;
       }
+
+
+/* ======
+ * Hide trigger but keep content in larger widths
+ * ====== */
+
+.Navbar.-transform-hideTrigger {
+
+  @include breakpoint('navTransform') {
+
+    .Navbar-self {
+      display: block;
+    }
+
+    .Navbar-trigger {
+      display: none;
+    }
+  }
+}
+

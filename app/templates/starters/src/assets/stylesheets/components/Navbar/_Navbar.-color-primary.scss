@@ -11,13 +11,14 @@
   .Navbar-link {
     background-color: $Navbar-linkBgColor;
     border-top-color: $Navbar-linkBorderColor;
+    border-right-color: $Navbar-subTriggerBorderColor;
     color: $Navbar-linkColor;
   }
 
   .Navbar-subTrigger {
     color: $Navbar-subTriggerColor;
-    border-color: $Navbar-subTriggerBorderColor;
     background-color: $Navbar-subTriggerBgColor;
+    border-top-color: $Navbar-subTriggerBorderColor;
   }
 
     .Navbar-subTrigger-icon {
