@@ -2,12 +2,35 @@
 // CSS arrow shape
 // ========================================
 
-@mixin shapeArrow($direction: 'up', $color: $color-text, $scale: null) {
+@mixin shapeArrow(
+  $direction: 'up',
+  $color: $color-text,
+  $thickness: 2px,
+  $caretWidth: 10px,
+  $line: false,
+  $lineHeight: 12px,
+  $size: 1,
+  $scale: null
+  ) {
   display: inline-block;
-  height: 15px;
   position: relative;
-  width: 10px;
 
+  @if $line {
+    width: $lineHeight * $size;
+    height: $lineHeight * $size;
+  } @else {
+    width: $caretWidth * $size;
+    height: $caretWidth * $size;
+  }
+
+  @if not even($thickness) and even($caretWidth) or
+    even($thickness) and not even($caretWidth) {
+    @warn 'Make sure that $thickness `#{$thickness}` and $caretWidth `#{$caretWidth} are both either even or odd.';
+  }
+
+  //
+  // Direction and scaling
+  //
   @if $scale {
     $scale: scale($scale);
   }
@@ -22,27 +45,51 @@
     transform: $scale;
   }
 
-  &:after, &:before {
+  //
+  // Arrow line
+  //
+  @if $line {
+    &:before {
+      content: '';
+      display: block;
+      position: absolute;
+      background-color: $color;
+      height: ($lineHeight) * $size;
+      left: 50%;
+      top: 0;
+      width: $thickness;
+      margin-left: -($thickness / 2);
+    }
+  }
+
+  //
+  // Arrow caret
+  //
+  &:after {
+    border-left: $thickness solid;
+    border-top: $thickness solid;
+    color: $color;
     content: '';
     display: block;
+    height: ($caretWidth * $size);
     position: absolute;
-  }
-
-  &:before {
-    background-color: $color;
-    height: 16px;
-    left: 4px;
-    top: 0;
-    width: 1px;
-  }
-
-  &:after {
-    color: $color;
-    border-left: 1px solid;
-    border-top: 1px solid;
-    height: 9px;
-    top: 0;
     transform: rotate(45deg);
-    width: 9px;
+    width: $caretWidth * $size;
+
+
+    @if $line {
+      left: ((($lineHeight - $caretWidth) / 2) * $size);
+
+      @if $thickness > 3 {
+        top: 0;
+      } @elseif $thickness == 1 {
+        top: 1px;
+      } @else {
+        top: ($thickness * $size) - 1px;
+      }
+    } @else {
+      top: 3px;
+    }
+
   }
 }

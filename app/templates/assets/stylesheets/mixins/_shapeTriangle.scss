@@ -1,11 +1,8 @@
 // ========================================
-// Triangle shortcut
+// CSS triangle shape
 // ========================================
 
-@mixin triangle($width: 20px, $height: 20px, $direction: up, $color: red) {
-  width: 0;
-  height: 0;
-
+@mixin triangle($direction: 'up', $color: $color-text, $width: 20px, $height: 20px) {
   @if $direction == right {
     border-top: $height solid transparent;
     border-bottom: $height solid transparent;

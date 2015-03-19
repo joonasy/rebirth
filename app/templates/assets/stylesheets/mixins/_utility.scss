@@ -22,3 +22,10 @@
 @function rem($pixels) {
   @return #{strip-unit($pixels) / strip-unit($base-fontSize)}rem;
 }
+
+//
+// Check if number is even
+//
+@function even($number) {
+  @return $number % 2 == 0;
+}
