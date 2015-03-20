@@ -75,7 +75,7 @@
 
     @include breakpoint('mediumUp') {
       .Hero-item {
-        height: rem($base-space * 18);
+        height: rem($base-space * 16);
       }
     }
   }
@@ -99,6 +99,12 @@
     .Hero-content {
       padding-bottom: rem($base-space * 2);
       vertical-align: bottom;
+    }
+  }
+
+  &.-alignFigure-myPosition {
+    .Hero-figure {
+      img {}
     }
   }
 }

@@ -8,20 +8,42 @@ title: Button
     <h1>Buttons</h1>
 
     <a class="Button Button--primary" href="#">
-      Button link
+      Button
     </a>
 
-    <button class="Button Button--primary" type="submit">
-      Button element
-    </button>
-
-    <span class="Button Button--primary -type-round">
-      Rounded button in span tag
-    </span>
+    <a href="#" class="Button Button--primary -type-round">
+      Rounded button
+    </a>
 
     <h1>Button collections</h1>
 
-    {{!-- Bordered horizontal button group --}}
+    {{!-- Full button collection  --}}
+    <div class="ButtonCollection -align-full">
+      <a class="Button Button--primary -type-" href="#">
+        Button
+      </a>
+      <a class="Button Button--primary -type-round" href="#">
+        Button
+      </a>
+      <a class="Button Button--primary -type-border" href="#">
+        Button
+      </a>
+    </div>
+
+    {{!-- Bordered horizontal button collection --}}
+    <div class="ButtonCollection -align-horizontal -type-round">
+      <a class="Button Button--primary -type-round" href="#">
+        Button
+      </a>
+      <a class="Button Button--primary -type-round" href="#">
+        Button
+      </a>
+      <a class="Button Button--primary -type-round" href="#">
+        Button
+      </a>
+    </div>
+
+    {{!-- Bordered horizontal button collection --}}
     <div class="ButtonCollection -align-horizontal -type-borderRound">
       <a class="Button Button--primary -type-border" href="#">
         Button
@@ -34,21 +56,48 @@ title: Button
       </a>
     </div>
 
-    {{!-- Rounded vertical button group --}}
+
+    {{!-- Bordered vertical button collection --}}
+    <div class="ButtonCollection -align-vertical -type-border">
+      <a class="Button Button--primary -type-border" href="#">
+        Button
+      </a>
+      <a class="Button Button--primary -type-border" href="#">
+        Button
+      </a>
+      <a class="Button Button--primary -type-border" href="#">
+        Button
+      </a>
+    </div>
+
+    {{!-- Certical button collection --}}
     <div class="ButtonCollection -align-vertical -type-round">
       <a class="Button Button--primary" href="#">
         Button
       </a>
       <a class="Button Button--primary" href="#">
-        Longer button
+        Button
       </a>
       <a class="Button Button--primary" href="#">
         Button
       </a>
     </div>
 
-    {{!-- Bordered and justified button group --}}
+    {{!-- Bordered and justified button collection --}}
     <div class="ButtonCollection -align-justified -type-border">
+      <a class="Button Button--primary -type-border" href="#">
+        Button
+      </a>
+      <a class="Button Button--primary -type-border" href="#">
+        Button
+      </a>
+      <a class="Button Button--primary -type-border" href="#">
+        Button
+      </a>
+    </div>
+
+    {{!-- Bordered and justified rounded button collection --}}
+    <div class="ButtonCollection -align-justified -type-borderRound">
       <a class="Button Button--primary -type-border" href="#">
         Button
       </a>

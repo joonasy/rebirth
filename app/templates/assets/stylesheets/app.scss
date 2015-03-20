@@ -32,12 +32,13 @@
 // Generic
 @import 'generic/base';
 @import 'generic/placeholder';
+@import 'generic/typography';
 
 // Components
 @import 'components/Ieframe';
 
 // Layout based components
+@import 'layout/Container';
 @import 'layout/Grid';
 @import 'layout/Width';
-@import 'layout/Container';
 @import 'layout/Wrap';

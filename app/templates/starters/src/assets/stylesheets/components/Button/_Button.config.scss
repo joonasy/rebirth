@@ -2,15 +2,25 @@
 // Button
 // ========================================
 
+$Button-fontSize: $base-fontSize;
+$Button-lineHeight: $base-lineHeightPx * 1.5;
 $Button-padding: $base-space;
-$Button-borderWidth: 1px;
-$Button-borderRadius: $borderRadius;
+$Button-borderWidth: 2px;
+$Button-borderRadius: 30px;
+$Button-fontWeight: $base-fontWeightStrong;
 
 $ButtonPrimary-color: #ffffff;
-$ButtonPrimary-typeBorderColor: $color-brandPrimary;
-$ButtonPrimary-borderColor: $color-brandPrimary;
-$ButtonPrimary-bgColor: $color-brandPrimary;
 $ButtonPrimary-colorHover: $ButtonPrimary-color;
+$ButtonPrimary-bgColor: $color-brandPrimary;
 $ButtonPrimary-bgColorHover: darken($color-brandPrimary, 5);
+$ButtonPrimary-borderColor: $color-brandPrimary;
+$ButtonPrimary-borderColorHover: $ButtonPrimary-bgColorHover;
 
+$ButtonPrimary-typeBorderColor: $color-text;
+$ButtonPrimary-typeBorderColorHover: $color-brandPrimary;
+$ButtonPrimary-typeBorderBgColorHover: transparent;
+
+$ButtonCollection-VerticalBorderRadius: $borderRadius;
+$ButtonCollection-HorizontalBorderRadius: $Button-borderRadius;
 $ButtonCollection-borderColor: rgba(#ffffff, 0.25);
+$ButtonCollection-borderWidth: 1px;

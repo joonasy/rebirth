@@ -4,16 +4,18 @@
 
 .Button {
   background-color: transparent;
-  border: 0;
+  border: $Button-borderWidth solid;
   cursor: pointer;
   display: inline-block;
-  font-weight: $base-fontWeightStrong;
-  margin-bottom: rem($base-space);
+  font-size: rem($Button-fontSize);
+  font-weight: $Button-fontWeight;
+  line-height: rem($Button-lineHeight - ($Button-borderWidth * 2));
+  margin-bottom: rem((($base-space * 3) - $Button-lineHeight));
+  margin-right: rem($base-space / 2);
   outline: 0;
-  padding: rem($Button-padding / 2) rem($Button-padding);
+  padding: 0 rem($Button-padding);
   position: relative;
   text-align: center;
-  transition: $transitionDuration;
   user-select: none;
   vertical-align: middle;
   white-space: nowrap;
@@ -30,42 +32,48 @@
 
 
 /* ======
- * Variations
+ * Button - variations
  * ====== */
 
 .Button--primary {
   background-color: $ButtonPrimary-bgColor;
+  border-color: $ButtonPrimary-borderColor;
   color: $ButtonPrimary-color;
 
   &:hover, &:focus {
     background-color: $ButtonPrimary-bgColorHover;
+    border-color: $ButtonPrimary-borderColorHover;
     color: $ButtonPrimary-colorHover;
   }
 
   &.-type-border {
     background-color: transparent;
-    border-color: $ButtonPrimary-borderColor;
     color: $ButtonPrimary-typeBorderColor;
 
     &:hover, &:focus {
-      background-color: $ButtonPrimary-bgColorHover;
-      color: $ButtonPrimary-colorHover;
+      background-color: $ButtonPrimary-typeBorderBgColorHover;
+      border-color: $ButtonPrimary-typeBorderColorHover;
+      color: $ButtonPrimary-typeBorderColorHover;
     }
   }
 }
 
+.Button--secondary {}
+
 
 /* ======
- * Modifiers
+ * Button - types
  * ====== */
 
 .Button.-type-round {
   border-radius: $Button-borderRadius;
 }
 
-.Button.-type-border {
-  border-width: $Button-borderWidth;
-  border-style: solid;
-  padding-top: rem(($Button-padding / 2) - 1px);
-  padding-bottom: rem(($Button-padding / 2) - 1px);
-}
+
+/* ======
+ * Button - sizing
+ * ====== */
+
+.Button.-size-s {}
+
+.Button.-size-l {}

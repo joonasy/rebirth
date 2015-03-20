@@ -15,6 +15,7 @@ $base-lineHeight-s: 20px / $base-fontSize-s;
 $base-fontSize-xs: 12px;
 $base-lineHeight-xs: 18px / $base-fontSize-xs;
 
+$base-fontFamilySerif: Georgia, serif;
 $base-fontFamily: 'Helvetica Neue', Helvetica, Arial, sans-serif;
 $base-fontWeightStrong: 800;
 
@@ -26,11 +27,23 @@ $heading-xl: 62px;
 $heading-m: 52px;
 $heading-s: 42px;
 
+$heading-fontSize-l: 62px;
+$heading-lineHeight-l: 72px / $heading-fontSize-l;
+$heading-fontSize-m: 52px;
+$heading-lineHeight-m: 62px / $heading-fontSize-m;
+$heading-fontSize-s: 42px;
+$heading-lineHeight-s: 52px / $heading-fontSize-s;
+
 $h1-fontSize: 32px;
+$h1-lineHeight: 'rhythm'; // 38px / $h1-fontSize;
 $h2-fontSize: 26px;
+$h2-lineHeight: 'rhythm'; // 32px / $h2-fontSize;
 $h3-fontSize: 22px;
+$h3-lineHeight: 'rhythm'; // 28px / $h3-fontSize;
 $h4-fontSize: 20px;
+$h4-lineHeight: 'rhythm'; // 26px / $h4-fontSize;
 $h5-fontSize: 18px;
+$h5-lineHeight: 'rhythm'; // 24px / $h5-fontSize;
 
 
 
@@ -110,13 +123,21 @@ $color-info: #5bc0de;
 // Various global settings
 // ========================================
 
-$Wrap-width: 960px;
-$Container-width: 1200px;
 $borderRadius: 3px;
 $IconCss-s: 0.85;
 $IconCss-xs: 0.75;
 
 
+
+
+// ========================================
+// Layout
+// ========================================
+
+$Header-zIndex: 100;
+$Page-zIndex: 99;
+$Wrap-width: 960px;
+$Container-fixedWidth: 1200px;
 
 
 // ========================================

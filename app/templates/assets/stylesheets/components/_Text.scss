@@ -1,0 +1,57 @@
+/* ========================================
+ * Text component to modify text elements
+ * ======================================== */
+
+.Text {}
+
+
+/* ======
+ * Text types
+ * ====== */
+
+.Text {
+
+  &.-type-serif {
+    font-family: $base-fontFamilySerif;
+  }
+}
+
+
+/* ======
+ * Sizing
+ * ====== */
+
+.Text {
+
+  &.-size-xl {
+    @include fontSize($base-fontSize-xl, $base-lineHeight-xl);
+  }
+
+  &.-size-l {
+    @include fontSize($base-fontSize-l, $base-lineHeight-l);
+  }
+
+  &.-size-s {
+    @include fontSize($base-fontSize-s, $base-lineHeight-s);
+  }
+
+  &.-size-xs {
+    @include fontSize($base-fontSize-xs, $base-lineHeight-xs);
+  }
+
+  &.-size-heading-m {
+    @include fontSize($heading-fontSize-s, $heading-lineHeight-s);
+
+    @include breakpoint("smallDown") {
+      @include fontSize($h2-fontSize, $h2-lineHeight);
+    }
+  }
+
+  &.-size-heading-s {
+    @include fontSize($heading-fontSize-s, $heading-lineHeight-s);
+
+    @include breakpoint("smallDown") {
+      @include fontSize($h3-fontSize, $h3-lineHeight);
+    }
+  }
+}

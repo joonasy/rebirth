@@ -6,16 +6,17 @@
  */
 
 .ButtonCollection {
-  margin-bottom: rem($base-space);
+  //margin-bottom: rem($base-space);
 
   > .Button {
-    margin-bottom: 0;
+    //margin-bottom: 0;
+    margin-right: 0;
   }
 }
 
 
 /* ======
- * Button align
+ * Button collection - Button align
  * ====== */
 
 .ButtonCollection.-align-vertical {
@@ -24,7 +25,11 @@
 
   > .Button {
     display: block;
-    padding-bottom: rem(($Button-padding / 2) - 1px);
+    margin-bottom: 0;
+
+    &:last-child {
+      margin-bottom: rem(($base-space * 3) - $Button-lineHeight);
+    }
   }
 }
 
@@ -42,17 +47,29 @@
   display: table;
   table-layout: fixed;
   width: 100%;
+  margin-bottom: rem((($base-space * 3) - $Button-lineHeight));
 
   > .Button {
     display: table-cell;
+  }
+}
 
-    &:not([class*='Width']) { width: 1%; }
+.ButtonCollection.-align-full {
+  > .Button {
+    display: block;
+    width: 100%;
+
+    @include breakpoint('smallUp') {
+      display: inline-block;
+      margin-right: rem($base-space / 2);
+      width: auto;
+    }
   }
 }
 
 
 /* ======
- * Button type
+ * Button collection - Button type
  * ====== */
 
 .ButtonCollection.-type-border,
@@ -72,10 +89,9 @@
   &.-align-vertical {
 
     > .Button {
-      border-bottom-width: 0;
 
-      &:last-child {
-        border-bottom-width: $Button-borderWidth;
+      &:not(:first-child) {
+        border-top: 0;
       }
     }
   }
@@ -90,15 +106,18 @@
   &.-align-horizontal, &.-align-justified {
 
     > .Button {
-      border-left: 1px solid $ButtonCollection-borderColor;
+      border-left: $ButtonCollection-borderWidth solid
+        $ButtonCollection-borderColor;
 
       &:first-child {
         border-left: 0;
-        border-radius: $Button-borderRadius 0 0 $Button-borderRadius;
+        border-radius: $ButtonCollection-HorizontalBorderRadius 0 0
+          $ButtonCollection-HorizontalBorderRadius;
       }
 
       &:last-child {
-        border-radius: 0 $Button-borderRadius $Button-borderRadius 0;
+        border-radius: 0 $ButtonCollection-HorizontalBorderRadius
+          $ButtonCollection-HorizontalBorderRadius 0;
       }
     }
   }
@@ -106,15 +125,17 @@
   &.-align-vertical {
 
     > .Button {
-      border-bottom: 1px solid $ButtonCollection-borderColor;
+      box-shadow: 0 -1px $ButtonCollection-borderColor;
 
       &:first-child {
-        border-radius: $Button-borderRadius $Button-borderRadius 0 0;
+        border-radius: $ButtonCollection-VerticalBorderRadius
+          $ButtonCollection-VerticalBorderRadius 0 0;
       }
 
       &:last-child {
-        border-radius: 0 0 $Button-borderRadius $Button-borderRadius;
-        border-bottom: 0;
+        border-radius: 0 0 $ButtonCollection-VerticalBorderRadius
+          $ButtonCollection-VerticalBorderRadius;
+        box-shadow: 0;
       }
     }
   }
@@ -127,11 +148,13 @@
 
     > .Button {
       &:first-child {
-        border-radius: $Button-borderRadius 0 0 $Button-borderRadius;
+        border-radius: $ButtonCollection-HorizontalBorderRadius 0 0
+          $ButtonCollection-HorizontalBorderRadius;
       }
 
       &:last-child {
-        border-radius: 0 $Button-borderRadius $Button-borderRadius 0;
+        border-radius: 0 $ButtonCollection-HorizontalBorderRadius
+          $ButtonCollection-HorizontalBorderRadius 0;
       }
     }
   }
@@ -140,11 +163,13 @@
 
     > .Button {
       &:first-child {
-        border-radius: $Button-borderRadius $Button-borderRadius 0 0;
+        border-radius: $ButtonCollection-HorizontalBorderRadius
+          $ButtonCollection-HorizontalBorderRadius 0 0;
       }
 
       &:last-child {
-        border-radius: 0 0 $Button-borderRadius $Button-borderRadius;
+        border-radius: 0 0 $ButtonCollection-HorizontalBorderRadius
+          $ButtonCollection-HorizontalBorderRadius;
       }
     }
   }
