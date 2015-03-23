@@ -36,9 +36,13 @@
 
 // Components
 @import 'components/Ieframe';
+@import 'components/Text';
+@import 'components/Heading';
 
 // Layout based components
 @import 'layout/Container';
+@import 'layout/Header';
 @import 'layout/Grid';
+@import 'layout/Footer';
 @import 'layout/Width';
 @import 'layout/Wrap';
