@@ -21,14 +21,14 @@
         position: relative;
 
         > .Navbar-link {
-          border-top: none;
+          border: 0;
           display: inline-block;
           padding-left: $Navbar-padding;
           padding-right: $Navbar-padding;
         }
 
         > .Navbar-subTrigger {
-          border: none;
+          border: 0;
           padding-left: $Navbar-padding;
           padding-right: $Navbar-padding;
           margin-left: -$Navbar-padding;
@@ -36,7 +36,9 @@
         }
       }
 
-        .Navbar-link { width: auto; }
+        .Navbar-link {
+          width: auto;
+        }
 
         .no-touch & .Navbar-item.is-open > .Navbar-subTrigger
         > .Navbar-subTrigger-icon {

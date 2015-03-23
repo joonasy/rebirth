@@ -37,8 +37,8 @@
         width: calc(100% - #{$Navbar-subTriggerWidth});
 
         &:only-child {
-          width: 100%;
           border-right: 0;
+          width: 100%;
         }
       }
 
