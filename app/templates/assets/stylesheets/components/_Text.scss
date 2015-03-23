@@ -1,12 +1,12 @@
 /* ========================================
- * Text component to modify text elements
+ * Text
  * ======================================== */
 
 .Text {}
 
 
 /* ======
- * Text types
+ * Text - type
  * ====== */
 
 .Text {
@@ -18,14 +18,10 @@
 
 
 /* ======
- * Sizing
+ * Text - size
  * ====== */
 
 .Text {
-
-  &.-size-xl {
-    @include fontSize($base-fontSize-xl, $base-lineHeight-xl);
-  }
 
   &.-size-l {
     @include fontSize($base-fontSize-l, $base-lineHeight-l);
@@ -37,21 +33,5 @@
 
   &.-size-xs {
     @include fontSize($base-fontSize-xs, $base-lineHeight-xs);
-  }
-
-  &.-size-heading-m {
-    @include fontSize($heading-fontSize-s, $heading-lineHeight-s);
-
-    @include breakpoint("smallDown") {
-      @include fontSize($h2-fontSize, $h2-lineHeight);
-    }
-  }
-
-  &.-size-heading-s {
-    @include fontSize($heading-fontSize-s, $heading-lineHeight-s);
-
-    @include breakpoint("smallDown") {
-      @include fontSize($h3-fontSize, $h3-lineHeight);
-    }
   }
 }
