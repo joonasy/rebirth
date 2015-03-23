@@ -1,12 +1,18 @@
 /* ========================================
- * CSS shaped arrow icons
+ * CSS icon
  * ======================================== */
 
 [class*='IconCss'][class*='-shape-arrow'] {
   @include shapeArrow($direction: false);
 }
 
+
+/* ======
+ * CSS icon - size and shape
+ * ====== */
+
 .IconCss {
+
   &.-shape-arrowUp {
     &.-size-s {
       transform: scale($IconCss-s);

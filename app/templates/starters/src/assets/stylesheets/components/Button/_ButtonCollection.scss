@@ -6,17 +6,15 @@
  */
 
 .ButtonCollection {
-  //margin-bottom: rem($base-space);
 
   > .Button {
-    //margin-bottom: 0;
     margin-right: 0;
   }
 }
 
 
 /* ======
- * Button collection - Button align
+ * Button collection - align
  * ====== */
 
 .ButtonCollection.-align-vertical {
@@ -69,7 +67,7 @@
 
 
 /* ======
- * Button collection - Button type
+ * Button collection - type
  * ====== */
 
 .ButtonCollection.-type-border,
