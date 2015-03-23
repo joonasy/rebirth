@@ -11,16 +11,3 @@
     padding-top: rem($base-space * 2);
   }
 }
-
-
-/* ======
- * Sizing
- * ====== */
-
-.Container {
-  &.-size-fixed {
-    max-width: $Container-fixedWidth;
-    margin-left: auto;
-    margin-right: auto;
-  }
-}
