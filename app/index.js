@@ -268,8 +268,8 @@ var MscGenerator = yeoman.generators.Base.extend({
       );
 
       this.template(
-        this.templatePath('typo3/Resources/Private/Templates/Page/_Default.html'),
-        this.destinationPath('Resources/Private/Templates/Page/Default.html')
+        this.templatePath('typo3/Resources/Private/Templates/Page/_HomePage.html'),
+        this.destinationPath('Resources/Private/Templates/Page/HomePage.html')
       );
 
       this.fs.copy(
