@@ -225,18 +225,14 @@ var MscGenerator = yeoman.generators.Base.extend({
       this.mkdir('_design/materials')
     }
 
-    if(this.typoProject && this.cssAndJsAssets) {
+    if(this.cssAndJsAssets) {
       this.fs.copy(
         this.templatePath('assets'),
         this.config.get('assetsPath')
       )
-    }
-
-    if(this.htmlProject && this.cssAndJsAssets) {
-      this.fs.copy(
-        this.templatePath('assets'),
-        this.config.get('assetsPath')
-      )
+      this.mkdir(this.config.get('assetsPath')+'/stylesheets/helpers');
+      this.mkdir(this.config.get('assetsPath')+'/images')
+      this.mkdir(this.config.get('assetsPath')+'/fonts')
     }
   },
 
