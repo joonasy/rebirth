@@ -84,7 +84,7 @@ module.exports = function (grunt) {
           httpImagesPath: '<%%= path.extension %>/<%%= path.public %>/Assets/images',
           httpGeneratedImagesPath: '<%%= path.extension %>/<%%= path.public %>/Assets/images',
           httpFontsPath: '<%%= path.extension %>/<%%= path.public %>/Assets/fonts'
-        },
+        }
       }
     },
 
@@ -112,6 +112,7 @@ module.exports = function (grunt) {
       dist: {
         files: [{
           expand: true,
+          flatten: true,
           cwd: './',
           src: [
             '<%%= path.tmp %>/Assets/images/**/*.{png,jpg,jpeg,svg}',
@@ -154,6 +155,7 @@ module.exports = function (grunt) {
           prefixes: false,
           domprefixes: false
         },
+        matchCommunityTests: true,
         uglify: false
       }
     },
@@ -236,10 +238,11 @@ module.exports = function (grunt) {
      * Clean
      */
     clean: {
-      dist: {
+      all: {
         files: [{
           src: [
-            '<%%= path.public %>/Assets/*'
+            '<%%= path.public %>/Assets/*',
+            '<%%= path.tmp %>'
           ]
         }]
       }
@@ -253,12 +256,12 @@ module.exports = function (grunt) {
         files: [{
           expand: true,
           dot: true,
-          cwd: '<%%= path.private %>/',
-          dest: '<%%= path.public %>/',
+          cwd: './',
           src: [
             'Assets/javascripts/vendor/jquery.min.js',
             'Assets/fonts/*.{eot,ttf,woff,svg}'
-          ]
+          ],
+          dest: '<%%= path.public %>'
         }]
       }
     },
@@ -307,7 +310,7 @@ module.exports = function (grunt) {
   ]);
 
   grunt.registerTask('default', [
-    'clean:dist',
+    'clean',
     'wiredep',
     'imagemin:dist',
     'compass:dist',
