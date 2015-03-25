@@ -17,7 +17,8 @@ module.exports = function (grunt) {
       tmp: '.tmp',
       private: 'Resources/Private',
       public: 'Resources/Public',
-      extension: '/typo3conf/ext/<%= appRoot %>'
+      extension: 'typo3conf/ext/<%= appRoot %>',
+      http: '/'
     },
     meta: {
       banner:
@@ -67,11 +68,11 @@ module.exports = function (grunt) {
 
         imagesDir: 'Assets/images',
         generatedImagesDir: 'Assets/images',
-        httpImagesPath: '<%%= path.extension %>/Assets/images',
-        httpGeneratedImagesPath: '<%%= path.extension %>/<%%= path.tmp %>/Assets/images',
+        httpImagesPath: '/<%%= path.ext %>/Assets/images',
+        httpGeneratedImagesPath: '/<%%= path.ext %>/<%%= path.tmp %>/Assets/images',
 
         fontsDir: 'Assets/fonts',
-        httpFontsPath: '<%%= path.extension %>/Assets/fonts',
+        httpFontsPath: '/<%%= path.ext %>/Assets/fonts',
         relativeAssets: false,
 
         raw: '::Sass::Script::Number.precision = 10\n',
@@ -81,9 +82,9 @@ module.exports = function (grunt) {
       dev: {},
       dist: {
         options: {
-          httpImagesPath: '<%%= path.extension %>/<%%= path.public %>/Assets/images',
-          httpGeneratedImagesPath: '<%%= path.extension %>/<%%= path.public %>/Assets/images',
-          httpFontsPath: '<%%= path.extension %>/<%%= path.public %>/Assets/fonts'
+          httpImagesPath: '<%%= path.http %><%%= path.ext %>/<%%= path.public %>/Assets/images',
+          httpGeneratedImagesPath: '<%%= path.http %><%%= path.ext %>/<%%= path.public %>/Assets/images',
+          httpFontsPath: '<%%= path.http %><%%= path.ext %>/<%%= path.public %>/Assets/fonts'
         }
       }
     },
@@ -241,7 +242,7 @@ module.exports = function (grunt) {
       all: {
         files: [{
           src: [
-            '<%%= path.public %>/Assets/*',
+            '<%%= path.public %>/Assets',
             '<%%= path.tmp %>'
           ]
         }]
