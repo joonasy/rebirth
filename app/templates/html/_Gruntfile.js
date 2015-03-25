@@ -132,7 +132,7 @@ module.exports = function (grunt) {
         files: [{
           dot: true,
           src: [
-            '<%%= path.dist %>/*'
+            '<%%= path.dist %>'
           ]
         }]
       },
@@ -269,6 +269,7 @@ module.exports = function (grunt) {
           'prefixes': false,
           'domprefixes': false
         },
+        matchCommunityTests: true,
         uglify: false
       }
     },
@@ -375,6 +376,7 @@ module.exports = function (grunt) {
   });
 
   grunt.registerTask('default', [
+    'clean:tmp',
     'clean:dist',
     'wiredep',
     'assemble:dist',
