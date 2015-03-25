@@ -25,6 +25,7 @@
       .Hero-figure {
         @extend %positionAbsoluteFill;
         background-size: cover; /* Fallback */
+        background-position: center;
         margin-bottom: 0;
         overflow: hidden;
         z-index: 0;
@@ -51,12 +52,14 @@
 .Hero {
 
   &.-size-full {
+
     .Hero-item {
       height: 100vh;
     }
   }
 
   &.-size-l {
+
     .Hero-item {
       height: rem($base-space * 18);
     }
@@ -69,6 +72,7 @@
   }
 
   &.-size-m {
+
     .Hero-item {
       height: rem($base-space * 14);
     }
