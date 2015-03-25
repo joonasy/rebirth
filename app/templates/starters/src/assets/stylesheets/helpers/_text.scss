@@ -18,13 +18,6 @@
 }
 
 /**
- * Enables font kerning in all browsers.
- */
-.textKern {
-  @include textKern(!important);
-}
-
-/**
  * Text truncation
  */
 .textTruncate {
