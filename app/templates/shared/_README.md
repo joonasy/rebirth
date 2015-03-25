@@ -13,8 +13,6 @@ Please read [Mediasignal Web Starter Kit](https://bitbucket.org/mediasignal/medi
 * [Grunt](http://gruntjs.com/) `npm install -g grunt-cli`
 * [Bower](http://bower.io/) `npm install -g bower`
 
-Install all the requirements before doing the project install.
-
 ## Install
 
 Install node modules
@@ -27,5 +25,5 @@ Install bower packages
 
 ## Usage (CSS/JS development)
 
-* `grunt`: Build. Run **always** before each release.
-* `grunt dev`: Watches files and livereloads browser on save.
+* `grunt`: Default build task. Run **always** before each release.
+* `grunt dev`: Watches files and livereloads browser.
