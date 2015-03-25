@@ -10,7 +10,6 @@ Please read [Mediasignal Web Starter Kit](https://bitbucket.org/mediasignal/medi
 
 * [Node.js](http://nodejs.org/) ([Npm](https://www.npmjs.org/)) 
 * [Compass](http://compass-style.org/) ([Ruby](https://www.ruby-lang.org/en/)) `gem install compass`
-* [Yeoman](http://yeoman.io/) (For using generators) `npm install -g yo`
 * [Grunt](http://gruntjs.com/) `npm install -g grunt-cli`
 * [Bower](http://bower.io/) `npm install -g bower`
 
