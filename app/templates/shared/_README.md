@@ -27,5 +27,5 @@ Install bower packages
 
 ## Usage (CSS/JS development)
 
-* `grunt`: Minifies images, compiles and autoprefixes CSS and builds a custom modenizr package. Run **always** before each release.
+* `grunt`: Build. Run **always** before each release.
 * `grunt dev`: Watches files and livereloads browser on save.
