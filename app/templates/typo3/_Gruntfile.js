@@ -17,7 +17,7 @@ module.exports = function (grunt) {
       tmp: '.tmp',
       private: 'Resources/Private',
       public: 'Resources/Public',
-      extension: 'typo3conf/ext/<%= appRoot %>',
+      ext: 'typo3conf/ext/<%= appRoot %>',
       http: '/'
     },
     meta: {
