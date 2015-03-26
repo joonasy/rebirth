@@ -67,7 +67,7 @@ module.exports = function (grunt) {
         cssDir: '<%%= path.tmp %>/Assets/stylesheets',
 
         imagesDir: 'Assets/images',
-        generatedImagesDir: 'Assets/images',
+        generatedImagesDir: '<%%= path.tmp %>/Assets/images',
         httpImagesPath: '/<%%= path.ext %>/Assets/images',
         httpGeneratedImagesPath: '/<%%= path.ext %>/<%%= path.tmp %>/Assets/images',
 
