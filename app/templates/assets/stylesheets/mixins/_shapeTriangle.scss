@@ -2,7 +2,7 @@
 // CSS triangle shape
 // ========================================
 
-@mixin triangle($direction: 'up', $color: $color-text, $width: 20px, $height: 20px) {
+@mixin shapeTriangle($width: 20px, $height: 20px, $direction: up, $color: $color-text) {
   @if $direction == right {
     border-top: $height solid transparent;
     border-bottom: $height solid transparent;
