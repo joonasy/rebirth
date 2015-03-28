@@ -70,6 +70,7 @@
        * Sub navigation states
        */
       .no-touch & .Navbar-item:hover > .Navbar-sub,
+      .no-touch & .Navbar-item:focus > .Navbar-sub,
       .no-touch & .Navbar-item:hover.is-open > .Navbar-sub {
         display: block;
       }
