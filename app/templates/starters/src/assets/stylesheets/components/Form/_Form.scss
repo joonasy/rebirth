@@ -6,64 +6,128 @@
   position: relative;
 }
 
-  .Form-label {
-    display: block;
-    font-size: $base-fontSize-s;
-    line-height: $base-lineHeight-s;
-    margin: -3px 0 8px 0;
-  }
-
   .Form-addon, .Form-item {
     background-color: #ffffff;
-    border-radius: $borderRadius;
+    border: $Form-borderWidth solid transparent;
     color: $color-text;
-    font-size: $base-fontSize-s;
-    line-height: $base-lineHeight-s;
-    min-height: 44px;
-    padding: 10px 16px;
+    font-size: rem($Form-fontSize);
+    height: rem($Form-height);
+    line-height: rem($Form-height);
   }
 
   .Form-item {
-    @include colorPlaceholder($color-textLight);
+    display: block;
     margin-bottom: rem($base-space);
-    width: 100%;
     min-width: 240px;
     outline: 0;
-    border: 0;
-    transition: color $transitionDuration,
-                border-color $transitionDuration,
-                background-color $transitionDuration;
+    padding: 0 rem($Form-sidePadding);
+    position: relative;
+    width: 100%;
 
-    &:focus {
-      @include colorPlaceholder($color-text);
-      background-color: $color-bgLightest;
-      color: $color-text;
+    .touch & {
+      font-size: 16px;
     }
 
-    .touch & { font-size: 16px; }
+    &:focus {
+      z-index: 1;
+    }
   }
 
   .Form-addon {
+    line-height: rem($Form-height - ($Form-borderWidth * 2));
+    padding: 0 rem($Form-sidePadding / 2);
     text-align: center;
   }
 
-  input[type],
+  .Form-button {
+
+    > .Button {
+      height: rem($Form-height);
+      margin-bottom: 0;
+    }
+  }
+
   textarea {
     &.Form-item {
+      line-height: $base-lineHeight;
+      min-height: rem($base-space * 6);
+      padding-top: rem($base-space / 2);
+      resize: vertical;
+    }
+  }
+
+  .Form-item--select {
+    line-height: rem($Form-height - ($Form-borderWidth * 2));
+
+    select {
+      cursor: pointer;
+      display: block;
+      height: 100%;
+      left: 0;
+      opacity: 0;
+      position: absolute;
+      top: 0;
+      width: 100%;
       -webkit-appearance: none;
       -moz-appearance: none;
     }
   }
 
-  select {
-    &.Form-item {
-      color: $color-textLight;
+
+/* ======
+ * Form item - shape
+ * ====== */
+
+.Form-item {
+
+  &.-shape-round {
+    border-radius: $Form-borderRadius;
+  }
+}
+
+/* ======
+ * Form - variation
+ * ====== */
+
+.Form--primary {
+
+  .Form-item, .Form-addon {
+    background-color: $FormPrimary-bgColor;
+    color: $FormPrimary-color;
+
+    &.-type-border {
+      border-color: $FormPrimary-borderColor;
     }
   }
 
-  textarea {
-    &.Form-item {
-      min-height: 200px;
-      max-width: 100%;
+  .Form-item {
+    @include colorPlaceholder($FormPrimary-placeholderColor);
+    color: $FormPrimary-placeholderColor;
+
+    &:hover {
+      @include colorPlaceholder($FormPrimary-placeholderColorHover);
+      background-color: $FormPrimary-bgColorHover;
+      color: $FormPrimary-placeholderColorHover;
+    }
+
+    &:focus {
+      background-color: $FormPrimary-bgColorFocus;
+      box-shadow: 0 0 1px $Form-borderWidth $FormPrimary-borderColorFocus;
+      color: $FormPrimary-colorFocus;
+    }
+
+    &.-type-border {
+      &:hover {
+        border-color: $FormPrimary-borderColorHover;
+      }
+
+      &:focus {
+        border-color: transparent;
+      }
     }
   }
+
+  .Form-addon {
+    background-color: $FormPrimary-addonBgColor;
+  }
+}

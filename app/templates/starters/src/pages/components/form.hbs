@@ -6,34 +6,156 @@ title: Forms
   <div class="Wrap">
 
       <!--
-        Default forms
+       Default separated form with grid
+       -->
+      <form action="" class="Form Form--primary">
+        <div class="Grid">
+          <div class="Grid-item s-Width--6-12">
+            <input class="Form-item -type-border -shape-round" type="text" placeholder="I'm placeholder text">
+          </div>
+          <div class="Grid-item s-Width--6-12">
+            <div class="Form-collection -shape-round -align-horizontal">
+              <input class="Form-item -type-border" type="password" placeholder="I'm placeholder text">
+              <div class="Form-addon -type-border">Password</div>
+            </div>
+          </div>
+          <div class="Grid-item s-Width--6-12">
+            <div class="Form-item Form-item--select -shape-round -type-border">
+              Choose something here
+              <select class="Form-select" name="" id="">
+                <option value="1">moro</option>
+              </select>
+            </div>
+          </div>
+
+        </div>
+      </form>
+      <!--
+       /Default separated form with grid
        -->
 
-      <!--
-       .FormCollection
-       -->
-      <div class="FormCollection FormCollection--parent mrg--btm--l">
-        <div class="FormCollection-item">
-          <div class="FormCollection">
-            <div class="Form-addon">
-              @
+      <div class="Grid">
+
+        <div class="Grid-item m-Width--6-12">
+          <!--
+           Vertical rounded form collection
+           -->
+          <form action="" class="Form Form--primary">
+            <div class="Form-collection -shape-round -align-vertical">
+              <textarea class="Form-item -shape-round -type-border" placeholder="I'm placeholder text"></textarea>
+              <input class="Form-item -shape-round -type-border" type="text" placeholder="I'm placeholder text too">
+              <div class="Form-button">
+                <button class="Button Button--primary -size-l -size-extend-full">Form button</Button>
+              </div>
             </div>
-            <input class="Form-item" type="text" pick-a-date="arrivalDate" pick-a-date-options="dateOptions" data-value="{{ currentDate }}"  />
-          </div>
+          </form>
+          <!--
+           /Vertical rounded form collection
+           -->
         </div>
-        <div class="FormCollection-item">
-          <div class="FormCollection">
-            <div class="Form-addon">
-              @
+
+        <div class="Grid-item m-Width--6-12">
+          <!--
+           Vertical rounded form collection with addons and button
+           -->
+          <form action="" class="Form Form--primary">
+            <div class="Form-collection -shape-round -align-vertical">
+              <div class="Form-collection-item">
+                <div class="Form-collection">
+                  <div class="Form-addon -type-border">@</div>
+                  <input class="Form-item -shape-round -type-border" type="text" placeholder="I'm placeholder text">
+                </div>
+              </div>
+              <div class="Form-collection-item">
+                <div class="Form-collection">
+                  <input class="Form-item -shape-round -type-border" type="text" placeholder="I'm placeholder text">
+                  <div class="Form-addon -type-border">@</div>
+                </div>
+              </div>
+              <div class="Form-button">
+                <button class="Button Button--primary -size-l -size-extend-full">Form button</Button>
+              </div>
             </div>
-            <input class="Form-item" type="text" pick-a-time="arrivalTime" pick-a-time-options="timeOptions" value="12:00" />
-          </div>
+          </form>
+          <!--
+           /Vertical rounded form collection with addons and button
+           -->
         </div>
+
       </div>
+
       <!--
-       / .FormCollection
+       Horizontal rounded form collection
+       -->
+      <form action="" class="Form Form--primary">
+        <div class="Form-collection -shape-round -align-horizontal">
+          <div class="Form-collection-item">
+            <input class="Form-item -shape-round -type-border" type="text" placeholder="I'm placeholder text">
+          </div>
+          <div class="Form-collection-item">
+            <input class="Form-item -shape-round -type-border" type="text" placeholder="I'm placeholder text too">
+          </div>
+          <div class="Form-collection-item">
+            <div class="Form-button">
+              <button class="Button Button--primary -size-l -size-extend-full">Form button</Button>
+            </div>
+          </div>
+        </div>
+      </form>
+      <!--
+       /Horizontal rounded form collection
        -->
 
+      <!--
+       Horizontal rounded form collection with addons
+       -->
+      <form action="" class="Form Form--primary">
+        <div class="Form-collection -shape-round -align-horizontal">
+          <div class="Form-collection-item">
+            <div class="Form-collection">
+              <div class="Form-addon -type-border">@</div>
+              <input class="Form-item -shape-round -type-border" type="text" placeholder="I'm placeholder text">
+            </div>
+          </div>
+          <div class="Form-collection-item">
+            <div class="Form-collection">
+              <div class="Form-addon -type-border">&#10003;</div>
+              <input class="Form-item -shape-round -type-border" type="text" placeholder="I'm placeholder text">
+            </div>
+          </div>
+        </div>
+      </form>
+      <!--
+       /Horizontal rounded form collection with addons
+       -->
+
+      <!--
+       Horizontal rounded form collection with addons on right and button
+       -->
+      <form action="" class="Form Form--primary">
+        <div class="Form-collection -shape-round -align-horizontal">
+          <div class="Form-collection-item">
+            <div class="Form-collection">
+              <input class="Form-item -shape-round -type-border" type="text" placeholder="I'm placeholder text">
+              <div class="Form-addon">@</div>
+            </div>
+          </div>
+          <div class="Form-collection-item">
+            <div class="Form-collection">
+              <input class="Form-item -shape-round -type-border" type="text" placeholder="I'm placeholder text">
+              <div class="Form-addon -type-border">&#10003;</div>
+            </div>
+          </div>
+          <div class="Form-collection-item">
+            <div class="Form-button">
+              <button class="Button Button--primary -size-l -size-extend-full">Form button</Button>
+            </div>
+          </div>
+        </div>
+      </form>
+      <!--
+       /Horizontal rounded form collection with addons on right and button
+       -->
 
   </div>
 </div>

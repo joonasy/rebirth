@@ -1,0 +1,224 @@
+/* ========================================
+ * Collection of form items
+ * ========================================
+ *
+ * @overrides `.Form-*{}` in _Form.scss
+ */
+
+.Form-collection {
+  border-collapse: separate;
+  display: table;
+  margin-bottom: rem($base-space);
+  position: relative;
+  width: 100%;
+
+  .Form-item, .Form-addon {
+    margin-bottom: 0;
+  }
+
+  .Form-item:not(textarea), .Form-addon {
+    display: table-cell;
+  }
+
+  .Form-item {
+    min-width: 0;
+  }
+
+  &:focus {
+    position: relative;
+    z-index: 1;
+  }
+
+  .Form-collection {
+    margin-bottom: 0;
+  }
+}
+
+
+/* ======
+ * Form collection - align
+ * ====== */
+
+.Form-collection.-align-vertical {
+
+  > .Form-item {
+    &:not(:first-child) {
+      border-top: 0;
+    }
+  }
+
+  .Form-collection-item {
+
+    .Form-item, .Form-addon {
+      &:first-child {
+        border-right-width: 0;
+      }
+    }
+
+    &:not(:first-child) {
+
+      .Form-item, .Form-addon {
+        border-top: 0;
+      }
+    }
+  }
+}
+
+.Form-collection.-align-horizontal {
+
+  .Form-item, .Form-addon {
+    border-right-width: 0;
+  }
+
+  /**
+   * Direct elements
+   */
+  > .Form-item, > .Form-addon {
+    &:last-child {
+      border-right-width: $Form-borderWidth;
+    }
+  }
+
+  /**
+   * Descendant collections
+   */
+  .Form-collection-item {
+    display: table-cell;
+    vertical-align: middle;
+
+    &:last-child {
+
+      .Form-item:last-child, .Form-addon:last-child {
+        border-right-width: $Form-borderWidth;
+      }
+    }
+  }
+}
+
+
+/* ======
+ * Form collection - shape
+ * ====== */
+
+.Form-collection.-shape-round {
+
+  .Form-item, .Form-addon {
+    border-radius: 0;
+  }
+
+  /**
+   * Vertical
+   */
+  &.-align-vertical {
+
+    /**
+     * Direct elements
+     */
+    > .Form-item {
+      &:first-child {
+        border-radius: $Form-borderRadius $Form-borderRadius 0 0;
+      }
+
+      &:last-child {
+        border-radius: 0 0 $Form-borderRadius $Form-borderRadius;
+      }
+    }
+
+    > .Form-button {
+      &:last-child {
+
+        > .Button {
+          border-radius: 0 0 $Form-borderRadius $Form-borderRadius;
+        }
+      }
+    }
+
+    /**
+     * Descendant collections
+     */
+    .Form-collection-item {
+
+      &:first-child {
+
+        .Form-item, .Form-addon {
+          &:first-child {
+            border-radius: $Form-borderRadius 0 0 0;
+          }
+        }
+
+        .Form-item, .Form-addon {
+          &:last-child {
+            border-radius: 0 $Form-borderRadius 0 0;
+          }
+        }
+      }
+
+      &:last-child {
+
+        .Form-item, .Form-addon {
+          &:first-child {
+            border-radius: 0 0 0 $Form-borderRadius;
+          }
+        }
+
+        .Form-item, .Form-addon {
+          &:last-child {
+            border-radius: 0 0 $Form-borderRadius 0;
+          }
+        }
+      }
+    }
+  }
+
+  /**
+   * Horizontal
+   */
+  &.-align-horizontal {
+
+    /**
+     * Direct elements
+     */
+    > .Form-item, > .Form-addon {
+      &:first-child {
+        border-radius: $Form-borderRadius 0 0 $Form-borderRadius;
+      }
+
+      &:last-child {
+        border-radius: 0 $Form-borderRadius $Form-borderRadius 0;
+      }
+    }
+
+    /**
+     * Descendant collections
+     */
+    .Form-collection-item {
+
+      &:first-child {
+
+        .Form-item, .Form-addon {
+          &:first-child {
+            border-radius: $Form-borderRadius 0 0 $Form-borderRadius;
+          }
+        }
+      }
+
+      &:last-child {
+
+        .Form-item, .Form-addon {
+          &:last-child {
+            border-radius: 0 $Form-borderRadius $Form-borderRadius 0;
+          }
+        }
+
+        .Form-button {
+          &:last-child {
+
+            > .Button {
+              border-radius: 0 $Form-borderRadius $Form-borderRadius 0;
+            }
+          }
+        }
+      }
+    }
+  }
+}
