@@ -11,7 +11,7 @@
 @import 'components/Button/Button.import';
 @import 'components/Button/ButtonCollection.import';
 @import 'components/Form/Form.import';
-@import 'components/Form/FormCollection.import';
+@import 'components/Form/Form-collection.import';
 
 // Import all helpers
 @import 'helpers/display';
@@ -32,7 +32,7 @@ $htmlBgColor: darken(#ffffff, 5);
 $Wrap-width: 960px;
 
 html.docs {
-  @include baseline-grid-background(rem($base-space), darken($htmlBgColor, 7));
+  @include baseline-grid-background(rem($base-space), darken($htmlBgColor, 3));
   background-color: $htmlBgColor;
 
   &.is-dark {}
