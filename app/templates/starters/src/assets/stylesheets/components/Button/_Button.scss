@@ -62,10 +62,10 @@
 
 
 /* ======
- * Button - type
+ * Button - shape
  * ====== */
 
-.Button.-type-round {
+.Button.-shape-round {
   border-radius: $Button-borderRadius;
 }
 
@@ -74,6 +74,23 @@
  * Button - size
  * ====== */
 
-.Button.-size-s {}
+.Button {
 
-.Button.-size-l {}
+  &.-size-s {
+    font-size: $base-fontSize-s;
+    line-height: rem(($Button-lineHeight / 1.5) - ($Button-borderWidth * 2));
+    padding: 0 rem($Button-padding / 2);
+    margin-bottom: rem($base-space);
+  }
+
+  &.-size-l {
+    line-height: rem(($Button-lineHeight * 1.35) - ($Button-borderWidth * 2));
+    margin-bottom: rem($base-space);
+    padding: 0 rem($Button-padding * 1.5);
+  }
+
+  &.-size-extend-full {
+    display: block;
+    width: 100%;
+  }
+}
