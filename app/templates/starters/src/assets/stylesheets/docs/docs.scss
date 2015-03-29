@@ -6,12 +6,19 @@
 @import 'app';
 
 // Import all components
-@import 'components/Navbar/Navbar.import';
 @import 'components/Hero/Hero.import';
+@import 'components/Block/Block.import';
 @import 'components/Button/Button.import';
 @import 'components/Button/ButtonCollection.import';
 @import 'components/Form/Form.import';
 @import 'components/Form/Form-collection.import';
+@import 'components/Navbar/Navbar.import';
+
+// Import all layout components
+@import 'layout/Grid--equal';
+@import 'layout/Grid--ruler';
+@import 'layout/Pull';
+@import 'layout/Push';
 
 // Import all helpers
 @import 'helpers/display';

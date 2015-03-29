@@ -12,6 +12,11 @@
   position: relative;
   width: 100%;
 
+  &:focus {
+    position: relative;
+    z-index: 1;
+  }
+
   .Form-item, .Form-addon {
     margin-bottom: 0;
   }
@@ -22,11 +27,6 @@
 
   .Form-item {
     min-width: 0;
-  }
-
-  &:focus {
-    position: relative;
-    z-index: 1;
   }
 
   .Form-collection {
