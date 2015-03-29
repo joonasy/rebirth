@@ -3,7 +3,6 @@
  * ======================================== */
 
 .Block {
-  border: $Block-borderWidth solid transparent;
   display: block;
   position: relative;
   width: 100%;
@@ -14,10 +13,14 @@
     background-repeat: no-repeat;
     background-size: cover; /* Fallback */
     margin-bottom: 0;
+
+    > img {
+      width: 100% !important;
+    }
   }
 
   .Block-inner {
-    padding: rem(($Block-padding * 2) - ($Block-borderWidth)) $Block-padding-percentage;
+    padding: rem(($Block-padding * 2)) $Block-padding-percentage;
     position: relative;
 
     > *:last-child {
@@ -44,11 +47,6 @@
 
   .Block-content {
     color: $BlockLight-color;
-  }
-
-  &.-type-border {
-    background-color: transparent;
-    border-color: $BlockLight-borderColor;
   }
 }
 
