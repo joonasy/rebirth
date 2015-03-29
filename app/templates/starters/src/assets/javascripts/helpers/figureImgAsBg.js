@@ -96,9 +96,12 @@ var App = App || {};
           imgUrl = $img.attr('src');
         }
 
-        $img.hide();
-        $figure.css({
-          'background-image': 'url('+imgUrl+')'
+        $img.css('visibility', 'hidden');
+
+        $(window).on('load', function(){
+          $this.css({
+            'background-image': 'url('+imgUrl+')'
+          });
         });
       });
     }
