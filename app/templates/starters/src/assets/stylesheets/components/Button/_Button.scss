@@ -35,7 +35,14 @@
  * Button - variation
  * ====== */
 
-.Button--primary {
+.Button--primary {}
+
+
+/* ======
+ * Button - color
+ * ====== */
+
+.Button.-color-primary {
   background-color: $ButtonPrimary-bgColor;
   border-color: $ButtonPrimary-borderColor;
   color: $ButtonPrimary-color;
@@ -57,8 +64,6 @@
     }
   }
 }
-
-.Button--secondary {}
 
 
 /* ======
