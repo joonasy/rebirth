@@ -93,7 +93,8 @@ var App = App || {};
             }
           });
         } else {
-          imgUrl = $img.attr('src');
+          imgUrl = $img.attr('data-src') ? $img.attr('data-src') :
+            $img.attr('src');
         }
 
         $img.css('visibility', 'hidden');
