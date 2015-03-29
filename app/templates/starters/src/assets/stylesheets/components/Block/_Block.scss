@@ -1,0 +1,79 @@
+/* ========================================
+ * Block
+ * ======================================== */
+
+.Block {
+  border: $Block-borderWidth solid transparent;
+  display: block;
+  position: relative;
+  width: 100%;
+}
+
+  .Block-figure {
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover; /* Fallback */
+    margin-bottom: 0;
+  }
+
+  .Block-inner {
+    padding: rem(($Block-padding * 2) - ($Block-borderWidth)) $Block-padding-percentage;
+    position: relative;
+
+    > *:last-child {
+      margin-bottom: 0;
+    }
+
+    @include breakpoint('mediumUp') {
+      padding-left: rem($Block-padding * 1.5);
+      padding-right: rem($Block-padding * 1.5);
+    }
+  }
+
+
+/* ======
+ * Block - color
+ * ====== */
+
+.Block.-color-light {
+  background-color: $BlockLight-bgColor;
+
+  .Block-heading {
+    color: $BlockLight-headingColor;
+  }
+
+  .Block-content {
+    color: $BlockLight-color;
+  }
+
+  &.-type-border {
+    background-color: transparent;
+    border-color: $BlockLight-borderColor;
+  }
+}
+
+
+/* ======
+ * Block - background variation
+ * ====== */
+
+.Block--bg {
+  border: 0;
+  min-height: $base-space * 8;
+
+  .Block-figure {
+    @extend %positionAbsoluteFill;
+    z-index: 0;
+
+    img {
+      display: block;
+      height: 100%;
+      object-fit: cover;
+      width: 100%;
+    }
+  }
+
+  .Block-inner {
+    z-index: 1;
+  }
+}

@@ -1,15 +1,21 @@
     <!-- build:js(../) {{assets}}/javascripts/app.min.js -->
-      {{!-- Defaults --}}
+      {{!-- Bower --}}
       <script src="/bower_components/jquery/dist/jquery.js"></script>
       <script src="/bower_components/fastclick/lib/fastclick.js"></script>
       <script src="/bower_components/lazysizes/lazysizes.js"></script>
       <script src="/bower_components/lazysizes/plugins/respimg/ls.respimg.js"></script>
-      <script src="/assets/javascripts/components/Toggle.js"></script>
-      <script src="/assets/javascripts/app.js"></script>
+
+      {{!-- Helpers and plugins --}}
+      <script src="/assets/javascripts/plugins/toggle.js"></script>
+      <script src="/assets/javascripts/helpers/figureImgAsBg.js"></script>
 
       {{!-- Components --}}
       <script src="/assets/javascripts/components/navbar/Navbar.js"></script>
       <script src="/assets/javascripts/components/hero/Hero.js"></script>
+      <script src="/assets/javascripts/components/block/Block.js"></script>
+
+      {{!-- Init --}}
+      <script src="/assets/javascripts/app.js"></script>
 
       {{!-- Docs --}}
       <script src="/assets/javascripts/docs/components/Docs.Navbar.js"></script>
@@ -33,6 +39,7 @@
     <script>
       App.Navbar.init();
       App.Hero.init();
+      App.Block.init();
     </script>
   </body>
 </html>
