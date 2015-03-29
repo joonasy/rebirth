@@ -11,10 +11,10 @@ App.Hero = function($) {
       $figure = $('.Hero-figure', $hero);
 
   self.init = function() {
-    _figureImgAsBg();
+    figureImgAsBg();
   }
 
-  _figureImgAsBg = function() {
+  var figureImgAsBg = function() {
     App.figureImgAsBg($figure);
   }
 

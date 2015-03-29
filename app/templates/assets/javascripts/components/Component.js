@@ -12,7 +12,7 @@ App.Component = function($) {
 
   self.publicFunction = function() {}
 
-  _privateFunction = function() {}
+  var privateFunction = function() {}
 
   return {
     init: self.init
