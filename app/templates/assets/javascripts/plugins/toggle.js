@@ -5,9 +5,9 @@
 var App = App || {};
 
 (function($) {
-  App.ToggleObjects = [];
+  App.toggleObjects = [];
 
-  App.Toggle = function(options) {
+  App.toggle = function(options) {
 
     var config, self = {};
 
@@ -25,7 +25,7 @@ var App = App || {};
     }, options);
 
     self.init = function() {
-      App.ToggleObjects.push(config);
+      App.toggleObjects.push(config);
       config.trigger.on('click', clickTrigger);
 
       if(config.elementStopPropagation) {
@@ -97,7 +97,7 @@ var App = App || {};
     };
 
     self.removeToggles = function() {
-      $.each(App.ToggleObjects, function(index, value) {
+      $.each(App.toggleObjects, function(index, value) {
         value.element.each(function() {
           if (!$(this).hasClass(value.elementClass) || !value.unTogglable) {
             return
@@ -119,6 +119,6 @@ var App = App || {};
   };
 
   $(window).on('click', function(e){
-    App.Toggle().removeToggles();
+    App.toggle().removeToggles();
   });
 }(jQuery));

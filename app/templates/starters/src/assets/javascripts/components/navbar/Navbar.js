@@ -15,12 +15,12 @@ App.Navbar = function($) {
         $navLink = $('.Navbar-link', $navBar),
         $navSubTrigger = $('.Navbar-subTrigger', $navBar);
 
-    App.Toggle({
+    App.toggle({
       trigger: $navBarTrigger,
       element: $navBar
     });
 
-    App.Toggle({
+    App.toggle({
       trigger: $navSubTrigger,
       element: $navItem,
       toggleParent: true,
@@ -28,7 +28,7 @@ App.Navbar = function($) {
       unToggleOtherToggles: false
     });
 
-    App.Toggle({
+    App.toggle({
       trigger: $navLink,
       element: $navItem,
       toggleParent: true,

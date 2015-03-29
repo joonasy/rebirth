@@ -173,8 +173,7 @@ module.exports = function (grunt) {
           ],
           '<%%= path.tmp %>/Assets/javascripts/app.js': [
             'bower_components/fastclick/lib/fastclick.js',
-            'Assets/javascripts/vendors/*.js',
-            'Assets/javascripts/components/*.js',
+            'Assets/javascripts/{,*/}*.js',
             '!Assets/javascripts/components/Component.js',
             'Assets/javascripts/app.js'
           ]

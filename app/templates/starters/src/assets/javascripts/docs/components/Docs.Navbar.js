@@ -18,12 +18,12 @@ Docs.Navbar = function($) {
         });
 
 
-    App.Toggle({
+    App.toggle({
       trigger: $navBarTrigger,
       element: $navBar
     });
 
-    App.Toggle({
+    App.toggle({
       trigger: $navSubTrigger.add($navLink),
       element: $navItem,
       toggleParent: true,
