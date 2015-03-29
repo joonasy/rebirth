@@ -4,33 +4,34 @@
 
 @mixin Grid-equal($gutter: 1) {
   display: table;
+  display: flex;
   height: 100%;
 
   > .Grid-item {
     display: table-cell;
+    display: flex;
     float: none;
-    height: 100%;
     vertical-align: top;
   }
 }
 
 .s-Grid--equal {
 
-  @include breakpoint('small-up') {
+  @include breakpoint('smallUp') {
     @include Grid-equal();
   }
 }
 
 .m-Grid--equal {
 
-  @include breakpoint('medium-up') {
+  @include breakpoint('mediumUp') {
     @include Grid-equal();
   }
 }
 
 .l-Grid--equal {
 
-  @include breakpoint('large-up') {
+  @include breakpoint('largeUp') {
     @include Grid-equal();
   }
 }

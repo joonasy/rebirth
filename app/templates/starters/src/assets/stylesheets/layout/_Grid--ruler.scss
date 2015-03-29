@@ -2,9 +2,9 @@
  * Equal height columns with rulers
  * ======================================== */
 
-@mixin Grid-ruler($gutter: 2) {
+@mixin Grid-ruler($gutter: 1) {
   display: table;
-  height: 100%;
+  display: flex;
   margin-left: -($base-space * $gutter);
   table-layout: fixed;
   width: 100%;
@@ -14,8 +14,8 @@
     border-color: $color-borderPrimary;
     border-left: 1px solid;
     display: table-cell;
+    display: flex;
     float: none;
-    height: 100%;
     padding: 0 ($base-space * $gutter);
     vertical-align: top;
 
