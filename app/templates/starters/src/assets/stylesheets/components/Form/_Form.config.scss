@@ -11,8 +11,8 @@ $Form-sidePadding: $base-space / 1.5;
 
 $FormPrimary-placeholderColor: $color-textLight;
 $FormPrimary-placeholderColorHover: darken($color-textLight, 10);
-$FormPrimary-color: $color-text;
-$FormPrimary-colorFocus: $FormPrimary-color;
+$FormPrimary-color: $color-textLight;
+$FormPrimary-colorFocus: $color-text;
 $FormPrimary-bgColor: #ffffff;
 $FormPrimary-bgColorHover: #ffffff;
 $FormPrimary-bgColorFocus: #ffffff;
