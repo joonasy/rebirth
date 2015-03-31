@@ -25,7 +25,6 @@
         cursor: pointer;
         display: block;
         float: left;
-        min-height: $base-space * 2;
         padding: $Navbar-padding ($Navbar-padding * 2);
         width: 87%;
         width: calc(100% - #{$Navbar-subTriggerWidth});

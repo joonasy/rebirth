@@ -1,15 +1,13 @@
 /* ========================================
  * Collection of form items
- * ========================================
- *
- * @overrides `.Form-*{}` in _Form.scss
- */
+ * ======================================== */
 
 .Form-collection {
   border-collapse: separate;
   display: table;
   margin-bottom: rem($base-space);
   position: relative;
+  table-layout: fixed;
   width: 100%;
 
   &:focus {
@@ -23,10 +21,6 @@
 
   .Form-item:not(textarea), .Form-addon {
     display: table-cell;
-  }
-
-  .Form-item {
-    min-width: 0;
   }
 
   .Form-collection {
@@ -43,7 +37,7 @@
 
   > .Form-item {
     &:not(:first-child) {
-      border-top: 0;
+      border-top-width: 0;
     }
   }
 
@@ -58,7 +52,7 @@
     &:not(:first-child) {
 
       .Form-item, .Form-addon {
-        border-top: 0;
+        border-top-width: 0;
       }
     }
   }
