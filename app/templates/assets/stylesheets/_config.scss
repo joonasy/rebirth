@@ -86,7 +86,7 @@ $color-grayLighter: #ccc;
 $color-grayLightest: #E6E6E6;
 
 // Brand colors
-$color-brandPrimary: #00AAE7;
+$color-primary: #00AAE7;
 
 // Base colors
 $color-dark: #000000;
@@ -104,7 +104,7 @@ $color-textLight: lighten(#444444, 40);
 $color-heading: inherit;
 
 // Link colors
-$color-link: $color-brandPrimary;
+$color-link: $color-primary;
 $color-linkHover: darken($color-link, 15%);
 
 // Border colors

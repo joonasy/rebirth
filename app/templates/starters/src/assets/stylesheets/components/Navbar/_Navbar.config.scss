@@ -7,12 +7,12 @@ $Navbar-bgColor: darken(#ffffff, 2);
 
 // Default `.Navbar.-color-primary` colors
 $Navbar-triggerColor: #ffffff;
-$Navbar-triggerBgColor: $color-brandPrimary;
+$Navbar-triggerBgColor: $color-primary;
 
-$Navbar-triggerTitleBgColor: $color-brandPrimary;
+$Navbar-triggerTitleBgColor: $color-primary;
 $Navbar-triggerTitleColor: #ffffff;
 
-$Navbar-triggerSubColor: $color-brandPrimary;
+$Navbar-triggerSubColor: $color-primary;
 $Navbar-triggerSubBgColor: darken(#ffffff, 5);
 $Navbar-triggerSubBorderColor: rgba(#000000, 0);
 
