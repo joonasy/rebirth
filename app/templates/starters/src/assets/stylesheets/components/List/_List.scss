@@ -4,109 +4,98 @@
 
 .List {
   @extend %clearfix;
-  @extend %reset-list;
-  margin-bottom: base-space();
+  @extend %resetList;
+  margin-bottom: rem($base-space);
+}
 
-  &-item {
-    margin-bottom: base-space();
+.List-item {
+  margin-bottom: rem($base-space);
 
-    &:last-child { margin-bottom: 0;}
+  &:last-child {
+    margin-bottom: 0;
+  }
+}
+
+  .List-text {
+    @include fontSize($base-fontSize-s, $base-lineHeight-s);
+    text-align: left;
+    display: block;
   }
 
-    &-text {
-      @extend %Text--s;
-      color: $color-text;
-      display: block;
-    }
-
-    &-meta {
-      color: $color-brand-secondary;
-      display: inline-block;
-      font-family: $base-font-family-strong;
-    }
-
-  &--icon {
-    .List-item {
-      padding-left: base-space($sum: -4px);
-      position: relative;
-    }
-
-      .List-text {
-        > .IconCss {
-          position: absolute;
-          top: 5px;
-          left: 0;
-          color: $color-brand-secondary;
-        }
-
-        [class*='IconCss--arrow'] {
-          &:before { background-color: $color-brand-secondary; }
-          &:after { color: $color-brand-secondary; }
-        }
-      }
+  .List-meta {
+    @include fontSize($base-fontSize-s, $base-lineHeight-s);
   }
 
-  &--narrow {
-    .List-item {
-      margin-bottom: base-space(0.1);
-    }
+
+/* ======
+ * List - color
+ * ====== */
+
+.List.-color-primary {
+  .List-text {
+    color: $color-text;
   }
 
-  &--separate--primary {
-    .List-item {
-      display: inline-block;
-      margin-bottom: 0;
+  .List-meta {
+    color: $color-textLight;
+  }
+}
 
-      &:after {
-        border-top: 1px solid $color-brand-secondary;
-        bottom: rem(3px);
-        content: '';
-        display: inline-block;
-        margin: 0 rem(3px);
-        position: relative;
-        width: rem(10px);
-      }
-
-      &:last-child {
-        &:after { display: none; }
-      }
-    }
-
-    .List-text {
-      display: inline;
-    }
+.List.-color-light {
+  .List-text {
+    color: $color-light;
   }
 
-  &--primary {
+  .List-meta {
+    color: rgba($color-light, 0.85);
+  }
+}
 
-    .List-item, .List-meta {
-      float: left;
-    }
+.List.-color-lighter {
+  .List-text {
+    color: rgba($color-light, 0.8);
+  }
+
+  a.List-text:hover {
+    color: $color-light;
+  }
+
+  .List-meta {
+   color: rgba($color-light, 0.6);
+  }
+}
+
+
+/* ======
+ * List - space
+ * ====== */
+
+.List {
+  &.-space-xs {
 
     .List-item {
-      border-right: 1px solid $color-border-primary;
-      margin-bottom: 0;
-      margin-right: base-space(0.5);
-      padding-right: base-space(0.5);
-
-      &:last-child {
-        border: none;
-        margin-right: 0;
-        padding-right: 0;
-      }
+      margin-bottom: rem($base-space / 4);
     }
-
-      .List-meta {
-        @extend %Text--s--static;
-        text-align: right;
-        margin-right: base-space(0.25);
-      }
-
-      .List-text {
-        @extend %Text--s--static;
-        max-width: 200px;
-        overflow: hidden;
-        max-height: 40px;
-      }
   }
+}
+
+
+
+/* ======
+ * Variations
+ * ====== */
+
+.List--icon {
+
+  .List-item {
+    padding-left: rem($base-space / 1.5);
+    position: relative;
+    margin-bottom: rem($base-space / 4);
+  }
+
+    .List-item-icon {
+      position: absolute;
+      top: 5px;
+      left: 0;
+    }
 }
