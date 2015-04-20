@@ -1,8 +1,8 @@
 /* ========================================
- * CSS icon
+ * CSS chevron arrow icon
  * ======================================== */
 
-[class*='IconCss'][class*='-shape-arrow'] {
+[class*='IconCss'][class*='-shape-chevron'] {
   @include shapeArrow($direction: false);
 }
 
@@ -13,13 +13,13 @@
 
 .IconCss {
 
-  &.-shape-arrowUp {
+  &.-shape-chevronUp {
     &.-size-s {
       transform: scale($IconCss-s);
     }
   }
 
-  &.-shape-arrowRight {
+  &.-shape-chevronRight {
     transform: rotate(-270deg);
 
     &.-size-s {
@@ -27,7 +27,7 @@
     }
   }
 
-  &.-shape-arrowDown {
+  &.-shape-chevronDown {
     transform: rotate(180deg);
 
     &.-size-s {
@@ -35,7 +35,7 @@
     }
   }
 
-  &.-shape-arrowLeft {
+  &.-shape-chevronLeft {
     transform: rotate(-90deg);
 
     &.-size-s {
