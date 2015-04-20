@@ -15,15 +15,5 @@ bower_components/
 # Build files
 # ======
 
-<% if (htmlProject) { %>dist/<% } %>
 <% if (typoProject) { %>Resources/Public/Assets<% } %>
-
-<% if (designAssets) { %>
-# ======
-# Design assets
-# ======
-
-_design/material
-_design/layout<% } %>
-
-
+<% if (htmlProject) { %>dist/<% } %>

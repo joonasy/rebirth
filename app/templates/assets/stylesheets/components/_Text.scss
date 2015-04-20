@@ -18,6 +18,38 @@
 
 
 /* ======
+ * Text - case
+ * ====== */
+
+.Text {
+
+  &.-case-upper {
+    text-transform: uppercase;
+  }
+}
+
+
+/* ======
+ * Text - align
+ * ====== */
+
+.Text {
+
+  &.-align-left {
+    text-align: left;
+  }
+
+  &.-align-right {
+    text-align: right;
+  }
+
+  &.-align-center {
+    text-align: center;
+  }
+}
+
+
+/* ======
  * Text - size
  * ====== */
 

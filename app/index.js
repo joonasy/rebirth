@@ -131,10 +131,6 @@ var MscGenerator = yeoman.generators.Base.extend({
           name: 'Stylesheets and JavaScripts',
           value: 'cssJs',
           checked: true
-        },{
-          name: 'Design material (.psd)',
-          value: 'design',
-          checked: false
         }]
       }
     ], function(answers) {
@@ -147,7 +143,6 @@ var MscGenerator = yeoman.generators.Base.extend({
       this.appSourcePath = answers.srcPath;
 
       this.cssAndJsAssets = answers.assets.indexOf('cssJs') !== -1;
-      this.designAssets = answers.assets.indexOf('design') !== -1;
 
       done();
     }.bind(this));
@@ -216,23 +211,11 @@ var MscGenerator = yeoman.generators.Base.extend({
    * Setup assets
    */
   assets: function() {
-
-    if (this.designAssets) {
-      this.fs.copy(
-        this.templatePath('shared/_design'),
-        this.destinationPath('_design')
-      )
-      this.mkdir('_design/materials')
-    }
-
     if(this.cssAndJsAssets) {
-      this.fs.copy(
-        this.templatePath('assets'),
-        this.config.get('assetsPath')
-      )
+      this.fs.copy(this.templatePath('assets'), this.config.get('assetsPath'));
       this.mkdir(this.config.get('assetsPath')+'/stylesheets/helpers');
-      this.mkdir(this.config.get('assetsPath')+'/images')
-      this.mkdir(this.config.get('assetsPath')+'/fonts')
+      this.mkdir(this.config.get('assetsPath')+'/images');
+      this.mkdir(this.config.get('assetsPath')+'/fonts');
     }
   },
 
@@ -247,9 +230,15 @@ var MscGenerator = yeoman.generators.Base.extend({
    * Copy other files
    */
   other: function() {
+
     this.fs.copy(
       this.templatePath('shared/editorconfig'),
       this.destinationPath('.editorconfig')
+    );
+
+    this.template(
+      this.templatePath('shared/_gitignore'),
+      this.destinationPath('.gitignore')
     );
 
     if(this.typoProject) {

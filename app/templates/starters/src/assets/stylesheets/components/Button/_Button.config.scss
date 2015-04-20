@@ -11,13 +11,13 @@ $Button-fontWeight: $base-fontWeightStrong;
 
 $ButtonPrimary-color: #ffffff;
 $ButtonPrimary-colorHover: $ButtonPrimary-color;
-$ButtonPrimary-bgColor: $color-brandPrimary;
-$ButtonPrimary-bgColorHover: darken($color-brandPrimary, 5);
-$ButtonPrimary-borderColor: $color-brandPrimary;
+$ButtonPrimary-bgColor: $color-primary;
+$ButtonPrimary-bgColorHover: darken($color-primary, 5);
+$ButtonPrimary-borderColor: $color-primary;
 $ButtonPrimary-borderColorHover: $ButtonPrimary-bgColorHover;
 
 $ButtonPrimary-typeBorderColor: $color-text;
-$ButtonPrimary-typeBorderColorHover: $color-brandPrimary;
+$ButtonPrimary-typeBorderColorHover: $color-primary;
 $ButtonPrimary-typeBorderBgColorHover: transparent;
 
 $ButtonCollection-VerticalBorderRadius: $borderRadius;

@@ -2,16 +2,11 @@
  * Equal height columns
  * ======================================== */
 
-@mixin Grid-equal($gutter: 1) {
-  display: table;
+@mixin Grid-equal() {
   display: flex;
-  height: 100%;
 
   > .Grid-item {
-    display: table-cell;
     display: flex;
-    float: none;
-    vertical-align: top;
   }
 }
 

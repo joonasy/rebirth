@@ -7,8 +7,8 @@ var App = App || {};
 App.Block = function($) {
 
   var self = {},
-      $block = $('.js-Block'),
-      $figure = $('.Block-figure', $block);
+      $blockBg = $('.Block--bg'),
+      $figure = $('.Block-figure', $blockBg);
 
   self.init = function() {
     figureImgAsBg();
