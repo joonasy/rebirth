@@ -47,5 +47,5 @@
   .m-paddingLeft--s { padding-left: rem($base-space / 2) !important; }
   .m-paddingLeft--m { padding-left: rem($base-space * 2) !important; }
   .m-paddingLeft--l { padding-left: rem($base-space * 4) !important; }
-  .m-no-paddingLeft { padding-bottom: 0 !important; }
+  .m-no-paddingLeft { padding-left: 0 !important; }
 }
