@@ -2,7 +2,6 @@
 
 Please read [Naming conventions](naming-conventions.md), [Components](components.md) and [Helpers](helpers.md) first.
 
-<<toc>>
 
 ## Syntax and formatting
 
@@ -253,7 +252,7 @@ Here is listed our default partial structure we use across our projects:
 
 ### Primary Sass file (app.scss)
 
-[View app.scss](/src/master/app/templates/assets/stylesheets/app.scss)
+[View app.scss](/app/templates/assets/stylesheets/app.scss)
 
 Structure our partials in the following order to prevent errors. Remember to alphabetize partials.
 
