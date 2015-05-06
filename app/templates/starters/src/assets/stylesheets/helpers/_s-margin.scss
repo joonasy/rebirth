@@ -47,5 +47,5 @@
   .s-marginLeft--s { margin-left: rem($base-space / 2) !important; }
   .s-marginLeft--m { margin-left: rem($base-space * 2) !important; }
   .s-marginLeft--l { margin-left: rem($base-space * 4) !important; }
-  .s-no-marginLeft { margin-bottom: 0 !important; }
+  .s-no-marginLeft { margin-left: 0 !important; }
 }

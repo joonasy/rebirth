@@ -43,5 +43,5 @@
   .s-paddingLeft--s { padding-left: rem($base-space / 2) !important; }
   .s-paddingLeft--m { padding-left: rem($base-space * 2) !important; }
   .s-paddingLeft--l { padding-left: rem($base-space * 4) !important; }
-  .s-no-paddingLeft { padding-bottom: 0 !important; }
+  .s-no-paddingLeft { padding-left: 0 !important; }
 }

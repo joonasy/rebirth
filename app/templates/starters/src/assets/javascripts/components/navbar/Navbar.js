@@ -12,8 +12,10 @@ App.Navbar = function($) {
     var $navBar = $('.js-Navbar'),
         $navBarTrigger = $('.js-Navbar-trigger', $navBar),
         $navItem = $('.Navbar-item', $navBar),
-        $navLink = $('.Navbar-link', $navBar),
-        $navSubTrigger = $('.Navbar-subTrigger', $navBar);
+        $navSubTrigger = $('.Navbar-subTrigger', $navBar),
+        $navLink = $('.Navbar-link', $navBar).filter(function() {
+          return $(this).siblings($navSubTrigger).length;
+        });
 
     App.toggle({
       trigger: $navBarTrigger,
@@ -33,7 +35,7 @@ App.Navbar = function($) {
       element: $navItem,
       toggleParent: true,
       unToggleParentSiblings: true,
-      disableFirstClickOnTouch: $navSubTrigger
+      disableFirstClickOnTouch: true
     });
   }
 

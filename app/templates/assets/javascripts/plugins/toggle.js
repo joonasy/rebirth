@@ -53,17 +53,15 @@ var App = App || {};
       }
 
       var firstClick = $this.hasClass('is-firstTouch');
-      var whyToDisable = $this.siblings(config.disableFirstClickOnTouch).length;
 
-      if (config.disableFirstClickOnTouch && whyToDisable
-        && !firstClick && Modernizr.touch) {
+      if (config.disableFirstClickOnTouch && !firstClick && Modernizr.touch) {
 
         $this.addClass('is-firstTouch')
         e.preventDefault();
 
         setTimeout(function(){
           $this.removeClass('is-firstTouch')
-        }, 950);
+        }, 1000);
       }
 
       if (config.toggleParent) {

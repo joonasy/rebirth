@@ -1,6 +1,9 @@
 /* ========================================
  * Equal height columns
- * ======================================== */
+ * ========================================
+ *
+ * Note: Only one single descendant element under `.Grid-item`
+ */
 
 @mixin Grid-equal() {
   display: flex;
