@@ -4,7 +4,8 @@
 
 This startekit contains methods and ideas from various sources such as [BEM](https://bem.info/), [HTML5BP](http://html5boilerplate.com/), [Bootstrap](http://getbootstrap.com), [Foundation](http://foundation.zurb.com/), [INUITCSS](https://github.com/inuitcss), [SMACSS](https://smacss.com/), [OOCSS](http://oocss.org/), [SUIT CSS](https://github.com/suitcss/suit). By default this template supports IE9+, Mobile first -ideology and progressive enhancement.
 
-This starter kit is **not a framework** but it contains some predefined components that are meant to be modified based on your project needs.
+This starter kit is **not a framework** but it contains predefined components and helpers that are meant to be modified based on your project needs.
+
 
 ## Features
 
@@ -12,23 +13,27 @@ This starter kit is **not a framework** but it contains some predefined componen
 * Built-in preview server with LiveReload
 * Automatically compile Sass
 * Automatically wire up your Bower components
-* Image Optimization (via OptiPNG, pngquant, jpegtran and gifsicle)
+* Image Optimization
 * Autobuild modernizr based on project needs
 * Combine media queries
+
 
 ## Getting started
 
 Please read and understand all of the following before doing anything. All of these documents will be converted to html docs later on.
 
+
 ### Styleguides
 
-* [CSS styleguide (work in progress)](https://bitbucket.org/mediasignal/mediasignal-web-starter-kit/src/master/docs/css/)
+* [CSS styleguide](https://bitbucket.org/mediasignal/mediasignal-web-starter-kit/src/master/docs/css/)
 * [JS styleguide (nothing yet)]()
 
-### Project workflow
 
-* [Typo3 (work in progress)](https://bitbucket.org/mediasignal/mediasignal-web-starter-kit/src/master/docs/project-types/typo3)
-* [Html (work in progress)](https://bitbucket.org/mediasignal/mediasignal-web-starter-kit/src/master/docs/project-types/html)
+### Project structures and workflows
+
+* [Typo3](docs/project)
+* [Html](docs/project)
+
 
 ## Requirements
 
@@ -39,6 +44,7 @@ Install all the requirements before installing the generator.
 * [Yeoman](http://yeoman.io/) ```npm install -g yo```
 * [Grunt](http://gruntjs.com/) ```npm install -g grunt-cli```
 * [Bower](http://bower.io/) ```npm install -g bower```
+
 
 ## Installing
 
@@ -54,9 +60,11 @@ or alternatively make a new directory, cd into it and run the generator:
 
     mkdir my-new-project && cd $_ && yo msc
 
+
 ## Usage
 
 Run ```grunt``` for building and ```grunt dev``` for developing.
+
 
 ## Contribute
 
@@ -64,20 +72,21 @@ Please discuss about new ideas and things that you think should be modified. Cur
 
 [Learn more about contributing](https://bitbucket.org/mediasignal/mediasignal-web-starter-kit/src/master/docs/contribute.md)
 
+
 ## Todo (in random order)
 
-* SASS structure and rest of the CSS styleguide
 * All necessary CSS components
 * Sub generators for starters
 * CSS modular scale
 * Some sort of integration/forking with [generator-typo3](https://github.com/Milanowicz/generator-typo3)
-* Livereload to browserify
-* Use Libsass
-* Dedloyment settings
+* Livereload to browsersync
+* Use Libsass and get rid of Compass
+* Deployment settings (Phploy (?))
 * JavaScript styleguide
-* Tests for CSS components
-* Testing for everything
+* Testing for JavaScript
 * Gitignores and readmes to generator
+* Grunt -> Gulp
+* Consider adding babel.js and removing jQuery
 
 
 ## License
