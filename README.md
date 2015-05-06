@@ -26,7 +26,7 @@ Please read and understand all of the following before doing anything. All of th
 ### Styleguides
 
 * [CSS styleguide](https://bitbucket.org/mediasignal/mediasignal-web-starter-kit/src/master/docs/css/)
-* [JS styleguide (nothing yet)]()
+* [JS styleguide (work in progress)](docs/js)
 
 
 ### Project structures and workflows

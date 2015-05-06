@@ -1,5 +1,14 @@
 # Changelog
 
+## 0.1.0 (2015-5-7)
+* Rest of the CSS styleguide done
+* Part of JS styleguide 
+* Project structure instructions
+* Wiredepp added and bunch of gruntfile configs fixed
+* Components modified based on the new styleguide
+* Form, Block and component starters
+* Hero uses object-fit with lazyloading (+ fallback).
+
 ## 0.0.7 (2015-3-13)
 * CSS styleguide done ```docs/css```
 * Buttons, Navbar, Hero components are ready ```app/templates/starters/src/assets/stylesheets/components```
