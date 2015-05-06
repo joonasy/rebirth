@@ -23,21 +23,20 @@ Low-level structural and positional traits. Helpers can be applied directly to a
 Helpers must use a camelCase name. Helpers may also have variations and responsive variants like components do. What follows is an example of how various helpers can be used to create a simple structure within or without a component.
 
 ```html
-<!--
-  1. Sets up bigger margin top and cleafixes the component
-  2. Aligns components item to left and adds default medium padding
-  3. Centers image in large Media Query breakpoint
-  4. Sets up large text in medium Media Query breakpoint
---> 
-<div class="Component marginTop--m cf"> <!-- [1.] -->
-  <div class="Component-item floatLeft padding--m"> <!-- [2.] -->
-    <img src="…" alt="…" class="m-center--block"> <!-- [3.] -->
-    <p class="m-text--l"> <!-- [4.] -->
+<div class="Component marginTop--m cf">              # [1]
+  <div class="Component-item floatLeft padding--m">  # [2]
+    <img src="…" alt="…" class="m-center--block">    # [3]
+    <p class="m-text--l">                            # [4]
       …
     </p>
   </div>  
 </div>
 ```
+
+* **1.** Sets up bigger margin top and cleafixes the component
+* **2.** Aligns components item to left and adds default medium padding
+* **3.** Centers image in large Media Query breakpoint
+* **4.** Sets up large text in medium Media Query breakpoint
 
 
 ## Components
@@ -77,7 +76,7 @@ The component's name must be written in [PascalCase](http://c2.com/cgi/wiki?Pasc
 
 ### ComponentName--variationName
 
-A component variation (or component modifier) is a class that modifies the presentation of the base component in some form (e.g., for a certain configuration of the component). Component variations also modify their descendants by nesting, however if descendants need altering variations then modify the [descendants](#ComponentName-descendantName) directly. Variation names must be written in camelCase and be separated from the component name by two hyphens. The class should be included in the HTML in addition to the base component class. 
+A component variation (or component modifier) is a class that modifies the presentation of the base component in some form (e.g., for a certain configuration of the component). Component variations also modify their descendants by nesting, however if descendants need altering variations then modify the descendants directly. Variation names must be written in camelCase and be separated from the component name by two hyphens. The class should be included in the HTML in addition to the base component class. 
 
 ```css
 /* Core button component */
@@ -100,7 +99,7 @@ Chainable modifiers are denoted by a leading hyphen `-`, a voluntary prefix and 
 
 The golden rule is that **chainable modifiers should never modify the same CSS property twice**. This is to ensure that styles don’t get clobbered and that the order in which they are applied is irrelevant. 
 
-Prefixes are not required however consider adding them if the modifier does something complex. Some obvious modifiers do not use prefixes, these are listed in `Reserved namespaces`.
+Prefixes are not required however consider adding them if the modifier does something complex. Some obvious modifiers do not use prefixes, these are listed in _Reserved namespaces_.
 
 ```css
 /* Core button */
@@ -150,6 +149,7 @@ Chainable modifiers can also be added to component collections.
 }
 ```
 
+
 ## ComponentName.is-stateOfComponent
 
 Use `is-stateName` to reflect changes to a component's state. The state name
@@ -184,7 +184,7 @@ component. It's responsible for applying presentation directly to the
 descendant on behalf of a particular component. descendant names must be
 written in camelCase. 
 
-Parent [Component variations](#ComponentName--variationName) also modify their descendants by nesting, however in some cases (rarely) descendants may need direct variations (`1.`). Be careful in these situations not to override direct descendant variations with the parent variation (`2.`).
+Parent component variations also modify their descendants by nesting, however in some cases (rarely) descendants may need direct variations (`1`). Be careful in these situations not to override direct descendant variations with the parent variation (`2`).
 
 ```css
 /**
@@ -200,7 +200,7 @@ Parent [Component variations](#ComponentName--variationName) also modify their d
 
     .Block-text {}
 
-      .Block-text--meta {} // [1.] Example of direct descendant variation
+      .Block-text--meta {} // [1] Example of direct descendant variation
 
 .Block-footer {}
 
@@ -216,7 +216,7 @@ Parent [Component variations](#ComponentName--variationName) also modify their d
 
   .Block-text {}
 
-    .Block-text--meta {} // [2.] Be careful not to override direct variation
+    .Block-text--meta {} // [2] Be careful not to override direct variation
 
   .Block-footer {}
 }
