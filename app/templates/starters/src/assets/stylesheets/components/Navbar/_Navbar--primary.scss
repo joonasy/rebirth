@@ -1,0 +1,111 @@
+/* ========================================
+ * Primary navbar
+ * ========================================
+ *
+ * @extends `.Navbar {}` in _Navbar.scss
+ */
+
+.Navbar--primary {
+  background-color: #ffffff;
+
+  .Navbar-link {
+    background-color: #ffffff;
+    border-right-color: darken(#ffffff, 8);
+    border-top-color: darken(#ffffff, 8);
+    color: $color-text;
+    transition: color $transitionDuration;
+
+    &:hover { color: $color-link; }
+  }
+
+  .Navbar-subTrigger {
+    background-color: #ffffff;
+    border-top-color: darken(#ffffff, 8);
+    color: $color-text;
+
+    &:hover {
+
+      .Navbar-subTrigger-icon {
+        &:before { background: $color-link; }
+        &:after { color: $color-link; }
+      }
+    }
+  }
+
+    .Navbar-subTrigger-icon {
+      &:before {
+        background: $color-text;
+        transition: background-color $transitionDuration;
+      }
+
+      &:after {
+        color: $color-text;
+        transition: color $transitionDuration;
+      }
+    }
+
+  .Navbar-sub {
+
+    .Navbar-link  {
+      background-color: darken(#ffffff, 6);
+      border-color: darken(#ffffff, 12);
+      color: inherit;
+
+      &:hover { color: $color-link; }
+    }
+
+    .Navbar-subTrigger {
+      background-color: darken(#ffffff, 6);
+      border-color: darken(#ffffff, 12);
+      color: inherit;
+    }
+
+      .Navbar-subTrigger-icon {
+
+        &:before { background-color: $color-text; }
+        &:after { color: $color-text; }
+      }
+
+    ul {
+      background-color: darken(#ffffff, 13);
+
+      .Navbar-link {
+        background-color: transparent;
+        border-color: darken(#ffffff, 18);
+        color: inherit;
+
+        &:hover { color: $color-link; }
+      }
+
+      .Navbar-subTrigger {
+        background-color: transparent;
+        border-color: darken(#ffffff, 18);
+        color: inherit;
+      }
+    }
+  }
+
+  .Navbar-trigger-inner {
+    background-color: $color-primary;
+    color: #ffffff;
+  }
+
+    .Navbar-trigger-title {
+      background-color: $color-primary;
+      color: #ffffff;
+    }
+
+    .Navbar-trigger-sub {
+      background-color: #ffffff;
+      border-color: transparent;
+      color: $color-primary;
+    }
+
+      .Navbar-trigger-sub-icon {
+        border-top-color: $color-primary;
+
+        &:before, &:after {
+          background-color: $color-primary;
+        }
+      }
+}

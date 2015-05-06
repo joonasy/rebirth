@@ -5,9 +5,8 @@
  * @extends `.Navbar {}` in _Navbar.scss
  */
 
-.Navbar--horizontal {
-
-  @include breakpoint('navTransform') {
+@mixin NavbarHorizontal($namespace: '') {
+  .Navbar.-#{$namespace}horizontal {
 
     .Navbar-trigger { display: none; }
 
@@ -37,6 +36,7 @@
       }
 
         .Navbar-link {
+          border: 0;
           width: auto;
         }
 
@@ -81,19 +81,25 @@
   }
 }
 
+/**
+ * Activate the horizontal navbar in larger widths. Add more of these if needed.
+ */
+@include breakpoint('largeUp') {
+  @include NavbarHorizontal(l-);
+}
 
 /* ======
  * Keep title in larger widths
  * ====== */
 
-.Navbar--horizontal.-keep-title {
+.Navbar.-l-horizontal.-keep-title {
 
-  @include breakpoint('navTransform') {
+  @include breakpoint('largeUp') {
 
     /**
      * Navbar
      */
-    .Navbar-self {
+    > ul {
       float: left;
     }
 

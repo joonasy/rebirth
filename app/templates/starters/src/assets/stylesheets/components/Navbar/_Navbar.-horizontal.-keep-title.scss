@@ -1,0 +1,40 @@
+/* ========================================
+ * Keep title in larger widths
+ * ========================================
+ *
+ * @extends `.Navbar.-horizontal {}` in _Navbar.-horizontal.scss
+ */
+
+.Navbar.-l-horizontal.-keep-title {
+
+  @include breakpoint('largeUp') {
+
+    /**
+     * Navbar
+     */
+    > ul {
+      float: left;
+    }
+
+    /**
+     * Navbar trigger
+     */
+    .Navbar-trigger {
+      display: block;
+      float: left;
+    }
+
+      .Navbar-trigger-inner {
+        width: auto;
+      }
+
+      .Navbar-trigger-text {
+        display: none;
+      }
+
+      .Navbar-trigger-sub {
+        display: none;
+      }
+  }
+}
+

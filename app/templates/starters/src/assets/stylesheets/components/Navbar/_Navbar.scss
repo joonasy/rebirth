@@ -20,14 +20,14 @@
     }
 
       .Navbar-link {
-        border-top: 1px solid;
-        border-right: 1px solid;
+        border-top: 1px solid transparent;
+        border-right: 1px solid transparent;
         cursor: pointer;
         display: block;
         float: left;
         padding: $Navbar-padding ($Navbar-padding * 2);
         width: 87%;
-        width: calc(100% - #{$Navbar-subTriggerWidth});
+        width: calc(100% - #{($base-space * 2)});
 
         &:only-child {
           border-right: 0;
@@ -36,14 +36,14 @@
       }
 
       .Navbar-subTrigger, %Navbar-subTrigger {
-        border-top: 1px solid;
+        border-top: 1px solid transparent;
         cursor: pointer;
         display: block;
         float: left;
         padding: $Navbar-padding 0;
         text-align: center;
         width: 13%;
-        width: calc(#{$Navbar-subTriggerWidth});
+        width: calc(#{($base-space * 2)});
       }
 
         .Navbar-subTrigger-icon {
@@ -86,7 +86,7 @@
       @extend %clearfix;
       float: left;
       width: 87%;
-      width: calc(100% - #{$Navbar-subTriggerWidth});
+      width: calc(100% - #{($base-space * 2)});
     }
 
       .Navbar-trigger-title, .Navbar-trigger-text {
@@ -123,7 +123,7 @@
 
 .Navbar.-transform-hideTrigger {
 
-  @include breakpoint('navTransform') {
+  @include breakpoint('largeUp') {
 
     .Navbar-self {
       display: block;
