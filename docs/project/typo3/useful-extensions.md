@@ -1,4 +1,4 @@
-# Useful extensions
+# Useful Typo3 extensions
 
 Here you'll find listed some useful extensions that you should check out first
 before writing your own functionality.

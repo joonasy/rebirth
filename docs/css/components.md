@@ -14,7 +14,7 @@ styling, and behaviour. For example, this `Pants` component and configuration:
 could yield the following HTML:
 
 ```html
-<article class="Pants Pants--primary -size-l">
+<article class="Pants Pants--primary -l">
   <a class="Pants-crop -crop-circle" href="pants.jpg">
     <span class="Pants-icon">
       <span class="Icon -type-zoom"></span>
@@ -54,7 +54,7 @@ following CSS, where every selector starts with the string `MyPants`.
 Each class provides a hook to style specific elements within the HTML definition.
 
 ```html
-<article class="MyPants MyPants--primary cf -size-l">
+<article class="MyPants MyPants--primary cf -l">
   <h1 class="MyPants-title">…</h1>
   <img class="MyPants-image" src="…" alt="…">
   <p class="MyPants-text">
@@ -124,13 +124,13 @@ it in another element.
 /* Attaches to a nested component */
 .Excerpt-button {
   display: inline-block;
-  margin-bottom: baseSpace();
+  margin-bottom: $base-space;
 }
 
 /* Wraps a nested component */
 .Excerpt-wrapButton {
   display: inline-block;
-  margin-bottom: baseSpace();
+  margin-bottom: $base-space;
 }
 ```
 

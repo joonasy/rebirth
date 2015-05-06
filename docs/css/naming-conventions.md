@@ -32,7 +32,7 @@ Helpers must use a camelCase name. Helpers may also have variations and responsi
 <div class="Component marginTop--m cf"> <!-- [1.] -->
   <div class="Component-item floatLeft padding--m"> <!-- [2.] -->
     <img src="…" alt="…" class="m-center--block"> <!-- [3.] -->
-    <p class="m-textSize--l"> <!-- [4.] -->
+    <p class="m-text--l"> <!-- [4.] -->
       …
     </p>
   </div>  
@@ -89,9 +89,11 @@ A component variation (or component modifier) is a class that modifies the prese
 
 ### ComponentName.-chainable-modifierName
 
-Chainable modifiers are denoted by a leading hyphen `-`, a namespace (prefix) and a descriptor for the modification. As the name would indicate, chainable modifiers provide us with the ability to configure a module in the HTML with a short, concise syntax. Chainable component modifiers can be added to component variations and collections and may also modify their descendants by nesting.   
+Chainable modifiers are denoted by a leading hyphen `-`, a voluntary prefix and a descriptor for the modification. As the name would indicate, chainable modifiers provide us with the ability to configure a module in the HTML with a short, concise syntax. Chainable component modifiers can be added to component variations and collections and may also modify their descendants by nesting.   
 
 The golden rule is that **chainable modifiers should never modify the same CSS property twice**. This is to ensure that styles don’t get clobbered and that the order in which they are applied is irrelevant. 
+
+Prefixes are not required however consider adding them if the modifier does something complex. Some obvious modifiers do not use prefixes, these are listed in `Reserved namespaces`.
 
 ```css
 /* Core button */
@@ -104,16 +106,16 @@ The golden rule is that **chainable modifiers should never modify the same CSS p
 ```
 
 ```html
-<button class="Button Button--primary -size-l -type-round" type="button"
-  <span class="Button-item">…</span>
-</button>
+<a href="#" class="Button Button--primary -size-l -type-round" type="button"
+  <span class="Button-dropdown Dropdown">…</span>
+</a>
 ```
 
 Chainable modifiers also accept responsive variants.
 
 ```html
-<div class="Button -size-s -m-size-l">
-</div>
+<a href="#" class="Button -size-s -m-size-l">
+</a>
 ```
 
 Chainable modifiers may also extend variations.
@@ -264,7 +266,7 @@ Some components need parent components to work properly. Component collections o
 ```
 
 
-## Reserved namespaces
+## Reserved namespaces and other keywords
 
 The following namespaces are reserved for specific use.
 
@@ -274,10 +276,11 @@ The following namespaces are reserved for specific use.
 * `m-<name>`: Medium viewport (e.g. Tablets)
 * `[x...]l-<name>`: Large viewports (e.g. Desktop computers)
 
-Responsive variants are activated in the given Media Query breakpoint (mobile first ideology). These prefixes are mainly used by helpers but can also be used by chainable component modifiers (rarely) and components (e.g. _Width_ component).
+Responsive variants are activated in the given Media Query breakpoint (mobile first ideology). These prefixes are mainly used by helpers and components (e.g. _Width_ component) but can also be used by chainable component modifiers (rarely).
+
+Example use of responsive _Width_ component which is activated both in medium and extra large breakpoint:
 
 ```css
-// layout/_Width.scss
 @inlude breakpoint("mediumUp") {
   .m-Width--6-12 { width: 50%; }
 }
@@ -288,33 +291,50 @@ Responsive variants are activated in the given Media Query breakpoint (mobile fi
 ```
 
 ```html
-<div class="Grid -m-type-fill">
-  <div class="Grid-item m-Width--6-12 xl-Width--4-12 s-visible">
-    <div class="Component l-textSize--l">
+<div class="Grid">
+  <div class="Grid-item m-Width--6-12 xl-Width--4-12">
+    <div class="Component">
       …
     </div>
   </div>
   <div class="Grid-item m-Width--6-12 xl-Width--8-12">
-    <div class="Component xl-marginTop--l">
+    <div class="Component">
       …
     </div>
   </div>
 </div>
 ```
 
+Example use of _margin_ helper which is activated in large breakpoint:
 
-### Prefixes and suffixes for chainable modifiers
+```css
+@inlude breakpoint("largeUp") {
+  .l-marginTop--m { margin-top: rem($base-space * 2) !important; }
+}
+```
 
-* `-size-<sizeSuffix>`: Sizing suffixes are `[x...]s`, `m` and `[x...]l`.
-* `-type-<modifierType>`: Modifiertype could be e.g. `horizontal`
+```html
+<div class="l-marginTop--m">
+  …
+</div>
+```
+
+### Obvious chainable modifiers
+
+These chainable modifiers do not use prefixes.
+
+* Sizing:  `-s`, `-m`, `-l`, `-[x...]s`, `-[x...]l`, `-full`
+* Aligning: `-horizontal`, `-vertical`, `-left`, `-right`, `-center`
+* Shapes: `-round`, `-border`
 
 
-### Global prefixes, suffixes and modifiers
+### Variations
 
-* `--primary`, `--secondary`, `--tertiary`, `--quaternary`, `--quinary`, `--senary`, `--septenary`, `--octonary`, `--nonary`, `--denary`: For defining variations
-* `base-`: Base settings (font sizes, margins etc.)
-* `color-`: Default colors
-* `heading-`: Default headings
-* `breakpoint-`: Default breakpoints
-* `-[x...]s`, `-m`, `-ml`, `-[x...]l`: Extra small, medium, medium large, extra large and so on...
+* Abstract variation definitions for components (e.g `.Button--primary`): `--primary`, `--secondary`, `--tertiary`, `--quaternary`, `--quinary`, `--senary`, `--septenary`, `--octonary`, `--nonary`, `--denary`
+* Sizing variations: `--[x...]s`, `--m`, `--ml`, `--[x...]l`
+    * Used by helpers (e.g `.marginTop--l`). **For component sizing use chainable modifiers.**
 
+
+### Suffixes
+
+* Sass sizing variables:  `-[x...]s`, `-m`, `-ml`, `-[x...]l`
