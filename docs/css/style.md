@@ -1,3 +1,9 @@
+# Coding style and structure
+
+Please read [Naming conventions](naming-conventions.md), [Components](components.md) and [Helpers](helpers.md) first.
+
+<<toc>>
+
 ## Syntax and formatting
 
 One of the simplest forms of a styleguide is a set of rules regarding syntax and formatting. Having a standard way of writing CSS means that code will always look and feel familiar to all members of the team.
@@ -40,21 +46,17 @@ But, as with anything, the specifics are somewhat irrelevant—consistency is ke
 .someSelector {
   @extend %cf;
   @include dropdown();
-  background-color: $color-brandPrimary;
+  background-color: $color-primary;
   box-shadow: 0 1px 2px rgba(#000000, 0.2);
   color: $color-text;
   font-size: $base-fontSize-s;
   line-height: $base-lineHeight;
-  margin-bottom: baseSpace();
-  
-  &--modifier {}
-
-  &.-chainable-modifier {}
+  margin-bottom: $base-space;
 }
 ```
 
 
-### Comments and titling
+## Comments and titling
 
 Remembering your own classes, rules, objects, and helpers is manageable to an extent, but anyone inheriting CSS barely stands a chance.
 
@@ -72,7 +74,7 @@ As a rule, you should comment anything that isn’t immediately obvious from the
 Titling, however, should be used always.
 
 
-#### First-level titles and comments
+### First-level titles and comments
 
 Begin every new major section of a CSS file with a title comment:
 
@@ -110,7 +112,7 @@ This title should appear at the top of each file (.scss, .css). If you are worki
 ```
 
 
-#### Second-level titles and comments
+### Second-level titles and comments
 
 Use second-level titling for example if defining modifiers for a component. Leave a carriage return between this title and the next line of code. Each second-level title should be preceded by two (2) carriage returns.
 
@@ -134,7 +136,7 @@ Use second-level titling for example if defining modifiers for a component. Leav
 ```
 
 
-#### Third-level titles, multiline and singleline comments
+### Third-level titles, multiline and singleline comments
 
 For large comments that document entire sections or components, we use a DocBlock-esque multi-line comment which adheres to our 80 column width. Leave a carriage return between this title/comment and the next line of code. 
 
@@ -165,3 +167,291 @@ For large comments that document entire sections or components, we use a DocBloc
 ```
 
 These types of multiline + singleline comments allow us to keep all of our documentation in one place whilst referring to the parts of the ruleset to which they belong.
+
+
+### Preprocessor comments
+
+As a rule, use these comments to document code that would not get written out to that CSS file either. If you are documenting code which will get compiled, use comments that will compile also. For example, this is correct:
+
+```css
+// ========================================
+// Button
+// ========================================
+
+$Button-fontSize: $base-fontSize;
+$Button-lineHeight: $base-lineHeightPx * 1.5;
+
+// Dimensions of the @2x image sprite:
+$sprite-width: 920px;
+$sprite-height: 212px;
+```
+
+
+## CSS/Sass folder structure
+
+One of the most useful features of Sass is being able to separate our stylesheets into separate files and use the @import directive to include the source of our individual files into one master stylesheet.
+
+Here is listed our default partial structure we use across our projects:
+
+    stylesheets/
+    |
+    |── components/            # Common project modules [1]
+    |   |── _Component.sass    # Component placeholder
+    |   |── _Heading.sass      # Default heading component
+    |   |── _Icon.scss         # Icon component placeholder
+    |   |── _Ieframe.scss      # IE warning comonent
+    |   |── _Text.scss         # Default text component
+    |   …
+    |
+    |── generic/               # Generic settings [2]
+    |   |── _base.sass         # Default settings
+    |   |── _fonts.scss        # Font imports
+    |   |── _placeholder.scss  # Global uncategorized placeholders
+    |   |── _typography.scss   # Default typography settings
+    |   …
+    |
+    |── helper/                # Helpers [3]
+    |   |── _helper.scss       # Global uncategorized helpers
+    |   …
+    |   
+    |── layout/                # Layout components [4]
+    |   |── _Container.scss    # Default container component
+    |   |── _Footer.scss       # Footer placeholder
+    |   |── _Grid.scss         # Default grid component
+    |   |── _Header.scss       # Header placeholder
+    |   |── _Width.scss        # Default width component
+    |   |── _Wrap.scss         # Default wrap component
+    |   …
+    |   
+    |── mixins/                # Layout components [5]
+    |   |── _breakpoint.scss   # Breakpoint mixin
+    |   |── _fontSize.scss     # Font sizing with rems
+    |   …
+    | 
+    |── vendor/                # CSS or Sass from other projects [6]
+    |   |── _datepicker.scss
+    |   |── _slick.scss
+    |   …
+    |
+    `── _config.scss           # Global project variables [7]
+    `── app.scss               # Primary Sass file [8]
+
+* **1.** Components suchs as Buttons, Forms, Navbars etc. are located here. Read more about [Components](components.md).
+* **2.** This folder contains all the default settings
+    * `placeholder.scss`: place for global uncategorized placeholders.
+    * `base.scss`: all the base html elements. 
+    * `typography.scss`: all the typography related html elements. 
+* **3.** Place all helpers here. Read more about [Helpers](helpers.md).
+    * `helper.scss`: place for global uncategorized helpers.
+* **4.** Layout components are the key components in structuring our site. Some layout components such as `Footer` or `Header` may represent only a partion of our site unlike `Grid` which can be used multiple times to build various sections of our site.
+    * `Container`, `Grid`, `Width` and `Wrap` are all reusable layout components.  
+* **5.** Mixins are used throughout all of our partials. Some of the mixins are considered as _UI mixins_ which produce user interface related elements such as arrows and icons.
+* **6.** 3rd party vendors are located here only if they aren't available in [Bower](http://bower.io). Place modified bower style components also here.
+* **7.** Contains all the shared configurable variables that can be used in all of our included partials. Component configurations are added here as well.
+* **8.** This is our primary sass file which collects all the partials. Read more about it in the next section.
+
+
+### Primary Sass file (app.scss)
+
+[View app.scss](/src/master/app/templates/assets/stylesheets/app.scss)
+
+Structure our partials in the following order to prevent errors. Remember to alphabetize partials.
+
+```
+// ========================================
+// Application
+// ========================================
+
+@charset 'UTF-8';
+
+// Vendors
+@import 'compass';
+@import 'normalize.scss/normalize'; # Bower component
+…
+
+// Config
+@import 'config';
+
+// Mixins
+…
+
+// UI mixins
+…
+
+// Custom vendors
+…
+
+// Generic
+…
+
+// Helpers
+…
+
+// Components
+…
+
+// Layout based components
+…
+```
+
+
+## Component structure
+
+Here is an example of an component with the correct structure:
+
+```
+/* ========================================
+ * Button                                                # [1]
+ * ======================================== 
+ *
+ * @extends `.OtherComponent{}` in _OtherComponent.scss. # [2]
+ */
+
+.Button {                                                # [3]
+  …
+
+  &:hover, &:focus {
+    …
+  }
+}
+
+  /**
+   * Button dropdown                                     # [4]
+   * Lorem ipsum dolor sit amet, consectetur. 
+   */ 
+  .Button-dropdown {
+    …
+  }
+
+
+/* ======
+ * Button - primary variation                            # [5]
+ * ====== */
+
+.Button--primary {
+  …
+
+  &:hover, &:focus {
+    …
+  }
+
+  &.-border {
+    …
+  }
+}
+
+
+/* ======
+ * Button - shape modifiers                              # [6]
+ * ====== */
+
+.Button {
+  …
+
+  &.-round { 
+    … 
+  }
+
+  &.-border { 
+    … 
+  }
+}
+
+
+/* ======
+ * Button - size modifier                               # [7]
+ * ====== */
+
+.Button {
+
+  &.-s {
+    …
+  }
+
+  &.-l {
+    …
+  }
+}
+
+
+/* ====== 
+ * Button - disabled state                              # [8]
+ * ====== */
+
+.Button {
+
+  &.is-disabled  {
+    …
+  }
+}
+```
+
+* **1.** Begin every new major section of a CSS file with a first-level title. 
+* **2.** This simple, low effort commenting can make a lot of difference to developers who are unaware of relationships across projects, or who are wanting to know how, why, and where other styles might be being inherited from.
+* **3.** Default button settings.
+* **4.** Indent descendants. As a rule, you should comment anything that isn’t immediately obvious from the code alone.
+* **5.** Define variations with second-level titles
+* **6.**, **7.** Define modifiers after variations with second-level titles
+* **8.** Define states after modifiers with second-level titles
+
+
+## Structuring partials
+
+Read [Naming conventions](naming-conventions.md) first.
+
+#### Components
+
+Always name the isolated partials as they are presented in the markup. Example of an isolated component structure:
+
+```
+components/_Button.scss                # [1]
+components/_ButtonCollection.scss      # [2]
+components/_Button--primary.scss       # [3]
+components/_Button-dropdown.scss       # [4]
+components/_Button.-modifierName.scss  # [5]
+```
+
+If you are build a large component which, say, contains over 400 lines it is advisable to separate large component modifiers (**5.**), variations (**2.**) and descendants (**4.**) into their own partials. All of our isolated partials should always start with a first-level title.
+
+If component modifiers (**5.**) or other component related partials contain _responsive variants_ (e.g `.Button.-m-modifierName {}`) it isn't necessary to include that variant in the file name.
+
+Component collections (**2.**) are always isolated.
+
+
+##### Components configuration
+
+Global component configurations are added to `_config.scss`. These configurations should only contain settings that component partials need (or in rare cases what other components may need).
+
+```
+// ========================================
+// Button
+// ========================================
+
+$Button-fontSize: $base-fontSize;
+$Button-lineHeight: $base-lineHeightPx * 1.5;
+```
+
+##### Components in larger projects
+
+If we are building a large project which contains lots of isolated component partials it's wise to separate them into their own folder:  
+
+```
+components/Button/_Button.scss          
+components/Button/_ButtonCollection.scss 
+…
+
+components/Component/_Component.scss      
+components/Component/_ComponentCollection.scss
+…   
+```
+
+
+#### Helpers
+
+```
+helpers/_margin.scss    # [1]
+helpers/_m-margin.scss  # [2]
+```
+
+* **1.** Helper partial 
+* **2.** Helper partial with specific _responsive variant_. Responsive variants are always specified in the helper filename because they are rarely used and it's easier to organize and include into the project.

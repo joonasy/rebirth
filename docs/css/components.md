@@ -29,7 +29,7 @@ could yield the following HTML:
 
 Web Starter kit helps to partially isolate the CSS used in the `Pants` component's implementation. In doing so, it makes styling simpler by reducing the amount of styling entanglement between components, and prevents styles from leaking outside the component.
 
-(Read about [Naming conventions](#naming-conventions).)
+(Read about [Naming conventions](#naming-conventions))
 
 ### Component scope
 

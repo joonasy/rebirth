@@ -17,13 +17,12 @@ This styleguide outlines our internal standards for writing CSS (and more specif
 ## Table of contents
 
 * [Design principles](design-principles.md)
-* [Coding style and formatting](style.md)
+* [Coding style and structure](style.md)
     * Stylesheet formatting
     * Comments & titling
-* [Structure](structure.md)
     * CSS/Sass folder structure
-    * Naming files
     * Component structure
+    * Structuring partials
 * [Components](components.md)
 * [Helpers](helpers.md)
 * [Naming conventions](naming-conventions.md)
