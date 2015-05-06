@@ -13,7 +13,6 @@ This styleguide outlines our internal standards for writing CSS (and more specif
     * keep stylesheets scalable;
     * keep our file structure distinct
 
-
 ## Table of contents
 
 * [Design principles](design-principles.md)
@@ -35,7 +34,10 @@ This styleguide outlines our internal standards for writing CSS (and more specif
         * ComponentName.is-stateOfComponent
         * ComponentName-descendantName
         * ComponentNameCollection
+    * JavaScript hooks
+        * data-* attributes
     * Reserved namespaces and other keywords
         * Responsive variations
         * Obvious chainable modifiers
         * Variations
+        * Suffixes
