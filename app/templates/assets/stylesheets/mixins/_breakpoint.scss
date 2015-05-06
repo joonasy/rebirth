@@ -59,7 +59,7 @@
   }
 
   // e.g. iPad landscape and up
-  @else if $media == 'largeUp' or $media == 'navTransform' {
+  @else if $media == 'largeUp' {
     @media only screen and (min-width: $breakpoint-l) { @content; }
   }
 
