@@ -24,16 +24,11 @@
   &:hover, &:focus {
     text-decoration: none;
   }
-
-  &.is-disabled,
-  &[disabled], fieldset[disabled] & {
-    @extend %disabled;
-  }
 }
 
 
 /* ======
- * Button - variations
+ * Button - primary variation
  * ====== */
 
 .Button--primary {
@@ -64,8 +59,11 @@
  * Button - shape
  * ====== */
 
-.Button.-round {
-  border-radius: $Button-borderRadius;
+.Button {
+
+  &.-round {
+    border-radius: $Button-borderRadius;
+  }
 }
 
 
@@ -91,5 +89,17 @@
   &.-full {
     display: block;
     width: 100%;
+  }
+}
+
+
+/* ======
+ * Button - disabled state
+ * ====== */
+
+.Button {
+  &.is-disabled,
+  &[disabled], fieldset[disabled] & {
+    @extend %disabled;
   }
 }
