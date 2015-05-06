@@ -7,9 +7,7 @@
 
 .ButtonCollection {
 
-  > .Button {
-    margin-right: 0;
-  }
+  > .Button { margin-right: 0; }
 }
 
 
@@ -17,7 +15,7 @@
  * Button collection - align
  * ====== */
 
-.ButtonCollection.-align-vertical {
+.ButtonCollection.-vertical {
   @extend %clearfix;
   display: inline-block;
 
@@ -25,13 +23,11 @@
     display: block;
     margin-bottom: 0;
 
-    &:last-child {
-      margin-bottom: rem(($base-space * 3) - $Button-lineHeight);
-    }
+    &:last-child { margin-bottom: rem(($base-space * 3) - $Button-lineHeight); }
   }
 }
 
-.ButtonCollection.-align-horizontal {
+.ButtonCollection.-horizontal {
   @extend %clearfix;
 
   > .Button {
@@ -47,9 +43,7 @@
   width: 100%;
   margin-bottom: rem((($base-space * 3) - $Button-lineHeight));
 
-  > .Button {
-    display: table-cell;
-  }
+  > .Button { display: table-cell; }
 }
 
 .ButtonCollection.-align-full {
@@ -70,27 +64,23 @@
  * Button collection - type
  * ====== */
 
-.ButtonCollection.-type-border,
-%ButtonCollection.-type-border {
+.ButtonCollection.-border,
+%ButtonCollection.-border {
 
-  &.-align-horizontal, &.-align-justified {
+  &.-horizontal, &.-align-justified {
 
     > .Button {
       border-left-width: 0;
 
-      &:first-child {
-        border-left-width: $Button-borderWidth;
-      }
+      &:first-child { border-left-width: $Button-borderWidth; }
     }
   }
 
-  &.-align-vertical {
+  &.-vertical {
 
     > .Button {
 
-      &:not(:first-child) {
-        border-top: 0;
-      }
+      &:not(:first-child) { border-top: 0; }
     }
   }
 }
@@ -100,17 +90,15 @@
  * Button collection - shape
  * ====== */
 
-.ButtonCollection.-shape-round {
+.ButtonCollection.-round {
 
-  > .Button {
-    border-radius: 0;
-  }
+  > .Button { border-radius: 0; }
 
-  &.-align-horizontal, &.-align-justified {
+  &.-horizontal, &.-align-justified {
 
     > .Button {
 
-      &:not(:first-child,.-type-border) {
+      &:not(:first-child,.-border) {
         border-left: $ButtonCollection-borderWidth solid
           $ButtonCollection-borderColor;
       }
@@ -127,7 +115,7 @@
     }
   }
 
-  &.-align-vertical {
+  &.-vertical {
 
     > .Button {
       box-shadow: 0 -1px $ButtonCollection-borderColor;

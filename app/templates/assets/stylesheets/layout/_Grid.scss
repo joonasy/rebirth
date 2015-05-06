@@ -15,7 +15,7 @@
   /**
    * Sizing
    */
-  &.-size-full {
+  &.-full {
     margin-left: 0;
 
     > .Grid-item {
@@ -23,7 +23,7 @@
     }
   }
 
-  &.-size-l {
+  &.-l {
     margin-left: rem(-($base-space * 2));
 
     > .Grid-item {
@@ -31,7 +31,7 @@
     }
   }
 
-  &.-size-xl {
+  &.-xl {
     margin-left: rem(-($base-space * 4));
 
     > .Grid-item {

@@ -11,9 +11,7 @@
 
 .Text {
 
-  &.-type-serif {
-    font-family: $base-fontFamilySerif;
-  }
+  &.-type-meta {}
 }
 
 
@@ -23,7 +21,7 @@
 
 .Text {
 
-  &.-case-upper {
+  &.-upper {
     text-transform: uppercase;
   }
 }
@@ -35,15 +33,15 @@
 
 .Text {
 
-  &.-align-left {
+  &.-left {
     text-align: left;
   }
 
-  &.-align-right {
+  &.-right {
     text-align: right;
   }
 
-  &.-align-center {
+  &.-center {
     text-align: center;
   }
 }
@@ -55,15 +53,15 @@
 
 .Text {
 
-  &.-size-l {
+  &.-l {
     @include fontSize($base-fontSize-l, $base-lineHeight-l);
   }
 
-  &.-size-s {
+  &.-s {
     @include fontSize($base-fontSize-s, $base-lineHeight-s);
   }
 
-  &.-size-xs {
+  &.-xs {
     @include fontSize($base-fontSize-xs, $base-lineHeight-xs);
   }
 }

@@ -50,14 +50,14 @@
 
 .Hero {
 
-  &.-size-full {
+  &.-full {
 
     .Hero-item {
       height: 100vh;
     }
   }
 
-  &.-size-l {
+  &.-l {
 
     .Hero-item {
       height: rem($base-space * 18);
@@ -70,7 +70,7 @@
     }
   }
 
-  &.-size-m {
+  &.-m {
 
     .Hero-item {
       height: rem($base-space * 14);

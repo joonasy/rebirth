@@ -43,6 +43,7 @@
     > .Button {
       height: rem($Form-height);
       margin-bottom: 0;
+      padding: 0;
     }
   }
 
@@ -79,7 +80,7 @@
 
 .Form-item {
 
-  &.-shape-round {
+  &.-round {
     border-radius: $Form-borderRadius;
   }
 }
@@ -88,13 +89,13 @@
  * Form - color
  * ====== */
 
-.Form.-color-primary {
+.Form--primary {
 
   .Form-item, .Form-addon {
     background-color: $FormPrimary-bgColor;
     color: $FormPrimary-color;
 
-    &.-type-border {
+    &.-border {
       border-color: $FormPrimary-borderColor;
     }
   }
@@ -115,7 +116,7 @@
       color: $FormPrimary-colorFocus;
     }
 
-    &.-type-border {
+    &.-border {
       &:hover {
         border-color: $FormPrimary-borderColorHover;
       }

@@ -33,7 +33,7 @@
  * Form collection - align
  * ====== */
 
-.Form-collection.-align-vertical {
+.Form-collection.-vertical {
 
   > .Form-item {
     &:not(:first-child) {
@@ -58,7 +58,7 @@
   }
 }
 
-.Form-collection.-align-horizontal {
+.Form-collection.-horizontal {
 
   .Form-item, .Form-addon {
     border-right-width: 0;
@@ -94,7 +94,7 @@
  * Form collection - shape
  * ====== */
 
-.Form-collection.-shape-round {
+.Form-collection.-round {
 
   .Form-item, .Form-addon {
     border-radius: 0;
@@ -103,7 +103,7 @@
   /**
    * Vertical
    */
-  &.-align-vertical {
+  &.-vertical {
 
     /**
      * Direct elements
@@ -167,7 +167,7 @@
   /**
    * Horizontal
    */
-  &.-align-horizontal {
+  &.-horizontal {
 
     /**
      * Direct elements

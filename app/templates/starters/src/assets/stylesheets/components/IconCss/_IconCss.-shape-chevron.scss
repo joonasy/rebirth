@@ -14,7 +14,7 @@
 .IconCss {
 
   &.-shape-chevronUp {
-    &.-size-s {
+    &.-s {
       transform: scale($IconCss-s);
     }
   }
@@ -22,7 +22,7 @@
   &.-shape-chevronRight {
     transform: rotate(-270deg);
 
-    &.-size-s {
+    &.-s {
       transform: rotate(-270deg) scale($IconCss-s);
     }
   }
@@ -30,7 +30,7 @@
   &.-shape-chevronDown {
     transform: rotate(180deg);
 
-    &.-size-s {
+    &.-s {
       transform: rotate(180deg) scale($IconCss-s);
     }
   }
@@ -38,7 +38,7 @@
   &.-shape-chevronLeft {
     transform: rotate(-90deg);
 
-    &.-size-s {
+    &.-s {
       transform: rotate(-90deg) scale($IconCss-s);
     }
   }

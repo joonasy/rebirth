@@ -16,6 +16,7 @@
   padding: 0 rem($Button-padding);
   position: relative;
   text-align: center;
+  transition: $transitionDuration;
   user-select: none;
   vertical-align: middle;
   white-space: nowrap;
@@ -32,17 +33,10 @@
 
 
 /* ======
- * Button - variation
+ * Button - variations
  * ====== */
 
-.Button--primary {}
-
-
-/* ======
- * Button - color
- * ====== */
-
-.Button.-color-primary {
+.Button--primary {
   background-color: $ButtonPrimary-bgColor;
   border-color: $ButtonPrimary-borderColor;
   color: $ButtonPrimary-color;
@@ -53,7 +47,7 @@
     color: $ButtonPrimary-colorHover;
   }
 
-  &.-type-border {
+  &.-border {
     background-color: transparent;
     color: $ButtonPrimary-typeBorderColor;
 
@@ -70,7 +64,7 @@
  * Button - shape
  * ====== */
 
-.Button.-shape-round {
+.Button.-round {
   border-radius: $Button-borderRadius;
 }
 
@@ -81,20 +75,20 @@
 
 .Button {
 
-  &.-size-s {
+  &.-s {
     font-size: $base-fontSize-s;
     line-height: rem(($Button-lineHeight / 1.5) - ($Button-borderWidth * 2));
     padding: 0 rem($Button-padding / 2);
     margin-bottom: rem($base-space);
   }
 
-  &.-size-l {
+  &.-l {
     line-height: rem(($Button-lineHeight * 1.35) - ($Button-borderWidth * 2));
     margin-bottom: rem($base-space);
     padding: 0 rem($Button-padding * 1.5);
   }
 
-  &.-size-extend-full {
+  &.-full {
     display: block;
     width: 100%;
   }

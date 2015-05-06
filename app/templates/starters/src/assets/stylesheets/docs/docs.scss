@@ -48,7 +48,7 @@ html.docs {
 html, body { height: 100%; }
 
 .docs-Hero {
-  &.-size-full {
+  &.-full {
     .Hero-item {
       height: calc(100vh - #{$base-space * 2}); /* Height of the navbar */
     }
