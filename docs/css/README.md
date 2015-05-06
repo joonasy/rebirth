@@ -4,6 +4,7 @@ Mediasignal CSS styleguide is based on the following styleguides.
 
 * [SUIT CSS (0.6.0)](https://github.com/suitcss)
 * [CSS Guidelines (2.2.2)](http://cssguidelin.es)
+* [Sass Guidelines](http://sass-guidelin.es)
 
 This styleguide outlines our internal standards for writing CSS (and more specifically, Sass).
 
