@@ -1,5 +1,5 @@
 /* ========================================
- * Horizontal variation
+ * Horizontal modifier
  * ========================================
  *
  * @extends `.Navbar {}` in _Navbar.scss
@@ -87,41 +87,3 @@
 @include breakpoint('largeUp') {
   @include NavbarHorizontal(l-);
 }
-
-/* ======
- * Keep title in larger widths
- * ====== */
-
-.Navbar.-l-horizontal.-keep-title {
-
-  @include breakpoint('largeUp') {
-
-    /**
-     * Navbar
-     */
-    > ul {
-      float: left;
-    }
-
-    /**
-     * Navbar trigger (mobile)
-     */
-    .Navbar-trigger {
-      display: block;
-      float: left;
-    }
-
-      .Navbar-trigger-inner {
-        width: auto;
-      }
-
-      .Navbar-trigger-text {
-        display: none;
-      }
-
-      .Navbar-trigger-sub {
-        display: none;
-      }
-  }
-}
-
