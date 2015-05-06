@@ -3,26 +3,28 @@
 
 <f:if condition="{settings.dev}">
   <f:then>
-    <v:asset.script path="EXT:<%= appRoot %>/bower_components/jquery/dist/jquery.js" rewrite="false" standalone="true"></v:asset.script>
+    <v:asset.script path="{v:extension.path.siteRelative()}bower_components/jquery/dist/jquery.js" rewrite="false" standalone="true"></v:asset.script>
 
     <!-- bower:js -->
     <!-- endbower -->
 
     <!-- Vendors, helpers, plugins and additional Bower components -->
-    <v:asset.script path="EXT:<%= appRoot %>/Assets/javascripts/plugins/toggle.js" rewrite="false" standalone="true"></v:asset.script>
+    <v:asset.script path="{v:extension.path.siteRelative()}Assets/javascripts/plugins/toggle.js" rewrite="false" standalone="true"></v:asset.script>
 
     <!-- Components -->
-    <v:asset.script path="EXT:<%= appRoot %>/Assets/javascripts/components/Component.js" rewrite="false" standalone="true"></v:asset.script>
+    <v:asset.script path="{v:extension.path.siteRelative()}Assets/javascripts/components/Component.js" rewrite="false" standalone="true"></v:asset.script>
 
     <!-- App (init) -->
-    <v:asset.script path="EXT:<%= appRoot %>/Assets/javascripts/app.js" rewrite="false" standalone="true"></v:asset.script>
+    <v:asset.script path="{v:extension.path.siteRelative()}Assets/javascripts/app.js" rewrite="false" standalone="true"></v:asset.script>
 
     <!-- Livereload -->
     <v:asset.script path="http://0.0.0.0:35729/livereload.js?snipver=1" external="true" standalone="true"></v:asset.script>
   </f:then>
   <f:else>
-    <v:asset.script path="//ajax.googleapis.com/ajax/libs/jquery/2.1.3/jquery.min.js" external="true" standalone="true"></v:asset.script>
-    <v:asset.script external="true" standalone="true">window.jQuery || document.write('<script src="<v:extension.path.resources></v:extension.path.resources>Assets/javascripts/vendors/jquery.min.js"><\/script>')</v:asset.script>
-    <v:asset.script path="EXT:<%= appRoot %>/Resources/Public/Assets/javascripts/app.min.js"></v:asset.script>
+    <script src="//ajax.googleapis.com/ajax/libs/jquery/2.1.4/jquery.min.js"></script>
+    <script>
+        window.jQuery || document.write('<script src="{v:extension.path.siteRelative()}Resources/Public/Assets/javascripts/vendor/jquery.min.js"><\/script>')
+    </script>
+    <script src="{v:extension.path.siteRelative()}Resources/Public/Assets/javascripts/app.min.js"></script>
   </f:else>
 </f:if>
