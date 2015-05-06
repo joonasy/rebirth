@@ -10,6 +10,7 @@
 
     @if $contain == true {
       background-size: contain;
+    } @elseif $contain == 'disable' {
     } @else {
       background-size: (image-width($fileRetina) / 2) (image-height($fileRetina) / 2);
     }

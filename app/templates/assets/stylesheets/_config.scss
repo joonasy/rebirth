@@ -24,17 +24,6 @@ $heading-fontFamily: inherit;
 $heading-fontWeight: 800;
 $heading-fontWeight-alt: 800;
 
-$heading-xl: 62px;
-$heading-m: 52px;
-$heading-s: 42px;
-
-$heading-fontSize-l: 62px;
-$heading-lineHeight-l: 72px / $heading-fontSize-l;
-$heading-fontSize-m: 52px;
-$heading-lineHeight-m: 62px / $heading-fontSize-m;
-$heading-fontSize-s: 42px;
-$heading-lineHeight-s: 52px / $heading-fontSize-s;
-
 $h1-fontSize: 32px;
 $h1-lineHeight: 'rhythm'; // 38px / $h1-fontSize;
 $h2-fontSize: 26px;
@@ -46,7 +35,13 @@ $h4-lineHeight: 'rhythm'; // 26px / $h4-fontSize;
 $h5-fontSize: 18px;
 $h5-lineHeight: 'rhythm'; // 24px / $h5-fontSize;
 
-
+// Heading component
+$Heading-fontSize-l: 62px;
+$Heading-lineHeight-l: 72px / $Heading-fontSize-l;
+$Heading-fontSize-m: 52px;
+$Heading-lineHeight-m: 62px / $Heading-fontSize-m;
+$Heading-fontSize-s: 42px;
+$Heading-lineHeight-s: 52px / $Heading-fontSize-s;
 
 
 // ========================================
