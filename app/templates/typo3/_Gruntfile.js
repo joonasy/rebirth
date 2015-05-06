@@ -284,7 +284,7 @@ module.exports = function (grunt) {
           fileTypes: {
             html: {
               replace: {
-                js: '<v:asset.script path="EXT:<%= appRoot %>/{{filePath}}" rewrite="false" standalone="true"></v:asset.script>',
+                js: '<script src="{v:extension.path.siteRelative()}{{filePath}}"></script>',
                 css: '<v:asset.style path="EXT:<%= appRoot %>/{{filePath}}" rewrite="false" standalone="true"></v:asset.style>'
               }
             }
