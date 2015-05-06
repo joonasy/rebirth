@@ -35,7 +35,7 @@ var App = App || {};
       }
     }
 
-    clickTrigger = function(e) {
+    var clickTrigger = function(e) {
       var $this = $(this),
           isToggled;
 
@@ -90,7 +90,9 @@ var App = App || {};
       }
 
       if(!config.disableFirstClickOnTouch) {
-        e.preventDefault();
+        if(config.element.length) {
+          e.preventDefault();
+        }
       }
 
       e.stopPropagation();
