@@ -258,10 +258,12 @@ module.exports = function (grunt) {
           dot: true,
           cwd: './',
           src: [
-            'Assets/javascripts/vendor/jquery.min.js',
             'Assets/fonts/*.{eot,ttf,woff,svg}'
           ],
           dest: '<%%= path.public %>'
+        }, {
+          '<%%= path.public %>/Assets/javascripts/vendor/jquery.min.js':
+          'bower_components/jquery/dist/jquery.min.js'
         }]
       }
     },

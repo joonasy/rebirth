@@ -290,9 +290,10 @@ module.exports = function (grunt) {
             '*.{ico,png,txt}',
             '.htaccess',
             'assets/img/{,*/}*.{webp,gif}',
-            'assets/fonts/*',
-            'assets/javascripts/vendor/jquery.min.js'
+            'assets/fonts/*'
           ]
+        }, {
+          '<%= path.dist %>/assets/javascripts/vendor/jquery.min.js': 'bower_components/jquery/dist/jquery.min.js'
         }]
       }
     },
