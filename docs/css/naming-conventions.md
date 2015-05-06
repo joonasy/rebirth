@@ -53,6 +53,13 @@ This has several benefits when reading and writing HTML and CSS:
 * It helps to decouple presentation semantics from document semantics.
 
 
+## Naming components, variations and modifiers
+
+Name things in CSS is to pick a name that is sensible, but somewhat ambiguous: aim for high reusability. For example, instead of a class like `.Nav--site`, choose something like `.Nav--primary`; rather than `.Footer-list`, favour a component with a variation like `.List--link`.
+
+The differences in these names is that the first of each two examples is tied to a very specific use case: they can only be used as the site’s navigation or the footer’s links respectively. By using slightly more ambiguous names, we can increase our ability to reuse these components in different circumstances.
+
+
 ### ComponentName
 
 The component's name must be written in [PascalCase](http://c2.com/cgi/wiki?PascalCase). Nothing else in the HTML/CSS uses PascalCase.
@@ -81,7 +88,7 @@ A component variation (or component modifier) is a class that modifies the prese
 ```
 
 ```html
-<button class="Button Button--primary" type="button"
+<button class="Button Button--primary" type="button">
   <span class="Button-item">…</span>
 </button>
 ```
@@ -100,13 +107,13 @@ Prefixes are not required however consider adding them if the modifier does some
 .Button {}
 
 /* Chainable modifiers */
-.Button.-size-l {}
+.Button.-l {}
 
-.Button.-type-round {}
+.Button.-round {}
 ```
 
 ```html
-<a href="#" class="Button Button--primary -size-l -type-round" type="button"
+<a href="#" class="Button Button--primary -l -round" type="button"
   <span class="Button-dropdown Dropdown">…</span>
 </a>
 ```
@@ -114,7 +121,7 @@ Prefixes are not required however consider adding them if the modifier does some
 Chainable modifiers also accept responsive variants.
 
 ```html
-<a href="#" class="Button -size-s -m-size-l">
+<a href="#" class="Button -s -m-l">
 </a>
 ```
 
@@ -122,7 +129,8 @@ Chainable modifiers may also extend variations.
 
 ```css
 .Button--primary {
-  &.-type-round {
+  
+  &.-round {
     …
   }
 }
@@ -134,7 +142,7 @@ Chainable modifiers can also be added to component collections.
 .ButtonCollection {
   …
 
-  &.-type-round {
+  &.-round {
     …
 
     > .Button {}
@@ -246,7 +254,7 @@ Some components need parent components to work properly. Component collections o
 
   > .Button {}
 
-  &.-type-horizontal {
+  &.-horizontal {
     …
 
     > .Button {}
@@ -255,7 +263,7 @@ Some components need parent components to work properly. Component collections o
 ```
 
 ```html
-<div class="ButtonCollection -type-horizontal">
+<div class="ButtonCollection -horizontal">
   <button class="Button">
     …
   </button>
@@ -297,9 +305,9 @@ The following namespaces are reserved for specific use.
 * `m-<name>`: Medium viewport (e.g. Tablets)
 * `[x...]l-<name>`: Large viewports (e.g. Desktop computers)
 
-Responsive variants are activated in the given Media Query breakpoint (mobile first ideology). These prefixes are mainly used by helpers and components (e.g. _Width_ component) but can also be used by chainable component modifiers (rarely).
+Responsive variants are activated in the given Media Query breakpoint (mobile first ideology). These prefixes are mainly used by helpers and components (e.g. `Width` component) but can also be used by chainable component modifiers (rarely).
 
-Example use of responsive _Width_ component which is activated both in medium and extra large breakpoint:
+Example use of responsive `Width` component which is activated both in medium and extra large breakpoint:
 
 ```css
 @inlude breakpoint("mediumUp") {
@@ -346,7 +354,7 @@ Example use of _margin_ helper which is activated in large breakpoint:
 These chainable modifiers do not use prefixes.
 
 * Sizing:  `-s`, `-m`, `-l`, `-[x...]s`, `-[x...]l`, `-full`
-* Aligning: `-horizontal`, `-vertical`, `-left`, `-right`, `-center`
+* Aligning: `-horizontal`, `-vertical`, `-justified`, `-left`, `-right`, `-center`
 * Shapes: `-round`, `-border`
 
 
@@ -359,4 +367,4 @@ These chainable modifiers do not use prefixes.
 
 ### Suffixes
 
-* Sass sizing variables:  `-[x...]s`, `-m`, `-ml`, `-[x...]l`
+* Sizing variables (Sass):  `-[x...]s`, `-m`, `-ml`, `-[x...]l`
