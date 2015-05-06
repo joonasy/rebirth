@@ -266,9 +266,30 @@ Some components need parent components to work properly. Component collections o
 ```
 
 
+## JavaScript hooks
+
+As a rule, it is unwise to bind your CSS and your JS onto the same class in your HTML. This is because doing so means you can’t have (or remove) one without (removing) the other. It is much cleaner, much more transparent, and much more maintainable to bind your JS onto specific classes.
+
+Typically, these are classes that are prepended with js-, for example:
+
+```html
+<input type="submit" class="Button js-Button" value="Follow" />
+```
+
+This means that we can have an element elsewhere which can carry with style of `.Button {}`, but without the behaviour of `.js-Button`.
+
+
+### data-* attributes
+
+A common practice is to use `data-*` attributes as JS hooks, but this is incorrect. `data-*` attributes, as per the spec, are used _to store custom data private to the page or application_. `data-*` attributes are designed to store data, not be bound to.
+
+However `data-*` attributes can be used to store data for the JavaScript to read.
+
+
 ## Reserved namespaces and other keywords
 
 The following namespaces are reserved for specific use.
+
 
 ### Responsive variants
 
@@ -318,6 +339,7 @@ Example use of _margin_ helper which is activated in large breakpoint:
   …
 </div>
 ```
+
 
 ### Obvious chainable modifiers
 
