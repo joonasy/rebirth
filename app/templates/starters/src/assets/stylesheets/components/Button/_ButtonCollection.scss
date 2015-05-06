@@ -36,7 +36,7 @@
   }
 }
 
-.ButtonCollection.-align-justified {
+.ButtonCollection.-justified {
   border-collapse: separate;
   display: table;
   table-layout: fixed;
@@ -46,7 +46,7 @@
   > .Button { display: table-cell; }
 }
 
-.ButtonCollection.-align-full {
+.ButtonCollection.-full {
   > .Button {
     display: block;
     width: 100%;
@@ -67,7 +67,7 @@
 .ButtonCollection.-border,
 %ButtonCollection.-border {
 
-  &.-horizontal, &.-align-justified {
+  &.-horizontal, &.-justified {
 
     > .Button {
       border-left-width: 0;
@@ -94,7 +94,7 @@
 
   > .Button { border-radius: 0; }
 
-  &.-horizontal, &.-align-justified {
+  &.-horizontal, &.-justified {
 
     > .Button {
 
