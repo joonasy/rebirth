@@ -2,9 +2,9 @@
  * Block
  * ======================================== */
 
-var App = App || {};
+var app = app || {};
 
-App.Block = function($) {
+app.Block = function($) {
 
   var self = {},
       $blockBg = $('.Block--bg'),
@@ -15,7 +15,7 @@ App.Block = function($) {
   }
 
   var figureImgAsBg = function() {
-    App.figureImgAsBg($figure);
+    app.figureImgAsBg($figure);
   }
 
   return {

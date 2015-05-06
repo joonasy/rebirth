@@ -2,9 +2,9 @@
  * Component
  * ======================================== */
 
-var App = App || {};
+var app = app || {};
 
-App.Component = function($) {
+app.Component = function($) {
 
   var self = {};
 

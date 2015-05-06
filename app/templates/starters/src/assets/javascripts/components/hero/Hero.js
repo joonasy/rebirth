@@ -2,9 +2,9 @@
  * Hero
  * ======================================== */
 
-var App = App || {};
+var app = app || {};
 
-App.Hero = function($) {
+app.Hero = function($) {
 
   var self = {},
       $hero = $('.js-Hero'),
@@ -15,7 +15,7 @@ App.Hero = function($) {
   }
 
   var figureImgAsBg = function() {
-    App.figureImgAsBg($figure);
+    app.figureImgAsBg($figure);
   }
 
   return {

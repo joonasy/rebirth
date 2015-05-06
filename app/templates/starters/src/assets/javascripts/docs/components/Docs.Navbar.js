@@ -2,9 +2,9 @@
  * Docs navbar
  * ======================================== */
 
-var Docs = Docs || {};
+var docs = docs || {};
 
-Docs.Navbar = function($) {
+docs.Navbar = function($) {
 
   var self = {};
 
@@ -18,12 +18,12 @@ Docs.Navbar = function($) {
         });
 
 
-    App.toggle({
+    app.toggle({
       trigger: $navBarTrigger,
       element: $navBar
     });
 
-    App.toggle({
+    app.toggle({
       trigger: $navSubTrigger.add($navLink),
       element: $navItem,
       toggleParent: true,

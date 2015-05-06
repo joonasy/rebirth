@@ -2,12 +2,12 @@
  * Toggle (beta)
  * ======================================== */
 
-var App = App || {};
+var app = app || {};
 
 (function($) {
-  App.toggleObjects = [];
+  app.toggleObjects = [];
 
-  App.toggle = function(options) {
+  app.toggle = function(options) {
 
     var config, self = {};
 
@@ -25,7 +25,7 @@ var App = App || {};
     }, options);
 
     self.init = function() {
-      App.toggleObjects.push(config);
+      app.toggleObjects.push(config);
       config.trigger.on('click', clickTrigger);
 
       if(config.elementStopPropagation) {
@@ -97,7 +97,7 @@ var App = App || {};
     };
 
     self.removeToggles = function() {
-      $.each(App.toggleObjects, function(index, value) {
+      $.each(app.toggleObjects, function(index, value) {
         value.element.each(function() {
           if (!$(this).hasClass(value.elementClass) || !value.unTogglable) {
             return
@@ -119,6 +119,6 @@ var App = App || {};
   };
 
   $(window).on('click', function(e){
-    App.toggle().removeToggles();
+    app.toggle().removeToggles();
   });
 }(jQuery));

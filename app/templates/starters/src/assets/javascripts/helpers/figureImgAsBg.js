@@ -36,18 +36,18 @@
  *         </figure>
  *
  *   JavaScript:
- *       App.figureImgAsBg('.My-figure');
+ *       app.figureImgAsBg('.My-figure');
  *
  *       Or recommended:
  *       $context = $('.js-context'),
  *       $figure = $('.My-figure', $context)
- *       App.figureImgAsBg($figure);
+ *       app.figureImgAsBg($figure);
  */
 
-var App = App || {};
+var app = app || {};
 
 (function($) {
-  App.figureImgAsBg = function(figure) {
+  app.figureImgAsBg = function(figure) {
 
     var self = {},
         $figure = $(figure);

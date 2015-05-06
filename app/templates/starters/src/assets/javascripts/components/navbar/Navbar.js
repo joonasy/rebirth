@@ -2,9 +2,9 @@
  * Navbar
  * ======================================== */
 
-var App = App || {};
+var app = app || {};
 
-App.Navbar = function($) {
+app.Navbar = function($) {
 
   var self = {};
 
@@ -17,12 +17,12 @@ App.Navbar = function($) {
           return $(this).siblings($navSubTrigger).length;
         });
 
-    App.toggle({
+    app.toggle({
       trigger: $navBarTrigger,
       element: $navBar
     });
 
-    App.toggle({
+    app.toggle({
       trigger: $navSubTrigger,
       element: $navItem,
       toggleParent: true,
@@ -30,7 +30,7 @@ App.Navbar = function($) {
       unToggleOtherToggles: false
     });
 
-    App.toggle({
+    app.toggle({
       trigger: $navLink,
       element: $navItem,
       toggleParent: true,

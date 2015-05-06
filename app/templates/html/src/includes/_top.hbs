@@ -17,15 +17,6 @@
       <script src="/bower_components/modernizr/modernizr.js"></script>
     {{/dev}}
 
-    <script>
-      var App = App || {};
-      App.URL = "{{app.url}}";
-
-      {{#dev}}
-        App.URL = "http://0.0.0.0:9000";
-      {{/dev}}
-    </script>
-
     <!-- build:js(.tmp) {{assets}}/javascripts/head.min.js-->
       {{#prod}}
         <script src=".tmp/javascripts/vendor/modernizr.build.js"></script>

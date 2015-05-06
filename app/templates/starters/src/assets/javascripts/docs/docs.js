@@ -3,5 +3,5 @@
  * ======================================== */
 
 $(function() {
-  Docs.Navbar.init();
+  docs.Navbar.init();
 });
