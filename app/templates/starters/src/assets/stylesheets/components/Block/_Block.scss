@@ -5,23 +5,19 @@
 .Block {
   display: block;
   position: relative;
+  margin-bottom: rem($base-space);
   width: 100%;
 }
 
   .Block-figure {
-    background-position: center;
-    background-repeat: no-repeat;
-    background-size: cover; /* Fallback */
-    margin-bottom: 0;
 
-    > img {
-      width: 100% !important;
+    > figure {
+      margin-bottom: 0;
     }
   }
 
   .Block-inner {
-    padding: rem(($Block-padding * 2)) $Block-padding-percentage;
-    position: relative;
+    padding: rem($Block-padding) $Block-padding-percentage;
 
     > *:last-child {
       margin-bottom: 0;
@@ -35,43 +31,33 @@
 
 
 /* ======
- * Block - color
+ * Block figure - background fill modifier
  * ====== */
 
-.Block.-color-light {
-  background-color: $BlockLight-bgColor;
+.Block-figure.-bg-fill {
+  min-height: $base-space * 6;
+  position: relative;
 
-  .Block-heading {
-    color: $BlockLight-headingColor;
-  }
-
-  .Block-content {
-    color: $BlockLight-color;
-  }
-}
-
-
-/* ======
- * Block - background variation
- * ====== */
-
-.Block--bg {
-  border: 0;
-  min-height: $base-space * 8;
-
-  .Block-figure {
+  > figure {
     @extend %positionAbsoluteFill;
-    z-index: 0;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover; /* Fallback */
 
     img {
       display: block;
       height: 100%;
       object-fit: cover;
-      width: 100%;
+      width: 100% !important;
     }
   }
+}
 
-  .Block-inner {
-    z-index: 1;
-  }
+
+/* ======
+ * Block - primary
+ * ====== */
+
+.Block--primary {
+  background-color: #ffffff;
 }

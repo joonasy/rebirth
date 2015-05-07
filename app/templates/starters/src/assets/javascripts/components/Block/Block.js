@@ -7,15 +7,14 @@ var app = app || {};
 app.Block = function($) {
 
   var self = {},
-      $blockBg = $('.Block--bg'),
-      $figure = $('.Block-figure', $blockBg);
+      $blockFigure = $('.Block-figure.-bg-fill > figure');
 
   self.init = function() {
     figureImgAsBg();
   }
 
   var figureImgAsBg = function() {
-    app.figureImgAsBg($figure);
+    app.figureImgAsBg($blockFigure);
   }
 
   return {
