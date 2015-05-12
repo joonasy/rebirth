@@ -28,34 +28,6 @@
 
 
 /* ======
- * Button - primary variation
- * ====== */
-
-.Button--primary {
-  background-color: $ButtonPrimary-bgColor;
-  border-color: $ButtonPrimary-borderColor;
-  color: $ButtonPrimary-color;
-
-  &:hover, &:focus {
-    background-color: $ButtonPrimary-bgColorHover;
-    border-color: $ButtonPrimary-borderColorHover;
-    color: $ButtonPrimary-colorHover;
-  }
-
-  &.-border {
-    background-color: transparent;
-    color: $ButtonPrimary-typeBorderColor;
-
-    &:hover, &:focus {
-      background-color: $ButtonPrimary-typeBorderBgColorHover;
-      border-color: $ButtonPrimary-typeBorderColorHover;
-      color: $ButtonPrimary-typeBorderColorHover;
-    }
-  }
-}
-
-
-/* ======
  * Button - shape
  * ====== */
 
@@ -101,5 +73,33 @@
   &.is-disabled,
   &[disabled], fieldset[disabled] & {
     @extend %disabled;
+  }
+}
+
+
+/* ======
+ * Button - primary variation
+ * ====== */
+
+.Button--primary {
+  background-color: $color-primary;
+  border-color: #ffffff;
+  color: #ffffff;
+
+  &:hover, &:focus {
+    background-color: darken($color-primary, 5);
+    border-color: $color-primary;
+    color: #ffffff;
+  }
+
+  &.-border {
+    background-color: transparent;
+    color: $color-text;
+
+    &:hover, &:focus {
+      background-color: transparent;
+      border-color: $color-primary;
+      color: $color-primary;
+    }
   }
 }
