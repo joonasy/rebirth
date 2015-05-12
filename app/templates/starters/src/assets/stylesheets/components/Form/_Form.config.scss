@@ -7,16 +7,4 @@ $Form-height: $base-space * 2;
 $Form-borderWidth: 1px;
 $Form-borderRadius: $borderRadius;
 $Form-fontWeight: $base-fontWeightStrong;
-$Form-sidePadding: $base-space / 1.5;
-
-$FormPrimary-placeholderColor: $color-textLight;
-$FormPrimary-placeholderColorHover: darken($color-textLight, 10);
-$FormPrimary-color: $color-textLight;
-$FormPrimary-colorFocus: $color-text;
-$FormPrimary-bgColor: #ffffff;
-$FormPrimary-bgColorHover: #ffffff;
-$FormPrimary-bgColorFocus: #ffffff;
-$FormPrimary-borderColor: $color-borderPrimary;
-$FormPrimary-borderColorHover: $color-borderPrimary;
-$FormPrimary-borderColorFocus: rgba(#000000, 0.15);
-$FormPrimary-addonBgColor: lighten($FormPrimary-borderColor, 3);
+$Form-padding: $base-space / 1.5;

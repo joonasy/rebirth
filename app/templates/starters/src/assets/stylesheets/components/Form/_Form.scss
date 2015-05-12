@@ -19,7 +19,7 @@
     display: block;
     margin-bottom: rem($base-space);
     outline: 0;
-    padding: 0 rem($Form-sidePadding);
+    padding: 0 rem($Form-padding);
     position: relative;
     width: 100%;
 
@@ -34,7 +34,7 @@
 
   .Form-addon {
     line-height: rem($Form-height - ($Form-borderWidth * 2));
-    padding: 0 rem($Form-sidePadding / 2);
+    padding: 0 rem($Form-padding / 2);
     text-align: center;
   }
 
@@ -85,40 +85,41 @@
   }
 }
 
+
 /* ======
- * Form - color
+ * Form - primary variation
  * ====== */
 
 .Form--primary {
 
   .Form-item, .Form-addon {
-    background-color: $FormPrimary-bgColor;
-    color: $FormPrimary-color;
+    background-color: #ffffff;
+    color: $color-textLight;
 
     &.-border {
-      border-color: $FormPrimary-borderColor;
+      border-color: $color-borderPrimary;
     }
   }
 
   .Form-item {
-    @include colorPlaceholder($FormPrimary-placeholderColor);
-    color: $FormPrimary-placeholderColor;
+    @include colorPlaceholder($color-textLight);
+    color: $color-textLight;
 
     &:hover {
-      @include colorPlaceholder($FormPrimary-placeholderColorHover);
-      background-color: $FormPrimary-bgColorHover;
-      color: $FormPrimary-placeholderColorHover;
+      @include colorPlaceholder(darken($color-textLight, 10));
+      background-color: darken($color-textLight, 10);
+      color: darken($color-textLight, 10);
     }
 
     &:focus {
-      background-color: $FormPrimary-bgColorFocus;
-      box-shadow: 0 0 1px $Form-borderWidth $FormPrimary-borderColorFocus;
-      color: $FormPrimary-colorFocus;
+      background-color: #ffffff;
+      box-shadow: 0 0 1px $Form-borderWidth rgba(#000000, 0.15);
+      color: $color-text;
     }
 
     &.-border {
       &:hover {
-        border-color: $FormPrimary-borderColorHover;
+        border-color: $color-borderPrimary;
       }
 
       &:focus {
@@ -128,6 +129,6 @@
   }
 
   .Form-addon {
-    background-color: $FormPrimary-addonBgColor;
+    background-color: lighten($FormPrimary-borderColor, 3);
   }
 }
