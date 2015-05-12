@@ -324,24 +324,7 @@ Here is an example of an component with the correct structure:
 
 
 /* ======
- * Button - primary variation                            # [5]
- * ====== */
-
-.Button--primary {
-  …
-
-  &:hover, &:focus {
-    …
-  }
-
-  &.-border {
-    …
-  }
-}
-
-
-/* ======
- * Button - shape modifiers                              # [6]
+ * Button - shape modifiers                              # [5]
  * ====== */
 
 .Button {
@@ -358,7 +341,7 @@ Here is an example of an component with the correct structure:
 
 
 /* ======
- * Button - size modifier                               # [7]
+ * Button - size modifier                               # [6]
  * ====== */
 
 .Button {
@@ -374,12 +357,29 @@ Here is an example of an component with the correct structure:
 
 
 /* ====== 
- * Button - disabled state                              # [8]
+ * Button - disabled state                              # [7]
  * ====== */
 
 .Button {
 
   &.is-disabled  {
+    …
+  }
+}
+
+
+/* ======
+ * Button - primary variation                            # [8]
+ * ====== */
+
+.Button--primary {
+  …
+
+  &:hover, &:focus {
+    …
+  }
+
+  &.-border {
     …
   }
 }
@@ -389,9 +389,9 @@ Here is an example of an component with the correct structure:
 * **2.** This simple, low effort commenting can make a lot of difference to developers who are unaware of relationships across projects, or who are wanting to know how, why, and where other styles might be being inherited from.
 * **3.** Default button settings.
 * **4.** Indent descendants. As a rule, you should comment anything that isn’t immediately obvious from the code alone.
-* **5.** Define variations with second-level titles
-* **6.**, **7.** Define modifiers after variations with second-level titles
-* **8.** Define states after modifiers with second-level titles
+* **5.**, **6.** Define modifiers with second-level titles
+* **7.** Define states after modifiers with second-level titles
+* * **8.** Define variations with second-level titles after modifiers and states.
 
 
 ## Structuring partials
@@ -400,21 +400,21 @@ Read [Naming conventions](naming-conventions.md) first.
 
 #### Components
 
-Always name the isolated partials as they are presented in the markup. Example of an isolated component structure:
+Always name the isolated partials as they are presented in the markup. Example of an isolated component structure in **correct order**:
 
 ```
-components/_Button.scss                # [1]
-components/_ButtonCollection.scss      # [2]
-components/_Button--primary.scss       # [3]
-components/_Button-dropdown.scss       # [4]
-components/_Button.-modifierName.scss  # [5]
+components/_ButtonCollection.scss      # [1]
+components/_Button.scss                # [2]
+components/_Button-dropdown.scss       # [3]
+components/_Button.-modifierName.scss  # [4]
+components/_Button--primary.scss       # [5]
 ```
 
-If you are build a large component which, say, contains over 400 lines it is advisable to separate large component modifiers (**5.**), variations (**2.**) and descendants (**4.**) into their own partials. All of our isolated partials should always start with a first-level title.
+If you are build a large component which, say, contains over 400 lines it is advisable to separate large component modifiers (**4.**), variations (**5.**) and descendants (**3.**) into their own partials. All of our isolated partials should always start with a first-level title.
 
-If component modifiers (**5.**) or other component related partials contain _responsive variants_ (e.g `.Button.-m-modifierName {}`) it isn't necessary to include that variant in the file name.
+If component modifiers (**4.**) or other component related partials contain _responsive variants_ (e.g `.Button.-m-modifierName {}`) it isn't necessary to include that variant in the file name.
 
-Component collections (**2.**) are always isolated.
+Component collections (**1.**) are always isolated.
 
 
 ##### Components configuration
