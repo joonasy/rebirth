@@ -1,6 +1,6 @@
 {
   "name": "generator-msc",
-  "version": "0.1.0",
+  "version": "0.1.1",
   "description": "Mediasignals styleguide, starter kit and Yeoman generator for new web projects.",
   "license": "MIT",
   "main": "app/index.js",
