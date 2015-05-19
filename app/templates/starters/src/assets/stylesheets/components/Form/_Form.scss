@@ -23,6 +23,8 @@
     padding: 0 rem($Form-padding);
     position: relative;
     width: 100%;
+    -webkit-appearance: none;
+    -moz-appearance: none;
 
     .touch & {
       font-size: 16px;
