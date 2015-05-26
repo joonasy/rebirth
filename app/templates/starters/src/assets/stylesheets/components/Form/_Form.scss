@@ -110,7 +110,7 @@
 
     &:hover {
       @include colorPlaceholder(darken($color-textLight, 10));
-      background-color: darken($color-textLight, 10);
+      background-color: darken($color-bgLightest, 5);
       color: darken($color-textLight, 10);
     }
 
@@ -132,6 +132,6 @@
   }
 
   .Form-addon {
-    background-color: lighten($FormPrimary-borderColor, 3);
+    background-color: lighten($color-borderPrimary, 3);
   }
 }
