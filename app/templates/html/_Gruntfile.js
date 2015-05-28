@@ -94,7 +94,7 @@ module.exports = function (grunt) {
       },
       other: {
         files: [
-          '<%%= path.src %>/assets/img/**/*.{png,jpg,jpeg,gif,webp,svg}'
+          '<%%= path.src %>/assets/images/**/*.{png,jpg,jpeg,gif,webp,svg}'
         ]
       }
     },
@@ -143,8 +143,8 @@ module.exports = function (grunt) {
      * Compass
      *
      * For relative images:
-     * httpImagesPath: '../img',
-     * httpGeneratedImagesPath: '../img'
+     * httpImagesPath: '../images',
+     * httpGeneratedImagesPath: '../images'
      */
     compass: {
       options: {
@@ -230,9 +230,9 @@ module.exports = function (grunt) {
       dist: {
         files: [{
           expand: true,
-          cwd: '<%%= path.src %>/assets/img',
+          cwd: '<%%= path.src %>/assets/images',
           src: '{,*/}*.{png,jpg,jpeg,svg}',
-          dest: '<%%= path.dist %>/assets/img'
+          dest: '<%%= path.dist %>/assets/images'
         }]
       }
     },
@@ -287,7 +287,7 @@ module.exports = function (grunt) {
           src: [
             '*.{ico,png,txt}',
             '.htaccess',
-            'assets/img/{,*/}*.{webp,gif}',
+            'assets/images/{,*/}*.{webp,gif}',
             'assets/fonts/*'
           ]
         }, {
@@ -327,7 +327,7 @@ module.exports = function (grunt) {
             '!<%%= path.dist %>/assets/javascripts/vendor/jquery.min.js',
             '!<%%= path.dist %>/assets/javascripts/vendor/modernizr-custom.js',
             '<%%= path.dist %>/assets/stylesheets/{,*/}*.css',
-            '<%%= path.dist %>/assets/img/{,*/}*.{png,jpg,jpeg,gif,webp}',
+            '<%%= path.dist %>/assets/images/{,*/}*.{png,jpg,jpeg,gif,webp}',
             '<%%= path.dist %>/assets/fonts/*'
           ]
         }
