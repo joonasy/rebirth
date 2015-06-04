@@ -26,6 +26,7 @@
         @extend %positionAbsoluteFill;
         background-position: center;
         background-size: cover; /* Fallback */
+        background-position: center; /* Fallback */
         margin-bottom: 0;
         z-index: 0;
 
