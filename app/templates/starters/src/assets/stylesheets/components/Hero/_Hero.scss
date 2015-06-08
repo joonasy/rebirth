@@ -25,8 +25,8 @@
       .Hero-figure {
         @extend %positionAbsoluteFill;
         background-position: center;
-        background-size: cover; /* Fallback */
-        background-position: center; /* Fallback */
+        background-size: cover;
+        background-position: center;
         margin-bottom: 0;
         z-index: 0;
 
@@ -35,6 +35,10 @@
           height: 100%;
           object-fit: cover;
           width: 100%;
+        }
+
+        .no-js & > img {
+          display: none;
         }
       }
 
