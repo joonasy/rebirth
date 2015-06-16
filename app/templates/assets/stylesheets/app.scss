@@ -4,15 +4,10 @@
 
 @charset 'UTF-8';
 
-// Vendor
-@import 'compass';
-@import 'normalize.scss/normalize';
-
 // Config
 @import 'config';
 
 // Mixins
-@import 'mixins/bgRetina';
 @import 'mixins/breakpoint';
 @import 'mixins/color';
 @import 'mixins/display';
@@ -20,7 +15,6 @@
 @import 'mixins/clearfix';
 @import 'mixins/fontSize';
 @import 'mixins/position';
-@import 'mixins/spriteRetina';
 @import 'mixins/text';
 @import 'mixins/utility';
 
@@ -28,6 +22,9 @@
 @import 'mixins/shapeArrow';
 @import 'mixins/shapeMenu';
 @import 'mixins/shapeTriangle';
+
+// Vendors
+@import 'vendors/normalize';
 
 // Generic
 @import 'generic/base';

@@ -3,15 +3,25 @@
 
 <v:page.header.meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
 <v:page.header.meta name="viewport" content="width=device-width,initial-scale=1" />
+<v:page.header.meta name="description" content="{page.description}" />
+<v:page.header.meta name="abstract" content="{page.abstract}" />
+<v:page.header.meta name="keywords" content="{page.keywords}" />
+
+<f:if condition="{page.subtitle}">
+  <f:then>
+    <v:page.header.title title="{page.subtitle} — <%= appRoot %>" whitespaceString=" " setIndexedDocTitle="1" />
+  </f:then>
+  <f:else>
+    <v:page.header.title title="{page.title} — <%= appRoot %>" whitespaceString=" " setIndexedDocTitle="1" />
+  </f:else>
+</f:if>
 
 <f:if condition="{settings.dev}">
   <f:then>
-    <!-- Stylesheets -->
-    <v:asset.style path="EXT:<%= appRoot %>/.tmp/Assets/stylesheets/app.css" rewrite="false" standalone="true"></v:asset.style>
-
+    <!-- App -->
+    <v:asset.style path="EXT:<%= appRoot %>/Resources/Public/Assets/stylesheets/app.css" rewrite="false" standalone="true"></v:asset.style>
     <!-- Javascripts -->
-    <v:asset.script path="EXT:<%= appRoot %>/bower_components/modernizr/modernizr.js" rewrite="false" standalone="true" allowMoveToFooter="false"></v:asset.script>
-    <v:asset.script path="EXT:<%= appRoot %>/Assets/javascripts/head.js" rewrite="false" standalone="true" allowMoveToFooter="false"></v:asset.script>
+    <v:asset.script path="EXT:<%= appRoot %>/Resources/Public/Assets/javascripts/head.js" rewrite="false" standalone="true" allowMoveToFooter="false"></v:asset.script>
   </f:then>
   <f:else>
     <v:asset.style path="EXT:<%= appRoot %>/Resources/Public/Assets/stylesheets/app.min.css"></v:asset.style>

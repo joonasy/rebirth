@@ -1,5 +1,12 @@
 # Changelog
 
+## 0.2.0 ()
+* Grunt removed and Gulp added
+* Compass removed
+* Browserify added
+* Browsersync added
+* JSCS styleguide testing 
+
 ## 0.1.0 (2015-5-7)
 * Rest of the CSS styleguide done
 * Part of JS styleguide 

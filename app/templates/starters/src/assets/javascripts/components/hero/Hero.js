@@ -2,23 +2,28 @@
  * Hero
  * ======================================== */
 
-var app = app || {};
+ 'use strict';
 
-app.Hero = function($) {
+ var $ = require('jquery');
+ var figureImgAsBg = require('../plugins/figureImgAsBg');
 
-  var self = {},
-      $hero = $('.js-Hero'),
-      $figure = $('.Hero-figure', $hero);
+ var hero = function() {
+
+  var self = {};
+  var $hero = $('.js-Hero');
+  var $figure = $('.Hero-figure', $hero);
 
   self.init = function() {
-    figureImgAsBg();
+    heroFigureAsBg();
   }
 
-  var figureImgAsBg = function() {
-    app.figureImgAsBg($figure);
+  var heroFigureAsBg = function() {
+    figureImgAsBg($figure);
   }
 
   return {
     init: self.init
   }
-}(jQuery);
+};
+
+module.exports = hero();

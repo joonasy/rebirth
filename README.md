@@ -10,12 +10,11 @@ This starter kit is **not a framework** but it contains predefined components an
 ## Features
 
 * CSS Autoprefixing
-* Built-in preview server with LiveReload
+* Built-in preview server with Browsersync
 * Automatically compile Sass
-* Automatically wire up your Bower components
 * Image Optimization
-* Autobuild modernizr based on project needs
 * Combine media queries
+* Browserify
 
 
 ## Getting started
@@ -39,10 +38,9 @@ Please read and understand all of the following before doing anything. All of th
 
 Install all the requirements before installing the generator.
 
-* [Node.js](http://nodejs.org/) ([Npm](https://www.npmjs.org/))
-* [Compass](http://compass-style.org/) ([Ruby](https://www.ruby-lang.org/en/)) ```gem install compass```
+* [Node.js](http://nodejs.org/) 
+* [Npm](https://www.npmjs.org/)
 * [Yeoman](http://yeoman.io/) ```npm install -g yo```
-* [Grunt](http://gruntjs.com/) ```npm install -g grunt-cli```
 * [Bower](http://bower.io/) ```npm install -g bower```
 
 
@@ -63,7 +61,7 @@ or alternatively make a new directory, cd into it and run the generator:
 
 ## Usage
 
-Run ```grunt``` for building and ```grunt dev``` for developing.
+Run ```npm run build``` for building and ```npm run dev``` for developing.
 
 
 ## Contribute
@@ -78,15 +76,14 @@ Please discuss about new ideas and things that you think should be modified. Cur
 * All necessary CSS components
 * Sub generators for starters
 * CSS modular scale
-* Some sort of integration/forking with [generator-typo3](https://github.com/Milanowicz/generator-typo3)
-* Livereload to browsersync
-* Use Libsass and get rid of Compass
-* Deployment settings (Phploy (?))
-* JavaScript styleguide
-* Testing for JavaScript
-* Gitignores and readmes to generator
-* Grunt -> Gulp
-* Consider adding babel.js and removing jQuery
+* Maybe some sort of integration/forking with [generator-typo3](https://github.com/Milanowicz/generator-typo3)
+* Deployment settings (Phploy?)
+* Rest of the JavaScript styleguide
+* More testing for JavaScript
+* Consider removing jQuery
+* Add custom modernizr build
+* Dockerfile (docker-compose) for docker environments
+* Rewrite default JavaScript components to ES6
 
 
 ## License

@@ -29,3 +29,17 @@
 @function even($number) {
   @return $number % 2 == 0;
 }
+
+//
+// Simple image urls
+//
+@function imageUrl($path) {
+  @return url('#{$imagesPath}/#{$path}');
+}
+
+//
+// Simple font urls
+//
+@function fontUrl($path) {
+  @return url('#{$fontsPath}/#{$path}');
+}

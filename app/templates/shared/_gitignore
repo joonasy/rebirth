@@ -15,5 +15,10 @@ bower_components/
 # Build files
 # ======
 
-<% if (typoProject) { %>Resources/Public/Assets<% } %>
+rev-manifest.json
+<% if (typoProject) { %>
+  Bottom.dist.html
+  Top.dist.html
+  Resources/Public/Assets
+<% } %>
 <% if (htmlProject) { %>dist/<% } %>

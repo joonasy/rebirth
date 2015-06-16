@@ -13,3 +13,4 @@ config.concatenateJs = 1
 config.concatenateCss = 1
 config.compressCss = 1
 config.compressJs = 1
+config.noPageTitle = 2

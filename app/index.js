@@ -163,20 +163,20 @@ var MscGenerator = yeoman.generators.Base.extend({
   },
 
   /**
-   * Setup gruntfile
+   * Setup gulpfile
    */
-  gruntfile: function() {
+  gulpfile: function() {
     if(this.typoProject) {
       this.template(
-        'typo3/_Gruntfile.js',
-        this.destinationPath('Gruntfile.js')
+        'typo3/_gulpfile.js',
+        this.destinationPath('gulpfile.js')
       );
     }
 
     if(this.htmlProject) {
       this.template(
-        'html/_Gruntfile.js',
-        this.destinationPath('Gruntfile.js')
+        'html/_gulpfile.js',
+        this.destinationPath('gulpfile.js')
       );
     }
   },
@@ -234,6 +234,11 @@ var MscGenerator = yeoman.generators.Base.extend({
     this.fs.copy(
       this.templatePath('shared/editorconfig'),
       this.destinationPath('.editorconfig')
+    );
+
+    this.fs.copy(
+      this.templatePath('shared/jscsrc'),
+      this.destinationPath('.jscsrc')
     );
 
     this.template(

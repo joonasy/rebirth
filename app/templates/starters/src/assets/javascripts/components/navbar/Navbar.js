@@ -2,27 +2,30 @@
  * Navbar
  * ======================================== */
 
-var app = app || {};
+'use strict';
 
-app.Navbar = function($) {
+var $ = require('jquery');
+var toggle = require('../plugins/toggle');
+
+var navbar = function() {
 
   var self = {};
 
   self.init = function() {
-    var $navBar = $('.js-Navbar'),
-        $navBarTrigger = $('.js-Navbar-trigger', $navBar),
-        $navItem = $('.Navbar-item', $navBar),
-        $navSubTrigger = $('.Navbar-subTrigger', $navBar),
-        $navLink = $('.Navbar-link', $navBar).filter(function() {
+    var $navBar = $('.js-Navbar');
+    var $navBarTrigger = $('.js-Navbar-trigger', $navBar);
+    var $navItem = $('.Navbar-item', $navBar);
+    var $navSubTrigger = $('.Navbar-subTrigger', $navBar);
+    var $navLink = $('.Navbar-link', $navBar).filter(function() {
           return $(this).siblings($navSubTrigger).length;
         });
 
-    app.toggle({
+    toggle({
       trigger: $navBarTrigger,
       element: $navBar
     });
 
-    app.toggle({
+    toggle({
       trigger: $navSubTrigger,
       element: $navItem,
       toggleParent: true,
@@ -30,16 +33,19 @@ app.Navbar = function($) {
       unToggleOtherToggles: false
     });
 
-    app.toggle({
+    toggle({
       trigger: $navLink,
       element: $navItem,
       toggleParent: true,
       unToggleParentSiblings: true,
-      disableFirstClickOnTouch: true
+      disableFirstClickOnTouch: true,
+      unToggleOtherToggles: false
     });
   }
 
   return {
     init: self.init
   }
-}(jQuery);
+};
+
+module.exports = navbar();

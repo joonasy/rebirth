@@ -8,9 +8,8 @@ Please read [Mediasignal Web Starter Kit](https://bitbucket.org/mediasignal/medi
 
 ## Requirements
 
-* [Node.js](http://nodejs.org/) ([Npm](https://www.npmjs.org/)) 
-* [Compass](http://compass-style.org/) ([Ruby](https://www.ruby-lang.org/en/)) `gem install compass`
-* [Grunt](http://gruntjs.com/) `npm install -g grunt-cli`
+* [Node.js](http://nodejs.org/)
+* [Npm](https://www.npmjs.org/)
 * [Bower](http://bower.io/) `npm install -g bower`
 
 ## Install
@@ -25,5 +24,5 @@ Install bower packages
 
 ## Usage (CSS/JS development)
 
-* `grunt`: Default build task. Run **always** before each release.
-* `grunt dev`: Watches files and livereloads browser.
+* `npm run build`: Default build task. Run **always** before each release.
+* `npm run dev`: Watches files and activates Browsersync.

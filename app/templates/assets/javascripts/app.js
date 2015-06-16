@@ -2,17 +2,15 @@
  * Application
  * ======================================== */
 
+'use strict';
+
+var $ = require('jquery');
+var fastClick = require('fastclick');
+
 $(function() {
 
   /**
    * Init FastClick
    */
-  FastClick.attach(document.body);
-
-  /**
-   * Declare page as loaded
-   */
-  $(window).on("load", function() {
-    $('html').removeClass('app-is-loading').addClass('app-is-loaded');
-  });
+  fastClick(document.body);
 });
