@@ -5,10 +5,10 @@
 'use strict';
 
 var $ = require('jquery');
+var toggleObjects = [];
 
 var toggle = function(options) {
 
-  var toggleObjects = [];
   var config;
   var self = {};
 
@@ -55,7 +55,7 @@ var toggle = function(options) {
 
     var firstClick = $this.hasClass('is-firstTouch');
 
-    if (config.disableFirstClickOnTouch && !firstClick && Modernizr.touch) {
+    if (config.disableFirstClickOnTouch && !firstClick && Modernizr.touchevents) {
 
       $this.addClass('is-firstTouch')
       e.preventDefault();
@@ -103,6 +103,7 @@ var toggle = function(options) {
         }
 
         $(this).removeClass(value.elementClass);
+
       });
 
       if (value.triggerClass) {
