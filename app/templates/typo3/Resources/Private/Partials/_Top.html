@@ -9,18 +9,19 @@
 
 <f:if condition="{page.subtitle}">
   <f:then>
-    <v:page.header.title title="{page.subtitle} — <%= appRoot %>" whitespaceString=" " setIndexedDocTitle="1" />
+    <v:page.header.title title="{page.subtitle} — <%= appNameHumanize %>" whitespaceString=" " setIndexedDocTitle="1" />
   </f:then>
   <f:else>
-    <v:page.header.title title="{page.title} — <%= appRoot %>" whitespaceString=" " setIndexedDocTitle="1" />
+    <v:page.header.title title="{page.title} — <%= appNameHumanize %>" whitespaceString=" " setIndexedDocTitle="1" />
   </f:else>
 </f:if>
 
 <f:if condition="{settings.dev}">
   <f:then>
-    <!-- App -->
+    <!-- Css -->
     <v:asset.style path="EXT:<%= appRoot %>/Resources/Public/Assets/stylesheets/app.css" rewrite="false" standalone="true"></v:asset.style>
     <!-- Javascripts -->
+    <v:asset.script path="EXT:<%= appRoot %>/bower_components/modernizr/modernizr.js" rewrite="false" standalone="true" allowMoveToFooter="false"></v:asset.script>
     <v:asset.script path="EXT:<%= appRoot %>/Resources/Public/Assets/javascripts/head.js" rewrite="false" standalone="true" allowMoveToFooter="false"></v:asset.script>
   </f:then>
   <f:else>

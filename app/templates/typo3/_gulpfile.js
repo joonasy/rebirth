@@ -234,21 +234,9 @@ gulp.task('watch', function(callback) {
 });
 
 /**
- * Modernizr
+ * Tasks
  */
-gulp.task('modernizr', ['stylesheets', 'javascripts'], function() {
-  gulp.src([config.javascripts.dest + 'app.js', config.stylesheets.dest + '*.css'])
-    .pipe($.modernizr({
-      excludeTests: ['hidden']
-    }))
-    .on('error', handleError)
-    .pipe(gulp.dest(config.javascripts.dest))
-});
-
-/**
- * Build tasks
- */
-var buildTasks = ['stylesheets', 'javascripts', 'images', 'fonts'];
+var tasks = ['stylesheets', 'javascripts','images', 'fonts'];
 
 /**
  * Coding style
@@ -259,9 +247,37 @@ gulp.task('jscs', function() {
 });
 
 /**
+ * Modernizr
+ */
+gulp.task('modernizr', ['stylesheets', 'javascripts'], function() {
+  return gulp.src([
+    config.javascripts.dest + '*.js',
+    config.stylesheets.dest + '*.css'
+  ])
+    .pipe($.modernizr({
+      excludeTests: ['hidden']
+    }))
+    .on('error', handleError)
+    .pipe($.uglify())
+    .pipe(gulp.dest(config.javascripts.dest));
+});
+
+/**
+ * Concat
+ */
+gulp.task('concatModernizr', ['modernizr'], function() {
+  return gulp.src([
+    config.javascripts.dest + 'modernizr.js',
+    config.javascripts.dest + 'head.min.js'
+  ])
+    .pipe($.concat('head.min.js'))
+    .pipe(gulp.dest(config.javascripts.dest))
+});
+
+/**
  * Create dist files
  */
-gulp.task('createDistPartials', buildTasks, function() {
+gulp.task('createDistPartials', tasks, function() {
   return gulp.src([
     config.src + 'Partials/Top.html',
     config.src + 'Partials/Bottom.html'
@@ -285,10 +301,9 @@ var rmOriginalFiles = function() {
   });
 };
 
-gulp.task('rev', buildTasks.concat(['createDistPartials']), function() {
+gulp.task('rev', tasks.concat(['createDistPartials']), function() {
   return gulp.src([
-    config.dest + 'Assets/{stylesheets,javascripts,images,fonts}/**',
-    '!' + config.dest + '/Assets/javascripts/modernizr.js'
+    config.dest + 'Assets/{stylesheets,javascripts,images,fonts}/**'
   ])
     .pipe($.rev())
     .pipe(gulp.dest(config.dest + 'Assets/'))
@@ -300,7 +315,7 @@ gulp.task('rev', buildTasks.concat(['createDistPartials']), function() {
 /**
  * Update references
  */
-gulp.task('updateReferences', buildTasks.concat(['rev']), function() {
+gulp.task('updateReferences', tasks.concat(['rev']), function() {
   var manifest = gulp.src('./rev-manifest.json');
 
   return gulp.src([
@@ -320,11 +335,11 @@ gulp.task('updateReferences', buildTasks.concat(['rev']), function() {
  */
 gulp.task('build', ['jscs'], function() {
   rimraf.sync(config.dest);
-  gulp.start(buildTasks.concat(['createDistPartials', 'rev', 'updateReferences']));
+  gulp.start(tasks.concat(['modernizr', 'concatModernizr', 'createDistPartials', 'rev', 'updateReferences']));
 });
 
 gulp.task('default', function() {
   gulp.start('build');
 });
 
-gulp.task('dev', buildTasks.concat(['watch', 'server']));
+gulp.task('dev', tasks.concat(['watch', 'server']));
