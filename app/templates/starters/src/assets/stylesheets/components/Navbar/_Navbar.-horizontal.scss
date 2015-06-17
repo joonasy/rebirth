@@ -6,7 +6,7 @@
  */
 
 @mixin NavbarHorizontal($namespace: '') {
-  .Navbar.-#{$namespace}horizontal {
+  .Navbar.#{-$namespace}horizontal {
 
     .Navbar-trigger { display: none; }
 
