@@ -12,6 +12,11 @@ var component = require('./components/component');
 $(function() {
 
   /**
+   * Init example component
+   */
+  component.init();
+
+  /**
    * Init FastClick
    */
   fastClick(document.body);

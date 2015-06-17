@@ -2,22 +2,27 @@
  * Block
  * ======================================== */
 
-var app = app || {};
+'use strict';
 
-app.Block = function($) {
+var $ = require('jquery');
+var figureImgAsBg = require('../plugins/figureImgAsBg');
 
-  var self = {},
-      $blockFigure = $('.Block-figure.-bg-fill > figure');
+var block = function() {
+
+  var self = {};
+  var $blockFigure = $('.Block-figure.-bg-fill > figure');
 
   self.init = function() {
     figureImgAsBg();
   }
 
-  var figureImgAsBg = function() {
-    app.figureImgAsBg($blockFigure);
+  var blockImgAsBg = function() {
+    figureImgAsBg($blockFigure);
   }
 
   return {
     init: self.init
   }
-}(jQuery);
+};
+
+module.exports = block();
