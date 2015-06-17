@@ -2,9 +2,12 @@
  * Block
  * ======================================== */
 
-var app = app || {};
+'use strict';
 
-app.Block = function($) {
+var $ = require('jquery');
+var figureImgAsBg = require('../plugins/figureImgAsBg');
+
+var block = function() {
 
   var self = {},
       $blockFigure = $('.Block-figure.-bg-fill > figure');
@@ -13,11 +16,13 @@ app.Block = function($) {
     figureImgAsBg();
   }
 
-  var figureImgAsBg = function() {
-    app.figureImgAsBg($blockFigure);
+  var blockImgAsBg = function() {
+    figureImgAsBg($blockFigure);
   }
 
   return {
     init: self.init
   }
-}(jQuery);
+}();
+
+module.exports = hero();

@@ -2,12 +2,12 @@
  * Hero
  * ======================================== */
 
- 'use strict';
+'use strict';
 
- var $ = require('jquery');
- var figureImgAsBg = require('../plugins/figureImgAsBg');
+var $ = require('jquery');
+var figureImgAsBg = require('../plugins/figureImgAsBg');
 
- var hero = function() {
+var hero = function() {
 
   var self = {};
   var $hero = $('.js-Hero');
