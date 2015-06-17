@@ -2,9 +2,7 @@
  * Component
  * ======================================== */
 
-var app = app || {};
-
-app.Component = function($) {
+var component = function() {
 
   var self = {};
 
@@ -17,4 +15,6 @@ app.Component = function($) {
   return {
     init: self.init
   }
-}(jQuery);
+};
+
+module.exports = component();
