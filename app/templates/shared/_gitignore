@@ -17,8 +17,8 @@ bower_components/
 
 rev-manifest.json
 <% if (typoProject) { %>
-  Bottom.dist.html
-  Top.dist.html
-  Resources/Public/Assets
+Bottom.dist.html
+Top.dist.html
+Resources/Public/Assets
 <% } %>
 <% if (htmlProject) { %>dist/<% } %>
