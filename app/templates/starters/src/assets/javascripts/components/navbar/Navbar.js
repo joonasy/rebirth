@@ -35,6 +35,7 @@ app.Navbar = function($) {
       element: $navItem,
       toggleParent: true,
       unToggleParentSiblings: true,
+      unToggleOtherToggles: false,
       disableFirstClickOnTouch: true
     });
   }
