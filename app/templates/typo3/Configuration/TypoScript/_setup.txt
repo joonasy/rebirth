@@ -8,7 +8,7 @@ plugin.tx_<%= appRoot %>.view {
   plugin.tx_<%= appRoot %>.settings.dev = 1
 [END]
 
-config.htmlTag_setParams = class="no-js app-is-loading"
+config.htmlTag_setParams = class="no-js"
 config.concatenateJs = 1
 config.concatenateCss = 1
 config.compressCss = 1
