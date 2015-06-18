@@ -193,7 +193,7 @@ gulp.task('images', function() {
     return pipeline;
   }
 
-  return pipeline.pipe(browserSync.reload({stream: true}));
+  return pipeline.pipe(browserSync.stream());
 });
 
 /**
@@ -209,7 +209,7 @@ gulp.task('fonts', function() {
     return pipeline;
   }
 
-  return pipeline.pipe(browserSync.reload({stream: true}));
+  return pipeline.pipe(browserSync.stream());
 });
 
 /**
@@ -219,7 +219,8 @@ gulp.task('server', function() {
   return browserSync({
     open: false,
     port: 9001,
-    proxy: '<%= appRoot %>.dev'
+    proxy: '<%= appRoot %>.dev',
+    notify: false
   });
 });
 
@@ -255,7 +256,15 @@ gulp.task('modernizr', ['stylesheets', 'javascripts'], function() {
     config.stylesheets.dest + '*.css'
   ])
     .pipe($.modernizr({
-      excludeTests: ['hidden']
+      excludeTests: ['hidden'],
+      options: [
+        "setClasses",
+        "addTest",
+        "html5printshiv",
+        "testProp",
+        "fnBind",
+        "prefixed"
+      ]
     }))
     .on('error', handleError)
     .pipe($.uglify())
