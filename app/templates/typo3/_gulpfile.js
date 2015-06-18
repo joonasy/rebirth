@@ -274,7 +274,7 @@ gulp.task('modernizr', ['stylesheets', 'javascripts'], function() {
 /**
  * Concat
  */
-gulp.task('concatModernizr', ['modernizr'], function() {
+gulp.task('concatHeadScripts', ['modernizr'], function() {
   return gulp.src([
     config.javascripts.dest + 'modernizr.js',
     config.javascripts.dest + 'head.min.js'
@@ -344,7 +344,7 @@ gulp.task('updateReferences', tasks.concat(['rev']), function() {
  */
 gulp.task('build', ['jscs'], function() {
   rimraf.sync(config.dest);
-  gulp.start(tasks.concat(['modernizr', 'concatModernizr', 'createDistPartials', 'rev', 'updateReferences']));
+  gulp.start(tasks.concat(['modernizr', 'concatHeadScripts', 'createDistPartials', 'rev', 'updateReferences']));
 });
 
 gulp.task('default', function() {
