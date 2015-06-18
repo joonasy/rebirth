@@ -8,7 +8,6 @@ var $ = require('jquery');
 var toggleObjects = [];
 
 var toggle = function(options) {
-
   var config;
   var self = {};
 
@@ -18,7 +17,7 @@ var toggle = function(options) {
     element: $(),
     elementClass: 'is-open',
     elementStopPropagation: true,
-    toggleParent: false,
+    toggleClosest: false,
     disableFirstClickOnTouch: false,
     unToggleParentSiblings: false,
     unToggleOtherToggles: true,
@@ -42,9 +41,9 @@ var toggle = function(options) {
 
     if (config.unToggleOtherToggles) {
 
-      if (config.toggleParent) {
+      if (config.toggleClosest) {
         isToggled = !$this.closest(config.element).hasClass(config.elementClass);
-      } else if (!config.toggleParent) {
+      } else if (!config.toggleClosest) {
         isToggled = !config.element.hasClass(config.elementClass);
       }
 
@@ -65,7 +64,7 @@ var toggle = function(options) {
       }, 1000);
     }
 
-    if (config.toggleParent) {
+    if (config.toggleClosest) {
       $this.each(function() {
         $this
           .closest(config.element)

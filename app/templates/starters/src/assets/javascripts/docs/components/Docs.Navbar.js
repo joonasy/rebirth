@@ -26,7 +26,7 @@ docs.Navbar = function($) {
     app.toggle({
       trigger: $navSubTrigger.add($navLink),
       element: $navItem,
-      toggleParent: true,
+      toggleClosest: true,
       unToggleParentSiblings: true,
       unToggleOtherToggles: false
     });

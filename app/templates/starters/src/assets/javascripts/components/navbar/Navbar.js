@@ -28,7 +28,7 @@ var navbar = function() {
     toggle({
       trigger: $navSubTrigger,
       element: $navItem,
-      toggleParent: true,
+      toggleClosest: true,
       unToggleParentSiblings: true,
       unToggleOtherToggles: false
     });
@@ -36,7 +36,7 @@ var navbar = function() {
     toggle({
       trigger: $navLink,
       element: $navItem,
-      toggleParent: true,
+      toggleClosest: true,
       unToggleParentSiblings: true,
       disableFirstClickOnTouch: true,
       unToggleOtherToggles: false
