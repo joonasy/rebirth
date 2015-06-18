@@ -252,8 +252,8 @@ gulp.task('jscs', function() {
  */
 gulp.task('modernizr', ['stylesheets', 'javascripts'], function() {
   return gulp.src([
-    config.javascripts.dest + '*.js',
-    config.stylesheets.dest + '*.css'
+    config.javascripts.src + '**/*.js',
+    config.stylesheets.dist + 'app.css'
   ])
     .pipe($.modernizr({
       excludeTests: ['hidden'],
@@ -351,4 +351,4 @@ gulp.task('default', function() {
   gulp.start('build');
 });
 
-gulp.task('dev', tasks.concat(['watch', 'server']));
+gulp.task('dev', tasks.concat(['modernizr', 'watch', 'server']));

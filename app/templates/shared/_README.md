@@ -18,7 +18,7 @@ Install node modules
   
     npm install
 
-Install bower packages
+Install bower packages (if there is any)
   
     bower install
 
