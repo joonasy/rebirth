@@ -40,7 +40,7 @@
           width: auto;
         }
 
-        .no-touch & .Navbar-item.is-open > .Navbar-subTrigger
+        .no-touchevents & .Navbar-item.is-open > .Navbar-subTrigger
         > .Navbar-subTrigger-icon {
           @include shapeArrow('down');
         }
@@ -69,13 +69,13 @@
       /**
        * Sub navigation states
        */
-      .no-touch & .Navbar-item:hover > .Navbar-sub,
-      .no-touch & .Navbar-item:focus > .Navbar-sub,
-      .no-touch & .Navbar-item:hover.is-open > .Navbar-sub {
+      .no-touchevents & .Navbar-item:hover > .Navbar-sub,
+      .no-touchevents & .Navbar-item:focus > .Navbar-sub,
+      .no-touchevents & .Navbar-item:hover.is-open > .Navbar-sub {
         display: block;
       }
 
-      .no-touch & .Navbar-item.is-open > .Navbar-sub {
+      .no-touchevents & .Navbar-item.is-open > .Navbar-sub {
         display: none;
       }
   }
