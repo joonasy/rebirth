@@ -49,9 +49,9 @@ var config = {
     }]
   },
   images: {
-    src: 'Assets/images/*.{jpg,jpeg,png,gif,webp}',
+    src: 'Assets/images/*.{jpg,jpeg,png,gif,webp,svg}',
     dest: 'Resources/Public/Assets/images/',
-    watch: 'Assets/images/*.{jpg,jpeg,png,gif,webp}'
+    watch: 'Assets/images/*.{jpg,jpeg,png,gif,webp,svg}'
   },
   fonts: {
     src: 'Assets/fonts/*.{eot,svg,ttf,woff}',
@@ -253,7 +253,7 @@ gulp.task('jscs', function() {
 gulp.task('modernizr', ['stylesheets', 'javascripts'], function() {
   return gulp.src([
     config.javascripts.src + '**/*.js',
-    config.stylesheets.dist + 'app.css'
+    config.stylesheets.dest + 'app.css'
   ])
     .pipe($.modernizr({
       excludeTests: ['hidden'],
