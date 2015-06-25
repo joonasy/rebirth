@@ -10,7 +10,7 @@ Please read [Mediasignal Web Starter Kit](https://bitbucket.org/mediasignal/medi
 
 * [Node.js](http://nodejs.org/)
 * [Npm](https://www.npmjs.org/)
-* [Bower](http://bower.io/) `npm install -g bower`
+* [Bower](http://bower.io/) `npm install -g bower` (maybe)
 
 ## Install
 
@@ -18,7 +18,7 @@ Install node modules
   
     npm install
 
-Install bower packages
+Install bower packages (if there is any)
   
     bower install
 

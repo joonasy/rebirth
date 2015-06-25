@@ -49,9 +49,9 @@ var config = {
     }]
   },
   images: {
-    src: 'Assets/images/*.{jpg,jpeg,png,gif,webp}',
+    src: 'Assets/images/*.{jpg,jpeg,png,gif,webp,svg}',
     dest: 'Resources/Public/Assets/images/',
-    watch: 'Assets/images/*.{jpg,jpeg,png,gif,webp}'
+    watch: 'Assets/images/*.{jpg,jpeg,png,gif,webp,svg}'
   },
   fonts: {
     src: 'Assets/fonts/*.{eot,svg,ttf,woff}',
@@ -252,8 +252,8 @@ gulp.task('jscs', function() {
  */
 gulp.task('modernizr', ['stylesheets', 'javascripts'], function() {
   return gulp.src([
-    config.javascripts.dest + '*.js',
-    config.stylesheets.dest + '*.css'
+    config.javascripts.src + '**/*.js',
+    config.stylesheets.dest + 'app.css'
   ])
     .pipe($.modernizr({
       excludeTests: ['hidden'],
@@ -274,7 +274,7 @@ gulp.task('modernizr', ['stylesheets', 'javascripts'], function() {
 /**
  * Concat
  */
-gulp.task('concatModernizr', ['modernizr'], function() {
+gulp.task('concatHeadScripts', ['modernizr'], function() {
   return gulp.src([
     config.javascripts.dest + 'modernizr.js',
     config.javascripts.dest + 'head.min.js'
@@ -344,11 +344,11 @@ gulp.task('updateReferences', tasks.concat(['rev']), function() {
  */
 gulp.task('build', ['jscs'], function() {
   rimraf.sync(config.dest);
-  gulp.start(tasks.concat(['modernizr', 'concatModernizr', 'createDistPartials', 'rev', 'updateReferences']));
+  gulp.start(tasks.concat(['modernizr', 'concatHeadScripts', 'createDistPartials', 'rev', 'updateReferences']));
 });
 
 gulp.task('default', function() {
   gulp.start('build');
 });
 
-gulp.task('dev', tasks.concat(['watch', 'server']));
+gulp.task('dev', tasks.concat(['modernizr', 'watch', 'server']));

@@ -18,10 +18,8 @@
 
 <f:if condition="{settings.dev}">
   <f:then>
-    <!-- Css -->
     <v:asset.style path="EXT:<%= appRoot %>/Resources/Public/Assets/stylesheets/app.css" rewrite="false" standalone="true"></v:asset.style>
-    <!-- Javascripts -->
-    <v:asset.script path="EXT:<%= appRoot %>/bower_components/modernizr/modernizr.js" rewrite="false" standalone="true" allowMoveToFooter="false"></v:asset.script>
+    <v:asset.script path="EXT:<%= appRoot %>/Resources/Public/Assets/javascripts/modernizr.js" rewrite="false" standalone="true" allowMoveToFooter="false"></v:asset.script>
     <v:asset.script path="EXT:<%= appRoot %>/Resources/Public/Assets/javascripts/head.js" rewrite="false" standalone="true" allowMoveToFooter="false"></v:asset.script>
   </f:then>
   <f:else>
