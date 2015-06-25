@@ -35,12 +35,12 @@
  *         </figure>
  *
  *   JavaScript:
- *       App.figureImgAsBg('.My-figure');
+ *       If you need lazysizes load `require('lazysizes');` in <head>
  *
- *       Or recommended:
- *       $context = $('.js-context'),
- *       $figure = $('.My-figure', $context)
- *       App.figureImgAsBg($figure);
+ *       In component:
+ *         var figureImgAsBg = require('../plugins/figureImgAsBg');
+ *         $figure = $('.My-figure', $context)
+ *         figureImgAsBg($figure);
  */
 
 'use strict';
@@ -73,7 +73,7 @@ var figureImgAsBg = function(figure) {
       var srcset = $img.data('srcset');
       var imgUrl;
 
-      if (window.lazySizes && srcset) {
+      if ('lazySizes' in window && srcset) {
         var srcset = srcset.split(',');
         var srcsetElements = [];
         var widths = [];
