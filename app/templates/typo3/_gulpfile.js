@@ -258,12 +258,12 @@ gulp.task('modernizr', ['stylesheets', 'javascripts'], function() {
     .pipe($.modernizr({
       excludeTests: ['hidden'],
       options: [
-        "setClasses",
-        "addTest",
-        "html5printshiv",
-        "testProp",
-        "fnBind",
-        "prefixed"
+        'setClasses',
+        'addTest',
+        'html5printshiv',
+        'testProp',
+        'fnBind',
+        'prefixed'
       ]
     }))
     .on('error', handleError)
