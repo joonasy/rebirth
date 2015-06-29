@@ -9,6 +9,7 @@
   .Hero-item {
     display: table;
     height: rem($base-space * 10);
+    position: relative;
     width: 100%;
   }
 
