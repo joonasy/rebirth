@@ -35,21 +35,26 @@
  *         </figure>
  *
  *   JavaScript:
- *       App.figureImgAsBg('.My-figure');
+ *       If you need lazysizes load `require('lazysizes');` in <head>
+ *       And in case you need responsive images add
+ *       require('lazysizes/plugins/respimg/ls.respimg.js'); to <head> also
  *
- *       Or recommended:
- *       $context = $('.js-context'),
- *       $figure = $('.My-figure', $context)
- *       App.figureImgAsBg($figure);
+ *       In component:
+ *         var $context = $('.js-MyComponent');
+ *         var figureImgAsBg = require('../plugins/figureImgAsBg');
+ *         $figure = $('.My-figure', $context)
+ *         figureImgAsBg($figure);
  */
 
 'use strict';
+
+var $ = require('jquery');
+var Modernizr = require('modernizr');
 
 var figureImgAsBg = function(figure) {
 
   var self = {};
   var $figure = $(figure);
-  var shit;
 
   function closest(array, num) {
     var i = 0;
@@ -73,7 +78,7 @@ var figureImgAsBg = function(figure) {
       var srcset = $img.data('srcset');
       var imgUrl;
 
-      if (window.lazySizes && srcset) {
+      if ('lazySizes' in window && srcset) {
         var srcset = srcset.split(',');
         var srcsetElements = [];
         var widths = [];
