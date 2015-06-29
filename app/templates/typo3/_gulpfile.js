@@ -302,7 +302,7 @@ gulp.task('bottomScripts', ['javascripts'], function() {
  * Copy necessary assets
  */
 gulp.task('copyAssets', function() {
-  return gulp.src('node_modules/jquery/dist/jquery.min.js')
+  return gulp.src('bower_components/jquery/dist/jquery.min.js')
     .pipe(gulp.dest(config.javascripts.dest + 'vendors/'))
 });
 
