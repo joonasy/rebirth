@@ -4,8 +4,6 @@
 
 'use strict';
 
-require('modernizr');
-
 /**
  * A fix is on the way to get Windows Phone 8 to recognize
  * CSS pixels rather than device pixels (which is preferred behavior).
