@@ -5,8 +5,7 @@
   "homepage": "<%= appURL %>",
   "description": "<%= appDescription %>",
   "dependencies": {
-    "fastclick": "^1.0.6",
-    "jquery": "^2.1.4"
+    "fastclick": "^1.0.6"
   },
   "main": "gulpfile.js",
   "scripts": {
