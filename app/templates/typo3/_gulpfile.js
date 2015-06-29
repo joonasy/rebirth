@@ -30,6 +30,7 @@ var config = {
   ext: '/typo3conf/ext/<%= appRoot %>/',
   src: 'Resources/Private/',
   dest: 'Resources/Public/',
+  tmp: 'Resources/Public/Assets/.tmp/',
   stylesheets: {
     src: 'Assets/stylesheets/app.scss',
     dest: 'Resources/Public/Assets/stylesheets/',
@@ -250,37 +251,59 @@ gulp.task('jscs', function() {
 /**
  * Modernizr
  */
-gulp.task('modernizr', ['stylesheets', 'javascripts'], function() {
+gulp.task('modernizr', ['stylesheets'], function() {
   return gulp.src([
     config.javascripts.src + '**/*.js',
     config.stylesheets.dest + 'app.css'
   ])
     .pipe($.modernizr({
       excludeTests: ['hidden'],
+      tests: [''],
       options: [
-        "setClasses",
-        "addTest",
-        "html5printshiv",
-        "testProp",
-        "fnBind",
-        "prefixed"
+        'setClasses',
+        'addTest',
+        'html5printshiv',
+        'testProp',
+        'fnBind',
+        'prefixed'
       ]
     }))
     .on('error', handleError)
+    .pipe(gulp.dest(config.tmp));
+});
+
+/**
+ * Concat and minify <head> JavaScripts
+ */
+gulp.task('headScripts', ['modernizr', 'javascripts'], function() {
+  return gulp.src([
+    config.tmp + 'modernizr.js',
+    config.javascripts.dest + 'head.min.js'
+  ])
     .pipe($.uglify())
+    .pipe($.concat('head.min.js'))
     .pipe(gulp.dest(config.javascripts.dest));
 });
 
 /**
- * Concat
+ * Add this to build task if required
  */
-gulp.task('concatHeadScripts', ['modernizr'], function() {
+gulp.task('bottomScripts', ['javascripts'], function() {
   return gulp.src([
-    config.javascripts.dest + 'modernizr.js',
-    config.javascripts.dest + 'head.min.js'
+    'node_modules/somemodule/somemodule.js',
+    config.javascripts.dest + 'app.min.js'
   ])
-    .pipe($.concat('head.min.js'))
-    .pipe(gulp.dest(config.javascripts.dest))
+    .pipe($.uglify())
+    .pipe($.concat('app.min.js'))
+    .pipe(gulp.dest(config.javascripts.dest));
+});
+
+/**
+ * Copy necessary assets
+ */
+gulp.task('copyAssets', function() {
+  return gulp.src('node_modules/jquery/dist/jquery.min.js')
+    .pipe(gulp.dest(config.javascripts.dest + 'vendors/'))
 });
 
 /**
@@ -344,7 +367,7 @@ gulp.task('updateReferences', tasks.concat(['rev']), function() {
  */
 gulp.task('build', ['jscs'], function() {
   rimraf.sync(config.dest);
-  gulp.start(tasks.concat(['modernizr', 'concatHeadScripts', 'createDistPartials', 'rev', 'updateReferences']));
+  gulp.start(tasks.concat(['modernizr', 'headScripts', 'createDistPartials', 'rev', 'updateReferences', 'copyAssets']));
 });
 
 gulp.task('default', function() {
