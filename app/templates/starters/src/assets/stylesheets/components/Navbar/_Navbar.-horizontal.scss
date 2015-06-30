@@ -66,6 +66,11 @@
         }
       }
 
+      > ul > .Navbar-item:last-child > .Navbar-sub {
+        left: auto;
+        right: 0;
+      }
+
       /**
        * Sub navigation states
        */
