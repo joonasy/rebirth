@@ -10,6 +10,8 @@ npm-debug.log
 node_modules/
 bower_components/
 
+dploy.yaml
+
 
 # ======
 # Build files
@@ -22,3 +24,4 @@ Top.dist.html
 Resources/Public/Assets
 <% } %>
 <% if (htmlProject) { %>dist/<% } %>
+
