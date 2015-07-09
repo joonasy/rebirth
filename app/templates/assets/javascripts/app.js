@@ -7,14 +7,14 @@
 var $ = require('jquery');
 var fastClick = require('fastclick');
 
-var component = require('./components/component');
+var Component = require('./components/component');
 
 $(function() {
 
   /**
    * Init example component
    */
-  component.init();
+  new Component().init();
 
   /**
    * Init FastClick

@@ -7,23 +7,20 @@
 var $ = require('jquery');
 var figureImgAsBg = require('../plugins/figureImgAsBg');
 
-var hero = function() {
-
-  var self = {};
-  var $hero = $('.js-Hero');
-  var $figure = $('.Hero-figure', $hero);
-
-  self.init = function() {
-    heroFigureAsBg();
+class Hero {
+  constructor() {
+    this.$hero = $('.js-Hero');
+    this.$figure = $('.Hero-figure', this.$hero);
   }
 
-  var heroFigureAsBg = function() {
-    figureImgAsBg($figure);
+  init() {
+    this.heroFigureAsBg();
+    this.heroSlider();
   }
 
-  return {
-    init: self.init
+  heroFigureAsBg() {
+    figureImgAsBg(this.$figure);
   }
-};
+}
 
-module.exports = hero();
+module.exports = Hero;

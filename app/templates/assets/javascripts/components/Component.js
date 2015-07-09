@@ -2,19 +2,16 @@
  * Component
  * ======================================== */
 
-var component = function() {
+class Component {
+  constructor() {}
 
-  var self = {};
-
-  self.init = function() {}
-
-  self.publicFunction = function() {}
-
-  var privateFunction = function() {}
-
-  return {
-    init: self.init
+  init() {
+    this.initSomething();
   }
-};
 
-module.exports = component();
+  initSomething() {
+    console.log('Component init!');
+  }
+}
+
+module.exports = Component;

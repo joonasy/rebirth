@@ -7,22 +7,18 @@
 var $ = require('jquery');
 var figureImgAsBg = require('../plugins/figureImgAsBg');
 
-var block = function() {
-
-  var self = {};
-  var $blockFigure = $('.Block-figure.-bg-fill > figure');
-
-  self.init = function() {
-    figureImgAsBg();
+class Block {
+  constructor() {
+    this.$blockFigure = $('.Block-figure.-bg-fill > figure');
   }
 
-  var blockImgAsBg = function() {
-    figureImgAsBg($blockFigure);
+  init() {
+    this.blockImgAsBg();
   }
 
-  return {
-    init: self.init
+  blockImgAsBg() {
+    figureImgAsBg(this.$blockFigure);
   }
-};
+}
 
-module.exports = block();
+module.exports = Block;

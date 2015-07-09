@@ -7,45 +7,44 @@
 var $ = require('jquery');
 var toggle = require('../plugins/toggle');
 
-var navbar = function() {
-
-  var self = {};
-
-  self.init = function() {
-    var $navBar = $('.js-Navbar');
-    var $navBarTrigger = $('.js-Navbar-trigger', $navBar);
-    var $navItem = $('.Navbar-item', $navBar);
-    var $navSubTrigger = $('.Navbar-subTrigger', $navBar);
-    var $navLink = $('.Navbar-link', $navBar).filter(function() {
-          return $(this).siblings($navSubTrigger).length;
+class Navbar {
+  constructor() {
+    this.$navBar = $('.js-Navbar');
+    this.$navBarTrigger = $('.js-Navbar-trigger', this.$navBar);
+    this.$navItem = $('.Navbar-item', this.$navBar);
+    this.$navSubTrigger = $('.Navbar-subTrigger', this.$navBar);
+    this.$navLink = $('.Navbar-link', this.$navBar).filter(function() {
+          return $(this).siblings(this.$navSubTrigger).length;
         });
+  }
 
+  init() {
+    this.navbarInit();
+  }
+
+  navbarInit() {
     toggle({
-      trigger: $navBarTrigger,
-      element: $navBar
+      trigger: this.$navBarTrigger,
+      element: this.$navBar
     });
 
     toggle({
-      trigger: $navSubTrigger,
-      element: $navItem,
+      trigger: this.$navSubTrigger,
+      element: this.$navItem,
       toggleClosest: true,
       unToggleParentSiblings: true,
       unToggleOtherToggles: false
     });
 
     toggle({
-      trigger: $navLink,
-      element: $navItem,
+      trigger: this.$navLink,
+      element: this.$navItem,
       toggleClosest: true,
       unToggleParentSiblings: true,
       disableFirstClickOnTouch: true,
       unToggleOtherToggles: false
     });
   }
+}
 
-  return {
-    init: self.init
-  }
-};
-
-module.exports = navbar();
+module.exports = Navbar;

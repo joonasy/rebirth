@@ -6,28 +6,24 @@
 
 var $ = require('jquery');
 
-var form = function() {
-
-  var self = {};
-  var $form = $('.js-Form');
-  var $select = $('.Form-item--select', $form);
-
-  self.init = function() {
-    updateSelect();
+class Form {
+  constructor() {
+    this.$form = $('.js-Form');
+    this.$select = $('.Form-item--select', this.$form);
   }
 
-  var updateSelect = function() {
-    $(document).on('change', $select.selector, function(e) {
+  init() {
+    this.updateSelect();
+  }
+
+  updateSelect() {
+    $(document).on('change', this.$select.selector, function(e) {
       var $this = $(this).find('select');
       var option = $this.find('option:selected').text();
 
       $this.siblings('.Form-item--select-text').text(option);
     });
   }
+}
 
-  return {
-    init: self.init
-  }
-};
-
-module.exports = form();
+module.exports = Form;
