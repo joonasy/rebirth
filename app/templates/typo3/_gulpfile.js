@@ -81,7 +81,7 @@ gulp.task('stylesheets', function() {
   var pipeline = gulp.src(config.stylesheets.src)
     .pipe($.sass({
       includePaths: ['node_modules', 'bower_components'],
-      outputStyle: production ? 'compressed' : 'expanded'
+      outputStyle: 'expanded'
     }))
     .on('error', handleError)
     .on('error', $.sass.logError)
@@ -90,6 +90,7 @@ gulp.task('stylesheets', function() {
   if (production) {
     pipeline = pipeline.pipe($.replace('../Assets/', config.ext + config.dest))
       .pipe($.combineMediaQueries({log: true}))
+      .pipe($.minifyCss())
       .pipe($.rename({suffix: '.min'}));
   }
 
