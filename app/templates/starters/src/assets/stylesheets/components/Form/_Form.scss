@@ -7,13 +7,13 @@
   width: 100%;
 }
 
-  .Form-addon, .Form-item {
+  .Form-addon, .Form-item, .Form-icon, .Form-button.Button {
     background-color: #ffffff;
     border: $Form-borderWidth solid transparent;
     color: $color-text;
     font-size: rem($Form-fontSize);
-    height: rem($Form-height);
-    line-height: rem($Form-height);
+    font-weight: $Form-fontWeight;
+    line-height: rem($Form-height - ($Form-borderWidth *2));
   }
 
   .Form-item {
@@ -23,6 +23,7 @@
     outline: 0;
     padding: 0 rem($Form-padding);
     position: relative;
+    text-align: left;
     width: 100%;
     -webkit-appearance: none;
     -moz-appearance: none;
@@ -36,10 +37,33 @@
     }
   }
 
-  .Form-addon {
-    line-height: rem($Form-height - ($Form-borderWidth * 2));
-    padding: 0 rem($Form-padding / 2);
+  .Form-button {
+    &.Button {
+      margin-right: 0;
+      padding: 0 rem($Form-padding);
+      text-align: left;
+      width: 100%;
+    }
+  }
+
+  .Form-addon, .Form-icon {
+    padding: 0 rem($Form-padding);
     text-align: center;
+  }
+
+  .Form-icon {
+    background-color: transparent;
+    left: 0;
+    position: absolute;
+    top: 0;
+    z-index: 1;
+
+    .Icon { top: rem(-3px); }
+
+    &.-right {
+      left: auto;
+      right: 0;
+    }
   }
 
   .Form-button {
@@ -72,6 +96,7 @@
       position: absolute;
       top: 0;
       width: 100%;
+      z-index: 1;
       -webkit-appearance: none;
       -moz-appearance: none;
     }
@@ -79,13 +104,21 @@
 
 
 /* ======
- * Form item - shape
+ * Form item - various modifiers
  * ====== */
 
 .Form-item {
 
   &.-round {
     border-radius: $Form-borderRadius;
+  }
+
+  &.-hasIconLeft {
+    padding-left: rem($Form-padding * 2.5);
+  }
+
+  &.-hasIconRight {
+    padding-right: rem($Form-padding * 2.5);
   }
 }
 
@@ -96,7 +129,7 @@
 
 .Form--primary {
 
-  .Form-item, .Form-addon {
+  .Form-item, .Form-addon, .Form-button {
     background-color: #ffffff;
     color: $color-textLight;
 
