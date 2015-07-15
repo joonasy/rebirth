@@ -38,11 +38,6 @@
     @media only screen and (min-width: $breakpoint-m) and (max-width: $breakpoint-l - 1) { @content; }
   }
 
-  // e.g. iPad portrait and down to mobile
-  @else if $media == 'mediumDown' {
-    @media only screen and (max-width: $breakpoint-l - 1) { @content; }
-  }
-
   // e.g. Nexus and down to mobile
   @else if $media == 'mediumDown' {
     @media only screen and (max-width: $breakpoint-m - 1) { @content; }
