@@ -80,7 +80,7 @@
 
     > .Button {
 
-      &:not(:first-child) { border-top: 0; }
+      &:not(:first-child) { border-top-width: 0; }
     }
   }
 }

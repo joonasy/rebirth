@@ -2,7 +2,7 @@
  * CSS chevron arrow icon
  * ======================================== */
 
-[class*='IconCss'][class*='-chevron'] {
+.IconCss[class*='-chevron'] {
   @include shapeArrow($direction: false);
 }
 
