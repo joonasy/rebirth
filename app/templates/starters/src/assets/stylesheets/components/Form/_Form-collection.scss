@@ -15,7 +15,8 @@
     z-index: 1;
   }
 
-  .Form-item, .Form-addon {
+  .Form-item, .Form-addon, .Form-button {
+    @include textTruncate();
     margin-bottom: 0;
   }
 
@@ -43,7 +44,7 @@
 
 .Form-collection.-vertical {
 
-  > .Form-item {
+  > .Form-item, > .Form-button {
     &:not(:first-child) {
       border-top-width: 0;
     }
@@ -51,15 +52,15 @@
 
   .Form-collection-item {
 
-    .Form-item, .Form-addon {
-      &:first-child {
+    .Form-item, .Form-addon, .Form-button {
+      &:first-child:not(:only-child) {
         border-right-width: 0;
       }
     }
 
     &:not(:first-child) {
 
-      .Form-item, .Form-addon {
+      .Form-item, .Form-addon, .Form-button {
         border-top-width: 0;
       }
     }
@@ -68,14 +69,14 @@
 
 .Form-collection.-horizontal {
 
-  .Form-item, .Form-addon {
+  .Form-item, .Form-addon, .Form-button {
     border-right-width: 0;
   }
 
   /**
    * Direct elements
    */
-  > .Form-item, > .Form-addon {
+  > .Form-item, > .Form-addon, > .Form-button {
     &:last-child, &.-lastChild {
       border-right-width: $Form-borderWidth;
     }
@@ -90,7 +91,7 @@
 
     &:last-child {
 
-      .Form-item, .Form-addon {
+      .Form-item, .Form-addon, .Form-button {
         &:last-child, &.-lastChild {
           border-right-width: $Form-borderWidth;
         }
@@ -106,7 +107,7 @@
 
 .Form-collection.-round {
 
-  .Form-item, .Form-addon {
+  .Form-item, .Form-addon, .Form-button {
     border-radius: 0;
   }
 
@@ -118,22 +119,13 @@
     /**
      * Direct elements
      */
-    > .Form-item {
+    > .Form-item, > .Form-button {
       &:first-child {
         border-radius: $Form-borderRadius $Form-borderRadius 0 0;
       }
 
       &:last-child, &.-lastChild {
         border-radius: 0 0 $Form-borderRadius $Form-borderRadius;
-      }
-    }
-
-    > .Form-button {
-      &:last-child {
-
-        > .Button {
-          border-radius: 0 0 $Form-borderRadius $Form-borderRadius;
-        }
       }
     }
 
@@ -155,6 +147,10 @@
             border-radius: 0 $Form-borderRadius 0 0;
           }
         }
+
+        .Form-item:only-child {
+          border-radius: $Form-borderRadius $Form-borderRadius 0 0;
+        }
       }
 
       &:last-child {
@@ -170,6 +166,12 @@
             border-radius: 0 0 $Form-borderRadius 0;
           }
         }
+
+        .Form-item, .Form-button {
+          &:only-child {
+            border-radius: 0 0 $Form-borderRadius $Form-borderRadius;
+          }
+        }
       }
     }
   }
@@ -182,7 +184,7 @@
     /**
      * Direct elements
      */
-    > .Form-item, > .Form-addon {
+    > .Form-item, > .Form-addon, > .Form-button {
       &:first-child {
         border-radius: $Form-borderRadius 0 0 $Form-borderRadius;
       }
@@ -199,7 +201,7 @@
 
       &:first-child {
 
-        .Form-item, .Form-addon {
+        .Form-item, .Form-addon, .Form-button {
           &:first-child {
             border-radius: $Form-borderRadius 0 0 $Form-borderRadius;
           }
@@ -208,18 +210,9 @@
 
       &:last-child {
 
-        .Form-item, .Form-addon {
+        .Form-item, .Form-addon, .Form-button {
           &:last-child, &.-lastChild {
             border-radius: 0 $Form-borderRadius $Form-borderRadius 0;
-          }
-        }
-
-        .Form-button {
-          &:last-child {
-
-            > .Button {
-              border-radius: 0 $Form-borderRadius $Form-borderRadius 0;
-            }
           }
         }
       }
