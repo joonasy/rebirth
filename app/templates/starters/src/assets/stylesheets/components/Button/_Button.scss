@@ -4,7 +4,7 @@
 
 .Button {
   background-color: transparent;
-  border: $Button-borderWidth solid;
+  border: $Button-borderWidth solid transparent;
   cursor: pointer;
   display: inline-block;
   font-size: rem($Button-fontSize);
