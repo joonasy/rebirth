@@ -5,9 +5,14 @@ production:
     user: ""
     pass: ""
     path:
-        remote: ""
-    exclude: ["*.ini", ".yo-rc.json", ".editorconfig", ".jscsrc", "bower.json", "gulpfile.js", "package.json", "README.md", "rev-manifest.json", "Assets/**/*"]
+      <% if (htmlProject) { %>
+      local: "dist/"
+      <% } %>
+      remote: "your/remote/application/path/here"
+    <% if (typoProject) { %>
+    exclude: ["*.ini", ".yo-rc.json", ".editorconfig", ".jscsrc", "bower.json", "gulpfile.js", "package.json", "README.md", "rev-manifest.json", "Assets/**/*", ".gitignore"]
     include:
         "Resources/Private/Partials/Bottom.dist.html": "Resources/Private/Partials/"
         "Resources/Private/Partials/Top.dist.html": "Resources/Private/Partials/"
         "Resources/Public/**/*": "Resources/Public/"
+    <% } %>

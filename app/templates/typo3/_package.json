@@ -10,6 +10,7 @@
   "main": "gulpfile.js",
   "scripts": {
     "dev": "gulp dev",
+    "deploy": "npm run build && dploy",
     "build": "NODE_ENV=production gulp build",
     "test": "gulp jscs"
   },
@@ -20,6 +21,7 @@
     "browserify-shim": "^3.8.9",
     "deamdify": "^0.1.1",
     "debowerify": "~0.9.1",
+    "dploy": "^1.2.0",
     "gulp": "~3.8.1",
     "gulp-autoprefixer": "1.0.1",
     "gulp-changed": "^1.2.1",
