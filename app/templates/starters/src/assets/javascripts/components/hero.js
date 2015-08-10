@@ -15,7 +15,6 @@ class Hero {
 
   init() {
     this.heroFigureAsBg();
-    this.heroSlider();
   }
 
   heroFigureAsBg() {

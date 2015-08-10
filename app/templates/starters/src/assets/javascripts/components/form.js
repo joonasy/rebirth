@@ -9,7 +9,7 @@ var $ = require('jquery');
 class Form {
   constructor() {
     this.$form = $('.js-Form');
-    this.$select = $('.Form-item--select', this.$form);
+    this.$selectItem = $('.Form-item--select', this.$form);
   }
 
   init() {
@@ -17,11 +17,11 @@ class Form {
   }
 
   updateSelect() {
-    $(document).on('change', this.$select.selector, function(e) {
+    $(document).on('change', this.$selectItem.selector, function(e) {
       var $this = $(this).find('select');
       var option = $this.find('option:selected').text();
 
-      $this.siblings('.Form-item--select-text').text(option);
+      $this.parent().siblings('.Form-item--select-text').text(option);
     });
   }
 }
