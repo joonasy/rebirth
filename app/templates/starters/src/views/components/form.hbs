@@ -8,7 +8,7 @@ title: Forms
       <!--
        Default separated form with grid
        -->
-      <form action="" class="Form Form--primary">
+      <form action="" class="Form Form--primary js-Form">
         <div class="Grid">
           <div class="Grid-item s-Width--6-12">
             <input class="Form-item -border -round" type="text" placeholder="I'm placeholder text">
@@ -20,11 +20,17 @@ title: Forms
             </div>
           </div>
           <div class="Grid-item s-Width--6-12">
-            <div class="Form-item Form-item--select -round -border">
-              Choose something here
-              <select class="Form-select" name="" id="">
-                <option value="1">moro</option>
-              </select>
+            <div class="Form-item Form-item--select -round -border -hasIconRight">
+              <span class="Form-item--select-text">Choose something here</span>
+              <label for="select">
+                <span class="Form-icon -right"><i class="IconCss -chevronDown -s"></i></span>
+                <select class="Form-select" id="">
+                  <option value="Tampere">Tampere</option>
+                  <option value="Valkeakoski">Valkeakoski</option>
+                  <option value="Hämeenlinna">Hämeenlinna</option>
+                  <option value="Helsinki">Helsinki</option>
+                </select>
+              </label>
             </div>
           </div>
 
@@ -44,9 +50,7 @@ title: Forms
             <div class="Form-collection -round -vertical">
               <textarea class="Form-item -border" placeholder="I'm placeholder text"></textarea>
               <input class="Form-item -round -border" type="text" placeholder="I'm placeholder text too">
-              <div class="Form-button">
-                <button class="Button Button--primary -l -full">Form button</Button>
-              </div>
+              <button class="Form-button Button Button--primary -l -full">Form button</Button>
             </div>
           </form>
           <!--
@@ -72,9 +76,7 @@ title: Forms
                   <div class="Form-addon -border">@</div>
                 </div>
               </div>
-              <div class="Form-button">
-                <button class="Button Button--primary -l -full">Form button</Button>
-              </div>
+              <button class="Form-button Button Button--primary -l -full">Form button</Button>
             </div>
           </form>
           <!--
@@ -96,9 +98,7 @@ title: Forms
             <input class="Form-item -round -border" type="text" placeholder="I'm placeholder text too">
           </div>
           <div class="Form-collection-item">
-            <div class="Form-button">
-              <button class="Button Button--primary -l -full">Form button</Button>
-            </div>
+            <button class="Form-button Button Button--primary -l -full">Form button</Button>
           </div>
         </div>
       </form>
@@ -113,13 +113,13 @@ title: Forms
         <div class="Form-collection -round -horizontal">
           <div class="Form-collection-item">
             <div class="Form-collection">
-              <div class="Form-addon -border">@</div>
+              <div class="Form-addon -border -s">@</div>
               <input class="Form-item -round -border" type="text" placeholder="I'm placeholder text">
             </div>
           </div>
           <div class="Form-collection-item">
             <div class="Form-collection">
-              <div class="Form-addon -border">&#10003;</div>
+              <div class="Form-addon -border -s">&#10003;</div>
               <input class="Form-item -round -border" type="text" placeholder="I'm placeholder text">
             </div>
           </div>
@@ -137,19 +137,17 @@ title: Forms
           <div class="Form-collection-item">
             <div class="Form-collection">
               <input class="Form-item -round -border" type="text" placeholder="I'm placeholder text">
-              <div class="Form-addon">@</div>
+              <div class="Form-addon -s">@</div>
             </div>
           </div>
           <div class="Form-collection-item">
             <div class="Form-collection">
               <input class="Form-item -round -border" type="text" placeholder="I'm placeholder text">
-              <div class="Form-addon -border">&#10003;</div>
+              <div class="Form-addon -border -s">&#10003;</div>
             </div>
           </div>
           <div class="Form-collection-item">
-            <div class="Form-button">
-              <button class="Button Button--primary -l -full">Form button</Button>
-            </div>
+            <button class="Form-button Button Button--primary -l -full">Form button</Button>
           </div>
         </div>
       </form>
