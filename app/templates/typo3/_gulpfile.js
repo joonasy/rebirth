@@ -238,7 +238,7 @@ gulp.task('watch', function(callback) {
 /**
  * Tasks
  */
-var tasks = ['stylesheets', 'javascripts','images', 'fonts'];
+var tasks = ['stylesheets', 'javascripts', 'images', 'fonts'];
 
 /**
  * Coding style
