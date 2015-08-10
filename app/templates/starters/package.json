@@ -1,9 +1,9 @@
 {
-  "name": "mediasignal-web-starter-kit",
+  "name": "my-web-starter-kit",
   "version": "1.0.0",
   "author": "Joonas Ylitalo",
   "homepage": "http://joonasy.com",
-  "description": "Starters for Mediasignal Web Starter kit",
+  "description": "Starter kits for my web projects",
   "dependencies": {
     "fastclick": "^1.0.6",
     "lazysizes": "^1.1.4"

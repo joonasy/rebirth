@@ -1,13 +1,13 @@
 {
-  "name": "generator-msc",
+  "name": "generator-my",
   "version": "0.2.0",
-  "description": "Mediasignals styleguide, starter kit and Yeoman generator for new web projects.",
+  "description": "My styleguide, starter kit and Yeoman generator for new web projects.",
   "license": "MIT",
   "main": "app/index.js",
-  "repository": "https://bitbucket.org/mediasignal/mediasignal-web-starter-kit.git",
+  "repository": "https://bitbucket.org/My/My-web-starter-kit.git",
   "author": {
-    "name": "Mediasignal",
-    "url": "https://mediasignal.fi"
+    "name": "Joonas Y.",
+    "url": "http://joonasy.com"
   },
   "engines": {
     "node": ">=0.10.0"
