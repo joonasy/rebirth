@@ -42,7 +42,7 @@ var config = {
     bundle: [{
       src: 'Assets/javascripts/app.js',
       fileName: 'app.js',
-      external: ['jquery']
+      external: []
     }, {
       src: 'Assets/javascripts/head.js',
       fileName: 'head.js',
@@ -119,7 +119,6 @@ var bundleLogger = {
 };
 
 gulp.task('javascripts', function(callback) {
-
   browserSync.notify('Compiling JavaScripts');
 
   var bundleQueue = config.javascripts.bundle.length;
@@ -368,11 +367,22 @@ gulp.task('updateReferences', tasks.concat(['rev']), function() {
  */
 gulp.task('build', ['jscs'], function() {
   rimraf.sync(config.dest);
-  gulp.start(tasks.concat(['modernizr', 'headScripts', 'createDistPartials', 'rev', 'updateReferences', 'copyAssets']));
+  gulp.start(tasks.concat([
+    'modernizr',
+    'headScripts',
+    'createDistPartials',
+    'rev',
+    'updateReferences',
+    'copyAssets'
+  ]));
 });
 
 gulp.task('default', function() {
   gulp.start('build');
 });
 
-gulp.task('dev', tasks.concat(['modernizr', 'watch', 'server']));
+gulp.task('dev', tasks.concat([
+  'modernizr',
+  'watch',
+  'server'
+]));
