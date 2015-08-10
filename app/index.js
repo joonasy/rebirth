@@ -10,7 +10,7 @@ var chalk = require('chalk');
 var yosay = require('yosay');
 var moment = require('moment');
 
-var MscGenerator = yeoman.generators.Base.extend({
+var MyGenerator = yeoman.generators.Base.extend({
 
   /**
    * Init
@@ -343,4 +343,4 @@ var MscGenerator = yeoman.generators.Base.extend({
   }
 });
 
-module.exports = MscGenerator;
+module.exports = MyGenerator;

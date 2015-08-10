@@ -1,9 +1,9 @@
 /* ========================================
- * Gruntfile for `Mediasignal Web Starter Kit`
+ * Gruntfile for `My Web Starter Kit`
  * ========================================
  *
- * @generated 4.8.2015 using `generator-msc v0.2.0`
- * @url https://bitbucket.org/mediasignal/mediasignal-web-starter-kit.git
+ * @generated 4.8.2015 using `generator-my v0.2.0`
+ * @url https://bitbucket.org/mediasignal/my-web-starter-kit.git
  */
 
 'use strict';

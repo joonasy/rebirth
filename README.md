@@ -1,4 +1,4 @@
-# My Web Starter Kit ([generator-msc](https://bitbucket.org/mediasignal/generator-my.git))
+# My Web Starter Kit ([generator-my](https://bitbucket.org/mediasignal/generator-my.git))
 
 > My combined styleguide, starter kit and Yeoman generator for new web projects (Typo3/Html).
 
