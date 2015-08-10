@@ -5,6 +5,7 @@
   "license": "MIT",
   "main": "app/index.js",
   "repository": "https://bitbucket.org/My/My-web-starter-kit.git",
+  "keywords": "yeoman-generator",
   "author": {
     "name": "Joonas Y.",
     "url": "http://joonasy.com"

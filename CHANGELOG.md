@@ -1,11 +1,16 @@
 # Changelog
 
-## 0.2.0 ()
-* Grunt removed and Gulp added
+## 0.2.0 (2015-08-11)
+* Project renamed to `My Web Starter Kit` / `generator-my`
+* Grunt removed
 * Compass removed
-* Browserify added
-* Browsersync added
-* JSCS styleguide testing 
+* [Gulp](http://gulpjs.com) added
+* [Browserify](browserify.org) added
+* [Browsersync](http://www.browsersync.io/) added
+* [Assemble](http://assemble.io) updated (`assemblefile.js`)
+* Deployment option added [Dploy](http://leanmeanfightingmachine.github.io/dploy/)
+* [JSCS](https://github.com/jscs-dev/node-jscs) styleguide checking
+* Component (scss/js) files restructured into their root folder. No more default `assets` folder.
 
 ## 0.1.0 (2015-5-7)
 * Rest of the CSS styleguide done
