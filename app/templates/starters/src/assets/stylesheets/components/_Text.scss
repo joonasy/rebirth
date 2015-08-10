@@ -1,0 +1,63 @@
+/* ========================================
+ * Text
+ * ======================================== */
+
+.Text {}
+
+
+/* ======
+ * Text - type
+ * ====== */
+
+.Text {
+  &.-type-meta {}
+}
+
+
+/* ======
+ * Text - transform
+ * ====== */
+
+.Text {
+  &.-transform-upper {
+    text-transform: uppercase;
+  }
+}
+
+
+/* ======
+ * Text - align
+ * ====== */
+
+.Text {
+  &.-left {
+    text-align: left;
+  }
+
+  &.-right {
+    text-align: right;
+  }
+
+  &.-center {
+    text-align: center;
+  }
+}
+
+
+/* ======
+ * Text - size
+ * ====== */
+
+.Text {
+  &.-l {
+    @include fontSize($base-fontSize-l, $base-lineHeight-l);
+  }
+
+  &.-s {
+    @include fontSize($base-fontSize-s, $base-lineHeight-s);
+  }
+
+  &.-xs {
+    @include fontSize($base-fontSize-xs, $base-lineHeight-xs);
+  }
+}

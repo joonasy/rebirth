@@ -1,6 +1,6 @@
 # CSS Styleguide
 
-Mediasignal CSS styleguide is based on the following styleguides. 
+My CSS styleguide is based on the following styleguides. 
 
 * [SUIT CSS (0.6.0)](https://github.com/suitcss)
 * [CSS Guidelines (2.2.2)](http://cssguidelin.es)

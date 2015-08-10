@@ -367,4 +367,4 @@ These chainable modifiers do not use prefixes.
 
 ### Suffixes
 
-* Sizing variables (Sass):  `-[x...]s`, `-m`, `-ml`, `-[x...]l`
+* Sizing suffixes used in Sass:  `-[x...]s`, `-m`, `-ml`, `-[x...]l`

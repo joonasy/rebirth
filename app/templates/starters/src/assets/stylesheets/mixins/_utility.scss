@@ -1,0 +1,45 @@
+// ========================================
+// Utilities
+// ========================================
+
+//
+// Strip units
+//
+@function strip-unit($num) {
+  @return $num / ($num * 0 + 1);
+}
+
+//
+// Convert pixels to em's
+//
+@function em($pixels, $context: $base-fontSize) {
+  @return #{strip-unit($pixels) / strip-unit($context)}em;
+}
+
+//
+// Convert pixels to rem's
+//
+@function rem($pixels) {
+  @return #{strip-unit($pixels) / strip-unit($base-fontSize)}rem;
+}
+
+//
+// Check if number is even
+//
+@function even($number) {
+  @return $number % 2 == 0;
+}
+
+//
+// Simple image urls
+//
+@function imageUrl($path) {
+  @return url('#{$imagesPath}/#{$path}');
+}
+
+//
+// Simple font urls
+//
+@function fontUrl($path) {
+  @return url('#{$fontsPath}/#{$path}');
+}

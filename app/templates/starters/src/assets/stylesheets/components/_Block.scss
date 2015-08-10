@@ -1,0 +1,66 @@
+/* ========================================
+ * Block
+ * ======================================== */
+
+.Block {
+  display: block;
+  position: relative;
+  margin-bottom: rem($base-space);
+  width: 100%;
+}
+
+  .Block-figure {
+    > figure {
+      margin-bottom: 0;
+
+      > img {
+        width: 100%;
+      }
+    }
+  }
+
+  .Block-inner {
+    padding: rem($Block-padding) $Block-padding-percentage;
+
+    > *:last-child {
+      margin-bottom: 0;
+    }
+
+    @include breakpoint('mediumUp') {
+      padding-left: rem($Block-padding * 1.5);
+      padding-right: rem($Block-padding * 1.5);
+    }
+  }
+
+
+/* ======
+ * Block figure - background fill modifier
+ * ====== */
+
+.Block-figure.-bg-fill {
+  position: relative;
+
+  > figure {
+    @extend %positionAbsoluteFill;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+
+    img {
+      display: block;
+      height: 100%;
+      object-fit: cover;
+      width: 100% !important;
+    }
+  }
+}
+
+
+/* ======
+ * Block - primary
+ * ====== */
+
+.Block--primary {
+  background-color: #ffffff;
+  min-height: $base-space * 6;
+}

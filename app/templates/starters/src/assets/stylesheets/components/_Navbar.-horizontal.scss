@@ -1,0 +1,92 @@
+/* ========================================
+ * Horizontal modifier
+ * ========================================
+ *
+ * @extends `.Navbar {}` in _Navbar.scss
+ */
+
+@mixin NavbarHorizontal($namespace: '') {
+  .Navbar.#{-$namespace}horizontal {
+    .Navbar-trigger { display: none; }
+
+    .Navbar-self {
+      display: block;
+      padding-left: $Navbar-padding;
+    }
+
+      > ul > .Navbar-item {
+        float: left;
+        position: relative;
+
+        > .Navbar-link {
+          border: 0;
+          display: inline-block;
+          padding-left: $Navbar-padding;
+          padding-right: $Navbar-padding;
+        }
+
+        > .Navbar-subTrigger {
+          border: 0;
+          padding-left: $Navbar-padding;
+          padding-right: $Navbar-padding;
+          margin-left: -$Navbar-padding;
+          width: auto;
+        }
+      }
+
+        .Navbar-link {
+          border: 0;
+          width: auto;
+        }
+
+        .no-touchevents & .Navbar-item.is-open > .Navbar-subTrigger
+        > .Navbar-subTrigger-icon {
+          @include shapeArrow('down');
+        }
+
+      .Navbar-sub {
+        left: 0;
+        position: absolute;
+        top: 100%;
+
+        .Navbar-link { min-width: 200px; }
+
+        /**
+         * Fourth and deeper levels
+         *
+         * These are hidden by default because dropdown navigations
+         * deeper than three levels aren't very elegant in desktop
+         * widths. Prefer another solution such as separate
+         * navigation for sub pages.
+         */
+        ul, .Navbar-subTrigger {
+          display: none !important;
+        }
+      }
+
+      > ul > .Navbar-item:last-child > .Navbar-sub {
+        left: auto;
+        right: 0;
+      }
+
+      /**
+       * Sub navigation states
+       */
+      .no-touchevents & .Navbar-item:hover > .Navbar-sub,
+      .no-touchevents & .Navbar-item:focus > .Navbar-sub,
+      .no-touchevents & .Navbar-item:hover.is-open > .Navbar-sub {
+        display: block;
+      }
+
+      .no-touchevents & .Navbar-item.is-open > .Navbar-sub {
+        display: none;
+      }
+  }
+}
+
+/**
+ * Activate the horizontal navbar in larger widths. Add more of these if needed.
+ */
+@include breakpoint('largeUp') {
+  @include NavbarHorizontal(l-);
+}

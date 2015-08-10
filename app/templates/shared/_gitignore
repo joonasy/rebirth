@@ -10,10 +10,18 @@ npm-debug.log
 node_modules/
 bower_components/
 
+dploy.yaml
+
 
 # ======
 # Build files
 # ======
 
-<% if (typoProject) { %>Resources/Public/Assets<% } %>
+rev-manifest.json
+<% if (typoProject) { %>
+Bottom.dist.html
+Top.dist.html
+Resources/Public/Assets
+<% } %>
 <% if (htmlProject) { %>dist/<% } %>
+

@@ -1,0 +1,36 @@
+/* ========================================
+ * Heading
+ * ======================================== */
+
+.Heading {}
+
+
+/* ======
+ * Heading - size
+ * ====== */
+
+.Heading {
+  &.-l {
+    @include fontSize($Heading-fontSize-l, $Heading-lineHeight-l);
+
+    @include breakpoint("smallDown") {
+      @include fontSize($h1-fontSize, $h1-lineHeight);
+    }
+  }
+
+  &.-m {
+    @include fontSize($Heading-fontSize-m, $Heading-lineHeight-m);
+
+    @include breakpoint("smallDown") {
+      @include fontSize($h2-fontSize, $h2-lineHeight);
+    }
+  }
+
+  &.-s {
+    @include fontSize($Heading-fontSize-s, $Heading-lineHeight-s);
+
+    @include breakpoint("smallDown") {
+      @include fontSize($h3-fontSize, $h3-lineHeight);
+    }
+  }
+}

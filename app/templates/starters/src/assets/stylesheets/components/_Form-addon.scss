@@ -1,0 +1,33 @@
+/* ========================================
+ * Form addon
+ * ======================================== */
+
+.Form-addon {
+  @extend %Form-item-appearance;
+  @extend %Form-item-layout;
+  text-align: center;
+}
+
+
+/* ======
+ * Form addon - sizing
+ * ====== */
+
+.Form-addon.-s {
+  width: rem($base-space * 2);
+}
+
+
+/* ======
+ * Form addon - primary variation
+ * ======
+ *
+ * Alternatively move this inside the main `.Form--primary{}`.
+ */
+
+.Form--primary {
+  .Form-addon {
+    @extend %Form--primary-Form-item;
+    background-color: $color-bgLightest;
+  }
+}

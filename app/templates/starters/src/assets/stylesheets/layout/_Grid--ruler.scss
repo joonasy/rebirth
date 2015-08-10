@@ -2,7 +2,7 @@
  * Equal height columns with rulers
  * ======================================== */
 
-@mixin Grid-ruler($gutter: 1) {
+@mixin Grid--ruler($gutter: 1) {
   display: table;
   display: flex;
   margin-left: -($base-space * $gutter);
@@ -26,21 +26,19 @@
 }
 
 .s-Grid--ruler {
-
   @include breakpoint('smallUp') {
-    @include Grid-ruler();
+    @include Grid--ruler();
   }
 }
 
 .m-Grid--ruler {
-
   @include breakpoint('mediumUp') {
-    @include Grid-ruler();
+    @include Grid--ruler();
   }
 }
 
 .l-Grid--ruler {
   @include breakpoint('largeUp') {
-    @include Grid-ruler();
+    @include Grid--ruler();
   }
 }

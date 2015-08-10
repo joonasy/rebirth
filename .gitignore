@@ -9,5 +9,8 @@ npm-debug.log
 
 node_modules/
 bower_components/
+
+app/templates/starters/dist
 rev-manifest.json
-test.png
+app/templates/starters/src/assets/images
+

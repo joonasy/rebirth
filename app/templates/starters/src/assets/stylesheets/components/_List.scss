@@ -1,0 +1,47 @@
+/* ========================================
+ * List
+ * ======================================== */
+
+.List {
+  @extend %clearfix;
+  @extend %resetList;
+  margin-bottom: rem($base-space);
+}
+
+.List-item {
+  margin-bottom: rem($base-space);
+
+  &:last-child {
+    margin-bottom: 0;
+  }
+}
+
+  .List-text {
+    @include fontSize($base-fontSize-s, $base-lineHeight-s);
+    text-align: left;
+    display: block;
+  }
+
+  .List-meta {
+    @include fontSize($base-fontSize-s, $base-lineHeight-s);
+  }
+
+
+/* ======
+ * List - icon
+ * ====== */
+
+.List--icon {
+
+  .List-item {
+    padding-left: rem($base-space / 1.5);
+    position: relative;
+    margin-bottom: rem($base-space / 4);
+  }
+
+    .List-item-icon {
+      position: absolute;
+      top: 5px;
+      left: 0;
+    }
+}

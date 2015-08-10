@@ -1,0 +1,113 @@
+/* ========================================
+ * Form
+ * ======================================== */
+
+.Form {
+  position: relative;
+  width: 100%;
+}
+
+  %Form-item-appearance {
+    background-color: #ffffff;
+    border: $Form-borderWidth solid transparent;
+    color: $color-text;
+  }
+
+  %Form-item-layout {
+    font-size: rem($Form-fontSize);
+    font-weight: $Form-fontWeight;
+    height: rem($Form-height);
+    line-height: rem($Form-height - ($Form-borderWidth * 2));
+    padding: 0 rem($Form-padding);
+  }
+
+  .Form-item {
+    @extend %Form-item-appearance;
+    @extend %Form-item-layout;
+    border-radius: 0;
+    display: block;
+    margin-bottom: rem($base-space);
+    outline: 0;
+    padding: 0 rem($Form-padding);
+    position: relative;
+    text-align: left;
+    width: 100%;
+    -moz-appearance: none;
+    -webkit-appearance: none;
+
+    /**
+     * Prevents zooming in some iOS devices
+     */
+    .touchevents & { font-size: 16px; }
+  }
+
+  .Form-button.Button {
+    @extend %Form-item-layout;
+    margin: 0;
+    width: 100%;
+  }
+
+  textarea {
+    &.Form-item {
+      line-height: $base-lineHeight;
+      min-height: rem($base-space * 6);
+      padding-top: rem($base-space / 2);
+      resize: vertical;
+    }
+  }
+
+  .Form-item--select {
+
+    select {
+      cursor: pointer;
+      display: block;
+      height: 100%;
+      left: 0;
+      opacity: 0;
+      position: absolute;
+      top: 0;
+      width: 100%;
+      z-index: 1;
+      -webkit-appearance: none;
+      -moz-appearance: none;
+    }
+  }
+
+
+/* ======
+ * Form item - various modifiers
+ * ====== */
+
+.Form-item {
+  &.-round { border-radius: $Form-borderRadius; }
+}
+
+
+/* ======
+ * Form - primary variation
+ * ====== */
+
+.Form--primary {
+  %Form--primary-Form-item, .Form-item {
+    background-color: #ffffff;
+    color: $color-textLight;
+
+    &.-border {
+      border-color: $color-borderPrimary;
+    }
+  }
+
+  .Form-item {
+    @include colorPlaceholder($color-textLight);
+    color: $color-textLight;
+
+    &:hover, &:focus {
+      @include colorPlaceholder($color-text);
+      color: $color-text;
+    }
+
+    &.-border {
+      &:hover, &:focus { border-color: $color-borderPrimary; }
+    }
+  }
+}

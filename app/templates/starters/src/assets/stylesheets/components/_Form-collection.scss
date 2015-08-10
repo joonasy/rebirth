@@ -1,0 +1,202 @@
+/* ========================================
+ * Collection of form items
+ * ======================================== */
+
+.Form-collection {
+  border-collapse: separate;
+  display: table;
+  margin-bottom: rem($base-space);
+  position: relative;
+  table-layout: fixed;
+  width: 100%;
+
+  &:focus {
+    position: relative;
+    z-index: 1;
+  }
+
+  .Form-item:not(textarea), .Form-addon, .Form-button {
+    @include textTruncate();
+    margin-bottom: 0;
+  }
+
+  .Form-item:not(textarea), .Form-addon { display: table-cell; }
+  .Form-collection { margin-bottom: 0; }
+}
+
+  .Form-collection-item {
+    position: relative;
+
+    .Form-item:only-child, .Form-addon:only-child { display: block; }
+  }
+
+
+/* ======
+ * Form collection - border
+ * ====== */
+
+.Form-collection.-vertical {
+  > .Form-item, > .Form-button {
+    &:not(:first-child) {
+      border-top-width: 0;
+    }
+  }
+
+  .Form-collection-item {
+    .Form-item, .Form-addon, .Form-button {
+      &:first-child:not(:only-child) {
+        border-right-width: 0;
+      }
+    }
+
+    &:not(:first-child) {
+      .Form-item, .Form-addon, .Form-button {
+        border-top-width: 0;
+      }
+    }
+  }
+}
+
+.Form-collection.-horizontal {
+  .Form-item, .Form-addon, .Form-button {
+    border-right-width: 0;
+  }
+
+  /**
+   * Direct elements
+   */
+  > .Form-item, > .Form-addon, > .Form-button {
+    &:last-child, &.-lastChild {
+      border-right-width: $Form-borderWidth;
+    }
+  }
+
+  /**
+   * Descendant collections
+   */
+  .Form-collection-item {
+    display: table-cell;
+    vertical-align: middle;
+
+    &:last-child {
+      .Form-item, .Form-addon, .Form-button {
+        &:last-child, &.-lastChild {
+          border-right-width: $Form-borderWidth;
+        }
+      }
+    }
+  }
+}
+
+
+/* ======
+ * Form collection - round
+ * ====== */
+
+.Form-collection.-round {
+  .Form-item, .Form-addon, .Form-button {
+    border-radius: 0;
+  }
+
+  /**
+   * Vertical
+   */
+  &.-vertical {
+
+    /**
+     * Direct elements
+     */
+    > .Form-item, > .Form-button {
+      &:first-child {
+        border-radius: $Form-borderRadius $Form-borderRadius 0 0;
+      }
+
+      &:last-child, &.-lastChild {
+        border-radius: 0 0 $Form-borderRadius $Form-borderRadius;
+      }
+    }
+
+    /**
+     * Descendant collections
+     */
+    .Form-collection-item {
+      &:first-child {
+        .Form-item, .Form-addon {
+          &:first-child {
+            border-radius: $Form-borderRadius 0 0 0;
+          }
+        }
+
+        .Form-item, .Form-addon {
+          &:last-child, &.-lastChild {
+            border-radius: 0 $Form-borderRadius 0 0;
+          }
+        }
+
+        .Form-item:only-child {
+          border-radius: $Form-borderRadius $Form-borderRadius 0 0;
+        }
+      }
+
+      &:last-child {
+        .Form-item, .Form-addon {
+          &:first-child {
+            border-radius: 0 0 0 $Form-borderRadius;
+          }
+        }
+
+        .Form-item, .Form-addon {
+          &:last-child, &.-lastChild {
+            border-radius: 0 0 $Form-borderRadius 0;
+          }
+        }
+
+        .Form-item, .Form-button {
+          &:only-child {
+            border-radius: 0 0 $Form-borderRadius $Form-borderRadius;
+          }
+        }
+      }
+    }
+  }
+
+  /**
+   * Horizontal
+   */
+  &.-horizontal {
+
+    /**
+     * Direct elements
+     */
+    > .Form-item, > .Form-addon, > .Form-button {
+      &:first-child {
+        border-radius: $Form-borderRadius 0 0 $Form-borderRadius;
+      }
+
+      &:last-child, &.-lastChild {
+        border-radius: 0 $Form-borderRadius $Form-borderRadius 0;
+      }
+    }
+
+    /**
+     * Descendant collections
+     */
+    .Form-collection-item {
+      &:first-child {
+        .Form-item, .Form-addon, .Form-button {
+          &:first-child {
+            border-radius: $Form-borderRadius 0 0 $Form-borderRadius;
+          }
+        }
+      }
+
+      &:last-child {
+        .Form-item, .Form-addon, .Form-button {
+          &:last-child, &.-lastChild {
+            border-radius: 0 $Form-borderRadius $Form-borderRadius 0;
+          }
+        }
+      }
+    }
+  }
+}

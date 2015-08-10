@@ -4,26 +4,12 @@
 <f:if condition="{settings.dev}">
   <f:then>
     <script src="{v:extension.path.siteRelative()}bower_components/jquery/dist/jquery.js"></script>
-
-    <!-- bower:js -->
-    <!-- endbower -->
-
-    <!-- Vendors, helpers, plugins and additional Bower components -->
-    <script src="{v:extension.path.siteRelative()}Assets/javascripts/plugins/toggle.js"></script>
-
-    <!-- Components -->
-    <script src="{v:extension.path.siteRelative()}Assets/javascripts/components/Component.js"></script>
-
-    <!-- App (init) -->
-    <script src="{v:extension.path.siteRelative()}Assets/javascripts/app.js"></script>
-
-    <!-- Livereload -->
-    <script src="http://0.0.0.0:35729/livereload.js?snipver=1"></script>
+    <script src="{v:extension.path.siteRelative()}Resources/Public/Assets/javascripts/app.js"></script>
   </f:then>
   <f:else>
     <script src="//ajax.googleapis.com/ajax/libs/jquery/2.1.4/jquery.min.js"></script>
     <script>
-      window.jQuery || document.write('<script src="{v:extension.path.siteRelative()}Resources/Public/Assets/javascripts/vendor/jquery.min.js"><\/script>')
+      window.jQuery || document.write('<script src="{v:extension.path.siteRelative()}Resources/Public/Assets/javascripts/vendors/jquery.min.js"><\/script>');
     </script>
     <script src="{v:extension.path.siteRelative()}Resources/Public/Assets/javascripts/app.min.js"></script>
   </f:else>

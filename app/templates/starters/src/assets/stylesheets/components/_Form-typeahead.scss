@@ -1,0 +1,72 @@
+/* ========================================
+ * Typeahead
+ * ========================================
+ *
+ * https://github.com/twitter/typeahead.js/
+ * Please set the correct class names in typeahead `classNames` object.
+ * @reusable true. Use under `.Form-item{}` in _Form.scss
+ */
+
+.twitter-typeahead { width: 100%; }
+
+.Form-typeahead-hint {
+  color: $color-textLight;
+}
+
+.Form-typeahead-menu {
+  background-color: $color-light;
+  border: 1px solid $color-borderPrimary;
+  border-bottom: 3px solid $color-borderPrimary;
+  border-radius: 0 0 $Form-borderRadius $Form-borderRadius;
+  box-shadow: 0 5px 10px rgba($color-dark, 0.2);
+  color: $color-text;
+  margin-top: -$Form-borderWidth;
+  padding: rem($base-space / 2)  0;
+  position: relative;
+  width: 100%;
+
+  &:before, &:after {
+    background-color: $color-light;
+    content: "";
+    display: block;
+    height: $Form-borderRadius;
+    left: -1px;
+    position: absolute;
+    top: rem(-($borderRadius + 1px));
+    width: $Form-borderRadius;
+  }
+
+  &:after {
+    left: auto;
+    right: -1px;
+  }
+
+  /**
+   * Form item overrides
+   */
+  .Form-item.-border ~ & {
+    &:before {
+      border-left: $Form-borderWidth solid $color-borderPrimary;
+    }
+    &:after {
+      border-right-width: $Form-borderWidth solid $color-borderPrimary;
+    }
+  }
+}
+
+.Form-typeahead-suggestion {
+  cursor: pointer;
+  padding: rem(3px) rem($base-space / 1.5);
+
+  &:hover {
+    color: $color-text;
+    background-color: $color-bgLightest;
+  }
+}
+
+.Form-typeahead-cursor {
+  background-color: $color-bgLightest;
+  color: $color-text;
+}
+
+.Form-typeahead-highlight {}

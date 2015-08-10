@@ -91,7 +91,7 @@ Begin every new major section of a CSS file with a title comment:
 
 Leave a carriage return between this title and the next line of code (be that a comment, SCSS, or some CSS).
 
-This title should appear at the top of each file (.scss, .css). If you are working on a file with multiple sections, each title should be preceded by four (4) carriage returns. This extra whitespace coupled with a title makes new sections much easier to spot when scrolling through large files:
+This title should appear at the top of each file (.scss, .css). If you are working on a file with multiple sections, each title should be preceded by four (2) carriage returns. This extra whitespace coupled with a title makes new sections much easier to spot when scrolling through large files:
 
 ```css
 /* ========================================
@@ -99,8 +99,6 @@ This title should appear at the top of each file (.scss, .css). If you are worki
  * ======================================== */ 
  
 .selector {}
-
-
 
 
 /* ========================================
@@ -263,11 +261,6 @@ Structure our partials in the following order to prevent errors. Remember to alp
 
 @charset 'UTF-8';
 
-// Vendors
-@import 'compass';
-@import 'normalize.scss/normalize'; # Bower component
-…
-
 // Config
 @import 'config';
 
@@ -277,7 +270,7 @@ Structure our partials in the following order to prevent errors. Remember to alp
 // UI mixins
 …
 
-// Custom vendors
+// Vendors
 …
 
 // Generic

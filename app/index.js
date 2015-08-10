@@ -1,5 +1,5 @@
 /* ========================================
- * Mediasignal generator
+ * My Web Starter Kit generator
  * ======================================== */
 
 'use strict';
@@ -29,6 +29,9 @@ var MscGenerator = yeoman.generators.Base.extend({
       required: false
     });
 
+    /**
+     * This allows us to name our folder in `camelCase` or `kebab-case`
+     */
     this.dir = this._.dasherize(this._.slugify(this.dir));
 
     if(this.dir) {
@@ -42,7 +45,7 @@ var MscGenerator = yeoman.generators.Base.extend({
    */
   greet: function() {
     this.log(yosay(
-      'Hi! Welcome to the ' + chalk.blue('Mediasignal') + ' generator. '
+      'Hi! Welcome to ' + chalk.blue('My Web Starter Kit')+'.'
     ));
   },
 
@@ -58,10 +61,8 @@ var MscGenerator = yeoman.generators.Base.extend({
       message: 'Project name:',
       default: path.basename(process.cwd())
     }, function(answers) {
-
       this.appName = this._.dasherize(this._.slugify(answers.name));
       this.appNameHumanize = this._.humanize(this.appName);
-
       done();
     }.bind(this));
   },
@@ -71,6 +72,7 @@ var MscGenerator = yeoman.generators.Base.extend({
     var appRoot = this.appRoot;
     var dir = this.dir;
     var log = this.log;
+    var slashIfDir = (dir ? dir + '/' : '');
 
     this.prompt([{
       type: 'list',
@@ -88,28 +90,17 @@ var MscGenerator = yeoman.generators.Base.extend({
       }, {
         when: function (answers) {
           if (answers.projectType === 'typoProject') {
+            console.log(dir);
             log(
-              chalk.green('  ❯'),
-              'Your project will be installed in', chalk.cyan('./'+dir), '\n' +
-              chalk.green('  ❯'),
-              'Your Typo3 extension path is', chalk.cyan(appRoot)
+              chalk.green('  ❯'), 'Your project will be installed in', chalk.cyan('./' + slashIfDir), '\n' +
+              chalk.green('  ❯'), 'Your Typo3 extension is', chalk.cyan(appRoot), '\n' +
+              chalk.green('  ❯'), 'Your build path is', chalk.cyan('./' + slashIfDir + 'Resources/Public/')
             );
           } else if (answers.projectType === 'htmlProject') {
-            return true;
-          }
-        },
-        type: 'input',
-        name: 'srcPath',
-        message: 'Source path for your code (folder for development):',
-        default: 'src'
-      }, {
-        when: function (answers) {
-          if (answers.projectType === 'htmlProject') {
             log(
-              chalk.green('  ❯'), 'Your project will be installed in',
-              chalk.cyan('./'+dir), '\n' +
-              chalk.green('  ❯'),
-              'Your development path is', chalk.cyan(answers.srcPath)
+              chalk.green('  ❯'), 'Your project will be installed in', chalk.cyan('./' + slashIfDir), '\n' +
+              chalk.green('  ❯'), 'Your development path is', chalk.cyan('./' + slashIfDir + 'src/'),  '\n' +
+              chalk.green('  ❯'), 'Your build path is', chalk.cyan('./' + slashIfDir + 'dist/')
             );
           }
         }
@@ -125,11 +116,15 @@ var MscGenerator = yeoman.generators.Base.extend({
         default: 'Website for '+ this.appNameHumanize
       }, {
         type: 'checkbox',
-        name: 'assets',
-        message: 'What assets do you need?',
+        name: 'whatStarters',
+        message: 'What starters do you need?',
         choices: [{
-          name: 'Stylesheets and JavaScripts',
-          value: 'cssJs',
+          name: 'Default stylesheets and JavaScripts',
+          value: 'defaultAssets',
+          checked: true
+        }, {
+          name: 'Deployment configuration',
+          value: 'deployment',
           checked: true
         }]
       }
@@ -140,9 +135,9 @@ var MscGenerator = yeoman.generators.Base.extend({
 
       this.appURL = answers.url;
       this.appDescription = answers.description;
-      this.appSourcePath = answers.srcPath;
 
-      this.cssAndJsAssets = answers.assets.indexOf('cssJs') !== -1;
+      this.defaultAssets = answers.whatStarters.indexOf('defaultAssets') !== -1;
+      this.deployment = answers.whatStarters.indexOf('deployment') !== -1;
 
       done();
     }.bind(this));
@@ -153,31 +148,24 @@ var MscGenerator = yeoman.generators.Base.extend({
    */
   config: function() {
     if(this.typoProject) {
-      this.config.set('assetsPath', 'Assets');
+      this.config.set('assetsPath', 'Assets/');
     }
 
     if(this.htmlProject) {
-      this.config.set('sourcePath', this.appSourcePath);
-      this.config.set('assetsPath', this.config.get('sourcePath')+'/assets');
+      this.config.set('assetsPath', 'src/assets/');
     }
   },
 
   /**
-   * Setup gruntfile
+   * Setup gulpfile / assemblefile
    */
-  gruntfile: function() {
+  gulpfile: function() {
     if(this.typoProject) {
-      this.template(
-        'typo3/_Gruntfile.js',
-        this.destinationPath('Gruntfile.js')
-      );
+      this.template('typo3/_gulpfile.js',this.destinationPath('gulpfile.js'));
     }
 
     if(this.htmlProject) {
-      this.template(
-        'html/_Gruntfile.js',
-        this.destinationPath('Gruntfile.js')
-      );
+      this.template('html/_assemblefile.js', this.destinationPath('assemblefile.js'));
     }
   },
 
@@ -193,29 +181,58 @@ var MscGenerator = yeoman.generators.Base.extend({
    */
   packageJSON: function () {
     if(this.typoProject) {
-      this.template(
-        'typo3/_package.json',
-        this.destinationPath('package.json')
-      );
+      this.template('typo3/_package.json', this.destinationPath('package.json'));
     }
 
     if(this.htmlProject) {
-      this.template(
-        'html/_package.json',
-        this.destinationPath('package.json')
-      );
+      this.template('html/_package.json', this.destinationPath('package.json'));
     }
   },
 
   /**
-   * Setup assets
+   * Setup default assets
    */
-  assets: function() {
-    if(this.cssAndJsAssets) {
-      this.fs.copy(this.templatePath('assets'), this.config.get('assetsPath'));
-      this.mkdir(this.config.get('assetsPath')+'/stylesheets/helpers');
-      this.mkdir(this.config.get('assetsPath')+'/images');
-      this.mkdir(this.config.get('assetsPath')+'/fonts');
+  defaultAssets: function() {
+    if(this.defaultAssets) {
+      var _this = this;
+      var startersDir = this.templatePath('starters/src/assets/');
+
+      var cssAssets = [
+        'components/_Heading.scss',
+        'components/_Icon.scss',
+        'components/_Ieframe.scss',
+        'components/_Text.scss',
+        'generic/',
+        'helpers/_helper.scss',
+        'layout/_Container.scss',
+        'layout/_Footer.scss',
+        'layout/_Grid.scss',
+        'layout/_Header.scss',
+        'layout/_Width.scss',
+        'layout/_Wrap.scss',
+        'mixins/',
+        'vendors/_normalize.scss',
+        '_config.scss',
+        'app.scss'
+      ].forEach(function(starter) {
+        _this.fs.copy(
+          startersDir + 'stylesheets/' + starter,
+          _this.destinationPath(_this.config.get('assetsPath') + 'stylesheets/' + starter)
+        );
+      });
+
+      var jsAssets = [
+        'app.js',
+        'head.js'
+      ].forEach(function(starter) {
+        _this.fs.copy(
+          startersDir + 'javascripts/' + starter,
+          _this.destinationPath(_this.config.get('assetsPath') + 'javascripts/' + starter)
+        );
+      });
+
+      this.mkdir(this.config.get('assetsPath')+'images');
+      this.mkdir(this.config.get('assetsPath')+'fonts');
     }
   },
 
@@ -227,13 +244,27 @@ var MscGenerator = yeoman.generators.Base.extend({
   },
 
   /**
+   * Setup deployment
+   */
+  deployment: function() {
+    if(this.deployment) {
+      this.template('shared/_dploy.example.yaml', 'dploy.example.yaml');
+      this.template('shared/_dploy.example.yaml', 'dploy.yaml');
+    }
+  },
+
+  /**
    * Copy other files
    */
   other: function() {
-
     this.fs.copy(
       this.templatePath('shared/editorconfig'),
       this.destinationPath('.editorconfig')
+    );
+
+    this.fs.copy(
+      this.templatePath('shared/jscsrc'),
+      this.destinationPath('.jscsrc')
     );
 
     this.template(
@@ -276,27 +307,27 @@ var MscGenerator = yeoman.generators.Base.extend({
     if(this.htmlProject) {
       this.template(
         this.templatePath('html/src/_app.json'),
-        this.destinationPath(this.config.get('sourcePath')+'/app.json')
+        this.destinationPath('src/app.json')
       );
 
       this.template(
-        this.templatePath('html/src/pages/_index.hbs'),
-        this.destinationPath(this.config.get('sourcePath')+'/pages/index.hbs')
+        this.templatePath('html/src/views/_index.hbs'),
+        this.destinationPath('src/views/index.hbs')
       );
 
       this.fs.copy(
         this.templatePath('html/src/layouts/_layout.hbs'),
-        this.destinationPath(this.config.get('sourcePath')+'/layouts/layout.hbs')
+        this.destinationPath('src/layouts/layout.hbs')
       );
 
       this.fs.copy(
-        this.templatePath('html/src/includes/_top.hbs'),
-        this.destinationPath(this.config.get('sourcePath')+'/includes/top.hbs')
+        this.templatePath('html/src/partials/_top.hbs'),
+        this.destinationPath('src/partials/top.hbs')
       );
 
       this.template(
-        this.templatePath('html/src/includes/_bottom.hbs'),
-        this.destinationPath(this.config.get('sourcePath')+'/includes/bottom.hbs')
+        this.templatePath('html/src/partials/_bottom.hbs'),
+        this.destinationPath('src/partials/bottom.hbs')
       );
     }
   },

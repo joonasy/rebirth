@@ -1,0 +1,139 @@
+/* ========================================
+ * Hero
+ * ======================================== */
+
+.Hero {
+  position: relative;
+}
+
+  .Hero-item {
+    display: table;
+    height: rem($base-space * 10);
+    position: relative;
+    width: 100%;
+  }
+
+    .Hero-content {
+      display: table-cell;
+      padding-bottom: rem($base-space);
+      padding-top: rem($base-space);
+      position: relative;
+      vertical-align: middle;
+      width: 100%;
+      z-index: 2;
+    }
+
+      .Hero-figure {
+        @extend %positionAbsoluteFill;
+        background-position: center;
+        background-size: cover;
+        background-position: center;
+        margin-bottom: 0;
+        z-index: 0;
+
+        img {
+          display: block;
+          height: 100%;
+          object-fit: cover;
+          width: 100%;
+        }
+
+        .no-js & > img {
+          display: none;
+        }
+      }
+
+      .Hero-overlay {
+        @extend %positionAbsoluteFill;
+        content: '';
+        z-index: 1;
+      }
+
+
+/* ======
+ * Hero - size
+ * ====== */
+
+.Hero {
+  &.-full {
+    .Hero-item {
+      height: 100vh;
+    }
+  }
+
+  &.-l {
+    .Hero-item {
+      height: rem($base-space * 18);
+    }
+
+    @include breakpoint('mediumUp') {
+      .Hero-item {
+        height: rem($base-space * 28);
+      }
+    }
+  }
+
+  &.-m {
+    .Hero-item {
+      height: rem($base-space * 14);
+    }
+
+    @include breakpoint('mediumUp') {
+      .Hero-item {
+        height: rem($base-space * 16);
+      }
+    }
+  }
+}
+
+
+/* ======
+ * Hero - align
+ * ====== */
+
+.Hero {
+  &.-alignContent-top {
+    .Hero-content {
+      padding-top: rem($base-space * 2);
+      vertical-align: top;
+    }
+  }
+
+  &.-alignContent-bottom {
+    .Hero-content {
+      padding-bottom: rem($base-space * 2);
+      vertical-align: bottom;
+    }
+  }
+
+  &.-alignFigure-myPosition {
+    .Hero-figure {
+      img {}
+    }
+  }
+}
+
+
+/* ======
+ * Hero - coloring
+ * ====== */
+
+.Hero {
+  &.-color-lightOnDark {
+    background-color: #ffffff;
+    color: #ffffff;
+
+    .Hero-overlay {
+      background-color: rgba(#000000, 0.5);
+    }
+  }
+
+  &.-color-darkOnLight {
+    background-color: $color-text;
+    color: $color-text;
+
+    .Hero-overlay {
+      background-color: rgba(#ffffff, 0.75);
+    }
+  }
+}

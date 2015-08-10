@@ -1,0 +1,54 @@
+/* ========================================
+ * Form icon
+ * ======================================== */
+
+.Form-icon {
+  @extend %Form-item-appearance;
+  @extend %Form-item-layout;
+  background-color: transparent;
+  left: 0;
+  position: absolute;
+  text-align: center;
+  top: 0;
+  z-index: 1;
+
+  &.-right {
+    left: auto;
+    right: 0;
+  }
+}
+
+
+/* ======
+ * Form item - required modifiers to use with form icons
+ * ======
+ *
+ * Alternatively move this inside the main `.Form--item{}`.
+ */
+
+.Form-item {
+  &.-hasIconLeft { padding-left: rem($Form-padding * 2.5); }
+  &.-hasIconRight { padding-right: rem($Form-padding * 2.5); }
+}
+
+
+/* ======
+ * Form icon - primary variation
+ * ======
+ *
+ * Alternatively move this inside the main `.Form--primary{}`.
+ */
+
+.Form--primary {
+  .Form-icon {
+    .IconCss[class*='-chevron']:after {
+      border-color: $color-textLight;
+    }
+  }
+
+  .Form-item:hover .Form-icon {
+    .IconCss[class*='-chevron']:after {
+      border-color: $color-text;
+    }
+  }
+}

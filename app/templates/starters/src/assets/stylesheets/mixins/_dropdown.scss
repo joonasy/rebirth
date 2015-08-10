@@ -1,0 +1,77 @@
+// ========================================
+// Dropdown
+// ========================================
+
+@mixin dropdown(
+  $align: 'left',
+  $arrow: true,
+  $arrowColor: lighten(#000000, 85),
+  $backgroundColor: #ffffff,
+  $borderRadius: $borderRadius,
+  $default: true,
+  $min-width: 240px,
+  $padding: rem($base-space) rem($base-space),
+  $shadowColor: rgba(#000000, 0.1),
+  $state: false
+  ) {
+  @if $state == false and $default  {
+    background-color: $backgroundColor;
+    box-shadow: 0 0 0 1px $shadowColor;
+    border-radius: $borderRadius;
+    left: 0;
+    list-style: none;
+    margin: 0;
+    min-width: $min-width;
+    padding: $padding;
+    position: absolute;
+    top: 100%;
+    z-index: 999;
+
+    /**
+     * Hide
+     */
+    clip: rect(0,0,0,0);
+    height: 0;
+    transform: translateY(-$base-space);
+    transition: transform ($transitionDuration * 2);
+  }
+
+  /**
+   * Open state
+   */
+  @if $state == 'is-open' {
+    clip: auto;
+    height: auto;
+    transform: translateY(0);
+  }
+
+  /**
+   * Caret
+   */
+  @if $arrow and $state == false {
+    &:before {
+      @include shapeTriangle(8px, 8px, 'up',  $arrowColor);
+      content: "";
+      left: $base-space;
+      margin-left: rem(-4px);
+      position: absolute;
+      top: rem(-8px);
+    }
+  }
+
+  /**
+   * Aligning
+   */
+  @if $align == 'right' {
+    left: auto;
+    right: 0;
+
+    /**
+     * Caret align
+     */
+    &:before {
+      left: auto;
+      right: $base-space / 2;
+    }
+  }
+}
