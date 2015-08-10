@@ -319,19 +319,6 @@ assemble.task('headScripts', ['modernizr', 'javascripts'], function() {
 });
 
 /**
- * Add this to build task if required
- */
-assemble.task('bottomScripts', ['javascripts'], function() {
-  return gulp.src([
-    'node_modules/somemodule/somemodule.js',
-    config.javascripts.dest + 'app.min.js'
-  ])
-    .pipe($.uglify())
-    .pipe($.concat('app.min.js'))
-    .pipe(gulp.dest(config.javascripts.dest));
-});
-
-/**
  * Copy necessary assets
  */
 assemble.task('copyAssets', function() {
