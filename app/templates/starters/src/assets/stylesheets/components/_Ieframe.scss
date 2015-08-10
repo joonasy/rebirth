@@ -1,0 +1,26 @@
+/* ========================================
+ * Notifyframe for IE9 >
+ * ======================================== */
+
+.IeFrame {
+  background: #fff9d7;
+  border-bottom: 1px solid #e2c822;
+  color: #343434 !important;
+  display: block;
+  font: 12px 'Helvetica Neue', Helvetica, Arial, sans-serif !important;
+  padding: 15px 20px;
+  text-align: center;
+
+  a {
+    background: none !important;
+    border: none !important;
+    color: #6579b9 !important;
+    text-decoration: none !important;
+
+    &:hover {
+      background: none !important;
+      border: none !important;
+      text-decoration: underline !important;
+    }
+  }
+}

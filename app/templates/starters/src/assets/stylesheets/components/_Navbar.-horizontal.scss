@@ -7,7 +7,6 @@
 
 @mixin NavbarHorizontal($namespace: '') {
   .Navbar.#{-$namespace}horizontal {
-
     .Navbar-trigger { display: none; }
 
     .Navbar-self {
@@ -60,8 +59,7 @@
          * widths. Prefer another solution such as separate
          * navigation for sub pages.
          */
-        ul,
-        .Navbar-subTrigger {
+        ul, .Navbar-subTrigger {
           display: none !important;
         }
       }

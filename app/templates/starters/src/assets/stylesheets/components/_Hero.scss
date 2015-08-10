@@ -55,16 +55,13 @@
  * ====== */
 
 .Hero {
-
   &.-full {
-
     .Hero-item {
       height: 100vh;
     }
   }
 
   &.-l {
-
     .Hero-item {
       height: rem($base-space * 18);
     }
@@ -77,7 +74,6 @@
   }
 
   &.-m {
-
     .Hero-item {
       height: rem($base-space * 14);
     }
@@ -96,7 +92,6 @@
  * ====== */
 
 .Hero {
-
   &.-alignContent-top {
     .Hero-content {
       padding-top: rem($base-space * 2);
@@ -124,7 +119,6 @@
  * ====== */
 
 .Hero {
-
   &.-color-lightOnDark {
     background-color: #ffffff;
     color: #ffffff;

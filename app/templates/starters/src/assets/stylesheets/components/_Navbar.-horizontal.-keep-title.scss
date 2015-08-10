@@ -6,15 +6,12 @@
  */
 
 .Navbar.-l-horizontal.-keep-title {
-
   @include breakpoint('largeUp') {
 
     /**
      * Navbar
      */
-    > ul {
-      float: left;
-    }
+    > ul { float: left; }
 
     /**
      * Navbar trigger
@@ -24,17 +21,9 @@
       float: left;
     }
 
-      .Navbar-trigger-inner {
-        width: auto;
-      }
-
-      .Navbar-trigger-text {
-        display: none;
-      }
-
-      .Navbar-trigger-sub {
-        display: none;
-      }
+      .Navbar-trigger-inner { width: auto; }
+      .Navbar-trigger-text { display: none; }
+      .Navbar-trigger-sub {  display: none; }
   }
 }
 

@@ -24,7 +24,6 @@
     color: $color-text;
 
     &:hover {
-
       .Navbar-subTrigger-icon {
         &:before { background: $color-link; }
         &:after { color: $color-link; }
@@ -45,7 +44,6 @@
     }
 
   .Navbar-sub {
-
     .Navbar-link  {
       background-color: darken(#ffffff, 6);
       border-color: darken(#ffffff, 12);
@@ -61,7 +59,6 @@
     }
 
       .Navbar-subTrigger-icon {
-
         &:before { background-color: $color-text; }
         &:after { color: $color-text; }
       }

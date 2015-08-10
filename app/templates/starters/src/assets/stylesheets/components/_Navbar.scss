@@ -10,9 +10,7 @@
   .Navbar-self {
     display: none;
 
-    .Navbar.is-open & {
-      display: block;
-    }
+    .Navbar.is-open & { display: block; }
   }
 
     .Navbar-item {
@@ -59,9 +57,7 @@
       display: none;
       clear: both;
 
-      .Navbar-item.is-open > & {
-        display: block;
-      }
+      .Navbar-item.is-open > & { display: block; }
 
       ul {
         ul {
@@ -102,9 +98,7 @@
         float: left;
       }
 
-      .Navbar-trigger-text {
-        float: right;
-      }
+      .Navbar-trigger-text { float: right; }
 
     .Navbar-trigger-sub {
       @extend %Navbar-subTrigger;
@@ -122,16 +116,10 @@
  * ====== */
 
 .Navbar.-transform-hideTrigger {
-
   @include breakpoint('largeUp') {
 
-    .Navbar-self {
-      display: block;
-    }
-
-    .Navbar-trigger {
-      display: none;
-    }
+    .Navbar-self { display: block; }
+    .Navbar-trigger { display: none; }
   }
 }
 

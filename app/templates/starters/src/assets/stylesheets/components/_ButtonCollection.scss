@@ -6,7 +6,6 @@
  */
 
 .ButtonCollection {
-
   > .Button { margin-right: 0; }
 }
 
@@ -68,7 +67,6 @@
 %ButtonCollection.-border {
 
   &.-horizontal, &.-justified {
-
     > .Button {
       border-left-width: 0;
 
@@ -77,9 +75,7 @@
   }
 
   &.-vertical {
-
     > .Button {
-
       &:not(:first-child) { border-top-width: 0; }
     }
   }
@@ -91,13 +87,10 @@
  * ====== */
 
 .ButtonCollection.-round {
-
   > .Button { border-radius: 0; }
 
   &.-horizontal, &.-justified {
-
     > .Button {
-
       &:not(:first-child,.-border) {
         border-left: $ButtonCollection-borderWidth solid
           $ButtonCollection-borderColor;
@@ -116,7 +109,6 @@
   }
 
   &.-vertical {
-
     > .Button {
       box-shadow: 0 -1px $ButtonCollection-borderColor;
 

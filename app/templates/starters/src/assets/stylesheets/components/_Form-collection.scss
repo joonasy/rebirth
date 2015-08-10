@@ -15,26 +15,19 @@
     z-index: 1;
   }
 
-  .Form-item, .Form-addon, .Form-button {
+  .Form-item:not(textarea), .Form-addon, .Form-button {
     @include textTruncate();
     margin-bottom: 0;
   }
 
-  .Form-item:not(textarea), .Form-addon {
-    display: table-cell;
-  }
-
-  .Form-collection {
-    margin-bottom: 0;
-  }
+  .Form-item:not(textarea), .Form-addon { display: table-cell; }
+  .Form-collection { margin-bottom: 0; }
 }
 
   .Form-collection-item {
     position: relative;
 
-    .Form-item:only-child, .Form-addon:only-child {
-      display: block;
-    }
+    .Form-item:only-child, .Form-addon:only-child { display: block; }
   }
 
 
@@ -43,7 +36,6 @@
  * ====== */
 
 .Form-collection.-vertical {
-
   > .Form-item, > .Form-button {
     &:not(:first-child) {
       border-top-width: 0;
@@ -51,7 +43,6 @@
   }
 
   .Form-collection-item {
-
     .Form-item, .Form-addon, .Form-button {
       &:first-child:not(:only-child) {
         border-right-width: 0;
@@ -59,7 +50,6 @@
     }
 
     &:not(:first-child) {
-
       .Form-item, .Form-addon, .Form-button {
         border-top-width: 0;
       }
@@ -68,7 +58,6 @@
 }
 
 .Form-collection.-horizontal {
-
   .Form-item, .Form-addon, .Form-button {
     border-right-width: 0;
   }
@@ -90,7 +79,6 @@
     vertical-align: middle;
 
     &:last-child {
-
       .Form-item, .Form-addon, .Form-button {
         &:last-child, &.-lastChild {
           border-right-width: $Form-borderWidth;
@@ -106,7 +94,6 @@
  * ====== */
 
 .Form-collection.-round {
-
   .Form-item, .Form-addon, .Form-button {
     border-radius: 0;
   }
@@ -133,9 +120,7 @@
      * Descendant collections
      */
     .Form-collection-item {
-
       &:first-child {
-
         .Form-item, .Form-addon {
           &:first-child {
             border-radius: $Form-borderRadius 0 0 0;
@@ -154,7 +139,6 @@
       }
 
       &:last-child {
-
         .Form-item, .Form-addon {
           &:first-child {
             border-radius: 0 0 0 $Form-borderRadius;
@@ -198,9 +182,7 @@
      * Descendant collections
      */
     .Form-collection-item {
-
       &:first-child {
-
         .Form-item, .Form-addon, .Form-button {
           &:first-child {
             border-radius: $Form-borderRadius 0 0 $Form-borderRadius;
@@ -209,7 +191,6 @@
       }
 
       &:last-child {
-
         .Form-item, .Form-addon, .Form-button {
           &:last-child, &.-lastChild {
             border-radius: 0 $Form-borderRadius $Form-borderRadius 0;

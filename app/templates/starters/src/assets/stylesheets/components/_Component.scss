@@ -1,0 +1,17 @@
+/* ========================================
+ * Component
+ * ========================================
+ *
+ * @extends `.Component{}` in _Component.scss.
+ * @reusable true/false
+ */
+
+.Component {
+  &.is-stateName {}
+}
+
+  .Component-descendantName {}
+
+.Component--variationName {}
+
+.Component.-modifierName {}

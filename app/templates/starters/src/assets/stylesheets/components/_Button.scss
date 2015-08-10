@@ -32,7 +32,6 @@
  * ====== */
 
 .Button {
-
   &.-round {
     border-radius: $Button-borderRadius;
   }
@@ -44,7 +43,6 @@
  * ====== */
 
 .Button {
-
   &.-s {
     font-size: $base-fontSize-s;
     line-height: rem(($Button-lineHeight / 1.5) - ($Button-borderWidth * 2));
@@ -83,12 +81,12 @@
 
 .Button--primary {
   background-color: $color-primary;
-  border-color: #ffffff;
+  border-color: $color-primary;
   color: #ffffff;
 
   &:hover, &:focus {
     background-color: darken($color-primary, 5);
-    border-color: $color-primary;
+    border-color: darken($color-primary, 5);
     color: #ffffff;
   }
 
