@@ -86,11 +86,11 @@ $color-light: #ffffff;
 
 // Background colors
 $color-htmlBg: #ffffff;
-$color-bgLightest: darken(#ffffff, 2);
+$color-bgLightest: darken(#ffffff, 3);
 
 // Text colors
 $color-text: #444444;
-$color-textLight: lighten(#444444, 40);
+$color-textLight: lighten($color-text, 20);
 
 // Heading color
 $color-heading: inherit;
