@@ -11,3 +11,4 @@ node_modules/
 bower_components/
 app/templates/starters/dist
 rev-manifest.json
+app/templates/starters/src/assets/images
