@@ -1,0 +1,26 @@
+{namespace vh=In2code\Powermail\ViewHelpers}
+
+<div id="powermail_fieldwrap_{field.uid}" class="powermail_fieldwrap powermail_fieldwrap_captcha powermail_fieldwrap_{field.uid} {field.css}">
+	<label for="powermail_field_{field.marker}" class="Form-label powermail_label" title="{field.description}">
+		<vh:string.RawAndRemoveXss>{field.title}</vh:string.RawAndRemoveXss><f:if condition="{field.mandatory}"><span class="mandatory">*</span></f:if>
+	</label>
+
+	<div class="powermail_captcha_outer {vh:Validation.ErrorClass(field: '{field}', class: 'powermail_field_error')}">
+		<div class="Grid">
+      <div class="Grid-item s-Width--8-12">
+        <f:form.textfield
+  				id="powermail_field_{field.marker}"
+  				property="{field.marker}"
+  				value=""
+  				class="Form-item -border -round powermail_field powermail_captcha {vh:Validation.ErrorClass(field:field, class:'powermail_field_error')}"
+  				additionalAttributes="{vh:Validation.CaptchaDataAttribute(field:field)}" />
+      </div>
+      <div class="Grid-item s-Width--4-12">
+    		<img src="{vh:Validation.Captcha()}" alt="captcha" class="powermail_captchaimage" id="powermail_captchaimage" />
+    		<f:if condition="{settings.validation.client}">
+    			<div class="powermail_field_error_container powermail_field_error_container_{field.marker}"></div>
+    		</f:if>
+      </div>
+    </div>
+	</div>
+</div>
