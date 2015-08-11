@@ -1,5 +1,5 @@
 # ======
-# Basic ignores
+# Basic
 # ======
 
 .sass-cache
@@ -10,11 +10,9 @@ npm-debug.log
 node_modules/
 bower_components/
 
-dploy.yaml
-
 
 # ======
-# Build files
+# Build and deployment
 # ======
 
 rev-manifest.json
@@ -24,4 +22,7 @@ Top.dist.html
 Resources/Public/Assets
 <% } %>
 <% if (htmlProject) { %>dist/<% } %>
+
+<% if (deployment) { %>dploy.yaml<% } %>
+<% if (deployment) { %>.rev<% } %>
 
