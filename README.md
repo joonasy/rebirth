@@ -49,7 +49,7 @@ Install all the requirements before installing the generator.
 
     npm install -g generator-my
 
-**2.** Run the generator in your current directory or optionally pass a new install location (Note that if you are building a *Typo3 project*, your project folder will be used as your *extension path*):
+**2.** Run the generator in your current directory or optionally pass a new install location (If you are building a *Typo3 project* use underscores as spaces in your directory name e.g. `my_project_name`):
 
     yo my [my-new-project-directory]
 

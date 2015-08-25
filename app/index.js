@@ -26,10 +26,7 @@ var MyGenerator = yeoman.generators.Base.extend({
       required: false
     });
 
-    /**
-     * This allows us to name our folder in `camelCase` or `kebab-case`
-     */
-    var dir = this._.dasherize(this._.slugify(this.dir));
+    var dir = this.dir.toLowerCase();
 
     if(dir) {
       this.destinationRoot(dir);
@@ -87,8 +84,8 @@ var MyGenerator = yeoman.generators.Base.extend({
         message: 'Project name:',
         default: path.basename(process.cwd())
       }, function(answers) {
-        this.appName = this._.dasherize(this._.slugify(answers.name));
-        this.appNameHumanize = this._.humanize(this.appName);
+        this.appNameDasherize = this._.dasherize(this._.slugify(answers.name));
+        this.appNameHumanize = this._.humanize(this.appNameDasherize);
         done();
       }.bind(this));
     }
@@ -118,7 +115,6 @@ var MyGenerator = yeoman.generators.Base.extend({
         }, {
           when: function (answers) {
             if (answers.projectType === 'typoProject') {
-              console.log(dir);
               log(
                 chalk.green('  ❯'), 'Your project will be installed in', chalk.cyan('./' + slashIfDir), '\n' +
                 chalk.green('  ❯'), 'Your Typo3 extension is', chalk.cyan(appRoot), '\n' +
@@ -136,7 +132,7 @@ var MyGenerator = yeoman.generators.Base.extend({
           type: 'input',
           name: 'url',
           message: 'Project URL (production):',
-          default: 'http://' + this.appName + '.com'
+          default: 'http://' + this.appNameDasherize + '.com'
         }, {
           type: 'input',
           name: 'description',
