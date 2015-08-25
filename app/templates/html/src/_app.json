@@ -1,5 +1,5 @@
 {
-    "title": "<%= appName %>",
+    "title": "<%= appNameDasherize %>",
     "author": "<%= generatorAuthor %>",
     "description": "<%= appDescription %>",
     "url": "<%= appURL %>"
