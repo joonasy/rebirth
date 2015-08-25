@@ -26,9 +26,8 @@ var MyGenerator = yeoman.generators.Base.extend({
       required: false
     });
 
-    var dir = this.dir.toLowerCase();
-
-    if(dir) {
+    if(this.dir) {
+      var dir = this.dir.toLowerCase();
       this.destinationRoot(dir);
       this.appRoot = dir;
     }
@@ -262,7 +261,8 @@ var MyGenerator = yeoman.generators.Base.extend({
 
         var jsAssets = [
           'app.js',
-          'head.js'
+          'head.js',
+          'components/component.js'
         ].forEach(function(starter) {
           _this.fs.copy(
             startersDir + 'javascripts/' + starter,
@@ -380,7 +380,7 @@ var MyGenerator = yeoman.generators.Base.extend({
 
   install: function () {
     this.installDependencies({
-      skipInstall: this.options['skip-install', 'design']
+      skipInstall: !this.options.design && this.options['skip-install'] || this.options.design
     });
   }
 });
