@@ -20,7 +20,7 @@ Low-level structural and positional traits. Helpers can be applied directly to a
 
 ### helperName
 
-Helpers must use a camelCase name. Helpers may also have variations and responsive variants like components do. What follows is an example of how various helpers can be used to create a simple structure within or without a component.
+Helpers must use a camelCase name. Helpers may also have modifiers and responsive variants like components do. What follows is an example of how various helpers can be used to create a simple structure within or without a component.
 
 ```html
 <div class="Component marginTop--m cf">              # [1]
@@ -43,7 +43,7 @@ Helpers must use a camelCase name. Helpers may also have variations and responsi
 
 The CSS responsible for component-specific styling.
 
-Syntax: `[<prefix>-]<ComponentName>[--variationName|-chainable-modifierName|-descendantName]`
+Syntax: `[<prefix>-]<ComponentName>[--modifierName|-chainable-modifierName|-descendantName]`
 
 This has several benefits when reading and writing HTML and CSS:
 
@@ -52,9 +52,9 @@ This has several benefits when reading and writing HTML and CSS:
 * It helps to decouple presentation semantics from document semantics.
 
 
-## Naming components, variations and modifiers
+## Naming components and modifiers
 
-Name things in CSS is to pick a name that is sensible, but somewhat ambiguous: aim for high reusability. For example, instead of a class like `.Nav--site`, choose something like `.Nav--primary`; rather than `.Footer-list`, favour a component with a variation like `.List--link`.
+Name things in CSS is to pick a name that is sensible, but somewhat ambiguous: aim for high reusability. For example, instead of a class like `.Nav--site`, choose something like `.Nav--primary`; rather than `.Footer-list`, favour a component with a modifier like `.List--link`.
 
 The differences in these names is that the first of each two examples is tied to a very specific use case: they can only be used as the site’s navigation or the footer’s links respectively. By using slightly more ambiguous names, we can increase our ability to reuse these components in different circumstances.
 
@@ -74,15 +74,15 @@ The component's name must be written in [PascalCase](http://c2.com/cgi/wiki?Pasc
 ```
 
 
-### ComponentName--variationName
+### ComponentName--modifierName
 
-A component variation (or component modifier) is a class that modifies the presentation of the base component in some form (e.g., for a certain configuration of the component). Component variations also modify their descendants by nesting, however if descendants need altering variations then modify the descendants directly. Variation names must be written in camelCase and be separated from the component name by two hyphens. The class should be included in the HTML in addition to the base component class. 
+A component modifier (or component modifier) is a class that modifies the presentation of the base component in some form (e.g., for a certain configuration of the component). Component modifiers also modify their descendants by nesting, however if descendants need altering modifiers then modify the descendants directly. modifier names must be written in camelCase and be separated from the component name by two hyphens. The class should be included in the HTML in addition to the base component class. 
 
 ```css
 /* Core button component */
 .Button {}
 
-/* Primary button variation */
+/* Primary button modifier */
 .Button--primary {}
 ```
 
@@ -95,7 +95,7 @@ A component variation (or component modifier) is a class that modifies the prese
 
 ### ComponentName.-chainable-modifierName
 
-Chainable modifiers are denoted by a leading hyphen `-`, a voluntary prefix and a descriptor for the modification. As the name would indicate, chainable modifiers provide us with the ability to configure a module in the HTML with a short, concise syntax. Chainable component modifiers can be added to component variations and collections and may also modify their descendants by nesting.   
+Chainable modifiers are denoted by a leading hyphen `-`, a voluntary prefix and a descriptor for the modification. As the name would indicate, chainable modifiers provide us with the ability to configure a module in the HTML with a short, concise syntax. Chainable component modifiers can be added to component modifiers and collections and may also modify their descendants by nesting.   
 
 The golden rule is that **chainable modifiers should never modify the same CSS property twice**. This is to ensure that styles don’t get clobbered and that the order in which they are applied is irrelevant. 
 
@@ -124,7 +124,7 @@ Chainable modifiers also accept responsive variants.
 </a>
 ```
 
-Chainable modifiers may also extend variations.
+Chainable modifiers may also extend main modifiers.
 
 ```css
 .Button--primary {
@@ -184,7 +184,7 @@ component. It's responsible for applying presentation directly to the
 descendant on behalf of a particular component. descendant names must be
 written in camelCase. 
 
-Parent component variations also modify their descendants by nesting, however in some cases (rarely) descendants may need direct variations (`1`). Be careful in these situations not to override direct descendant variations with the parent variation (`2`).
+Parent component modifiers also modify their descendants by nesting, however in some cases (rarely) descendants may need direct modifiers (`1`). Be careful in these situations not to override direct descendant modifiers with the parent modifier (`2`).
 
 ```css
 /**
@@ -200,7 +200,7 @@ Parent component variations also modify their descendants by nesting, however in
 
     .Block-text {}
 
-      .Block-text--meta {} // [1] Example of direct descendant variation
+      .Block-text--meta {} // [1] Example of direct descendant modifier
 
 .Block-footer {}
 
@@ -216,7 +216,7 @@ Parent component variations also modify their descendants by nesting, however in
 
   .Block-text {}
 
-    .Block-text--meta {} // [2] Be careful not to override direct variation
+    .Block-text--meta {} // [2] Be careful not to override direct modifier
 
   .Block-footer {}
 }
@@ -358,10 +358,10 @@ These chainable modifiers do not use prefixes.
 * Shapes: `-round`, `-border`
 
 
-### Variations
+### Modifiers
 
-* Abstract variation definitions for components (e.g `.Button--primary`): `--primary`, `--secondary`, `--tertiary`, `--quaternary`, `--quinary`, `--senary`, `--septenary`, `--octonary`, `--nonary`, `--denary`
-* Sizing variations: `--[x...]s`, `--m`, `--ml`, `--[x...]l`
+* Abstract modifier definitions for components (e.g `.Button--primary`): `--primary`, `--secondary`, `--tertiary`, `--quaternary`, `--quinary`, `--senary`, `--septenary`, `--octonary`, `--nonary`, `--denary`
+* Sizing modifiers: `--[x...]s`, `--m`, `--ml`, `--[x...]l`
     * Used by helpers (e.g `.marginTop--l`). **For component sizing use chainable modifiers.**
 
 
