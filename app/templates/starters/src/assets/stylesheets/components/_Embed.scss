@@ -1,0 +1,20 @@
+/* ========================================
+ * Responsive embed content
+ * ======================================== */
+
+/**
+ * Make iframes responsive
+ */
+.Embed.-iframe {
+  padding-bottom: 60%;
+  position: relative;
+  overflow: hidden;
+
+  iframe {
+    height: 100% !important;
+    left: 0;
+    position: absolute;
+    top: 0;
+    width: 100% !important;
+  }
+}

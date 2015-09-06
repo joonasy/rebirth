@@ -72,6 +72,8 @@ Please discuss about new ideas and things that you think should be modified. Cur
 
 ## Todo (in random order)
 
+* Convert `.Grid{}` system to Flexbox
+* Drop IE9 support
 * All necessary CSS components
 * Sub generators for starters
 * CSS modular scale
