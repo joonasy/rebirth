@@ -2,9 +2,11 @@
  * Set inner figure image as parent background image
  * ========================================
  *
- * Fix object-fit by setting the image as the figure background. Useful for
- * browsers that don't support object-fit but support `background-size: cover`.
- * Requires modernizr for feature detecting and lazysizes for responsive images
+ * Fix object-fit by setting the image as the figure background. Targeted for
+ * browsers that don't support object-fit but support `background-size: cover`. Remember
+ * to add `background-size: cover` to the parent element (usually <figure>).
+ *
+ * Requires jQuery, Modernizr for feature detecting and Lazysizes for responsive images
  * support until srcset is supported well. Doesn't support window resizing.
  *
  * http://caniuse.com/#search=object-fit
@@ -14,36 +16,44 @@
  * https://github.com/aFarkas/lazysizes/tree/gh-pages/plugins/respimg
  *
  * @usage
- *     With lazysizes:
- *       <figure class="My-figure">
- *         <img
- *           data-sizes="auto"
- *           src="..."
- *           data-srcset="
- *             ... 400w,
- *             ... 768w,
- *             ... 1200w"
- *           class="lazyload">
- *         <noscript>
- *           <img src="...">
- *         </noscript>
- *       </figure>
+ *  With lazysizes and responsive images:
+ *    <figure class="My-figure">
+ *      <img
+ *        data-sizes="auto"
+ *        src="..."
+ *        data-srcset="
+ *          ... 400w,
+ *          ... 768w,
+ *          ... 1200w"
+ *          class="lazyload">
+ *      <noscript>
+ *        <img src="...">
+ *      </noscript>
+ *    </figure>
  *
- *       Without lazysizes:
- *         <figure class="My-figure">
- *           <img src="...">
- *         </figure>
+ *  With lazysizes:
+ *    <figure class="My-figure">
+ *      <img data-src="...">
+ *      <noscript>
+ *        <img src="...">
+ *      </noscript>
+ *    </figure>
  *
- *   JavaScript:
- *       If you need lazysizes load `require('lazysizes');` in <head>
- *       And in case you need responsive images add
- *       require('lazysizes/plugins/respimg/ls.respimg.js'); to <head> also
+ *  Without lazysizes:
+ *    <figure class="My-figure">
+ *      <img src="...">
+ *    </figure>
  *
- *       In component:
- *         var $context = $('.js-MyComponent');
- *         var figureImgAsBg = require('../plugins/figureImgAsBg');
- *         $figure = $('.My-figure', $context)
- *         figureImgAsBg($figure);
+ *  JavaScript:
+ *    If you need lazysizes load `require('lazysizes');` in <head>
+ *    And in case you need responsive images add
+ *    require('lazysizes/plugins/respimg/ls.respimg.js'); to <head> also
+ *
+ *    In component:
+ *      var $context = $('.js-MyComponent');
+ *      var figureImgAsBg = require('../plugins/figureImgAsBg');
+ *      $figure = $('.My-figure', $context)
+ *      figureImgAsBg($figure);
  */
 
 'use strict';
