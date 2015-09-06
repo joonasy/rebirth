@@ -13,7 +13,7 @@ html {
   background-color: $color-htmlBg;
   color: $color-text;
   font-family: $base-fontFamily;
-  font-size: 100%;
+  font-size: $base-fontSize;
   line-height: $base-lineHeight;
   min-width: 300px;
 
