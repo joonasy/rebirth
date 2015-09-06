@@ -53,7 +53,7 @@ var config = {
   javascripts: {
     bundle: [{
       external: [],
-      fileName: 'docs.js',
+      fileName: 'app.js',
       src: 'src/assets/javascripts/app.js'
     }, {
       external: [],
