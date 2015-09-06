@@ -257,7 +257,10 @@ assemble.task('server', function() {
     open: false,
     port: 9001,
     server: {
-      baseDir: [config.dest, './']
+      baseDir: config.dest,
+      routes: {
+        '/bower_components': 'bower_components'
+      }
     },
     notify: false
   });

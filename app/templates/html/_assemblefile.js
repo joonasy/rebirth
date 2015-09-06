@@ -253,7 +253,12 @@ assemble.task('server', function() {
   return browserSync.init({
     open: false,
     port: 9001,
-    server: config.dest,
+    server: {
+      baseDir: config.dest,
+      routes: {
+        '/bower_components': 'bower_components'
+      }
+    },
     notify: false
   });
 });
