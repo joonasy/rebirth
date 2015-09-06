@@ -42,8 +42,8 @@ var config = {
     helpers: 'src/helpers/*.js',
     layouts: 'src/layouts/*.hbs',
     partials: 'src/partials/*.hbs',
-    views: 'src/views/**/*.hbs',
-    watch: ['src/{layouts,views,partials}/**/*.hbs', 'src/*.{json,yml}']
+    templates: 'src/templates/**/*.hbs',
+    watch: ['src/{layouts,templates,partials}/**/*.hbs', 'src/*.{json,yml}']
   },
   images: {
     dest: 'dist/assets/images/',
@@ -98,7 +98,7 @@ assemble.task('html', function() {
   assemble.layouts(config.html.layouts);
   assemble.partials(config.html.partials);
 
-  var pipeline = assemble.src(config.html.views)
+  var pipeline = assemble.src(config.html.templates)
     .on('error', handleError)
     .pipe($.rename({extname: '.html'}))
     .pipe(assemble.dest(config.html.dest));
