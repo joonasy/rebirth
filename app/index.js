@@ -356,8 +356,8 @@ var MyGenerator = yeoman.generators.Base.extend({
         );
 
         this.template(
-          this.templatePath('html/src/views/_index.hbs'),
-          this.destinationPath('src/views/index.hbs')
+          this.templatePath('html/src/templates/_index.hbs'),
+          this.destinationPath('src/templates/index.hbs')
         );
 
         this.fs.copy(
