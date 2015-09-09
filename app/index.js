@@ -11,14 +11,12 @@ var yosay = require('yosay');
 var moment = require('moment');
 
 var MyGenerator = yeoman.generators.Base.extend({
-
   constructor: function () {
     yeoman.generators.Base.apply(this, arguments);
 
     this.pkg = require('../package.json');
     this.appRoot = path.basename(process.cwd());
     this.generatorDate = moment().format('DD.M.YYYY HH:MM');
-    this.generatorAuthor = this.pkg.author.name;
     this.generatorRepository = this.pkg.repository;
 
     this.argument('dir', {
@@ -77,14 +75,22 @@ var MyGenerator = yeoman.generators.Base.extend({
     if (!this.options.design) {
       var done = this.async();
 
-      this.prompt({
-        type: 'input',
-        name: 'name',
-        message: 'Project name:',
-        default: path.basename(process.cwd())
-      }, function(answers) {
+      this.prompt([
+        {
+          type: 'input',
+          name: 'name',
+          message: 'Project name:',
+          default: path.basename(process.cwd())
+        }, {
+          type: 'input',
+          name: 'author',
+          message: 'Author name:',
+          default: this.pkg.author.name
+        }
+      ], function(answers) {
         this.appNameDasherize = this._.dasherize(this._.slugify(answers.name));
         this.appNameHumanize = this._.humanize(this.appNameDasherize);
+        this.generatorAuthor = answers.author;
         done();
       }.bind(this));
     }
@@ -98,19 +104,22 @@ var MyGenerator = yeoman.generators.Base.extend({
       var log = this.log;
       var slashIfDir = this.slashIfDir;
 
-      this.prompt([{
-        type: 'list',
-        name: 'projectType',
-        message: 'What kind of project this is?',
-        choices: [{
-            name: 'Typo3',
-            value: 'typoProject',
-            checked: true
-          }, {
-            name: 'Html',
-            value: 'htmlProject',
-            checked: false
-          }]
+      this.prompt([
+        {
+          type: 'list',
+          name: 'projectType',
+          message: 'What kind of project this is?',
+          choices: [
+            {
+              name: 'Typo3',
+              value: 'typoProject',
+              checked: true
+            }, {
+              name: 'Html',
+              value: 'htmlProject',
+              checked: false
+            }
+          ]
         }, {
           when: function (answers) {
             if (answers.projectType === 'typoProject') {
@@ -141,15 +150,17 @@ var MyGenerator = yeoman.generators.Base.extend({
           type: 'checkbox',
           name: 'whatStarters',
           message: 'What starters do you need?',
-          choices: [{
-            name: 'Default stylesheets and JavaScripts',
-            value: 'defaultAssets',
-            checked: true
-          }, {
-            name: 'Deployment configuration',
-            value: 'deployment',
-            checked: true
-          }]
+          choices: [
+            {
+              name: 'Default stylesheets and JavaScripts',
+              value: 'defaultAssets',
+              checked: true
+            }, {
+              name: 'Deployment configuration',
+              value: 'deployment',
+              checked: true
+            }
+          ]
         }
       ], function(answers) {
         this.projectType = answers.projectType;
