@@ -1,9 +1,9 @@
 {
-  "name": "my-web-starter-kit",
+  "name": "my-web-starter-kit-docs",
   "version": "1.0.0",
   "author": "Joonas Ylitalo",
   "homepage": "http://joonasy.com",
-  "description": "Starter kits for my web projects",
+  "description": "Starter kits and documentation for my web projects",
   "dependencies": {
     "fastclick": "^1.0.6",
     "lazysizes": "^1.1.4"
