@@ -5,49 +5,49 @@
 /**
  * All paddings
  */
-.padding { padding: rem($base-space) !important; }
-.padding--xs { padding: rem($base-space / 4) !important; }
-.padding--s { padding: rem($base-space / 2) !important; }
-.padding--m { padding: rem($base-space * 2) !important; }
-.padding--l { padding: rem($base-space * 4) !important; }
+.padding { padding: rem($baseSpace) !important; }
+.padding--xs { padding: rem($baseSpace / 4) !important; }
+.padding--s { padding: rem($baseSpace / 2) !important; }
+.padding--m { padding: rem($baseSpace * 2) !important; }
+.padding--l { padding: rem($baseSpace * 4) !important; }
 .noPadding { padding: 0 !important; }
 
 /**
  * Padding top
  */
-.paddingTop { padding-top: rem($base-space) !important; }
-.paddingTop--xs { padding-top: rem($base-space / 4) !important; }
-.paddingTop--s { padding-top: rem($base-space / 2) !important; }
-.paddingTop--m { padding-top: rem($base-space * 2) !important; }
-.paddingTop--l { padding-top: rem($base-space * 4) !important; }
+.paddingTop { padding-top: rem($baseSpace) !important; }
+.paddingTop--xs { padding-top: rem($baseSpace / 4) !important; }
+.paddingTop--s { padding-top: rem($baseSpace / 2) !important; }
+.paddingTop--m { padding-top: rem($baseSpace * 2) !important; }
+.paddingTop--l { padding-top: rem($baseSpace * 4) !important; }
 .noPaddingTop { padding-top: 0 !important; }
 
 /**
  * Padding right
  */
-.paddingRight { padding-right: rem($base-space) !important; }
-.paddingRight--xs { padding-right: rem($base-space / 4) !important; }
-.paddingRight--s { padding-right: rem($base-space / 2) !important; }
-.paddingRight--m { padding-right: rem($base-space * 2) !important; }
-.paddingRight--l { padding-right: rem($base-space * 4) !important; }
+.paddingRight { padding-right: rem($baseSpace) !important; }
+.paddingRight--xs { padding-right: rem($baseSpace / 4) !important; }
+.paddingRight--s { padding-right: rem($baseSpace / 2) !important; }
+.paddingRight--m { padding-right: rem($baseSpace * 2) !important; }
+.paddingRight--l { padding-right: rem($baseSpace * 4) !important; }
 .noPaddingRight { padding-right: 0 !important; }
 
 /**
  * Padding bottom
  */
-.paddingBottom { padding-bottom: rem($base-space) !important; }
-.paddingBottom--xs { padding-bottom: rem($base-space / 4) !important; }
-.paddingBottom--s { padding-bottom: rem($base-space / 2) !important; }
-.paddingBottom--m { padding-bottom: rem($base-space * 2) !important; }
-.paddingBottom--l { padding-bottom: rem($base-space * 4) !important; }
+.paddingBottom { padding-bottom: rem($baseSpace) !important; }
+.paddingBottom--xs { padding-bottom: rem($baseSpace / 4) !important; }
+.paddingBottom--s { padding-bottom: rem($baseSpace / 2) !important; }
+.paddingBottom--m { padding-bottom: rem($baseSpace * 2) !important; }
+.paddingBottom--l { padding-bottom: rem($baseSpace * 4) !important; }
 .noPaddingBottom { padding-bottom: 0 !important; }
 
 /**
  * Padding left
  */
-.paddingLeft { padding-left: rem($base-space) !important; }
-.paddingLeft--xs { padding-left: rem($base-space / 4) !important; }
-.paddingLeft--s { padding-left: rem($base-space / 2) !important; }
-.paddingLeft--m { padding-left: rem($base-space * 2) !important; }
-.paddingLeft--l { padding-left: rem($base-space * 4) !important; }
+.paddingLeft { padding-left: rem($baseSpace) !important; }
+.paddingLeft--xs { padding-left: rem($baseSpace / 4) !important; }
+.paddingLeft--s { padding-left: rem($baseSpace / 2) !important; }
+.paddingLeft--m { padding-left: rem($baseSpace * 2) !important; }
+.paddingLeft--l { padding-left: rem($baseSpace * 4) !important; }
 .noPaddingLeft { padding-left: 0 !important; }

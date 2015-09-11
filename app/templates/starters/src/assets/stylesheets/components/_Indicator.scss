@@ -20,7 +20,7 @@
 
     button {
       background: transparent;
-      border: 2px solid $color-borderPrimary;
+      border: 2px solid $colorBorderPrimary;
       border-radius: 50%;
       color: transparent;
       cursor: pointer;
@@ -50,7 +50,7 @@
     }
 
     &.slick-active button:before {
-      background-color: $color-primary;
+      background-color: $colorPrimary;
     }
   }
 }

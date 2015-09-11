@@ -2,7 +2,7 @@
 // Placeholder text color
 // ========================================
 
-@mixin colorPlaceholder($color: $color-grayLight) {
+@mixin colorPlaceholder($color: $colorGrayLight) {
   &:-moz-placeholder            { color: $color; }
   &::-moz-placeholder           { color: $color; }
   &:-ms-input-placeholder       { color: $color; }

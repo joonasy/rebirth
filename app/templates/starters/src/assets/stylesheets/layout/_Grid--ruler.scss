@@ -5,18 +5,18 @@
 @mixin Grid--ruler($gutter: 1) {
   display: table;
   display: flex;
-  margin-left: -($base-space * $gutter);
+  margin-left: -($baseSpace * $gutter);
   table-layout: fixed;
   width: 100%;
-  width: calc(100% + #{($base-space * $gutter * 2)});
+  width: calc(100% + #{($baseSpace * $gutter * 2)});
 
   > .Grid-item {
-    border-color: $color-borderPrimary;
+    border-color: $colorBorderPrimary;
     border-left: 1px solid;
     display: table-cell;
     display: flex;
     float: none;
-    padding: 0 ($base-space * $gutter);
+    padding: 0 ($baseSpace * $gutter);
     vertical-align: top;
 
     &:first-child {

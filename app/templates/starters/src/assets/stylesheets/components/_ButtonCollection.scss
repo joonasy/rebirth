@@ -22,7 +22,7 @@
     display: block;
     margin-bottom: 0;
 
-    &:last-child { margin-bottom: rem(($base-space * 3) - $Button-lineHeight); }
+    &:last-child { margin-bottom: rem(($baseSpace * 3) - $Button-lineHeight); }
   }
 }
 
@@ -40,7 +40,7 @@
   display: table;
   table-layout: fixed;
   width: 100%;
-  margin-bottom: rem((($base-space * 3) - $Button-lineHeight));
+  margin-bottom: rem((($baseSpace * 3) - $Button-lineHeight));
 
   > .Button { display: table-cell; }
 }
@@ -52,7 +52,7 @@
 
     @include breakpoint('smallUp') {
       display: inline-block;
-      margin-right: rem($base-space / 2);
+      margin-right: rem($baseSpace / 2);
       width: auto;
     }
   }

@@ -5,11 +5,11 @@
 .List {
   @extend %clearfix;
   @extend %resetList;
-  margin-bottom: rem($base-space);
+  margin-bottom: rem($baseSpace);
 }
 
 .List-item {
-  margin-bottom: rem($base-space);
+  margin-bottom: rem($baseSpace);
 
   &:last-child {
     margin-bottom: 0;
@@ -17,13 +17,13 @@
 }
 
   .List-text {
-    @include fontSize($base-fontSize-s, $base-lineHeight-s);
+    @include fontSize($baseFontSize-s, $baseLineHeight-s);
     text-align: left;
     display: block;
   }
 
   .List-meta {
-    @include fontSize($base-fontSize-s, $base-lineHeight-s);
+    @include fontSize($baseFontSize-s, $baseLineHeight-s);
   }
 
 
@@ -34,9 +34,9 @@
 .List--icon {
 
   .List-item {
-    padding-left: rem($base-space / 1.5);
+    padding-left: rem($baseSpace / 1.5);
     position: relative;
-    margin-bottom: rem($base-space / 4);
+    margin-bottom: rem($baseSpace / 4);
   }
 
     .List-item-icon {

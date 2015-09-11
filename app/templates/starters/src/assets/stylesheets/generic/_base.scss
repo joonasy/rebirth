@@ -10,11 +10,11 @@
 }
 
 html {
-  background-color: $color-htmlBg;
-  color: $color-text;
-  font-family: $base-fontFamily;
-  font-size: 100%;
-  line-height: $base-lineHeight;
+  background-color: $colorHtmlBg;
+  color: $colorText;
+  font-family: $baseFontFamily;
+  font-size: $baseFontSize;
+  line-height: $baseLineHeight;
   min-width: 300px;
 
   -moz-osx-font-smoothing: grayscale;
@@ -41,14 +41,14 @@ html {
 hgroup, blockquote, address,
 table, fieldset, figure, pre,
 ul, ol, dl {
-  margin: 0 0 rem($base-space);
+  margin: 0 0 rem($baseSpace);
 }
 
 /**
  * Lists
  */
 ul, ol, dl {
-  padding: 0 0 0 rem($base-space);
+  padding: 0 0 0 rem($baseSpace);
 }
 
 nav ul {
@@ -59,11 +59,11 @@ nav ul {
  * Links
  */
 a {
-  color: $color-link;
+  color: $colorLink;
   text-decoration: none;
 
   &:active {
-    color: $color-link;
+    color: $colorLink;
   }
 
   &:focus {
@@ -71,7 +71,7 @@ a {
   }
 
   &:hover {
-    color: $color-linkHover;
+    color: $colorLinkHover;
   }
 }
 
@@ -79,13 +79,13 @@ a {
  * Selection
  */
 ::-moz-selection {
-  background: $color-primary;
-  color: $color-light;
+  background: $colorPrimary;
+  color: $colorLight;
 }
 
 ::selection {
-  background: $color-primary;
-  color: $color-light;
+  background: $colorPrimary;
+  color: $colorLight;
 }
 
 img::selection {
@@ -97,7 +97,7 @@ img::-moz-selection {
 }
 
 ::selection:window-inactive {
-  background: lighten($color-dark, 50%);
+  background: lighten($colorDark, 50%);
 }
 
 /**

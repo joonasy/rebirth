@@ -419,8 +419,8 @@ Global component configurations are added to `_config.scss`. These configuration
 // Button
 // ========================================
 
-$Button-fontSize: $base-fontSize;
-$Button-lineHeight: $base-lineHeightPx * 1.5;
+$Button-fontSize: $baseFontSize;
+$Button-lineHeight: $baseLineHeightPx * 1.5;
 ```
 
 ##### Components in larger projects

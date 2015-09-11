@@ -10,8 +10,8 @@
   font-size: rem($Button-fontSize);
   font-weight: $Button-fontWeight;
   line-height: rem($Button-lineHeight - ($Button-borderWidth * 2));
-  margin-bottom: rem((($base-space * 3) - $Button-lineHeight));
-  margin-right: rem($base-space / 2);
+  margin-bottom: rem((($baseSpace * 3) - $Button-lineHeight));
+  margin-right: rem($baseSpace / 2);
   outline: 0;
   padding: 0 rem($Button-padding);
   position: relative;
@@ -44,15 +44,15 @@
 
 .Button {
   &.-s {
-    font-size: $base-fontSize-s;
+    font-size: $baseFontSize-s;
     line-height: rem(($Button-lineHeight / 1.5) - ($Button-borderWidth * 2));
     padding: 0 rem($Button-padding / 2);
-    margin-bottom: rem($base-space);
+    margin-bottom: rem($baseSpace);
   }
 
   &.-l {
     line-height: rem(($Button-lineHeight * 1.35) - ($Button-borderWidth * 2));
-    margin-bottom: rem($base-space);
+    margin-bottom: rem($baseSpace);
     padding: 0 rem($Button-padding * 1.5);
   }
 
@@ -80,24 +80,24 @@
  * ====== */
 
 .Button--primary {
-  background-color: $color-primary;
-  border-color: $color-primary;
+  background-color: $colorPrimary;
+  border-color: $colorPrimary;
   color: #ffffff;
 
   &:hover, &:focus {
-    background-color: darken($color-primary, 5);
-    border-color: darken($color-primary, 5);
+    background-color: darken($colorPrimary, 5);
+    border-color: darken($colorPrimary, 5);
     color: #ffffff;
   }
 
   &.-border {
     background-color: transparent;
-    color: $color-text;
+    color: $colorText;
 
     &:hover, &:focus {
       background-color: transparent;
-      border-color: $color-primary;
-      color: $color-primary;
+      border-color: $colorPrimary;
+      color: $colorPrimary;
     }
   }
 }

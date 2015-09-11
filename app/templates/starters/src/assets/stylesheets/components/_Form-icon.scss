@@ -42,13 +42,13 @@
 .Form--primary {
   .Form-icon {
     .IconCss[class*='-chevron']:after {
-      border-color: $color-textLight;
+      border-color: $colorTextLight;
     }
   }
 
   .Form-item:hover .Form-icon {
     .IconCss[class*='-chevron']:after {
-      border-color: $color-text;
+      border-color: $colorText;
     }
   }
 }
