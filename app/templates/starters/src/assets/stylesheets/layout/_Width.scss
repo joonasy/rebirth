@@ -14,6 +14,7 @@
   .#{$namespace}Width--9-12  { width: 75%; }
   .#{$namespace}Width--10-12 { width: 83.333%; }
   .#{$namespace}Width--11-12 { width: 91.666%; }
+  .#{$namespace}Width--12-12 { width: 100%; }
 }
 
 @include Width();
