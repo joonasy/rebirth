@@ -95,11 +95,11 @@ A component modifier (or component modifier) is a class that modifies the presen
 
 ### ComponentName.-chainable-modifierName
 
-Chainable modifiers are denoted by a leading hyphen `-`, a voluntary prefix and a descriptor for the modification. As the name would indicate, chainable modifiers provide us with the ability to configure a module in the HTML with a short, concise syntax. Chainable component modifiers can be added to component modifiers and collections and may also modify their descendants by nesting.   
+Chainable modifiers are denoted by a leading hyphen `-`, a voluntary prefix and a descriptor for the modification. As the name would indicate, chainable modifiers provide us with the ability to configure a module in the HTML with a short, concise syntax. Chainable component modifiers can be added to component modifiers and collections may also modify their descendants by nesting.   
 
 The golden rule is that **chainable modifiers should never modify the same CSS property twice**. This is to ensure that styles don’t get clobbered and that the order in which they are applied is irrelevant. 
 
-Prefixes are not required however consider adding them if the modifier does something complex. Some obvious modifiers do not use prefixes, these are listed in _Reserved namespaces_.
+Prefixes are not required however consider adding them if the modifier modifies some specific value such as `color` or `alignment`. 
 
 ```css
 /* Core button */
@@ -109,6 +109,10 @@ Prefixes are not required however consider adding them if the modifier does some
 .Button.-l {}
 
 .Button.-round {}
+
+.Button.-color-darkOnLight {}
+
+.Button.-color-lightOnDark {}
 ```
 
 ```html
@@ -349,21 +353,11 @@ Example use of _margin_ helper which is activated in large breakpoint:
 ```
 
 
-### Obvious chainable modifiers
-
-These chainable modifiers do not use prefixes.
-
-* Sizing:  `-s`, `-m`, `-l`, `-[x...]s`, `-[x...]l`, `-full`
-* Aligning: `-horizontal`, `-vertical`, `-justified`, `-left`, `-right`, `-center`
-* Shapes: `-round`, `-border`
-
-
 ### Modifiers
 
 * Abstract modifier definitions for components (e.g `.Button--primary`): `--primary`, `--secondary`, `--tertiary`, `--quaternary`, `--quinary`, `--senary`, `--septenary`, `--octonary`, `--nonary`, `--denary`
 * Sizing modifiers: `--[x...]s`, `--m`, `--ml`, `--[x...]l`
     * Used by helpers (e.g `.marginTop--l`). **For component sizing use chainable modifiers.**
-
 
 ### Prefixes and suffixes in Sass variables
 
