@@ -2,51 +2,113 @@
  * Grid
  * ======================================== */
 
+$Grid-gutter: $baseSpace / 2;
+
 .Grid {
-  @extend %clearfix;
+  display: flex;
   list-style: none;
+  flex: 0 1 auto;
+  flex-direction: row;
+  flex-wrap: wrap;
   margin-bottom: 0;
-  margin-left: -$baseSpace;
-
-  > .Grid {
-    margin-left: 0;
-  }
-
-  /**
-   * Sizing
-   */
-  &.-full {
-    margin-left: 0;
-
-    > .Grid-item {
-      padding-left: 0;
-    }
-  }
-
-  &.-l {
-    margin-left: rem(-($baseSpace * 2));
-
-    > .Grid-item {
-      padding-left: rem($baseSpace * 2);
-    }
-  }
-
-  &.-xl {
-    margin-left: rem(-($baseSpace * 4));
-
-    > .Grid-item {
-      padding-left: rem($baseSpace * 4);
-    }
-  }
+  margin-left: rem(-($Grid-gutter));
+  margin-right: rem(-($Grid-gutter));
 }
 
   /**
    * Grid column
    */
   .Grid-item {
-    float: left;
-    margin-top: 0;
-    min-height: 1px;
-    padding-left: rem($baseSpace);
+    flex: 0 0 auto;
+    max-width: 100%;
+    padding-left: rem($Grid-gutter);
+    padding-right: rem($Grid-gutter);
     width: 100%;
   }
+
+
+/* ======
+ * Grid - sizing and layout
+ * ====== */
+
+@mixin GridSize($amount: 0) {
+  margin-left: rem(-($Grid-gutter * $amount));
+  margin-right: rem(-($Grid-gutter * $amount));
+
+  > .Grid-item {
+    padding-left: rem($Grid-gutter * $amount);
+    padding-right: rem($Grid-gutter * $amount);
+  }
+}
+
+.Grid {
+  &.-auto {
+    > .Grid-item {
+      flex: 1 1 auto;
+    }
+
+    > .Grid-item:not([class*="Width"]) {
+      width: auto;
+    }
+  }
+
+  &.-equal {
+    > .Grid-item {
+      display: flex;
+    }
+  }
+
+  &.-full {  @include GridSize(); }
+  &.-l { @include GridSize(2); }
+  &.-xl { @include GridSize(4); }
+}
+
+
+/* ======
+ * Grid - justify
+ * ====== */
+
+ @mixin GridJustify($namespace: '') {
+  .Grid.#{$namespace}-justify-around { justify-content: space-around; }
+  .Grid.#{$namespace}-justify-between { justify-content: space-between; }
+  .Grid.#{$namespace}-justify-center { justify-content: center; }
+  .Grid.#{$namespace}-justify-end { justify-content: flex-end; }
+}
+
+@include GridJustify();
+@include breakpoint('smallUp') { @include GridJustify(-s); }
+@include breakpoint('mediumUp') { @include GridJustify(-m); }
+@include breakpoint('largeUp') { @include GridJustify(-l); }
+
+
+/* ======
+ * Grid - aligning of items
+ * ====== */
+
+@mixin GridAlign($namespace: '') {
+  .Grid.#{$namespace}-align-bottom { align-items: top; }
+  .Grid.#{$namespace}-align-center { align-items: center; }
+  .Grid.#{$namespace}-align-top { align-items: top; }
+}
+
+@include GridAlign();
+@include breakpoint('smallUp') { @include GridAlign(-s); }
+@include breakpoint('mediumUp') { @include GridAlign(-m); }
+@include breakpoint('largeUp') { @include GridAlign(-l); }
+
+
+/* ======
+ * Grid item - order
+ * ====== */
+
+@mixin GridItemOrder($namespace: '', $amount: 4) {
+  @for $i from 1 through $amount {
+    .Grid-item.#{$namespace}-order-#{$i} {
+      order: #{$i};
+    }
+  }
+}
+
+@include breakpoint('smallUp') { @include GridItemOrder(-s); }
+@include breakpoint('mediumUp') { @include GridItemOrder(-m); }
+@include breakpoint('largeUp') { @include GridItemOrder(-l); }
