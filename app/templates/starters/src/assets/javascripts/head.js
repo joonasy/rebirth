@@ -4,6 +4,9 @@
 
 'use strict';
 
+require('lazysizes');
+require('lazysizes/plugins/respimg/ls.respimg.js');
+
 /**
  * A fix is on the way to get Windows Phone 8 to recognize
  * CSS pixels rather than device pixels (which is preferred behavior).
