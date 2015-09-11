@@ -365,6 +365,10 @@ These chainable modifiers do not use prefixes.
     * Used by helpers (e.g `.marginTop--l`). **For component sizing use chainable modifiers.**
 
 
-### Suffixes
+### Prefixes and suffixes in Sass variables
 
-* Sizing suffixes used in Sass:  `-[x...]s`, `-m`, `-ml`, `-[x...]l`
+Default sass variables do not need hyphens, use camelCase instead. e.g. `$baseFontSize` not `$base-fontSize`. 
+
+Component sass variables however _do_ need hyphens e.g. `$MyComponent-heading` not `$MyComponentHeading`.
+
+* Sizing suffixes used in Sass variables:  `-[x...]s`, `-m`, `-ml`, `-[x...]l`
