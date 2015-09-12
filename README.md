@@ -72,17 +72,15 @@ Please discuss about new ideas and things that you think should be modified. Cur
 
 ## Todo (in random order)
 
-* Convert `.Grid{}` system to Flexbox
+* Convert all floating material to Flexbox
 * Drop IE9 support
 * All necessary CSS components
 * Sub generators for starters
 * CSS modular scale
 * Maybe some sort of integration/forking with [generator-typo3](https://github.com/Milanowicz/generator-typo3)
-* Deployment settings (Phploy?)
 * Rest of the JavaScript styleguide
 * More testing for JavaScript
 * Consider removing jQuery
-* Add custom modernizr build
 * Dockerfile (docker-compose) for docker environments
 * Rewrite default JavaScript components to ES6
 

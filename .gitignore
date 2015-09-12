@@ -12,5 +12,5 @@ bower_components/
 
 app/templates/starters/dist
 rev-manifest.json
-app/templates/starters/src/assets/images
+# app/templates/starters/src/assets/images
 
