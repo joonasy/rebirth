@@ -1,0 +1,20 @@
+/* ========================================
+ * Grid cell - alignment
+ * ========================================
+ *
+ * @extends `.Grid-cell{}` in _Grid.scss.
+ * @reusable true
+ */
+
+ @mixin GridItemAlign($namespace: '') {
+  .Grid-cell.#{$namespace}-align-bottom { align-self: flex-end; }
+  .Grid-cell.#{$namespace}-align-center { align-self: center; }
+  .Grid-cell.#{$namespace}-align-top { align-self: flex-start; }
+}
+
+/**
+ * I assume that I need responsive variants only
+ */
+@include breakpoint('smallUp') { @include GridItemAlign(-s); }
+@include breakpoint('mediumUp') { @include GridItemAlign(-m); }
+@include breakpoint('largeUp') { @include GridItemAlign(-l); }
