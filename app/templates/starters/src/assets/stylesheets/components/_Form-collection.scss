@@ -15,11 +15,11 @@
     z-index: 1;
   }
 
-  .Form-item:not(textarea), .Form-addon, .Form-button {
-    @include textTruncate();
+  .Form-item, .Form-addon, .Form-button {
     margin-bottom: 0;
   }
 
+  .Form-item:not(textarea), .Form-addon, .Form-button { @include textTruncate(); }
   .Form-item:not(textarea), .Form-addon { display: table-cell; }
   .Form-collection { margin-bottom: 0; }
 }
