@@ -36,13 +36,15 @@
 @import 'components/Form-icon';
 @import 'components/Navbar.config';
 @import 'components/Navbar';
-@import 'components/Navbar--primary';
+@import 'components/Navbar.-hideTrigger';
 @import 'components/Navbar.-horizontal';
-@import 'components/Navbar.-horizontal.-keep-title';
+@import 'components/Navbar.-horizontal.-keepTitle';
+@import 'components/Navbar--primary';
 @import 'components/IconCss.-menu';
 @import 'components/IconCss.-chevron';
 
 // Import all layout components
+@import 'layout/Grid-cell.-order';
 @import 'layout/Pull';
 @import 'layout/Push';
 
