@@ -3,7 +3,6 @@
  * ======================================== */
 
 .Navbar {
-  @extend %clearfix;
   user-select: none;
 }
 
@@ -14,17 +13,15 @@
   }
 
     .Navbar-item {
-      @extend %clearfix;
+      display: flex;
+      flex-direction: row;
+      flex-wrap: wrap;
     }
 
       .Navbar-link {
         border-top: 1px solid transparent;
-        border-right: 1px solid transparent;
         cursor: pointer;
-        display: block;
-        float: left;
         padding: $Navbar-padding ($Navbar-padding * 2);
-        width: 87%;
         width: calc(100% - #{($baseSpace * 2)});
 
         &:only-child {
@@ -34,11 +31,13 @@
       }
 
       .Navbar-subTrigger, %Navbar-subTrigger {
+        align-items: center;
+        border-left: 1px solid transparent;
         border-top: 1px solid transparent;
         cursor: pointer;
-        display: block;
-        float: left;
+        display: flex;
         padding: $Navbar-padding 0;
+        justify-content: center;
         text-align: center;
         width: 13%;
         width: calc(#{($baseSpace * 2)});
@@ -53,9 +52,8 @@
         }
 
     .Navbar-sub {
-      @extend %clearfix;
       display: none;
-      clear: both;
+      width: 100%;
 
       .Navbar-item.is-open > & { display: block; }
 
@@ -75,30 +73,23 @@
     }
 
   .Navbar-trigger {
-    @extend %clearfix;
+    display: flex;
   }
 
     .Navbar-trigger-inner {
-      @extend %clearfix;
-      float: left;
-      width: 87%;
+      display: flex;
       width: calc(100% - #{($baseSpace * 2)});
     }
 
       .Navbar-trigger-title, .Navbar-trigger-text {
-        display: block;
-        float: left;
-        min-height: $baseSpace * 2;
         padding: $Navbar-padding ($Navbar-padding * 2);
       }
 
       .Navbar-trigger-title {
         @include textTruncate();
+        flex: 1;
         font-weight: $baseFontWeightStrong;
-        float: left;
       }
-
-      .Navbar-trigger-text { float: right; }
 
     .Navbar-trigger-sub {
       @extend %Navbar-subTrigger;
@@ -107,19 +98,4 @@
 
       .Navbar-trigger-sub-icon {
         @include shapeMenu();
-        vertical-align: middle;
       }
-
-
-/* ======
- * Navbar - Hide trigger but keep content in larger widths
- * ====== */
-
-.Navbar.-transform-hideTrigger {
-  @include breakpoint('largeUp') {
-
-    .Navbar-self { display: block; }
-    .Navbar-trigger { display: none; }
-  }
-}
-

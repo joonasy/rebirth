@@ -10,7 +10,6 @@
 
   .Navbar-link {
     background-color: #ffffff;
-    border-right-color: darken(#ffffff, 8);
     border-top-color: darken(#ffffff, 8);
     color: $colorText;
     transition: color $transitionDuration;
@@ -20,6 +19,7 @@
 
   .Navbar-subTrigger {
     background-color: #ffffff;
+    border-left-color: darken(#ffffff, 8);
     border-top-color: darken(#ffffff, 8);
     color: $colorText;
 

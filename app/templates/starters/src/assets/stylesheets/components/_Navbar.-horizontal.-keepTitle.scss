@@ -5,25 +5,14 @@
  * @extends `.Navbar.-horizontal {}` in _Navbar.-horizontal.scss
  */
 
-.Navbar.-l-horizontal.-keep-title {
+.Navbar.-l-horizontal.-l-horizontal-keepTitle {
   @include breakpoint('largeUp') {
+    display: flex;
 
-    /**
-     * Navbar
-     */
-    > ul { float: left; }
-
-    /**
-     * Navbar trigger
-     */
-    .Navbar-trigger {
-      display: block;
-      float: left;
-    }
-
+    .Navbar-trigger { display: block; }
       .Navbar-trigger-inner { width: auto; }
       .Navbar-trigger-text { display: none; }
-      .Navbar-trigger-sub {  display: none; }
+      .Navbar-trigger-sub { display: none; }
   }
 }
 

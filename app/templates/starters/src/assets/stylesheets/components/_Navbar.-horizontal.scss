@@ -10,17 +10,15 @@
     .Navbar-trigger { display: none; }
 
     .Navbar-self {
-      display: block;
+      display: flex;
       padding-left: $Navbar-padding;
     }
 
       > ul > .Navbar-item {
-        float: left;
         position: relative;
 
         > .Navbar-link {
           border: 0;
-          display: inline-block;
           padding-left: $Navbar-padding;
           padding-right: $Navbar-padding;
         }

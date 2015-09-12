@@ -1,0 +1,19 @@
+/* ========================================
+ * Navbar - hide trigger
+ * ========================================
+ *
+ * Hide trigger but keep content. This is useful if we want to use the navbar
+ * as stacked version in desktop widths also.
+ *
+ * @extends `.Navbar{}` in _Navbar.scss.
+ * @reusable true
+ */
+
+@mixin NavbarHideTrigger($namespace: '') {
+  .Navbar.#{$namespace}-hideTrigger {
+    .Navbar-self { display: block; }
+    .Navbar-trigger { display: none; }
+  }
+}
+
+@include breakpoint('largeUp') { @include NavbarHideTrigger(-l); }
