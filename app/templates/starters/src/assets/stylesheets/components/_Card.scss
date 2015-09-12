@@ -41,6 +41,7 @@
 
 .Card-figure.-bg-fill {
   position: relative;
+  min-height: rem(192px);
 
   > figure {
     @extend %positionAbsoluteFill;
