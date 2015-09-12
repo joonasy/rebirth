@@ -131,7 +131,7 @@ $transitionDelay: $transitionDuration;
 
 
 // ========================================
-// Heading component
+// Heading
 // ========================================
 
 $Heading-fontSize-l: 62px;
@@ -140,3 +140,10 @@ $Heading-fontSize-m: 52px;
 $Heading-lineHeight-m: 62px / $Heading-fontSize-m;
 $Heading-fontSize-s: 42px;
 $Heading-lineHeight-s: 52px / $Heading-fontSize-s;
+
+
+// ========================================
+// Grid
+// ========================================
+
+$Grid-gutter: $baseSpace / 2;
