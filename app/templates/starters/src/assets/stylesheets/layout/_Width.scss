@@ -3,18 +3,18 @@
  * ======================================== */
 
 @mixin Width($namespace: '') {
-  .#{$namespace}Width--1-12  { width: 8.333%; }
-  .#{$namespace}Width--2-12  { width: 16.666%; }
-  .#{$namespace}Width--3-12  { width: 25%; }
-  .#{$namespace}Width--4-12  { width: 33.333%; }
-  .#{$namespace}Width--5-12  { width: 41.666% }
-  .#{$namespace}Width--6-12  { width: 50%; }
-  .#{$namespace}Width--7-12  { width: 58.333%; }
-  .#{$namespace}Width--8-12  { width: 66.666%; }
-  .#{$namespace}Width--9-12  { width: 75%; }
-  .#{$namespace}Width--10-12 { width: 83.333%; }
-  .#{$namespace}Width--11-12 { width: 91.666%; }
-  .#{$namespace}Width--12-12 { width: 100%; }
+  .#{$namespace}Width--1of12  { width: 8.333%; }
+  .#{$namespace}Width--2of12  { width: 16.666%; }
+  .#{$namespace}Width--3of12  { width: 25%; }
+  .#{$namespace}Width--4of12  { width: 33.333%; }
+  .#{$namespace}Width--5of12  { width: 41.666% }
+  .#{$namespace}Width--6of12  { width: 50%; }
+  .#{$namespace}Width--7of12  { width: 58.333%; }
+  .#{$namespace}Width--8of12  { width: 66.666%; }
+  .#{$namespace}Width--9of12  { width: 75%; }
+  .#{$namespace}Width--10of12 { width: 83.333%; }
+  .#{$namespace}Width--11of12 { width: 91.666%; }
+  .#{$namespace}Width--12of12 { width: 100%; }
 }
 
 @include Width();
