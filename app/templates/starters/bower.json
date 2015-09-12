@@ -1,6 +1,6 @@
 {
-  "name": "Boilerplate",
-  "version": "1.0.0",
+  "name": "my-web-starter-kit-docs",
+  "version": "0.2.2",
   "dependencies": {
     "modernizr": "latest",
     "fastclick": "latest",

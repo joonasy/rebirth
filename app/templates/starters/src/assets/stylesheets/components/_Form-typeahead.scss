@@ -10,23 +10,23 @@
 .twitter-typeahead { width: 100%; }
 
 .Form-typeahead-hint {
-  color: $color-textLight;
+  color: $colorTextLight;
 }
 
 .Form-typeahead-menu {
-  background-color: $color-light;
-  border: 1px solid $color-borderPrimary;
-  border-bottom: 3px solid $color-borderPrimary;
+  background-color: $colorLight;
+  border: 1px solid $colorBorderPrimary;
+  border-bottom: 3px solid $colorBorderPrimary;
   border-radius: 0 0 $Form-borderRadius $Form-borderRadius;
-  box-shadow: 0 5px 10px rgba($color-dark, 0.2);
-  color: $color-text;
+  box-shadow: 0 5px 10px rgba($colorDark, 0.2);
+  color: $colorText;
   margin-top: -$Form-borderWidth;
-  padding: rem($base-space / 2)  0;
+  padding: rem($baseSpace / 2)  0;
   position: relative;
   width: 100%;
 
   &:before, &:after {
-    background-color: $color-light;
+    background-color: $colorLight;
     content: "";
     display: block;
     height: $Form-borderRadius;
@@ -46,27 +46,27 @@
    */
   .Form-item.-border ~ & {
     &:before {
-      border-left: $Form-borderWidth solid $color-borderPrimary;
+      border-left: $Form-borderWidth solid $colorBorderPrimary;
     }
     &:after {
-      border-right-width: $Form-borderWidth solid $color-borderPrimary;
+      border-right-width: $Form-borderWidth solid $colorBorderPrimary;
     }
   }
 }
 
 .Form-typeahead-suggestion {
   cursor: pointer;
-  padding: rem(3px) rem($base-space / 1.5);
+  padding: rem(3px) rem($baseSpace / 1.5);
 
   &:hover {
-    color: $color-text;
-    background-color: $color-bgLightest;
+    color: $colorText;
+    background-color: $colorBgLightest;
   }
 }
 
 .Form-typeahead-cursor {
-  background-color: $color-bgLightest;
-  color: $color-text;
+  background-color: $colorBgLightest;
+  color: $colorText;
 }
 
 .Form-typeahead-highlight {}

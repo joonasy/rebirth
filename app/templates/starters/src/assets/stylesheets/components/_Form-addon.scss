@@ -14,7 +14,7 @@
  * ====== */
 
 .Form-addon.-s {
-  width: rem($base-space * 2);
+  width: rem($baseSpace * 2);
 }
 
 
@@ -28,6 +28,6 @@
 .Form--primary {
   .Form-addon {
     @extend %Form--primary-Form-item;
-    background-color: $color-bgLightest;
+    background-color: $colorBgLightest;
   }
 }

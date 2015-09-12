@@ -23,8 +23,8 @@
 // Import all components
 @import 'components/Hero';
 @import 'components/Hero-slider.slick';
-@import 'components/Block.config';
-@import 'components/Block';
+@import 'components/Card.config';
+@import 'components/Card';
 @import 'components/Button.config';
 @import 'components/Button';
 @import 'components/ButtonCollection.config';
@@ -43,16 +43,14 @@
 @import 'components/IconCss.-chevron';
 
 // Import all layout components
-@import 'layout/Grid--equal';
-@import 'layout/Grid--ruler';
 @import 'layout/Pull';
 @import 'layout/Push';
 
 $Wrap-width: 960px;
 
 html.docs {
-  //@include baseline-grid-background(rem($base-space), darken($htmlBgColor, 3));
-  background-color: darken($color-bgLightest, 2);
+  //@include baseline-grid-background(rem($baseSpace), darken($htmlBgColor, 3));
+  background-color: darken($colorBgLightest, 2);
 
   &.is-dark {}
 }
@@ -62,7 +60,7 @@ html, body { height: 100%; }
 .docs-Hero {
   &.-full {
     .Hero-item {
-      height: calc(100vh - #{$base-space * 2}); /* Height of the navbar */
+      height: calc(100vh - #{$baseSpace * 2}); /* Height of the navbar */
     }
   }
 }
@@ -76,6 +74,6 @@ html, body { height: 100%; }
   border-radius: 3px;
 
   @include breakpoint("mediumUp") {
-    margin: rem($base-space);
+    margin: rem($baseSpace);
   }
 }

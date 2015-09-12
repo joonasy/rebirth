@@ -6,7 +6,7 @@
  */
 
 @mixin NavbarHorizontal($namespace: '') {
-  .Navbar.#{-$namespace}horizontal {
+  .Navbar.#{$namespace}-horizontal {
     .Navbar-trigger { display: none; }
 
     .Navbar-self {
@@ -88,5 +88,5 @@
  * Activate the horizontal navbar in larger widths. Add more of these if needed.
  */
 @include breakpoint('largeUp') {
-  @include NavbarHorizontal(l-);
+  @include NavbarHorizontal(-l);
 }

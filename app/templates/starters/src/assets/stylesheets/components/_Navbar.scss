@@ -25,7 +25,7 @@
         float: left;
         padding: $Navbar-padding ($Navbar-padding * 2);
         width: 87%;
-        width: calc(100% - #{($base-space * 2)});
+        width: calc(100% - #{($baseSpace * 2)});
 
         &:only-child {
           border-right: 0;
@@ -41,11 +41,11 @@
         padding: $Navbar-padding 0;
         text-align: center;
         width: 13%;
-        width: calc(#{($base-space * 2)});
+        width: calc(#{($baseSpace * 2)});
       }
 
         .Navbar-subTrigger-icon {
-          @include shapeArrow('down', $color-text);
+          @include shapeArrow('down', $colorText);
 
           .Navbar-item.is-open > .Navbar-subTrigger > & {
             transform: rotate(0);
@@ -82,19 +82,19 @@
       @extend %clearfix;
       float: left;
       width: 87%;
-      width: calc(100% - #{($base-space * 2)});
+      width: calc(100% - #{($baseSpace * 2)});
     }
 
       .Navbar-trigger-title, .Navbar-trigger-text {
         display: block;
         float: left;
-        min-height: $base-space * 2;
+        min-height: $baseSpace * 2;
         padding: $Navbar-padding ($Navbar-padding * 2);
       }
 
       .Navbar-trigger-title {
         @include textTruncate();
-        font-weight: $base-fontWeightStrong;
+        font-weight: $baseFontWeightStrong;
         float: left;
       }
 

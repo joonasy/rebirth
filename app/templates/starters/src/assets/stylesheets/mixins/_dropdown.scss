@@ -10,7 +10,7 @@
   $borderRadius: $borderRadius,
   $default: true,
   $min-width: 240px,
-  $padding: rem($base-space) rem($base-space),
+  $padding: rem($baseSpace) rem($baseSpace),
   $shadowColor: rgba(#000000, 0.1),
   $state: false
   ) {
@@ -32,7 +32,7 @@
      */
     clip: rect(0,0,0,0);
     height: 0;
-    transform: translateY(-$base-space);
+    transform: translateY(-$baseSpace);
     transition: transform ($transitionDuration * 2);
   }
 
@@ -52,7 +52,7 @@
     &:before {
       @include shapeTriangle(8px, 8px, 'up',  $arrowColor);
       content: "";
-      left: $base-space;
+      left: $baseSpace;
       margin-left: rem(-4px);
       position: absolute;
       top: rem(-8px);
@@ -71,7 +71,7 @@
      */
     &:before {
       left: auto;
-      right: $base-space / 2;
+      right: $baseSpace / 2;
     }
   }
 }

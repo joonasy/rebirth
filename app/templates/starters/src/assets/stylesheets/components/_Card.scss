@@ -1,15 +1,17 @@
 /* ========================================
- * Block
+ * Cards
  * ======================================== */
 
-.Block {
+.Card {
   display: block;
   position: relative;
-  margin-bottom: rem($base-space);
+  margin-bottom: rem($baseSpace);
   width: 100%;
 }
 
-  .Block-figure {
+  .Card-title {}
+
+  .Card-figure {
     > figure {
       margin-bottom: 0;
 
@@ -19,25 +21,25 @@
     }
   }
 
-  .Block-inner {
-    padding: rem($Block-padding) $Block-padding-percentage;
+  .Card-inner {
+    padding: rem($Card-padding) $Card-padding-percentage;
 
     > *:last-child {
       margin-bottom: 0;
     }
 
     @include breakpoint('mediumUp') {
-      padding-left: rem($Block-padding * 1.5);
-      padding-right: rem($Block-padding * 1.5);
+      padding-left: rem($Card-padding * 1.5);
+      padding-right: rem($Card-padding * 1.5);
     }
   }
 
 
 /* ======
- * Block figure - background fill modifier
+ * Card figure - background fill modifier
  * ====== */
 
-.Block-figure.-bg-fill {
+.Card-figure.-bg-fill {
   position: relative;
 
   > figure {
@@ -57,10 +59,10 @@
 
 
 /* ======
- * Block - primary
+ * Card - primary
  * ====== */
 
-.Block--primary {
+.Card--primary {
   background-color: #ffffff;
-  min-height: $base-space * 6;
+  min-height: $baseSpace * 6;
 }

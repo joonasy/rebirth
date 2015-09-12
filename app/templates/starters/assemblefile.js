@@ -108,8 +108,6 @@ assemble.task('html', function() {
   }
 });
 
-
-
 /**
  * Stylesheets
  */
@@ -299,7 +297,7 @@ assemble.task('modernizr', ['stylesheets'], function() {
   ])
     .pipe($.modernizr({
       excludeTests: ['hidden'],
-      tests: [''],
+      tests: ['objectfit'],
       options: [
         'setClasses',
         'addTest',

@@ -10,7 +10,7 @@
   %Form-item-appearance {
     background-color: #ffffff;
     border: $Form-borderWidth solid transparent;
-    color: $color-text;
+    color: $colorText;
   }
 
   %Form-item-layout {
@@ -26,7 +26,7 @@
     @extend %Form-item-layout;
     border-radius: 0;
     display: block;
-    margin-bottom: rem($base-space);
+    margin-bottom: rem($baseSpace);
     outline: 0;
     padding: 0 rem($Form-padding);
     position: relative;
@@ -49,9 +49,9 @@
 
   textarea {
     &.Form-item {
-      line-height: $base-lineHeight;
-      min-height: rem($base-space * 6);
-      padding-top: rem($base-space / 2);
+      line-height: $baseLineHeight;
+      min-height: rem($baseSpace * 6);
+      padding-top: rem($baseSpace / 2);
       resize: vertical;
     }
   }
@@ -90,24 +90,24 @@
 .Form--primary {
   %Form--primary-Form-item, .Form-item {
     background-color: #ffffff;
-    color: $color-textLight;
+    color: $colorTextLight;
 
     &.-border {
-      border-color: $color-borderPrimary;
+      border-color: $colorBorderPrimary;
     }
   }
 
   .Form-item {
-    @include colorPlaceholder($color-textLight);
-    color: $color-textLight;
+    @include colorPlaceholder($colorTextLight);
+    color: $colorTextLight;
 
     &:hover, &:focus {
-      @include colorPlaceholder($color-text);
-      color: $color-text;
+      @include colorPlaceholder($colorText);
+      color: $colorText;
     }
 
     &.-border {
-      &:hover, &:focus { border-color: $color-borderPrimary; }
+      &:hover, &:focus { border-color: $colorBorderPrimary; }
     }
   }
 }
