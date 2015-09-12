@@ -2,8 +2,6 @@
  * Grid
  * ======================================== */
 
-$Grid-gutter: $baseSpace / 2;
-
 .Grid {
   display: flex;
   list-style: none;
@@ -15,10 +13,7 @@ $Grid-gutter: $baseSpace / 2;
   margin-right: rem(-($Grid-gutter));
 }
 
-  /**
-   * Grid column
-   */
-  .Grid-item {
+  .Grid-cell {
     flex: 0 0 auto;
     max-width: 100%;
     padding-left: rem($Grid-gutter);
@@ -35,7 +30,7 @@ $Grid-gutter: $baseSpace / 2;
   margin-left: rem(-($Grid-gutter * $amount));
   margin-right: rem(-($Grid-gutter * $amount));
 
-  > .Grid-item {
+  > .Grid-cell {
     padding-left: rem($Grid-gutter * $amount);
     padding-right: rem($Grid-gutter * $amount);
   }
@@ -43,22 +38,22 @@ $Grid-gutter: $baseSpace / 2;
 
 .Grid {
   &.-auto {
-    > .Grid-item {
+    > .Grid-cell {
       flex: 1 1 auto;
     }
 
-    > .Grid-item:not([class*="Width"]) {
+    > .Grid-cell:not([class*="Width"]) {
       width: auto;
     }
   }
 
   &.-equal {
-    > .Grid-item {
+    > .Grid-cell {
       display: flex;
     }
   }
 
-  &.-full {  @include GridSize(); }
+  &.-full { @include GridSize(); }
   &.-l { @include GridSize(2); }
   &.-xl { @include GridSize(4); }
 }
@@ -75,10 +70,11 @@ $Grid-gutter: $baseSpace / 2;
   .Grid.#{$namespace}-justify-end { justify-content: flex-end; }
 }
 
+/**
+ * Add responsive variants if needed.
+ * e.g. @include breakpoint('smallUp') { @include GridJustify(-s); }
+ */
 @include GridJustify();
-@include breakpoint('smallUp') { @include GridJustify(-s); }
-@include breakpoint('mediumUp') { @include GridJustify(-m); }
-@include breakpoint('largeUp') { @include GridJustify(-l); }
 
 
 /* ======
@@ -91,24 +87,8 @@ $Grid-gutter: $baseSpace / 2;
   .Grid.#{$namespace}-align-top { align-items: top; }
 }
 
+/**
+ * Add responsive variants if needed.
+ * e.g. @include breakpoint('smallUp') { @include GridAlign(-s); }
+ */
 @include GridAlign();
-@include breakpoint('smallUp') { @include GridAlign(-s); }
-@include breakpoint('mediumUp') { @include GridAlign(-m); }
-@include breakpoint('largeUp') { @include GridAlign(-l); }
-
-
-/* ======
- * Grid item - order
- * ====== */
-
-@mixin GridItemOrder($namespace: '', $amount: 4) {
-  @for $i from 1 through $amount {
-    .Grid-item.#{$namespace}-order-#{$i} {
-      order: #{$i};
-    }
-  }
-}
-
-@include breakpoint('smallUp') { @include GridItemOrder(-s); }
-@include breakpoint('mediumUp') { @include GridItemOrder(-m); }
-@include breakpoint('largeUp') { @include GridItemOrder(-l); }

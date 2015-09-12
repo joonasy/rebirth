@@ -1,0 +1,19 @@
+/* ========================================
+ * Grid cell - order
+ * ========================================
+ *
+ * @extends `.Grid-cell{}` in _Grid.scss.
+ * @reusable true
+ */
+
+@mixin GridCellOrder($namespace: '', $amount: 4) {
+  @for $i from 1 through $amount {
+    .Grid-cell.#{$namespace}-order-#{$i} {
+      order: #{$i};
+    }
+  }
+}
+
+@include breakpoint('smallUp') { @include GridCellOrder(-s); }
+@include breakpoint('mediumUp') { @include GridCellOrder(-m); }
+@include breakpoint('largeUp') { @include GridCellOrder(-l); }
