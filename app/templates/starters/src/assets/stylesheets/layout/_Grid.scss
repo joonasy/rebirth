@@ -78,13 +78,13 @@
 
 
 /* ======
- * Grid - aligning of items
+ * Grid - aligning of cells
  * ====== */
 
 @mixin GridAlign($namespace: '') {
-  .Grid.#{$namespace}-align-bottom { align-items: top; }
+  .Grid.#{$namespace}-align-bottom { align-items: flex-end; }
   .Grid.#{$namespace}-align-center { align-items: center; }
-  .Grid.#{$namespace}-align-top { align-items: top; }
+  .Grid.#{$namespace}-align-top { align-items: flex-start; }
 }
 
 /**
