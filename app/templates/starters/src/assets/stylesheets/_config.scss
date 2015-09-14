@@ -118,6 +118,7 @@ $fontsPath: '../fonts';
 // ========================================
 
 $Header-zIndex: 100;
+$Grid-gutter: $baseSpace / 2;
 $Page-zIndex: 99;
 $Wrap-width: 1140px;
 
@@ -140,10 +141,3 @@ $Heading-fontSize-m: 52px;
 $Heading-lineHeight-m: 62px / $Heading-fontSize-m;
 $Heading-fontSize-s: 42px;
 $Heading-lineHeight-s: 52px / $Heading-fontSize-s;
-
-
-// ========================================
-// Grid
-// ========================================
-
-$Grid-gutter: $baseSpace / 2;

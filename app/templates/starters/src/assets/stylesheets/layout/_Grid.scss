@@ -39,7 +39,7 @@
 .Grid {
   &.-auto {
     > .Grid-cell {
-      flex: 1 1 auto;
+      flex: 1 1 0;
     }
 
     > .Grid-cell:not([class*="Width"]) {
@@ -47,15 +47,9 @@
     }
   }
 
-  &.-equal {
-    > .Grid-cell {
-      display: flex;
-    }
-  }
-
   &.-full { @include GridSize(); }
-  &.-l { @include GridSize(2); }
   &.-xl { @include GridSize(4); }
+  &.-l { @include GridSize(2); }
 }
 
 

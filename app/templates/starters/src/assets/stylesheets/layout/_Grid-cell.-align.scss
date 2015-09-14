@@ -6,7 +6,7 @@
  * @reusable true
  */
 
- @mixin GridItemAlign($namespace: '') {
+ @mixin GridCellAlign($namespace: '') {
   .Grid-cell.#{$namespace}-align-bottom { align-self: flex-end; }
   .Grid-cell.#{$namespace}-align-center { align-self: center; }
   .Grid-cell.#{$namespace}-align-top { align-self: flex-start; }
@@ -15,6 +15,6 @@
 /**
  * I assume that I need responsive variants only
  */
-@include breakpoint('smallUp') { @include GridItemAlign(-s); }
-@include breakpoint('mediumUp') { @include GridItemAlign(-m); }
-@include breakpoint('largeUp') { @include GridItemAlign(-l); }
+@include breakpoint('smallUp') { @include GridCellAlign(-s); }
+@include breakpoint('mediumUp') { @include GridCellAlign(-m); }
+@include breakpoint('largeUp') { @include GridCellAlign(-l); }

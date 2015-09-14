@@ -1,0 +1,28 @@
+/* ========================================
+ * Grid - ruler
+ * ========================================
+ *
+ * Columns with rulers.
+ *
+ * @extends `.Grid{}` in _Grid.scss.
+ * @reusable true
+ */
+
+@mixin GridRuler($namespace: '') {
+  .#{$namespace}Grid--ruler {
+    > .Grid-cell {
+      border-left: 1px solid $colorBorderPrimary;
+
+      &:first-child {
+        border-left: none;
+      }
+    }
+  }
+}
+
+/**
+ * I assume that I need responsive variants only
+ */
+@include breakpoint('smallUp') { @include GridRuler(s-); }
+@include breakpoint('mediumUp') { @include GridRuler(m-); }
+@include breakpoint('largeUp') { @include GridRuler(l-); }
