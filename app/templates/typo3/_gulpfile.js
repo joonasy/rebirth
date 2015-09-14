@@ -1,5 +1,5 @@
 /* ========================================
- * Gruntfile for `<%= appNameHumanize %>`
+ * Gulpfile for `<%= appNameHumanize %>`
  * ========================================
  *
  * @generated <%= (generatorDate) %> using `<%= pkg.name %> v<%= pkg.version %>`
