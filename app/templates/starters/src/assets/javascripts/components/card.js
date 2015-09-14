@@ -1,5 +1,5 @@
 /* ========================================
- * Block
+ * Card
  * ======================================== */
 
 'use strict';
@@ -7,9 +7,9 @@
 var $ = require('jquery');
 var figureImgAsBg = require('../plugins/figureImgAsBg');
 
-class Block {
+class Card {
   constructor() {
-    this.$blockFigure = $('.Block-figure.-bg-fill > figure');
+    this.$cardFigure = $('.Card-figure.-bg-fill > figure');
   }
 
   init() {
@@ -17,8 +17,8 @@ class Block {
   }
 
   blockImgAsBg() {
-    figureImgAsBg(this.$blockFigure);
+    figureImgAsBg(this.$cardFigure);
   }
 }
 
-module.exports = Block;
+module.exports = Card;
