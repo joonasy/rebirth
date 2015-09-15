@@ -2,9 +2,10 @@
 
 > My combined styleguide, starter kit and Yeoman generator for new web projects (Typo3/Html).
 
-This startekit contains methods and ideas from various sources such as [BEM](https://bem.info/), [HTML5BP](http://html5boilerplate.com/), [Bootstrap](http://getbootstrap.com), [Foundation](http://foundation.zurb.com/), [INUITCSS](https://github.com/inuitcss), [SMACSS](https://smacss.com/), [OOCSS](http://oocss.org/) and [SUIT CSS](https://github.com/suitcss/suit). By default this template supports IE9+, Mobile first -ideology and progressive enhancement.
+This startekit contains methods and ideas from various sources such as [BEM](https://bem.info/), [HTML5BP](http://html5boilerplate.com/), [Bootstrap](http://getbootstrap.com), [Foundation](http://foundation.zurb.com/), [INUITCSS](https://github.com/inuitcss), [SMACSS](https://smacss.com/), [OOCSS](http://oocss.org/) and [SUIT CSS](https://github.com/suitcss/suit). By default this template supports IE10+, Mobile first -ideology and progressive enhancement.
 
 This starter kit is **not a framework** but it contains predefined components and helpers that are meant to be modified based on your project needs.
+
 
 ## Features
 
@@ -15,6 +16,7 @@ This starter kit is **not a framework** but it contains predefined components an
 * Image Optimization
 * Combine media queries
 * Browserify
+
 
 ## Getting started
 
@@ -39,13 +41,13 @@ Install all the requirements before installing the generator.
 
 * [Node.js](http://nodejs.org/) 
 * [Npm](https://www.npmjs.org/)
-* [Yeoman](http://yeoman.io/) ```npm install -g yo```
-* [Bower](http://bower.io/) ```npm install -g bower```
+* [Yeoman](http://yeoman.io/) `npm install -g yo`
+* [Bower](http://bower.io/) npm install -g bower`
 
 
 ## Installing
 
-**1.** Install ```generator-my```:
+**1.** Install `generator-my`:
 
     npm install -g generator-my
 
@@ -60,7 +62,7 @@ or alternatively make a new directory, cd into it and run the generator:
 
 ## Usage
 
-Run ```npm run build``` for building and ```npm run dev``` for developing.
+Run `npm run build` for building and `npm run dev` for developing.
 
 
 ## Contribute
