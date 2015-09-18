@@ -119,7 +119,9 @@ assemble.task('stylesheets', function() {
     }))
     .on('error', handleError)
     .on('error', $.sass.logError)
-    .pipe($.autoprefixer('last 2 versions', 'IE 9'));
+    .pipe($.autoprefixer({
+      browsers: ['last 2 versions']
+    }));
 
   if (production) {
     pipeline = pipeline.pipe($.combineMq())
