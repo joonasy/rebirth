@@ -89,7 +89,7 @@ gulp.task('stylesheets', function() {
 
   if (production) {
     pipeline = pipeline.pipe($.replace('../Assets/', config.ext + config.dest))
-      .pipe($.combineMediaQueries({log: true}))
+      .pipe($.combineMq())
       .pipe($.minifyCss())
       .pipe($.rename({suffix: '.min'}));
   }

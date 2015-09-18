@@ -122,7 +122,7 @@ assemble.task('stylesheets', function() {
     .pipe($.autoprefixer('last 2 versions', 'IE 9'));
 
   if (production) {
-    pipeline = pipeline.pipe($.combineMediaQueries({ log: true }))
+    pipeline = pipeline.pipe($.combineMq())
       .pipe($.minifyCss())
       .pipe($.rename({suffix: '.min'}));
   }
