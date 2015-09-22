@@ -116,8 +116,8 @@ const figureImgAsBg = function(figure, targetSafari, targetIOS) {
         const srcsetElements = [];
 
         srcset.forEach(function(value) {
-          let value = value.trim();
-          const width = value.split(' ').pop().replace('w', '');
+          let val = value.trim();
+          const width = val.split(' ').pop().replace('w', '');
           widths.push(width);
           srcsetElements.push(val);
         });
