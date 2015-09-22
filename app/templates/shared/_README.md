@@ -1,6 +1,6 @@
 # <%= appNameHumanize %>
 
-> <%= appDescription %>. Generated on <%= (generatorDate) %> using [<%= pkg.name %> v<%= pkg.version %>](<%= (generatorRepository) %>)<% if (typoProject) { %>using the Typo3 extension name `<%= appRoot %>`<% } %>.
+> <%= appDescription %>. Generated on <%= (generatorDate) %> using [<%= pkg.name %> v<%= pkg.version %>](<%= (generatorRepository) %>)<% if (typoProject) { %> using the Typo3 extension name `<%= appRoot %>`<% } %>.
 
 ## Instructions 
 
