@@ -5,6 +5,8 @@
 'use strict';
 
 var $ = require('jquery');
+var Modernizr = require('modernizr');
+
 var toggleObjects = [];
 
 var toggle = function(options) {
@@ -21,7 +23,8 @@ var toggle = function(options) {
     disableFirstClickOnTouch: false,
     unToggleParentSiblings: false,
     unToggleOtherToggles: true,
-    unTogglable: true
+    unTogglable: true,
+    afterClick: function() {}
   }, options);
 
   self.init = function() {
@@ -29,7 +32,14 @@ var toggle = function(options) {
     config.trigger.on('click', clickTrigger);
 
     if (config.elementStopPropagation) {
-      config.element.on('click', function(e) {
+      var elToDisable = config.element;
+
+      if (config.elementStopPropagation instanceof jQuery ||
+          typeof config.elementStopPropagation === 'string') {
+        elToDisable = $(config.elementStopPropagation);
+      }
+
+      elToDisable.on('click', function(e) {
         e.stopPropagation();
       });
     }
@@ -91,6 +101,7 @@ var toggle = function(options) {
       e.preventDefault();
     }
 
+    config.afterClick();
     e.stopPropagation();
   };
 
@@ -102,7 +113,6 @@ var toggle = function(options) {
         }
 
         $(this).removeClass(value.elementClass);
-
       });
 
       if (value.triggerClass) {
