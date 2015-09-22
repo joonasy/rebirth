@@ -27,12 +27,12 @@ $(function() {
   new Form().init();
 
   /**
-   * Init hero
+   * Init Hero
    */
   new Hero().init();
 
   /**
-   * Init navbar
+   * Init Navbar
    */
   new Navbar().init();
 

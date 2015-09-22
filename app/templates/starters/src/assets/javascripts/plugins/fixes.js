@@ -1,10 +1,10 @@
 /* ========================================
- * Internet explorer fixes
+ * Various browser related fixes
  * ======================================== */
 
 'use strict';
 
-const ieFixes = () => {
+const fixes = () => {
   /**
    * A fix is on the way to get Windows Phone 8 to recognize
    * CSS pixels rather than device pixels (which is preferred behavior).
@@ -17,6 +17,6 @@ const ieFixes = () => {
     msViewportStyle.appendChild(document.createTextNode('@-ms-viewport{width:auto!important}'));
     document.getElementsByTagName('head')[0].appendChild(msViewportStyle);
   }
-}();
+};
 
-export default ieFixes;
+export default fixes();

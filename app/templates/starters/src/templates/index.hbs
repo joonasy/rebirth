@@ -17,16 +17,12 @@ title: Homepage
       </div>
     </div>
     <figure class="Hero-figure">
-      <img
-        data-sizes="auto"
-        data-srcset="
-          {{assets}}/images/hero-s.jpg 400w,
-          {{assets}}/images/hero-m.jpg 768w,
-          {{assets}}/images/hero-l.jpg 1200w"
-        class="lazyload">
-      <noscript>
-        <img src="{{assets}}/images/hero-s.jpg">
-      </noscript>
+      <picture>
+        <source srcset="{{assets}}/images/hero-s.jpg" media="(max-width: 600px)" />
+        <source srcset="{{assets}}/images/hero-m.jpg" media="(max-width: 1000px)" />
+        <source srcset="{{assets}}/images/hero-l.jpg" />
+        <img src="{{assets}}/images/hero-s.jpg" class="js-lazyload" data-sizes="auto" />
+      </picture>
     </figure>
     <div class="Hero-overlay"></div>
   </div>

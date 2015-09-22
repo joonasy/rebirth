@@ -10,10 +10,9 @@ import Modernizr from 'modernizr';
 const toggleObjects = [];
 
 const toggle = (options) => {
-  let config;
   let _this = {};
 
-  config = $.extend({
+  let config = $.extend({
     trigger: $(),
     triggerClass: false,
     element: $(),
@@ -73,7 +72,7 @@ const toggle = (options) => {
     }
 
     if (config.toggleClosest) {
-      $this.each(() => {
+      $this.each(function() {
         $(this)
           .closest(config.element)
           .toggleClass(config.elementClass);
@@ -83,7 +82,7 @@ const toggle = (options) => {
     }
 
     if (config.unToggleParentSiblings) {
-      $this.each(() => {
+      $this.each(function() {
         $(this)
           .parent()
           .siblings(config.element)
@@ -104,7 +103,7 @@ const toggle = (options) => {
   };
 
   _this.removeToggles = () => {
-    $.each(toggleObjects, (index, value) => {
+    $.each(toggleObjects, function(index, value) {
       value.element.each(function() {
         const $this = $(this);
 

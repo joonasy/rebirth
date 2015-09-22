@@ -1,13 +1,15 @@
 /* ========================================
- * Set inner figure image as parent background image
+ * Inner image as parent background image
  * ========================================
  *
- * Fix object-fit by setting the image as the figure background. Targeted for
- * browsers that don't support object-fit but support `background-size: cover`.
- * Remember to add `background-size: cover` to the parent element (usually <figure>).
+ * Fix object-fit by setting the image as the parent figure background. Targeted
+ * for browsers that don't support object-fit but support `background-size: cover`.
+ * Remember to add `background-size: cover` to the parent element
+ * (usually <figure>).
  *
- * Requires jQuery, Modernizr for feature detecting and Lazysizes for responsive images
- * support until srcset/picture is supported well. Doesn't support window resizing.
+ * Requires jQuery, Modernizr for feature detecting and Lazysizes for responsive
+ * images support until srcset/picture is supported well in all browsers.
+ * Doesn't support window resizing.
  *
  * Only single line strings supported in `data-srcset` and `media`.
  *
@@ -19,7 +21,6 @@
  *
  * @usage
  *  With lazysizes and srcset:
- *
  *    <figure class="My-figure">
  *      <img
  *        data-sizes="auto"
@@ -79,7 +80,14 @@ const windowWidth = $(window).width();
 let isSafari = /Constructor/.test(window.HTMLElement);
 let isIOS = /iP(ad|hone|od)/i.test(navigator.userAgent);
 
-const figureImgAsBg = (figure, targetSafari, targetIOS) => {
+/**
+ * @param { jquerySelector|string } figure - Node to search
+ * @param { boolean } targetSafari - target Safari [1.]
+ * @param { boolean } targetIOS - target iOS [1.]
+ *
+ * [1.] Safari and iOS doesn't support object-position
+ */
+const imgToParentBg = (figure, targetSafari, targetIOS) => {
   isSafari = isSafari && targetSafari;
   isIOS = isIOS && targetIOS;
 
@@ -103,20 +111,21 @@ const figureImgAsBg = (figure, targetSafari, targetIOS) => {
     return ans;
   }
 
-  if (isSafari || isIOS || !Modernizr['object-fit']) {
+  if (isSafari || isIOS || Modernizr['object-fit']) {
     $.each($figure, function() {
       const $this = $(this);
       const $img = $this.find('img');
-      const srcset = $img.data('srcset');
       const sourceLargest = $img.siblings('source').not('[media]');
       const source = $img.siblings('source[media]');
       const widths = [];
 
+      let srcset = $img.data('srcset');
+
       if ('lazySizes' in window && srcset) {
-        const srcset = srcset.split(',');
+        srcset = srcset.split(',');
         const srcsetElements = [];
 
-        srcset.forEach(function(value) {
+        srcset.forEach((value) => {
           let val = value.trim();
           const width = val.split(' ').pop().replace('w', '');
           widths.push(width);
@@ -125,12 +134,12 @@ const figureImgAsBg = (figure, targetSafari, targetIOS) => {
 
         const closestWindowWidth = closest(widths, windowWidth);
 
-        srcsetElements.forEach(function(value) {
+        srcsetElements.forEach((value) => {
           if (value.indexOf(closestWindowWidth + 'w') > -1) {
             imgUrl = value.split(' ')[0];
           }
         });
-      } if ('lazySizes' in window && source) {
+      } else if ('lazySizes' in window && source) {
 
         function matchNumber(str) {
           return str.match(/(\d+)/)[0]
@@ -141,7 +150,7 @@ const figureImgAsBg = (figure, targetSafari, targetIOS) => {
           widths.push(matchNumber(media));
         });
 
-        const closestWindowWidth = closest(widths, $(window).width());
+        const closestWindowWidth = closest(widths, windowWidth);
         const largestMaxWidth = Math.max.apply(Math, widths);
 
         if (largestMaxWidth > windowWidth) {
@@ -170,4 +179,4 @@ const figureImgAsBg = (figure, targetSafari, targetIOS) => {
   }
 };
 
-export default figureImgAsBg;
+export default imgToParentBg;

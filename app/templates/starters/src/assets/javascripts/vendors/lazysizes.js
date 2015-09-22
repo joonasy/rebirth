@@ -12,6 +12,6 @@ const lazysizes = () => {
   window.lazySizesConfig.lazyClass = 'js-lazyload';
   window.lazySizesConfig.loadingClass = 'is-lazyload';
   window.lazySizesConfig.loadedClass = 'is-lazyloaded';
-}();
+};
 
-export default lazysizes;
+export default lazysizes();

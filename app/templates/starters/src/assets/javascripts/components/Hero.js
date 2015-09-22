@@ -5,7 +5,7 @@
 'use strict';
 
 import $ from 'jquery';
-import figureImgAsBg from '../plugins/figureImgAsBg';
+import imgToParentBg from '../plugins/imgToParentBg';
 
 class Hero {
   constructor() {
@@ -14,13 +14,13 @@ class Hero {
   }
 
   init() {
-    this.heroFigureAsBg();
+    this.heroFigureToParentBg();
   }
 
-  heroFigureAsBg() {
+  heroFigureToParentBg() {
     $.each(this.$figure, function() {
-      const hasObjPos = $(this).parent().is('[class*="-alignFigure"]') ? true : false;
-      figureImgAsBg($(this), hasObjPos, hasObjPos);
+      const hasObjPos = !!$(this).parent().is('[class*="-alignFigure"]');
+      imgToParentBg($(this), hasObjPos, hasObjPos);
     });
   }
 }

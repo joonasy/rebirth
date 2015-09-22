@@ -5,7 +5,7 @@
 'use strict';
 
 import $ from 'jquery';
-import figureImgAsBg from '../plugins/figureImgAsBg';
+import imgToParentBg from '../plugins/imgToParentBg';
 
 class Card {
   constructor() {
@@ -13,11 +13,11 @@ class Card {
   }
 
   init() {
-    this.blockImgAsBg();
+    this.cardImgToParentBg();
   }
 
-  blockImgAsBg() {
-    figureImgAsBg(this.$cardFigure);
+  cardImgToParentBg() {
+    imgToParentBg(this.$cardFigure);
   }
 }
 

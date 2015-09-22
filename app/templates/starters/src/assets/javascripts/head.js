@@ -1,10 +1,10 @@
 /* ========================================
- * Head
+ * Application head
  * ======================================== */
 
 'use strict';
 
 /**
- * Ie fixes
+ * Various browser related fixes
  */
-import ieFixes from './plugins/ieFixes';
+import fixes from './plugins/fixes';
