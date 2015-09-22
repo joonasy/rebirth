@@ -4,12 +4,12 @@
 
 'use strict';
 
-var $ = require('jquery');
-var Modernizr = require('modernizr');
+import $ from 'jquery';
+import Modernizr from 'modernizr';
 
-var toggleObjects = [];
+const toggleObjects = [];
 
-var toggle = function(options) {
+const toggle = (options) => {
   var config;
   var self = {};
 
@@ -27,12 +27,12 @@ var toggle = function(options) {
     afterClick: function() {}
   }, options);
 
-  self.init = function() {
+  self.init = () => {
     toggleObjects.push(config);
-    config.trigger.on('click', clickTrigger);
+    config.trigger.on('click', _clickTrigger);
 
     if (config.elementStopPropagation) {
-      var elToDisable = config.element;
+      let elToDisable = config.element;
 
       if (config.elementStopPropagation instanceof jQuery ||
           typeof config.elementStopPropagation === 'string') {
@@ -45,9 +45,9 @@ var toggle = function(options) {
     }
   }
 
-  var clickTrigger = function(e) {
-    var $this = $(this);
-    var isToggled;
+  const _clickTrigger = function(e) {
+    const $this = $(this);
+    let isToggled;
 
     if (config.unToggleOtherToggles) {
 
@@ -62,14 +62,12 @@ var toggle = function(options) {
       }
     }
 
-    var firstClick = $this.hasClass('is-firstTouch');
+    const firstClick = $this.hasClass('is-firstTouch');
 
     if (config.disableFirstClickOnTouch && !firstClick && Modernizr.touchevents) {
-
       $this.addClass('is-firstTouch')
       e.preventDefault();
-
-      setTimeout(function() {
+      setTimeout(() => {
         $this.removeClass('is-firstTouch')
       }, 1000);
     }
@@ -105,7 +103,7 @@ var toggle = function(options) {
     e.stopPropagation();
   };
 
-  self.removeToggles = function() {
+  self.removeToggles = () => {
     $.each(toggleObjects, function(index, value) {
       value.element.each(function() {
         if (!$(this).hasClass(value.elementClass) || !value.unTogglable) {
@@ -131,4 +129,4 @@ $(window).on('click', function(e) {
   toggle().removeToggles();
 });
 
-module.exports = toggle;
+export default toggle;

@@ -2,6 +2,8 @@
  * Component
  * ======================================== */
 
+'use strict';
+
 class Component {
   constructor() {}
 
@@ -14,4 +16,4 @@ class Component {
   }
 }
 
-module.exports = Component;
+export default Component;

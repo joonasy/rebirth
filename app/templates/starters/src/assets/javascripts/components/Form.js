@@ -4,7 +4,7 @@
 
 'use strict';
 
-var $ = require('jquery');
+import $ from 'jquery';
 
 class Form {
   constructor() {
@@ -18,12 +18,12 @@ class Form {
 
   updateSelect() {
     $(document).on('change', this.$selectItem.selector, function(e) {
-      var $this = $(this).find('select');
-      var option = $this.find('option:selected').text();
+      const $this = $(this).find('select');
+      const option = $this.find('option:selected').text();
 
       $this.parent().siblings('.Form-item--select-text').text(option);
     });
   }
 }
 
-module.exports = Form;
+export default Form;

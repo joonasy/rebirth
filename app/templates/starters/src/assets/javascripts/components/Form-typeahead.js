@@ -7,7 +7,7 @@
 
 'use strict';
 
-var $ = require('jquery');
+import $ from 'jquery';
 
 class FormTypeAhead {
   constructor() {
@@ -34,4 +34,4 @@ class FormTypeAhead {
   }
 }
 
-module.exports = FormTypeAhead;
+export default FormTypeAhead;

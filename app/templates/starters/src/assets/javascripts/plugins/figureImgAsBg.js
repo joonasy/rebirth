@@ -71,14 +71,15 @@
 
 'use strict';
 
-const $ = require('jquery');
-const Modernizr = require('modernizr');
+import $ from 'jquery';
+import Modernizr from 'modernizr';
+
 const windowWidth = $(window).width();
 
 let isSafari = /Constructor/.test(window.HTMLElement);
 let isIOS = /iP(ad|hone|od)/i.test(navigator.userAgent);
 
-const figureImgAsBg = function(figure, targetSafari, targetIOS) {
+const figureImgAsBg = (figure, targetSafari, targetIOS) => {
   isSafari = isSafari && targetSafari;
   isIOS = isIOS && targetIOS;
 
@@ -169,4 +170,4 @@ const figureImgAsBg = function(figure, targetSafari, targetIOS) {
   }
 };
 
-module.exports = figureImgAsBg;
+export default figureImgAsBg;

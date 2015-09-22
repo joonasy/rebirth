@@ -4,32 +4,25 @@
 
 'use strict';
 
-var $ = require('jquery');
-var fastClick = require('fastclick');
+import $ from 'jquery';
+import app from './app';
 
-require('./app.js');
+import Card from './components/Card';
+import Form from './components/Form';
+import Hero from './components/Hero';
+import Navbar from './components/Navbar';
 
-var Card = require('./components/Card');
-var Form = require('./components/Form');
-var Hero = require('./components/Hero');
-var Navbar = require('./components/Navbar');
-
-var DocsNavbar = require('./docs/docsNavbar');
+import DocsNavbar from './docs/docsNavbar';
 
 $(function() {
 
   /**
-   * Init navbar
+   * Init Card
    */
-  new Navbar().init();
+  new Card().init();
 
   /**
-   * Init block
-   */
-  new Block().init();
-
-  /**
-   * Init form
+   * Init Form
    */
   new Form().init();
 
@@ -39,9 +32,9 @@ $(function() {
   new Hero().init();
 
   /**
-   * Init FastClick
+   * Init navbar
    */
-  fastClick(document.body);
+  new Navbar().init();
 
   /**
    * Init documentation material

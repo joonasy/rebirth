@@ -48,4 +48,4 @@ var emulateTransitionEnd = function() {
   });
 };
 
-module.exports = emulateTransitionEnd();
+export default emulateTransitionEnd();

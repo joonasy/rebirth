@@ -4,8 +4,8 @@
 
 'use strict';
 
-var $ = require('jquery');
-var toggle = require('../plugins/toggle');
+import $ from 'jquery';
+import toggle from '../plugins/toggle';
 
 class Navbar {
   constructor() {
@@ -47,4 +47,4 @@ class Navbar {
   }
 }
 
-module.exports = Navbar;
+export default Navbar;

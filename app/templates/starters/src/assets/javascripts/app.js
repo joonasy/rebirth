@@ -4,10 +4,10 @@
 
 'use strict';
 
-var $ = require('jquery');
-var fastClick = require('fastclick');
+import $ from 'jquery';
+import fastClick from 'fastclick';
 
-var Component = require('./components/component');
+import Component from './components/component';
 
 $(function() {
 

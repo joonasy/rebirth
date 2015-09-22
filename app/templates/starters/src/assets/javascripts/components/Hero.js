@@ -4,8 +4,8 @@
 
 'use strict';
 
-const $ = require('jquery');
-const figureImgAsBg = require('../plugins/figureImgAsBg');
+import $ from 'jquery';
+import figureImgAsBg from '../plugins/figureImgAsBg';
 
 class Hero {
   constructor() {
@@ -25,4 +25,4 @@ class Hero {
   }
 }
 
-module.exports = Hero;
+export default Hero;

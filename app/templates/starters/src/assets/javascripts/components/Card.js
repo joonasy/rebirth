@@ -4,8 +4,8 @@
 
 'use strict';
 
-var $ = require('jquery');
-var figureImgAsBg = require('../plugins/figureImgAsBg');
+import $ from 'jquery';
+import figureImgAsBg from '../plugins/figureImgAsBg';
 
 class Card {
   constructor() {
@@ -21,4 +21,4 @@ class Card {
   }
 }
 
-module.exports = Card;
+export default Card;
