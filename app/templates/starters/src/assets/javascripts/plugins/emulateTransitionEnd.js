@@ -46,7 +46,6 @@ var emulateTransitionEnd = function() {
   $(function() {
     $.support.transition = transitionSupport();
   });
-
 };
 
 module.exports = emulateTransitionEnd();
