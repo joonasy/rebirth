@@ -2,5 +2,9 @@
  * Docs head
  * ======================================== */
 
-require('lazysizes');
-require('lazysizes/plugins/respimg/ls.respimg.js');
+'use strict';
+
+/**
+ * Setup lazysizes
+ */
+import lazysizes from '../vendors/lazysizes';
