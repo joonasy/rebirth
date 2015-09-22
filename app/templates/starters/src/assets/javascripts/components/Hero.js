@@ -4,8 +4,8 @@
 
 'use strict';
 
-var $ = require('jquery');
-var figureImgAsBg = require('../plugins/figureImgAsBg');
+const $ = require('jquery');
+const figureImgAsBg = require('../plugins/figureImgAsBg');
 
 class Hero {
   constructor() {
@@ -18,7 +18,10 @@ class Hero {
   }
 
   heroFigureAsBg() {
-    figureImgAsBg(this.$figure);
+    $.each(this.$figure, function() {
+      const hasObjPos = $(this).parent().is('[class*="-alignFigure"]') ? true : false;
+      figureImgAsBg($(this), hasObjPos, hasObjPos);
+    });
   }
 }
 

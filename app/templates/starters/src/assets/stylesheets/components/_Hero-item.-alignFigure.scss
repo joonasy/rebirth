@@ -1,0 +1,37 @@
+/* ========================================
+ * Hero item - figure align
+ * ========================================
+ *
+ * Align figure in .Hero{} component.
+ *
+ * @extends `.Hero-item{}` in _Hero.scss.
+ * @reusable true
+ */
+
+@mixin HeroAlignFigure($namespace: '') {
+  $positions: 'top left', 'top', 'top right', 'right', 'bottom right', 'bottom',
+  'bottom left', 'left';
+
+  .Hero-item {
+    @each $position in $positions {
+      &.#{$namespace}-alignFigure-#{camelize($position)} {
+        .Hero-figure {
+          background-position: unquote($position); /* Fallback */
+
+          img {
+            object-position: unquote($position);
+          }
+        }
+      }
+    }
+  }
+}
+
+/**
+ * Add responsive variants if needed.
+ * e.g. @include breakpoint('smallUp') { @include HeroAlignFigure(-s); }
+ */
+@include HeroAlignFigure();
+@include breakpoint('smallUp') { @include HeroAlignFigure(-s); }
+@include breakpoint('mediumUp') { @include HeroAlignFigure(-m); }
+@include breakpoint('largeUp') { @include HeroAlignFigure(-l); }
