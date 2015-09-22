@@ -4,10 +4,10 @@
 
 'use strict';
 
-var $ = require('jquery');
-var toggle = require('../plugins/toggle');
+const $ = require('jquery');
+const toggle = require('../plugins/toggle');
 
-class Navbar {
+class DocsNavbar {
   constructor() {
     this.$navBar = $('#js-docs-Navbar');
     this.$navBarTrigger = $('#js-docs-Navbar-trigger', this.$navBar),
@@ -47,5 +47,5 @@ class Navbar {
   }
 }
 
-module.exports = Navbar;
+module.exports = DocsNavbar;
 
