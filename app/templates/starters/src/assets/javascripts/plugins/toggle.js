@@ -10,8 +10,8 @@ import Modernizr from 'modernizr';
 const toggleObjects = [];
 
 const toggle = (options) => {
-  var config;
-  var self = {};
+  let config;
+  let _this = {};
 
   config = $.extend({
     trigger: $(),
@@ -27,25 +27,25 @@ const toggle = (options) => {
     afterClick: function() {}
   }, options);
 
-  self.init = () => {
+  _this.init = () => {
     toggleObjects.push(config);
     config.trigger.on('click', _clickTrigger);
 
     if (config.elementStopPropagation) {
-      let elToDisable = config.element;
+      let $el = config.element;
 
       if (config.elementStopPropagation instanceof jQuery ||
           typeof config.elementStopPropagation === 'string') {
-        elToDisable = $(config.elementStopPropagation);
+        $el = $(config.elementStopPropagation);
       }
 
-      elToDisable.on('click', function(e) {
+      $el.on('click', (e) => {
         e.stopPropagation();
       });
     }
   }
 
-  const _clickTrigger = function(e) {
+  function _clickTrigger(e) {
     const $this = $(this);
     let isToggled;
 
@@ -58,7 +58,7 @@ const toggle = (options) => {
       }
 
       if (isToggled) {
-        self.removeToggles();
+        _this.removeToggles();
       }
     }
 
@@ -73,8 +73,8 @@ const toggle = (options) => {
     }
 
     if (config.toggleClosest) {
-      $this.each(function() {
-        $this
+      $this.each(() => {
+        $(this)
           .closest(config.element)
           .toggleClass(config.elementClass);
       });
@@ -83,8 +83,8 @@ const toggle = (options) => {
     }
 
     if (config.unToggleParentSiblings) {
-      $this.each(function() {
-        $this
+      $this.each(() => {
+        $(this)
           .parent()
           .siblings(config.element)
           .removeClass(config.elementClass);
@@ -103,14 +103,14 @@ const toggle = (options) => {
     e.stopPropagation();
   };
 
-  self.removeToggles = () => {
-    $.each(toggleObjects, function(index, value) {
+  _this.removeToggles = () => {
+    $.each(toggleObjects, (index, value) => {
       value.element.each(function() {
-        if (!$(this).hasClass(value.elementClass) || !value.unTogglable) {
-          return
-        }
+        const $this = $(this);
 
-        $(this).removeClass(value.elementClass);
+        if ($this.hasClass(value.elementClass) || value.unTogglable) {
+          $this.removeClass(value.elementClass);
+        }
       });
 
       if (value.triggerClass) {
@@ -120,8 +120,8 @@ const toggle = (options) => {
   };
 
   return {
-    init: config.trigger.length ? self.init() : false,
-    removeToggles: self.removeToggles
+    init: config.trigger.length ? _this.init() : false,
+    removeToggles: _this.removeToggles
   }
 };
 
