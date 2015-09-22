@@ -9,10 +9,10 @@ var fastClick = require('fastclick');
 
 require('./app.js');
 
-var Block = require('./components/block');
-var Form = require('./components/form');
-var Hero = require('./components/hero');
-var Navbar = require('./components/navbar');
+var Card = require('./components/Card');
+var Form = require('./components/Form');
+var Hero = require('./components/Hero');
+var Navbar = require('./components/Navbar');
 
 var DocsNavbar = require('./docs/docsNavbar');
 
