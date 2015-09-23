@@ -4,8 +4,8 @@
 
 'use strict';
 
-require('lazysizes');
-require('lazysizes/plugins/respimg/ls.respimg.js');
+import lazySizes from 'lazysizes';
+import respimg from 'lazysizes/plugins/respimg/ls.respimg.js';
 
 const lazysizes = () => {
   window.lazySizesConfig = window.lazySizesConfig || {};
