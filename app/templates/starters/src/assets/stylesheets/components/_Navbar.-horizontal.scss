@@ -9,10 +9,11 @@
   .Navbar.#{$namespace}-horizontal {
     .Navbar-trigger { display: none; }
 
-    .Navbar-self {
-      display: flex;
+    > ul {
       padding-left: $Navbar-padding;
     }
+
+    .Navbar-trigger + ul { display: flex; }
 
       > ul > .Navbar-item {
         position: relative;
