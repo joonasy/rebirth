@@ -10,6 +10,7 @@
     .Navbar-trigger { display: none; }
 
     > ul {
+      display: flex;
       padding-left: $Navbar-padding;
     }
 
