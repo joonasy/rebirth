@@ -23,6 +23,8 @@ class Form {
 
       $this.parent().siblings('.Form-item--select-text').text(option);
     });
+
+    this.$selectItem.trigger('change');
   }
 }
 
