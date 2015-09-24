@@ -140,7 +140,7 @@ const imgToParentBg = (figure, targetSafari, targetIOS) => {
             imgUrl = value.split(' ')[0];
           }
         });
-      } else if ('lazySizes' in window && source) {
+      } else if ('lazySizes' in window && source.length) {
 
         function matchNumber(str) {
           return str.match(/(\d+)/)[0]
