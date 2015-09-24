@@ -6,23 +6,23 @@
   user-select: none;
 }
 
-  .Navbar-self {
-    display: none;
-
-    .Navbar.is-open & { display: block; }
+  ul {
+    .Navbar.is-open > & { display: block; }
+    .Navbar-trigger + & { display: none; }
   }
 
     .Navbar-item {
       display: flex;
       flex-direction: row;
       flex-wrap: wrap;
+      justify-content: space-between;
     }
 
       .Navbar-link {
         border-top: 1px solid transparent;
+        flex: 1;
         cursor: pointer;
         padding: $Navbar-padding ($Navbar-padding * 2);
-        width: calc(100% - #{($baseSpace * 2)});
 
         &:only-child {
           border-right: 0;
@@ -36,11 +36,9 @@
         border-top: 1px solid transparent;
         cursor: pointer;
         display: flex;
-        padding: $Navbar-padding 0;
+        padding: $Navbar-padding ($Navbar-padding * 1.5);
         justify-content: center;
         text-align: center;
-        width: 13%;
-        width: calc(#{($baseSpace * 2)});
       }
 
         .Navbar-subTrigger-icon {
@@ -74,11 +72,11 @@
 
   .Navbar-trigger {
     display: flex;
+    justify-content: space-between;
   }
 
     .Navbar-trigger-inner {
       display: flex;
-      width: calc(100% - #{($baseSpace * 2)});
     }
 
       .Navbar-trigger-title, .Navbar-trigger-text {

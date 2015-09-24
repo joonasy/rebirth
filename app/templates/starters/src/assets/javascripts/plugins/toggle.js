@@ -72,7 +72,7 @@ const toggle = (options) => {
     }
 
     if (config.toggleClosest) {
-      $this.each(function() {
+      $this.each(() => {
         $(this)
           .closest(config.element)
           .toggleClass(config.elementClass);
@@ -82,7 +82,7 @@ const toggle = (options) => {
     }
 
     if (config.unToggleParentSiblings) {
-      $this.each(function() {
+      $this.each(() => {
         $(this)
           .parent()
           .siblings(config.element)
@@ -103,7 +103,7 @@ const toggle = (options) => {
   };
 
   _this.removeToggles = () => {
-    $.each(toggleObjects, function(index, value) {
+    $.each(toggleObjects, (i, value) => {
       value.element.each(function() {
         const $this = $(this);
 

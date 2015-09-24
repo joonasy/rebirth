@@ -11,7 +11,7 @@
 
 @mixin NavbarHideTrigger($namespace: '') {
   .Navbar.#{$namespace}-hideTrigger {
-    .Navbar-self { display: block; }
+    > ul { display: block; }
     .Navbar-trigger { display: none; }
   }
 }

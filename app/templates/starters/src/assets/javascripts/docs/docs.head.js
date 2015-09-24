@@ -5,6 +5,6 @@
 'use strict';
 
 /**
- * Setup lazysizes
+ * Setup and load lazysizes
  */
-import lazysizes from '../vendors/lazysizes';
+import lazysizes from './vendors/lazysizes';

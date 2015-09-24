@@ -8,10 +8,12 @@
  * (usually <figure>).
  *
  * Requires jQuery, Modernizr for feature detecting and Lazysizes for responsive
- * images support until srcset/picture is supported well in all browsers.
- * Doesn't support window resizing.
+ * images support until srcset/picture is supported well in all browsers. Because
+ * Safari and iOS doesn't support `object-position` so there are optional
+ * parameters to target them as well.
  *
- * Only single line strings supported in `data-srcset` and `media`.
+ * Only single line strings supported in `data-srcset` and `media`. Doesn't
+ * support window resizing.
  *
  * http://caniuse.com/#search=object-fit
  * http://caniuse.com/#search=srcset
@@ -82,16 +84,15 @@ let isIOS = /iP(ad|hone|od)/i.test(navigator.userAgent);
 
 /**
  * @param { jquerySelector|string } figure - Node to search
- * @param { boolean } targetSafari - target Safari [1.]
- * @param { boolean } targetIOS - target iOS [1.]
- *
- * [1.] Safari and iOS doesn't support object-position
+ * @param { boolean } targetSafari - target Safari
+ * @param { boolean } targetIOS - target iOS
  */
 const imgToParentBg = (figure, targetSafari, targetIOS) => {
+  const $figure = $(figure);
+  const objFit = Modernizr['object-fit'];
+
   isSafari = isSafari && targetSafari;
   isIOS = isIOS && targetIOS;
-
-  const $figure = $(figure);
 
   let imgUrl;
 
@@ -111,7 +112,7 @@ const imgToParentBg = (figure, targetSafari, targetIOS) => {
     return ans;
   }
 
-  if (isSafari || isIOS || Modernizr['object-fit']) {
+  if (isSafari || isIOS || !objFit) {
     $.each($figure, function() {
       const $this = $(this);
       const $img = $this.find('img');
