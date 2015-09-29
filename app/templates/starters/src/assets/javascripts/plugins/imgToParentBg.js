@@ -31,7 +31,7 @@
  *          ... 400w,
  *          ... 768w,
  *          ... 1200w"
- *          class="lazyload">
+ *          class="js-lazyload">
  *      <noscript>
  *        <img src="smallest.jpg">
  *      </noscript>
@@ -43,13 +43,13 @@
  *        <source srcset="smallest.jpg" media="(max-width: 600px)" />
  *        <source srcset="..." media="(max-width: 1000px)" />
  *        <source srcset="largest.jpg" />
- *        <img src="smallest.jpg" class="lazyload" />
+ *        <img src="smallest.jpg" class="js-lazyload" />
  *      </picture>
  *    </figure>
  *
  *  With lazysizes:
  *    <figure class="My-figure">
- *      <img data-src="...">
+ *      <img data-src="..." class="js-lazyload">
  *      <noscript>
  *        <img src="...">
  *      </noscript>
@@ -61,15 +61,16 @@
  *    </figure>
  *
  *  JavaScript:
- *    If you need lazysizes load `require('lazysizes');` in <head>
- *    And in case you need responsive images add
- *    require('lazysizes/plugins/respimg/ls.respimg.js'); to <head> also
+ *    If you need lazysizes load `import lazySizes from 'lazysizes';`
+ *    in <head>. And in case you need responsive images add
+ *    `import respimg from 'lazysizes/plugins/respimg/ls.respimg.js';` to <head>
+ *    also
  *
  *    In component:
  *      const $context = $('.js-MyComponent');
- *      const figureImgAsBg = require('../plugins/figureImgAsBg');
+ *      import imgToParentBg from '../plugins/imgToParentBg';
  *      $figure = $('.My-figure', $context)
- *      figureImgAsBg($figure);
+ *      imgToParentBg($figure);
  */
 
 'use strict';
