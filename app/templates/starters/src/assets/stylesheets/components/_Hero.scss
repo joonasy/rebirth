@@ -88,10 +88,10 @@
 
 
 /* ======
- * Hero - align
+ * Hero item - align
  * ====== */
 
-.Hero {
+.Hero-item {
   &.-alignContent-top {
     .Hero-content {
       padding-top: rem($baseSpace * 2);
@@ -105,20 +105,14 @@
       vertical-align: bottom;
     }
   }
-
-  &.-alignFigure-myPosition {
-    .Hero-figure {
-      img {}
-    }
-  }
 }
 
 
 /* ======
- * Hero - coloring
+ * Hero item - coloring
  * ====== */
 
-.Hero {
+.Hero-item {
   &.-color-lightOnDark {
     background-color: #ffffff;
     color: #ffffff;
