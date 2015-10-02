@@ -12,7 +12,7 @@ import Form from './components/Form';
 import Hero from './components/Hero';
 import Navbar from './components/Navbar';
 
-import DocsNavbar from './docs/docsNavbar';
+import DocsNavbar from './docs/DocsNavbar';
 
 $(function() {
 

@@ -62,7 +62,7 @@ var config = {
     }, {
       external: [],
       fileName: 'docs.head.js',
-      src: 'src/assets/javascripts/docs/docs.head.js'
+      src: 'src/assets/javascripts/docs.head.js'
     }],
     dest: 'dist/assets/javascripts/',
     src: 'src/assets/javascripts/'
