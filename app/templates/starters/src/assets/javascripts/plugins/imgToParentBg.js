@@ -79,6 +79,7 @@ import $ from 'jquery';
 import Modernizr from 'modernizr';
 
 const windowWidth = $(window).width();
+const objFit = Modernizr['object-fit'];
 
 let isSafari = /Constructor/.test(window.HTMLElement);
 let isIOS = /iP(ad|hone|od)/i.test(navigator.userAgent);
@@ -90,7 +91,6 @@ let isIOS = /iP(ad|hone|od)/i.test(navigator.userAgent);
  */
 const imgToParentBg = (figure, targetSafari, targetIOS) => {
   const $figure = $(figure);
-  const objFit = Modernizr['object-fit'];
 
   isSafari = isSafari && targetSafari;
   isIOS = isIOS && targetIOS;
