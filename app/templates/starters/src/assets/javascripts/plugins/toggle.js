@@ -95,9 +95,9 @@ const toggle = (options) => {
   _this.removeToggles = (e) => {
     $.each(toggleObjects, (i, value) => {
       value.element.each(function() {
-        let currentEl = $(e.currentTarget).is(value.trigger.selector);
+        let currentTrigger = $(e.currentTarget).is(value.trigger.selector);
 
-        if (!currentEl && value.unTogglable) {
+        if (!currentTrigger && value.unTogglable) {
           value.element.removeClass(value.elementClass);
 
           if (value.triggerClass) {
