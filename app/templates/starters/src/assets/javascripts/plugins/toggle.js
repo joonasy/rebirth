@@ -46,19 +46,9 @@ const toggle = (options) => {
 
   function _clickTrigger(e) {
     const $this = $(this);
-    let isToggled;
 
     if (config.unToggleOtherToggles) {
-
-      if (config.toggleClosest) {
-        isToggled = !$this.closest(config.element).hasClass(config.elementClass);
-      } else if (!config.toggleClosest) {
-        isToggled = !config.element.hasClass(config.elementClass);
-      }
-
-      if (isToggled) {
-        _this.removeToggles();
-      }
+      _this.removeToggles(e);
     }
 
     const firstClick = $this.hasClass('is-firstTouch');
@@ -71,14 +61,14 @@ const toggle = (options) => {
       }, 1000);
     }
 
-    if (config.toggleClosest) {
+    if (!config.toggleClosest) {
+      config.element.toggleClass(config.elementClass);
+    } else {
       $this.each(() => {
         $(this)
           .closest(config.element)
           .toggleClass(config.elementClass);
       });
-    } else {
-      config.element.toggleClass(config.elementClass);
     }
 
     if (config.unToggleParentSiblings) {
@@ -102,19 +92,19 @@ const toggle = (options) => {
     e.stopPropagation();
   };
 
-  _this.removeToggles = () => {
+  _this.removeToggles = (e) => {
     $.each(toggleObjects, (i, value) => {
       value.element.each(function() {
-        const $this = $(this);
+        let currentEl = $(e.currentTarget).is(value.trigger.selector);
 
-        if ($this.hasClass(value.elementClass) || value.unTogglable) {
-          $this.removeClass(value.elementClass);
+        if (!currentEl && value.unTogglable) {
+          value.element.removeClass(value.elementClass);
+
+          if (value.triggerClass) {
+            value.trigger.removeClass(value.triggerClass);
+          }
         }
       });
-
-      if (value.triggerClass) {
-        value.trigger.removeClass(value.triggerClass);
-      }
     });
   };
 
@@ -125,7 +115,7 @@ const toggle = (options) => {
 };
 
 $(window).on('click', function(e) {
-  toggle().removeToggles();
+  toggle().removeToggles(e);
 });
 
 export default toggle;
