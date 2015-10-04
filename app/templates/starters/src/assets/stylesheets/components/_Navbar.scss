@@ -4,12 +4,12 @@
 
 .Navbar {
   user-select: none;
+
+  ul { @extend %resetList; }
+  &.is-open > ul { display: block; }
 }
 
-  ul {
-    .Navbar.is-open > & { display: block; }
-    .Navbar-trigger + & { display: none; }
-  }
+  .Navbar-trigger + ul { display: none; }
 
     .Navbar-item {
       display: flex;
