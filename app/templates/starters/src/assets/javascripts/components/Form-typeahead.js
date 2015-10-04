@@ -8,6 +8,7 @@
 'use strict';
 
 import $ from 'jquery';
+import typeahead from 'typeahead.js/dist/typeahead.jquery.js';
 
 class FormTypeAhead {
   constructor() {
