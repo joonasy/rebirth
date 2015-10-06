@@ -9,7 +9,7 @@
   @include breakpoint('largeUp') {
     display: flex;
 
-    .Navbar-trigger { display: block; }
+    .Navbar-trigger { display: flex; }
       .Navbar-trigger-inner { width: auto; }
       .Navbar-trigger-text { display: none; }
       .Navbar-trigger-sub { display: none; }
