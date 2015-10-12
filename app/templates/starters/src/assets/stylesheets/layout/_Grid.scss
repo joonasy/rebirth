@@ -38,11 +38,8 @@
 
 .Grid {
   &.-auto {
-    > .Grid-cell {
-      flex: 1 1 0;
-    }
-
     > .Grid-cell:not([class*="Width"]) {
+      flex: 1 1 0;
       width: auto;
     }
   }
