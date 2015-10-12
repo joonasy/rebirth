@@ -2,9 +2,10 @@
 // Button
 // ========================================
 
-$Button-fontSize: $baseFontSize;
-$Button-lineHeight: $baseLineHeightPx * 1.5;
-$Button-padding: $baseSpace;
 $Button-borderWidth: 2px;
-$Button-borderRadius: 30px;
-$Button-fontWeight: $baseFontWeightStrong;
+$Button-height: $baseSpace * 2;
+$Button-pillBorderRadius: 30px;
+$Button-roundBorderRadius: 4px;
+
+$Button-l: 1.5;
+$Button-s: 0.75;

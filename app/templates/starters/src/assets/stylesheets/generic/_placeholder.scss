@@ -28,6 +28,13 @@
 }
 
 //
+// Truncate text
+//
+%textTruncate {
+  @include textTruncate();
+}
+
+//
 // Completely remove from the flow but leave available to screen readers.
 //
 %hideVisually {

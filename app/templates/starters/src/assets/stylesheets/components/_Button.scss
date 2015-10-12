@@ -1,24 +1,39 @@
 /* ========================================
  * Button
- * ======================================== */
+ * ========================================
+ *
+ * @reusable true
+ */
+
+@mixin buttonSize($scale: 1, $fontSize: $baseFontSize) {
+  @if $scale <= 0.5  {
+    $scaleMargin: 0.5
+  } @elseif $scale < 1 {
+    $scaleMargin: 1
+  } @else {
+    $scaleMargin: $scale
+  }
+
+  @include fontSize($fontSize, (($Button-height * $scale) - ($Button-borderWidth * 2)));
+  margin-bottom: rem(($baseSpace - ($Button-height * $scale)) + ($baseSpace * 2 * $scaleMargin));
+  padding: 0 rem($baseSpace * $scale);
+}
 
 .Button {
+  @extend %textTruncate;
+  @include buttonSize();
   background-color: transparent;
   border: $Button-borderWidth solid transparent;
   cursor: pointer;
   display: inline-block;
-  font-size: rem($Button-fontSize);
-  font-weight: $Button-fontWeight;
-  line-height: rem($Button-lineHeight - ($Button-borderWidth * 2));
-  margin-bottom: rem((($baseSpace * 3) - $Button-lineHeight));
+  font-weight: $baseFontWeightStrong;
   margin-right: rem($baseSpace / 2);
   outline: 0;
-  padding: 0 rem($Button-padding);
   position: relative;
   text-align: center;
   transition: $transitionDuration;
   user-select: none;
-  vertical-align: middle;
+  vertical-align: top;
   white-space: nowrap;
 
   &:hover, &:focus {
@@ -33,7 +48,11 @@
 
 .Button {
   &.-round {
-    border-radius: $Button-borderRadius;
+    border-radius: $Button-roundBorderRadius;
+  }
+
+  &.-pill {
+    border-radius: $Button-pillBorderRadius;
   }
 }
 
@@ -44,16 +63,11 @@
 
 .Button {
   &.-s {
-    font-size: $baseFontSize-s;
-    line-height: rem(($Button-lineHeight / 1.5) - ($Button-borderWidth * 2));
-    padding: 0 rem($Button-padding / 2);
-    margin-bottom: rem($baseSpace);
+    @include buttonSize($Button-s, $baseFontSize-s);
   }
 
   &.-l {
-    line-height: rem(($Button-lineHeight * 1.35) - ($Button-borderWidth * 2));
-    margin-bottom: rem($baseSpace);
-    padding: 0 rem($Button-padding * 1.5);
+    @include buttonSize($Button-l, $baseFontSize-l);
   }
 
   &.-full {
@@ -76,7 +90,7 @@
 
 
 /* ======
- * Button - primary variation
+ * Button - primary modifier
  * ====== */
 
 .Button--primary {

@@ -2,6 +2,7 @@
  * Button collection
  * ========================================
  *
+ * @reusable true
  * @overrides `.Button{}` in _Button.scss
  */
 
@@ -15,112 +16,102 @@
  * ====== */
 
 .ButtonCollection.-vertical {
-  @extend %clearfix;
-  display: inline-block;
+  align-items: flex-start;
+  display: flex;
+  flex-direction: column;
 
   > .Button {
-    display: block;
-    margin-bottom: 0;
+    &:not(:last-child) {
+      border-bottom-width: 0;
+      line-height: rem($Button-height - $Button-borderWidth);
+      margin-bottom: 0;
 
-    &:last-child { margin-bottom: rem(($baseSpace * 3) - $Button-lineHeight); }
+      &.-s {
+        line-height: rem(($Button-height * $Button-s) - ($Button-borderWidth));
+      }
+    }
+
+    &:not(.-border) { box-shadow: 0 -1px $ButtonCollection-separatorColor; }
+    &:first-child { box-shadow: none; }
   }
 }
 
 .ButtonCollection.-horizontal {
-  @extend %clearfix;
+  display: flex;
 
   > .Button {
-    display: block;
-    float: left;
+    border-left-width: 0;
+
+    &:not(.-border) { box-shadow: -1px 0 $ButtonCollection-separatorColor; }
+    &:first-child {
+      border-left-width: $Button-borderWidth;
+      box-shadow: none;
+    }
   }
 }
 
-.ButtonCollection.-justified {
-  border-collapse: separate;
-  display: table;
-  table-layout: fixed;
-  width: 100%;
-  margin-bottom: rem((($baseSpace * 3) - $Button-lineHeight));
+.ButtonCollection.-justify {
+  &.-vertical {
+    align-items: stretch;
+  }
 
-  > .Button { display: table-cell; }
-}
+  &.-horizontal {
+    justify-content: space-between;
 
-.ButtonCollection.-full {
-  > .Button {
-    display: block;
-    width: 100%;
-
-    @include breakpoint('smallUp') {
-      display: inline-block;
-      margin-right: rem($baseSpace / 2);
-      width: auto;
-    }
+    > .Button { flex: 1; }
   }
 }
 
 
 /* ======
- * Button collection - type
+ * Button collection - pill
  * ====== */
 
-.ButtonCollection.-border,
-%ButtonCollection.-border {
+.ButtonCollection.-pill {
+  > .Button { border-radius: 0; }
 
-  &.-horizontal, &.-justified {
+  &.-horizontal {
     > .Button {
-      border-left-width: 0;
+      &:first-child {
+        border-radius: $Button-pillBorderRadius 0 0 $Button-pillBorderRadius;
+      }
 
-      &:first-child { border-left-width: $Button-borderWidth; }
-    }
-  }
-
-  &.-vertical {
-    > .Button {
-      &:not(:first-child) { border-top-width: 0; }
+      &:last-child {
+        border-radius: 0 $Button-pillBorderRadius $Button-pillBorderRadius 0;
+      }
     }
   }
 }
 
 
 /* ======
- * Button collection - shape
+ * Button collection - round
  * ====== */
 
 .ButtonCollection.-round {
   > .Button { border-radius: 0; }
 
-  &.-horizontal, &.-justified {
+  &.-horizontal {
     > .Button {
-      &:not(:first-child,.-border) {
-        border-left: $ButtonCollection-borderWidth solid
-          $ButtonCollection-borderColor;
-      }
-
       &:first-child {
-        border-radius: $ButtonCollection-HorizontalBorderRadius 0 0
-          $ButtonCollection-HorizontalBorderRadius;
+        border-radius: $Button-roundBorderRadius 0 0 $Button-roundBorderRadius;
       }
 
       &:last-child {
-        border-radius: 0 $ButtonCollection-HorizontalBorderRadius
-          $ButtonCollection-HorizontalBorderRadius 0;
+        border-radius: 0 $Button-roundBorderRadius $Button-roundBorderRadius 0;
       }
     }
   }
 
   &.-vertical {
     > .Button {
-      box-shadow: 0 -1px $ButtonCollection-borderColor;
 
       &:first-child {
-        border-radius: $ButtonCollection-VerticalBorderRadius
-          $ButtonCollection-VerticalBorderRadius 0 0;
+        border-radius: $Button-roundBorderRadius $Button-roundBorderRadius 0 0;
       }
 
       &:last-child {
-        border-radius: 0 0 $ButtonCollection-VerticalBorderRadius
-          $ButtonCollection-VerticalBorderRadius;
-        box-shadow: 0;
+        border-radius: 0 0 $Button-roundBorderRadius $Button-roundBorderRadius;
       }
     }
   }

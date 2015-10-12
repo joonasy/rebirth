@@ -7,106 +7,199 @@ title: Button
 
     <h1>Buttons</h1>
 
-    <a class="Button Button--primary" href="#">
-      Button
-    </a>
-
-    <a href="#" class="Button Button--primary -round">
-      Rounded button
-    </a>
-
-    <h1>Button collections</h1>
-
-    {{!-- Full button collection  --}}
-    <div class="ButtonCollection -full">
-      <a class="Button Button--primary" href="#">
-        Button
-      </a>
-      <a class="Button Button--primary -round" href="#">
-        Button
-      </a>
-      <a class="Button Button--primary -border" href="#">
-        Button
-      </a>
+    <div class="Grid -auto">
+      <div class="Grid-cell">
+        <a class="Button Button--primary" href="#">
+          Button
+        </a>
+        <a href="#" class="Button Button--primary -round">
+          Round button
+        </a>
+        <a class="Button Button--primary -pill" href="#">
+          Pill button
+        </a>
+        <a class="Button Button--primary -s" href="#">
+          Button
+        </a>
+        <a href="#" class="Button Button--primary -round -s">
+          Round button
+        </a>
+        <a class="Button Button--primary -pill -s" href="#">
+          Pill button
+        </a>
+      </div>
+      <div class="Grid-cell">
+        <a class="Button Button--primary -border" href="#">
+          Button
+        </a>
+        <a class="Button Button--primary -round -border" href="#">
+          Round button
+        </a>
+        <a class="Button Button--primary -pill -border" href="#">
+          Pill button
+        </a>
+        <a class="Button Button--primary -l" href="#">
+          Button
+        </a>
+        <a class="Button Button--primary -l -border -round" href="#">
+          Button
+        </a>
+      </div>
     </div>
 
-    {{!-- Bordered horizontal button collection --}}
-    <div class="ButtonCollection -horizontal -round">
-      <a class="Button Button--primary -round" href="#">
-        Button
-      </a>
-      <a class="Button Button--primary -round" href="#">
-        Button
-      </a>
-      <a class="Button Button--primary -round" href="#">
-        Button
-      </a>
-    </div>
+    <div class="Grid -auto">
 
-    {{!-- Bordered horizontal button collection --}}
-    <div class="ButtonCollection -horizontal -border -round">
-      <a class="Button Button--primary -border" href="#">
-        Button
-      </a>
-      <a class="Button Button--primary -border" href="#">
-        Button
-      </a>
-      <a class="Button Button--primary -border" href="#">
-        Button
-      </a>
-    </div>
+      <div class="Grid-cell Width--12of12">
+        <h1>Button collections</h1>
+      </div>
 
+      <div class="Grid-cell">
 
-    {{!-- Bordered vertical button collection --}}
-    <div class="ButtonCollection -vertical -border">
-      <a class="Button Button--primary -border" href="#">
-        Button
-      </a>
-      <a class="Button Button--primary -border" href="#">
-        Button
-      </a>
-      <a class="Button Button--primary -border" href="#">
-        Button
-      </a>
-    </div>
+        {{!-- Rounded horizontal collection --}}
+        <div class="ButtonCollection -horizontal -round">
+          <a class="Button Button--primary -round" href="#">
+            Button
+          </a>
+          <a class="Button Button--primary -round" href="#">
+            Button
+          </a>
+          <a class="Button Button--primary -round" href="#">
+            Button
+          </a>
+        </div>
 
-    {{!-- Certical button collection --}}
-    <div class="ButtonCollection -vertical -round">
-      <a class="Button Button--primary" href="#">
-        Button
-      </a>
-      <a class="Button Button--primary" href="#">
-        Button
-      </a>
-      <a class="Button Button--primary" href="#">
-        Button
-      </a>
-    </div>
+        <div class="ButtonCollection -horizontal -round">
+          <a class="Button Button--primary -round -s" href="#">
+            Button
+          </a>
+          <a class="Button Button--primary -round -s" href="#">
+            Button
+          </a>
+          <a class="Button Button--primary -round -s" href="#">
+            Button
+          </a>
+        </div>
 
-    {{!-- Bordered and justified button collection --}}
-    <div class="ButtonCollection -justified -border">
-      <a class="Button Button--primary -border" href="#">
-        Button
-      </a>
-      <a class="Button Button--primary -border" href="#">
-        Button
-      </a>
-      <a class="Button Button--primary -border" href="#">
-        Button
-      </a>
-    </div>
+        {{!-- Bordered horizontal collection --}}
+        <div class="ButtonCollection -horizontal -pill">
+          <a class="Button Button--primary -border" href="#">
+            Button
+          </a>
+          <a class="Button Button--primary -border" href="#">
+            Button
+          </a>
+          <a class="Button Button--primary -border" href="#">
+            Button
+          </a>
+        </div>
 
-    {{!-- Bordered and justified rounded button collection --}}
-    <div class="ButtonCollection -justified -border -round">
-      <a class="Button Button--primary -border" href="#">
-        Button
-      </a>
-      <a class="Button Button--primary -border" href="#">
-        Button
-      </a>
-      <a class="Button Button--primary -border" href="#">
-        Button
-      </a>
+        {{!-- Rounded vertical collection --}}
+        <div class="ButtonCollection -vertical -round">
+          <a class="Button Button--primary -round -s" href="#">
+            Button
+          </a>
+          <a class="Button Button--primary -round -s" href="#">
+            Button
+          </a>
+          <a class="Button Button--primary -round -s" href="#">
+            Button
+          </a>
+        </div>
+
+        {{!-- Bordered vertical collection --}}
+        <div class="ButtonCollection -vertical">
+          <a class="Button Button--primary -border" href="#">
+            Button
+          </a>
+          <a class="Button Button--primary -border" href="#">
+            Button
+          </a>
+        </div>
+
+        {{!-- Vertical collection --}}
+        <div class="ButtonCollection -vertical -round">
+          <a class="Button Button--primary" href="#">
+            Button
+          </a>
+          <a class="Button Button--primary" href="#">
+            Button
+          </a>
+          <a class="Button Button--primary" href="#">
+            Button
+          </a>
+        </div>
+
+      </div>
+
+      <div class="Grid-cell">
+
+        {{!-- Justified and rounded collection --}}
+        <div class="ButtonCollection -horizontal -justify -round">
+          <a class="Button Button--primary" href="#">
+            Button
+          </a>
+          <a class="Button Button--primary" href="#">
+            Button
+          </a>
+          <a class="Button Button--primary" href="#">
+            Button
+          </a>
+        </div>
+
+        {{!-- Justified and rounded collection --}}
+        <div class="ButtonCollection -horizontal -justify -round">
+          <a class="Button Button--primary -s" href="#">
+            Button
+          </a>
+          <a class="Button Button--primary -s" href="#">
+            Button
+          </a>
+          <a class="Button Button--primary -s" href="#">
+            Button
+          </a>
+        </div>
+
+        {{!-- Justified and pill collection --}}
+        <div class="ButtonCollection -horizontal -justify -pill">
+          <a class="Button Button--primary -border" href="#">
+            Button
+          </a>
+          <a class="Button Button--primary -border" href="#">
+            Button
+          </a>
+          <a class="Button Button--primary -border" href="#">
+            Button
+          </a>
+        </div>
+
+        {{!-- Vertical and justified collection --}}
+        <div class="ButtonCollection -vertical -justify">
+          <a class="Button Button--primary" href="#">
+            Button
+          </a>
+          <a class="Button Button--primary" href="#">
+            Button
+          </a>
+          <a class="Button Button--primary" href="#">
+            Button
+          </a>
+        </div>
+
+        {{!-- Bordered and justified collection --}}
+        <div class="ButtonCollection -horizontal -justify">
+          <a class="Button Button--primary -border" href="#">
+            Button
+          </a>
+          <a class="Button Button--primary -border" href="#">
+            Button
+          </a>
+          <a class="Button Button--primary -border" href="#">
+            Button
+          </a>
+        </div>
+
+      </div>
+
     </div>
 
   </div>
