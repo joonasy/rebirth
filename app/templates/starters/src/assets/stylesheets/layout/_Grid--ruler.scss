@@ -18,8 +18,25 @@
   }
 }
 
-/**
- * Add other variants if needed.
- * @include breakpoint('smallUp') { @include GridRuler(s-); }
- */
-@include breakpoint('mediumUp') { @include GridRuler(m-); }
+@if $Grid-ruler {
+  @include GridRuler();
+}
+
+@if $Grid-ruler-s {
+  @include breakpoint('smallUp') {
+    @include GridRuler(-s);
+  }
+}
+
+@if $Grid-ruler-m {
+  @include breakpoint('mediunUp') {
+    @include GridRuler(-m);
+  }
+}
+
+@if $Grid-ruler-l {
+  @include breakpoint('largeUp') {
+    @include GridRuler(-l);
+  }
+}
+

@@ -18,7 +18,26 @@
 
 [class*='Pull--'] { position: relative; }
 
-@include Pull();
-@include breakpoint('smallUp') { @include Pull(s-); }
-@include breakpoint('mediumUp') { @include Pull(m-); }
-@include breakpoint('largeUp') { @include Pull(l-); }
+@if $Pull {
+  @include Pull();
+}
+
+@if $Pull-s  {
+  @include breakpoint('smallUp') {
+    @include Pull(s-);
+  }
+}
+
+@if $Pull-m  {
+  @include breakpoint('mediumUp') {
+    @include Pull(m-);
+  }
+}
+
+@if $Pull-l  {
+  @include breakpoint('largeUp') {
+    @include Pull(l-);
+  }
+}
+
+

@@ -18,7 +18,26 @@
 
 [class*='Push--'] { position: relative; }
 
-@include Push();
-@include breakpoint('smallUp') { @include Push(s-); }
-@include breakpoint('mediumUp') { @include Push(m-); }
-@include breakpoint('largeUp') { @include Push(l-); }
+@if $Push {
+  @include Pull();
+}
+
+@if $Push-s  {
+  @include breakpoint('smallUp') {
+    @include Pull(s-);
+  }
+}
+
+@if $Push-m  {
+  @include breakpoint('mediumUp') {
+    @include Pull(m-);
+  }
+}
+
+@if $Push-l  {
+  @include breakpoint('largeUp') {
+    @include Pull(l-);
+  }
+}
+
+

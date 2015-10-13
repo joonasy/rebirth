@@ -48,10 +48,24 @@
   }
 }
 
-/**
- * Add other variants if needed.
- * e.g. @include FormCollectionHorizontal();
- */
-@include breakpoint('mediumUp') {
-  @include FormCollectionHorizontal(-m);
+@if $Form-collectionHorizontal {
+  @include FormCollectionHorizontal();
+}
+
+@if $Form-collectionHorizontal-s {
+  @include breakpoint('smallUp') {
+    @include FormCollectionHorizontal(-s);
+  }
+}
+
+@if $Form-collectionHorizontal-m {
+  @include breakpoint('mediumUp') {
+    @include FormCollectionHorizontal(-m);
+  }
+}
+
+@if $Form-collectionHorizontal-l {
+  @include breakpoint('largeUp') {
+    @include FormCollectionHorizontal(-l);
+  }
 }

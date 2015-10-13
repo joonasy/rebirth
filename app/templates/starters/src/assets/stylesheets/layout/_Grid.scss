@@ -54,18 +54,34 @@
  * Grid - justify
  * ====== */
 
- @mixin GridJustify($namespace: '') {
+@mixin GridJustify($namespace: '') {
   .Grid.#{$namespace}-justify-around { justify-content: space-around; }
   .Grid.#{$namespace}-justify-between { justify-content: space-between; }
   .Grid.#{$namespace}-justify-center { justify-content: center; }
   .Grid.#{$namespace}-justify-end { justify-content: flex-end; }
 }
 
-/**
- * Add other variants if needed.
- * e.g. @include breakpoint('smallUp') { @include GridJustify(-s); }
- */
-@include GridJustify();
+@if $Grid-justify {
+  @include GridJustify();
+}
+
+@if $Grid-justify-s  {
+  @include breakpoint('smallUp') {
+    @include GridJustify(-s);
+  }
+}
+
+@if $Grid-justify-m  {
+  @include breakpoint('mediumUp') {
+    @include GridJustify(-m);
+  }
+}
+
+@if $Grid-justify-l  {
+  @include breakpoint('largeUp') {
+    @include GridJustify(-l);
+  }
+}
 
 
 /* ======
@@ -78,8 +94,24 @@
   .Grid.#{$namespace}-align-top { align-items: flex-start; }
 }
 
-/**
- * Add other variants if needed.
- * e.g. @include breakpoint('smallUp') { @include GridAlign(-s); }
- */
-@include GridAlign();
+@if $Grid-align {
+  @include GridAlign();
+}
+
+@if $Grid-align-s  {
+  @include breakpoint('smallUp') {
+    @include GridAlign(-s);
+  }
+}
+
+@if $Grid-align-m  {
+  @include breakpoint('mediumUp') {
+    @include GridAlign(-m);
+  }
+}
+
+@if $Grid-align-s  {
+  @include breakpoint('largeUp') {
+    @include GridAlign(-l);
+  }
+}

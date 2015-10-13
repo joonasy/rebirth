@@ -14,9 +14,24 @@
   }
 }
 
-/**
- * I assume that I need responsive variants only
- */
-@include breakpoint('smallUp') { @include GridCellOrder(-s); }
-@include breakpoint('mediumUp') { @include GridCellOrder(-m); }
-@include breakpoint('largeUp') { @include GridCellOrder(-l); }
+@if $Grid-cellOrder {
+  @include GridCellOrder();
+}
+
+@if $Grid-cellOrder-s {
+  @include breakpoint('smallUp') {
+    @include GridCellOrder(-s);
+  }
+}
+
+@if $Grid-cellOrder-m {
+  @include breakpoint('mediumUp') {
+    @include GridCellOrder(-m);
+  }
+}
+
+@if $Grid-cellOrder-l {
+  @include breakpoint('largeUp') {
+    @include GridCellOrder(-l);
+  }
+}

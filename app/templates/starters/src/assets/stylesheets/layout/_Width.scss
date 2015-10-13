@@ -17,7 +17,26 @@
   .#{$namespace}Width--12of12 { width: 100%; }
 }
 
-@include Width();
-@include breakpoint('smallUp'){ @include Width(s-); }
-@include breakpoint('mediumUp'){ @include Width(m-); }
-@include breakpoint('largeUp'){ @include Width(l-); }
+@if $Width {
+  @include Width();
+}
+
+@if $Width-s  {
+  @include breakpoint('smallUp') {
+    @include Width(s-);
+  }
+}
+
+@if $Width-m  {
+  @include breakpoint('mediumUp') {
+    @include Width(m-);
+  }
+}
+
+@if $Width-l  {
+  @include breakpoint('largeUp') {
+    @include Width(l-);
+  }
+}
+
+

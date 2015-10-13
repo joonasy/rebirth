@@ -16,7 +16,7 @@
     @each $position in $positions {
       &.#{$namespace}-alignFigure-#{camelize($position)} {
         .Hero-figure {
-          background-position: unquote($position); /* Fallback */
+          background-position: unquote($position); /* Fallback set via .js */
 
           img {
             object-position: unquote($position);
@@ -27,8 +27,24 @@
   }
 }
 
-/**
- * Add other variants if needed.
- * e.g. @include breakpoint('smallUp') { @include HeroAlignFigure(-s); }
- */
-@include HeroAlignFigure();
+@if $Hero-alignFigure {
+  @include HeroAlignFigure();
+}
+
+@if $Hero-alignFigure-s {
+  @include breakpoint('smallUp') {
+    @include HeroAlignFigure(-s);
+  }
+}
+
+@if $Hero-alignFigure-m {
+  @include breakpoint('mediumUp') {
+    @include HeroAlignFigure(-m);
+  }
+}
+
+@if $Hero-alignFigure-l {
+  @include breakpoint('largeUp') {
+    @include HeroAlignFigure(-l);
+  }
+}
