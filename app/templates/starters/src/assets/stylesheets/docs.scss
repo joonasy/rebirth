@@ -26,15 +26,22 @@
 @import 'components/Hero-slider.slick';
 @import 'components/Card.config';
 @import 'components/Card';
+
 @import 'components/Button.config';
 @import 'components/Button';
 @import 'components/ButtonCollection.config';
 @import 'components/ButtonCollection';
+@import 'components/ButtonCollection.-horizontal';
+@include ButtonCollectionHorizontal();
+
 @import 'components/Form.config';
 @import 'components/Form';
 @import 'components/Form-collection';
+@import 'components/Form-collection.-horizontal';
 @import 'components/Form-addon';
 @import 'components/Form-icon';
+@include FormCollectionHorizontal();
+
 @import 'components/Navbar.config';
 @import 'components/Navbar';
 @import 'components/Navbar.-hideTrigger';
