@@ -23,8 +23,10 @@
 .Wrap.-absolute {
   left: $baseEdgeSpace;
   max-width: $Wrap-width;
+  padding: 0;
   position: absolute;
   right: $baseEdgeSpace;
+  width: 100%;
 
   @include breakpoint('largeUp') {
     left: $baseSpace * 2;
