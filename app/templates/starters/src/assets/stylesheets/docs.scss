@@ -2,10 +2,28 @@
 // Docs
 // ========================================
 
-// Import all default config and components
-@import 'app';
+// Default configs
+@import 'config';
 
-// Import all helpers
+// Mixins
+@import 'mixins/breakpoint';
+@import 'mixins/color';
+@import 'mixins/display';
+@import 'mixins/dropdown';
+@import 'mixins/center';
+@import 'mixins/clearfix';
+@import 'mixins/fontSize';
+@import 'mixins/position';
+@import 'mixins/text';
+@import 'mixins/utility';
+@import 'mixins/quantityQuery';
+
+// UI mixins
+@import 'mixins/shapeArrow';
+@import 'mixins/shapeMenu';
+@import 'mixins/shapeTriangle';
+
+// All helpers
 @import 'helpers/display';
 @import 'helpers/displayResponsive';
 @import 'helpers/color';
@@ -156,6 +174,13 @@ $Push-m: false !default;
 $Push-l: false !default;
 
 @import 'layout/Push';
+
+
+// ========================================
+// Import all default components
+// ========================================
+
+@import 'app';
 
 
 // ========================================

@@ -65,19 +65,19 @@
   @include GridJustify();
 }
 
-@if $Grid-justify-s  {
+@if $Grid-justify-s {
   @include breakpoint('smallUp') {
     @include GridJustify(-s);
   }
 }
 
-@if $Grid-justify-m  {
+@if $Grid-justify-m {
   @include breakpoint('mediumUp') {
     @include GridJustify(-m);
   }
 }
 
-@if $Grid-justify-l  {
+@if $Grid-justify-l {
   @include breakpoint('largeUp') {
     @include GridJustify(-l);
   }

@@ -22,7 +22,7 @@
     @include fontSize($Heading-fontSize-m, $Heading-lineHeight-m);
 
     @include breakpoint("smallDown") {
-      @include fontSize($h2FontSize, $h2LineHeight);
+      @include fontSize($h1FontSize, $h1LineHeight);
     }
   }
 
@@ -30,7 +30,7 @@
     @include fontSize($Heading-fontSize-s, $Heading-lineHeight-s);
 
     @include breakpoint("smallDown") {
-      @include fontSize($h3FontSize, $h3LineHeight);
+      @include fontSize($h1FontSize, $h1LineHeight);
     }
   }
 }

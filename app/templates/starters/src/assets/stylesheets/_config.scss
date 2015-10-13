@@ -54,6 +54,7 @@ $breakpoint-xl: 1200px;
 
 $baseSpace: $baseLineHeightPx;
 $baseEdgeSpace: 6.25%;
+$uiSpace: $baseSpace;
 
 
 // ========================================
@@ -81,7 +82,7 @@ $colorHtmlBg: #ffffff;
 $colorBgLightest: darken(#ffffff, 3);
 
 // Text colors
-$colorText: #444444;
+$colorText: #6a6a6a;
 $colorTextLight: lighten($colorText, 20);
 
 // Heading color
