@@ -5,7 +5,7 @@
  * @extends `.Navbar {}` in _Navbar.scss
  */
 
-@mixin NavbarHorizontal($namespace: '') {
+@mixin NavbarHorizontal($namespace: '', $keepTitle: false) {
   .Navbar.#{$namespace}-horizontal {
     .Navbar-trigger { display: none; }
 
@@ -82,10 +82,41 @@
         display: none;
       }
   }
+
+  /**
+   * Keep title in larger widths
+   */
+  @if $keepTitle {
+    .Navbar.#{$namespace}-horizontal.-keepTitle {
+      display: flex;
+
+      .Navbar-trigger { display: flex; }
+      .Navbar-trigger-inner { width: auto; }
+      .Navbar-trigger-text { display: none; }
+      .Navbar-trigger-sub { display: none; }
+    }
+  }
 }
 
-/**
- * Add other variants if needed.
- * e.g. @include breakpoint('mediumUp') { @include NavbarHorizontal(-l); }
- */
-@include breakpoint('largeUp') { @include NavbarHorizontal(-l); }
+@if $Navbar-horizontal {
+  @include NavbarHorizontal($keepTitle: false);
+}
+
+@if $Navbar-horizontal-s {
+  @include breakpoint('smallUp') {
+    @include NavbarHorizontal(-s, $Navbar-horizontalKeepTitle);
+  }
+}
+
+@if $Navbar-horizontal-m {
+  @include breakpoint('mediumUp') {
+    @include NavbarHorizontal(-m, $Navbar-horizontalKeepTitle);
+  }
+}
+
+@if $Navbar-horizontal-l {
+  @include breakpoint('largeUp') {
+    @include NavbarHorizontal(-l, $Navbar-horizontalKeepTitle);
+  }
+}
+
