@@ -39,10 +39,24 @@
   }
 }
 
-/**
- * Add other variants if needed.
- * e.g. @include ButtonCollectionHorizontal();
- */
-@include breakpoint('mediumUp') {
-  @include ButtonCollectionHorizontal(-m);
+@if $Button-collectionHorizontal {
+  @include ButtonCollectionHorizontal();
+}
+
+@if $Button-collectionHorizontal-s {
+  @include breakpoint('smallUp') {
+    @include ButtonCollectionHorizontal(-s);
+  }
+}
+
+@if $Button-collectionHorizontal-m {
+  @include breakpoint('mediumUp') {
+    @include ButtonCollectionHorizontal(-m);
+  }
+}
+
+@if $Button-collectionHorizontal-l {
+  @include breakpoint('largeUp') {
+    @include ButtonCollectionHorizontal(-l);
+  }
 }
