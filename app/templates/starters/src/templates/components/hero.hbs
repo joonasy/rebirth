@@ -2,27 +2,28 @@
 title: Hero
 ---
 
-<div class="Hero -full -color-lightOnDark js-Hero">
-  <div class="Hero-item -alignFigure-topLeft">
-    <div class="Hero-content">
-      <div class="Wrap">
-        <div class="m-Width--6-12">
-          <h1>Full hero</h1>
-          <p>I'm temporary hero page and content with background and overlay. Lorem ipsum dolor sit amet, consectetur adipisicing elit. Repellendus nulla id voluptas facere quam laboriosam doloribus dolor alias delectus nam at molestias tempora veritatis praesentium velit reiciendis, quibusdam similique accusantium?</p>
+<div class="Hero Hero--primary -full js-Hero">
+  <div class="Hero-item -color-lightOnDark -alignFigure-topLeft">
+    <div class="Hero-wrap Wrap">
+      <div class="Hero-grid Grid">
+        <div class="Grid-cell">
+          <div class="Hero-content">
+            <h1 class="Hero-title Heading -s">Full hero</h1>
+            <div class="Text -l">
+              <p>I'm temporary hero page and content with background and overlay. Lorem ipsum dolor sit amet, consectetur adipisicing elit.</p>
+            </div>
+            <a href="#" class="Button Button--primary -pill -s">Button</a>
+          </div>
         </div>
       </div>
     </div>
     <figure class="Hero-figure">
-      <img
-        data-sizes="auto"
-        data-srcset="
-          http://lorempixel.com/641/640/cats 400w,
-          http://lorempixel.com/1281/880/cats 768w,
-          http://lorempixel.com/1681/1320/cats 1200w"
-        class="js-lazyload">
-      <noscript>
-        <img src="http://lorempixel.com/640/640/cats">
-      </noscript>
+      <picture>
+        <source srcset="{{assets}}/images/hero-s.jpg" media="(max-width: 600px)" />
+        <source srcset="{{assets}}/images/hero-m.jpg" media="(max-width: 1000px)" />
+        <source srcset="{{assets}}/images/hero-l.jpg" />
+        <img src="{{assets}}/images/hero-s.jpg" class="js-lazyload" data-sizes="auto" />
+      </picture>
     </figure>
     <div class="Hero-overlay"></div>
   </div>

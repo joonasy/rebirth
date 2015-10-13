@@ -1,5 +1,5 @@
 /* ========================================
- * Hero slider `slick.js` settings
+ * Hero slider with `slick.js`
  * ========================================
  *
  * @extends `.Hero-slider{}` in _Hero.scss.
@@ -16,13 +16,13 @@
     outline: 0; /* [2] */
 
     &:first-child {
-      display: table; /* [1] */
+      display: block; /* [1] */
     }
   }
 
   &.slick-initialized {
     .Hero-item {
-      display: table; /* [1] */
+      display: block; /* [1] */
     }
   }
 }

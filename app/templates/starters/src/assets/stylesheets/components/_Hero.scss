@@ -1,53 +1,58 @@
 /* ========================================
  * Hero
- * ======================================== */
+ * ========================================
+ *
+ * @reusable true
+ */
 
 .Hero {
   position: relative;
 }
 
   .Hero-item {
-    display: table;
-    height: rem($baseSpace * 10);
     position: relative;
     width: 100%;
   }
 
-    .Hero-content {
-      display: table-cell;
-      padding-bottom: rem($baseSpace);
-      padding-top: rem($baseSpace);
+    .Hero-wrap {
       position: relative;
-      vertical-align: middle;
-      width: 100%;
       z-index: 2;
     }
 
-      .Hero-figure {
-        @extend %positionAbsoluteFill;
-        background-position: center;
-        background-size: cover;
-        background-position: center;
-        margin-bottom: 0;
-        z-index: 0;
-
-        img {
-          display: block;
-          height: 100%;
-          object-fit: cover;
-          width: 100%;
-        }
-
-        .no-js & > img {
-          display: none;
-        }
+      .Hero-grid {
+        align-items: center;
+        min-height: rem($baseSpace * 10);
+        padding-bottom: rem($baseSpace * 2);
+        padding-top: rem($baseSpace * 2);
       }
 
-      .Hero-overlay {
-        @extend %positionAbsoluteFill;
-        content: '';
-        z-index: 1;
+        .Hero-title {}
+
+    .Hero-figure {
+      @extend %positionAbsoluteFill;
+      background-position: center;
+      background-size: cover;
+      background-position: center;
+      margin-bottom: 0;
+      z-index: 0;
+
+      img {
+        display: block;
+        height: 100%;
+        object-fit: cover;
+        width: 100%;
       }
+
+      .no-js & > img {
+        display: none;
+      }
+    }
+
+    .Hero-overlay {
+      @extend %positionAbsoluteFill;
+      content: '';
+      z-index: 1;
+    }
 
 
 /* ======
@@ -56,53 +61,32 @@
 
 .Hero {
   &.-full {
-    .Hero-item {
-      height: 100vh;
+    .Hero-grid {
+      min-height: 100vh;
     }
   }
 
   &.-l {
-    .Hero-item {
-      height: rem($baseSpace * 18);
+    .Hero-grid {
+      min-height: rem($baseSpace * 18);
     }
 
     @include breakpoint('mediumUp') {
-      .Hero-item {
-        height: rem($baseSpace * 28);
+      .Hero-grid {
+        min-height: rem($baseSpace * 28);
       }
     }
   }
 
   &.-m {
-    .Hero-item {
-      height: rem($baseSpace * 14);
+    .Hero-grid {
+      min-height: rem($baseSpace * 14);
     }
 
     @include breakpoint('mediumUp') {
-      .Hero-item {
-        height: rem($baseSpace * 16);
+      .Hero-grid {
+        min-height: rem($baseSpace * 16);
       }
-    }
-  }
-}
-
-
-/* ======
- * Hero item - align
- * ====== */
-
-.Hero-item {
-  &.-alignContent-top {
-    .Hero-content {
-      padding-top: rem($baseSpace * 2);
-      vertical-align: top;
-    }
-  }
-
-  &.-alignContent-bottom {
-    .Hero-content {
-      padding-bottom: rem($baseSpace * 2);
-      vertical-align: bottom;
     }
   }
 }
@@ -128,6 +112,34 @@
 
     .Hero-overlay {
       background-color: rgba(#ffffff, 0.75);
+    }
+  }
+}
+
+
+/* ======
+ * Hero - Primary
+ * ====== */
+
+.Hero--primary {
+  .Hero-grid {
+    > .Grid-cell {
+      width: 80%;
+
+      @include breakpoint('smallUp') { width: 75%; }
+      @include breakpoint('mediumUp') { width: 50%; }
+    }
+
+    &.-justify-end {
+      .Hero-content {
+        text-align: right;
+      }
+    }
+
+    &.-justify-center {
+      .Hero-content {
+        text-align: center;
+      }
     }
   }
 }
