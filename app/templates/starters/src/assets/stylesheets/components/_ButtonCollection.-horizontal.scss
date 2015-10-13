@@ -1,0 +1,48 @@
+/* ========================================
+ * Button collection - Horizontal
+ * ========================================
+ *
+ * @extend `.ButtonCollection{}` in _ButtonCollection.scss
+ * @reusable true
+ */
+
+@mixin ButtonCollectionHorizontal($namespace: '') {
+  .ButtonCollection.#{$namespace}-horizontal {
+    flex-direction: row;
+
+    > .Button {
+      border-left-width: 0;
+
+      &:not(.-border) { box-shadow: -1px 0 $ButtonCollection-separatorColor; }
+
+      &:first-child {
+        border-left-width: $Button-borderWidth;
+        box-shadow: none;
+      }
+    }
+
+    > .-round {
+      &:first-child { border-radius: $Button-roundBorderRadius 0 0 $Button-roundBorderRadius; }
+      &:last-child { border-radius: 0 $Button-roundBorderRadius $Button-roundBorderRadius 0; }
+    }
+
+    > .-pill {
+      &:first-child { border-radius: $Button-pillBorderRadius 0 0 $Button-pillBorderRadius; }
+      &:last-child { border-radius: 0 $Button-pillBorderRadius $Button-pillBorderRadius 0; }
+    }
+
+    &.-justify {
+      align-items: flex-start;
+
+      > .Button { flex: 1; }
+    }
+  }
+}
+
+/**
+ * Add other variants if needed.
+ * e.g. @include ButtonCollectionHorizontal();
+ */
+@include breakpoint('mediumUp') {
+  @include ButtonCollectionHorizontal(-m);
+}
