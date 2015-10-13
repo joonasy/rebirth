@@ -62,7 +62,7 @@
 }
 
 /**
- * Add responsive variants if needed.
+ * Add other variants if needed.
  * e.g. @include breakpoint('smallUp') { @include GridJustify(-s); }
  */
 @include GridJustify();
@@ -79,7 +79,7 @@
 }
 
 /**
- * Add responsive variants if needed.
+ * Add other variants if needed.
  * e.g. @include breakpoint('smallUp') { @include GridAlign(-s); }
  */
 @include GridAlign();

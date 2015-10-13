@@ -1,8 +1,6 @@
 /* ========================================
- * Grid - ruler
+ * Grid - columns with rulers
  * ========================================
- *
- * Columns with rulers.
  *
  * @extends `.Grid{}` in _Grid.scss.
  * @reusable true
@@ -21,8 +19,7 @@
 }
 
 /**
- * I assume that I need responsive variants only
+ * Add other variants if needed.
+ * @include breakpoint('smallUp') { @include GridRuler(s-); }
  */
-@include breakpoint('smallUp') { @include GridRuler(s-); }
 @include breakpoint('mediumUp') { @include GridRuler(m-); }
-@include breakpoint('largeUp') { @include GridRuler(l-); }

@@ -85,8 +85,7 @@
 }
 
 /**
- * Activate the horizontal navbar in larger widths. Add more of these if needed.
+ * Add other variants if needed.
+ * e.g. @include breakpoint('mediumUp') { @include NavbarHorizontal(-l); }
  */
-@include breakpoint('largeUp') {
-  @include NavbarHorizontal(-l);
-}
+@include breakpoint('largeUp') { @include NavbarHorizontal(-l); }

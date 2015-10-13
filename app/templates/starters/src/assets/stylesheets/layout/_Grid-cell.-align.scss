@@ -13,8 +13,7 @@
 }
 
 /**
- * I assume that I need responsive variants only
+ * Add other variants if needed.
+ * e.g. @include breakpoint('smallUp') { @include GridCellAlign(-s); }
  */
-@include breakpoint('smallUp') { @include GridCellAlign(-s); }
-@include breakpoint('mediumUp') { @include GridCellAlign(-m); }
-@include breakpoint('largeUp') { @include GridCellAlign(-l); }
+@include GridCellAlign();
