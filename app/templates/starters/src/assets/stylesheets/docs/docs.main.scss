@@ -1,0 +1,35 @@
+// ========================================
+// Docs related components
+// ========================================
+
+$Wrap-width: 960px;
+
+html.docs {
+  background-image: url(http://basehold.it/i/24);
+  background-color: darken($colorBgLightest, 2);
+
+  &.is-dark {}
+}
+
+html, body { height: 100%; }
+
+.docs-Hero {
+  &.-full {
+    .Hero-item {
+      height: calc(100vh - #{$baseSpace * 2}); /* Height of the navbar */
+    }
+  }
+}
+
+.docs-Navbar {
+  position: relative;
+  z-index: 1000;
+}
+
+.docs-Container {
+  border-radius: 3px;
+
+  @include breakpoint("mediumUp") {
+    margin: rem($baseSpace);
+  }
+}

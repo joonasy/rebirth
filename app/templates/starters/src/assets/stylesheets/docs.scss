@@ -1,6 +1,6 @@
-/* ========================================
- * Docs
- * ========================================  */
+// ========================================
+// Docs
+// ========================================
 
 // Import all default config and components
 @import 'app';
@@ -20,72 +20,146 @@
 @import 'helpers/l-padding';
 @import 'helpers/text';
 
-// Import all components
+
+// ========================================
+// Hero
+// ========================================
+
+@import 'components/Hero.config';
+
+$Hero-alignFigure: true;
+$Hero-alignFigure-s: true;
+$Hero-alignFigure-m: true;
+$Hero-alignFigure-l: true;
+
 @import 'components/Hero';
 @import 'components/Hero-item.-alignFigure';
 @import 'components/Hero-slider.slick';
+
+
+// ========================================
+// Card
+// ========================================
+
 @import 'components/Card.config';
 @import 'components/Card';
 
+
+// ========================================
+// Button
+// ========================================
+
 @import 'components/Button.config';
+
+$Button-collectionHorizontal: true;
+$Button-collectionHorizontal-s: true;
+$Button-collectionHorizontal-m: true;
+$Button-collectionHorizontal-l: true;
+
 @import 'components/Button';
-@import 'components/ButtonCollection.config';
 @import 'components/ButtonCollection';
 @import 'components/ButtonCollection.-horizontal';
-@include ButtonCollectionHorizontal();
+
+
+// ========================================
+// Form
+// ========================================
 
 @import 'components/Form.config';
+
+$Form-collectionHorizontal: true;
+$Form-collectionHorizontal-s: true;
+$Form-collectionHorizontal-m: true;
+$Form-collectionHorizontal-l: true;
+
 @import 'components/Form';
 @import 'components/Form-collection';
 @import 'components/Form-collection.-horizontal';
 @import 'components/Form-addon';
 @import 'components/Form-icon';
-@include FormCollectionHorizontal();
+
+
+// ========================================
+// Navbar
+// ========================================
 
 @import 'components/Navbar.config';
 @import 'components/Navbar';
 @import 'components/Navbar.-hideTrigger';
 @import 'components/Navbar.-horizontal';
-@import 'components/Navbar.-horizontal.-keepTitle';
 @import 'components/Navbar--primary';
+
+
+// ========================================
+// Icon CSS
+// ========================================
+
 @import 'components/IconCss.-menu';
 @import 'components/IconCss.-chevron';
 
-// Import all layout components
+
+// ========================================
+// Grid
+// ========================================
+
+@import 'layout/Grid.config';
+
+$Grid-justify: true;
+$Grid-justify-s: true;
+$Grid-justify-m: true;
+$Grid-justify-l: true;
+
+$Grid-align: true;
+$Grid-align-s: true;
+$Grid-align-m: true;
+$Grid-align-l: true;
+
+$Grid-ruler: true;
+$Grid-ruler-s: true;
+$Grid-ruler-m: true;
+$Grid-ruler-l: true;
+
+$Grid-cellAlign: true;
+$Grid-cellAlign-s: true;
+$Grid-cellAlign-m: true;
+$Grid-cellAlign-l: true;
+
+$Grid-cellOrder: true;
+$Grid-cellOrder-s: true;
+$Grid-cellOrder-m: true;
+$Grid-cellOrder-l: true;
+
 @import 'layout/Grid--ruler';
 @import 'layout/Grid-cell.-align';
 @import 'layout/Grid-cell.-order';
+
+
+// ========================================
+// Pull
+// ========================================
+
+$Pull: false !default;
+$Pull-s: false !default;
+$Pull-m: false !default;
+$Pull-l: false !default;
+
 @import 'layout/Pull';
+
+
+// ========================================
+// Push
+// ========================================
+
+$Push: false !default;
+$Push-s: false !default;
+$Push-m: false !default;
+$Push-l: false !default;
+
 @import 'layout/Push';
 
-$Wrap-width: 960px;
 
-html.docs {
-  background-image: url(http://basehold.it/i/24);
-  background-color: darken($colorBgLightest, 2);
+// ========================================
+// Docs related components
+// ========================================
 
-  &.is-dark {}
-}
-
-html, body { height: 100%; }
-
-.docs-Hero {
-  &.-full {
-    .Hero-item {
-      height: calc(100vh - #{$baseSpace * 2}); /* Height of the navbar */
-    }
-  }
-}
-
-.docs-Navbar {
-  position: relative;
-  z-index: 1000;
-}
-
-.docs-Container {
-  border-radius: 3px;
-
-  @include breakpoint("mediumUp") {
-    margin: rem($baseSpace);
-  }
-}
+@import 'docs/docs.main'
