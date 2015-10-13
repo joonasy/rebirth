@@ -19,10 +19,13 @@
     }
 
       .Navbar-link {
+        align-items: center;
         border-top: 1px solid transparent;
+        display: flex;
         flex: 1;
         cursor: pointer;
-        padding: $Navbar-padding ($Navbar-padding * 2);
+        min-height: $uiSpace * 2;
+        padding: 0 ($uiSpace);
 
         &:only-child {
           border-right: 0;
@@ -36,13 +39,13 @@
         border-top: 1px solid transparent;
         cursor: pointer;
         display: flex;
-        padding: $Navbar-padding ($Navbar-padding * 1.5);
+        min-width: $uiSpace * 2;
         justify-content: center;
         text-align: center;
       }
 
         .Navbar-subTrigger-icon {
-          @include shapeArrow('down', $colorText);
+          @include shapeArrow('down', $colorTextLight);
 
           .Navbar-item.is-open > .Navbar-subTrigger > & {
             transform: rotate(0);
@@ -51,19 +54,19 @@
 
     .Navbar-sub {
       display: none;
-      width: 100%;
+      flex-basis: 100%;
 
       .Navbar-item.is-open > & { display: block; }
 
       ul {
         ul {
-          .Navbar-link { padding-left: ($Navbar-padding * 2.5); }
+          .Navbar-link { padding-left: ($uiSpace * 2.5); }
 
           ul {
-            .Navbar-link { padding-left: ($Navbar-padding * 3.5); }
+            .Navbar-link { padding-left: ($uiSpace * 3.5); }
 
             ul {
-              .Navbar-link { padding-left: ($Navbar-padding * 4.5); }
+              .Navbar-link { padding-left: ($uiSpace * 4.5); }
             }
           }
         }
@@ -73,20 +76,24 @@
   .Navbar-trigger {
     display: flex;
     justify-content: space-between;
+    min-height: $uiSpace * 2;
   }
 
     .Navbar-trigger-inner {
+      align-items: center;
+      justify-content: flex-end;
       display: flex;
+      flex: 1;
     }
 
       .Navbar-trigger-title, .Navbar-trigger-text {
-        padding: $Navbar-padding ($Navbar-padding * 2);
+        padding: 0 ($uiSpace);
       }
 
       .Navbar-trigger-title {
         @include textTruncate();
-        flex: 1;
-        font-weight: $baseFontWeightStrong;
+        align-items: center;
+        display: flex;
       }
 
     .Navbar-trigger-sub {

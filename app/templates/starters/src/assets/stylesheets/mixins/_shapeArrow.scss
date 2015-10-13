@@ -76,7 +76,6 @@
     transform: rotate(45deg);
     width: $caretWidth * $size;
 
-
     @if $line {
       left: ((($lineHeight - $caretWidth) / 2) * $size);
 
@@ -90,6 +89,5 @@
     } @else {
       top: 3px;
     }
-
   }
 }

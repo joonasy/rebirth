@@ -7,41 +7,40 @@
 
 @mixin NavbarHorizontal($namespace: '', $keepTitle: false) {
   .Navbar.#{$namespace}-horizontal {
+    justify-content: space-between;
+
     .Navbar-trigger { display: none; }
 
     > ul {
       display: flex;
-      padding-left: $Navbar-padding;
+      padding: 0 $uiSpace;
     }
 
     .Navbar-trigger + ul { display: flex; }
 
       > ul > .Navbar-item {
         position: relative;
+        margin: 0 ($uiSpace / 4);
 
         > .Navbar-link {
           border: 0;
-          padding-left: $Navbar-padding;
-          padding-right: $Navbar-padding;
+          padding: 0 ($uiSpace / 2);
         }
 
         > .Navbar-subTrigger {
           border: 0;
-          padding-left: $Navbar-padding;
-          padding-right: $Navbar-padding;
-          margin-left: -$Navbar-padding;
-          width: auto;
+          margin-left: -($uiSpace / 8);
+          min-width: auto;
         }
       }
 
         .Navbar-link {
           border: 0;
-          width: auto;
         }
 
         .no-touchevents & .Navbar-item.is-open > .Navbar-subTrigger
         > .Navbar-subTrigger-icon {
-          @include shapeArrow('down');
+          @include shapeArrow('down', $colorTextLight);
         }
 
       .Navbar-sub {
@@ -51,14 +50,6 @@
 
         .Navbar-link { min-width: 200px; }
 
-        /**
-         * Fourth and deeper levels
-         *
-         * These are hidden by default because dropdown navigations
-         * deeper than three levels aren't very elegant in desktop
-         * widths. Prefer another solution such as separate
-         * navigation for sub pages.
-         */
         ul, .Navbar-subTrigger {
           display: none !important;
         }
@@ -69,9 +60,6 @@
         right: 0;
       }
 
-      /**
-       * Sub navigation states
-       */
       .no-touchevents & .Navbar-item:hover > .Navbar-sub,
       .no-touchevents & .Navbar-item:focus > .Navbar-sub,
       .no-touchevents & .Navbar-item:hover.is-open > .Navbar-sub {
@@ -83,9 +71,6 @@
       }
   }
 
-  /**
-   * Keep title in larger widths
-   */
   @if $keepTitle {
     .Navbar.#{$namespace}-horizontal.-keepTitle {
       display: flex;
