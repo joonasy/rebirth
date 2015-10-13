@@ -27,7 +27,7 @@
 // Check if number is even
 //
 @function even($number) {
-  @return $number % 2 == 0;
+  @return strip-unit($number) % 2 == 0;
 }
 
 //
