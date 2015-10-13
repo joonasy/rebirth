@@ -1,0 +1,37 @@
+/* ========================================
+ * Form collection - horizontal
+ * ========================================
+ *
+ * @extends `.Form-collection{}` in _Form-collection.scss
+ * @reusable true
+ */
+
+.Form-collection.-horizontal {
+  .Form-collection {
+    .-border {
+      border-right-width: 0;
+    }
+
+    &:first-child {
+      .-round {
+        &:first-child { border-radius: $Form-borderRadius 0 0 $Form-borderRadius; }
+      }
+    }
+
+    &:last-child {
+      .-border {
+        &:last-child {
+          border-right-width: $Form-borderWidth;
+        }
+      }
+
+      .-round {
+        &:last-child { border-radius: 0 $Form-borderRadius $Form-borderRadius 0; }
+      }
+    }
+  }
+
+  > .Form-button.-round {
+    border-radius: 0 $Form-borderRadius $Form-borderRadius 0;
+  }
+}

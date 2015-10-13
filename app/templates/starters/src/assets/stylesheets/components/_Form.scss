@@ -11,11 +11,11 @@
     background-color: #ffffff;
     border: $Form-borderWidth solid transparent;
     color: $colorText;
+    font-weight: $Form-fontWeight;
   }
 
   %Form-item-layout {
     font-size: rem($Form-fontSize);
-    font-weight: $Form-fontWeight;
     height: rem($Form-height);
     line-height: rem($Form-height - ($Form-borderWidth * 2));
     padding: 0 rem($Form-padding);
@@ -26,6 +26,7 @@
     @extend %Form-item-layout;
     border-radius: 0;
     display: block;
+    flex: 1;
     margin-bottom: rem($baseSpace);
     outline: 0;
     padding: 0 rem($Form-padding);
@@ -44,7 +45,6 @@
   .Form-button.Button {
     @extend %Form-item-layout;
     margin: 0;
-    width: 100%;
   }
 
   textarea {

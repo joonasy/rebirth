@@ -1,0 +1,57 @@
+/* ========================================
+ * Form collection - Horizontal
+ * ========================================
+ *
+ * @extends `.Form-collection{}` in _Form-collection.scss
+ * @reusable true
+ */
+
+@mixin FormCollectionHorizontal($namespace: '') {
+  .Form-collection.#{$namespace}-horizontal {
+    flex-direction: row;
+
+    > .Form-collection {
+      &:not(:first-child) {
+        .-border {
+          border-top-width: $Form-borderWidth;
+        }
+      }
+
+      &:first-child {
+        .-round {
+          &:first-child { border-radius: $Form-borderRadius 0 0 $Form-borderRadius; }
+          &:last-child { border-radius: 0; }
+        }
+      }
+
+      &:last-child {
+        .-border {
+          &:last-child {
+            border-right-width: $Form-borderWidth;
+          }
+        }
+
+        .-round {
+          &:first-child { border-radius: 0; }
+          &:last-child { border-radius: 0 $Form-borderRadius $Form-borderRadius 0; }
+        }
+      }
+
+      > .-border {
+        border-right-width: 0;
+      }
+    }
+
+    > .Form-button.-round {
+      border-radius: 0 $Form-borderRadius $Form-borderRadius 0;
+    }
+  }
+}
+
+/**
+ * Add other variants if needed.
+ * e.g. @include FormCollectionHorizontal();
+ */
+@include breakpoint('mediumUp') {
+  @include FormCollectionHorizontal(-m);
+}

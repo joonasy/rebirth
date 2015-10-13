@@ -6,15 +6,7 @@
   @extend %Form-item-appearance;
   @extend %Form-item-layout;
   text-align: center;
-}
-
-
-/* ======
- * Form addon - sizing
- * ====== */
-
-.Form-addon.-s {
-  width: rem($baseSpace * 2);
+  min-width: rem($baseSpace * 2)
 }
 
 

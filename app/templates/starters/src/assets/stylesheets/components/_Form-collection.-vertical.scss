@@ -1,37 +1,20 @@
 /* ========================================
- * Form collection
+ * Form collection - vertical
  * ========================================
  *
- * Form collection is vertical by default.
- *
- * @overrides `.Form-item{}, .Form-addon{}, .Form-button{}` in _Form.scss
+ * @extends `.Form-collection{}` in _Form-collection.scss
  * @reusable true
  */
 
-.Form-collection {
-  display: flex;
-  flex: 1;
+.Form-collection.-vertical {
   flex-direction: column;
-  margin-bottom: rem($baseSpace);
 
-  .Form-item, .Form-addon, .Form-button {
-    margin-bottom: 0;
-  }
-
-  .Form-item:not(textarea), .Form-addon {
-    @include textTruncate();
-  }
-
-  > .Form-collection {
-    margin-bottom: 0;
-  }
-
-  .-round {
-    border-radius: 0;
-  }
-
-  > .Form-collection {
-    flex-direction: row;
+  .Form-collection {
+    .-border {
+      &:first-child:not(:only-child) {
+        border-right-width: 0;
+      }
+    }
 
     &:not(:first-child) {
       .-border {
@@ -52,12 +35,6 @@
         &:first-child { border-radius: 0 0 0 $Form-borderRadius; }
         &:last-child { border-radius: 0 0 $Form-borderRadius 0; }
         &:only-child { border-radius: 0 0 $Form-borderRadius $Form-borderRadius; }
-      }
-    }
-
-    > .-border {
-      &:first-child:not(:only-child) {
-        border-right-width: 0;
       }
     }
   }
