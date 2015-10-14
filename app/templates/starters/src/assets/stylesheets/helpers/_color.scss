@@ -2,19 +2,8 @@
  * Coloring helpers
  * ======================================== */
 
-.colorPrimary {
-  color: $colorPrimary !important;
-}
-
-.colorTextLight {
-  color: $colorTextLight !important;
-}
-
-.colorDark {
-  color: $colorDark !important;
-}
-
-.colorBgLightest {
-  background-color: $colorBgLightest !important;
-}
+.colorPrimary    { color: $colorPrimary !important; }
+.colorTextLight  { color: $colorTextLight !important; }
+.colorDark       { color: $colorDark !important; }
+.colorBgLightest { background-color: $colorBgLightest !important; }
 

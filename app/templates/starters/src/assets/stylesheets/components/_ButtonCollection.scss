@@ -16,9 +16,17 @@
   > .Button {
     margin-right: 0;
 
-    &:not(:last-child) { margin-bottom: 0; }
-    &:not(.-border) { box-shadow: 0 -1px $ButtonCollection-separatorColor; }
-    &:first-child { box-shadow: none; }
+    &:not(:last-child) {
+      margin-bottom: 0;
+    }
+
+    &:not(.-border) {
+      box-shadow: 0 -1px $ButtonCollection-separatorColor;
+    }
+
+    &:first-child {
+      box-shadow: none;
+    }
   }
 
   &:not([class*='-horizontal']) {
@@ -35,12 +43,22 @@
   }
 
   > .-round {
-    &:first-child { border-radius: $Button-roundBorderRadius $Button-roundBorderRadius 0 0; }
-    &:last-child { border-radius: 0 0 $Button-roundBorderRadius $Button-roundBorderRadius; }
+    &:first-child {
+      border-radius: $Button-roundBorderRadius $Button-roundBorderRadius 0 0;
+    }
+
+    &:last-child {
+      border-radius: 0 0 $Button-roundBorderRadius $Button-roundBorderRadius;
+    }
   }
 
-  > .-pill { border-radius: 0; }
-  > .-round { border-radius: 0; }
+  > .-pill {
+    border-radius: 0;
+  }
+
+  > .-round {
+    border-radius: 0;
+  }
 }
 
 /**

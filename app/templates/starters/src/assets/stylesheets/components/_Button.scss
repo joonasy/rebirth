@@ -36,7 +36,8 @@
   vertical-align: top;
   white-space: nowrap;
 
-  &:hover, &:focus {
+  &:hover,
+  &:focus {
     text-decoration: none;
   }
 }
@@ -83,7 +84,8 @@
 
 .Button {
   &.is-disabled,
-  &[disabled], fieldset[disabled] & {
+  &[disabled],
+  fieldset[disabled] & {
     @extend %disabled;
   }
 }
@@ -98,7 +100,8 @@
   border-color: $colorPrimary;
   color: #ffffff;
 
-  &:hover, &:focus {
+  &:hover,
+  &:focus {
     background-color: darken($colorPrimary, 5);
     border-color: darken($colorPrimary, 5);
     color: #ffffff;
@@ -108,7 +111,8 @@
     background-color: transparent;
     color: $colorText;
 
-    &:hover, &:focus {
+    &:hover,
+    &:focus {
       background-color: transparent;
       border-color: $colorPrimary;
       color: $colorPrimary;

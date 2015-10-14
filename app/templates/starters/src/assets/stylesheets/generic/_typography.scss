@@ -6,7 +6,8 @@ p {
   margin: 0 0 rem($baseSpace);
 }
 
-b, strong {
+b,
+strong {
   font-weight: $baseFontWeightStrong;
 }
 
@@ -23,7 +24,12 @@ hr {
 /**
  * Headings
  */
-h1, h2, h3, h4, h5, h6 {
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
   color: $colorHeading;
   font-family: $headingFontFamily;
   font-weight: $headingFontWeight;

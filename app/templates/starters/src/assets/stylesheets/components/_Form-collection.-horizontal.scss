@@ -19,8 +19,13 @@
 
       &:first-child {
         .-round {
-          &:first-child { border-radius: $Form-borderRadius 0 0 $Form-borderRadius; }
-          &:last-child { border-radius: 0; }
+          &:first-child {
+            border-radius: $Form-borderRadius 0 0 $Form-borderRadius;
+          }
+
+          &:last-child {
+            border-radius: 0;
+          }
         }
       }
 
@@ -32,8 +37,13 @@
         }
 
         .-round {
-          &:first-child { border-radius: 0; }
-          &:last-child { border-radius: 0 $Form-borderRadius $Form-borderRadius 0; }
+          &:first-child {
+            border-radius: 0;
+          }
+
+          &:last-child {
+            border-radius: 0 $Form-borderRadius $Form-borderRadius 0;
+          }
         }
       }
 

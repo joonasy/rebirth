@@ -25,7 +25,8 @@
   position: relative;
   width: 100%;
 
-  &:before, &:after {
+  &:before,
+  &:after {
     background-color: $colorLight;
     content: "";
     display: block;

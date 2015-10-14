@@ -19,7 +19,9 @@
   .#{$namespace}Pull--11of12 { right: 91.666%; }
 }
 
-[class*='Pull--'] { position: relative; }
+[class*='Pull--'] {
+  position: relative;
+}
 
 @if $Pull {
   @include Pull();

@@ -9,7 +9,7 @@
  @mixin GridCellAlign($namespace: '') {
   .Grid-cell.#{$namespace}-align-bottom { align-self: flex-end; }
   .Grid-cell.#{$namespace}-align-center { align-self: center; }
-  .Grid-cell.#{$namespace}-align-top { align-self: flex-start; }
+  .Grid-cell.#{$namespace}-align-top    { align-self: flex-start; }
 }
 
 @if $Grid-cellAlign {

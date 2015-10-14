@@ -8,7 +8,7 @@ A good naming convention will tell you and your team
 * where a class can be used;
 * what (else) a class might be related to.
 
-We rely on structured class names, BEM-like naming, and meaningful hyphens (i.e., not using hyphens merely to separate words) except for separating numbers. This helps to work around the current limits of applying CSS to the DOM (i.e., the lack of style encapsulation), and to better communicate the relationships between classes.
+We rely on structured class names, partly BEM-like naming, and meaningful hyphens (i.e., not using hyphens merely to separate words) except for separating numbers. This helps to work around the current limits of applying CSS to the DOM (i.e., the lack of style encapsulation), and to better communicate the relationships between classes.
 
 The primary architectural division is between helpers and components.
 
@@ -23,7 +23,7 @@ Low-level structural and positional traits. Helpers can be applied directly to a
 Helpers must use a camelCase name. Helpers may also have modifiers and responsive variants like components do. What follows is an example of how various helpers can be used to create a simple structure within or without a component.
 
 ```html
-<div class="Component marginTop--m cf">              # [1]
+<div class="Component marginTop--m clearfix">        # [1]
   <div class="Component-item floatLeft padding--m">  # [2]
     <img src="…" alt="…" class="m-center--block">    # [3]
     <p class="m-text--l">                            # [4]
@@ -116,7 +116,7 @@ Prefixes are not required however consider adding them if the modifier modifies 
 ```
 
 ```html
-<a href="#" class="Button Button--primary -l -round" type="button"
+<a href="#" class="Button Button--primary -l -round" type="button">
   <span class="Button-dropdown Dropdown">…</span>
 </a>
 ```
@@ -133,7 +133,7 @@ Chainable modifiers may also extend main modifiers.
 ```css
 .Button--primary {
   
-  &.-round {
+  &.-justify {
     …
   }
 }
@@ -145,7 +145,7 @@ Chainable modifiers can also be added to component collections.
 .ButtonCollection {
   …
 
-  &.-round {
+  &.-justify {
     …
 
     > .Button {}
@@ -285,17 +285,17 @@ As a rule, it is unwise to bind your CSS and your JS onto the same class in your
 Typically, these are classes that are prepended with js-, for example:
 
 ```html
-<input type="submit" class="Button js-Button" value="Follow" />
+<input type="submit" class="Button js-ButtonTrigger" value="Follow" />
 ```
 
 This means that we can have an element elsewhere which can carry with style of `.Button {}`, but without the behaviour of `.js-Button`.
+
+When naming javascript hooks use camelCase.
 
 
 ### data-* attributes
 
 A common practice is to use `data-*` attributes as JS hooks, but this is incorrect. `data-*` attributes, as per the spec, are used _to store custom data private to the page or application_. `data-*` attributes are designed to store data, not be bound to.
-
-However `data-*` attributes can be used to store data for the JavaScript to read.
 
 
 ## Reserved namespaces and other keywords
@@ -325,12 +325,12 @@ Example use of responsive `Width` component which is activated both in medium an
 
 ```html
 <div class="Grid">
-  <div class="Grid-item m-Width--6-12 xl-Width--4-12">
+  <div class="Grid-item m-Width--6of12 xl-Width--4of12">
     <div class="Component">
       …
     </div>
   </div>
-  <div class="Grid-item m-Width--6-12 xl-Width--8-12">
+  <div class="Grid-item m-Width--6of12 xl-Width--8of12">
     <div class="Component">
       …
     </div>
@@ -342,7 +342,7 @@ Example use of _margin_ helper which is activated in large breakpoint:
 
 ```css
 @inlude breakpoint("largeUp") {
-  .l-marginTop--m { margin-top: rem($base-space * 2) !important; }
+  .l-marginTop--m { margin-top: rem($baseSpace * 2) !important; }
 }
 ```
 

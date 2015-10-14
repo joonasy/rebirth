@@ -39,10 +39,9 @@
     -moz-appearance: none;
     -webkit-appearance: none;
 
-    /**
-     * Prevents zooming in some iOS devices
-     */
-    .touchevents & { font-size: 16px; }
+    .touchevents & {
+      font-size: 16px;
+    }
   }
 
   .Form-button.Button {
@@ -77,16 +76,18 @@
 
 
 /* ======
- * Form item - various modifiers
+ * Form item - Various modifiers
  * ====== */
 
 .Form-item {
-  &.-round { border-radius: $Form-borderRadius; }
+  &.-round {
+    border-radius: $Form-borderRadius;
+  }
 }
 
 
 /* ======
- * Form - primary variation
+ * Form - Primary
  * ====== */
 
 .Form--primary {
@@ -103,13 +104,17 @@
     @include colorPlaceholder($colorTextLight);
     color: $colorTextLight;
 
-    &:hover, &:focus {
+    &:hover,
+    &:focus {
       @include colorPlaceholder($colorText);
       color: $colorText;
     }
 
     &.-border {
-      &:hover, &:focus { border-color: $colorBorderPrimary; }
+      &:hover,
+      &:focus {
+        border-color: $colorBorderPrimary;
+      }
     }
   }
 }

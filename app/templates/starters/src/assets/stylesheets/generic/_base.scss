@@ -42,16 +42,25 @@
 /**
  * Shared spacing
  */
-hgroup, blockquote, address,
-table, fieldset, figure, pre,
-ul, ol, dl {
+hgroup,
+blockquote,
+address,
+table,
+fieldset,
+figure,
+pre,
+ul,
+ol,
+dl {
   margin: 0 0 rem($baseSpace);
 }
 
 /**
  * Lists
  */
-ul, ol, dl {
+ul,
+ol,
+dl {
   padding: 0 0 0 rem($baseSpace);
 }
 

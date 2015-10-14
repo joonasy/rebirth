@@ -36,22 +36,42 @@ But, as with anything, the specifics are somewhat irrelevant—consistency is ke
 * our closing brace (`}`) on its own new line
 * each declaration indented by two (2) spaces
 
-
 ```css
 /**
  * Example
  */ 
 .Component,
 .someSelector {
-  @extend %cf;
+  @extend %clearfix;
   @include dropdown();
-  background-color: $color-primary;
+  background-color: $colorPrimary;
   box-shadow: 0 1px 2px rgba(#000000, 0.2);
-  color: $color-text;
-  font-size: $base-fontSize-s;
-  line-height: $base-lineHeight;
-  margin-bottom: $base-space;
+  color: $colorText;
+  font-size: $baseFontSize-s;
+  line-height: $baseLineHeight-s;
+  margin-bottom: $baseSpace;
+
+  &:before,
+  &:after {
+    content: '';
+  }
 }
+```
+
+
+## Multi-line CSS
+
+CSS should be written across multiple lines, except in very specific circumstances. There are a number of benefits to this:
+
+* A reduced chance of merge conflicts, because each piece of functionality exists on its own line.
+* More ‘truthful’ and reliable diffs, because one line only ever carries one change.
+
+Exceptions to this rule should be fairly apparent, such as similar rulesets that only carry one declaration each, for example:
+
+```css
+.margin     { margin: rem($baseSpace) !important; }
+.margin--xs { margin: rem($baseSpace / 4) !important; }
+.margin--s  { margin: rem($baseSpace / 2) !important; }
 ```
 
 
@@ -175,8 +195,8 @@ As a rule, use these comments to document code that would not get written out to
 // Button
 // ========================================
 
-$Button-fontSize: $base-fontSize;
-$Button-lineHeight: $base-lineHeightPx * 1.5;
+$Button-fontSize: $baseFontSize;
+$Button-lineHeight: $baseLineHeightPx * 1.5;
 
 // Dimensions of the @2x image sprite:
 $sprite-width: 920px;
@@ -243,8 +263,8 @@ Here is listed our default partial structure we use across our projects:
 * **4.** Layout components are the key components in structuring our site. Some layout components such as `Footer` or `Header` may represent only a partion of our site unlike `Grid` which can be used multiple times to build various sections of our site.
     * `Container`, `Grid`, `Width` and `Wrap` are all reusable layout components.  
 * **5.** Mixins are used throughout all of our partials. Some of the mixins are considered as _UI mixins_ which produce user interface related elements such as arrows and icons.
-* **6.** 3rd party vendors are located here only if they aren't available in [Bower](http://bower.io). Place modified bower style components also here.
-* **7.** Contains all the shared configurable variables that can be used in all of our included partials. Component configurations are added here as well.
+* **6.** 3rd party vendors are located here only if they aren't available in [Bower](http://bower.io). Place modified bower style components here.
+* **7.** Contains all the shared configurable variables that can be used in all of our included partials. Component configurations are added here.
 * **8.** This is our primary sass file which collects all the partials. Read more about it in the next section.
 
 
@@ -282,7 +302,10 @@ Structure our partials in the following order to prevent errors. Remember to alp
 // Components
 …
 
-// Layout based components
+// Base layout components
+…
+
+// Layout components
 …
 ```
 
@@ -297,27 +320,31 @@ Here is an example of an component with the correct structure:
  * ======================================== 
  *
  * @extends `.OtherComponent{}` in _OtherComponent.scss. # [2]
+ * @reusable true                                        # [3]
  */
 
-.Button {                                                # [3]
+.Button {                                                # [4]
   …
 
-  &:hover, &:focus {
+  &:hover, 
+  &:focus {
     …
   }
 }
 
   /**
-   * Button dropdown                                     # [4]
+   * Button dropdown                                     # [5]
    * Lorem ipsum dolor sit amet, consectetur. 
    */ 
-  .Button-dropdown {
+  .Button-dropdown {                                     # [6]
     …
+
+    &.is-open {}                                         # [7]
   }
 
 
 /* ======
- * Button - shape modifiers                              # [5]
+ * Button - Shape modifiers                              # [8]
  * ====== */
 
 .Button {
@@ -334,11 +361,10 @@ Here is an example of an component with the correct structure:
 
 
 /* ======
- * Button - size modifier                               # [6]
+ * Button - Size                                         # [9]
  * ====== */
 
 .Button {
-
   &.-s {
     …
   }
@@ -350,25 +376,25 @@ Here is an example of an component with the correct structure:
 
 
 /* ====== 
- * Button - disabled state                              # [7]
+ * Button - Disabled                                    # [10]
  * ====== */
 
 .Button {
-
-  &.is-disabled  {
+  &.is-disabled {
     …
   }
 }
 
 
 /* ======
- * Button - primary variation                            # [8]
+ * Button - Primary                                      # [11]
  * ====== */
 
 .Button--primary {
   …
 
-  &:hover, &:focus {
+  &:hover, 
+  &:focus {
     …
   }
 
@@ -378,13 +404,16 @@ Here is an example of an component with the correct structure:
 }
 ```
 
-* **1.** Begin every new major section of a CSS file with a first-level title. 
-* **2.** This simple, low effort commenting can make a lot of difference to developers who are unaware of relationships across projects, or who are wanting to know how, why, and where other styles might be being inherited from.
-* **3.** Default button settings.
-* **4.** Indent descendants. As a rule, you should comment anything that isn’t immediately obvious from the code alone.
-* **5.**, **6.** Define modifiers with second-level titles
-* **7.** Define states after modifiers with second-level titles
-* * **8.** Define variations with second-level titles after modifiers and states.
+* **1.** Begin every new major section of a CSS file with a first-level title 
+* **2.** This simple, low effort commenting can make a lot of difference to developers who are unaware of relationships across projects, or who are wanting to know how, why, and where other styles might be being inherited from
+* **3.** Define if the component is reusable as they mostly are. If the component isn't reusable (or isn't designed yet) then give it a brief description why e.g. _"false, use only in the bottom of the page"_
+* **4.** Default button settings
+* **5.** Indent descendants. As a rule, you should comment anything that isn’t immediately obvious from the code alone
+* **6.** As well as indenting individual declarations, indent entire related rulesets to signal their relation to one another. This quasi-replication of the DOM tells developers a lot about where classes are expected to be used without them having to refer to a snippet of HTML.
+* **7.** States for descentans or nested elements can be added directly 
+* **8.**, **9.** Define modifiers with second-level titles
+* **10.** Define states after modifiers with second-level titles
+* **11.** Define variations with second-level titles after modifiers and states
 
 
 ## Structuring partials
@@ -393,11 +422,11 @@ Read [Naming conventions](naming-conventions.md) first.
 
 #### Components
 
-Always name the isolated partials as they are presented in the markup. Example of an isolated component structure in **correct order**:
+Always name the isolated partials as they are presented in the markup. Example of an isolated component structure in correct order:
 
 ```
-components/_ButtonCollection.scss      # [1]
-components/_Button.scss                # [2]
+components/_Button.scss                # [1]
+components/_ButtonCollection.scss      # [2]
 components/_Button-dropdown.scss       # [3]
 components/_Button.-modifierName.scss  # [4]
 components/_Button--primary.scss       # [5]
@@ -407,10 +436,10 @@ If you are build a large component which, say, contains over 400 lines it is adv
 
 If component modifiers (**4.**) or other component related partials contain _responsive variants_ (e.g `.Button.-m-modifierName {}`) it isn't necessary to include that variant in the file name.
 
-Component collections (**1.**) are always isolated.
+Component collections (**2.**) are always isolated.
 
 
-##### Components configuration
+##### Component configuration
 
 Global component configurations are added to `_config.scss`. These configurations should only contain settings that component partials need (or in rare cases what other components may need).
 

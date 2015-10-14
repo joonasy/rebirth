@@ -1,5 +1,5 @@
 /* ========================================
- * Primary navbar
+ * Navbar - Primary
  * ========================================
  *
  * @extends `.Navbar {}` in _Navbar.scss
@@ -8,6 +8,31 @@
 
 .Navbar--primary {
   background-color: #ffffff;
+
+  .Navbar-ctrl-inner {
+    background-color: $colorPrimary;
+    color: #ffffff;
+  }
+
+    .Navbar-ctrl-title {
+      background-color: $colorPrimary;
+      color: #ffffff;
+    }
+
+    .Navbar-ctrl-trigger {
+      background-color: #ffffff;
+      border-color: transparent;
+      color: $colorPrimary;
+    }
+
+      .Navbar-ctrl-trigger-icon {
+        border-top-color: $colorPrimary;
+
+        &:before,
+        &:after {
+          background-color: $colorPrimary;
+        }
+      }
 
   .Navbar-item {
     &.is-active {
@@ -23,7 +48,9 @@
     color: $colorText;
     transition: color $transitionDuration;
 
-    &:hover { color: $colorLink; }
+    &:hover {
+      color: $colorLink;
+    }
   }
 
   .Navbar-trigger {
@@ -34,8 +61,13 @@
 
     &:hover {
       .Navbar-trigger-icon {
-        &:before { background: $colorLink; }
-        &:after { color: $colorLink; }
+        &:before {
+          background: $colorLink;
+        }
+
+        &:after {
+          color: $colorLink;
+        }
       }
     }
   }
@@ -58,7 +90,9 @@
       border-color: darken(#ffffff, 12);
       color: inherit;
 
-      &:hover { color: $colorLink; }
+      &:hover {
+        color: $colorLink;
+      }
     }
 
     .Navbar-trigger {
@@ -68,8 +102,13 @@
     }
 
       .Navbar-trigger-icon {
-        &:before { background-color: $colorText; }
-        &:after { color: $colorText; }
+        &:before {
+          background-color: $colorText;
+        }
+
+        &:after {
+          color: $colorText;
+        }
       }
 
     ul {
@@ -80,7 +119,9 @@
         border-color: darken(#ffffff, 18);
         color: inherit;
 
-        &:hover { color: $colorLink; }
+        &:hover {
+          color: $colorLink;
+        }
       }
 
       .Navbar-trigger {
@@ -91,44 +132,22 @@
     }
   }
 
-  .Navbar-ctrl-inner {
-    background-color: $colorPrimary;
-    color: #ffffff;
-  }
-
-    .Navbar-ctrl-title {
-      background-color: $colorPrimary;
-      color: #ffffff;
-    }
-
-    .Navbar-ctrl-trigger {
-      background-color: #ffffff;
-      border-color: transparent;
-      color: $colorPrimary;
-    }
-
-      .Navbar-ctrl-trigger-icon {
-        border-top-color: $colorPrimary;
-
-        &:before, &:after {
-          background-color: $colorPrimary;
-        }
-      }
-
 
   /* ======
-   * Larger widths
+   * Navbar - Primary - Larger widths
    * ====== */
 
   &.-l-horizontal {
     @include breakpoint('largeUp') {
       .Navbar-sub {
-        .Navbar-link  {
+        .Navbar-link {
           background-color: transparent;
           border-color: darken(#ffffff, 12);
           color: inherit;
 
-          &:hover { color: $colorLink; }
+          &:hover {
+            color: $colorLink;
+          }
         }
       }
     }

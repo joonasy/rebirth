@@ -6,8 +6,8 @@
  */
 
 .Form-icon {
-  @extend %Form-item-appearance;
   @extend %Form-item-layout;
+  @extend %Form-item-appearance;
   background-color: transparent;
   left: 0;
   position: absolute;
@@ -30,8 +30,13 @@
  */
 
 .Form-item {
-  &.-hasIconLeft { padding-left: rem($Form-padding * 2.5); }
-  &.-hasIconRight { padding-right: rem($Form-padding * 2.5); }
+  &.-hasIconLeft {
+    padding-left: rem($Form-padding * 2.5);
+  }
+
+  &.-hasIconRight {
+    padding-right: rem($Form-padding * 2.5);
+  }
 }
 
 

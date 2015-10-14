@@ -6,13 +6,8 @@
  * [1.] Hide visually and from screen readers
  * [2.] Hide visually and from screen readers, but maintain layout
  */
-.hidden {
-  display: none !important; /* [1.] */
-}
-
-.invisible {
-  visibility: hidden !important; /* [2.] */
-}
+.hidden    { display: none !important; } /* [1.] */
+.invisible { visibility: hidden !important; } /* [2.] */
 
 
 /**
