@@ -75,7 +75,8 @@ Please discuss about new ideas and things that you think should be modified. Cur
 ## Todo (in random order)
 
 * Convert all floating material to Flexbox
-* Drop IE9 support
+* Typo3 content element starters
+* Wordpress template
 * All necessary CSS components
 * Sub generators for starters
 * CSS modular scale
@@ -83,8 +84,8 @@ Please discuss about new ideas and things that you think should be modified. Cur
 * Rest of the JavaScript styleguide
 * More testing for JavaScript
 * Consider removing jQuery
+* Consider separating starters and the generator
 * Dockerfile (docker-compose) for docker environments
-* Rewrite default JavaScript components to ES6
 
 
 ## License

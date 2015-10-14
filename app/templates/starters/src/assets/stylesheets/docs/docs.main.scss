@@ -15,7 +15,7 @@ html, body { height: 100%; }
 
 .docs-Hero {
   &.-full {
-    .Hero-grid {
+    .Hero-content {
       min-height: calc(100vh - #{$baseSpace * 2}); /* Height of the navbar */
     }
   }

@@ -1,5 +1,13 @@
 # Changelog
 
+## 0.2.3
+
+* IE9 support dropped
+* `.Grid{}`, `.Hero{}`, `.Nav{}`, `.Form{}`, `.Button{}` have been reworked and changed to use flexbox
+* `.Form-collection{}` and `.ButtonCollection` are vertical aligned by default and can be switched to horizontal with `.-horizontal` (includes responsive variants) class
+* `imgToParentBg.js` now supports `<picture>`. Also Because Safari and iOS doesn't support `object-position` so there are optional parameters to target them.
+* Chromeframe removed
+
 ## 0.2.0 (2015-08-11)
 * Project renamed to `My Web Starter Kit` / `generator-my`
 * Grunt removed
