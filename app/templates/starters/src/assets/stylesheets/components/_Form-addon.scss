@@ -1,6 +1,9 @@
 /* ========================================
  * Form addon
- * ======================================== */
+ * ========================================
+ *
+ * @reusable true
+ */
 
 .Form-addon {
   @extend %Form-item-appearance;
@@ -14,7 +17,7 @@
  * Form addon - primary variation
  * ======
  *
- * Alternatively move this inside the main `.Form--primary{}`.
+ * Alternatively move this inside the main `.Form--primary{}`
  */
 
 .Form--primary {

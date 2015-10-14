@@ -10,7 +10,7 @@
   $borderRadius: $borderRadius,
   $default: true,
   $min-width: 240px,
-  $padding: rem($baseSpace) rem($baseSpace),
+  $padding: rem($baseSpace / 2) rem($baseSpace),
   $shadowColor: rgba(#000000, 0.1),
   $state: false
   ) {

@@ -1,6 +1,9 @@
 /* ========================================
  * Wrap
- * ======================================== */
+ * ========================================
+ *
+ * @reusable true
+ */
 
 .Wrap {
   margin-left: auto;
@@ -20,7 +23,7 @@
  * Wrap - absolute
  * ====== */
 
-.Wrap.-absolute {
+.Wrap--absolute {
   left: $baseEdgeSpace;
   max-width: $Wrap-width;
   padding: 0;

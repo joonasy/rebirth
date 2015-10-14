@@ -1,6 +1,9 @@
 /* ========================================
  * Heading
- * ======================================== */
+ * ========================================
+ *
+ * @reusable true
+ */
 
 .Heading {}
 
@@ -13,23 +16,23 @@
   &.-l {
     @include fontSize($Heading-fontSize-l, $Heading-lineHeight-l);
 
-    @include breakpoint("smallDown") {
-      @include fontSize($h1FontSize, $h1LineHeight);
+    @include breakpoint("mediumDown") {
+      @include fontSize($Heading-fontSize-m, $Heading-lineHeight-m);
     }
   }
 
   &.-m {
     @include fontSize($Heading-fontSize-m, $Heading-lineHeight-m);
 
-    @include breakpoint("smallDown") {
-      @include fontSize($h1FontSize, $h1LineHeight);
+    @include breakpoint("mediumDown") {
+      @include fontSize($Heading-fontSize-s, $Heading-lineHeight-s);
     }
   }
 
   &.-s {
     @include fontSize($Heading-fontSize-s, $Heading-lineHeight-s);
 
-    @include breakpoint("smallDown") {
+    @include breakpoint("mediumDown") {
       @include fontSize($h1FontSize, $h1LineHeight);
     }
   }

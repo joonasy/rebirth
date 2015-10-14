@@ -14,7 +14,7 @@
     $scaleMargin: $scale
   }
 
-  @include fontSize($fontSize, (($Button-height * $scale) - ($Button-borderWidth * 2)));
+  @include fontSize($fontSize, rem(($Button-height * $scale) - ($Button-borderWidth * 2)));
   margin-bottom: rem(($baseSpace - ($Button-height * $scale)) + ($baseSpace * 2 * $scaleMargin));
   padding: 0 rem($baseSpace * $scale);
 }

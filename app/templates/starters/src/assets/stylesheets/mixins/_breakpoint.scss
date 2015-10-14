@@ -4,7 +4,7 @@
 //
 // @usage
 //   Default: @include breakpoint('mediumUp') {}
-//   Custom: @include breakpoint(false, $min-width: '1337px') {}
+//   Custom: @include breakpoint($min-width: '1337px') {}
 
 @mixin breakpoint($media: false, $min-width: false, $max-width: false, $min-height: false, $max-height: false, $ratio: 2) {
 

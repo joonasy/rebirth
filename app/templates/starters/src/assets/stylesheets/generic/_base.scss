@@ -22,6 +22,10 @@
   -webkit-touch-callout: none;
   -webkit-font-smoothing: antialiased;
   tap-highlight-color: transparent;
+
+  @include breakpoint('smallDown') {
+    font-size: 87.5%;
+  }
 }
 
 /**

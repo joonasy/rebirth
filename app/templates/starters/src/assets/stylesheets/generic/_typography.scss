@@ -52,4 +52,6 @@ h5, .h5 {
 
 h6, .h6 {
   @include fontSize($baseFontSize, $baseLineHeight);
+  text-transform: uppercase;
+  font-weight: $baseFontWeightStrong;
 }

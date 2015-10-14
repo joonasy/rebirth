@@ -1,6 +1,9 @@
 /* ========================================
  * CSS chevron arrow icon
- * ======================================== */
+ * ========================================
+ *
+ * @reusable true
+ */
 
 .IconCss[class*='-chevron'] {
   @include shapeArrow($direction: false);
@@ -8,7 +11,7 @@
 
 
 /* ======
- * CSS icon - size and shape
+ * CSS Chevron - Size and shape
  * ====== */
 
 .IconCss {

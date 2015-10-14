@@ -1,6 +1,9 @@
 /* ========================================
  * Text
- * ======================================== */
+ * ========================================
+ *
+ * @reusable true
+ */
 
 .Text {}
 
@@ -30,17 +33,9 @@
  * ====== */
 
 .Text {
-  &.-left {
-    text-align: left;
-  }
-
-  &.-right {
-    text-align: right;
-  }
-
-  &.-center {
-    text-align: center;
-  }
+  &.-center {  text-align: center; }
+  &.-left { ext-align: left; }
+  &.-right { text-align: right; }
 }
 
 
@@ -51,13 +46,12 @@
 .Text {
   &.-l {
     @include fontSize($baseFontSize-l, $baseLineHeight-l);
+
+    @include breakpoint('mediumDown') {
+      @include fontSize($baseFontSize, $baseLineHeight);
+    }
   }
 
-  &.-s {
-    @include fontSize($baseFontSize-s, $baseLineHeight-s);
-  }
-
-  &.-xs {
-    @include fontSize($baseFontSize-xs, $baseLineHeight-xs);
-  }
+  &.-s { @include fontSize($baseFontSize-s, $baseLineHeight-s); }
+  &.-xs {  @include fontSize($baseFontSize-xs, $baseLineHeight-xs); }
 }

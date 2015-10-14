@@ -53,6 +53,7 @@ $Hero-alignFigure-l: true;
 @import 'components/Hero';
 @import 'components/Hero-item.-alignFigure';
 @import 'components/Hero-slider.slick';
+@import 'components/Hero.starters';
 
 
 // ========================================
@@ -103,7 +104,6 @@ $Form-collectionHorizontal-l: true;
 
 @import 'components/Navbar.config';
 @import 'components/Navbar';
-@import 'components/Navbar.-hideTrigger';
 @import 'components/Navbar.-horizontal';
 @import 'components/Navbar--primary';
 
