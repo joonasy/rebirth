@@ -17,28 +17,24 @@
 
     .Hero-wrap {
       display: flex;
-      justify-content: center;
+      justify-content: flex-start;
       position: relative;
       z-index: 2;
     }
 
-      // .Hero-grid {
-      //
-      // }
+      .Hero-content {
+        align-items: flex-start;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        min-height: rem($baseSpace * 10);
+        padding-bottom: rem($baseSpace * 2);
+        padding-top: rem($baseSpace * 2);
 
-        .Hero-content {
-          align-items: flex-start;
-          display: flex;
-          flex-direction: column;
-          justify-content: center;
-          min-height: rem($baseSpace * 10);
-          padding-bottom: rem($baseSpace * 2);
-          padding-top: rem($baseSpace * 2);
-
-          > *:last-child {
-            margin-bottom: 0;
-          }
+        > *:last-child {
+          margin: 0;
         }
+      }
 
     .Hero-figure {
       @extend %positionAbsoluteFill;
@@ -68,44 +64,34 @@
 
 
 /* ======
- * Hero - size
+ * Hero - Size
  * ====== */
 
 .Hero {
   &.-full {
-    .Hero-content {
-      min-height: 100vh;
-    }
+    .Hero-content { min-height: 100vh; }
   }
 
   &.-l {
-    .Hero-content {
-      min-height: rem($baseSpace * 18);
-    }
+    .Hero-content { min-height: rem($baseSpace * 18); }
 
     @include breakpoint('mediumUp') {
-      .Hero-content {
-        min-height: rem($baseSpace * 28);
-      }
+      .Hero-content { min-height: rem($baseSpace * 28); }
     }
   }
 
   &.-m {
-    .Hero-content {
-      min-height: rem($baseSpace * 14);
-    }
+    .Hero-content { min-height: rem($baseSpace * 14); }
 
     @include breakpoint('mediumUp') {
-      .Hero-content {
-        min-height: rem($baseSpace * 16);
-      }
+      .Hero-content { min-height: rem($baseSpace * 16); }
     }
   }
 }
 
 
 /* ======
- * Hero item - coloring
+ * Hero item - Coloring
  * ====== */
 
 .Hero-item {
@@ -113,17 +99,38 @@
     background-color: #ffffff;
     color: #ffffff;
 
-    .Hero-overlay {
-      background-color: rgba(#000000, 0.5);
-    }
+    .Hero-overlay { background-color: rgba(#000000, 0.5); }
   }
 
   &.-color-darkOnLight {
     background-color: $colorText;
     color: $colorText;
 
-    .Hero-overlay {
-      background-color: rgba(#ffffff, 0.75);
+    .Hero-overlay {  background-color: rgba(#ffffff, 0.75); }
+  }
+}
+
+
+/* ======
+ * Hero item - Align
+ * ====== */
+
+.Hero-item {
+  &.-alignContent-center {
+    .Hero-wrap { justify-content: center; }
+
+    .Hero-content {
+      align-items: center;
+      text-align: center;
+    }
+  }
+
+  &.-alignContent-right {
+    .Hero-wrap { justify-content: flex-end; }
+
+    .Hero-content {
+      align-items: flex-end;
+      text-align: right;
     }
   }
 }
@@ -135,23 +142,9 @@
 
 .Hero-item--primary {
   .Hero-content {
-    //> .Grid-cell:first-child {
-      width: 80%;
+    width: 80%;
 
-      @include breakpoint('smallUp') { width: 75%; }
-      @include breakpoint('mediumUp') { width: 50%; }
-    //}
-
-    &.-justify-center {
-      .Hero-content {
-        text-align: center;
-      }
-    }
-
-    &.-justify-end {
-      .Hero-content {
-        text-align: right;
-      }
-    }
+    @include breakpoint('smallUp') { width: 75%; }
+    @include breakpoint('mediumUp') { width: 50%; }
   }
 }
