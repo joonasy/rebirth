@@ -2,6 +2,7 @@
 // Navbar
 // ========================================
 
+$Navbar-space: $baseSpace; // $baseLineHeightPx/$baseFontSize * 1rem
 $Navbar-horizontalKeepTitle: true !default;
 $Navbar-horizontal: false !default;
 $Navbar-horizontal-s: false !default;

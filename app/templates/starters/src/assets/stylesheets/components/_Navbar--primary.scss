@@ -3,10 +3,19 @@
  * ========================================
  *
  * @extends `.Navbar {}` in _Navbar.scss
+ * @reusable true
  */
 
 .Navbar--primary {
   background-color: #ffffff;
+
+  .Navbar-item {
+    &.is-active {
+      > .Navbar-link {
+        color: $colorPrimary;
+      }
+    }
+  }
 
   .Navbar-link {
     background-color: #ffffff;
@@ -17,21 +26,21 @@
     &:hover { color: $colorLink; }
   }
 
-  .Navbar-subTrigger {
+  .Navbar-trigger {
     background-color: #ffffff;
     border-left-color: darken(#ffffff, 8);
     border-top-color: darken(#ffffff, 8);
     color: $colorText;
 
     &:hover {
-      .Navbar-subTrigger-icon {
+      .Navbar-trigger-icon {
         &:before { background: $colorLink; }
         &:after { color: $colorLink; }
       }
     }
   }
 
-    .Navbar-subTrigger-icon {
+    .Navbar-trigger-icon {
       &:before {
         background: $colorText;
         transition: background-color $transitionDuration;
@@ -52,13 +61,13 @@
       &:hover { color: $colorLink; }
     }
 
-    .Navbar-subTrigger {
+    .Navbar-trigger {
       background-color: darken(#ffffff, 6);
       border-color: darken(#ffffff, 12);
       color: inherit;
     }
 
-      .Navbar-subTrigger-icon {
+      .Navbar-trigger-icon {
         &:before { background-color: $colorText; }
         &:after { color: $colorText; }
       }
@@ -74,7 +83,7 @@
         &:hover { color: $colorLink; }
       }
 
-      .Navbar-subTrigger {
+      .Navbar-trigger {
         background-color: transparent;
         border-color: darken(#ffffff, 18);
         color: inherit;
@@ -82,27 +91,46 @@
     }
   }
 
-  .Navbar-trigger-inner {
+  .Navbar-ctrl-inner {
     background-color: $colorPrimary;
     color: #ffffff;
   }
 
-    .Navbar-trigger-title {
+    .Navbar-ctrl-title {
       background-color: $colorPrimary;
       color: #ffffff;
     }
 
-    .Navbar-trigger-sub {
+    .Navbar-ctrl-trigger {
       background-color: #ffffff;
       border-color: transparent;
       color: $colorPrimary;
     }
 
-      .Navbar-trigger-sub-icon {
+      .Navbar-ctrl-trigger-icon {
         border-top-color: $colorPrimary;
 
         &:before, &:after {
           background-color: $colorPrimary;
         }
       }
+
+
+  /* ======
+   * Larger widths
+   * ====== */
+
+  &.-l-horizontal {
+    @include breakpoint('largeUp') {
+      .Navbar-sub {
+        .Navbar-link  {
+          background-color: transparent;
+          border-color: darken(#ffffff, 12);
+          color: inherit;
+
+          &:hover { color: $colorLink; }
+        }
+      }
+    }
+  }
 }

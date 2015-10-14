@@ -9,12 +9,12 @@ import toggle from '../plugins/toggle';
 
 class Navbar {
   constructor() {
-    this.$navBar = $('.js-Navbar');
-    this.$navBarTrigger = $('.js-Navbar-trigger', this.$navBar);
-    this.$navItem = $('.Navbar-item', this.$navBar);
-    this.$navSubTrigger = $('.Navbar-subTrigger', this.$navBar);
-    this.$navLink = $('.Navbar-link', this.$navBar).filter(function() {
-          return $(this).siblings(this.$navSubTrigger).length;
+    this.$nav = $('.js-Navbar');
+    this.$navSelfTrigger = $('.js-NavbarSelfTrigger', this.$nav);
+    this.$navItem = $('.Navbar-item', this.$nav);
+    this.$navTrigger = $('.Navbar-trigger', this.$nav);
+    this.$navLink = $('.Navbar-link', this.$nav).filter(function() {
+          return $(this).siblings(this.$navTrigger).length;
         });
   }
 
@@ -24,12 +24,12 @@ class Navbar {
 
   navbarInit() {
     toggle({
-      trigger: this.$navBarTrigger,
-      element: this.$navBar
+      trigger: this.$navSelfTrigger,
+      element: this.$nav
     });
 
     toggle({
-      trigger: this.$navSubTrigger,
+      trigger: this.$navTrigger,
       element: this.$navItem,
       toggleClosest: true,
       unToggleParentSiblings: true,
@@ -41,7 +41,7 @@ class Navbar {
       element: this.$navItem,
       toggleClosest: true,
       unToggleParentSiblings: true,
-      disableFirstClickOnTouch: true,
+      disableFirstClickOnTouch: $(window).width() > 1024,
       unToggleOtherToggles: false
     });
   }
