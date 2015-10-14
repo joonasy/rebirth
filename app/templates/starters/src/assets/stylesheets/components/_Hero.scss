@@ -11,22 +11,34 @@
 
   .Hero-item {
     position: relative;
+    overflow: hidden;
     width: 100%;
   }
 
     .Hero-wrap {
+      display: flex;
+      justify-content: center;
       position: relative;
       z-index: 2;
     }
 
-      .Hero-grid {
-        align-items: center;
-        min-height: rem($baseSpace * 10);
-        padding-bottom: rem($baseSpace * 2);
-        padding-top: rem($baseSpace * 2);
-      }
+      // .Hero-grid {
+      //
+      // }
 
-        .Hero-title {}
+        .Hero-content {
+          align-items: flex-start;
+          display: flex;
+          flex-direction: column;
+          justify-content: center;
+          min-height: rem($baseSpace * 10);
+          padding-bottom: rem($baseSpace * 2);
+          padding-top: rem($baseSpace * 2);
+
+          > *:last-child {
+            margin-bottom: 0;
+          }
+        }
 
     .Hero-figure {
       @extend %positionAbsoluteFill;
@@ -61,30 +73,30 @@
 
 .Hero {
   &.-full {
-    .Hero-grid {
+    .Hero-content {
       min-height: 100vh;
     }
   }
 
   &.-l {
-    .Hero-grid {
+    .Hero-content {
       min-height: rem($baseSpace * 18);
     }
 
     @include breakpoint('mediumUp') {
-      .Hero-grid {
+      .Hero-content {
         min-height: rem($baseSpace * 28);
       }
     }
   }
 
   &.-m {
-    .Hero-grid {
+    .Hero-content {
       min-height: rem($baseSpace * 14);
     }
 
     @include breakpoint('mediumUp') {
-      .Hero-grid {
+      .Hero-content {
         min-height: rem($baseSpace * 16);
       }
     }
@@ -118,27 +130,27 @@
 
 
 /* ======
- * Hero - Primary
+ * Hero item - Primary
  * ====== */
 
-.Hero--primary {
-  .Hero-grid {
-    > .Grid-cell {
+.Hero-item--primary {
+  .Hero-content {
+    //> .Grid-cell:first-child {
       width: 80%;
 
       @include breakpoint('smallUp') { width: 75%; }
       @include breakpoint('mediumUp') { width: 50%; }
+    //}
+
+    &.-justify-center {
+      .Hero-content {
+        text-align: center;
+      }
     }
 
     &.-justify-end {
       .Hero-content {
         text-align: right;
-      }
-    }
-
-    &.-justify-center {
-      .Hero-content {
-        text-align: center;
       }
     }
   }
