@@ -114,12 +114,13 @@ $fontsPath: '../fonts';
 
 
 // ========================================
-// Layout
+// Wrap
 // ========================================
 
-$Header-zIndex: 100;
-$Page-zIndex: 99;
 $Wrap-width: 1140px;
+$Wrap-edgeSpace: $baseEdgeSpace;
+$Wrap-edgeSpace-l: $baseSpace * 2;
+$Wrap-maxWidth: $Wrap-width + ($Wrap-edgeSpace-l * 2);
 
 
 // ========================================
@@ -155,6 +156,14 @@ $Width-l: true !default;
 
 $transitionDuration: 0.15s;
 $transitionDelay: $transitionDuration;
+
+
+// ========================================
+// Layout
+// ========================================
+
+$Header-zIndex: 100;
+$Page-zIndex: 99;
 
 
 // ========================================
