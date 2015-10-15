@@ -247,6 +247,7 @@ var MyGenerator = yeoman.generators.Base.extend({
         var startersDir = this.templatePath('starters/src/assets/');
 
         var cssAssets = [
+          'components/_Component.scss',
           'components/_Heading.scss',
           'components/_Icon.scss',
           'components/_Ieframe.scss',
