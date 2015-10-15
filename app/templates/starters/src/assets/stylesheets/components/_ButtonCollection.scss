@@ -30,10 +30,14 @@
   }
 
   &:not([class*='-horizontal']) {
-    > .Button {
+    > .-border {
       &:not(:last-child) {
         border-bottom-width: 0;
         line-height: rem($Button-height - $Button-borderWidth);
+
+        &.-l {
+          line-height: rem(($Button-height * $Button-l) - ($Button-borderWidth));
+        }
 
         &.-s {
           line-height: rem(($Button-height * $Button-s) - ($Button-borderWidth));

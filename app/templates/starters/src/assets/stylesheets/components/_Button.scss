@@ -5,30 +5,17 @@
  * @reusable true
  */
 
-@mixin buttonSize($scale: 1, $fontSize: $baseFontSize) {
-  @if $scale <= 0.5  {
-    $scaleMargin: 0.5
-  } @elseif $scale < 1 {
-    $scaleMargin: 1
-  } @else {
-    $scaleMargin: $scale
-  }
-
-  @include fontSize($fontSize, rem(($Button-height * $scale) - ($Button-borderWidth * 2)));
-  margin-bottom: rem(($baseSpace - ($Button-height * $scale)) + ($baseSpace * 2 * $scaleMargin));
-  padding: 0 rem($baseSpace * $scale);
-}
-
 .Button {
   @extend %textTruncate;
-  @include buttonSize();
+  @include fontSize($baseFontSize, rem($Button-height));
   background-color: transparent;
-  border: $Button-borderWidth solid transparent;
   cursor: pointer;
   display: inline-block;
   font-weight: $baseFontWeightStrong;
+  margin-bottom: rem(($baseSpace - ($Button-height)) + ($baseSpace * 2));
   margin-right: rem($baseSpace / 2);
   outline: 0;
+  padding: 0 rem($baseSpace);
   position: relative;
   text-align: center;
   transition: $transitionDuration;
@@ -44,7 +31,7 @@
 
 
 /* ======
- * Button - shape
+ * Button - Style
  * ====== */
 
 .Button {
@@ -53,22 +40,43 @@
   }
 
   &.-pill {
-    border-radius: $Button-pillBorderRadius;
+    border-radius: 60px;
+  }
+
+  &.-border {
+    border: $Button-borderWidth solid transparent;
+    line-height: rem(($Button-height) - ($Button-borderWidth * 2));
   }
 }
 
 
 /* ======
- * Button - size
+ * Button - Size
  * ====== */
 
 .Button {
-  &.-s {
-    @include buttonSize($Button-s, $baseFontSize-s);
-  }
+  $h: $Button-height;
+  $l: $Button-l;
+  $s: $Button-s;
 
   &.-l {
-    @include buttonSize($Button-l, $baseFontSize-l);
+    @include fontSize($baseFontSize-l, rem(($h * $l)));
+    margin-bottom: rem(($baseSpace - ($h * $l)) + ($baseSpace * 2 * $l));
+    padding: 0 rem($baseSpace * $l);
+
+    &.-border {
+      line-height: rem(($h * $l) - ($Button-borderWidth * 2));
+    }
+  }
+
+  &.-s {
+    @include fontSize($baseFontSize-s, rem(($h * $s)));
+    margin-bottom: rem(($baseSpace - ($h * $s)) + ($baseSpace * 2));
+    padding: 0 rem($baseSpace * $s);
+
+    &.-border {
+      line-height: rem(($h * $s) - ($Button-borderWidth * 2));
+    }
   }
 
   &.-full {
@@ -79,7 +87,7 @@
 
 
 /* ======
- * Button - disabled state
+ * Button - States
  * ====== */
 
 .Button {
@@ -92,12 +100,12 @@
 
 
 /* ======
- * Button - primary modifier
+ * Button - Primary
  * ====== */
 
 .Button--primary {
   background-color: $colorPrimary;
-  border-color: $colorPrimary;
+  border-color: transparent;
   color: #ffffff;
 
   &:hover,
@@ -109,6 +117,8 @@
 
   &.-border {
     background-color: transparent;
+    background-image: none;
+    border-color: $colorPrimary;
     color: $colorText;
 
     &:hover,
