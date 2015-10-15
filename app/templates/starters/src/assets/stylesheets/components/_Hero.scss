@@ -69,22 +69,32 @@
 
 .Hero {
   &.-full {
-    .Hero-content { min-height: 100vh; }
+    .Hero-content {
+      min-height: 100vh;
+    }
   }
 
   &.-l {
-    .Hero-content { min-height: rem($baseSpace * 18); }
+    .Hero-content {
+      min-height: rem($baseSpace * 18);
+    }
 
     @include breakpoint('mediumUp') {
-      .Hero-content { min-height: rem($baseSpace * 28); }
+      .Hero-content {
+        min-height: rem($baseSpace * 28);
+      }
     }
   }
 
   &.-m {
-    .Hero-content { min-height: rem($baseSpace * 14); }
+    .Hero-content {
+      min-height: rem($baseSpace * 14);
+    }
 
     @include breakpoint('mediumUp') {
-      .Hero-content { min-height: rem($baseSpace * 16); }
+      .Hero-content {
+        min-height: rem($baseSpace * 16);
+      }
     }
   }
 }
@@ -99,14 +109,18 @@
     background-color: #ffffff;
     color: #ffffff;
 
-    .Hero-overlay { background-color: rgba(#000000, 0.5); }
+    .Hero-overlay {
+      background-color: rgba(#000000, 0.5);
+    }
   }
 
   &.-color-darkOnLight {
     background-color: $colorText;
     color: $colorText;
 
-    .Hero-overlay {  background-color: rgba(#ffffff, 0.75); }
+    .Hero-overlay {
+      background-color: rgba(#ffffff, 0.75);
+    }
   }
 }
 
@@ -144,7 +158,12 @@
   .Hero-content {
     width: 80%;
 
-    @include breakpoint('smallUp') { width: 75%; }
-    @include breakpoint('mediumUp') { width: 50%; }
+    @include breakpoint('smallUp') {
+      width: 75%;
+    }
+
+    @include breakpoint('mediumUp') {
+      width: 50%;
+    }
   }
 }

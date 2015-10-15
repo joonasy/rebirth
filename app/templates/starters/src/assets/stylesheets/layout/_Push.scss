@@ -19,7 +19,9 @@
   .#{$namespace}Push--11of12 { left: 91.666%; }
 }
 
-[class*='Push--'] { position: relative; }
+[class*='Push--'] {
+  position: relative;
+}
 
 @if $Push {
   @include Pull();

@@ -33,9 +33,17 @@
  * ====== */
 
 .Text {
-  &.-center {  text-align: center; }
-  &.-left { ext-align: left; }
-  &.-right { text-align: right; }
+  &.-center {
+    text-align: center;
+  }
+
+  &.-left {
+    text-align: left;
+  }
+
+  &.-right {
+    text-align: right;
+  }
 }
 
 
@@ -52,6 +60,11 @@
     }
   }
 
-  &.-s { @include fontSize($baseFontSize-s, $baseLineHeight-s); }
-  &.-xs {  @include fontSize($baseFontSize-xs, $baseLineHeight-xs); }
+  &.-s {
+    @include fontSize($baseFontSize-s, $baseLineHeight-s);
+  }
+
+  &.-xs {
+    @include fontSize($baseFontSize-xs, $baseLineHeight-xs);
+  }
 }

@@ -35,7 +35,8 @@
       padding: 5px;
       width: 16px;
 
-      &:hover, &:focus {
+      &:hover,
+      &:focus {
         outline: none;
       }
 
@@ -50,10 +51,6 @@
         transition: border-color $transitionDuration;
         width: 6px;
       }
-    }
-
-    &.slick-active button:before {
-      background-color: $colorPrimary;
     }
   }
 }

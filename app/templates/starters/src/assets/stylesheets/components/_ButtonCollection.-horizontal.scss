@@ -13,7 +13,9 @@
     > .Button {
       border-left-width: 0;
 
-      &:not(.-border) { box-shadow: -1px 0 $ButtonCollection-separatorColor; }
+      &:not(.-border) {
+        box-shadow: -1px 0 $ButtonCollection-separatorColor;
+      }
 
       &:first-child {
         border-left-width: $Button-borderWidth;
@@ -22,19 +24,31 @@
     }
 
     > .-round {
-      &:first-child { border-radius: $Button-roundBorderRadius 0 0 $Button-roundBorderRadius; }
-      &:last-child { border-radius: 0 $Button-roundBorderRadius $Button-roundBorderRadius 0; }
+      &:first-child {
+        border-radius: $Button-roundBorderRadius 0 0 $Button-roundBorderRadius;
+      }
+
+      &:last-child {
+        border-radius: 0 $Button-roundBorderRadius $Button-roundBorderRadius 0;
+      }
     }
 
     > .-pill {
-      &:first-child { border-radius: $Button-pillBorderRadius 0 0 $Button-pillBorderRadius; }
-      &:last-child { border-radius: 0 $Button-pillBorderRadius $Button-pillBorderRadius 0; }
+      &:first-child {
+        border-radius: $Button-pillBorderRadius 0 0 $Button-pillBorderRadius;
+      }
+
+      &:last-child {
+        border-radius: 0 $Button-pillBorderRadius $Button-pillBorderRadius 0;
+      }
     }
 
     &.-justify {
       align-items: flex-start;
 
-      > .Button { flex: 1; }
+      > .Button {
+        flex: 1;
+      }
     }
   }
 }

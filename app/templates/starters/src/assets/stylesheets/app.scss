@@ -43,10 +43,12 @@
 @import 'components/Text';
 @import 'components/Heading';
 
-// Layout based components
+// Base layout components
 @import 'layout/Container';
-@import 'layout/Header';
 @import 'layout/Grid';
-@import 'layout/Footer';
 @import 'layout/Width';
 @import 'layout/Wrap';
+
+// Layout components
+@import 'layout/Header';
+@import 'layout/Footer';

@@ -39,6 +39,7 @@ This styleguide outlines our internal standards for writing CSS (and more specif
 * [Coding style and structure](style.md)
     * Stylesheet formatting
     * Comments & titling
+    * Multi-line CSS
     * CSS/Sass folder structure
     * Component structure
     * Structuring partials

@@ -14,11 +14,14 @@
   flex-direction: column;
   margin-bottom: rem($baseSpace);
 
-  .Form-item, .Form-addon, .Form-button {
+  .Form-item,
+  .Form-addon,
+  .Form-button {
     margin-bottom: 0;
   }
 
-  .Form-item:not(textarea), .Form-addon {
+  .Form-item:not(textarea),
+  .Form-addon {
     @include textTruncate();
   }
 
@@ -41,17 +44,33 @@
 
     &:first-child {
       .-round {
-        &:first-child { border-radius: $Form-borderRadius 0 0 0; }
-        &:last-child { border-radius: 0 $Form-borderRadius 0 0; }
-        &:only-child { border-radius: $Form-borderRadius $Form-borderRadius 0 0; }
+        &:first-child {
+          border-radius: $Form-borderRadius 0 0 0;
+        }
+
+        &:last-child {
+          border-radius: 0 $Form-borderRadius 0 0;
+        }
+
+        &:only-child {
+          border-radius: $Form-borderRadius $Form-borderRadius 0 0;
+        }
       }
     }
 
     &:last-child {
       .-round {
-        &:first-child { border-radius: 0 0 0 $Form-borderRadius; }
-        &:last-child { border-radius: 0 0 $Form-borderRadius 0; }
-        &:only-child { border-radius: 0 0 $Form-borderRadius $Form-borderRadius; }
+        &:first-child {
+          border-radius: 0 0 0 $Form-borderRadius;
+        }
+
+        &:last-child {
+          border-radius: 0 0 $Form-borderRadius 0;
+        }
+
+        &:only-child {
+          border-radius: 0 0 $Form-borderRadius $Form-borderRadius;
+        }
       }
     }
 

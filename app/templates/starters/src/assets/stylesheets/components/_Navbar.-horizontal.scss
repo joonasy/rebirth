@@ -1,5 +1,5 @@
 /* ========================================
- * Horizontal modifier
+ * Navbar - Horizontal modifier
  * ========================================
  *
  * @extends `.Navbar {}` in _Navbar.scss
@@ -10,14 +10,18 @@
   .Navbar.#{$namespace}-horizontal {
     justify-content: space-between;
 
-    .Navbar-ctrl { display: none; }
+    .Navbar-ctrl {
+      display: none;
+
+      + ul {
+        display: flex;
+      }
+    }
 
     > ul {
       display: flex;
       padding: 0 $Navbar-space;
     }
-
-    .Navbar-ctrl + ul { display: flex; }
 
       > ul > .Navbar-item {
         position: relative;
@@ -84,10 +88,21 @@
     .Navbar.#{$namespace}-horizontal.-keepTitle {
       display: flex;
 
-      .Navbar-ctrl { display: flex; }
-      .Navbar-ctrl-inner { width: auto; }
-      .Navbar-ctrl-text { display: none; }
-      .Navbar-ctrl-trigger { display: none; }
+      .Navbar-ctrl {
+        display: flex;
+      }
+
+        .Navbar-ctrl-inner {
+          width: auto;
+        }
+
+          .Navbar-ctrl-text {
+            display: none;
+          }
+
+      .Navbar-ctrl-trigger {
+        display: none;
+      }
     }
   }
 }

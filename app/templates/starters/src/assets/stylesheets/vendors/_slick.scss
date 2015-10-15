@@ -91,3 +91,11 @@
     height: auto;
   }
 }
+
+.Indicator {
+  li {
+    &.slick-active button:before {
+      background-color: $colorPrimary;
+    }
+  }
+}

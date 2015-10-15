@@ -4,21 +4,21 @@
 
 @mixin shapeTriangle($width: 20px, $height: 20px, $direction: up, $color: $colorText) {
   @if $direction == right {
-    border-top: $height solid transparent;
     border-bottom: $height solid transparent;
     border-left: $width solid $color;
+    border-top: $height solid transparent;
   }
 
   @if $direction == left {
-    border-top: $height solid transparent;
     border-bottom: $height solid transparent;
     border-right: $width solid $color;
+    border-top: $height solid transparent;
   }
 
   @if $direction == up {
+    border-bottom: $height solid $color;
     border-left: $width solid transparent;
     border-right: $width solid transparent;
-    border-bottom: $height solid $color;
   }
 
   @if $direction == down {
