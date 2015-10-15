@@ -1,0 +1,21 @@
+/* ========================================
+ * Label
+ * ========================================
+ *
+ * @reusable true
+ */
+
+.Label {
+  @include textTruncate();
+  @include fontSize($baseFontSize-xs, 1);
+  border-radius: 30px;
+  display: inline-block;
+  font-weight: $headingFontWeightStrong;
+  margin-bottom: rem($baseSpace);
+  padding: rem($baseSpace / 6) rem($baseSpace / 2);
+  text-transform: uppercase;
+}
+
+.Label--primary {
+  background-color: $colorPrimary;
+}
