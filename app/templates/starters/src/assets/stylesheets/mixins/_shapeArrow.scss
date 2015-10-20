@@ -16,11 +16,11 @@
   position: relative;
 
   @if $line {
-    width: $lineHeight * $size;
     height: $lineHeight * $size;
+    width: $lineHeight * $size;
   } @else {
-    width: $caretWidth * $size;
     height: $caretWidth * $size;
+    width: $caretWidth * $size;
   }
 
   @if not even($thickness) and even($caretWidth) or
@@ -50,15 +50,15 @@
   //
   @if $line {
     &:before {
+      background-color: $color;
       content: '';
       display: block;
-      position: absolute;
-      background-color: $color;
       height: ($lineHeight) * $size;
       left: 50%;
+      margin-left: -($thickness / 2);
+      position: absolute;
       top: 0;
       width: $thickness;
-      margin-left: -($thickness / 2);
     }
   }
 
