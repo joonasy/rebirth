@@ -29,14 +29,14 @@
         min-height: rem($baseSpace * 10);
         padding-bottom: rem($baseSpace * 2);
         padding-top: rem($baseSpace * 2);
-
-        > *:last-child {
-          margin: 0;
-        }
       }
 
         .Hero-content-item {
           max-width: 100%;
+
+          > *:last-child {
+            margin: 0;
+          }
         }
 
     .Hero-figure {
