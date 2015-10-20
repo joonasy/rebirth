@@ -60,17 +60,20 @@
 
   .Form-item--select {
     select {
+      background-color: transparent;
+      border: 1px solid transparent;
       cursor: pointer;
-      display: block;
-      height: 100%;
       left: 0;
-      opacity: 0;
-      position: absolute;
-      top: 0;
+      outline: 0;
+      position: relative;
       width: 100%;
-      z-index: 1;
+      z-index: 2;
       -webkit-appearance: none;
       -moz-appearance: none;
+
+      &::-ms-expand {
+        display: none;
+      }
     }
   }
 
