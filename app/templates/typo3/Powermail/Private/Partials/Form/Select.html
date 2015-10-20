@@ -5,7 +5,6 @@
 </div>
 <div id="powermail_fieldwrap_{field.uid}" class="Form-item Form-item--select -border -round powermail_fieldwrap powermail_fieldwrap_select powermail_fieldwrap_{field.uid} {field.css}">
   <label for="powermail_field_{field.marker}" class="powermail_label" title="{field.description}">
-    <div class="Form-item--select-text">Please choose...</div>
     <vh:Form.SelectField
       options="{field.modifiedSettings}"
       property="{field.marker}"
@@ -15,4 +14,5 @@
       multiple="{field.multiselectForField}"
       value="{vh:Misc.PrefillField(field:field, mail:mail)}" />
   </label>
+  <span class="Form-icon -right"><i class="IconCss -chevronDown -s"></i></span>
 </div>
