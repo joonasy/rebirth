@@ -2,8 +2,6 @@
  * Hero - Starters
  * ========================================
  *
- * Random uncategorised starters
- *
  * @reusable true
  */
 
@@ -21,7 +19,6 @@
     background-color: rgba($colorPrimary, 0.75);
     padding: 0 $baseEdgeSpace;
     max-width: rem($baseSpace * 20);
-    width: 50%;
 
     @include breakpoint('mediumUp') {
       padding: 0 rem($baseSpace * 2);
