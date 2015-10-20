@@ -1,19 +1,21 @@
 /* ========================================
- * Form collection - Horizontal
+ * Form grid - Horizontal
  * ========================================
  *
- * @extends `.Form-collection{}` in _Form-collection.scss
+ * @extends `.Form-grid{}` in _Form-grid.scss
  * @reusable true
  */
 
-@mixin FormCollectionHorizontal($namespace: '') {
-  .Form-collection.#{$namespace}-horizontal {
+@mixin FormGridHorizontal($namespace: '') {
+  .Form-grid.#{$namespace}-horizontal {
     flex-direction: row;
 
-    > .Form-collection {
+    > .Form-cell {
+      flex-direction: row;
+
       &:not(:first-child) {
-        .-border {
-          border-top-width: $Form-borderWidth;
+        .-round {
+          border-radius: 0;
         }
       }
 
@@ -21,10 +23,6 @@
         .-round {
           &:first-child {
             border-radius: $Form-borderRadius 0 0 $Form-borderRadius;
-          }
-
-          &:last-child {
-            border-radius: 0;
           }
         }
       }
@@ -37,10 +35,6 @@
         }
 
         .-round {
-          &:first-child {
-            border-radius: 0;
-          }
-
           &:last-child {
             border-radius: 0 $Form-borderRadius $Form-borderRadius 0;
           }
@@ -48,6 +42,7 @@
       }
 
       > .-border {
+        border-top-width: $Form-borderWidth;
         border-right-width: 0;
       }
     }
@@ -58,24 +53,24 @@
   }
 }
 
-@if $Form-collectionHorizontal {
-  @include FormCollectionHorizontal();
+@if $Form-gridHorizontal {
+  @include FormGridHorizontal();
 }
 
-@if $Form-collectionHorizontal-s {
+@if $Form-gridHorizontal-s {
   @include breakpoint('smallUp') {
-    @include FormCollectionHorizontal(-s);
+    @include FormGridHorizontal(-s);
   }
 }
 
-@if $Form-collectionHorizontal-m {
+@if $Form-gridHorizontal-m {
   @include breakpoint('mediumUp') {
-    @include FormCollectionHorizontal(-m);
+    @include FormGridHorizontal(-m);
   }
 }
 
-@if $Form-collectionHorizontal-l {
+@if $Form-gridHorizontal-l {
   @include breakpoint('largeUp') {
-    @include FormCollectionHorizontal(-l);
+    @include FormGridHorizontal(-l);
   }
 }

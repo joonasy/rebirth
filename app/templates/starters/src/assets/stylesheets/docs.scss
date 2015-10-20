@@ -86,14 +86,14 @@ $Button-collectionHorizontal-l: true;
 
 @import 'components/Form.config';
 
-$Form-collectionHorizontal: true;
-$Form-collectionHorizontal-s: true;
-$Form-collectionHorizontal-m: true;
-$Form-collectionHorizontal-l: true;
+$Form-gridHorizontal: true;
+$Form-gridHorizontal-s: true;
+$Form-gridHorizontal-m: true;
+$Form-gridHorizontal-l: true;
 
 @import 'components/Form';
-@import 'components/Form-collection';
-@import 'components/Form-collection.-horizontal';
+@import 'components/Form-grid';
+@import 'components/Form-grid.-horizontal';
 @import 'components/Form-addon';
 @import 'components/Form-icon';
 
