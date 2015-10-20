@@ -61,7 +61,7 @@
       align-items: center;
       border-top: 1px solid transparent;
       display: flex;
-      flex: 1;
+      flex: 1 0 auto;
       cursor: pointer;
       min-height: $Navbar-space * 2;
       padding: ($Navbar-space / 2) $Navbar-space floor(($Navbar-space - 1px) / 2) $Navbar-space;
