@@ -8,8 +8,6 @@
 .Grid {
   display: flex;
   list-style: none;
-  flex: 0 1 auto;
-  flex-direction: row;
   flex-wrap: wrap;
   margin-bottom: 0;
   margin-left: rem(-($Grid-gutter));
@@ -17,7 +15,6 @@
 }
 
   .Grid-cell {
-    flex: 0 0 auto;
     max-width: 100%;
     padding-left: rem($Grid-gutter);
     padding-right: rem($Grid-gutter);
@@ -26,7 +23,7 @@
 
 
 /* ======
- * Grid - sizing and layout
+ * Grid - Sizing and layout
  * ====== */
 
 @mixin GridSize($amount: 0) {
@@ -62,7 +59,7 @@
 
 
 /* ======
- * Grid - justify
+ * Grid - Justify
  * ====== */
 
 @mixin GridJustify($namespace: '') {
@@ -96,7 +93,7 @@
 
 
 /* ======
- * Grid - aligning of cells
+ * Grid - Aligning of cells
  * ====== */
 
 @mixin GridAlign($namespace: '') {
