@@ -76,7 +76,13 @@
     }
   }
 
-  > .Form-button.-round {
-    border-radius: 0 0 $Form-borderRadius $Form-borderRadius;
+  > .Form-button {
+    &.-round {
+      border-radius: 0 0 $Form-borderRadius $Form-borderRadius;
+    }
+
+    &.-border {
+      border-top-width: 0;
+    }
   }
 }

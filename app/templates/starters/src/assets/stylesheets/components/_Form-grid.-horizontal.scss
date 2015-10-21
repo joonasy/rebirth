@@ -47,8 +47,14 @@
       }
     }
 
-    > .Form-button.-round {
-      border-radius: 0 $Form-borderRadius $Form-borderRadius 0;
+    > .Form-button {
+      &.-round {
+        border-radius: 0 $Form-borderRadius $Form-borderRadius 0;
+      }
+
+      &.-border {
+        border-top-width: $Form-borderWidth;
+      }
     }
   }
 }
