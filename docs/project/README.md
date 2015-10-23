@@ -2,8 +2,7 @@
 
 Please read [CSS Styleguide](/docs/css/) and [JavaScript Styleguide](/docs/js/)  first.
 
-Project specific information and structure: [Typo3](typo3/)
-
+Project specific information and structure: [Typo3](typo3/typo3.md)
 
 ### Shared files and source folder structure across projects
 
@@ -51,7 +50,6 @@ Project specific information and structure: [Typo3](typo3/)
 * **17.** In build process an asset manifest, mapping the original paths to the revisioned paths, will be written here.
 
 \* Should be ignored from [Git](http://git-scm.com/).
-
 
 ### Gulpfile
 

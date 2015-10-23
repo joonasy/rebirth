@@ -6,7 +6,6 @@ This startekit contains methods and ideas from various sources such as [BEM](htt
 
 This starter kit is **not a framework** but it contains predefined components and helpers that are meant to be modified based on your project needs.
 
-
 ## Features
 
 * Choose between `Html` or `Typo3` project types
@@ -17,23 +16,19 @@ This starter kit is **not a framework** but it contains predefined components an
 * Combine media queries
 * Browserify
 
-
 ## Getting started
 
 Please read and understand all of the following before doing anything. All of these documents will be converted to html docs later on.
-
 
 ### Styleguides
 
 * [CSS styleguide](https://bitbucket.org/mediasignal/my-web-starter-kit/src/master/docs/css/)
 * [JS styleguide (work in progress)](docs/js)
 
-
 ### Project structures and workflows
 
 * [Typo3](docs/project)
 * [Html](docs/project)
-
 
 ## Requirements
 
@@ -43,7 +38,6 @@ Install all the requirements before installing the generator.
 * [Npm](https://www.npmjs.org/)
 * [Yeoman](http://yeoman.io/) `npm install -g yo`
 * [Bower](http://bower.io/) npm install -g bower`
-
 
 ## Installing
 
@@ -59,18 +53,15 @@ or alternatively make a new directory, cd into it and run the generator:
 
     mkdir my-new-project && cd $_ && yo my
 
-
 ## Usage
 
 Run `npm run build` for building and `npm run dev` for developing.
-
 
 ## Contribute
 
 Please discuss about new ideas and things that you think should be modified. Currently all the styleguiding, components (CSS/JS) and generator logic has been made by Joonas Ylitalo [@joonasy](https://twitter.com/joonasy).
 
 [Learn more about contributing](https://bitbucket.org/mediasignal/my-web-starter-kit/src/master/docs/contribute.md)
-
 
 ## Todo (in random order)
 
@@ -86,7 +77,6 @@ Please discuss about new ideas and things that you think should be modified. Cur
 * Consider removing jQuery
 * Consider separating starters and the generator
 * Dockerfile (docker-compose) for docker environments
-
 
 ## License
 

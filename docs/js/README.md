@@ -2,7 +2,6 @@
 
 We use [Airbnb JavaScript Style Guide](https://github.com/airbnb/javascript) as our JavaScript styleguide.
 
-
 ## Structure
 
 ``` 
@@ -13,7 +12,7 @@ We use [Airbnb JavaScript Style Guide](https://github.com/airbnb/javascript) as 
     |   …
     |
     |── plugins/              # [3]
-    |   |── figureImgAsBg.js  
+    |   |── imgToParentBg.js  
     |   |── toggle.js         
     |   …
     | 
@@ -26,9 +25,9 @@ We use [Airbnb JavaScript Style Guide](https://github.com/airbnb/javascript) as 
 ```
 
 * **1.** Place all components here.
-* **2.** Component placeholder.
-* **3.** Place all plugins here.
-* **4.** 3rd party vendors that aren't added from Bower/Npm.
-* **5.** Place all JavaScript here you want to init in the head section of the HTML document.
-* **6.** Init all the components. Placed in the bottom area of the HTML document.
+* **2.** Component placeholder
+* **3.** Place all your own plugins here
+* **4.** 3rd party vendors that aren't added from Bower/Npm
+* **5.** Place all JavaScript here you want to init in the head section of the HTML document
+* **6.** Init all the components. Placed in the bottom of the HTML document.
 

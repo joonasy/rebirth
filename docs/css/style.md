@@ -2,7 +2,6 @@
 
 Please read [Naming conventions](naming-conventions.md), [Components](components.md) and [Helpers](helpers.md) first.
 
-
 ## Syntax and formatting
 
 One of the simplest forms of a styleguide is a set of rules regarding syntax and formatting. Having a standard way of writing CSS means that code will always look and feel familiar to all members of the team.
@@ -15,7 +14,6 @@ At a very high-level, we want
   * meaningful use of whitespace.
 
 But, as with anything, the specifics are somewhat irrelevant—consistency is key.
-
 
 ### Stylesheet formatting
 
@@ -58,7 +56,6 @@ But, as with anything, the specifics are somewhat irrelevant—consistency is ke
 }
 ```
 
-
 ## Multi-line CSS
 
 CSS should be written across multiple lines, except in very specific circumstances. There are a number of benefits to this:
@@ -73,7 +70,6 @@ Exceptions to this rule should be fairly apparent, such as similar rulesets that
 .margin--xs { margin: rem($baseSpace / 4) !important; }
 .margin--s  { margin: rem($baseSpace / 2) !important; }
 ```
-
 
 ## Comments and titling
 
@@ -91,7 +87,6 @@ When to use commenting
 As a rule, you should comment anything that isn’t immediately obvious from the code alone. That is to say, there is no need to tell someone that `color: red;`will make something red, but if you’re using `overflow: hidden;` to clear floats—as opposed to clipping an element’s overflow—this is probably something worth documenting.
 
 Titling, however, should be used always.
-
 
 ### First-level titles and comments
 
@@ -128,7 +123,6 @@ This title should appear at the top of each file (.scss, .css). If you are worki
 .another-selector {}
 ```
 
-
 ### Second-level titles and comments
 
 Use second-level titling for example if defining modifiers for a component. Leave a carriage return between this title and the next line of code. Each second-level title should be preceded by two (2) carriage returns.
@@ -151,7 +145,6 @@ Use second-level titling for example if defining modifiers for a component. Leav
 
 .Component--secondaryModifier {}
 ```
-
 
 ### Third-level titles, multiline and singleline comments
 
@@ -184,7 +177,6 @@ For large comments that document entire sections or components, we use a DocBloc
 ```
 
 These types of multiline + singleline comments allow us to keep all of our documentation in one place whilst referring to the parts of the ruleset to which they belong.
-
 
 ### Preprocessor comments
 

@@ -63,10 +63,9 @@ Here is listed default partial structure used across projects:
 * **7.** Contains all the shared configurable variables that can be used in all of our included partials. Component configurations are added here.
 * **8.** This is our primary sass file which collects all the partials.
 
-
 ### Primary Sass file (app.scss)
 
-[View app.scss](/app/templates/assets/stylesheets/app.scss)
+[View app.scss](../../app/templates/assets/stylesheets/app.scss)
 
 Structure our partials in the following order to prevent errors. Remember to alphabetize partials.
 
@@ -221,7 +220,6 @@ Here is an example of an component with the correct structure:
 * **10.** Define states after modifiers with second-level titles
 * **11.** Define variations with second-level titles after modifiers and states
 
-
 ## Structuring partials
 
 Read [Naming conventions](naming-conventions.md) first.
@@ -243,7 +241,6 @@ If you are build a large component which, say, contains over 400 lines it is adv
 If component modifiers (**4.**) or other component related partials contain _responsive variants_ (e.g `.Button.-m-modifierName {}`) it isn't necessary to include that variant in the file name.
 
 Component collections (**2.**) are always isolated.
-
 
 ##### Component configuration
 
@@ -271,7 +268,6 @@ components/Component/_Component.scss
 components/Component/_ComponentCollection.scss
 …   
 ```
-
 
 #### Helpers
 

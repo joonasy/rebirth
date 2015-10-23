@@ -1,10 +1,10 @@
 # Changelog
 
-## 0.2.3
+## 0.2.3 (2015-10-23)
 
-* IE9 support dropped
+* Rest of IE9 support dropped
 * `.Grid{}`, `.Hero{}`, `.Nav{}`, `.Form{}`, `.Button{}` have been reworked and changed to use flexbox
-* `.Form-collection{}` and `.ButtonCollection` are vertical aligned by default and can be switched to horizontal with `.-horizontal` (includes responsive variants) class
+* `.Form-collection{}` and `.ButtonCollection` are vertically aligned by default and can be switched to horizontal with `.-horizontal` (includes responsive variants) class
 * `imgToParentBg.js` now supports `<picture>`. Also Because Safari and iOS doesn't support `object-position` so there are optional parameters to target them.
 * Chromeframe removed
 
@@ -20,7 +20,7 @@
 * [JSCS](https://github.com/jscs-dev/node-jscs) styleguide checking
 * Component (scss/js) files restructured into their root folder. No more default `assets` folder.
 
-## 0.1.0 (2015-5-7)
+## 0.1.0 (2015-05-07)
 * Rest of the CSS styleguide done
 * Part of JS styleguide 
 * Project structure instructions
@@ -29,13 +29,13 @@
 * Form, Block and component starters
 * Hero uses object-fit with lazyloading (+ fallback).
 
-## 0.0.7 (2015-3-13)
+## 0.0.7 (2015-03-13)
 * CSS styleguide done ```docs/css```
 * Buttons, Navbar, Hero components are ready ```app/templates/starters/src/assets/stylesheets/components```
 * Bunch of helpers added ```app/templates/starters/src/assets/stylesheets/helpers```
 * Components and other css now follow the new styleguide syntax and structure
 
-## 0.0.6 (2015-2-17)
+## 0.0.6 (2015-02-17)
 * Project is now converted to (Mediasignal) Yeoman generator (generator-msc). Please read all the new project docs ```README.md & docs/*``` .
 * Default assets (CSS/JS) modified a lot. See ```app/templates/assets/```
 * CSS styleguide added
@@ -60,33 +60,33 @@
   * Enquire, Respond, Fastclick, Normalize
   * Note: Remember to manually convert normalize.css to _normalize.scss because seems that all the normalize scss versions add some unwanted variables
 
-## 0.0.5 (2013-7-8)
+## 0.0.5 (2013-07-08)
 * Started using Yeoman/Grunt for it's flexibility. I'm not going to explain here all the features they have, so just look at the code.
 * Bower is awesome, going to use it definitely
 * Smaller tab sizing, better comment styling and made some minor structural changes.
 
-## 0.0.4 (2013-6-16)
+## 0.0.4 (2013-06-16)
 * Better structuring logic learned from tampere.fi -project.
 
-## 0.0.3 (2013-5-13)
+## 0.0.3 (2013-05-13)
 * Git init
 * Converted the html boilerplate to middleman boilerplate. Lot's of changes.. OOCSS, BEM, directory structure etc.
 
-## 0.0.2 (2013-4-15)
+## 0.0.2 (2013-04-15)
 * Switched to SMACSS approach. All the .scss files are now separated into specific categories and combined in a master file.
     * assets/modules/ <- The modules directory is reserved for Sass code that doesn’t cause Sass to actually output CSS. Things like mixin declarations, functions, and variables.
     * assets/partials/ <- The partials directory is where the meat of CSS is constructed.
     * assets/vendor/ <- The vendor directory is for third-party CSS. This is handy when using prepackaged components developed by other people (or for your own components that are maintained in another project).
 * assets/js/lib/ -> assets/js/vendor/ for precise naming
 
-## 0.0.1 (2013-2-27)
+## 0.0.1 (2013-02-27)
 * Removed all rem -related stuff. I'd rather just use em's
 * Removed unnecessary mixins and plugins
 * Combined _2-base.scss & _3-global.scss
 * Update to Normalize.css 2.1.0.
 * Update to jQuery 1.9.1
 
-## 0.0.0 (2013-2-7)
+## 0.0.0 (2013-02-7)
 * Removed the old approach serving IE it's own stylesheet without media queries. I'm using respond.js again. Reason: much cleaner <head> and faster Sass compiling.
 * Updated vendors
 

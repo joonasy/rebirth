@@ -35,10 +35,10 @@ and helpers can be used alongside component classes.
 
 ```html
 <div class="Pants cf">
-  <a class="sizeFit" href="…">
+  <a class="colorPrimary" href="…">
     <img class="block" src="…" alt="">
   </a>
-  <p class="Pants-text textBreak">
+  <p class="Pants-content textBreak">
     …
   </p>
 </div>
@@ -50,12 +50,8 @@ usually start with a common string, e.g., `textCenter`, `textTruncate`;
 
 Any classes with terse names, e.g., `cf` and `nbfc`, are either
 particularly abstract or very commonly used helpers with otherwise
-excessively long names. For example, the `cf` helper is used to "contain
-floats" without clipping any overflow; the `nbfc` helper is used to create a
-"new block formatting context".
-
-Make sure to read the documentation within the Sass files of helpers. It will
-contain information about helper classes and their implementations.
+excessively long names. For example, the `cf` helper is used to "clearfix" without clipping any overflow; the `nbfc` helper is used to create a
+"new block formatting context". However I try to avoid these kind of shortcuts as they are pretty hard to understand at first sight.
 
 ## Modifiying helpers
 

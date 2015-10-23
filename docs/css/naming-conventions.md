@@ -12,11 +12,9 @@ We rely on structured class names, partly BEM-like naming, and meaningful hyphen
 
 The primary architectural division is between helpers and components.
 
-
 ## Helpers
 
 Low-level structural and positional traits. Helpers can be applied directly to any element within a component.
-
 
 ### helperName
 
@@ -38,7 +36,6 @@ Helpers must use a camelCase name. Helpers may also have modifiers and responsiv
 * **3.** Centers image in large Media Query breakpoint
 * **4.** Sets up large text in medium Media Query breakpoint
 
-
 ## Components
 
 The CSS responsible for component-specific styling.
@@ -51,13 +48,11 @@ This has several benefits when reading and writing HTML and CSS:
 * It keeps the specificity of selectors low.
 * It helps to decouple presentation semantics from document semantics.
 
-
 ## Naming components and modifiers
 
 Name things in CSS is to pick a name that is sensible, but somewhat ambiguous: aim for high reusability. For example, instead of a class like `.Nav--site`, choose something like `.Nav--primary`; rather than `.Footer-list`, favour a component with a modifier like `.List--link`.
 
 The differences in these names is that the first of each two examples is tied to a very specific use case: they can only be used as the site’s navigation or the footer’s links respectively. By using slightly more ambiguous names, we can increase our ability to reuse these components in different circumstances.
-
 
 ### ComponentName
 
@@ -72,7 +67,6 @@ The component's name must be written in [PascalCase](http://c2.com/cgi/wiki?Pasc
   …
 </section>
 ```
-
 
 ### ComponentName--modifierName
 
@@ -91,7 +85,6 @@ A component modifier (or component modifier) is a class that modifies the presen
   <span class="Button-item">…</span>
 </button>
 ```
-
 
 ### ComponentName.-chainable-modifierName
 
@@ -153,7 +146,6 @@ Chainable modifiers can also be added to component collections.
 }
 ```
 
-
 ## ComponentName.is-stateOfComponent
 
 Use `is-stateName` to reflect changes to a component's state. The state name
@@ -179,7 +171,6 @@ the component).
   …
 </article>
 ```
-
 
 ### ComponentName-descendantName
 
@@ -242,7 +233,6 @@ Parent component modifiers also modify their descendants by nesting, however in 
 </article>
 ```
 
-
 ### ComponentNameCollection
 
 > Components are descendants of component collections.
@@ -277,7 +267,6 @@ Some components need parent components to work properly. Component collections o
 </div>
 ```
 
-
 ## JavaScript hooks
 
 As a rule, it is unwise to bind your CSS and your JS onto the same class in your HTML. This is because doing so means you can’t have (or remove) one without (removing) the other. It is much cleaner, much more transparent, and much more maintainable to bind your JS onto specific classes.
@@ -290,18 +279,15 @@ Typically, these are classes that are prepended with js-, for example:
 
 This means that we can have an element elsewhere which can carry with style of `.Button {}`, but without the behaviour of `.js-Button`.
 
-When naming javascript hooks use camelCase.
-
+When naming JavaScript hooks use camelCase.
 
 ### data-* attributes
 
 A common practice is to use `data-*` attributes as JS hooks, but this is incorrect. `data-*` attributes, as per the spec, are used _to store custom data private to the page or application_. `data-*` attributes are designed to store data, not be bound to.
 
-
 ## Reserved namespaces and other keywords
 
 The following namespaces are reserved for specific use.
-
 
 ### Responsive variants
 
@@ -351,7 +337,6 @@ Example use of _margin_ helper which is activated in large breakpoint:
   …
 </div>
 ```
-
 
 ### Modifiers
 
