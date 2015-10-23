@@ -9,27 +9,26 @@
 .Form-grid {
   display: flex;
   flex-direction: column;
-  margin-bottom: rem($baseSpace);
+}
 
-  .Form-item,
-  .Form-addon,
-  .Form-button {
-    margin-bottom: 0;
-  }
-
-  .Form-item:not(textarea),
-  .Form-addon {
-    @include textTruncate();
-  }
-
-  .-round {
-    border-radius: 0;
-  }
-
-  > .Form-cell {
+  .Form-cell {
     display: flex;
     flex: 1 0 auto;
-    margin-bottom: 0;
+
+    .Form-item,
+    .Form-addon,
+    .Form-button {
+      margin-bottom: 0;
+    }
+
+    .Form-item:not(textarea),
+    .Form-addon {
+      @include textTruncate();
+    }
+
+    .-round {
+      border-radius: 0;
+    }
 
     &:not(:first-child) {
       .-border {
@@ -54,6 +53,8 @@
     }
 
     &:last-child {
+      margin-bottom: rem($baseSpace);
+
       .-round {
         &:first-child {
           border-radius: 0 0 0 $Form-borderRadius;
@@ -74,15 +75,10 @@
         border-right-width: 0;
       }
     }
-  }
 
-  > .Form-button {
-    &.-round {
-      border-radius: 0 0 $Form-borderRadius $Form-borderRadius;
-    }
-
-    &.-border {
-      border-top-width: 0;
+    > .Form-button {
+      &:only-child {
+        width: 100%;
+      }
     }
   }
-}

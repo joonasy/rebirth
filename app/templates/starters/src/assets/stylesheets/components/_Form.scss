@@ -42,6 +42,10 @@
     .touchevents & {
       font-size: 16px;
     }
+
+    &[type="search"] {
+      box-sizing: border-box;
+    }
   }
 
   .Form-button.Button {
@@ -59,12 +63,15 @@
   }
 
   .Form-item--select {
+    padding: 0;
+
     select {
       background-color: transparent;
       border: 1px solid transparent;
       cursor: pointer;
       left: 0;
       outline: 0;
+      padding: 0 rem($Form-padding);
       position: relative;
       width: 100%;
       z-index: 2;
