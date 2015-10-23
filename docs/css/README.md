@@ -6,7 +6,7 @@ My CSS styleguide is based on the following styleguides.
 * [CSS Guidelines (2.2.2)](http://cssguidelin.es)
 * [Sass Guidelines](http://sass-guidelin.es)
 
-This styleguide outlines our internal standards for writing CSS (and more specifically, Sass).
+This styleguide outlines standards for writing CSS (and more specifically, Sass).
 
 * What we want
     * keep stylesheets maintainable;
@@ -14,7 +14,7 @@ This styleguide outlines our internal standards for writing CSS (and more specif
     * keep stylesheets scalable;
     * keep our file structure distinct
 
-## Table of contents
+## TOC
 
 * [Design principles](design-principles.md)
 * [Components](components.md)
@@ -40,6 +40,7 @@ This styleguide outlines our internal standards for writing CSS (and more specif
     * Stylesheet formatting
     * Comments & titling
     * Multi-line CSS
+* [Coding style and structure](structure.md)
     * CSS/Sass folder structure
     * Component structure
     * Structuring partials
