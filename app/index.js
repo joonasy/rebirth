@@ -360,6 +360,16 @@ var MyGenerator = yeoman.generators.Base.extend({
           this.templatePath('typo3/Resources/Private/Partials/_Bottom.html'),
           this.destinationPath('Resources/Private/Partials/Bottom.html')
         );
+
+        this.template(
+          this.templatePath('typo3/_ext_emconf.php'),
+          this.destinationPath('ext_emconf.php')
+        );
+
+        this.template(
+          this.templatePath('typo3/_ext_tables.php'),
+          this.destinationPath('ext_tables.php')
+        );
       }
 
       if(this.htmlProject) {
