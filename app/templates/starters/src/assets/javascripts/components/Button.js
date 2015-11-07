@@ -2,10 +2,10 @@
  * Button
  * ======================================== */
 
-'use strict';
+'use strict'
 
 import $ from 'jquery';
-import toggle from '../plugins/toggle';
+import classToggle from '../utils/classToggle';
 
 class Button {
   constructor() {
@@ -18,9 +18,8 @@ class Button {
 
   openButtonDropdown() {
     $.each(this.$button, function() {
-      toggle({
+      classToggle({
         trigger: $(this),
-        element: $(this),
         elementStopPropagation: $(this).find('.Button-dropdown')
       });
     });

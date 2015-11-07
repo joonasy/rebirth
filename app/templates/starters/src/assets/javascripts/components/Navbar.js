@@ -2,46 +2,43 @@
  * Navbar
  * ======================================== */
 
-'use strict';
+'use strict'
 
 import $ from 'jquery';
-import toggle from '../plugins/toggle';
+import classToggle from '../lib/classToggle';
 
 class Navbar {
   constructor() {
-    this.$nav = $('.js-Navbar');
-    this.$navSelfTrigger = $('.js-NavbarSelfTrigger', this.$nav);
-    this.$navItem = $('.Navbar-item', this.$nav);
-    this.$navTrigger = $('.Navbar-trigger', this.$nav);
-    this.$navLink = $('.Navbar-link', this.$nav).filter(function() {
-          return $(this).siblings(this.$navTrigger).length;
-        });
+    this.$navbar = $('.js-Navbar');
+    this.$navbarLink = $('.Navbar-link', this.$navbar).filter(function() {
+      return $(this).siblings('.Navbar-trigger', this.$navbar).length;
+    });
   }
 
   init() {
-    this.navbarInit();
+    this.$navbar.length ? this.navbarInit() : false;
   }
 
   navbarInit() {
-    toggle({
-      trigger: this.$navSelfTrigger,
-      element: this.$nav
+    new classToggle({
+      trigger: '.js-NavbarSelfTrigger',
+      element: '.js-Navbar',
     });
 
-    toggle({
-      trigger: this.$navTrigger,
-      element: this.$navItem,
+    new classToggle({
+      trigger: '.js-Navbar .Navbar-trigger',
+      element: '.js-Navbar .Navbar-item',
       toggleClosest: true,
       unToggleParentSiblings: true,
       unToggleOtherToggles: false
     });
 
-    toggle({
-      trigger: this.$navLink,
-      element: this.$navItem,
+    new classToggle({
+      trigger: '.' + this.$navbarLink.get().className,
+      element: '.js-Navbar .Navbar-item',
       toggleClosest: true,
       unToggleParentSiblings: true,
-      disableFirstClickOnTouch: $(window).width() > 1024,
+      disableFirstClickOnTouch: true,
       unToggleOtherToggles: false
     });
   }

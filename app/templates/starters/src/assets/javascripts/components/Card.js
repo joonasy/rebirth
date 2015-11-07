@@ -2,10 +2,10 @@
  * Card
  * ======================================== */
 
-'use strict';
+'use strict'
 
 import $ from 'jquery';
-import imgToParentBg from '../plugins/imgToParentBg';
+import imgToParentBg from '../lib/imgToParentBg';
 
 class Card {
   constructor() {

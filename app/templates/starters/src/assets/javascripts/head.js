@@ -7,4 +7,4 @@
 /**
  * Various browser related fixes
  */
-import fixes from './plugins/fixes';
+import fixes from './lib/fixes';
