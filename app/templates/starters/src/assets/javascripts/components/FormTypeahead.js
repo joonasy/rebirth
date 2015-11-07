@@ -5,7 +5,7 @@
  * https://github.com/twitter/typeahead.js/
  */
 
-'use strict';
+'use strict'
 
 import $ from 'jquery';
 import typeahead from 'typeahead.js/dist/typeahead.jquery.js';

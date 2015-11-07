@@ -2,7 +2,7 @@
  * Component
  * ======================================== */
 
-'use strict';
+'use strict'
 
 class Component {
   constructor() {}
