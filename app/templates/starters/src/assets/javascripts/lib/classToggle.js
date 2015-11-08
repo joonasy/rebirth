@@ -25,7 +25,6 @@ export default function classToggle(options) {
     afterClick: function() {},
   }, options);
 
-  const $trigger = $(config.trigger);
   const $element = $(config.element);
 
   let init = () => {
@@ -36,14 +35,13 @@ export default function classToggle(options) {
     });
 
     if (config.elementStopPropagation) {
-      let $el = $element;
+      let el = config.element;
 
-      if (config.elementStopPropagation instanceof jQuery ||
-          typeof config.elementStopPropagation === 'string') {
-        $el = $(config.elementStopPropagation);
+      if (typeof config.elementStopPropagation === 'string') {
+        el = config.elementStopPropagation;
       }
 
-      $el.on('click', (e) => {
+      $(document).on('click', el, function(e) {
         e.stopPropagation();
       });
     }
@@ -52,13 +50,13 @@ export default function classToggle(options) {
   let _clickTrigger = (e, selector) => {
     const $this = $(selector);
 
-    const firstClick = $this.hasClass('is-firstTouch');
+    const firstTouch = $this.hasClass('is-touched');
 
-    if (config.disableFirstClickOnTouch && !firstClick && Modernizr.touchevents) {
-      $this.addClass('is-firstTouch')
+    if (config.disableFirstClickOnTouch && !firstTouch && Modernizr.touchevents) {
+      $this.addClass('is-touched')
       e.preventDefault();
       setTimeout(() => {
-        $this.removeClass('is-firstTouch')
+        $this.removeClass('is-touched')
       }, 1000);
     }
 
