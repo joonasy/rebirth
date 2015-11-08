@@ -10,9 +10,6 @@ import classToggle from '../lib/classToggle';
 class DocsNavbar {
   constructor() {
     this.$navbar = $('#js-docsNavbar');
-    this.$navbarLink = $('.Navbar-link', this.$navbar).filter(function() {
-      return $(this).siblings('.Navbar-trigger', this.$navbar).length;
-    });
   }
 
   init() {
@@ -33,8 +30,10 @@ class DocsNavbar {
       unToggleOtherToggles: false,
     });
 
+    $('#js-docsNavbar .Navbar-trigger').parent().addClass('has-dropdown');
+
     new classToggle({
-      trigger: '.' + this.$navbarLink.get(0).className,
+      trigger: '#js-docsNavbar .Navbar-item.has-dropdown > .Navbar-link',
       element: '#js-docsNavbar .Navbar-item',
       toggleClosest: true,
       unToggleParentSiblings: true,
