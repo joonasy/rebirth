@@ -97,6 +97,10 @@
   fieldset[disabled] & {
     @extend %disabled;
   }
+
+  &.is-open {
+    overflow: visible;
+  }
 }
 
 

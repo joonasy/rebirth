@@ -1,0 +1,39 @@
+/* ========================================
+ * Dropdown
+ * ========================================
+ *
+ * @reusable true
+ */
+
+.Dropdown {
+  @include dropdown();
+}
+
+  .Dropdown-item {
+    border-top: 1px solid $colorBorderPrimary;
+    line-height: $baseLineHeight;
+    margin: 0;
+    padding: rem($baseSpace / 3) 0;
+
+    &:first-child {
+      border-top: 0;
+      padding-top: 0;
+    }
+
+    &:last-child {
+      padding-bottom: 0;
+    }
+
+    label {
+      display: block;
+    }
+  }
+
+
+/* ======
+ * Dropdown - states
+ * ====== */
+
+.is-open > .Dropdown {
+  @include dropdown($state: 'is-open');
+}

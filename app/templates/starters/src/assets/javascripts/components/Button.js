@@ -5,23 +5,20 @@
 'use strict'
 
 import $ from 'jquery';
-import classToggle from '../utils/classToggle';
+import classToggle from '../lib/classToggle';
 
 class Button {
-  constructor() {
-    this.$button = $('.js-Button');
-  }
+  constructor() {}
 
   init() {
     this.openButtonDropdown();
   }
 
   openButtonDropdown() {
-    $.each(this.$button, function() {
-      classToggle({
-        trigger: $(this),
-        elementStopPropagation: $(this).find('.Button-dropdown')
-      });
+    new classToggle({
+      trigger: '.js-Button',
+      triggerClass: 'is-open',
+      elementStopPropagation: '.Button-dropdown'
     });
   }
 }
