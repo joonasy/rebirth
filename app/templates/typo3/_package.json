@@ -10,7 +10,7 @@
   "main": "gulpfile.js",
   "scripts": {
     "dev": "gulp dev",
-    "deploy": "npm run build && dploy",
+    "deploy": "npm run build && dploy production",
     "build": "NODE_ENV=production gulp build",
     "test": "gulp jscs"
   },

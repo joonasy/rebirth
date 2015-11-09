@@ -10,7 +10,7 @@
   "main": "assemblefile.js",
   "scripts": {
     "build": "NODE_ENV=production assemble build",
-    "deploy": "npm run build && dploy",
+    "deploy": "npm run build && dploy production",
     "dev": "assemble dev",
     "dist": "npm run build && assemble server",
     "test": "assemble jscs"
