@@ -18,8 +18,9 @@ class Navbar {
 
   navbarInit() {
     new classToggle({
-      trigger: '.js-NavbarSelfTrigger',
+      trigger: '.js-Navbar .js-NavbarTrigger',
       element: '.js-Navbar',
+      toggleClosest: true,
     });
 
     new classToggle({
