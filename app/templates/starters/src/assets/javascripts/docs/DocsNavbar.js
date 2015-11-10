@@ -2,47 +2,43 @@
  * Docs navbar
  * ======================================== */
 
-'use strict';
+'use strict'
 
 import $ from 'jquery';
-import toggle from '../plugins/toggle';
+import classToggle from '../lib/classToggle';
 
 class DocsNavbar {
   constructor() {
-    this.$nav = $('#js-docsNavbar');
-    this.$navSelfTrigger = $('#js-docsNavbarTrigger', this.$nav),
-    this.$navItem = $('.Navbar-item', this.$nav);
-    this.$navTrigger = $('.Navbar-trigger', this.$nav);
-    this.$navLink = $('.Navbar-link', this.$nav).filter(function() {
-          return $(this).siblings(this.$navTrigger).length;
-        });
+    this.$navbar = $('#js-docsNavbar');
   }
 
   init() {
-    this.navbarInit();
+    this.$navbar.length ? this.navbarInit() : false;
   }
 
   navbarInit() {
-    toggle({
-      trigger: this.$navSelfTrigger,
-      element: this.$nav
+    new classToggle({
+      trigger: '#js-docsNavbarTrigger',
+      element: '#js-docsNavbar',
     });
 
-    toggle({
-      trigger: this.$navTrigger,
-      element: this.$navItem,
+    new classToggle({
+      trigger: '#js-docsNavbar .Navbar-trigger',
+      element: '#js-docsNavbar .Navbar-item',
       toggleClosest: true,
       unToggleParentSiblings: true,
-      unToggleOtherToggles: false
+      unToggleOtherToggles: false,
     });
 
-    toggle({
-      trigger: this.$navLink,
-      element: this.$navItem,
+    $('#js-docsNavbar .Navbar-trigger').parent().addClass('has-dropdown');
+
+    new classToggle({
+      trigger: '#js-docsNavbar .Navbar-item.has-dropdown > .Navbar-link',
+      element: '#js-docsNavbar .Navbar-item',
       toggleClosest: true,
       unToggleParentSiblings: true,
-      disableFirstClickOnTouch: $(window).width() > 1024,
-      unToggleOtherToggles: false
+      disableFirstClickOnTouch: true,
+      unToggleOtherToggles: false,
     });
   }
 }

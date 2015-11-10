@@ -2,7 +2,7 @@
  * Emulate CSS3 transition end
  * ======================================== */
 
-'use strict';
+'use strict'
 
 var $ = require('jquery');
 

@@ -2,7 +2,7 @@
  * Various browser related fixes
  * ======================================== */
 
-'use strict';
+'use strict'
 
 const fixes = () => {
   /**

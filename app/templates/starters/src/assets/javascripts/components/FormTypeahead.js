@@ -5,12 +5,12 @@
  * https://github.com/twitter/typeahead.js/
  */
 
-'use strict';
+'use strict'
 
 import $ from 'jquery';
 import typeahead from 'typeahead.js/dist/typeahead.jquery.js';
 
-class FormTypeAhead {
+class FormTypeahead {
   constructor() {
     this.$typeAhead = $('.js-Form-item-typeahead');
   }
@@ -35,4 +35,4 @@ class FormTypeAhead {
   }
 }
 
-export default FormTypeAhead;
+export default FormTypeahead;

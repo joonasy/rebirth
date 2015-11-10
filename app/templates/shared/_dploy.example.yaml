@@ -1,14 +1,16 @@
 production:
-    scheme: "ftp"
-    host: ""
-    port: 21
-    user: ""
-    pass: ""
-    path:<% if (htmlProject) { %>
-      local: "dist/"<% } %>
-      remote: "your/remote/application/path/here"<% if (typoProject) { %>
-    exclude: ["*.ini", ".yo-rc.json", ".editorconfig", ".jscsrc", "bower.json", "gulpfile.js", "package.json", "README.md", "rev-manifest.json", "Assets/**/*", ".gitignore", "dploy.example.yaml"]
-    include:
-        "Resources/Public/**/*": "Resources/Public/"
-        "Resources/Private/Partials/Bottom.dist.html": "Resources/Private/Partials/"
-        "Resources/Private/Partials/Top.dist.html": "Resources/Private/Partials/"<% } %>
+  branch: master<% if (typoProject) { %>
+  exclude: ["*.yml", "*.yaml", "*.json", "*.md", ".*", "gulpfile.js", "Assets/**/*"]<% } %>
+  host: ""<% if (typoProject) { %>
+  include:
+    "Resources/Public/**/*": "Resources/Public"
+    "Resources/Private/Partials/Bottom.dist.html": "Resources/Private/Partials"
+    "Resources/Private/Partials/Top.dist.html": "Resources/Private/Partials"<% } %>
+  pass: ""
+  path:<% if (htmlProject) { %>
+    local: "dist/"<% } %>
+    remote: "your/remote/application/path/here"
+  port: 21
+  scheme: "ftp"
+  slots: 3
+  user: ""

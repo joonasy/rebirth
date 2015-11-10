@@ -2,27 +2,23 @@
  * Button
  * ======================================== */
 
-'use strict';
+'use strict'
 
 import $ from 'jquery';
-import toggle from '../plugins/toggle';
+import classToggle from '../lib/classToggle';
 
 class Button {
-  constructor() {
-    this.$button = $('.js-Button');
-  }
+  constructor() {}
 
   init() {
     this.openButtonDropdown();
   }
 
   openButtonDropdown() {
-    $.each(this.$button, function() {
-      toggle({
-        trigger: $(this),
-        element: $(this),
-        elementStopPropagation: $(this).find('.Button-dropdown')
-      });
+    new classToggle({
+      trigger: '.js-Button',
+      triggerClass: 'is-open',
+      elementStopPropagation: '.Button-dropdown'
     });
   }
 }
