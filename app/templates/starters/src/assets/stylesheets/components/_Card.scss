@@ -12,8 +12,6 @@
   width: 100%;
 }
 
-  .Card-title {}
-
   .Card-figure {
     > figure {
       margin-bottom: 0;
@@ -42,9 +40,9 @@
  * Card figure - Background fill modifier
  * ====== */
 
-.Card-figure.-bg-fill {
+.Card-figure.-fill {
   position: relative;
-  min-height: rem(192px);
+  min-height: rem($baseSpace * 8);
 
   > figure {
     @extend %positionAbsoluteFill;
@@ -63,10 +61,10 @@
 
 
 /* ======
- * Card - Primary
+ * Card - Default
  * ====== */
 
-.Card--primary {
+.Card--default {
   background-color: #ffffff;
   min-height: $baseSpace * 6;
 }

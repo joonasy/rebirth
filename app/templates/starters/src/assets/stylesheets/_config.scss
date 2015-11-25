@@ -70,7 +70,7 @@ $colorGrayLighter: #ccc;
 $colorGrayLightest: #E6E6E6;
 
 // Brand colors
-$colorPrimary: #00AAE7;
+$colorPrimary: #4d4dff;
 
 // Base colors
 $colorDark: #000000;
@@ -92,7 +92,7 @@ $colorLink: $colorPrimary;
 $colorLinkHover: darken($colorLink, 15%);
 
 // Border colors
-$colorBorderPrimary: $colorGrayLightest;
+$colorBorderDefault: darken($colorGrayLightest, 5);
 
 // State colors
 $colorSuccess: #5cb85c;

@@ -53,7 +53,7 @@
         left: 0;
 
         .Navbar-link {
-          border-top: 1px solid $colorBorderPrimary;
+          border-top: 1px solid $colorBorderDefault;
           min-height: 0;
           padding: ($Navbar-space / 3) 0;
         }
@@ -72,14 +72,13 @@
         right: 0;
       }
 
+      /**
+       * Sub navigation states
+       */
+      .touchevents & .Navbar-item.is-open > .Navbar-sub,
       .no-touchevents & .Navbar-item:hover > .Navbar-sub,
-      .no-touchevents & .Navbar-item:focus > .Navbar-sub,
-      .no-touchevents & .Navbar-item:hover.is-open > .Navbar-sub {
+      .no-touchevents & .Navbar-item:focus > .Navbar-sub {
         @include dropdown($state: 'is-open');
-      }
-
-      .no-touchevents & .Navbar-item.is-open > .Navbar-sub {
-        display: none;
       }
   }
 

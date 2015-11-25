@@ -8,13 +8,14 @@
 
 @mixin ButtonCollectionHorizontal($namespace: '') {
   .ButtonCollection.#{$namespace}-horizontal {
-    flex-direction: row;
+    align-items: flex-start;
+    display: flex;
 
     > .Button {
       border-left-width: 0;
 
       &:not(.-border) {
-        box-shadow: -1px 0 $ButtonCollection-separatorColor;
+        box-shadow: -$Button-borderWidth 0 $ButtonCollection-separatorColor;
       }
 
       &:first-child {
@@ -47,7 +48,7 @@
       align-items: flex-start;
 
       > .Button {
-        flex: 1;
+        flex-grow: 1;
       }
     }
   }

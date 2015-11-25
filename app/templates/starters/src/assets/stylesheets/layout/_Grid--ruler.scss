@@ -9,7 +9,7 @@
 @mixin GridRuler($namespace: '') {
   .#{$namespace}Grid--ruler {
     > .Grid-cell {
-      border-left: 1px solid $colorBorderPrimary;
+      border-left: 1px solid $colorBorderDefault;
 
       &:first-child {
         border-left: none;

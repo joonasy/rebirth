@@ -40,6 +40,13 @@
 
 
 // ========================================
+// Alert
+// ========================================
+
+@import 'components/Alert';
+
+
+// ========================================
 // Dropdown
 // ========================================
 
@@ -106,13 +113,20 @@ $Form-gridHorizontal-l: true;
 
 
 // ========================================
+// Label
+// ========================================
+
+@import 'components/Label';
+
+
+// ========================================
 // Navbar
 // ========================================
 
 @import 'components/Navbar.config';
 @import 'components/Navbar';
 @import 'components/Navbar.-horizontal';
-@import 'components/Navbar--primary';
+@import 'components/Navbar--default';
 
 
 // ========================================

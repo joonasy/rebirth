@@ -44,6 +44,12 @@
     }
   }
 
+  &.-equalContent {
+    > .Grid-cell {
+      display: flex;
+    }
+  }
+
   &.-full {
     @include GridSize();
   }
