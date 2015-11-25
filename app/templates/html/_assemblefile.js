@@ -52,11 +52,9 @@ var config = {
   },
   javascripts: {
     bundle: [{
-      external: [],
       fileName: 'app.js',
       src: 'src/assets/javascripts/app.js'
     }, {
-      external: [],
       fileName: 'head.js',
       src: 'src/assets/javascripts/head.js'
     }],
