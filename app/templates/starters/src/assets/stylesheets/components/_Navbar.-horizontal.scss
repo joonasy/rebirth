@@ -20,7 +20,9 @@
 
     > ul {
       display: flex;
+      justify-content: flex-end;
       padding: 0 $Navbar-space;
+      width: 100%;
     }
 
       > ul > .Navbar-item {

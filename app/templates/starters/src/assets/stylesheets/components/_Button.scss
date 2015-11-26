@@ -22,7 +22,6 @@
   transition: $transitionDuration;
   user-select: none;
   vertical-align: top;
-  white-space: nowrap;
 
   &:hover,
   &:focus {
@@ -114,12 +113,11 @@
 
   &:hover,
   &:focus {
-    background-color: darken(#ffffff, 5);
+    background-color: darken(#ffffff, 3);
   }
 
   &.-transparent {
     background-color: transparent;
-    color: $colorBorderDefault;
 
     &:hover,
     &:focus {
@@ -131,6 +129,13 @@
 
   &.-border {
     border-color: $colorBorderDefault;
+
+    &:hover,
+    &:focus {
+      background-color: #ffffff;
+      border-color: $colorBorderDefault;
+      color: $colorPrimary;
+    }
   }
 }
 
