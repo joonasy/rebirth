@@ -70,7 +70,7 @@ $colorGrayLighter: #ccc;
 $colorGrayLightest: #E6E6E6;
 
 // Brand colors
-$colorPrimary: #00AAE7;
+$colorPrimary: #4d4dff;
 
 // Base colors
 $colorDark: #000000;
@@ -92,7 +92,7 @@ $colorLink: $colorPrimary;
 $colorLinkHover: darken($colorLink, 15%);
 
 // Border colors
-$colorBorderPrimary: $colorGrayLightest;
+$colorBorderDefault: darken($colorGrayLightest, 5);
 
 // State colors
 $colorSuccess: #5cb85c;
@@ -129,25 +129,25 @@ $Wrap-maxWidth: $Wrap-width + ($Wrap-edgeSpace-l * 2);
 
 $Grid-gutter: $baseSpace / 2;
 
-$Grid-justify: true !default;
-$Grid-justify-s: false !default;
-$Grid-justify-m: false !default;
-$Grid-justify-l: false !default;
+$Grid-justify: true;
+$Grid-justify-s: false;
+$Grid-justify-m: false;
+$Grid-justify-l: false;
 
-$Grid-align: true !default;
-$Grid-align-s: false !default;
-$Grid-align-m: false !default;
-$Grid-align-l: false !default;
+$Grid-align: true;
+$Grid-align-s: false;
+$Grid-align-m: false;
+$Grid-align-l: false;
 
 
 // ========================================
 // Width
 // ========================================
 
-$Width: true !default;
-$Width-s: true !default;
-$Width-m: true !default;
-$Width-l: true !default;
+$Width: true;
+$Width-s: true;
+$Width-m: true;
+$Width-l: true;
 
 
 // ========================================

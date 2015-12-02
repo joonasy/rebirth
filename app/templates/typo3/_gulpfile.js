@@ -41,12 +41,10 @@ var config = {
     dest: 'Resources/Public/Assets/javascripts/',
     bundle: [{
       src: 'Assets/javascripts/app.js',
-      fileName: 'app.js',
-      external: []
+      fileName: 'app.js'
     }, {
       src: 'Assets/javascripts/head.js',
-      fileName: 'head.js',
-      external: []
+      fileName: 'head.js'
     }]
   },
   images: {

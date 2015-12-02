@@ -22,7 +22,6 @@
   transition: $transitionDuration;
   user-select: none;
   vertical-align: top;
-  white-space: nowrap;
 
   &:hover,
   &:focus {
@@ -37,11 +36,11 @@
 
 .Button {
   &.-round {
-    border-radius: $Button-roundBorderRadius;
+    @extend %round;
   }
 
   &.-pill {
-    border-radius: 60px;
+    @extend %pill;
   }
 
   &.-border {
@@ -105,6 +104,43 @@
 
 
 /* ======
+ * Button - Default
+ * ====== */
+
+.Button--default {
+  background-color: #ffffff;
+  color: $colorPrimary;
+
+  &:hover,
+  &:focus {
+    background-color: darken(#ffffff, 3);
+  }
+
+  &.-transparent {
+    background-color: transparent;
+
+    &:hover,
+    &:focus {
+      background-color: $colorPrimary;
+      border-color: $colorPrimary;
+      color: #ffffff;
+    }
+  }
+
+  &.-border {
+    border-color: $colorBorderDefault;
+
+    &:hover,
+    &:focus {
+      background-color: #ffffff;
+      border-color: $colorBorderDefault;
+      color: $colorPrimary;
+    }
+  }
+}
+
+
+/* ======
  * Button - Primary
  * ====== */
 
@@ -118,17 +154,19 @@
     color: #ffffff;
   }
 
-  &.-border {
+  &.-transparent {
     background-color: transparent;
-    background-image: none;
-    border-color: $colorPrimary;
-    color: $colorText;
+    color: $colorPrimary;
 
     &:hover,
     &:focus {
-      background-color: transparent;
+      background-color: $colorPrimary;
       border-color: $colorPrimary;
-      color: $colorPrimary;
+      color: #ffffff;
     }
+  }
+
+  &.-border {
+    border-color: darken($colorPrimary, 5);
   }
 }

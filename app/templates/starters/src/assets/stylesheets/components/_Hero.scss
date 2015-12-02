@@ -27,12 +27,12 @@
         flex-direction: column;
         justify-content: center;
         min-height: rem($baseSpace * 10);
-        padding-bottom: rem($baseSpace * 2);
-        padding-top: rem($baseSpace * 2);
       }
 
         .Hero-content-item {
           max-width: 100%;
+          padding-bottom: rem($baseSpace * 2);
+          padding-top: rem($baseSpace * 2);
 
           > *:last-child {
             margin: 0;
@@ -158,10 +158,10 @@
 
 
 /* ======
- * Hero item - Primary
+ * Hero item - Default
  * ====== */
 
-.Hero-item--primary {
+.Hero-item--default {
   .Hero-content {
     width: 80%;
 

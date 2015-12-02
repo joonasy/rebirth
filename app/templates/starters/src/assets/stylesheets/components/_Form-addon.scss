@@ -17,12 +17,12 @@
  * Form addon - Primary variation
  * ======
  *
- * Alternatively move this inside the main `.Form--primary{}`
+ * Alternatively move this inside the main `.Form--default{}`
  */
 
-.Form--primary {
+.Form--default {
   .Form-addon {
-    @extend %Form--primary-Form-item;
+    @extend %Form--default-Form-item;
     background-color: $colorBgLightest;
   }
 }

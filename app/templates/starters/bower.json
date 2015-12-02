@@ -6,7 +6,6 @@
     "fastclick": "latest",
     "normalize.scss": "latest",
     "jquery": "latest",
-    "object-fit": "~0.4.1",
     "lazysizes": "~1.0.0"
   },
   "devDependencies": {}

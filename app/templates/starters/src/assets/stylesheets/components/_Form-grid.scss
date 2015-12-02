@@ -19,15 +19,15 @@
     .Form-addon,
     .Form-button {
       margin-bottom: 0;
+
+      &.-round {
+        border-radius: 0;
+      }
     }
 
     .Form-item:not(textarea),
     .Form-addon {
       @include textTruncate();
-    }
-
-    .-round {
-      border-radius: 0;
     }
 
     &:not(:first-child) {

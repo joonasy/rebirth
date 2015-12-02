@@ -91,22 +91,22 @@
 
 .Form-item {
   &.-round {
-    border-radius: $Form-borderRadius;
+    @extend %round;
   }
 }
 
 
 /* ======
- * Form - Primary
+ * Form - Default
  * ====== */
 
-.Form--primary {
-  %Form--primary-Form-item, .Form-item {
+.Form--default {
+  %Form--default-Form-item, .Form-item {
     background-color: #ffffff;
     color: $colorTextLight;
 
     &.-border {
-      border-color: $colorBorderPrimary;
+      border-color: $colorBorderDefault;
     }
   }
 
@@ -123,7 +123,7 @@
     &.-border {
       &:hover,
       &:focus {
-        border-color: $colorBorderPrimary;
+        border-color: $colorBorderDefault;
       }
     }
   }

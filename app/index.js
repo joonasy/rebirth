@@ -274,7 +274,7 @@ var MyGenerator = yeoman.generators.Base.extend({
         var jsAssets = [
           'app.js',
           'head.js',
-          'plugins/fixes.js',
+          'lib/fixes.js',
           'components/component.js'
         ].forEach(function(starter) {
           _this.fs.copy(

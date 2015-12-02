@@ -2,7 +2,7 @@
 // Button
 // ========================================
 
-$Button-borderWidth: 2px;
+$Button-borderWidth: 1px;
 $Button-height: $baseSpace * 2;
 $Button-roundBorderRadius: 4px;
 
@@ -11,7 +11,7 @@ $Button-s: 0.75;
 
 $ButtonCollection-separatorColor: rgba(#000000, 0.1);
 
-$Button-collectionHorizontal: false !default;
-$Button-collectionHorizontal-s: false !default;
-$Button-collectionHorizontal-m: false !default;
-$Button-collectionHorizontal-l: false !default;
+$Button-collectionHorizontal: false;
+$Button-collectionHorizontal-s: false;
+$Button-collectionHorizontal-m: false;
+$Button-collectionHorizontal-l: false;

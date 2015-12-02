@@ -50,10 +50,10 @@
  * Form icon - primary variation
  * ======
  *
- * Alternatively move this inside the main `.Form--primary{}`.
+ * Alternatively move this inside the main `.Form--default{}`.
  */
 
-.Form--primary {
+.Form--default {
   .Form-icon {
     .IconCss[class*='-chevron']:after {
       border-color: $colorTextLight;

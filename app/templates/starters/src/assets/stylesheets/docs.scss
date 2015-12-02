@@ -40,6 +40,13 @@
 
 
 // ========================================
+// Alert
+// ========================================
+
+@import 'components/Alert';
+
+
+// ========================================
 // Dropdown
 // ========================================
 
@@ -106,13 +113,20 @@ $Form-gridHorizontal-l: true;
 
 
 // ========================================
+// Label
+// ========================================
+
+@import 'components/Label';
+
+
+// ========================================
 // Navbar
 // ========================================
 
 @import 'components/Navbar.config';
 @import 'components/Navbar';
 @import 'components/Navbar.-horizontal';
-@import 'components/Navbar--primary';
+@import 'components/Navbar--default';
 
 
 // ========================================
@@ -163,10 +177,10 @@ $Grid-cellOrder-l: true;
 // Pull
 // ========================================
 
-$Pull: false !default;
-$Pull-s: false !default;
-$Pull-m: false !default;
-$Pull-l: false !default;
+$Pull: false;
+$Pull-s: false;
+$Pull-m: false;
+$Pull-l: false;
 
 @import 'layout/Pull';
 
@@ -175,10 +189,10 @@ $Pull-l: false !default;
 // Push
 // ========================================
 
-$Push: false !default;
-$Push-s: false !default;
-$Push-m: false !default;
-$Push-l: false !default;
+$Push: false;
+$Push-s: false;
+$Push-m: false;
+$Push-l: false;
 
 @import 'layout/Push';
 
