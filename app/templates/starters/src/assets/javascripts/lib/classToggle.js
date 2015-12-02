@@ -9,7 +9,7 @@ import Modernizr from 'modernizr';
 
 const classToggles = [];
 
-export default function classToggle(options) {
+function classToggle(options) {
 
   let config = $.extend({
     trigger: '',
@@ -131,3 +131,5 @@ export default function classToggle(options) {
 $(window).on('click', function() {
   classToggle().removeToggles();
 });
+
+export default classToggle;

@@ -71,6 +71,10 @@
  *      import imgToParentBg from '../plugins/imgToParentBg';
  *      $figure = $('.My-figure', $context)
  *      imgToParentBg($figure);
+ *
+ * @param { jquerySelector|string } figure - Node to search
+ * @param { boolean } targetSafari - target Safari
+ * @param { boolean } targetIOS - target iOS
  */
 
 'use strict'
@@ -84,12 +88,7 @@ const objFit = Modernizr['object-fit'];
 let isSafari = /Constructor/.test(window.HTMLElement);
 let isIOS = /iP(ad|hone|od)/i.test(navigator.userAgent);
 
-/**
- * @param { jquerySelector|string } figure - Node to search
- * @param { boolean } targetSafari - target Safari
- * @param { boolean } targetIOS - target iOS
- */
-const imgToParentBg = (figure, targetSafari, targetIOS) => {
+function imgToParentBg(figure, targetSafari, targetIOS) {
   const $figure = $(figure);
 
   isSafari = isSafari && targetSafari;
