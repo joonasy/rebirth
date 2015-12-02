@@ -73,14 +73,10 @@
         right: 0;
       }
 
+      .touchevents & .Navbar-item.is-open > .Navbar-sub,
       .no-touchevents & .Navbar-item:hover > .Navbar-sub,
-      .no-touchevents & .Navbar-item:focus > .Navbar-sub,
-      .no-touchevents & .Navbar-item:hover.is-open > .Navbar-sub {
+      .no-touchevents & .Navbar-item:focus > .Navbar-sub {
         @include dropdown($state: 'is-open');
-      }
-
-      .no-touchevents & .Navbar-item.is-open > .Navbar-sub {
-        display: none;
       }
   }
 
