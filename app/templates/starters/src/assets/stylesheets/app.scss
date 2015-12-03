@@ -38,16 +38,14 @@
 @import 'helpers/helper';
 
 // Components
+@import 'components/Container';
+@import 'components/Grid';
+@import 'components/Heading';
 @import 'components/Ieframe';
 @import 'components/Icon';
 @import 'components/Text';
-@import 'components/Heading';
-
-// Base layout components
-@import 'layout/Container';
-@import 'layout/Grid';
-@import 'layout/Width';
-@import 'layout/Wrap';
+@import 'components/Width';
+@import 'components/Wrap';
 
 // Layout components
 @import 'layout/Header';
