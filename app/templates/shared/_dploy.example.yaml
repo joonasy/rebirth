@@ -3,9 +3,11 @@ production:
   exclude: ["*.yml", "*.yaml", "*.json", "*.md", ".*", "gulpfile.js", "Assets/**/*"]<% } %>
   host: ""<% if (typoProject) { %>
   include:
-    "Resources/Public/**/*": "Resources/Public"
-    "Resources/Private/Partials/Bottom.dist.html": "Resources/Private/Partials"
-    "Resources/Private/Partials/Top.dist.html": "Resources/Private/Partials"<% } %>
+    "Resources/Public/Assets/stylesheets/*.min-*.css": "Resources/Public/Assets/stylesheets/"
+    "Resources/Public/Assets/javascripts/*.min-*.js": "Resources/Public/Assets/javascripts/"
+    "Resources/Public/Assets/fonts/*": "Resources/Public/Assets/fonts/"
+    "Resources/Public/Assets/images/*": "Resources/Public/Assets/images/"
+    "Resources/Private/Partials/*.dist.html": "Resources/Private/Partials"<% } %>
   pass: ""
   path:<% if (htmlProject) { %>
     local: "dist/"<% } %>
