@@ -141,7 +141,7 @@ $Form-gridHorizontal-l: true;
 // Grid
 // ========================================
 
-@import 'layout/Grid.config';
+@import 'components/Grid.config';
 
 $Grid-justify: true;
 $Grid-justify-s: true;
@@ -168,9 +168,9 @@ $Grid-cellOrder-s: true;
 $Grid-cellOrder-m: true;
 $Grid-cellOrder-l: true;
 
-@import 'layout/Grid--ruler';
-@import 'layout/Grid-cell.-align';
-@import 'layout/Grid-cell.-order';
+@import 'components/Grid--ruler';
+@import 'components/Grid-cell.-align';
+@import 'components/Grid-cell.-order';
 
 
 // ========================================
@@ -182,7 +182,7 @@ $Pull-s: false;
 $Pull-m: false;
 $Pull-l: false;
 
-@import 'layout/Pull';
+@import 'components/Pull';
 
 
 // ========================================
@@ -194,7 +194,7 @@ $Push-s: false;
 $Push-m: false;
 $Push-l: false;
 
-@import 'layout/Push';
+@import 'components/Push';
 
 
 // ========================================

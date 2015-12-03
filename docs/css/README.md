@@ -42,5 +42,7 @@ This styleguide outlines standards for writing CSS (and more specifically, Sass)
     * Multi-line CSS
 * [Coding style and structure](structure.md)
     * CSS/Sass folder structure
+    * Layout components
+    * Themes
     * Component structure
     * Structuring partials

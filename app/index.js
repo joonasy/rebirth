@@ -248,18 +248,18 @@ var MyGenerator = yeoman.generators.Base.extend({
 
         var cssAssets = [
           'components/_Component.scss',
+          'components/_Container.scss',
+          'components/_Grid.scss',
           'components/_Heading.scss',
           'components/_Icon.scss',
           'components/_Ieframe.scss',
           'components/_Text.scss',
+          'components/_Width.scss',
+          'components/_Wrap.scss',
           'generic/',
           'helpers/_helper.scss',
-          'layout/_Container.scss',
           'layout/_Footer.scss',
-          'layout/_Grid.scss',
           'layout/_Header.scss',
-          'layout/_Width.scss',
-          'layout/_Wrap.scss',
           'mixins/',
           'vendors/_normalize.scss',
           '_config.scss',
@@ -275,7 +275,7 @@ var MyGenerator = yeoman.generators.Base.extend({
           'app.js',
           'head.js',
           'lib/fixes.js',
-          'components/component.js'
+          'components/Component.js'
         ].forEach(function(starter) {
           _this.fs.copy(
             startersDir + 'javascripts/' + starter,
