@@ -133,10 +133,6 @@ gulp.task('javascripts', function(callback) {
       debug: !production
     });
 
-    if (production) {
-      pipeline.external(bundleConfig.external);
-    }
-
     var bundle = function() {
       bundleLogger.start(bundleConfig.fileName);
 
