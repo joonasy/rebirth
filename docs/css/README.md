@@ -14,6 +14,15 @@ This styleguide outlines standards for writing CSS (and more specifically, Sass)
     * keep stylesheets scalable;
     * keep our file structure distinct
 
+## TL;DR
+
+1. Only one modifier per component e.g. `Component Component--modifier` 
+2. Extend components with chainable modifiers e.g. `Component Component--modifier -myChainableModifier`
+3. Use and make helpers e.g. `colorPrimary` or `textLeft` if you repeat certain styles often
+4. Use hooks for triggering JavaScript e.g. `Button js-Button` 
+5. Use `is-stateName` syntax with JavaScript for changing the state of the component e.g. `Button is-open`
+5. Read [Coding style](style.md) and [Structure](structure.md) so you know how to structure your Sass files
+
 ## TOC
 
 * [Design principles](design-principles.md)
@@ -33,14 +42,13 @@ This styleguide outlines standards for writing CSS (and more specifically, Sass)
         * data-* attributes
     * Reserved namespaces and other keywords
         * Responsive variations
-        * Obvious chainable modifiers
-        * Modifier
+        * Modifiers
         * Prefixes and suffixes in Sass variables
-* [Coding style and structure](style.md)
+* [Coding style](style.md)
     * Stylesheet formatting
     * Comments & titling
     * Multi-line CSS
-* [Coding style and structure](structure.md)
+* [Structure](structure.md)
     * CSS/Sass folder structure
     * Layout components
     * Themes

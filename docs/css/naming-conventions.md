@@ -70,7 +70,9 @@ The component's name must be written in [PascalCase](http://c2.com/cgi/wiki?Pasc
 
 ### ComponentName--modifierName
 
-A component modifier (or component modifier) is a class that modifies the presentation of the base component in some form (e.g., for a certain configuration of the component). Component modifiers also modify their descendants by nesting, however if descendants need altering modifiers then modify the descendants directly. modifier names must be written in camelCase and be separated from the component name by two hyphens. The class should be included in the HTML in addition to the base component class. 
+**Use only single modifier per component and extend it with chainable modifiers**
+
+A component modifier is a class that modifies the presentation of the base component in some form (e.g., for a certain configuration of the component). Component modifiers also modify their descendants by nesting, however if descendants need altering modifiers then modify the descendants directly. modifier names must be written in camelCase and be separated from the component name by two hyphens. The class should be included in the HTML in addition to the base component class. 
 
 ```css
 /* Core button component */
@@ -121,7 +123,7 @@ Chainable modifiers also accept responsive variants.
 </a>
 ```
 
-Chainable modifiers may also extend main modifiers.
+Chainable modifiers extend main modifiers.
 
 ```css
 .Button--primary {
@@ -271,15 +273,15 @@ Some components need parent components to work properly. Component collections o
 
 As a rule, it is unwise to bind your CSS and your JS onto the same class in your HTML. This is because doing so means you can’t have (or remove) one without (removing) the other. It is much cleaner, much more transparent, and much more maintainable to bind your JS onto specific classes.
 
-Typically, these are classes that are prepended with js-, for example:
+Typically, these are classes that are prepended with `js-`, for example:
 
 ```html
-<input type="submit" class="Button js-ButtonTrigger" value="Follow" />
+<input type="submit" class="Button js-Button" value="Follow" />
 ```
 
 This means that we can have an element elsewhere which can carry with style of `.Button {}`, but without the behaviour of `.js-Button`.
 
-When naming JavaScript hooks use camelCase.
+When setting JavaScript to components which affect only the component directly it is preferable to use the same naming convention in the hook (PascalCase e.g. `js-Component`). Otherwise use camelCase e.g. `js-myTrigger`.
 
 ### data-* attributes
 
