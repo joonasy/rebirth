@@ -22,12 +22,17 @@ My Web Starter kit assumes that you have setup your development environment.
 
 Install all the requirements and setup your development environment before installing the generator.
 
-* [Typo3 v. 6.2.15](http://typo3.org) (for Typo3 projects)
-* [WordPress v. 4.4](https://wordpress.org/) (for WordPress projects)
-* [Node.js](http://nodejs.org/) 
-* [Npm](https://www.npmjs.org/)
+* [Node.js](http://nodejs.org/) & [Npm](https://www.npmjs.org/)
 * [Yeoman](http://yeoman.io/) `npm install -g yo`
 * [Bower](http://bower.io/) `npm install -g bower`
+
+### Typo3 requirements
+
+* [Typo3 v6.2.15](http://typo3.org)
+* [Flux 7.2.3](http://typo3.org/extensions/repository/view/flux)
+* [Fluid Pages Engine 3.3.1](http://typo3.org/extensions/repository/view/fluidpages)
+* [Fluid Content Engine 4.3.3](http://typo3.org/extensions/repository/view/fluidcontent)
+* [Vhs v2.3.3](http://typo3.org/extensions/repository/view/vhs)
 
 ## Getting started
 

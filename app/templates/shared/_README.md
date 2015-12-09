@@ -7,7 +7,11 @@
 Please read [My Web Starter Kit](https://bitbucket.org/mediasignal/my-web-starter-kit) guide.
 
 ## Requirements
-<% if (typoProject) { %>* [Typo3](https://typo3.org/)<% } %>
+<% if (typoProject) { %>* [Typo3 v6.2.15](http://typo3.org)
+* [Flux 7.2.3](http://typo3.org/extensions/repository/view/flux)
+* [Fluid Pages Engine 3.3.1](http://typo3.org/extensions/repository/view/fluidpages)
+* [Fluid Content Engine 4.3.3](http://typo3.org/extensions/repository/view/fluidcontent)
+* [Vhs v2.3.3](http://typo3.org/extensions/repository/view/vhs)<% } %>
 * [Node.js](http://nodejs.org/)
 * [Npm](https://www.npmjs.org/)
 * [Bower](http://bower.io/)
