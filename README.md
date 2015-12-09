@@ -69,7 +69,6 @@ Please discuss about new ideas and things that you think should be modified. Cur
 
 ## Todo (in random order)
 
-* Convert all floating material to Flexbox
 * Typo3 content element starters
 * Wordpress template
 * All necessary CSS components
@@ -81,6 +80,7 @@ Please discuss about new ideas and things that you think should be modified. Cur
 * Consider removing jQuery
 * Consider separating starters and the generator
 * Dockerfile (docker-compose) for docker environments
+* Composer for managing Typo3 dependencies
 
 ## License
 
