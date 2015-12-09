@@ -2,9 +2,11 @@
 
 > My combined styleguide, starter kit and Yeoman generator for new web projects (Typo3/Html).
 
-This startekit contains methods and ideas from various sources such as [BEM](https://bem.info/), [HTML5BP](http://html5boilerplate.com/), [Bootstrap](http://getbootstrap.com), [Foundation](http://foundation.zurb.com/), [INUITCSS](https://github.com/inuitcss), [SMACSS](https://smacss.com/), [OOCSS](http://oocss.org/) and [SUIT CSS](https://github.com/suitcss/suit). By default this template supports IE10+, Mobile first -ideology and progressive enhancement.
+This starterkit contains methods and ideas from various sources such as [BEM](https://bem.info/), [HTML5BP](http://html5boilerplate.com/), [Bootstrap](http://getbootstrap.com), [Foundation](http://foundation.zurb.com/), [INUITCSS](https://github.com/inuitcss), [SMACSS](https://smacss.com/), [OOCSS](http://oocss.org/) and [SUIT CSS](https://github.com/suitcss/suit). By default this template supports IE10+, Mobile first -ideology and progressive enhancement.
 
 This starter kit is **not a framework** but it contains predefined components and helpers that are meant to be modified based on your project needs.
+
+My Web Starter kit assumes that you have setup your development environment.
 
 ## Features
 
@@ -15,6 +17,17 @@ This starter kit is **not a framework** but it contains predefined components an
 * Image Optimization
 * Combine media queries
 * Browserify
+
+## Requirements
+
+Install all the requirements and setup your development environment before installing the generator.
+
+* [Typo3 v. 6.2.15](http://typo3.org) (for Typo3 projects)
+* [WordPress v. 4.4](https://wordpress.org/) (for WordPress projects)
+* [Node.js](http://nodejs.org/) 
+* [Npm](https://www.npmjs.org/)
+* [Yeoman](http://yeoman.io/) `npm install -g yo`
+* [Bower](http://bower.io/) `npm install -g bower`
 
 ## Getting started
 
@@ -29,15 +42,6 @@ Please read and understand all of the following before doing anything. All of th
 
 * [Typo3](docs/project)
 * [Html](docs/project)
-
-## Requirements
-
-Install all the requirements before installing the generator.
-
-* [Node.js](http://nodejs.org/) 
-* [Npm](https://www.npmjs.org/)
-* [Yeoman](http://yeoman.io/) `npm install -g yo`
-* [Bower](http://bower.io/) npm install -g bower`
 
 ## Installing
 
