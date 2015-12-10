@@ -1,15 +1,19 @@
-# Project structure
+# Project
+
+> Project instructions, development information and structure
 
 Please read [CSS Styleguide](/docs/css/) and [JavaScript Styleguide](/docs/js/)  first.
 
-Project specific information and structure: [Typo3](typo3/typo3.md)
+Project specific instructions: 
 
-### Shared files and source folder structure across projects
+* [Typo3](typo3)
+
+### Shared files and folder structure across project types
 
 ```
-    src/
+    project/
     |
-    |── Assets/                  # [1]
+    |── assets/                  # [1]
     |   |
     |   |── fonts/               # [2]
     |   |── images/              # [3]
@@ -49,9 +53,5 @@ Project specific information and structure: [Typo3](typo3/typo3.md)
 * **16.** Add your project specific instructions here.
 * **17.** In build process an asset manifest, mapping the original paths to the revisioned paths, will be written here.
 
-\* Should be ignored from [Git](http://git-scm.com/).
-
-### Gulpfile
-
-Here are some common gotchas about the current gulpfile.
+<sub>\* Ignore from [Git](http://git-scm.com/).</sub>
 

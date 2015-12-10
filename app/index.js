@@ -2,7 +2,7 @@
  * My Web Starter Kit generator
  * ======================================== */
 
-'use strict';
+'use strict'
 
 var yeoman = require('yeoman-generator');
 var path = require('path');
@@ -24,7 +24,7 @@ var MyGenerator = yeoman.generators.Base.extend({
       required: false
     });
 
-    if(this.dir) {
+    if (this.dir) {
       var dir = this.dir.toLowerCase();
       this.destinationRoot(dir);
       this.appRoot = dir;
@@ -183,11 +183,11 @@ var MyGenerator = yeoman.generators.Base.extend({
    */
   config: function() {
     if (!this.options.design) {
-      if(this.typoProject) {
+      if (this.typoProject) {
         this.config.set('assetsPath', 'Assets/');
       }
 
-      if(this.htmlProject) {
+      if (this.htmlProject) {
         this.config.set('assetsPath', 'src/assets/');
       }
     }
@@ -198,13 +198,13 @@ var MyGenerator = yeoman.generators.Base.extend({
    */
   gulpfile: function() {
     if (!this.options.design) {
-      if(this.typoProject) {
+      if (this.typoProject) {
         this.template(
           this.templatePath('typo3/_gulpfile.js'),
           this.destinationPath('gulpfile.js'));
       }
 
-      if(this.htmlProject) {
+      if (this.htmlProject) {
         this.template(
           this.templatePath('html/_assemblefile.js'),
           this.destinationPath('assemblefile.js')
@@ -227,11 +227,11 @@ var MyGenerator = yeoman.generators.Base.extend({
    */
   packageJSON: function () {
     if (!this.options.design) {
-      if(this.typoProject) {
+      if (this.typoProject) {
         this.template('typo3/_package.json', this.destinationPath('package.json'));
       }
 
-      if(this.htmlProject) {
+      if (this.htmlProject) {
         this.template('html/_package.json', this.destinationPath('package.json'));
       }
     }
@@ -242,7 +242,7 @@ var MyGenerator = yeoman.generators.Base.extend({
    */
   defaultAssets: function() {
     if (!this.options.design) {
-      if(this.defaultAssets) {
+      if (this.defaultAssets) {
         var _this = this;
         var startersDir = this.templatePath('starters/src/assets/');
 
@@ -303,7 +303,7 @@ var MyGenerator = yeoman.generators.Base.extend({
    */
   deployment: function() {
     if (!this.options.design) {
-      if(this.deployment) {
+      if (this.deployment) {
         this.template('shared/_dploy.example.yaml', 'dploy.example.yaml');
         this.template('shared/_dploy.example.yaml', 'dploy.yaml');
       }
@@ -330,7 +330,7 @@ var MyGenerator = yeoman.generators.Base.extend({
         this.destinationPath('.gitignore')
       );
 
-      if(this.typoProject) {
+      if (this.typoProject) {
         this.template(
           this.templatePath('typo3/Configuration/TypoScript/_setup.txt'),
           this.destinationPath('Configuration/TypoScript/setup.txt')
@@ -372,7 +372,7 @@ var MyGenerator = yeoman.generators.Base.extend({
         );
       }
 
-      if(this.htmlProject) {
+      if (this.htmlProject) {
         this.template(
           this.templatePath('html/src/_app.json'),
           this.destinationPath('src/app.json')
