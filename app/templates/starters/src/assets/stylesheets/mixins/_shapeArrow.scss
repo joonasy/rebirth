@@ -23,6 +23,11 @@
     width: $caretWidth * $size;
   }
 
+  @if not even($thickness) and even($caretWidth) or
+    even($thickness) and not even($caretWidth) {
+    @warn 'Make sure that $thickness `#{$thickness}` and $caretWidth `#{$caretWidth}` are both either even or odd.';
+  }
+
   //
   // Direction and scaling
   //
