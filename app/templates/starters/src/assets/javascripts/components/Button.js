@@ -5,7 +5,7 @@
 'use strict'
 
 import $ from 'jquery';
-import classToggle from '../lib/classToggle';
+import ClassToggle from '../lib/classToggle';
 
 class Button {
   constructor() {}
@@ -15,7 +15,7 @@ class Button {
   }
 
   openButtonDropdown() {
-    new classToggle({
+    new ClassToggle({
       trigger: '.js-Button',
       triggerClass: 'is-open',
       elementStopPropagation: '.Button-dropdown'

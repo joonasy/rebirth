@@ -22,7 +22,7 @@ function classToggle(options) {
     unToggleParentSiblings: false,
     unToggleOtherToggles: true,
     unTogglable: true,
-    afterClick: function() {},
+    afterClick: function() {}
   }, options);
 
   const $element = $(config.element);
@@ -60,8 +60,8 @@ function classToggle(options) {
       }, 1000);
     }
 
-    if(config.element) {
-      if(config.unToggleOtherToggles) {
+    if (config.element) {
+      if (config.unToggleOtherToggles) {
         removeToggles($element);
       }
 

@@ -52,15 +52,12 @@ var config = {
   },
   javascripts: {
     bundle: [{
-      external: [],
       fileName: 'docs.js',
       src: 'src/assets/javascripts/docs.js'
     }, {
-      external: [],
       fileName: 'head.js',
       src: 'src/assets/javascripts/head.js'
     }, {
-      external: [],
       fileName: 'docs.head.js',
       src: 'src/assets/javascripts/docs.head.js'
     }],
@@ -129,7 +126,7 @@ assemble.task('stylesheets', function() {
     }));
 
   if (production) {
-    pipeline = pipeline.pipe($.combineMediaQueries({ log: true }))
+    pipeline = pipeline.pipe($.combineMq())
       .pipe($.minifyCss())
       .pipe($.rename({suffix: '.min'}));
   }
@@ -172,10 +169,6 @@ assemble.task('javascripts', function(callback) {
       entries: bundleConfig.src,
       debug: !production
     });
-
-    if (production) {
-      pipeline.external(bundleConfig.external);
-    }
 
     var bundle = function() {
       bundleLogger.start(bundleConfig.fileName);

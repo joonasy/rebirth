@@ -2,7 +2,7 @@
  * Application
  * ======================================== */
 
-'use strict';
+'use strict'
 
 import $ from 'jquery';
 import fastClick from 'fastclick';

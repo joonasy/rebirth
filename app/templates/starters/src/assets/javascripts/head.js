@@ -2,7 +2,7 @@
  * Application head
  * ======================================== */
 
-'use strict';
+'use strict'
 
 /**
  * Various browser related fixes

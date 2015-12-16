@@ -5,7 +5,7 @@
 'use strict'
 
 import $ from 'jquery';
-import classToggle from '../lib/classToggle';
+import ClassToggle from '../lib/classToggle';
 
 class Navbar {
   constructor() {
@@ -17,29 +17,29 @@ class Navbar {
   }
 
   navbarInit() {
-    new classToggle({
+    new ClassToggle({
       trigger: '.js-Navbar .js-NavbarTrigger',
       element: '.js-Navbar',
-      toggleClosest: true,
+      toggleClosest: true
     });
 
-    new classToggle({
+    new ClassToggle({
       trigger: '.js-Navbar .Navbar-trigger',
       element: '.js-Navbar .Navbar-item',
       toggleClosest: true,
       unToggleParentSiblings: true,
-      unToggleOtherToggles: false,
+      unToggleOtherToggles: false
     });
 
     $('.js-Navbar .Navbar-trigger').parent().addClass('has-dropdown');
 
-    new classToggle({
+    new ClassToggle({
       trigger: '.js-Navbar .Navbar-item.has-dropdown > .Navbar-link',
       element: '.js-Navbar .Navbar-item',
       toggleClosest: true,
       unToggleParentSiblings: true,
       disableFirstClickOnTouch: true,
-      unToggleOtherToggles: false,
+      unToggleOtherToggles: false
     });
   }
 }
