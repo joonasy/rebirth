@@ -38,14 +38,14 @@ Install all the requirements and setup your development environment before insta
 
 Please read and understand all of the following before doing anything. All of these documents will be converted to html docs later on.
 
-### Styleguides
+### Styleguide
 
 * [CSS styleguide](https://bitbucket.org/mediasignal/my-web-starter-kit/src/master/docs/css/)
 * [JS styleguide (work in progress)](docs/js)
 
-### Project structures and workflows
+### Project instructions
 
-* [Typo3](docs/project)
+* [Typo3](docs/project/typo)
 * [Html](docs/project)
 
 ## Installing

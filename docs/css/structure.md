@@ -153,7 +153,7 @@ Example of _Christmas theme_ layout component  `themes/christmas/_ChristmasPage.
 
 ### Primary Sass file (app.scss)
 
-[View app.scss](../../app/templates/assets/stylesheets/app.scss)
+[View app.scss](/app/templates/starters/src/assets/stylesheets/app.scss)
 
 Structure our partials in the following order to prevent errors. Remember to alphabetize partials.
 

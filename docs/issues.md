@@ -1,6 +1,6 @@
 # Random issues
 
-I'm going to collect here all the coding issues I've been having either with this repo or plugins, browsers etc. 
+Collected coding issues I've been having either with this repo or plugins, browsers etc. 
 
 ## Node and npm
 

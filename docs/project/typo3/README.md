@@ -1,10 +1,8 @@
 ## Typo3
 
-Typo3 is Open Source Enterprise CMS and Scalable Web Application Framework.
+Typo3 is Open Source Enterprise CMS and Scalable Web Application Framework. 
 
-## Extension structure
-
-Source folder is the extension folder in Typo3 projects. 
+## Extension folder structure
 
 ```
     extension_name/
@@ -28,8 +26,9 @@ Source folder is the extension folder in Typo3 projects.
     `── ext_tables.php                # [12]
 ```
 
-* **1., 2.** Typo3 settings
-* **3.** Public files and private files
+* **1.** Typo3 settings
+* **2.** Typo3 settings
+* **3.** Public and private files
 * **4.** Site layouts, partials and templates
 * **5.** This file contains all the JavaScripts and material that are located in the bottom of the HTML document 
 * **6.** This file contains all the CSS, JavaScripts and material that are located in the top of the HTML document
@@ -38,12 +37,30 @@ Source folder is the extension folder in Typo3 projects.
 * **10.** This folder contains temporary material that used mainly in Html templates
 * **11., 12** Typo extension configuration
 
-## Workflow
+For all the files and structure see [shared files across project types](../)
 
-1. UI Designer builds CSS, JavaScript and static Typo3 templates
-    * UI Designer should add a separate `html` branch for static templates for easier referencing in the future.
-2. Typo3 developer converts the static files to CMS.
+## Usual Workflow
+
+1. Html, CSS, JavaScript and static Typo3 templates are built
+    * After the static material is done add a separate `html` branch for easier referencing and testing in the future once compared to the `master` branch.
+2. Static material is converted to work with the CMS.
 3. If deployment settings have been set run `npm run deploy` to build and deploy. Otherwise run `npm run build` and move changed and build files to server manually.
+
+## FAQ
+
+**How can I add my custom hostname to work with development environment?**
+
+It's recommended to keep consistent naming and not to bloat the repository with extra env material. However here is how to do it:
+
+* 1. Use host flag `npm run dev --host=mycustomhost.app` to setup proxy
+* 2. Add your host to the dev environment in _Configuration/TypoScript/setup.txt_:
+```
+[globalString = ENV:HTTP_HOST = mycustomhost.app]
+  plugin.tx_myextension.settings.dev = 1
+[END]
+```
+* 3. Clear all your caches in Install tool
+* 4. You may experience [this issue](https://wiki.typo3.org/Exception/CMS/1396795884). Follow the instructions and add you host to the trusted hosts.
 
 ## Useful Typo3 extensions
 
