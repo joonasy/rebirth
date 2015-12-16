@@ -36,7 +36,7 @@
       }
     }
 
-    &:first-child {
+    &:first-child:not(:only-child) {
       .-round {
         &:first-child {
           border-radius: $Form-borderRadius 0 0 0;
@@ -52,20 +52,38 @@
       }
     }
 
-    &:last-child {
-      margin-bottom: rem($baseSpace);
-
+    &:last-child:not(:only-child) {
       .-round {
         &:first-child {
           border-radius: 0 0 0 $Form-borderRadius;
         }
 
-        &:last-child:not(:only-child) {
+        &:last-child {
           border-radius: 0 0 $Form-borderRadius 0;
         }
 
         &:only-child {
           border-radius: 0 0 $Form-borderRadius $Form-borderRadius;
+        }
+      }
+    }
+
+    &:last-child {
+      margin-bottom: rem($baseSpace);
+    }
+
+    &:only-child {
+      .-round {
+        &:first-child {
+          border-radius: $Form-borderRadius 0 0 $Form-borderRadius;
+        }
+
+        &:last-child {
+          border-radius: 0 $Form-borderRadius $Form-borderRadius 0;
+        }
+
+        &:only-child {
+          border-radius: $Form-borderRadius $Form-borderRadius;
         }
       }
     }
