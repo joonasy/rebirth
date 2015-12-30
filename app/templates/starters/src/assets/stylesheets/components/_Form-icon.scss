@@ -13,7 +13,7 @@
   position: absolute;
   text-align: center;
   top: 0;
-  z-index: 1;
+  z-index: 3;
 
   &:last-child {
     left: auto;
@@ -26,7 +26,7 @@
  * Form item - required modifiers to use with form icons
  * ======
  *
- * Alternatively move this inside the main `.Form--item{}`.
+ * Alternatively move this inside the main `.Form--default{}`.
  */
 
 .Form-item {
