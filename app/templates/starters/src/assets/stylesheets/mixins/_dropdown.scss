@@ -1,6 +1,8 @@
 // ========================================
 // Dropdown
 // ========================================
+//
+// 1. Hide
 
 @mixin dropdown(
   $align: 'left',
@@ -18,31 +20,24 @@
     background-color: $backgroundColor;
     box-shadow: 0 0 0 1px $shadowColor;
     border-radius: $borderRadius;
+    clip: rect(0,0,0,0); // [1.]
+    height: 0; // [1.]
     left: 0;
     list-style: none;
     margin: 0;
     min-width: $min-width;
+    opacity: 0; // [1.]
     padding: $padding;
     position: absolute;
     top: 100%;
+    transition: opacity ($transitionDuration * 2); // [1.]
     z-index: 999;
-
-    /**
-     * Hide
-     */
-    clip: rect(0,0,0,0);
-    height: 0;
-    transform: translateY(-$baseSpace);
-    transition: transform ($transitionDuration * 2);
   }
 
-  /**
-   * Open state
-   */
   @if $state == 'is-open' {
     clip: auto;
     height: auto;
-    transform: translateY(0);
+    opacity: 1;
   }
 
   /**
