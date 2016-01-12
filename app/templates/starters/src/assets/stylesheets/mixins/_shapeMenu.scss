@@ -5,8 +5,8 @@
 @mixin shapeMenu(
   $color: $colorText,
   $height: 2px,
-  $width: 20px,
-  $spacing: 3px
+  $width: 22px,
+  $spacing: 4px
   ) {
   border-top: $height solid $color;
   display: inline-block;
@@ -14,7 +14,7 @@
   position: relative;
   top: $height + $spacing;
   user-select: none;
-  width: $width;
+  min-width: $width;
 
   &:before,
   &:after {

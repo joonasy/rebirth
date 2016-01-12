@@ -124,7 +124,7 @@ function classToggle(options) {
 
   return {
     init: config.trigger.length ? init() : false,
-    removeToggles: removeToggles
+    removeToggles
   }
 };
 

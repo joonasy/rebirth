@@ -39,6 +39,7 @@
         @include textTruncate();
         align-items: center;
         display: flex;
+        min-height: $Navbar-space * 2;
       }
 
     .Navbar-ctrl-trigger {

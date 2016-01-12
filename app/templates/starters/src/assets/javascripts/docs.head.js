@@ -2,7 +2,7 @@
  * Docs head
  * ======================================== */
 
-'use strict';
+'use strict'
 
 /**
  * Setup and load lazysizes
