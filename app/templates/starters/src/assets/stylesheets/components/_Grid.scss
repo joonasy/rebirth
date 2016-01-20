@@ -39,7 +39,7 @@
 .Grid {
   &.-auto {
     > .Grid-cell:not([class*="Width"]) {
-      flex: 0 1 auto;
+      flex: 1 0 auto;
       width: auto;
     }
   }
