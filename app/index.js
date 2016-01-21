@@ -373,6 +373,11 @@ var MyGenerator = yeoman.generators.Base.extend({
       }
 
       if (this.htmlProject) {
+        this.fs.copy(
+          this.templatePath('html/src/helpers/_assets.hbs'),
+          this.destinationPath('src/helpers/assets.hbs')
+        );
+
         this.template(
           this.templatePath('html/src/_app.json'),
           this.destinationPath('src/app.json')
@@ -384,8 +389,8 @@ var MyGenerator = yeoman.generators.Base.extend({
         );
 
         this.fs.copy(
-          this.templatePath('html/src/layouts/_layout.hbs'),
-          this.destinationPath('src/layouts/layout.hbs')
+          this.templatePath('html/src/layouts/_default.hbs'),
+          this.destinationPath('src/layouts/default.hbs')
         );
 
         this.fs.copy(
