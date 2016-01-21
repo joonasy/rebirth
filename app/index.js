@@ -374,8 +374,8 @@ var MyGenerator = yeoman.generators.Base.extend({
 
       if (this.htmlProject) {
         this.fs.copy(
-          this.templatePath('html/src/helpers/_assets.hbs'),
-          this.destinationPath('src/helpers/assets.hbs')
+          this.templatePath('html/src/helpers/_assets.js'),
+          this.destinationPath('src/helpers/assets.js')
         );
 
         this.template(
