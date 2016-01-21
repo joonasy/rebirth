@@ -6,7 +6,7 @@
 <v:page.header.meta name="keywords" content="{page.keywords}" />
 <v:page.header.meta name="viewport" content="width=device-width,initial-scale=1" />
 <v:page.header.meta name="msapplication-tap-highlight" content="no" />
-<v:page.header.meta http-equiv="X-UA-Compatible" content="IE=EDGE" />
+<v:page.header.meta http-equiv="X-UA-Compatible" content="IE=edge" />
 
 <f:if condition="{page.subtitle}">
   <f:then>
@@ -24,7 +24,6 @@
     <v:asset.style path="EXT:<%= appRoot %>/Resources/Public/Assets/stylesheets/app.css" rewrite="false" standalone="true"></v:asset.style>
   </f:then>
   <f:else>
-    <link rel="dns-prefetch" href="//ajax.googleapis.com">
     <v:asset.script path="EXT:<%= appRoot %>/Resources/Public/Assets/javascripts/head.min.js" allowMoveToFooter="false"></v:asset.script>
     <v:asset.style path="EXT:<%= appRoot %>/Resources/Public/Assets/stylesheets/app.min.css"></v:asset.style>
   </f:else>
