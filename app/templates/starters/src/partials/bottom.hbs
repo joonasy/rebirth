@@ -1,19 +1,8 @@
-    {{#if javascripts}}
-      <!-- build:js(src) {{assets}}/javascripts/{{page.title}}.min.js -->
-        {{#each javascripts}}
-          <script src="{{../assets}}/javascripts/{{../page.resourcePath}}{{.}}.js"></script>
-        {{/each}}
-      <!-- endbuild -->
+    {{#if dev}}
+      <script src="/bower_components/jquery/dist/jquery.js"></script>
     {{/if}}
 
-    {{#if production}}
-      <script src="//ajax.googleapis.com/ajax/libs/jquery/2.1.4/jquery.min.js"></script>
-      <script>window.jQuery || document.write('<script src="/assets/javascripts/vendor/jquery.min.js"><\/script>')</script>
-      <script src="{{assets}}/javascripts/docs.min.js"></script>
-    {{else}}
-      <script src="/bower_components/jquery/dist/jquery.js"></script>
-      <script src="{{assets}}/javascripts/docs.js"></script>
-    {{/if}}
+    <script src="{{assets}}/javascripts/docs.js"></script>
   </body>
 </html>
 
