@@ -78,13 +78,9 @@ var config = {
 /**
  * Assemble
  */
-app.data({
-  assets: '/assets',
-  dev: !production
-});
-
-app.helpers(config.html.helpers);
+app.data({ assets: '/assets' });
 app.data(config.html.data);
+app.helpers(config.html.helpers);
 
 app.preLayout(/\/src\/templates\/.*\.hbs$/, function(view, next) {
   view.layout = 'default';
@@ -92,6 +88,7 @@ app.preLayout(/\/src\/templates\/.*\.hbs$/, function(view, next) {
 });
 
 app.task('html', function() {
+  app.data({ dev: !production });
   app.layouts(config.html.layouts);
   app.partials(config.html.partials);
 
