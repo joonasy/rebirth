@@ -13,7 +13,7 @@
   position: absolute;
   text-align: center;
   top: 0;
-  z-index: 3;
+  z-index: 1;
 
   &:last-child {
     left: auto;
@@ -23,10 +23,10 @@
 
 
 /* ======
- * Form item - required modifiers to use with form icons
+ * Form item - Required modifiers to use with form icons
  * ======
  *
- * Alternatively move this inside the main `.Form--default{}`.
+ * Alternatively move this inside the main `_Form.scss`.
  */
 
 .Form-item {
@@ -38,7 +38,7 @@
 
 .Form-item--select {
   &.-icon {
-    > select {
+    > select:not(:first-child) {
       padding-left: rem($Form-padding * 2.5);
       padding-right: rem($Form-padding * 2.5);
     }
@@ -47,7 +47,7 @@
 
 
 /* ======
- * Form icon - primary variation
+ * Form icon - Primary variation
  * ======
  *
  * Alternatively move this inside the main `.Form--default{}`.
