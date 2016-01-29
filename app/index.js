@@ -84,8 +84,7 @@ var MyGenerator = yeoman.generators.Base.extend({
         }, {
           type: 'input',
           name: 'author',
-          message: 'Author name:',
-          default: this.pkg.author.name
+          message: 'Author name:'
         }
       ], function(answers) {
         this.appNameDasherize = this._.dasherize(this._.slugify(answers.name));
@@ -100,7 +99,7 @@ var MyGenerator = yeoman.generators.Base.extend({
     if (!this.options.design) {
       var done = this.async();
       var appRoot = this.appRoot;
-      var dir = this.dir;
+      var dir = this.dir ? this.dir : '';
       var log = this.log;
       var slashIfDir = this.slashIfDir;
 
@@ -118,6 +117,10 @@ var MyGenerator = yeoman.generators.Base.extend({
               name: 'Html',
               value: 'htmlProject',
               checked: false
+            }, {
+              name: 'WordPress',
+              value: 'wpProject',
+              checked: false
             }
           ]
         }, {
@@ -133,6 +136,12 @@ var MyGenerator = yeoman.generators.Base.extend({
                 chalk.green('  ❯'), 'Your project will be installed in', chalk.cyan('./' + slashIfDir), '\n' +
                 chalk.green('  ❯'), 'Your development path is', chalk.cyan('./' + slashIfDir + 'src/'),  '\n' +
                 chalk.green('  ❯'), 'Your build path is', chalk.cyan('./' + slashIfDir + 'dist/')
+              );
+            } else if (answers.projectType === 'wpProject') {
+              log(
+                chalk.green('  ❯'), 'Your project will be installed in', chalk.cyan('./' + dir), '\n' +
+                chalk.green('  ❯'), 'Your WordPress theme will be installed in', chalk.cyan('./' + appRoot + '/' + appRoot), '\n' +
+                chalk.green('  ❯'), 'Your build theme build are located in', chalk.cyan('./' + appRoot + '/' + appRoot + '/dist')
               );
             }
           }
