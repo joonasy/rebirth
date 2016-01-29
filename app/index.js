@@ -30,8 +30,6 @@ var MyGenerator = yeoman.generators.Base.extend({
       this.appRoot = dir;
     }
 
-    this.slashIfDir = (dir ? dir + '/' : '');
-
     /**
      * Copy only the design assets
      */
@@ -99,9 +97,8 @@ var MyGenerator = yeoman.generators.Base.extend({
     if (!this.options.design) {
       var done = this.async();
       var appRoot = this.appRoot;
-      var dir = this.dir ? this.dir : '';
+      var dir = this.dir ? this.dir + '/' : '';
       var log = this.log;
-      var slashIfDir = this.slashIfDir;
 
       this.prompt([
         {
@@ -127,21 +124,22 @@ var MyGenerator = yeoman.generators.Base.extend({
           when: function (answers) {
             if (answers.projectType === 'typoProject') {
               log(
-                chalk.green('  ❯'), 'Your project will be installed in', chalk.cyan('./' + slashIfDir), '\n' +
-                chalk.green('  ❯'), 'Your Typo3 extension is', chalk.cyan(appRoot), '\n' +
-                chalk.green('  ❯'), 'Your build path is', chalk.cyan('./' + slashIfDir + 'Resources/Public/')
+                chalk.green('  ❯'), 'Project install path:', chalk.cyan('./' + dir), '\n' +
+                chalk.green('  ❯'), 'Extension name:', chalk.cyan(appRoot), '\n' +
+                chalk.green('  ❯'), 'Extension path:', chalk.cyan('./' + appRoot + '/' + dir), '\n'  +
+                chalk.green('  ❯'), 'Build path:', chalk.cyan('./' + appRoot + '/' + appRoot + '/Resources/Public/')
               );
             } else if (answers.projectType === 'htmlProject') {
               log(
-                chalk.green('  ❯'), 'Your project will be installed in', chalk.cyan('./' + slashIfDir), '\n' +
-                chalk.green('  ❯'), 'Your development path is', chalk.cyan('./' + slashIfDir + 'src/'),  '\n' +
-                chalk.green('  ❯'), 'Your build path is', chalk.cyan('./' + slashIfDir + 'dist/')
+                chalk.green('  ❯'), 'Project install path:', chalk.cyan('./' + dir), '\n' +
+                chalk.green('  ❯'), 'Development path:', chalk.cyan('./' + dir + 'src/'),  '\n' +
+                chalk.green('  ❯'), 'Build path:', chalk.cyan('./' + dir + 'dist/')
               );
             } else if (answers.projectType === 'wpProject') {
               log(
-                chalk.green('  ❯'), 'Your project will be installed in', chalk.cyan('./' + dir), '\n' +
-                chalk.green('  ❯'), 'Your WordPress theme will be installed in', chalk.cyan('./' + appRoot + '/' + appRoot), '\n' +
-                chalk.green('  ❯'), 'Your build theme build are located in', chalk.cyan('./' + appRoot + '/' + appRoot + '/dist')
+                chalk.green('  ❯'), 'Project install path:', chalk.cyan('./' + dir), '\n' +
+                chalk.green('  ❯'), 'Theme will be installed in:', chalk.cyan('./' + appRoot + '/' + dir), '\n' +
+                chalk.green('  ❯'), 'Build path:', chalk.cyan('./' + appRoot + '/' + appRoot + '/dist/')
               );
             }
           }
@@ -175,6 +173,7 @@ var MyGenerator = yeoman.generators.Base.extend({
         this.projectType = answers.projectType;
         this.typoProject = this.projectType === 'typoProject';
         this.htmlProject = this.projectType === 'htmlProject';
+        this.wpProject = this.projectType === 'wpProject';
 
         this.appURL = answers.url;
         this.appDescription = answers.description;
@@ -356,7 +355,7 @@ var MyGenerator = yeoman.generators.Base.extend({
         );
 
         this.fs.copy(
-          this.templatePath('typo3/Resources/Private/Layouts/_App.html'),
+          this.templatePath('typo3/Resources/Private/Layouts/App.html'),
           this.destinationPath('Resources/Private/Layouts/App.html')
         );
 
@@ -383,7 +382,7 @@ var MyGenerator = yeoman.generators.Base.extend({
 
       if (this.htmlProject) {
         this.fs.copy(
-          this.templatePath('html/src/helpers/_assets.js'),
+          this.templatePath('html/src/helpers/assets.js'),
           this.destinationPath('src/helpers/assets.js')
         );
 
@@ -398,17 +397,17 @@ var MyGenerator = yeoman.generators.Base.extend({
         );
 
         this.fs.copy(
-          this.templatePath('html/src/layouts/_default.hbs'),
+          this.templatePath('html/src/layouts/default.hbs'),
           this.destinationPath('src/layouts/default.hbs')
         );
 
         this.fs.copy(
-          this.templatePath('html/src/partials/_top.hbs'),
+          this.templatePath('html/src/partials/top.hbs'),
           this.destinationPath('src/partials/top.hbs')
         );
 
         this.template(
-          this.templatePath('html/src/partials/_bottom.hbs'),
+          this.templatePath('html/src/partials/bottom.hbs'),
           this.destinationPath('src/partials/bottom.hbs')
         );
       }
