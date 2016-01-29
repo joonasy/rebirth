@@ -19,10 +19,12 @@ require_once locate_template('/lib/setup.php');
 
 /**
  * Custom post types
+ *
+ * require_once locate_template('/lib/cpt-name.php');
  */
-require_once locate_template('/lib/cpt-name.php');
 
 /**
  * Shortcodes
+ *
+ * require_once locate_template('/lib/sc-name.php');
  */
-require_once locate_template('/lib/sc-name.php');

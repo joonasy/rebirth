@@ -2,15 +2,7 @@
 {namespace v=FluidTYPO3\Vhs\ViewHelpers}
 
 <f:if condition="{settings.dev}">
-  <f:then>
-    <script src="{v:extension.path.siteRelative()}bower_components/jquery/dist/jquery.js"></script>
-    <script src="{v:extension.path.siteRelative()}Resources/Public/Assets/javascripts/app.js"></script>
-  </f:then>
-  <f:else>
-    <script src="//ajax.googleapis.com/ajax/libs/jquery/2.1.4/jquery.min.js"></script>
-    <script>
-      window.jQuery || document.write('<script src="{v:extension.path.siteRelative()}Resources/Public/Assets/javascripts/vendors/jquery.min.js"><\/script>');
-    </script>
-    <script src="{v:extension.path.siteRelative()}Resources/Public/Assets/javascripts/app.min.js"></script>
-  </f:else>
+  <v:asset.script path="EXT:<%= appRoot %>/Resources/Public/Assets/javascripts/vendors/jquery.js" rewrite="false"  standalone="true" />
 </f:if>
+
+<v:asset.script path="EXT:<%= appRoot %>/Resources/Public/Assets/javascripts/app.js" standalone="{settings.dev}" rewrite="{settings.dev} == 0" />

@@ -31,8 +31,9 @@ var production = false;
  * ====== */
 
 var config = {
-  dest: 'dist/',
   src: 'src/',
+  dest: 'dist/',
+  buildPath: '/',
   stylesheets: {
     src: 'src/assets/stylesheets/app.scss',
     dest: 'dist/assets/stylesheets/',
@@ -78,7 +79,7 @@ var config = {
 /**
  * Assemble
  */
-app.data({ assets: '/assets' });
+app.data({ assets: 'assets' });
 app.data(config.html.data);
 app.helpers(config.html.helpers);
 
@@ -122,6 +123,7 @@ app.task('stylesheets', function() {
 
   if (production) {
     return pipeline = pipeline
+      .pipe($.replace('../', config.buildPath + 'assets/'))
       .pipe($.combineMq())
       .pipe($.minifyCss())
       .pipe(app.dest(config.stylesheets.dest));

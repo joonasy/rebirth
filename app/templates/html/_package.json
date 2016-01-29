@@ -46,6 +46,7 @@
     "merge-stream": "^1.0.0",
     "node-notifier": "^4.2.1",
     "pretty-hrtime": "^1.0.0",
+    "relative-dest": "^0.1.0",
     "rimraf": "^2.3.4",
     "through2": "^0.6.5",
     "vinyl-source-stream": "~1.0.0",

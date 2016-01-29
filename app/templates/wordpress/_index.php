@@ -8,7 +8,7 @@
 
 <div class="Container">
   <div class="Wrap">
-    Hello, world!
+    Generated on <%= (generatorDate) %> using <a href="<%= (generatorRepository) %>"><%= pkg.name %> v<%= pkg.version %></a>.
   </div>
 </div>
 
