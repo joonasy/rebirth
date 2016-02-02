@@ -1,15 +1,17 @@
 production:
-  branch: master<% if (typoProject) { %>
-  exclude: ["<%= appRoot %>/Assets/**/*"]<% } if (wpProject) { %>["<%= appRoot %>/assets/**/*"] <% } %>
-  host: ""<% if (typoProject) { %>
+  branch: master<% if (typo3) { %>
+  exclude: ["<%= appRoot %>/Assets/**/*"]<% } if (wp) { %>
+  exclude: ["<%= appRoot %>/assets/**/*"]<% } %>
+  host: ""<% if (typo3) { %>
   include:
     "<%= appRoot %>/Resources/Public/**": "Resources/Public"
-    "<%= appRoot %>/Resources/Private/Partials/*.dist.html": "Resources/Private/Partials"<% } if (wpProject || htmlProject) { %>
+    "<%= appRoot %>/Resources/Private/Partials/*.dist.html": "Resources/Private/Partials"<% } if (html) { %>
+    "dist/**": "dist"<% } if (wp) {  %>
     "<%= appRoot %>/dist/**": "dist"<% } %>
   pass: ""
-  path:
-    local: <% if (htmlProject) { %>"dist/"<% } if (wpProject || typoProject) { %><%= appRoot %><% } %>
-    remote: <% if (htmlProject) { %>"your/path"<% } if (wpProject) { %>"webroot/ROOT/wp-content/themes/<%= appRoot %>"<% } if (wpProject) { %>"webroot/ROOT/<%= appRoot %>"<% } %>
+  path:<% if (wp || typo3) { %>
+    local: <%= appRoot %><% } %>
+    remote: <% if (html) { %>"your/path"<% } if (wp || typo3) { %>"webroot/ROOT/<%= appRoot %>"<% } %>
   port: 21
   scheme: "ftp"
   slots: 3
