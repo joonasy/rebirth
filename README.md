@@ -6,17 +6,16 @@ This starterkit contains methods and ideas from various sources such as [BEM](ht
 
 This starter kit is **not a framework** but it contains predefined components and helpers that are meant to be modified based on your project needs.
 
-My Web Starter kit assumes that you have setup your development environment.
-
 ## Features
 
-* Choose between `Html` or `Typo3` project types
+* Choose between `Html`, `Typo3` or `WordPress` project types
 * CSS Autoprefixing
 * Livereloading with Browsersync
 * Automatically compile Sass
 * Image Optimization
 * Combine media queries
 * Browserify
+* Development environment
 
 ## Requirements
 
@@ -25,14 +24,25 @@ Install all the requirements and setup your development environment before insta
 * [Node.js](http://nodejs.org/) & [Npm](https://www.npmjs.org/)
 * [Yeoman](http://yeoman.io/) `npm install -g yo`
 * [Bower](http://bower.io/) `npm install -g bower`
+* [Git](https://git-scm.com/) (optional)
+
+My Web Starter Kit also provides configuration files setting up your development environment. Requirements for `Typo3/WordPress` project types:
+
+* [Composer](https://getcomposer.org/)
+* [Vagrant](https://www.vagrantup.com/), recommended [Homestead](https://laravel.com/docs/4.2/homestead). Or any similar LAMP/LEMP stack.
+* [Docker Toolbox](https://www.docker.com/products/docker-toolbox) (alternatively for WordPress projects)
 
 ### Typo3 requirements
 
-* [Typo3 v6.2.15](http://typo3.org)
-* [Flux 7.2.3](http://typo3.org/extensions/repository/view/flux)
-* [Fluid Pages Engine 3.3.1](http://typo3.org/extensions/repository/view/fluidpages)
-* [Fluid Content Engine 4.3.3](http://typo3.org/extensions/repository/view/fluidcontent)
-* [Vhs v2.3.3](http://typo3.org/extensions/repository/view/vhs)
+* [Typo3 v^7.6.0](http://typo3.org)
+* [Flux](http://typo3.org/extensions/repository/view/flux)
+* [Fluid Pages Engine](http://typo3.org/extensions/repository/view/fluidpages)
+* [Fluid Content Engine](http://typo3.org/extensions/repository/view/fluidcontent)
+* [Vhs](http://typo3.org/extensions/repository/view/vhs)
+
+### WordPress requirements
+
+* [Advanced Custom Fields Pro](http://www.advancedcustomfields.com/pro/) (if using components)
 
 ## Getting started
 
@@ -41,7 +51,7 @@ Please read and understand all of the following before doing anything. All of th
 ### Styleguide
 
 * [CSS styleguide](https://bitbucket.org/mediasignal/my-web-starter-kit/src/master/docs/css/)
-* [JS styleguide (work in progress)](docs/js)
+* [JS styleguide](docs/js)
 
 ### Project instructions
 
@@ -58,7 +68,7 @@ Please read and understand all of the following before doing anything. All of th
 
     yo my [my-new-project-directory]
 
-or alternatively make a new directory, cd into it and run the generator:
+or make a new directory, cd into it and run the generator:
 
     mkdir my-new-project && cd $_ && yo my
 
@@ -74,19 +84,19 @@ Please discuss about new ideas and things that you think should be modified. Cur
 
 ## Todo (in random order)
 
+* WordPress project guide
+* Consider Capistrano for WordPress projects
 * Typo3 content element starters
-* Wordpress template
+* WordPress content element (ACF) starters
 * All necessary CSS components
 * Sub generators for starters
 * CSS modular scale
 * Maybe some sort of integration/forking with [generator-typo3](https://github.com/Milanowicz/generator-typo3)
-* Rest of the JavaScript styleguide
-* More testing for JavaScript
+* Testing for JavaScript
 * Consider removing jQuery
 * Consider separating starters and the generator
-* Dockerfile (docker-compose) for docker environments
-* Composer for managing Typo3 dependencies
+* Dockerfile for Typo3
 
 ## License
 
-MIT
+Copyright (c) 2016 Joonas Ylitalo (Twitter: @joonasy) Licensed under the MIT license.
