@@ -24,6 +24,7 @@ var watchify = require('watchify');
 var $ = require('gulp-load-plugins')();
 
 var production = false;
+var open = process.env.npm_config_open;
 
 
 /* ======
@@ -125,7 +126,7 @@ app.task('stylesheets', function() {
     return pipeline = pipeline
       .pipe($.replace('../', config.buildPath + 'assets/'))
       .pipe($.combineMq())
-      .pipe($.minifyCss())
+      .pipe($.cssnano())
       .pipe(app.dest(config.stylesheets.dest));
   } else {
     return pipeline = pipeline
@@ -229,7 +230,7 @@ app.task('fonts', function() {
  */
 app.task('server', function() {
   browserSync.init({
-    open: false,
+    open: open === undefined ? 'external' : open,
     port: 9001,
     notify: false,
     server: {

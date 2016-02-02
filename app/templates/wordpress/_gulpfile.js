@@ -24,6 +24,7 @@ var $ = require('gulp-load-plugins')();
 
 var production = false;
 var host = process.env.npm_config_host;
+var open = process.env.npm_config_open;
 
 
 /* ======
@@ -86,7 +87,7 @@ gulp.task('stylesheets', function() {
     pipeline = pipeline
       .pipe($.replace('../', '/wp-content/themes/' + config.dest + 'assets/'))
       .pipe($.combineMq())
-      .pipe($.minifyCss())
+      .pipe($.cssnano())
       .pipe(gulp.dest(config.stylesheets.dest));
   } else {
     return pipeline = pipeline
@@ -189,8 +190,8 @@ gulp.task('fonts', function() {
  * Server
  */
 gulp.task('server', function() {
-  browserSync({
-    open: false,
+  browserSync.init({
+    open: open === undefined ? 'external' : open,
     port: 9001,
     proxy: host ? host : config.host,
     notify: false,
