@@ -4,11 +4,13 @@
 
 'use strict'
 
-var yeoman = require('yeoman-generator');
-var path = require('path');
 var chalk = require('chalk');
-var yosay = require('yosay');
+var http = require('http');
 var moment = require('moment');
+var path = require('path');
+var request = require('request');
+var yeoman = require('yeoman-generator');
+var yosay = require('yosay');
 
 var MyGenerator = yeoman.generators.Base.extend({
   constructor: function () {
@@ -30,9 +32,6 @@ var MyGenerator = yeoman.generators.Base.extend({
       this.appRoot = dir;
     }
 
-    /**
-     * Copy only the design assets
-     */
     this.option('design', {
       alias: 'd',
       desc: 'Copy only the design assets',
@@ -49,138 +48,255 @@ var MyGenerator = yeoman.generators.Base.extend({
     this.log(yosay(
       'Hi! Welcome to ' + chalk.blue('My Web Starter Kit')+'.'
     ));
+
+    if (!this.dir) {
+      this.log(
+        chalk.green('!'), chalk.yellow('Make sure your are in the correct installation folder. Your current folder is'),
+        chalk.cyan(path.dirname(process.cwd()) + '/' + path.basename(process.cwd()))
+      );
+    }
   },
 
   /**
    * Copy only the design assets
    */
   designAssets: function() {
-    if (this.options.design) {
-      this.fs.copy(
-        this.templatePath('shared/design/app-layout.psd'),
-        this.destinationPath(this.options.design + '-layout.psd')
-      );
-      this.log(
-        chalk.green('  ❯'), 'Only the design assets copied to', chalk.cyan('./' + this.slashIfDir)
-      );
-    }
+    if (!this.options.design) return
+    var dir = this.dir ? this.dir + '/' : '';
+
+    this.fs.copy(
+      this.templatePath('shared/design/app-layout.psd'),
+      this.destinationPath(this.options.design + '-layout.psd')
+    );
+
+    this.log(
+      chalk.green('  ❯'), 'Only the design assets copied to', chalk.cyan('./' + dir)
+    );
   },
 
   /**
    * Prompts
    */
   askName: function () {
-    if (!this.options.design) {
+    if (this.options.design) return
+    var done = this.async();
+
+    this.prompt([
+      {
+        type: 'input',
+        name: 'name',
+        message: 'Project name:',
+        default: path.basename(process.cwd())
+      }, {
+        type: 'input',
+        name: 'author',
+        message: 'Author name:'
+      }
+    ], function(props) {
+      this.appNameDasherize = this._.dasherize(this._.slugify(props.name));
+      this.appNameHumanize = this._.humanize(this.appNameDasherize);
+      this.appNameUnderscored = this._.underscored(this.appNameDasherize);
+      this.generatorAuthor = props.author;
+      done();
+    }.bind(this));
+  },
+
+  askForProjectType: function () {
+    if (this.options.design) return
+    var done = this.async();
+    var appRoot = this.appRoot;
+    var dir = this.dir ? this.dir + '/' : '';
+    var _this = this;
+
+    this.prompt([
+      {
+        type: 'list',
+        name: 'projectType',
+        message: 'What kind of project this is?',
+        choices: [
+          {
+            name: 'Typo3',
+            value: 'typo3',
+            checked: true
+          }, {
+            name: 'Html',
+            value: 'html',
+            checked: false
+          }, {
+            name: 'WordPress',
+            value: 'wp',
+            checked: false
+          }
+        ]
+      }, {
+        when: function (props) {
+          if (props.projectType === 'typo3') {
+            _this.log(
+              chalk.green('  ❯'), 'Project install path:', chalk.cyan('./' + dir), '\n' +
+              chalk.green('  ❯'), 'Extension name:', chalk.cyan(appRoot), '\n' +
+              chalk.green('  ❯'), 'Extension path:', chalk.cyan('./' + appRoot + '/' + dir), '\n'  +
+              chalk.green('  ❯'), 'Build path:', chalk.cyan('./' + appRoot + '/' + appRoot + '/Resources/Public/')
+            );
+          } else if (props.projectType === 'html') {
+            _this.log(
+              chalk.green('  ❯'), 'Project install path:', chalk.cyan('./' + dir), '\n' +
+              chalk.green('  ❯'), 'Development path:', chalk.cyan('./' + dir + 'src/'), '\n' +
+              chalk.green('  ❯'), 'Build path:', chalk.cyan('./' + dir + 'dist/')
+            );
+          } else if (props.projectType === 'wp') {
+            _this.log(
+              chalk.green('  ❯'), 'Project install path:', chalk.cyan('./' + dir), '\n' +
+              chalk.green('  ❯'), 'Theme will be installed in:', chalk.cyan('./' + appRoot + '/' + dir), '\n' +
+              chalk.green('  ❯'), 'Build path:', chalk.cyan('./' + appRoot + '/' + appRoot + '/dist/')
+            );
+          }
+        }
+      }
+    ], function(props) {
+      this.projectType = props.projectType;
+      this.typo3 = this.projectType === 'typo3';
+      this.html = this.projectType === 'html';
+      this.wp = this.projectType === 'wp';
+      done();
+    }.bind(this));
+  },
+
+  askFor: function () {
+    if (this.options.design) return
+    var done = this.async();
+
+    this.prompt([
+      {
+        type: 'input',
+        name: 'url',
+        message: 'Project URL (production):',
+        default: 'http://' + this.appNameDasherize + '.com'
+      }, {
+        type: 'input',
+        name: 'description',
+        message: 'Project description:',
+        default: 'Website for '+ this.appNameHumanize
+      }, {
+        type: 'checkbox',
+        name: 'whatStarters',
+        message: 'What starters do you want?',
+        choices: [
+          {
+            name: 'Default stylesheets and JavaScripts',
+            value: 'defaultAssets',
+            checked: true
+          }, {
+            name: 'Deployment configuration',
+            value: 'deployment',
+            checked: true
+          }
+        ]
+      }, {
+        type: 'confirm',
+        name: 'git',
+        message: 'Do you want to init git after the install?',
+        default: true
+      }
+    ], function(props) {
+      this.appURL = props.url;
+      this.appDescription = props.description;
+      this.git = props.git;
+      this.defaultAssets = props.whatStarters.indexOf('defaultAssets') !== -1;
+      this.deployment = props.whatStarters.indexOf('deployment') !== -1;
+      done();
+    }.bind(this));
+  },
+
+  askForWordPressQuestions: function () {
+    if (this.options.design) return
+
+    if (this.wp) {
       var done = this.async();
+      var _this = this;
 
       this.prompt([
         {
           type: 'input',
-          name: 'name',
-          message: 'Project name:',
-          default: path.basename(process.cwd())
+          name: 'dbName',
+          message: 'Database name:',
+          default: this.appNameUnderscored
         }, {
           type: 'input',
-          name: 'author',
-          message: 'Author name:'
+          name: 'dbUser',
+          message: 'Database user:',
+          default: 'root'
+        }, {
+          type: 'input',
+          name: 'dbPassword',
+          message: 'Database password:',
+          default: 'password'
+        }, {
+          type: 'input',
+          name: 'dbHost',
+          message: 'Database host (use ' + chalk.cyan('mysql') + ' for Docker):',
+          default: 'mysql'
+        }, {
+          when: function (props) {
+            _this.log(
+              chalk.green('  !'), 'WPML user id and subscription key can be found from the download link in \n' +
+              chalk.green('  !'), chalk.underline.yellow('https://wpml.org/account/downloads/'), '\n' +
+              chalk.green('  !'), '?download=6088&user_id='+chalk.bold.yellow('YOUR_USER_ID')+'&subscription_key='+chalk.bold.yellow('YOUR_KEY')
+            )
+          }
+        }, {
+          type: 'input',
+          name: 'pluginWPMLuserID',
+          message: 'WPML user ID (leave empty for not installing):',
+          default: false
+        }, {
+          type: 'input',
+          name: 'pluginWPMLkey',
+          message: 'WPML subscription key:',
+          default: false,
+          when: function(props) {
+            return props.pluginWPMLuserID
+          }
+        }, {
+          when: function (props) {
+            _this.log(
+              chalk.green('  !'), 'ACF subscription key can be found from ' +
+              chalk.underline.yellow('http://www.advancedcustomfields.com/my-account/')
+            )
+          }
+        }, {
+          type: 'input',
+          name: 'pluginACFkey',
+          message: 'ACF key (leave empty for not installing):',
+          default: false
         }
-      ], function(answers) {
-        this.appNameDasherize = this._.dasherize(this._.slugify(answers.name));
-        this.appNameHumanize = this._.humanize(this.appNameDasherize);
-        this.generatorAuthor = answers.author;
+      ], function(props) {
+        this.dbName = props.dbName;
+        this.dbUser = props.dbUser;
+        this.dbPassword = props.dbPassword;
+        this.dbHost = props.dbHost;
+        this.pluginWPMLuserID = props.pluginWPMLuserID;
+        this.pluginWPMLkey = props.pluginWPMLkey;
+        this.pluginACFkey = props.pluginACFkey;
         done();
       }.bind(this));
     }
   },
 
-  askFor: function () {
-    if (!this.options.design) {
+  askForComposerInstall: function () {
+    if (this.options.design) return
+
+    if (this.typo3 || this.wp) {
       var done = this.async();
-      var appRoot = this.appRoot;
-      var dir = this.dir ? this.dir + '/' : '';
-      var log = this.log;
 
       this.prompt([
         {
-          type: 'list',
-          name: 'projectType',
-          message: 'What kind of project this is?',
-          choices: [
-            {
-              name: 'Typo3',
-              value: 'typoProject',
-              checked: true
-            }, {
-              name: 'Html',
-              value: 'htmlProject',
-              checked: false
-            }, {
-              name: 'WordPress',
-              value: 'wpProject',
-              checked: false
-            }
-          ]
-        }, {
-          when: function (answers) {
-            if (answers.projectType === 'typoProject') {
-              log(
-                chalk.green('  ❯'), 'Project install path:', chalk.cyan('./' + dir), '\n' +
-                chalk.green('  ❯'), 'Extension name:', chalk.cyan(appRoot), '\n' +
-                chalk.green('  ❯'), 'Extension path:', chalk.cyan('./' + appRoot + '/' + dir), '\n'  +
-                chalk.green('  ❯'), 'Build path:', chalk.cyan('./' + appRoot + '/' + appRoot + '/Resources/Public/')
-              );
-            } else if (answers.projectType === 'htmlProject') {
-              log(
-                chalk.green('  ❯'), 'Project install path:', chalk.cyan('./' + dir), '\n' +
-                chalk.green('  ❯'), 'Development path:', chalk.cyan('./' + dir + 'src/'),  '\n' +
-                chalk.green('  ❯'), 'Build path:', chalk.cyan('./' + dir + 'dist/')
-              );
-            } else if (answers.projectType === 'wpProject') {
-              log(
-                chalk.green('  ❯'), 'Project install path:', chalk.cyan('./' + dir), '\n' +
-                chalk.green('  ❯'), 'Theme will be installed in:', chalk.cyan('./' + appRoot + '/' + dir), '\n' +
-                chalk.green('  ❯'), 'Build path:', chalk.cyan('./' + appRoot + '/' + appRoot + '/dist/')
-              );
-            }
-          }
-        }, {
-          type: 'input',
-          name: 'url',
-          message: 'Project URL (production):',
-          default: 'http://' + this.appNameDasherize + '.com'
-        }, {
-          type: 'input',
-          name: 'description',
-          message: 'Project description:',
-          default: 'Website for '+ this.appNameHumanize
-        }, {
-          type: 'checkbox',
-          name: 'whatStarters',
-          message: 'What starters do you need?',
-          choices: [
-            {
-              name: 'Default stylesheets and JavaScripts',
-              value: 'defaultAssets',
-              checked: true
-            }, {
-              name: 'Deployment configuration',
-              value: 'deployment',
-              checked: true
-            }
-          ]
+          type: 'confirm',
+          name: 'composer',
+          message: 'Do you want to install Composer dependencies?',
+          default: true
         }
-      ], function(answers) {
-        this.projectType = answers.projectType;
-        this.typoProject = this.projectType === 'typoProject';
-        this.htmlProject = this.projectType === 'htmlProject';
-        this.wpProject = this.projectType === 'wpProject';
-
-        this.appURL = answers.url;
-        this.appDescription = answers.description;
-
-        this.defaultAssets = answers.whatStarters.indexOf('defaultAssets') !== -1;
-        this.deployment = answers.whatStarters.indexOf('deployment') !== -1;
-
+      ], function(props) {
+        this.composer = props.composer;
         done();
       }.bind(this));
     }
@@ -190,34 +306,45 @@ var MyGenerator = yeoman.generators.Base.extend({
    * Setup configs
    */
   config: function() {
-    if (!this.options.design) {
-      if (this.typoProject) {
-        this.config.set('assetsPath', 'Assets/');
-      }
+    if (this.options.design) return
 
-      if (this.htmlProject) {
-        this.config.set('assetsPath', 'src/assets/');
-      }
+    if (this.typo3) {
+      this.config.set('assetsPath', this.appRoot + '/Assets/');
+    }
+
+    if (this.html) {
+      this.config.set('assetsPath', 'src/assets/');
+    }
+
+    if (this.wp) {
+      this.config.set('assetsPath', this.appRoot + '/assets/');
     }
   },
 
   /**
-   * Setup gulpfile / assemblefile
+   * Setup gulpfile or assemblefile
    */
   gulpfile: function() {
-    if (!this.options.design) {
-      if (this.typoProject) {
-        this.template(
-          this.templatePath('typo3/_gulpfile.js'),
-          this.destinationPath('gulpfile.js'));
-      }
+    if (this.options.design) return
 
-      if (this.htmlProject) {
-        this.template(
-          this.templatePath('html/_assemblefile.js'),
-          this.destinationPath('assemblefile.js')
-        );
-      }
+    if (this.typo3) {
+      this.template(
+        this.templatePath('typo3/_gulpfile.js'),
+        this.destinationPath('gulpfile.js'));
+    }
+
+    if (this.html) {
+      this.template(
+        this.templatePath('html/_assemblefile.js'),
+        this.destinationPath('assemblefile.js')
+      );
+    }
+
+    if (this.wp) {
+      this.template(
+        this.templatePath('wordpress/_gulpfile.js'),
+        this.destinationPath('gulpfile.js')
+      );
     }
   },
 
@@ -225,23 +352,27 @@ var MyGenerator = yeoman.generators.Base.extend({
    * Setup README.md
    */
   readme: function() {
-    if (!this.options.design) {
-      this.template('shared/_README.md', 'README.md');
-    }
+    if (this.options.design) return
+
+    this.template('shared/_README.md', 'README.md');
   },
 
   /**
    * Setup package.json
    */
   packageJSON: function () {
-    if (!this.options.design) {
-      if (this.typoProject) {
-        this.template('typo3/_package.json', this.destinationPath('package.json'));
-      }
+    if (this.options.design) return
 
-      if (this.htmlProject) {
-        this.template('html/_package.json', this.destinationPath('package.json'));
-      }
+    if (this.typo3) {
+      this.template('typo3/_package.json', this.destinationPath('package.json'));
+    }
+
+    if (this.html) {
+      this.template('html/_package.json', this.destinationPath('package.json'));
+    }
+
+    if (this.wp) {
+      this.template('wordpress/_package.json', this.destinationPath('package.json'));
     }
   },
 
@@ -249,51 +380,51 @@ var MyGenerator = yeoman.generators.Base.extend({
    * Setup default assets
    */
   defaultAssets: function() {
-    if (!this.options.design) {
-      if (this.defaultAssets) {
-        var _this = this;
-        var startersDir = this.templatePath('starters/src/assets/');
+    if (this.options.design) return
 
-        var cssAssets = [
-          'components/_Component.scss',
-          'components/_Container.scss',
-          'components/_Grid.scss',
-          'components/_Heading.scss',
-          'components/_Icon.scss',
-          'components/_Ieframe.scss',
-          'components/_Text.scss',
-          'components/_Width.scss',
-          'components/_Wrap.scss',
-          'generic/',
-          'helpers/_helper.scss',
-          'layout/_Footer.scss',
-          'layout/_Header.scss',
-          'mixins/',
-          'vendors/_normalize.scss',
-          '_config.scss',
-          'app.scss'
-        ].forEach(function(starter) {
-          _this.fs.copy(
-            startersDir + 'stylesheets/' + starter,
-            _this.destinationPath(_this.config.get('assetsPath') + 'stylesheets/' + starter)
-          );
-        });
+    if (this.defaultAssets) {
+      var _this = this;
+      var startersDir = this.templatePath('starters/src/assets/');
 
-        var jsAssets = [
-          'app.js',
-          'head.js',
-          'lib/fixes.js',
-          'components/Component.js'
-        ].forEach(function(starter) {
-          _this.fs.copy(
-            startersDir + 'javascripts/' + starter,
-            _this.destinationPath(_this.config.get('assetsPath') + 'javascripts/' + starter)
-          );
-        });
+      var cssAssets = [
+        'components/_Component.scss',
+        'components/_Container.scss',
+        'components/_Grid.scss',
+        'components/_Heading.scss',
+        'components/_Icon.scss',
+        'components/_Ieframe.scss',
+        'components/_Text.scss',
+        'components/_Width.scss',
+        'components/_Wrap.scss',
+        'generic/',
+        'helpers/_helper.scss',
+        'layout/_Footer.scss',
+        'layout/_Header.scss',
+        'mixins/',
+        'vendors/_normalize.scss',
+        '_config.scss',
+        'app.scss'
+      ].forEach(function(file) {
+        _this.fs.copy(
+          startersDir + 'stylesheets/' + file,
+          _this.destinationPath(_this.config.get('assetsPath') + 'stylesheets/' + file)
+        );
+      });
 
-        this.mkdir(this.config.get('assetsPath')+'images');
-        this.mkdir(this.config.get('assetsPath')+'fonts');
-      }
+      var jsAssets = [
+        'app.js',
+        'head.js',
+        'lib/fixes.js',
+        'components/Component.js'
+      ].forEach(function(file) {
+        _this.fs.copy(
+          startersDir + 'javascripts/' + file,
+          _this.destinationPath(_this.config.get('assetsPath') + 'javascripts/' + file)
+        );
+      });
+
+      this.mkdir(this.config.get('assetsPath')+'images');
+      this.mkdir(this.config.get('assetsPath')+'fonts');
     }
   },
 
@@ -301,123 +432,307 @@ var MyGenerator = yeoman.generators.Base.extend({
    * Setup bower
    */
   bower: function() {
-    if (!this.options.design) {
-      this.template('shared/_bower.json', 'bower.json');
-    }
+    if (this.options.design) return
+
+    this.template('shared/_bower.json', 'bower.json');
   },
 
   /**
    * Setup deployment
    */
   deployment: function() {
-    if (!this.options.design) {
-      if (this.deployment) {
-        this.template('shared/_dploy.example.yaml', 'dploy.example.yaml');
-        this.template('shared/_dploy.example.yaml', 'dploy.yaml');
-      }
+    if (this.options.design) return
+
+    if (this.deployment) {
+      this.template('shared/_dploy.example.yaml', 'dploy.example.yaml');
+      this.template('shared/_dploy.example.yaml', 'dploy.yaml');
     }
   },
 
   /**
-   * Copy other files
+   * Copy other templates
    */
   other: function() {
-    if (!this.options.design) {
-      this.fs.copy(
-        this.templatePath('shared/editorconfig'),
-        this.destinationPath('.editorconfig')
-      );
+    if (this.options.design) return
 
-      this.fs.copy(
-        this.templatePath('shared/jscsrc'),
-        this.destinationPath('.jscsrc')
+    this.fs.copy(
+      this.templatePath('shared/editorconfig'),
+      this.destinationPath('.editorconfig')
+    );
+
+    this.fs.copy(
+      this.templatePath('shared/jscsrc'),
+      this.destinationPath('.jscsrc')
+    );
+
+    this.template(
+      this.templatePath('shared/_gitignore'),
+      this.destinationPath('.gitignore')
+    );
+  },
+
+  /**
+   * Typo3
+   */
+  typo3: function() {
+    if (this.options.design) return
+
+    if (this.typo3) {
+      this.template(
+        this.templatePath('typo3/Configuration/TypoScript/_setup.txt'),
+        this.destinationPath(this.appRoot + '/Configuration/TypoScript/setup.txt')
       );
 
       this.template(
-        this.templatePath('shared/_gitignore'),
-        this.destinationPath('.gitignore')
+        this.templatePath('typo3/Resources/Private/Templates/Page/_HomePage.html'),
+        this.destinationPath(this.appRoot + '/Resources/Private/Templates/Page/HomePage.html')
       );
 
-      if (this.typoProject) {
-        this.template(
-          this.templatePath('typo3/Configuration/TypoScript/_setup.txt'),
-          this.destinationPath('Configuration/TypoScript/setup.txt')
-        );
+      this.fs.copy(
+        this.templatePath('typo3/Resources/Private/Layouts/App.html'),
+        this.destinationPath(this.appRoot + '/Resources/Private/Layouts/App.html')
+      );
 
-        this.template(
-          this.templatePath('typo3/Configuration/TypoScript/_constants.txt'),
-          this.destinationPath('Configuration/TypoScript/constants.txt')
-        );
+      this.template(
+        this.templatePath('typo3/Resources/Private/Partials/_Top.html'),
+        this.destinationPath(this.appRoot + '/Resources/Private/Partials/Top.html')
+      );
 
-        this.template(
-          this.templatePath('typo3/Resources/Private/Templates/Page/_HomePage.html'),
-          this.destinationPath('Resources/Private/Templates/Page/HomePage.html')
-        );
+      this.template(
+        this.templatePath('typo3/Resources/Private/Partials/_Bottom.html'),
+        this.destinationPath(this.appRoot + '/Resources/Private/Partials/Bottom.html')
+      );
 
-        this.fs.copy(
-          this.templatePath('typo3/Resources/Private/Layouts/App.html'),
-          this.destinationPath('Resources/Private/Layouts/App.html')
-        );
+      this.template(
+        this.templatePath('typo3/_ext_emconf.php'),
+        this.destinationPath(this.appRoot + '/ext_emconf.php')
+      );
 
-        this.template(
-          this.templatePath('typo3/Resources/Private/Partials/_Top.html'),
-          this.destinationPath('Resources/Private/Partials/Top.html')
-        );
+      this.template(
+        this.templatePath('typo3/_ext_tables.php'),
+        this.destinationPath(this.appRoot + '/ext_tables.php')
+      );
 
-        this.template(
-          this.templatePath('typo3/Resources/Private/Partials/_Bottom.html'),
-          this.destinationPath('Resources/Private/Partials/Bottom.html')
-        );
-
-        this.template(
-          this.templatePath('typo3/_ext_emconf.php'),
-          this.destinationPath('ext_emconf.php')
-        );
-
-        this.template(
-          this.templatePath('typo3/_ext_tables.php'),
-          this.destinationPath('ext_tables.php')
-        );
-      }
-
-      if (this.htmlProject) {
-        this.fs.copy(
-          this.templatePath('html/src/helpers/assets.js'),
-          this.destinationPath('src/helpers/assets.js')
-        );
-
-        this.template(
-          this.templatePath('html/src/_app.json'),
-          this.destinationPath('src/app.json')
-        );
-
-        this.template(
-          this.templatePath('html/src/templates/_index.hbs'),
-          this.destinationPath('src/templates/index.hbs')
-        );
-
-        this.fs.copy(
-          this.templatePath('html/src/layouts/default.hbs'),
-          this.destinationPath('src/layouts/default.hbs')
-        );
-
-        this.fs.copy(
-          this.templatePath('html/src/partials/top.hbs'),
-          this.destinationPath('src/partials/top.hbs')
-        );
-
-        this.template(
-          this.templatePath('html/src/partials/bottom.hbs'),
-          this.destinationPath('src/partials/bottom.hbs')
-        );
-      }
+      this.template(
+        this.templatePath('typo3/typo3/_composer.json'),
+        this.destinationPath('typo3/composer.json')
+      );
     }
   },
 
-  install: function () {
+  /**
+   * Html
+   */
+  html: function () {
+    if (this.options.design) return
+
+    if (this.html) {
+      this.fs.copy(
+        this.templatePath('html/src/helpers/assets.js'),
+        this.destinationPath('src/helpers/assets.js')
+      );
+
+      this.template(
+        this.templatePath('html/src/_app.json'),
+        this.destinationPath('src/app.json')
+      );
+
+      this.template(
+        this.templatePath('html/src/templates/_index.hbs'),
+        this.destinationPath('src/templates/index.hbs')
+      );
+
+      this.fs.copy(
+        this.templatePath('html/src/layouts/default.hbs'),
+        this.destinationPath('src/layouts/default.hbs')
+      );
+
+      this.fs.copy(
+        this.templatePath('html/src/partials/top.hbs'),
+        this.destinationPath('src/partials/top.hbs')
+      );
+
+      this.template(
+        this.templatePath('html/src/partials/bottom.hbs'),
+        this.destinationPath('src/partials/bottom.hbs')
+      );
+    }
+  },
+
+  /**
+   * WordPress
+   */
+  wp: function() {
+    if (this.options.design) return
+
+    if (this.wp) {
+      var done = this.async();
+      var _this = this;
+      _this.salt = '';
+
+      this.fs.copy(
+        this.templatePath('wordpress/functions.php'),
+        this.destinationPath(this.appRoot + '/functions.php')
+      );
+
+      this.fs.copy(
+        this.templatePath('wordpress/header.php'),
+        this.destinationPath(this.appRoot + '/header.php')
+      );
+
+      this.fs.copy(
+        this.templatePath('wordpress/footer.php'),
+        this.destinationPath(this.appRoot + '/footer.php')
+      );
+
+      this.directory(
+        this.templatePath('wordpress/partials'),
+        this.destinationPath(this.appRoot + '/partial/')
+      );
+
+      this.directory(
+        this.templatePath('wordpress/lib'),
+        this.destinationPath(this.appRoot + '/lib/')
+      );
+
+      this.template(
+        this.templatePath('wordpress/_style.css'),
+        this.destinationPath(this.appRoot + '/style.css')
+      );
+
+      this.template(
+        this.templatePath('wordpress/_index.php'),
+        this.destinationPath(this.appRoot + '/index.php')
+      );
+
+      this.template(
+        this.templatePath('wordpress/wp/_docker-compose.dev.example.yml'),
+        this.destinationPath('wp/docker-compose.dev.example.yml')
+      );
+
+      this.template(
+        this.templatePath('wordpress/wp/_docker-compose.dev.example.yml'),
+        this.destinationPath('wp/docker-compose.dev.example.yml')
+      );
+
+      this.template(
+        this.templatePath('wordpress/wp/_docker-compose.dev.example.yml'),
+        this.destinationPath('wp/docker-compose.dev.yml')
+      );
+
+      this.template(
+        this.templatePath('wordpress/wp/_docker-compose.yml'),
+        this.destinationPath('wp/docker-compose.yml')
+      );
+
+      this.template(
+        this.templatePath('wordpress/wp/_composer.json'),
+        this.destinationPath('wp/composer.json')
+      );
+
+      this.template(
+        this.templatePath('wordpress/wp/_wp-config.dev.example.php'),
+        this.destinationPath('wp/wp-config.dev.example.php')
+      );
+
+      this.template(
+        this.templatePath('wordpress/wp/_wp-config.dev.example.php'),
+        this.destinationPath('wp/wp-config.dev.php')
+      );
+
+      this.fs.copy(
+        this.templatePath('wordpress/wp/htaccess'),
+        this.destinationPath('wp/.htaccess')
+      );
+
+      this.fs.copy(
+        this.templatePath('wordpress/wp/register-theme-directory.php'),
+        this.destinationPath('wp/wp-content/mu-plugins/register-theme-directory.php')
+      );
+
+      this.fs.copy(
+        this.templatePath('wordpress/wp/index.php'),
+        this.destinationPath('wp/index.php')
+      );
+
+      request('https://api.wordpress.org/secret-key/1.1/salt', function(error, response, body) {
+        if (!error && response.statusCode == 200) {
+          _this.salt = body;
+
+          _this.template(
+            _this.templatePath('wordpress/wp/_wp-config.php'),
+            _this.destinationPath('wp/wp-config.php')
+          );
+
+          done();
+        }
+      });
+    }
+  },
+
+  install: function() {
+    if (this.options.design) return
+    var _this = this;
+
     this.installDependencies({
-      skipInstall: !this.options.design && this.options['skip-install'] || this.options.design
+      skipInstall: this.options['skip-install'],
+      callback: function() {
+        var composer = _this.composer && !_this.options['skip-install'];
+
+        if (_this.typo3 && composer || _this.wp && composer) {
+          process.chdir(path.join(process.cwd(), _this.projectType));
+          _this.spawnCommand('composer', ['install']).on('exit', function() {
+            installFinished();
+          });
+        } else {
+          installFinished();
+        }
+      }.bind(this)
     });
+
+    function installFinished() {
+      if (_this.git) {
+        _this.spawnCommand('git', ['init']).on('exit', info);
+      }
+
+      function info() {
+        var devEnvString = '';
+        var wordPressInfo = '';
+        var projectType = _this.projectType === 'wp' ? 'WordPress' : _this._.humanize(_this.projectType);
+
+        if (_this.typo3 || _this.wp) {
+          devEnvString = ' development enviroment instructions,'
+        }
+
+        if (_this.wp) {
+          wordPressInfo = '\n' +
+            chalk.green('❯ ') + 'Database name: ' + chalk.cyan(_this.dbName) + '\n' +
+            chalk.green('❯ ') + 'Database user: ' + chalk.cyan(_this.dbUser) + '\n' +
+            chalk.green('❯ ') + 'Database password: ' + chalk.cyan(_this.dbPassword) + '\n' +
+            chalk.green('❯ ') + 'Database host: ' + chalk.cyan(_this.dbHost) + '\n';
+        }
+
+        _this.log(
+          '\n' +
+          '  ========================================', '\n' +
+          '\n' +
+          chalk.green('!'),  chalk.bold('Project details'), '\n\n' +
+          chalk.green('❯'), 'Name:', chalk.cyan(_this.appNameDasherize), '\n' +
+          chalk.green('❯'), 'Description:', chalk.cyan(_this.appDescription), '\n' +
+          chalk.green('❯'), 'Author:', chalk.cyan(_this.generatorAuthor), '\n' +
+          chalk.green('❯'), 'Type:', chalk.cyan(projectType), '\n' +
+          chalk.green('❯'), 'Project URL (production):', chalk.cyan(_this.appURL), '\n' +
+          wordPressInfo,
+          '\n' +
+          chalk.green('❯'), 'Please read', chalk.cyan('README.md'), 'for' + devEnvString + ' available commands and other useful info.', '\n' +
+          chalk.green('❯'), 'Then just run', chalk.yellow('npm run dev'), 'to kickstart your project.', '\n' +
+          chalk.green('❯ Happy developing! :)'), '\n' +
+          '\n' +
+          '  ========================================' +
+          '\n'
+        );
+      }
+    }
   }
 });
 
