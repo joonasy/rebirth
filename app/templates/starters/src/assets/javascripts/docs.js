@@ -13,29 +13,9 @@ import Navbar from './components/Navbar';
 import DocsNavbar from './docs/DocsNavbar';
 
 $(function() {
-
-  /**
-   * Init Button
-   */
   new Button().init();
-
-  /**
-   * Init Card
-   */
   new Card().init();
-
-  /**
-   * Init Hero
-   */
   new Hero().init();
-
-  /**
-   * Init Navbar
-   */
   new Navbar().init();
-
-  /**
-   * Init documentation material
-   */
   new DocsNavbar().init();
 });

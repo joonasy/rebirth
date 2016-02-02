@@ -34,7 +34,7 @@ class Navbar {
     $('.js-Navbar .Navbar-trigger').parent().addClass('has-dropdown');
 
     new ClassToggle({
-      trigger: '.js-Navbar .Navbar-item.has-dropdown > .Navbar-link',
+      trigger: '.js-Navbar .has-dropdown > .Navbar-link',
       element: '.js-Navbar .Navbar-item',
       toggleClosest: true,
       unToggleParentSiblings: true,
