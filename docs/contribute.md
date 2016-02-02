@@ -6,28 +6,29 @@ Please discuss about new ideas and things that you think should be modified. Cur
 
     |── app 
     |   |── templates
-    |   |   index.js      # [1]
-    |   |   |── assets    # [2]
-    |   |   |── html      # [3]
-    |   |   |── shared    # [4]
-    |   |   |── starters  # [5]
-    |   |   |── typo3     # [3]
+    |   |   index.js       # [1]
+    |   |   |── html       # [2]
+    |   |   |── shared     # [3]
+    |   |   |── starters   # [4]
+    |   |   |── typo3      # [5]
+    |   |   |── wordpress  # [6]
     |
-    |── component         # [6]
+    |── component          # [7]
     |   …
     |     
-    |── docs              # [7]
-    |   |── css           # [8]
-    |   |── js            # [9]
-    |   |── project       # [10]
+    |── docs               # [8]
+    |   |── css            # [9]
+    |   |── js             # [10]
+    |   |── project        # [11]
 
 * **1.** This file contains all the generator settings. Read more about building generators at [Yeoman docs](http://yeoman.io/authoring/) and [Yeoman API](http://yeoman.github.io/generator/).
-* **2.** Contains all the default stylesheets and javascripts that are always copied to project folder.
-* **3.** These directories contain all project type related files. [Read more about project types](http://#).
-* **4.** Various shared project type files.
-* **5.** Contains all the boilerplate stylesheets and javascripts that may be copied to your project folder. This directory is also used as a base for developing starters and building docs. [Read more about making starters](http://#).
-* **6.** Component sub-generator.
-* **7.** Documents and instructions. This directory and all of its contents will be  later converted to a HTML document, and this directory will be a build folder for starters and docs (*starters [5.]*).
-* **8.** CSS styleguide
-* **9.** JavaScript styleguide
-* **10.** Project structure and worklow guides
+* **2.** Html template files.
+* **3.** Various shared project type files.
+* **4.** Contains all the boilerplate stylesheets and javascripts that may be copied to your project folder. This directory is also used as a base for developing starters and building docs. [Read more about making starters](http://#).
+* **5.** Typo3 template files.
+* **6.** WordPress template files.
+* **7.** Component sub-generator.
+* **8.** Documents and instructions. This directory and all of its contents will be  later converted to a HTML document, and this directory will be a build folder for starters and docs (*starters [5.]*).
+* **9.** CSS styleguide
+* **10.** JavaScript styleguide
+* **11.** Project structure and worklow guides

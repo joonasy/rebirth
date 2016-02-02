@@ -8,50 +8,52 @@ Project specific instructions:
 
 * [Typo3](typo3)
 
-### Shared files and folder structure across project types
+### Shared starter files and folder structure across project types
 
 ```
-    project/
+project-folder/
+    project/                     # [1]
     |
-    |── assets/                  # [1]
+    |── assets/                  # [2]
     |   |
-    |   |── fonts/               # [2]
-    |   |── images/              # [3]
-    |   |── javascripts/         # [4]
-    |   |── stylesheets/         # [5]    
+    |   |── fonts/               # [3]
+    |   |── images/              # [4]
+    |   |── javascripts/         # [5]
+    |   |── stylesheets/         # [6]    
     |
-    |── bower_components/        # [6]   
-    |── node_modules/            # [7]   
+    |── bower_components/        # [7]   
+    |── node_modules/            # [8]   
     |
-    `── .editorconfig            # [8]
-    `── .gitignore               # [9]
-    `── .jscsrc                  # [10]
-    `── .yo-rc.json              # [11]
-    `── bower.json               # [12]
-    `── dploy.example.yaml       # [13]
-    `── gulpfile.js              # [14]
-    `── package.json             # [15]
-    `── README.md                # [16]
-    `── rev-manifest.json        # [17]
+    `── .editorconfig            # [9]
+    `── .gitignore               # [10]
+    `── .jscsrc                  # [11]
+    `── .yo-rc.json              # [12]
+    `── bower.json               # [13]
+    `── dploy.example.yaml       # [14]
+    `── gulpfile.js              # [15]
+    `── package.json             # [16]
+    `── README.md                # [17]
+    `── rev-manifest.json        # [18]
 ```
 
-* **1.** This folder contains all static assets
-* **2.** Folder for self-hosted fonts and icon fonts
-* **3.** Static images that are referenced via CSS
-* **4.** JavaScripts please refer to [JavaScript Styleguide](/docs/js/)
-* **5.** Stylesheets please refer to [CSS Styleguide](/docs/css/)
-* **6.** This folder contains all [Bower](http://bower.io) components *
-* **7.** This folder contains all [Npm](https://www.npmjs.com/) modules *
-* **8.** [EditorConfig](http://editorconfig.org/) settings
-* **9.** Set your git ignores here
-* **10.** [JavaScript coding style](http://jscs.info/overview.html) settings that follow our [JavaScript Styleguide](../js/)
-* **11.** Contains settings for the Yeoman generator.
-* **12.** Add your [Bower packages](http://bower.io/#save-packages) here
-* **13.** Your deployment [DPLOY](https://leanmeanfightingmachine.github.io/dploy/) settings. Rename this to `dploy.yaml` * and make sure it's ignored by git. _NEVER UPLOAD YOUR DEPLOYMENT SETTINGS ANYWHERE_
-* **14.** [Gulpfile](http://gulpjs.com/) that handles the build process 
-* **15.** [Npm package](https://docs.npmjs.com/getting-started/installing-npm-packages-locally) settings
-* **16.** Add your project specific instructions here.
-* **17.** In build process an asset manifest, mapping the original paths to the revisioned paths, will be written here.
+* **1.** Source folder of your project type (e.g. theme, extension, src)
+* **2.** This folder contains all static assets. Lettercase may vary.
+* **3.** Folder for self-hosted fonts and icon fonts
+* **4.** Static images that are referenced via CSS
+* **5.** JavaScripts please refer to [JavaScript Styleguide](/docs/js/)
+* **6.** Stylesheets please refer to [CSS Styleguide](/docs/css/)
+* **7.** This folder contains all [Bower](http://bower.io) components *
+* **8.** This folder contains all [Npm](https://www.npmjs.com/) modules *
+* **9.** [EditorConfig](http://editorconfig.org/) settings
+* **10.** Set your git ignores here
+* **11.** [JavaScript coding style](http://jscs.info/overview.html) settings that follow our [JavaScript Styleguide](../js/)
+* **12.** Contains settings for the Yeoman generator.
+* **13.** Add your [Bower packages](http://bower.io/#save-packages) here
+* **14.** Your deployment [DPLOY](https://leanmeanfightingmachine.github.io/dploy/) settings. Rename this to `dploy.yaml` * and make sure it's ignored by git. _NEVER UPLOAD YOUR DEPLOYMENT SETTINGS ANYWHERE_
+* **15.** [Gulpfile](http://gulpjs.com/) that handles the build process 
+* **16.** [Npm package](https://docs.npmjs.com/getting-started/installing-npm-packages-locally) settings
+* **17.** Add your project specific instructions here.
+* **18.** In build process an asset manifest, mapping the original paths to the revisioned paths, will be written here.
 
 <sub>\* Ignore from [Git](http://git-scm.com/).</sub>
 
