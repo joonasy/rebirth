@@ -5,7 +5,6 @@
 'use strict'
 
 var chalk = require('chalk');
-var http = require('http');
 var moment = require('moment');
 var path = require('path');
 var request = require('request');
