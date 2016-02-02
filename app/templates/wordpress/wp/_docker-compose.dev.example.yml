@@ -1,0 +1,15 @@
+wordpress:
+  environment:
+    WORDPRESS_DB_NAME: <%= dbName %>
+    WORDPRESS_DB_USER: <%= dbUser %>
+    USE_EXTERNAL_FILES: true
+  volumes:
+    - ./wp-content/uploads:/var/www/html/wp-content/uploads
+    - ./.htaccess:/var/www/html/.htaccess
+    - ./index.php:/var/www/html/index.php
+    - ./wp-config.php:/var/www/html/wp-config.php
+    - ./wp-config.dev.php:/var/www/html/wp-config.dev.php
+database:
+  environment:
+    MYSQL_ROOT_PASSWORD: <%= dbPassword %>
+

@@ -1,0 +1,22 @@
+wordpress:
+  container_name: <%= appRoot %>-wp
+  extends:
+    file: docker-compose.dev.yml
+    service: wordpress
+  image: joonasy/wordpress
+  links:
+    - database:mysql
+  ports:
+    - 80:80
+  volumes:
+    - ../<%= appRoot %>:/var/www/html/wp-content/themes/<%= appRoot %>
+    - ./wp-content/mu-plugins:/var/www/html/wp-content/mu-plugins
+    - ./wp-content/plugins:/var/www/html/wp-content/plugins
+database:
+  container_name: <%= appRoot %>-db
+  extends:
+    file: docker-compose.dev.yml
+    service: database
+  image: mariadb
+  ports:
+    - 3306:3306

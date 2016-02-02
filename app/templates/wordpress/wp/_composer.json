@@ -1,0 +1,43 @@
+{
+  "name": "<%= appRoot %>/wp",
+  "description" : "<%= appNameHumanize %> WordPress Installer",
+  "repositories": [
+    {
+      "type": "composer",
+      "url": "http://wpackagist.org"
+    }<% if (pluginWPMLuserID) { %>, {
+      "type": "package",
+      "package": {
+        "name": "wpml/wpml-multilingual-cms",
+        "version": "3.3.6",
+        "type": "wordpress-plugin",
+        "dist": {
+          "type": "zip",
+          "url": "https://wpml.org/?download=6088&user_id=<%= pluginWPMLuserID %>&subscription_key=<%= pluginWPMLkey %>"
+        }
+      }
+    }<% } if (pluginACFkey) { %>, {
+      "type": "package",
+      "package": {
+        "name": "advanced-custom-fields/advanced-custom-fields-pro",
+        "version": "5.3.3.2",
+        "type": "wordpress-plugin",
+        "dist": {
+          "type": "zip",
+          "url": "http://connect.advancedcustomfields.com/index.php?p=pro&a=download&k=<%= pluginACFkey %>"
+        }
+      }
+    }<% } %>
+  ],
+  "require": {
+    "php": ">=5.4",
+    "johnpbloch/wordpress": "4.4.2",
+    "wpackagist-plugin/w3-total-cache": "*",
+    "wpackagist-plugin/wordpress-seo": "*",<% if (pluginWPMLuserID) { %>
+    "wpml/wpml-multilingual-cms": "3.3.6",<% } if (pluginACFkey) { %>
+    "advanced-custom-fields/advanced-custom-fields-pro": "5.3.3.2"<% } %>
+  },
+  "extra": {
+    "wordpress-install-dir": "wp"
+  }
+}
