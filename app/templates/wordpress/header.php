@@ -19,5 +19,5 @@
   <body>
 
     <!--[if lte IE 9]>
-      <p class="IeFrame">Hei, käytät <strong>tietoturvatonta</strong> selainta. <a href="http://browsehappy.com/">Päivitä uuteen selaimeen</a>, kiitokset!</p>
+      <p class="IeFrame">Hei, käytät <strong>tietoturvatonta</strong> selainta. <a href="http://outdatedbrowser.com">Päivitä uuteen selaimeen</a>, kiitokset!</p>
     <![endif]-->
