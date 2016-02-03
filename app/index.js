@@ -17,7 +17,7 @@ var MyGenerator = yeoman.generators.Base.extend({
 
     this.pkg = require('../package.json');
     this.appRoot = path.basename(process.cwd());
-    this.generatorDate = moment().format('DD.M.YYYY HH:MM');
+    this.generatorDate = moment().format('D.M.YYYY');
     this.generatorRepository = this.pkg.repository;
 
     this.argument('dir', {
