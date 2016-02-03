@@ -7,7 +7,7 @@
  * https://github.com/roots/soil/blob/master/modules/clean-up.php
  */
 
-namespace App\CleanUp;
+namespace <%= appNameSpace %>\CleanUp;
 
 /**
  * Clean up wp_head()

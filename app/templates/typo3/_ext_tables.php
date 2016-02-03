@@ -4,6 +4,6 @@ if (!defined('TYPO3_MODE')) {
 }
 
 TYPO3\CMS\Core\Utility\ExtensionManagementUtility::addStaticFile($_EXTKEY, 'Configuration/TypoScript', '<%= appRoot %>');
-\FluidTYPO3\Flux\Core::registerProviderExtensionKey('<%= appRoot %>', 'Page');
-\FluidTYPO3\Flux\Core::registerProviderExtensionKey('<%= appRoot %>', 'Content');
+\FluidTYPO3\Flux\Core::registerProviderExtensionKey('<%= appNameSpace %>.<%= appNamePascalize %>', 'Page');
+\FluidTYPO3\Flux\Core::registerProviderExtensionKey('<%= appNameSpace %>.<%= appNamePascalize %>', 'Content');
 

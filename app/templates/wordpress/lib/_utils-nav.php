@@ -3,7 +3,7 @@
  * Navigation utils
  * ======================================== */
 
-namespace App\Utils\Nav;
+namespace <%= appNameSpace %>\Utils\Nav;
 
 /**
  * Show only sub menu

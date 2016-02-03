@@ -3,7 +3,7 @@
  * Setup
  * ============================================ */
 
-namespace App\Setup;
+namespace <%= appNameSpace %>\Setup;
 
 /**
  * Options pages

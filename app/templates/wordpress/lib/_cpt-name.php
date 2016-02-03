@@ -3,7 +3,7 @@
  * Custom post type - Name
  * ============================================ */
 
-namespace App\CustomPostType\Name;
+namespace <%= appNameSpace %>\CustomPostType\Name;
 
 function cpt_name() {
   $labels = array(

@@ -3,7 +3,7 @@
  * Utilities
  * ======================================== */
 
-namespace App\Utils;
+namespace <%= appNameSpace %>\Utils;
 
 /**
  * Make a URL relative

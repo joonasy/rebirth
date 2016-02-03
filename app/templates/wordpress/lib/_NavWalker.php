@@ -15,9 +15,9 @@
  *   ));
  */
 
-namespace App\Nav;
+namespace <%= appNameSpace %>\Nav;
 
-use App\Utils;
+use <%= appNameSpace %>\Utils;
 
 class NavWalker extends \Walker_Nav_Menu {
   private $cpt;

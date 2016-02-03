@@ -3,13 +3,14 @@
  * Utilities for advanced custom fields
  * ======================================== */
 
-namespace App\Utils\Acf;
+namespace <%= appNameSpace %>\Utils\Acf;
 
 /**
  * Get image url from an img array and fallback to some other thumnail image
+ * Make sure the field is defined as an array.
  *
  * @param {Integer} $id ID of the post
- * @param {Array} $field Custom field name
+ * @param {String} $field Custom field name. Make sure it's defined as array.
  * @param {String} $fallback Fallback custom field name
  * @param {String} $thumbnail Fallback thumbnail size name
  * @return {String} Image URL
@@ -20,10 +21,11 @@ function get_field_image_url($id, $field, $fallback, $thumbnail) {
 
 /**
  * Get sub field image url from an img array and fallback to some other thumnail image
+ * Make sure the field is defined as an array.
  *
- * @param {String} $field Custom field name
+ * @param {String} $field Custom field name.
  * @param {String} $fallback Fallback custom field name
- * @param {String} $fallback Fallback thumbnail size name
+ * @param {String} $thumbnail Fallback thumbnail size name
  * @return {String} Image URL
  */
 function get_sub_field_image_url($field, $fallback, $thumbnail) {

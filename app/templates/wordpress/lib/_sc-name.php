@@ -3,9 +3,9 @@
  * Shortcode - Name
  * ============================================ */
 
-namespace App\Shortcode\Name;
+namespace <%= appNameSpace %>\Shortcode\Name;
 
-use App\Utils;
+use <%= appNameSpace %>\Utils;
 
 function name($atts, $content = null) {
   extract(shortcode_atts(array(
