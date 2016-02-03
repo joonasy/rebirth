@@ -107,7 +107,7 @@ Note that the we are using the same structure of files as in the [joonasy/wordpr
     ln -s ../../../<%= appRoot %> <%= appRoot %>
     ```
 
-6. Open `<%= appNameDasherize %>.dev`, setup your new site and activate your theme.
+6. Open `<%= appNameDasherize %>.dev`, setup your new site and activate your extension.
 
 7. Run `npm run dev` in root<% } %>
 
