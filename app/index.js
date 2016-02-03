@@ -76,9 +76,12 @@ var MyGenerator = yeoman.generators.Base.extend({
   /**
    * Prompts
    */
-  askName: function () {
+  askQuestions: function () {
     if (this.options.design) return
     var done = this.async();
+    var appRoot = this.appRoot;
+    var dir = this.dir ? this.dir + '/' : '';
+    var _this = this;
 
     this.prompt([
       {
@@ -89,26 +92,9 @@ var MyGenerator = yeoman.generators.Base.extend({
       }, {
         type: 'input',
         name: 'author',
-        message: 'Author name:'
-      }
-    ], function(props) {
-      this.appNameDasherize = this._.dasherize(this._.slugify(props.name));
-      this.appNameHumanize = this._.humanize(this.appNameDasherize);
-      this.appNameUnderscored = this._.underscored(this.appNameDasherize);
-      this.generatorAuthor = props.author;
-      done();
-    }.bind(this));
-  },
-
-  askForProjectType: function () {
-    if (this.options.design) return
-    var done = this.async();
-    var appRoot = this.appRoot;
-    var dir = this.dir ? this.dir + '/' : '';
-    var _this = this;
-
-    this.prompt([
-      {
+        message: 'Author name:',
+        default: 'Author'
+      }, {
         type: 'list',
         name: 'projectType',
         message: 'What kind of project this is?',
@@ -150,31 +136,20 @@ var MyGenerator = yeoman.generators.Base.extend({
             );
           }
         }
-      }
-    ], function(props) {
-      this.projectType = props.projectType;
-      this.typo3 = this.projectType === 'typo3';
-      this.html = this.projectType === 'html';
-      this.wp = this.projectType === 'wp';
-      done();
-    }.bind(this));
-  },
-
-  askFor: function () {
-    if (this.options.design) return
-    var done = this.async();
-
-    this.prompt([
-      {
+      }, {
         type: 'input',
         name: 'url',
         message: 'Project URL (production):',
-        default: 'http://' + this.appNameDasherize + '.com'
+        default: function(props) {
+          return 'http://' + _this._.dasherize(_this._.slugify(props.name)) + '.com'
+        }
       }, {
         type: 'input',
         name: 'description',
         message: 'Project description:',
-        default: 'Website for '+ this.appNameHumanize
+        default: function(props) {
+          return 'Website for '+ _this._.humanize(props.name)
+        }
       }, {
         type: 'checkbox',
         name: 'whatStarters',
@@ -195,110 +170,130 @@ var MyGenerator = yeoman.generators.Base.extend({
         name: 'git',
         message: 'Do you want to init git after the install?',
         default: true
-      }
-    ], function(props) {
-      this.appURL = props.url;
-      this.appDescription = props.description;
-      this.git = props.git;
-      this.defaultAssets = props.whatStarters.indexOf('defaultAssets') !== -1;
-      this.deployment = props.whatStarters.indexOf('deployment') !== -1;
-      done();
-    }.bind(this));
-  },
-
-  askForWordPressQuestions: function () {
-    if (this.options.design) return
-
-    if (this.wp) {
-      var done = this.async();
-      var _this = this;
-
-      this.prompt([
-        {
+      }, {
+        type: 'confirm',
+        name: 'composer',
+        message: 'Do you want to install Composer dependencies?',
+        default: true,
+        when: function(props) {
+          return props.projectType === 'wp' || props.projectType === 'typo3'
+        }
+      }, {
           type: 'input',
-          name: 'dbName',
-          message: 'Database name:',
-          default: this.appNameUnderscored
-        }, {
-          type: 'input',
-          name: 'dbUser',
-          message: 'Database user:',
-          default: 'root'
-        }, {
-          type: 'input',
-          name: 'dbPassword',
-          message: 'Database password:',
-          default: 'password'
-        }, {
-          type: 'input',
-          name: 'dbHost',
-          message: 'Database host (use ' + chalk.cyan('mysql') + ' for Docker):',
-          default: 'mysql'
-        }, {
-          when: function (props) {
+          name: 'appNameSpace',
+          message: 'Project namespace:',
+          default: 'App',
+          when: function(props) {
+            return props.projectType === 'wp' || props.projectType === 'typo3'
+          }
+      }, {
+        type: 'input',
+        name: 'dbName',
+        message: 'Database name:',
+        default: function(props) {
+          return _this._.underscored(_this._.dasherize(_this._.slugify(props.name)))
+        },
+        when: function(props) {
+          return props.projectType === 'wp'
+        }
+      }, {
+        type: 'input',
+        name: 'dbUser',
+        message: 'Database user:',
+        default: 'root',
+        when: function(props) {
+          return props.projectType === 'wp'
+        }
+      }, {
+        type: 'input',
+        name: 'dbPassword',
+        message: 'Database password:',
+        default: 'password',
+        when: function(props) {
+          return props.projectType === 'wp'
+        }
+      }, {
+        type: 'input',
+        name: 'dbHost',
+        message: 'Database host (use ' + chalk.cyan('mysql') + ' for Docker):',
+        default: 'mysql',
+        when: function(props) {
+          return props.projectType === 'wp'
+        }
+      }, {
+        when: function (props) {
+          if (props.projectType === 'wp') {
             _this.log(
               chalk.green('  !'), 'WPML user id and subscription key can be found from the download link in \n' +
               chalk.green('  !'), chalk.underline.yellow('https://wpml.org/account/downloads/'), '\n' +
               chalk.green('  !'), '?download=6088&user_id='+chalk.bold.yellow('YOUR_USER_ID')+'&subscription_key='+chalk.bold.yellow('YOUR_KEY')
             )
           }
-        }, {
-          type: 'input',
-          name: 'pluginWPMLuserID',
-          message: 'WPML user ID (leave empty for not installing):',
-          default: false
-        }, {
-          type: 'input',
-          name: 'pluginWPMLkey',
-          message: 'WPML subscription key:',
-          default: false,
-          when: function(props) {
-            return props.pluginWPMLuserID
-          }
-        }, {
-          when: function (props) {
+        }
+      }, {
+        type: 'input',
+        name: 'pluginWPMLuserID',
+        message: 'WPML user ID (leave empty for not installing):',
+        default: false,
+        when: function(props) {
+          return props.projectType === 'wp'
+        }
+      }, {
+        type: 'input',
+        name: 'pluginWPMLkey',
+        message: 'WPML subscription key:',
+        default: false,
+        when: function(props) {
+          return props.pluginWPMLuserID
+        }
+      }, {
+        when: function (props) {
+          if (props.projectType === 'wp') {
             _this.log(
               chalk.green('  !'), 'ACF subscription key can be found from ' +
               chalk.underline.yellow('http://www.advancedcustomfields.com/my-account/')
             )
           }
-        }, {
-          type: 'input',
-          name: 'pluginACFkey',
-          message: 'ACF key (leave empty for not installing):',
-          default: false
         }
-      ], function(props) {
-        this.dbName = props.dbName;
-        this.dbUser = props.dbUser;
-        this.dbPassword = props.dbPassword;
-        this.dbHost = props.dbHost;
-        this.pluginWPMLuserID = props.pluginWPMLuserID;
-        this.pluginWPMLkey = props.pluginWPMLkey;
-        this.pluginACFkey = props.pluginACFkey;
-        done();
-      }.bind(this));
-    }
-  },
-
-  askForComposerInstall: function () {
-    if (this.options.design) return
-
-    if (this.typo3 || this.wp) {
-      var done = this.async();
-
-      this.prompt([
-        {
-          type: 'confirm',
-          name: 'composer',
-          message: 'Do you want to install Composer dependencies?',
-          default: true
+      }, {
+        type: 'input',
+        name: 'pluginACFkey',
+        message: 'ACF key (leave empty for not installing):',
+        default: false,
+        when: function(props) {
+          return props.projectType === 'wp'
         }
-      ], function(props) {
-        this.composer = props.composer;
-        done();
-      }.bind(this));
-    }
+      }
+    ], function(props) {
+      this.appNameDasherize = this._.dasherize(this._.slugify(props.name));
+      this.appNameHumanize = this._.humanize(this.appNameDasherize);
+      this.appNameUnderscored = this._.underscored(this.appNameDasherize);
+      this.appNamePascalize = this._.capitalize(this._.camelize(this.appNameDasherize));
+      this.appAuthor = props.author;
+
+      this.projectType = props.projectType;
+      this.typo3 = this.projectType === 'typo3';
+      this.html = this.projectType === 'html';
+      this.wp = this.projectType === 'wp';
+
+      this.appURL = props.url;
+      this.appDescription = props.description;
+      this.git = props.git;
+      this.defaultAssets = props.whatStarters.indexOf('defaultAssets') !== -1;
+      this.deployment = props.whatStarters.indexOf('deployment') !== -1;
+      this.composer = props.composer;
+
+      this.appNameSpace = this._.capitalize(this._.camelize(props.appNameSpace));
+
+      this.dbName = props.dbName;
+      this.dbUser = props.dbUser;
+      this.dbPassword = props.dbPassword;
+      this.dbHost = props.dbHost;
+      this.pluginWPMLuserID = props.pluginWPMLuserID;
+      this.pluginWPMLkey = props.pluginWPMLkey;
+      this.pluginACFkey = props.pluginACFkey;
+      done();
+    }.bind(this));
   },
 
   /**
@@ -589,14 +584,39 @@ var MyGenerator = yeoman.generators.Base.extend({
         this.destinationPath(this.appRoot + '/partial/')
       );
 
-      this.directory(
-        this.templatePath('wordpress/lib'),
-        this.destinationPath(this.appRoot + '/lib/')
+      this.template(
+        this.templatePath('wordpress/lib/_clean-up.php'),
+        this.destinationPath(this.appRoot + '/lib/clean-up.php')
       );
 
       this.template(
-        this.templatePath('wordpress/_style.css'),
-        this.destinationPath(this.appRoot + '/style.css')
+        this.templatePath('wordpress/lib/_cpt-name.php'),
+        this.destinationPath(this.appRoot + '/lib/cpt-name.php')
+      );
+
+      this.template(
+        this.templatePath('wordpress/lib/_NavWalker.php'),
+        this.destinationPath(this.appRoot + '/lib/NavWalker.php')
+      );
+
+      this.template(
+        this.templatePath('wordpress/lib/_sc-name.php'),
+        this.destinationPath(this.appRoot + '/lib/sc-name.php')
+      );
+
+      this.template(
+        this.templatePath('wordpress/lib/_setup.php'),
+        this.destinationPath(this.appRoot + '/lib/setup.php')
+      );
+
+      this.template(
+        this.templatePath('wordpress/lib/_utils-acf.php'),
+        this.destinationPath(this.appRoot + '/lib/utils-acf.php')
+      );
+
+      this.template(
+        this.templatePath('wordpress/lib/_utils.php'),
+        this.destinationPath(this.appRoot + '/lib/utils.php')
       );
 
       this.template(
@@ -718,7 +738,7 @@ var MyGenerator = yeoman.generators.Base.extend({
           chalk.green('!'),  chalk.bold('Project details'), '\n\n' +
           chalk.green('❯'), 'Name:', chalk.cyan(_this.appNameDasherize), '\n' +
           chalk.green('❯'), 'Description:', chalk.cyan(_this.appDescription), '\n' +
-          chalk.green('❯'), 'Author:', chalk.cyan(_this.generatorAuthor), '\n' +
+          chalk.green('❯'), 'Author:', chalk.cyan(_this.appAuthor), '\n' +
           chalk.green('❯'), 'Type:', chalk.cyan(projectType), '\n' +
           chalk.green('❯'), 'Project URL (production):', chalk.cyan(_this.appURL), '\n' +
           wordPressInfo,

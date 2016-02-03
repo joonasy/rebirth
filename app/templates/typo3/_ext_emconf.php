@@ -16,7 +16,7 @@ $EM_CONF[$_EXTKEY] = array(
   'modify_tables' => '',
   'clearcacheonload' => 1,
   'lockType' => '',
-  'author' => '<%= generatorAuthor %>',
+  'author' => '<%= appAuthor %>',
   'author_email' => '',
   'author_company' => '',
   'CGLcompliance' => '',

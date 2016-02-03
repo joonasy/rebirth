@@ -1,7 +1,7 @@
 {
   "name": "<%= appNameDasherize %>",
   "version": "1.0.0",
-  "author": "<%= generatorAuthor %>",
+  "author": "<%= appAuthor %>",
   "homepage": "<%= appURL %>",
   "description": "<%= appDescription %>",
   "dependencies": {

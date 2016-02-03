@@ -11,8 +11,8 @@ Please read [My Web Starter Kit](https://bitbucket.org/mediasignal/my-web-starte
 * [Flux](http://typo3.org/extensions/repository/view/flux)
 * [Fluid Pages Engine](http://typo3.org/extensions/repository/view/fluidpages)
 * [Fluid Content Engine](http://typo3.org/extensions/repository/view/fluidcontent)
-* [Vhs](http://typo3.org/extensions/repository/view/vhs)<% } if (wp) { if (pluginACFkey) { %>
-* [Advanced Custom Fields Pro](http://www.advancedcustomfields.com/pro/)<% }} if (typo3 || wp) { %>
+* [Vhs](http://typo3.org/extensions/repository/view/vhs)<% } if (pluginACFkey) { %>
+* [Advanced Custom Fields Pro](http://www.advancedcustomfields.com/pro/)<% } if (typo3 || wp) { %>
 * [Composer](https://getcomposer.org/)<% } %>
 * [Node.js](http://nodejs.org/)
 * [Npm](https://www.npmjs.org/)
