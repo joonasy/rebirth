@@ -160,9 +160,7 @@ app.task('javascripts', function(callback) {
         .on('error', handleError)
         .pipe(source(bundleConfig.file_name));
 
-      if (production) {
-        collect = collect.pipe($.streamify($.uglify()));
-      } else {
+      if (!production) {
         collect = collect.pipe(browserSync.stream())
       }
 
