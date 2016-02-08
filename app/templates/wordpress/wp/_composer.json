@@ -20,7 +20,7 @@
       "type": "package",
       "package": {
         "name": "advanced-custom-fields/advanced-custom-fields-pro",
-        "version": "5.3.3.2",
+        "version": "5.3.4",
         "type": "wordpress-plugin",
         "dist": {
           "type": "zip",
@@ -35,7 +35,7 @@
     "wpackagist-plugin/w3-total-cache": "*",
     "wpackagist-plugin/wordpress-seo": "*",<% if (pluginWPMLuserID) { %>
     "wpml/wpml-multilingual-cms": "3.3.6",<% } if (pluginACFkey) { %>
-    "advanced-custom-fields/advanced-custom-fields-pro": "5.3.3.2"<% } %>
+    "advanced-custom-fields/advanced-custom-fields-pro": "5.3.4"<% } %>
   },
   "extra": {
     "wordpress-install-dir": "wp"
