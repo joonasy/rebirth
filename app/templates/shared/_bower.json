@@ -2,7 +2,7 @@
   "name": "<%= appNameDasherize %>",
   "version": "1.0.0",
   "dependencies": {
-    "jquery": "latest"
+    "jquery": "2.2.0"
   }
 }
 
