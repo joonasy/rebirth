@@ -4,8 +4,6 @@
       } else {
         get_template_part('dist/partials/bottom.dist');
       }
-
-      wp_footer();
     ?>
   </body>
 </html>

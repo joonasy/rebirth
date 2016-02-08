@@ -121,9 +121,7 @@ gulp.task('javascripts', function(callback) {
         .on('error', handleError)
         .pipe(source(bundleConfig.file_name));
 
-      if (production) {
-        collect = collect.pipe($.streamify($.uglify()))
-      } else {
+      if (!production) {
         collect = collect.pipe(browserSync.stream())
       }
 
@@ -263,7 +261,7 @@ gulp.task('minifyScripts', ['modernizr', 'javascripts'], function() {
     .pipe(gulp.dest(config.javascripts.dest));
 
   var bottomScripts = gulp.src([
-    'bower_components/jquery/dist/jquery.js',
+    // 'bower_components/add/your/script/if/needed',
     config.javascripts.dest + 'app.js'
   ])
     .pipe($.concat('app.js'))

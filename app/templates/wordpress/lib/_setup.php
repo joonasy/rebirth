@@ -60,6 +60,14 @@ add_image_size('medium_crop', 640, 640, true);
  */
 function jquery() {
   wp_deregister_script('jquery');
+
+  if (defined('WP_DEV')) {
+    wp_register_script('jquery', get_bloginfo('template_directory') . '/dist/assets/javascripts/vendors/jquery.js', true, null, true);
+  } else {
+    wp_register_script('jquery', '//ajax.googleapis.com/ajax/libs/jquery/2.2.0/jquery.min.js', true, null, true);
+  }
+
+  wp_enqueue_script('jquery');
 }
 
 if (!is_admin()) {
