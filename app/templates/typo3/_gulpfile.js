@@ -33,33 +33,33 @@ var open = process.env.npm_config_open;
 
 var config = {
   host: '<%= appNameDasherize %>.dev',
-  src: '<%= appRoot %>/',
-  dest: '<%= appRoot %>/dist/',
+  src: '<%= appRoot %>/Resources/Private/',
+  dest: '<%= appRoot %>/Resources/Public/',
   stylesheets: {
-    src: '<%= appRoot %>/assets/stylesheets/app.scss',
-    dest: '<%= appRoot %>/dist/assets/stylesheets/',
-    watch: '<%= appRoot %>/assets/stylesheets/**/*.scss'
+    src: '<%= appRoot %>/Assets/stylesheets/app.scss',
+    dest: '<%= appRoot %>/Resources/Public/Assets/stylesheets/',
+    watch: '<%= appRoot %>/Assets/stylesheets/**/*.scss'
   },
   javascripts: {
-    src: '<%= appRoot %>/assets/javascripts/',
-    dest: '<%= appRoot %>/dist/assets/javascripts/',
+    src: '<%= appRoot %>/Assets/javascripts/',
+    dest: '<%= appRoot %>/Resources/Public/Assets/javascripts/',
     bundle: [{
-      src: '<%= appRoot %>/assets/javascripts/app.js',
+      src: '<%= appRoot %>/Assets/javascripts/app.js',
       file_name: 'app.js'
     }, {
-      src: '<%= appRoot %>/assets/javascripts/head.js',
+      src: '<%= appRoot %>/Assets/javascripts/head.js',
       file_name: 'head.js'
     }]
   },
   images: {
-    src: '<%= appRoot %>/assets/images/*.{jpg,jpeg,png,gif,webp,svg}',
-    dest: '<%= appRoot %>/dist/assets/images/',
-    watch: '<%= appRoot %>/assets/images/*.{jpg,jpeg,png,gif,webp,svg}'
+    src: '<%= appRoot %>/Assets/images/*.{jpg,jpeg,png,gif,webp,svg}',
+    dest: '<%= appRoot %>/Resources/Public/Assets/images/',
+    watch: '<%= appRoot %>/Assets/images/*.{jpg,jpeg,png,gif,webp,svg}'
   },
   fonts: {
-    src: '<%= appRoot %>/assets/fonts/*.{eot,svg,ttf,woff}',
-    dest: '<%= appRoot %>/dist/assets/fonts/',
-    watch: '<%= appRoot %>/assets/fonts/*.{eot,svg,ttf,woff}'
+    src: '<%= appRoot %>/Assets/fonts/*.{eot,svg,ttf,woff}',
+    dest: '<%= appRoot %>/Resources/Public/Assets/fonts/',
+    watch: '<%= appRoot %>/Assets/fonts/*.{eot,svg,ttf,woff}'
   }
 }
 
@@ -85,7 +85,7 @@ gulp.task('stylesheets', function() {
 
   if (production) {
     pipeline = pipeline
-      .pipe($.replace('../', '/wp-content/themes/' + config.dest + 'assets/'))
+      .pipe($.replace('../', '/typo3conf/ext/' + config.dest + 'Assets/'))
       .pipe($.combineMq())
       .pipe($.cssnano())
       .pipe(gulp.dest(config.stylesheets.dest));
@@ -281,8 +281,8 @@ var tasks = ['stylesheets', 'javascripts', 'images', 'fonts'];
  */
 gulp.task('createDistPartials', tasks.concat(['minifyScripts']), function() {
   return gulp.src([
-    config.src + 'partials/Top.html',
-    config.src + 'partials/Bottom.html',
+    config.src + 'Partials/Top.html',
+    config.src + 'Partials/Bottom.html',
   ], { base: config.src })
     .pipe($.replace(inline({ matchFile: 'app.css' }), function() {
       return inline({ file: 'app.css' });
