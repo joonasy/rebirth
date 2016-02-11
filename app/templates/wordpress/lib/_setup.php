@@ -27,7 +27,7 @@ function register_navs() {
   ));
 }
 
-add_action('init', __NAMESPACE__ . '\\register_navs');
+add_action('init', __NAMESPACE__ . '\\register_navs');<% if (pluginWPMLuserID) { %>
 
 /**
  * Make theme available for translation
@@ -36,7 +36,7 @@ function theme_language() {
   load_theme_textdomain('app', get_template_directory() . '/languages');
 }
 
-add_action('after_setup_theme', __NAMESPACE__ . '\\theme_language');
+add_action('after_setup_theme', __NAMESPACE__ . '\\theme_language');<% } %>
 
 /**
  * Thumbnails

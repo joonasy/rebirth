@@ -564,6 +564,12 @@ var MyGenerator = yeoman.generators.Base.extend({
       var _this = this;
       _this.salt = '';
 
+      this.mkdir(this.appRoot + '/acf-json');
+
+      if (_this.pluginWPMLuserID) {
+        this.mkdir(this.appRoot + '/languages');
+      }
+
       this.fs.copy(
         this.templatePath('wordpress/header.php'),
         this.destinationPath(this.appRoot + '/header.php')
