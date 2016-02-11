@@ -565,11 +565,6 @@ var MyGenerator = yeoman.generators.Base.extend({
       _this.salt = '';
 
       this.fs.copy(
-        this.templatePath('wordpress/functions.php'),
-        this.destinationPath(this.appRoot + '/functions.php')
-      );
-
-      this.fs.copy(
         this.templatePath('wordpress/header.php'),
         this.destinationPath(this.appRoot + '/header.php')
       );
@@ -582,6 +577,11 @@ var MyGenerator = yeoman.generators.Base.extend({
       this.directory(
         this.templatePath('wordpress/partials'),
         this.destinationPath(this.appRoot + '/partial/')
+      );
+
+      this.template(
+        this.templatePath('wordpress/_functions.php'),
+        this.destinationPath(this.appRoot + '/functions.php')
       );
 
       this.template(
@@ -609,10 +609,12 @@ var MyGenerator = yeoman.generators.Base.extend({
         this.destinationPath(this.appRoot + '/lib/setup.php')
       );
 
-      this.template(
-        this.templatePath('wordpress/lib/_utils-acf.php'),
-        this.destinationPath(this.appRoot + '/lib/utils-acf.php')
-      );
+      if (_this.pluginACFkey) {
+        this.template(
+          this.templatePath('wordpress/lib/_utils-acf.php'),
+          this.destinationPath(this.appRoot + '/lib/utils-acf.php')
+        );
+      }
 
       this.template(
         this.templatePath('wordpress/lib/_utils.php'),
@@ -622,6 +624,11 @@ var MyGenerator = yeoman.generators.Base.extend({
       this.template(
         this.templatePath('wordpress/_index.php'),
         this.destinationPath(this.appRoot + '/index.php')
+      );
+
+      this.template(
+        this.templatePath('wordpress/_style.css'),
+        this.destinationPath(this.appRoot + '/style.css')
       );
 
       this.template(

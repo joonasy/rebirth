@@ -9,8 +9,8 @@
  */
 require_once locate_template('/lib/clean-up.php');
 require_once locate_template('/lib/NavWalker.php');
-require_once locate_template('/lib/utils.php');
-require_once locate_template('/lib/utils-nav.php');
+require_once locate_template('/lib/utils.php');<% if (pluginACFkey) { %>
+require_once locate_template('/lib/utils-acf.php');<% } %>
 
 /**
  * Global setup, option pages etc.
