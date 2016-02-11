@@ -52,7 +52,7 @@ add_image_size('landscape_m', 1280, 960, true);
 add_image_size('landscape_xs', 640, 320, true);
 set_post_thumbnail_size(320, 180, true);
 
-/* [3] */
+/* [2] */
 add_image_size('medium_crop', 640, 640, true);
 
 /**
