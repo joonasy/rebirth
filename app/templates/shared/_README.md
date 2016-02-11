@@ -7,12 +7,13 @@
 Please read [My Web Starter Kit](https://bitbucket.org/mediasignal/my-web-starter-kit) guide.
 
 ## Requirements
-<% if (typo3) { %>* [Typo3 v^7.6.0](http://typo3.org)
+<% if (typo3) { %>* [Typo3](http://typo3.org)
 * [Flux](http://typo3.org/extensions/repository/view/flux)
 * [Fluid Pages Engine](http://typo3.org/extensions/repository/view/fluidpages)
 * [Fluid Content Engine](http://typo3.org/extensions/repository/view/fluidcontent)
-* [Vhs](http://typo3.org/extensions/repository/view/vhs)<% } if (pluginACFkey) { %>
-* [Advanced Custom Fields Pro](http://www.advancedcustomfields.com/pro/)<% } if (typo3 || wp) { %>
+* [Vhs](http://typo3.org/extensions/repository/view/vhs)<% } if (wp) { %> 
+* [WordPress](https://wordpress.org/)<% if (pluginACFkey) { %>
+* [Advanced Custom Fields Pro](http://www.advancedcustomfields.com/pro/)<% }} if (typo3 || wp) { %>
 * [Composer](https://getcomposer.org/)<% } %>
 * [Node.js](http://nodejs.org/)
 * [Npm](https://www.npmjs.org/)
@@ -32,8 +33,7 @@ Install bower packages
 
 * `npm run build`: Build the application
 <% if (deployment) { %>* `npm run deploy`: Build the application and deploy it to the server<% } %><% if (html) { %>* `npm run dist`: Build the application and start a local server for testing purposes<% } %>
-* `npm run dev`: Watches files and activates Browsersync. Use this for developing.
-* `npm run test`: Checks JavaScript files for Coding style errors<% if (wp) { %>
+* `npm run dev`: Watches files and activates Browsersync. Use this for developing.<% if (wp) { %>
 * `npm run docker`: Start the docker container
 * `npm run docker-wp`: Connect to the WordPress container
 * `npm run docker-db`: Connect to the database container<% } if (typo3 || wp) { %>
@@ -56,7 +56,7 @@ Choose only one approach.
     192.168.10.10 <%= appNameDasherize %>.dev
     ```
 
-4. Copy `wp-config.dev.example.php` &rarr; `wp-config.dev.php` and setup your database credentials. For example:
+4. Copy `wp-config.dev.example.php` to `wp-config.dev.php` and setup your database credentials. For example:
 
     ```
     define('DB_NAME', '<%= dbName %>');
@@ -79,7 +79,7 @@ Choose only one approach.
 
 1. Make sure docker machine is running
 2. Do steps 1.) and 3.) from the LAMP/LEMP instruction above.
-3. Copy `wp-config.dev.example.php` &rarr; `wp-config.dev.php` and `docker-compose.dev.example.yml` &rarr; `docker-compose.dev.yml`. Make sure database credentials match. Define `DB_HOST` to `'mysql'`
+3. Copy `wp-config.dev.example.php` to `wp-config.dev.php` and `docker-compose.dev.example.yml` to `docker-compose.dev.yml`. Make sure database credentials match. Define `DB_HOST` to `'mysql'`
 4. Run `npm run docker`, open `<%= appNameDasherize %>.dev`, setup your site and activate your theme
 5. Do step 7.) from the LAMP/LEMP instruction
  
