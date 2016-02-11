@@ -582,7 +582,7 @@ var MyGenerator = yeoman.generators.Base.extend({
 
       this.directory(
         this.templatePath('wordpress/partials'),
-        this.destinationPath(this.appRoot + '/partial/')
+        this.destinationPath(this.appRoot + '/partials/')
       );
 
       this.template(
