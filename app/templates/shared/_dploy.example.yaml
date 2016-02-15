@@ -2,8 +2,8 @@ production:
   branch: master<% if (typo3) { %>
   exclude: ["<%= appRoot %>/Assets/**/*"]<% } if (wp) { %>
   exclude: ["<%= appRoot %>/assets/**/*"]<% } %>
-  host: ""<% if (typo3) { %>
-  include:
+  host: ""
+  include:<% if (typo3) { %>
     "<%= appRoot %>/Resources/Public/**": "Resources/Public"
     "<%= appRoot %>/Resources/Private/Partials/*.dist.html": "Resources/Private/Partials"<% } if (html) { %>
     "dist/**": "dist"<% } if (wp) {  %>
