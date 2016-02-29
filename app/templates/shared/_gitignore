@@ -16,16 +16,16 @@ bower_components/
 # ======
 
 rev-manifest.json<% if (typo3) { %>
-typo3/
+typo3/*
 !typo3/composer.json
 Bottom.dist.html
 Top.dist.html
-Resources/Public/Assets<% } if (deployment) { %>
+<%= appRoot %>/Resources/Public/Assets<% } if (deployment) { %>
 dploy.yaml
 .rev<% } if (wp || html) { %>
 dist/<% } if (wp) { %>
 wp/wp
-wp/wp-content/
+wp/wp-content/*
 !wp/wp-content/mu-plugins/register-theme-directory.php
 wp/vendor/
 wp/docker-compose.dev.yml
