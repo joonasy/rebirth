@@ -78,10 +78,11 @@ $colorLight: #ffffff;
 
 // Background colors
 $colorHtmlBg: #ffffff;
-$colorBgLightest: darken(#ffffff, 3);
+$colorBgLight: #ffffff;
+$colorBgLightest: darken($colorBgLight, 5);
 
 // Text colors
-$colorText: #6a6a6a;
+$colorText: #333333;
 $colorTextLight: lighten($colorText, 20);
 
 // Heading color

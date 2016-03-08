@@ -118,7 +118,8 @@ img::-moz-selection {
  */
 img,
 embed,
-object {
+object,
+iframe {
   max-width: 100%;
 }
 

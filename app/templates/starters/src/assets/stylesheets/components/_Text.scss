@@ -9,27 +9,27 @@
 
 
 /* ======
- * Text - type
+ * Text - Type
  * ====== */
 
 .Text {
-  &.-type-meta {}
+  &.-typeMeta {}
 }
 
 
 /* ======
- * Text - transform
+ * Text - Transform
  * ====== */
 
 .Text {
-  &.-transform-upper {
+  &.-transformUpper {
     text-transform: uppercase;
   }
 }
 
 
 /* ======
- * Text - align
+ * Text - Align
  * ====== */
 
 .Text {
@@ -48,23 +48,21 @@
 
 
 /* ======
- * Text - size
+ * Text - Size
  * ====== */
 
-.Text {
-  &.-l {
-    @include fontSize($baseFontSize-l, $baseLineHeight-l);
+.Text.-l, %Text.-l {
+  @include fontSize($baseFontSize-l, $baseLineHeight-l);
 
-    @include breakpoint('mediumDown') {
-      @include fontSize($baseFontSize, $baseLineHeight);
-    }
+  @include breakpoint('mediumDown') {
+    @include fontSize($baseFontSize, $baseLineHeight);
   }
+}
 
-  &.-s {
-    @include fontSize($baseFontSize-s, $baseLineHeight-s);
-  }
+.Text.-s, %Text.-s {
+  @include fontSize($baseFontSize-s, $baseLineHeight-s);
+}
 
-  &.-xs {
-    @include fontSize($baseFontSize-xs, $baseLineHeight-xs);
-  }
+.Text.-xs, %Text.-xs {
+  @include fontSize($baseFontSize-xs, $baseLineHeight-xs);
 }

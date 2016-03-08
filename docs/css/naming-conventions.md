@@ -88,13 +88,13 @@ A component modifier is a class that modifies the presentation of the base compo
 </button>
 ```
 
-### ComponentName.-chainable-modifierName
+### ComponentName.-chainableModifierName
 
-Chainable modifiers are denoted by a leading hyphen `-`, a voluntary prefix and a descriptor for the modification. As the name would indicate, chainable modifiers provide us with the ability to configure a module in the HTML with a short, concise syntax. Chainable component modifiers can be added to component modifiers and collections may also modify their descendants by nesting.   
+Chainable modifiers are denoted by a leading hyphen `-` and a descriptor for the modification. As the name would indicate, chainable modifiers provide us with the ability to configure a module in the HTML with a short, concise syntax. Chainable component modifiers can be added to component modifiers and collections may also modify their descendants by nesting.   
 
 The golden rule is that **chainable modifiers should never modify the same CSS property twice**. This is to ensure that styles don’t get clobbered and that the order in which they are applied is irrelevant. 
 
-Prefixes are not required however consider adding them if the modifier modifies some specific value such as `color` or `alignment`. 
+Prefixes are not required however consider adding them if the modifier modifies some specific value such as `color` or `type`. 
 
 ```css
 /* Core button */
@@ -105,9 +105,7 @@ Prefixes are not required however consider adding them if the modifier modifies 
 
 .Button.-round {}
 
-.Button.-color-darkOnLight {}
-
-.Button.-color-lightOnDark {}
+.Button.-colorDarkOnLight {}
 ```
 
 ```html
@@ -119,15 +117,15 @@ Prefixes are not required however consider adding them if the modifier modifies 
 Chainable modifiers also accept responsive variants.
 
 ```html
-<a href="#" class="Button -s -m-l">
-</a>
+<a href="#" class="Button -s -m-l"></a>
 ```
 
 Chainable modifiers extend main modifiers.
 
 ```css
 .Button--primary {
-  
+  …
+
   &.-justify {
     …
   }
@@ -299,7 +297,7 @@ The following namespaces are reserved for specific use.
 
 Responsive variants are activated in the given Media Query breakpoint (mobile first ideology). These prefixes are mainly used by helpers and components (e.g. `Width` component) but can also be used by chainable component modifiers (rarely).
 
-Example use of responsive `Width` component which is activated both in medium and extra large breakpoint:
+Example use of responsive `Width` component which is activated in medium  and extra large breakpoints:
 
 ```css
 @inlude breakpoint("mediumUp") {
@@ -340,16 +338,16 @@ Example use of _margin_ helper which is activated in large breakpoint:
 </div>
 ```
 
-### Modifiers
+### Reserved modifier names
 
 * Abstract modifier definitions for components (e.g `.Button--primary`): `--primary`, `--secondary`, `--tertiary`, `--quaternary`, `--quinary`, `--senary`, `--septenary`, `--octonary`, `--nonary`, `--denary`
 * Sizing modifiers: `--[x...]s`, `--m`, `--ml`, `--[x...]l`
     * Used by helpers (e.g `.marginTop--l`). **For component sizing use chainable modifiers.**
 
-### Prefixes and suffixes in Sass variables
+### Reserved prefixes and suffixes in Sass variables
 
 Default sass variables do not need hyphens, use camelCase instead. e.g. `$baseFontSize` not `$base-fontSize`. 
 
 Component sass variables however _do_ need hyphens e.g. `$MyComponent-heading` not `$MyComponentHeading`.
 
-* Sizing suffixes used in Sass variables:  `-[x...]s`, `-m`, `-ml`, `-[x...]l`
+* Reserved sizing suffixes used in Sass variables:  `-[x...]s`, `-m`, `-ml`, `-[x...]l`

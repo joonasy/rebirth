@@ -35,7 +35,7 @@ This styleguide outlines standards for writing CSS (and more specifically, Sass)
     * Components
         * ComponentName
         * ComponentName--modifierName
-        * ComponentName.-chainable-modifierName
+        * ComponentName.-chainableModifierName
         * ComponentName.is-stateOfComponent
         * ComponentName-descendantName
         * ComponentNameCollection
