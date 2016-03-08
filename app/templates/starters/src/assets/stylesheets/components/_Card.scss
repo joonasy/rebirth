@@ -23,17 +23,46 @@
   }
 
   .Card-inner {
-    padding: rem($Card-padding) $Card-padding-percentage;
+    padding: rem($Card-padding);
 
     > *:last-child {
       margin-bottom: 0;
     }
 
     @include breakpoint('mediumUp') {
-      padding-left: rem($Card-padding * 1.5);
-      padding-right: rem($Card-padding * 1.5);
+      padding: rem($Card-padding * 1.5);
     }
   }
+
+  .Card-content {}
+
+    .Card-title {}
+
+    .Card-button {}
+
+  .Card-footer {
+    .Card-inner {
+      @include breakpoint('mediumUp') {
+        padding-bottom: rem($Card-padding);
+        padding-top: rem($Card-padding);
+      }
+    }
+  }
+
+
+/* ======
+ * Label - Style
+ * ====== */
+
+.Card {
+  &.-round {
+    .Card-figure {
+      img {
+        border-radius: $Card-borderRadius $Card-borderRadius 0 0;
+      }
+    }
+  }
+}
 
 
 /* ======
@@ -42,7 +71,7 @@
 
 .Card-figure.-fill {
   position: relative;
-  min-height: rem($baseSpace * 8);
+  min-height: rem($baseSpace * 10);
 
   > figure {
     @extend %positionAbsoluteFill;
@@ -65,6 +94,27 @@
  * ====== */
 
 .Card--default {
-  background-color: #ffffff;
-  min-height: $baseSpace * 6;
+  .Card-content {
+    background-color: $colorBgLight;
+  }
+
+  .Card-footer {
+    @extend %Text.-s;
+    background-color: $colorBgLightest;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+  }
+
+  &.-round {
+    .Card-figure {
+      img {
+        border-radius: $Card-borderRadius $Card-borderRadius 0 0;
+      }
+    }
+
+    .Card-footer {
+      border-radius: 0 0 $Card-borderRadius $Card-borderRadius;
+    }
+  }
 }

@@ -3,6 +3,5 @@
 // ========================================
 
 $Card-padding: $baseSpace;
-$Card-padding-percentage: $baseEdgeSpace;
 $Card-borderWidth: 2px;
-$Card-borderRadius: 30px;
+$Card-borderRadius: $borderRadius;
