@@ -12,8 +12,7 @@
  * Safari and iOS doesn't support `object-position` so there are optional
  * parameters to target them as well.
  *
- * Only single line strings supported in `data-srcset` and `media`. Doesn't
- * support window resizing.
+ * Only single line strings supported in `data-srcset` and `media`.
  *
  * http://caniuse.com/#search=object-fit
  * http://caniuse.com/#search=srcset
@@ -82,13 +81,13 @@
 import $ from 'jquery';
 import Modernizr from 'modernizr';
 
-const windowWidth = $(window).width();
+let windowWidth = $(window).width();
 const objFit = Modernizr['object-fit'];
 
 let isSafari = /Constructor/.test(window.HTMLElement);
 let isIOS = /iP(ad|hone|od)/i.test(navigator.userAgent);
 
-function imgToParentBg(figure, targetSafari, targetIOS) {
+const imgToParentBg = (figure, targetSafari, targetIOS) => {
   const $figure = $(figure);
 
   isSafari = isSafari && targetSafari;
@@ -113,69 +112,80 @@ function imgToParentBg(figure, targetSafari, targetIOS) {
   }
 
   if (isSafari || isIOS || !objFit) {
-    $.each($figure, function() {
-      const $this = $(this);
-      const $img = $this.find('img');
-      const sourceLargest = $img.siblings('source').not('[media]');
-      const source = $img.siblings('source[media]');
-      const widths = [];
+    function setBackground() {
+      $.each($figure, function() {
+        const $this = $(this);
+        const $img = $this.find('img');
+        const sourceLargest = $img.siblings('source').not('[media]');
+        const source = $img.siblings('source[media]');
+        const widths = [];
 
-      let srcset = $img.data('srcset');
+        let srcset = $img.data('srcset');
 
-      if ('lazySizes' in window && srcset) {
-        srcset = srcset.split(',');
-        const srcsetElements = [];
+        if ('lazySizes' in window && srcset) {
+          srcset = srcset.split(',');
+          const srcsetElements = [];
 
-        srcset.forEach((value) => {
-          let val = value.trim();
-          const width = val.split(' ').pop().replace('w', '');
-          widths.push(width);
-          srcsetElements.push(val);
-        });
+          srcset.forEach((value) => {
+            let val = value.trim();
+            const width = val.split(' ').pop().replace('w', '');
+            widths.push(width);
+            srcsetElements.push(val);
+          });
 
-        const closestWindowWidth = closest(widths, windowWidth);
+          const closestWindowWidth = closest(widths, windowWidth);
 
-        srcsetElements.forEach((value) => {
-          if (value.indexOf(closestWindowWidth + 'w') > -1) {
-            imgUrl = value.split(' ')[0];
-          }
-        });
-      } else if ('lazySizes' in window && source.length) {
-
-        function matchNumber(str) {
-          return str.match(/(\d+)/)[0]
-        }
-
-        $.each(source, function() {
-          const media = $(this).attr('media');
-          widths.push(matchNumber(media));
-        });
-
-        const closestWindowWidth = closest(widths, windowWidth);
-        const largestMaxWidth = Math.max.apply(Math, widths);
-
-        if (largestMaxWidth > windowWidth) {
-          $.each(source, function() {
-            const $this = $(this);
-            const media = matchNumber($this.attr('media'));
-
-            if (media === closestWindowWidth) {
-              imgUrl = $this.attr('srcset').split(' ').pop();
+          srcsetElements.forEach((value) => {
+            if (value.indexOf(closestWindowWidth + 'w') > -1) {
+              imgUrl = value.split(' ')[0];
             }
           });
+        } else if ('lazySizes' in window && source.length) {
+
+          function matchNumber(str) {
+            return str.match(/(\d+)/)[0]
+          }
+
+          $.each(source, function() {
+            const media = $(this).attr('media');
+            widths.push(matchNumber(media));
+          });
+
+          const closestWindowWidth = closest(widths, windowWidth);
+          const largestMaxWidth = Math.max.apply(Math, widths);
+
+          if (largestMaxWidth > windowWidth) {
+            $.each(source, function() {
+              const $this = $(this);
+              const media = matchNumber($this.attr('media'));
+
+              if (media === closestWindowWidth) {
+                imgUrl = $this.attr('srcset').split(' ').pop();
+              }
+            });
+          } else {
+            imgUrl = sourceLargest.attr('srcset');
+          }
         } else {
-          imgUrl = sourceLargest.attr('srcset');
+          imgUrl = $img.attr('data-src') ? $img.attr('data-src') :
+            $img.attr('src');
         }
-      } else {
-        imgUrl = $img.attr('data-src') ? $img.attr('data-src') :
-          $img.attr('src');
-      }
 
-      $img.css('visibility', 'hidden');
+        $img.css('visibility', 'hidden');
 
-      $this.css({
-        'background-image': 'url(' + imgUrl + ')'
+        $this.css({
+          'background-image': 'url(' + imgUrl + ')'
+        });
       });
+    }
+
+    setBackground();
+
+    var resize;
+    $(window).on('resize', function() {
+      windowWidth = $(window).width();
+      clearTimeout(resize);
+      resize = setTimeout(setBackground, 250);
     });
   }
 };
