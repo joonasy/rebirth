@@ -5,8 +5,7 @@
 $Wrap-width: 960px;
 
 html.docs {
-  // background-image: url(http://basehold.it/i/24);
-  background-color: darken($colorBgLightest, 2);
+  background-color: darken($colorBgLightest, 5);
 
   &.is-dark {}
 }

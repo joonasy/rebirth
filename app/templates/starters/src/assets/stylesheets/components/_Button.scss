@@ -13,7 +13,7 @@
   cursor: pointer;
   display: inline-block;
   font-weight: $baseFontWeightStrong;
-  margin-bottom: rem(($baseSpace - ($Button-height)) + ($baseSpace * 2));
+  margin-bottom: 0;
   margin-right: rem($baseSpace / 2);
   outline: 0;
   padding: 0 rem($baseSpace);
@@ -61,7 +61,6 @@
 
   &.-l {
     @include fontSize($baseFontSize-l, rem(($h * $l)));
-    margin-bottom: rem(($baseSpace - ($h * $l)) + ($baseSpace * 2 * $l));
     padding: 0 rem($baseSpace * $l);
 
     &.-border {
@@ -71,7 +70,6 @@
 
   &.-s {
     @include fontSize($baseFontSize-s, rem(($h * $s)));
-    margin-bottom: rem(($baseSpace - ($h * $s)) + ($baseSpace * 2));
     padding: 0 rem($baseSpace * $s);
 
     &.-border {
