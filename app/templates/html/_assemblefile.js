@@ -89,18 +89,16 @@ app.preLayout(/\/src\/templates\/.*\.hbs$/, function(view, next) {
   next();
 });
 
-app.task('html', function(cb) {
+app.task('html', function() {
   app.data({ dev: !production });
   app.layouts(config.html.layouts);
   app.partials(config.html.partials);
 
-  app.src(config.html.templates)
+  return app.src(config.html.templates)
     .pipe(app.renderFile())
     .on('error', handleError)
     .pipe($.rename({ extname: '.html' }))
     .pipe(app.dest(config.html.dest));
-
-  cb();
 });
 
 /**
@@ -241,8 +239,12 @@ app.task('server', function() {
  * Watch
  */
 app.task('watch', function() {
-  app.watch(config.html.watch, ['html']);
-  app.watch(config.html.dest + '**/*.html').on('change', browserSync.reload);
+  app.watch(config.html.watch, ['html'], function(cb) {
+    setTimeout(function() {
+      browserSync.reload();
+      cb();
+    }, 150);
+  });
   app.watch(config.stylesheets.watch, ['stylesheets']);
   app.watch(config.fonts.watch, ['fonts']);
   app.watch(config.images.watch, ['images']);
