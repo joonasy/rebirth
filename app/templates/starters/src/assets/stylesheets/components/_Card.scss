@@ -6,17 +6,21 @@
  */
 
 .Card {
-  display: block;
-  position: relative;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
   margin-bottom: rem($baseSpace);
+  position: relative;
   width: 100%;
 }
 
   .Card-figure {
-    > figure {
+    position: relative;
+
+    figure {
       margin-bottom: 0;
 
-      > img {
+      img {
         width: 100%;
       }
     }
@@ -34,13 +38,18 @@
     }
   }
 
-  .Card-content {}
+  .Card-content {
+    position: relative;
+  }
 
     .Card-title {}
 
     .Card-button {}
 
   .Card-footer {
+    @extend %Text.-s;
+    position: relative;
+
     .Card-inner {
       @include breakpoint('mediumUp') {
         padding-bottom: rem($Card-padding);
@@ -51,39 +60,69 @@
 
 
 /* ======
- * Label - Style
+ * Card - Style
  * ====== */
 
 .Card {
   &.-round {
-    .Card-figure {
-      img {
-        border-radius: $Card-borderRadius $Card-borderRadius 0 0;
-      }
-    }
+    @extend %round;
   }
 }
 
 
 /* ======
- * Card figure - Background fill modifier
+ * Card - Color
  * ====== */
 
-.Card-figure.-fill {
-  position: relative;
-  min-height: rem($baseSpace * 10);
+.Card {
+  &.-colorLightOnDark {
+    background-color: $colorBgDarkest;
+    color: $colorLight;
+  }
 
-  > figure {
-    @extend %positionAbsoluteFill;
-    background-position: center;
-    background-repeat: no-repeat;
-    background-size: cover;
+  &.-colorDarkOnLight {
+    background-color: $colorBgLightest;
+    color: $colorText;
+  }
+}
+
+
+/* ======
+ * Card - Figure modifiers
+ * ====== */
+
+.Card.-figureCrop, %Card.-figureCrop {
+  .Card-figure {
+    min-height: rem($baseSpace * 10);
+
+    figure {
+      @extend %positionAbsoluteFill;
+      background-position: center;
+      background-repeat: no-repeat;
+      background-size: cover;
+    }
 
     img {
       display: block;
       height: 100%;
       object-fit: cover;
-      width: 100% !important;
+    }
+  }
+}
+
+.Card.-figureFill {
+  @extend %Card.-figureCrop;
+  background: transparent;
+
+  .Card-figure {
+    @extend %positionAbsoluteFill;
+  }
+
+  &.-round {
+    .Card-figure {
+      img {
+        @extend %round;
+      }
     }
   }
 }
@@ -94,19 +133,15 @@
  * ====== */
 
 .Card--default {
-  .Card-content {
-    background-color: $colorBgLight;
-  }
+  background-color: $colorBgLight;
 
   .Card-footer {
-    @extend %Text.-s;
     background-color: $colorBgLightest;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
   }
 
   &.-round {
+    border-radius: $Card-borderRadius + 2px;
+
     .Card-figure {
       img {
         border-radius: $Card-borderRadius $Card-borderRadius 0 0;
@@ -116,5 +151,9 @@
     .Card-footer {
       border-radius: 0 0 $Card-borderRadius $Card-borderRadius;
     }
+  }
+
+  &.-border {
+    box-shadow: 0 0 0 1px $colorBorderDefault;
   }
 }
