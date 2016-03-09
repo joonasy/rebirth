@@ -1,12 +1,6 @@
 {
   "name": "my-web-starter-kit-docs",
-  "version": "0.2.3",
-  "dependencies": {
-    "modernizr": "latest",
-    "fastclick": "latest",
-    "normalize.scss": "latest",
-    "jquery": "latest",
-    "lazysizes": "~1.0.0"
-  },
+  "version": "0.3.6",
+  "dependencies": {},
   "devDependencies": {}
 }

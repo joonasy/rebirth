@@ -5,7 +5,8 @@
   "homepage": "<%= appURL %>",
   "description": "<%= appDescription %>",
   "dependencies": {
-    "fastclick": "^1.0.6"
+    "fastclick": "^1.0.6",
+    "jquery": "^2.2.1"
   },
   "main": "assemblefile.js",
   "scripts": {
