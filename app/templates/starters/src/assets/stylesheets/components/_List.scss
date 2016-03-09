@@ -20,13 +20,13 @@
 }
 
   .List-text {
-    @include fontSize($baseFontSize-s, $baseLineHeight-s);
+    @extend %Text.-s;
     text-align: left;
     display: block;
   }
 
   .List-meta {
-    @include fontSize($baseFontSize-s, $baseLineHeight-s);
+    @extend %Text.-s;
   }
 
 

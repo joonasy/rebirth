@@ -94,7 +94,7 @@ Chainable modifiers are denoted by a leading hyphen `-` and a descriptor for the
 
 The golden rule is that **chainable modifiers should never modify the same CSS property twice**. This is to ensure that styles don’t get clobbered and that the order in which they are applied is irrelevant. 
 
-Prefixes are not required however consider adding them if the modifier modifies some specific value such as `color` or `type`. 
+Prefixes are not required however add them if the modifier modifies some specific value such as `color` or `align`. 
 
 ```css
 /* Core button */

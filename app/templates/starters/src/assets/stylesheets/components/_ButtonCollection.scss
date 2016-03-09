@@ -8,6 +8,7 @@
 
 .ButtonCollection {
   display: inline-block;
+  margin-bottom: rem($baseSpace);
 
   > .Button {
     display: block;

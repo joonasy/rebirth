@@ -77,9 +77,11 @@ $colorDark: #000000;
 $colorLight: #ffffff;
 
 // Background colors
-$colorHtmlBg: #ffffff;
+$colorBgHtml: #ffffff;
 $colorBgLight: #ffffff;
 $colorBgLightest: darken($colorBgLight, 5);
+$colorBgDark: #000000;
+$colorBgDarkest: #000000;
 
 // Text colors
 $colorText: #333333;
