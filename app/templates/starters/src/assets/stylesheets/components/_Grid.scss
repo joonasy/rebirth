@@ -47,6 +47,7 @@
   &.-equalContent {
     > .Grid-cell {
       display: flex;
+      flex-wrap: wrap;
     }
   }
 
