@@ -119,8 +119,8 @@ app.task('stylesheets', function() {
   if (production) {
     return pipeline = pipeline
       .pipe($.replace('../', config.buildPath + 'assets/'))
-      .pipe($.combineMq())
-      .pipe($.cssnano())
+      .pipe($.combineMq({ beautify: false }))
+      .pipe($.cssnano({ mergeRules: false }))
       .pipe(app.dest(config.stylesheets.dest));
   } else {
     return pipeline = pipeline

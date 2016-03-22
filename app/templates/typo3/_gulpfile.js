@@ -86,8 +86,8 @@ gulp.task('stylesheets', function() {
   if (production) {
     pipeline = pipeline
       .pipe($.replace('../', '/typo3conf/ext/' + config.dest + 'Assets/'))
-      .pipe($.combineMq())
-      .pipe($.cssnano())
+      .pipe($.combineMq({ beautify: false }))
+      .pipe($.cssnano({ mergeRules: false }))
       .pipe(gulp.dest(config.stylesheets.dest));
   } else {
     return pipeline = pipeline
