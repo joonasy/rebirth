@@ -99,7 +99,7 @@ Note that the we are using the same structure of files as in the [joonasy/wordpr
     192.168.10.10 <%= appNameDasherize %>.dev
     ```
 
-4. Add `ENABLE_INSTALL_TOOL` file in `typo3/typo3conf/` (`touch ENABLE_INSTALL_TOOL`)
+4. Add `FIRST_INSTALL` file in `typo3/` (`touch FIRST_INSTALL`)
 
 5. Symlink from  `typo3/typo3conf/ext/` to your extension in app root. For example in Unix:
 
