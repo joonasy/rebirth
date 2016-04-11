@@ -20,7 +20,7 @@
     "fluidtypo3/fluidcontent": "*",
     "fluidtypo3/builder": "*",
     "helhum/realurl": "*",
-    "georgringer/news": "*",
+    "typo3-ter/news": "*",
     "typo3-ter/powermail": "*"
   }
 }
