@@ -118,9 +118,9 @@ var MyGenerator = yeoman.generators.Base.extend({
           if (props.projectType === 'typo3') {
             _this.log(
               chalk.green('  ❯'), 'Project install path:', chalk.cyan('./' + dir), '\n' +
-              chalk.green('  ❯'), 'Extension name:', chalk.cyan(appRoot), '\n' +
-              chalk.green('  ❯'), 'Extension path:', chalk.cyan('./' + appRoot + '/' + dir), '\n'  +
-              chalk.green('  ❯'), 'Build path:', chalk.cyan('./' + appRoot + '/' + appRoot + '/Resources/Public/')
+              chalk.green('  ❯'), 'Extension name:', _this._.underscored(chalk.cyan(appRoot)), '\n' +
+              chalk.green('  ❯'), 'Extension path:', chalk.cyan('./' + appRoot + '/' + _this._.underscored(dir)), '\n'  +
+              chalk.green('  ❯'), 'Build path:', chalk.cyan('./' + appRoot + '/' + _this._.underscored(appRoot) + '/Resources/Public/')
             );
           } else if (props.projectType === 'html') {
             _this.log(
@@ -275,6 +275,10 @@ var MyGenerator = yeoman.generators.Base.extend({
       this.typo3 = this.projectType === 'typo3';
       this.html = this.projectType === 'html';
       this.wp = this.projectType === 'wp';
+
+      if (this.typo3) {
+        this.appRoot = this._.underscored(this.appRoot);
+      }
 
       this.appURL = props.url;
       this.appDescription = props.description;
