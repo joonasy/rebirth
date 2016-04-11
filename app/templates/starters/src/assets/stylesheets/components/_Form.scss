@@ -10,14 +10,14 @@
   width: 100%;
 }
 
-  %Form-item-appearance {
+  %Form-itemAppearance {
     background-color: #ffffff;
     border: $Form-borderWidth solid transparent;
     color: $colorText;
     font-weight: $Form-fontWeight;
   }
 
-  %Form-item-layout {
+  %Form-itemLayout {
     font-size: rem($Form-fontSize);
     height: rem($Form-height);
     line-height: rem($Form-height - ($Form-borderWidth * 2));
@@ -25,8 +25,8 @@
   }
 
   .Form-item {
-    @extend %Form-item-appearance;
-    @extend %Form-item-layout;
+    @extend %Form-itemAppearance;
+    @extend %Form-itemLayout;
     border-radius: 0;
     display: block;
     flex: 1;
@@ -49,7 +49,7 @@
   }
 
   .Form-button.Button {
-    @extend %Form-item-layout;
+    @extend %Form-itemLayout;
     margin: 0;
   }
 
@@ -86,11 +86,11 @@
 
 
 /* ======
- * Form item - Various modifiers
+ * Form item - Style
  * ====== */
 
 .Form-item {
-  &.-round {
+  &.--round {
     @extend %round;
   }
 }
@@ -101,11 +101,11 @@
  * ====== */
 
 .Form--default {
-  %Form--default-Form-item, .Form-item {
+  %Form--defaultFormItem, .Form-item {
     background-color: #ffffff;
     color: $colorTextLight;
 
-    &.-border {
+    &.--border {
       border-color: $colorBorderDefault;
     }
   }
@@ -120,7 +120,7 @@
       color: $colorText;
     }
 
-    &.-border {
+    &.--border {
       &:hover,
       &:focus {
         border-color: $colorBorderDefault;

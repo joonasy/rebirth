@@ -71,13 +71,13 @@
  * ====== */
 
 .Hero {
-  &.-full {
+  &.--full {
     .Hero-content {
       min-height: 100vh;
     }
   }
 
-  &.-l {
+  &.--l {
     .Hero-content {
       min-height: rem($baseSpace * 18);
     }
@@ -89,7 +89,7 @@
     }
   }
 
-  &.-m {
+  &.--m {
     .Hero-content {
       min-height: rem($baseSpace * 14);
     }
@@ -108,7 +108,7 @@
  * ====== */
 
 .Hero-item {
-  &.-color-lightOnDark {
+  &.--colorLightOnDark {
     background-color: #ffffff;
     color: #ffffff;
 
@@ -117,7 +117,7 @@
     }
   }
 
-  &.-color-darkOnLight {
+  &.--colorDarkOnLight {
     background-color: $colorText;
     color: $colorText;
 
@@ -133,7 +133,7 @@
  * ====== */
 
 .Hero-item {
-  &.-alignContent-center {
+  &.--alignContentCenter {
     .Hero-wrap {
       justify-content: center;
     }
@@ -144,7 +144,7 @@
     }
   }
 
-  &.-alignContent-right {
+  &.--alignContentRight {
     .Hero-wrap {
       justify-content: flex-end;
     }

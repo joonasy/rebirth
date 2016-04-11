@@ -6,8 +6,8 @@
  */
 
 .Form-icon {
-  @extend %Form-item-layout;
-  @extend %Form-item-appearance;
+  @extend %Form-itemLayout;
+  @extend %Form-itemAppearance;
   background-color: transparent;
   left: 0;
   position: absolute;
@@ -37,7 +37,7 @@
 }
 
 .Form-item--select {
-  &.-icon {
+  &.--icon {
     > select:not(:first-child) {
       padding-left: rem($Form-padding * 2.5);
       padding-right: rem($Form-padding * 2.5);
@@ -55,13 +55,13 @@
 
 .Form--default {
   .Form-icon {
-    .IconCss[class*='-chevron']:after {
+    .IconCss[class*='--chevron']:after {
       border-color: $colorTextLight;
     }
   }
 
   .Form-item:hover .Form-icon {
-    .IconCss[class*='-chevron']:after {
+    .IconCss[class*='--chevron']:after {
       border-color: $colorText;
     }
   }

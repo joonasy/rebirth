@@ -20,13 +20,13 @@
 }
 
   .List-text {
-    @extend %Text.-s;
+    @extend %Text.--s;
     text-align: left;
     display: block;
   }
 
   .List-meta {
-    @extend %Text.-s;
+    @extend %Text.--s;
   }
 
 

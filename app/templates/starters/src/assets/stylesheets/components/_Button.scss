@@ -35,15 +35,15 @@
  * ====== */
 
 .Button {
-  &.-round {
+  &.--round {
     @extend %round;
   }
 
-  &.-pill {
+  &.--pill {
     @extend %pill;
   }
 
-  &.-border {
+  &.--border {
     border: $Button-borderWidth solid transparent;
     line-height: rem(($Button-height) - ($Button-borderWidth * 2));
   }
@@ -59,25 +59,25 @@
   $l: $Button-l;
   $s: $Button-s;
 
-  &.-l {
+  &.--l {
     @include fontSize($baseFontSize-l, rem(($h * $l)));
     padding: 0 rem($baseSpace * $l);
 
-    &.-border {
+    &.--border {
       line-height: rem(($h * $l) - ($Button-borderWidth * 2));
     }
   }
 
-  &.-s {
+  &.--s {
     @include fontSize($baseFontSize-s, rem(($h * $s)));
     padding: 0 rem($baseSpace * $s);
 
-    &.-border {
+    &.--border {
       line-height: rem(($h * $s) - ($Button-borderWidth * 2));
     }
   }
 
-  &.-full {
+  &.--full {
     display: block;
     width: 100%;
   }
@@ -114,7 +114,7 @@
     background-color: darken(#ffffff, 3);
   }
 
-  &.-transparent {
+  &.--transparent {
     background-color: transparent;
 
     &:hover,
@@ -125,7 +125,7 @@
     }
   }
 
-  &.-border {
+  &.--border {
     border-color: $colorBorderDefault;
 
     &:hover,
@@ -152,7 +152,7 @@
     color: #ffffff;
   }
 
-  &.-transparent {
+  &.--transparent {
     background-color: transparent;
     color: $colorPrimary;
 
@@ -164,7 +164,7 @@
     }
   }
 
-  &.-border {
+  &.--border {
     border-color: darken($colorPrimary, 5);
   }
 }

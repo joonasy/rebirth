@@ -19,7 +19,7 @@ class Hero {
 
   heroFigureToParentBg() {
     $.each(this.$figure, function() {
-      const hasObjPos = $(this).parent().is('[class*="-alignFigure"]');
+      const hasObjPos = $(this).parent().is('[class*="--alignFigure"]');
       imgToParentBg($(this), hasObjPos, hasObjPos);
     });
   }

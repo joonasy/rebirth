@@ -137,7 +137,7 @@
    * Navbar - Primary - Larger widths
    * ====== */
 
-  &.-l-horizontal {
+  &.l--horizontal {
     @include breakpoint('largeUp') {
       .Navbar-sub {
         .Navbar-link {

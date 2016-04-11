@@ -14,11 +14,7 @@
     display: block;
     margin-right: 0;
 
-    &:not(:last-child) {
-      margin-bottom: 0;
-    }
-
-    &:not(.-border) {
+    &:not(.--border) {
       box-shadow: 0 -1px $ButtonCollection-separatorColor;
     }
 
@@ -26,40 +22,40 @@
       box-shadow: none;
     }
 
-    &.-pill,
-    &.-round {
+    &.--pill,
+    &.--round {
       border-radius: 0;
     }
   }
 
-  &:not([class*='-horizontal']) {
-    > .-border {
+  &:not([class*='--horizontal']) {
+    > .--border {
       &:not(:last-child) {
         border-bottom-width: 0;
         line-height: rem($Button-height - $Button-borderWidth);
 
-        &.-l {
+        &.--l {
           line-height: rem(($Button-height * $Button-l) - ($Button-borderWidth));
         }
 
-        &.-s {
+        &.--s {
           line-height: rem(($Button-height * $Button-s) - ($Button-borderWidth));
         }
       }
     }
   }
 
-  > .-round {
+  > .--round {
     &:first-child {
-      border-radius: $Button-roundBorderRadius $Button-roundBorderRadius 0 0;
+      border-radius: $Button-borderRadius $Button-borderRadius 0 0;
     }
 
     &:last-child {
-      border-radius: 0 0 $Button-roundBorderRadius $Button-roundBorderRadius;
+      border-radius: 0 0 $Button-borderRadius $Button-borderRadius;
     }
   }
 
-  &.-justify {
+  &.--justify {
     display: block;
   }
 }
