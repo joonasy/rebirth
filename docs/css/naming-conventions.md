@@ -23,8 +23,8 @@ Helpers must use a camelCase name. Helpers may also have modifiers and responsiv
 ```html
 <div class="Component marginTop--m clearfix">        # [1]
   <div class="Component-item floatLeft padding--m">  # [2]
-    <img src="…" alt="…" class="m-center--block">    # [3]
-    <p class="m-text--l">                            # [4]
+    <img src="…" alt="…" class="m--center--block">    # [3]
+    <p class="m--text--l">                            # [4]
       …
     </p>
   </div>  
@@ -40,7 +40,7 @@ Helpers must use a camelCase name. Helpers may also have modifiers and responsiv
 
 The CSS responsible for component-specific styling.
 
-Syntax: `[<prefix>-]<ComponentName>[--modifierName|-chainable-modifierName|-descendantName]`
+Syntax: `[<prefix>-]<ComponentName>[--modifierName|--chainableModifierName|-descendantName]`
 
 This has several benefits when reading and writing HTML and CSS:
 
@@ -88,28 +88,35 @@ A component modifier is a class that modifies the presentation of the base compo
 </button>
 ```
 
-### ComponentName.-chainableModifierName
+### ComponentName.--chainableModifierName
 
-Chainable modifiers are denoted by a leading hyphen `-` and a descriptor for the modification. As the name would indicate, chainable modifiers provide us with the ability to configure a module in the HTML with a short, concise syntax. Chainable component modifiers can be added to component modifiers and collections may also modify their descendants by nesting.   
+Chainable modifiers are denoted by a leading double hyphen `--` and a optional descriptor for the modification. As the name would indicate, chainable modifiers provide us with the ability to configure a module in the HTML with a short, concise syntax. Chainable component modifiers can be added to component modifiers and collections may also modify their descendants by nesting.   
 
 The golden rule is that **chainable modifiers should never modify the same CSS property twice**. This is to ensure that styles don’t get clobbered and that the order in which they are applied is irrelevant. 
 
-Prefixes are not required however add them if the modifier modifies some specific value such as `color` or `align`. 
+Descriptors are not required however add them if the modifier modifies some specific value such as `color` or `align`. 
 
 ```css
 /* Core button */
 .Button {}
 
 /* Chainable modifiers */
-.Button.-l {}
+.Button.--l {
+  @include fontSize($baseFontSize-l);
+}
 
-.Button.-round {}
+.Button.--round {
+  border-radius: 3px;
+}
 
-.Button.-colorDarkOnLight {}
+.Button.--colorDarkOnLight {
+  background-color: white;
+  color: black;
+}
 ```
 
 ```html
-<a href="#" class="Button Button--primary -l -round" type="button">
+<a href="#" class="Button Button--primary --l --round" type="button">
   <span class="Button-dropdown Dropdown">…</span>
 </a>
 ```
@@ -117,7 +124,7 @@ Prefixes are not required however add them if the modifier modifies some specifi
 Chainable modifiers also accept responsive variants.
 
 ```html
-<a href="#" class="Button -s -m-l"></a>
+<a href="#" class="Button --s --m--l"></a>
 ```
 
 Chainable modifiers extend main modifiers.
@@ -126,7 +133,7 @@ Chainable modifiers extend main modifiers.
 .Button--primary {
   …
 
-  &.-justify {
+  &.--justify {
     …
   }
 }
@@ -138,7 +145,7 @@ Chainable modifiers can also be added to component collections.
 .ButtonCollection {
   …
 
-  &.-justify {
+  &.--justify {
     …
 
     > .Button {}
@@ -248,7 +255,7 @@ Some components need parent components to work properly. Component collections o
 
   > .Button {}
 
-  &.-horizontal {
+  &.--horizontal {
     …
 
     > .Button {}
@@ -257,7 +264,7 @@ Some components need parent components to work properly. Component collections o
 ```
 
 ```html
-<div class="ButtonCollection -horizontal">
+<div class="ButtonCollection --horizontal">
   <button class="Button">
     …
   </button>
@@ -291,21 +298,21 @@ The following namespaces are reserved for specific use.
 
 ### Responsive variants
 
-* `[x...]s-<name>`: Small viewports (e.g. Mobile phones)
-* `m-<name>`: Medium viewport (e.g. Tablets)
-* `[x...]l-<name>`: Large viewports (e.g. Desktop computers)
+* `[x...]s--name>`: Small viewports (e.g. Mobile phones)
+* `m--<name>`: Medium viewport (e.g. Tablets)
+* `[x...]l--<name>`: Large viewports (e.g. Desktop computers)
 
 Responsive variants are activated in the given Media Query breakpoint (mobile first ideology). These prefixes are mainly used by helpers and components (e.g. `Width` component) but can also be used by chainable component modifiers (rarely).
 
-Example use of responsive `Width` component which is activated in medium  and extra large breakpoints:
+Example use of responsive `Width` component which is activated in medium and extra large breakpoints:
 
 ```css
 @inlude breakpoint("mediumUp") {
-  .m-Width--6-12 { width: 50%; }
+  .m--Width--6-12 { width: 50%; }
 }
 
 @inlude breakpoint("xLargeUp") {
-  .xl-Width--4-12 { width: 33.333%; }
+  .xl--Width--4-12 { width: 33.333%; }
 }
 ```
 
@@ -324,16 +331,26 @@ Example use of responsive `Width` component which is activated in medium  and ex
 </div>
 ```
 
+If a component contains a chainable modifier (e.g. `--horizontal`) which is extended with responsive variant do not add a double hyphen in front of the variant:
+
+```html
+// Right
+<nav class="Navbar m--horizontal"></nav>
+
+// Wrong
+<nav class="Navbar m----horizontal"></nav>
+```
+
 Example use of _margin_ helper which is activated in large breakpoint:
 
 ```css
 @inlude breakpoint("largeUp") {
-  .l-marginTop--m { margin-top: rem($baseSpace * 2) !important; }
+  .l--marginTop--m { margin-top: rem($baseSpace * 2) !important; }
 }
 ```
 
 ```html
-<div class="l-marginTop--m">
+<div class="l--marginTop--m">
   …
 </div>
 ```
@@ -341,8 +358,9 @@ Example use of _margin_ helper which is activated in large breakpoint:
 ### Reserved modifier names
 
 * Abstract modifier definitions for components (e.g `.Button--primary`): `--primary`, `--secondary`, `--tertiary`, `--quaternary`, `--quinary`, `--senary`, `--septenary`, `--octonary`, `--nonary`, `--denary`
-* Sizing modifiers: `--[x...]s`, `--m`, `--ml`, `--[x...]l`
+* Chainable sizing modifiers: `--[x...]s`, `--m`, `--ml`, `--[x...]l`
     * Used by helpers (e.g `.marginTop--l`). **For component sizing use chainable modifiers.**
+* Responsive variants `[x...]s--name>`, `m--<name>`, `[x...]l--<name>`
 
 ### Reserved prefixes and suffixes in Sass variables
 
