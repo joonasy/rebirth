@@ -2,7 +2,7 @@ wordpress:
   environment:
     WORDPRESS_DB_NAME: <%= dbName %>
     WORDPRESS_DB_USER: <%= dbUser %>
-    USE_EXTERNAL_FILES: true
+    USE_EXTERNAL_FILES: 'true'
   volumes:
     - ./wp-content/uploads:/var/www/html/wp-content/uploads
     - ./.htaccess:/var/www/html/.htaccess
