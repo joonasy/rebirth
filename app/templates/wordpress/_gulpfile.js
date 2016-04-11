@@ -212,7 +212,7 @@ gulp.task('watch', function(callback) {
  * Copy necessary assets
  */
 gulp.task('copyAssets', function() {
-  return gulp.src('bower_components/jquery/dist/jquery.js')
+  return gulp.src('node_modules/jquery/dist/jquery.js')
     .pipe(gulp.dest(config.javascripts.dest + 'vendors/'))
 });
 
