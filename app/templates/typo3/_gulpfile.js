@@ -80,7 +80,7 @@ gulp.task('stylesheets', function() {
     .on('error', handleError)
     .on('error', $.sass.logError)
     .pipe($.autoprefixer({
-      browsers: ['last 2 versions', 'IE 10']
+      browsers: ['last 2 versions', 'IE 10', 'Safari >= 8']
     }));
 
   if (production) {
