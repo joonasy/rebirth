@@ -70,10 +70,10 @@
  * ====== */
 
 @mixin GridJustify($namespace: '') {
-  .Grid.#{$namespace}-justify-around  { justify-content: space-around; }
-  .Grid.#{$namespace}-justify-between { justify-content: space-between; }
-  .Grid.#{$namespace}-justify-center  { justify-content: center; }
-  .Grid.#{$namespace}-justify-end     { justify-content: flex-end; }
+  .Grid.#{$namespace}-justifyAround  { justify-content: space-around; }
+  .Grid.#{$namespace}-justifyBetween { justify-content: space-between; }
+  .Grid.#{$namespace}-justifyCenter  { justify-content: center; }
+  .Grid.#{$namespace}-justifyEnd     { justify-content: flex-end; }
 }
 
 @if $Grid-justify {
@@ -104,9 +104,9 @@
  * ====== */
 
 @mixin GridAlign($namespace: '') {
-  .Grid.#{$namespace}-align-bottom { align-items: flex-end; }
-  .Grid.#{$namespace}-align-center { align-items: center; }
-  .Grid.#{$namespace}-align-top    { align-items: flex-start; }
+  .Grid.#{$namespace}-alignBottom { align-items: flex-end; }
+  .Grid.#{$namespace}-alignCenter { align-items: center; }
+  .Grid.#{$namespace}-alignTop    { align-items: flex-start; }
 }
 
 @if $Grid-align {

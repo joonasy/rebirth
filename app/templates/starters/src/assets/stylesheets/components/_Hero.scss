@@ -108,7 +108,7 @@
  * ====== */
 
 .Hero-item {
-  &.-color-lightOnDark {
+  &.-colorLight {
     background-color: #ffffff;
     color: #ffffff;
 
@@ -117,7 +117,7 @@
     }
   }
 
-  &.-color-darkOnLight {
+  &.-colorDark {
     background-color: $colorText;
     color: $colorText;
 
@@ -133,7 +133,7 @@
  * ====== */
 
 .Hero-item {
-  &.-alignContent-center {
+  &.-alignContentCenter {
     .Hero-wrap {
       justify-content: center;
     }
@@ -144,7 +144,7 @@
     }
   }
 
-  &.-alignContent-right {
+  &.-alignContentRight {
     .Hero-wrap {
       justify-content: flex-end;
     }
