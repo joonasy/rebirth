@@ -9,7 +9,7 @@ import imgToParentBg from '../lib/imgToParentBg';
 
 class Card {
   constructor() {
-    this.$cardFigure = $('.Card-figure.-bg-fill > figure');
+    this.$cardFigure = $('.Card-figure.-figureFill figure, .Card-figure.-figureCrop figure');
   }
 
   init() {

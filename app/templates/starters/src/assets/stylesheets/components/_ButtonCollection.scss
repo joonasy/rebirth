@@ -51,11 +51,11 @@
 
   > .-round {
     &:first-child {
-      border-radius: $Button-roundBorderRadius $Button-roundBorderRadius 0 0;
+      border-radius: $Button-borderRadius $Button-borderRadius 0 0;
     }
 
     &:last-child {
-      border-radius: 0 0 $Button-roundBorderRadius $Button-roundBorderRadius;
+      border-radius: 0 0 $Button-borderRadius $Button-borderRadius;
     }
   }
 
