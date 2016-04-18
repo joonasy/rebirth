@@ -6,10 +6,10 @@
  */
 
 .Form-addon {
-  @extend %Form-itemAppearance;
-  @extend %Form-itemLayout;
-  min-width: rem($baseSpace * 2);
+  @extend %Form-item-appearance;
+  @extend %Form-item-layout;
   text-align: center;
+  min-width: rem($baseSpace * 2)
 }
 
 
@@ -22,7 +22,7 @@
 
 .Form--default {
   .Form-addon {
-    @extend %Form--defaultFormItem;
+    @extend %Form--default-Form-item;
     background-color: $colorBgLightest;
   }
 }

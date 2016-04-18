@@ -9,11 +9,20 @@
 
 
 /* ======
+ * Text - Type
+ * ====== */
+
+.Text {
+  &.-typeMeta {}
+}
+
+
+/* ======
  * Text - Transform
  * ====== */
 
 .Text {
-  &.--transformUpper {
+  &.-transformUpper {
     text-transform: uppercase;
   }
 }
@@ -24,15 +33,15 @@
  * ====== */
 
 .Text {
-  &.--alignCenter {
+  &.-center {
     text-align: center;
   }
 
-  &.--alignLeft {
+  &.-left {
     text-align: left;
   }
 
-  &.--alignRight {
+  &.-right {
     text-align: right;
   }
 }
@@ -42,7 +51,7 @@
  * Text - Size
  * ====== */
 
-.Text.--l, %Text.--l {
+.Text.-l, %Text.-l {
   @include fontSize($baseFontSize-l, $baseLineHeight-l);
 
   @include breakpoint('mediumDown') {
@@ -50,7 +59,7 @@
   }
 }
 
-.Text.--s, %Text.--s {
+.Text.-s, %Text.-s {
   @include fontSize($baseFontSize-s, $baseLineHeight-s);
 }
 

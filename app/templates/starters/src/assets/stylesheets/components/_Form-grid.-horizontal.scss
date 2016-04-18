@@ -6,21 +6,21 @@
  * @reusable true
  */
 
-@mixin FormGridHorizontal($namespace: '--') {
-  .Form-grid.#{$namespace}horizontal {
+@mixin FormGridHorizontal($namespace: '') {
+  .Form-grid.#{$namespace}-horizontal {
     flex-direction: row;
 
     > .Form-cell {
       flex-direction: row;
 
       &:not(:first-child) {
-        .--round {
+        .-round {
           border-radius: 0;
         }
       }
 
       &:first-child {
-        .--round {
+        .-round {
           &:first-child {
             border-radius: $Form-borderRadius 0 0 $Form-borderRadius;
           }
@@ -28,31 +28,31 @@
       }
 
       &:last-child {
-        .--border {
+        .-border {
           &:last-child {
             border-right-width: $Form-borderWidth;
           }
         }
 
-        .--round {
+        .-round {
           &:last-child {
             border-radius: 0 $Form-borderRadius $Form-borderRadius 0;
           }
         }
       }
 
-      > .--border {
+      > .-border {
         border-top-width: $Form-borderWidth;
         border-right-width: 0;
       }
     }
 
     > .Form-button {
-      &.--round {
+      &.-round {
         border-radius: 0 $Form-borderRadius $Form-borderRadius 0;
       }
 
-      &.--border {
+      &.-border {
         border-top-width: $Form-borderWidth;
       }
     }
@@ -65,18 +65,18 @@
 
 @if $Form-gridHorizontal-s {
   @include breakpoint('smallUp') {
-    @include FormGridHorizontal(s--);
+    @include FormGridHorizontal(-s);
   }
 }
 
 @if $Form-gridHorizontal-m {
   @include breakpoint('mediumUp') {
-    @include FormGridHorizontal(m--);
+    @include FormGridHorizontal(-m);
   }
 }
 
 @if $Form-gridHorizontal-l {
   @include breakpoint('largeUp') {
-    @include FormGridHorizontal(l--);
+    @include FormGridHorizontal(-l);
   }
 }

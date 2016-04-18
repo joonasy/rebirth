@@ -6,10 +6,10 @@
  * @reusable true
  */
 
- @mixin GridCellAlign($namespace: '--') {
-  .Grid-cell.#{$namespace}alignBottom { align-self: flex-end; }
-  .Grid-cell.#{$namespace}alignCenter { align-self: center; }
-  .Grid-cell.#{$namespace}alignTop    { align-self: flex-start; }
+ @mixin GridCellAlign($namespace: '') {
+  .Grid-cell.#{$namespace}-align-bottom { align-self: flex-end; }
+  .Grid-cell.#{$namespace}-align-center { align-self: center; }
+  .Grid-cell.#{$namespace}-align-top    { align-self: flex-start; }
 }
 
 @if $Grid-cellAlign {
@@ -18,18 +18,18 @@
 
 @if $Grid-cellAlign-s {
   @include breakpoint('smallUp') {
-    @include GridCellAlign(s--);
+    @include GridCellAlign(-s);
   }
 }
 
 @if $Grid-cellAlign-m {
   @include breakpoint('mediumUp') {
-    @include GridCellAlign(m--);
+    @include GridCellAlign(-m);
   }
 }
 
 @if $Grid-cellAlign-l {
   @include breakpoint('largeUp') {
-    @include GridCellAlign(l--);
+    @include GridCellAlign(-l);
   }
 }

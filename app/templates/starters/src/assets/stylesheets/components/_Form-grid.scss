@@ -20,7 +20,7 @@
     .Form-button {
       margin-bottom: 0;
 
-      &.--round {
+      &.-round {
         border-radius: 0;
       }
     }
@@ -31,13 +31,13 @@
     }
 
     &:not(:first-child) {
-      .--border {
+      .-border {
         border-top-width: 0;
       }
     }
 
     &:first-child:not(:only-child) {
-      .--round {
+      .-round {
         &:first-child {
           border-radius: $Form-borderRadius 0 0 0;
         }
@@ -53,7 +53,7 @@
     }
 
     &:last-child:not(:only-child) {
-      .--round {
+      .-round {
         &:first-child {
           border-radius: 0 0 0 $Form-borderRadius;
         }
@@ -73,7 +73,7 @@
     }
 
     &:only-child {
-      .--round {
+      .-round {
         &:first-child {
           border-radius: $Form-borderRadius 0 0 $Form-borderRadius;
         }
@@ -88,7 +88,7 @@
       }
     }
 
-    > .--border {
+    > .-border {
       &:first-child:not(:only-child) {
         border-right-width: 0;
       }

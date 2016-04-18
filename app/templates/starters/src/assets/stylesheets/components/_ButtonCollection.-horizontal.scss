@@ -6,15 +6,15 @@
  * @reusable true
  */
 
-@mixin ButtonCollectionHorizontal($namespace: '--') {
-  .ButtonCollection.#{$namespace}horizontal {
+@mixin ButtonCollectionHorizontal($namespace: '') {
+  .ButtonCollection.#{$namespace}-horizontal {
     align-items: flex-start;
     display: flex;
 
     > .Button {
       border-left-width: 0;
 
-      &:not(.--border) {
+      &:not(.-border) {
         box-shadow: -$Button-borderWidth 0 $ButtonCollection-separatorColor;
       }
 
@@ -24,17 +24,17 @@
       }
     }
 
-    > .--round {
+    > .-round {
       &:first-child {
-        border-radius: $Button-borderRadius 0 0 $Button-borderRadius;
+        border-radius: $Button-roundBorderRadius 0 0 $Button-roundBorderRadius;
       }
 
       &:last-child {
-        border-radius: 0 $Button-borderRadius $Button-borderRadius 0;
+        border-radius: 0 $Button-roundBorderRadius $Button-roundBorderRadius 0;
       }
     }
 
-    > .--pill {
+    > .-pill {
       &:first-child {
         border-radius: 60px 0 0 60px;
       }
@@ -44,7 +44,7 @@
       }
     }
 
-    &.--justify {
+    &.-justify {
       width: 100%;
 
       > .Button {
@@ -60,18 +60,18 @@
 
 @if $Button-collectionHorizontal-s {
   @include breakpoint('smallUp') {
-    @include ButtonCollectionHorizontal(s--);
+    @include ButtonCollectionHorizontal(-s);
   }
 }
 
 @if $Button-collectionHorizontal-m {
   @include breakpoint('mediumUp') {
-    @include ButtonCollectionHorizontal(m--);
+    @include ButtonCollectionHorizontal(-m);
   }
 }
 
 @if $Button-collectionHorizontal-l {
   @include breakpoint('largeUp') {
-    @include ButtonCollectionHorizontal(l--);
+    @include ButtonCollectionHorizontal(-l);
   }
 }

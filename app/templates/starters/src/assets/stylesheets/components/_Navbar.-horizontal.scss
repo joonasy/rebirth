@@ -6,8 +6,8 @@
  * @reusable true
  */
 
-@mixin NavbarHorizontal($namespace: '--', $keepTitle: false) {
-  .Navbar.#{$namespace}horizontal {
+@mixin NavbarHorizontal($namespace: '', $keepTitle: false) {
+  .Navbar.#{$namespace}-horizontal {
     justify-content: space-between;
 
     .Navbar-ctrl {
@@ -85,7 +85,7 @@
   }
 
   @if $keepTitle {
-    .Navbar.#{$namespace}horizontal.--keepTitle {
+    .Navbar.#{$namespace}-horizontal.-keepTitle {
       display: flex;
 
       .Navbar-ctrl {
@@ -113,19 +113,19 @@
 
 @if $Navbar-horizontal-s {
   @include breakpoint('smallUp') {
-    @include NavbarHorizontal(s--, $Navbar-horizontalKeepTitle);
+    @include NavbarHorizontal(-s, $Navbar-horizontalKeepTitle);
   }
 }
 
 @if $Navbar-horizontal-m {
   @include breakpoint('mediumUp') {
-    @include NavbarHorizontal(m--, $Navbar-horizontalKeepTitle);
+    @include NavbarHorizontal(-m, $Navbar-horizontalKeepTitle);
   }
 }
 
 @if $Navbar-horizontal-l {
   @include breakpoint('largeUp') {
-    @include NavbarHorizontal(l--, $Navbar-horizontalKeepTitle);
+    @include NavbarHorizontal(-l, $Navbar-horizontalKeepTitle);
   }
 }
 

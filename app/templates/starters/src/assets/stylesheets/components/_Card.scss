@@ -34,7 +34,7 @@
     }
 
     @include breakpoint('mediumUp') {
-      padding: rem($Card-padding * 1.25);
+      padding: rem($Card-padding * 1.5);
     }
   }
 
@@ -47,7 +47,7 @@
     .Card-button {}
 
   .Card-footer {
-    @extend %Text.--s;
+    @extend %Text.-s;
     position: relative;
 
     .Card-inner {
@@ -64,7 +64,7 @@
  * ====== */
 
 .Card {
-  &.--round {
+  &.-round {
     @extend %round;
   }
 }
@@ -75,12 +75,12 @@
  * ====== */
 
 .Card {
-  &.--colorLightOnDark {
+  &.-colorLightOnDark {
     background-color: $colorBgDarkest;
     color: $colorLight;
   }
 
-  &.--colorDarkOnLight {
+  &.-colorDarkOnLight {
     background-color: $colorBgLightest;
     color: $colorText;
   }
@@ -91,7 +91,7 @@
  * Card - Figure modifiers
  * ====== */
 
-.Card.--figureCrop, %Card.--figureCrop {
+.Card.-figureCrop, %Card.-figureCrop {
   .Card-figure {
     min-height: rem($baseSpace * 10);
 
@@ -110,15 +110,15 @@
   }
 }
 
-.Card.--figureFill {
-  @extend %Card.--figureCrop;
+.Card.-figureFill {
+  @extend %Card.-figureCrop;
   background: transparent;
 
   .Card-figure {
     @extend %positionAbsoluteFill;
   }
 
-  &.--round {
+  &.-round {
     .Card-figure {
       img {
         @extend %round;
@@ -139,7 +139,7 @@
     background-color: $colorBgLightest;
   }
 
-  &.--round {
+  &.-round {
     border-radius: $Card-borderRadius + 2px;
 
     .Card-figure {
@@ -153,7 +153,7 @@
     }
   }
 
-  &.--border {
+  &.-border {
     box-shadow: 0 0 0 1px $colorBorderDefault;
   }
 }

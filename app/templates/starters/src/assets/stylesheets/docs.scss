@@ -29,13 +29,13 @@
 @import 'helpers/color';
 @import 'helpers/layout';
 @import 'helpers/margin';
-@import 'helpers/s--margin';
-@import 'helpers/m--margin';
-@import 'helpers/l--margin';
+@import 'helpers/s-margin';
+@import 'helpers/m-margin';
+@import 'helpers/l-margin';
 @import 'helpers/padding';
-@import 'helpers/s--padding';
-@import 'helpers/m--padding';
-@import 'helpers/l--padding';
+@import 'helpers/s-padding';
+@import 'helpers/m-padding';
+@import 'helpers/l-padding';
 @import 'helpers/text';
 
 
@@ -65,7 +65,7 @@ $Hero-alignFigure-m: true;
 $Hero-alignFigure-l: true;
 
 @import 'components/Hero';
-@import 'components/Hero-item.--alignFigure';
+@import 'components/Hero-item.-alignFigure';
 @import 'components/Hero-slider.slick';
 @import 'components/Hero.starters';
 
@@ -91,7 +91,7 @@ $Button-collectionHorizontal-l: true;
 
 @import 'components/Button';
 @import 'components/ButtonCollection';
-@import 'components/ButtonCollection.--horizontal';
+@import 'components/ButtonCollection.-horizontal';
 
 
 // ========================================
@@ -107,7 +107,7 @@ $Form-gridHorizontal-l: true;
 
 @import 'components/Form';
 @import 'components/Form-grid';
-@import 'components/Form-grid.--horizontal';
+@import 'components/Form-grid.-horizontal';
 @import 'components/Form-addon';
 @import 'components/Form-icon';
 
@@ -125,7 +125,7 @@ $Form-gridHorizontal-l: true;
 
 @import 'components/Navbar.config';
 @import 'components/Navbar';
-@import 'components/Navbar.--horizontal';
+@import 'components/Navbar.-horizontal';
 @import 'components/Navbar--default';
 
 
@@ -133,9 +133,9 @@ $Form-gridHorizontal-l: true;
 // Icon CSS
 // ========================================
 
-@import 'components/IconCss.--arrow';
-@import 'components/IconCss.--chevron';
-@import 'components/IconCss.--menu';
+@import 'components/IconCss.-arrow';
+@import 'components/IconCss.-chevron';
+@import 'components/IconCss.-menu';
 
 
 // ========================================
@@ -170,8 +170,8 @@ $Grid-cellOrder-m: true;
 $Grid-cellOrder-l: true;
 
 @import 'components/Grid--ruler';
-@import 'components/Grid-cell.--align';
-@import 'components/Grid-cell.--order';
+@import 'components/Grid-cell.-align';
+@import 'components/Grid-cell.-order';
 
 
 // ========================================

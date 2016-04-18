@@ -6,9 +6,9 @@
  * @reusable true
  */
 
-@mixin GridCellOrder($namespace: '--', $amount: 4) {
+@mixin GridCellOrder($namespace: '', $amount: 4) {
   @for $i from 1 through $amount {
-    .Grid-cell.#{$namespace}order--#{$i} {
+    .Grid-cell.#{$namespace}-order-#{$i} {
       order: #{$i};
     }
   }
@@ -20,18 +20,18 @@
 
 @if $Grid-cellOrder-s {
   @include breakpoint('smallUp') {
-    @include GridCellOrder(s--);
+    @include GridCellOrder(-s);
   }
 }
 
 @if $Grid-cellOrder-m {
   @include breakpoint('mediumUp') {
-    @include GridCellOrder(m--);
+    @include GridCellOrder(-m);
   }
 }
 
 @if $Grid-cellOrder-l {
   @include breakpoint('largeUp') {
-    @include GridCellOrder(l--);
+    @include GridCellOrder(-l);
   }
 }

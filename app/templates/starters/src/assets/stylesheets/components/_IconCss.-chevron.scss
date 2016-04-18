@@ -1,50 +1,46 @@
 /* ========================================
- * CSS arrow icon
+ * CSS chevron
  * ========================================
  *
  * @reusable true
  */
 
-.IconCss[class*='--arrow'] {
-  @include shapeArrow($direction: false, $line: true, $thickness: 2px,
-  $caretWidth: 10px);
-
-  &:before { transition: background-color $transitionDuration; }
-  &:after  { transition: border-color $transitionDuration; }
+.IconCss[class*='-chevron'] {
+  @include shapeArrow($direction: false);
 }
 
 
 /* ======
- * CSS arrow - Size and shape
+ * CSS chevron - Size and shape
  * ====== */
 
 .IconCss {
-  &.--arrowUp {
-    &.--s {
+  &.-chevronUp {
+    &.-s {
       transform: scale($IconCss-s);
     }
   }
 
-  &.--arrowRight {
+  &.-chevronRight {
     transform: rotate(-270deg);
 
-    &.--s {
+    &.-s {
       transform: rotate(-270deg) scale($IconCss-s);
     }
   }
 
-  &.--arrowDown {
+  &.-chevronDown {
     transform: rotate(180deg);
 
-    &.--s {
+    &.-s {
       transform: rotate(180deg) scale($IconCss-s);
     }
   }
 
-  &.--arrowLeft {
+  &.-chevronLeft {
     transform: rotate(-90deg);
 
-    &.--s {
+    &.-s {
       transform: rotate(-90deg) scale($IconCss-s);
     }
   }

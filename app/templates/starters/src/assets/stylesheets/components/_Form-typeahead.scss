@@ -45,7 +45,7 @@
   /**
    * Form item overrides
    */
-  .Form-item.--border ~ & {
+  .Form-item.-border ~ & {
     &:before {
       border-left: $Form-borderWidth solid $colorBorderDefault;
     }

@@ -17,7 +17,7 @@
  * ====== */
 
 .Alert {
-  &.--round {
+  &.-round {
     @extend %round;
   }
 }
@@ -30,7 +30,7 @@
 .Alert--success {
   background-color: lighten($colorSuccess, 27);
 
-  &.--border {
+  &.-border {
     box-shadow: inset 0 0 0 1px lighten($colorSuccess, 10);
   }
 }
@@ -43,7 +43,7 @@
 .Alert--info {
   background-color: lighten($colorInfo, 27);
 
-  &.--border {
+  &.-border {
     box-shadow: inset 0 0 0 1px lighten($colorInfo, 20);
   }
 }
@@ -56,7 +56,7 @@
 .Alert--warning {
   background-color: lighten($colorWarning, 27);
 
-  &.--border {
+  &.-border {
     box-shadow: inset 0 0 0 1px lighten($colorWarning, 15);
   }
 }
@@ -69,7 +69,7 @@
 .Alert--danger {
   background-color: lighten($colorDanger, 27);
 
-  &.--border {
+  &.-border {
     box-shadow: inset 0 0 0 1px lighten($colorDanger, 20);
   }
 }
