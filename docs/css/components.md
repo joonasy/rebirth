@@ -14,10 +14,10 @@ styling, and behaviour. For example, this `Pants` component and configuration:
 could yield the following HTML:
 
 ```html
-<article class="Pants Pants--primary --l">
-  <a class="Pants-crop --cropCircle" href="pants.jpg">
+<article class="Pants Pants--primary -l">
+  <a class="Pants-crop -crop-circle" href="pants.jpg">
     <span class="Pants-icon">
-      <span class="Icon --typeZoom"></span>
+      <span class="Icon -type-zoom"></span>
     </span>
     <img class="Pants-img block" src="pants.jpg" alt="…">
   </a>
@@ -43,7 +43,7 @@ following CSS, where every selector starts with the string `MyPants`.
 ```css
 .MyPants {}
 .MyPants--primary {}
-.MyPants.--jeans {}
+.MyPants.-size-l {}
 .MyPants.is-open {}
 .MyPants-title {}
 .MyPants-image {}
@@ -54,7 +54,7 @@ following CSS, where every selector starts with the string `MyPants`.
 Each class provides a hook to style specific elements within the HTML definition.
 
 ```html
-<article class="MyPants MyPants--primary cf --l">
+<article class="MyPants MyPants--primary cf -l">
   <h1 class="MyPants-title">…</h1>
   <img class="MyPants-image" src="…" alt="…">
   <p class="MyPants-text">
@@ -135,7 +135,7 @@ it in another element.
 ```
 
 ```html
-<article class="Excerpt">
+<article class="Excerpt cf">
   …
 
   <a class="Excerpt-button Button">Read more</a>

@@ -14,7 +14,7 @@ containing floats, vertical alignment, text truncation. Relying on helpers
 can help to reduce repetition and provide consistent implementations.
 
 ```html
-<div class="cf m--visible">
+<div class="cf m-visible">
   <p class="textTruncate">…</p>
   <img class="floatLeft" src="…" alt="">
   <img class="floatLeft" src="…" alt="">

@@ -1,6 +1,6 @@
 # JavaScript Styleguide
 
-Use [Airbnb JavaScript Style Guide](https://github.com/airbnb/javascript) as JavaScript styleguide.
+We use [Airbnb JavaScript Style Guide](https://github.com/airbnb/javascript) as our JavaScript styleguide.
 
 ## Structure
 
@@ -11,9 +11,9 @@ Use [Airbnb JavaScript Style Guide](https://github.com/airbnb/javascript) as Jav
     |   |── Component.js      # [2]
     |   …
     |
-    |── lib/                  # [3]
-    |   |── imgToParentBg.js
-    |   |── classToggle.js
+    |── plugins/              # [3]
+    |   |── imgToParentBg.js  
+    |   |── toggle.js         
     |   …
     | 
     |── vendors/              # [4]
@@ -26,7 +26,7 @@ Use [Airbnb JavaScript Style Guide](https://github.com/airbnb/javascript) as Jav
 
 * **1.** Place all components here.
 * **2.** Component placeholder
-* **3.** Place all your own plugins etc. here
+* **3.** Place all your own plugins here
 * **4.** 3rd party vendors that aren't added from Bower/Npm
 * **5.** Place all JavaScript here you want to init in the head section of the HTML document
 * **6.** Init all the components. Placed in the bottom of the HTML document.

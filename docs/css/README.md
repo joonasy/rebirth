@@ -17,9 +17,9 @@ This styleguide outlines standards for writing CSS (and more specifically, Sass)
 ## TL;DR
 
 1. Only one modifier per component e.g. `Component Component--modifier` 
-2. Extend components with chainable modifiers e.g. `Component Component--modifier --myChainableModifier`
+2. Extend components with chainable modifiers e.g. `Component Component--modifier -myChainableModifier`
 3. Use layout components if you need to have specific settings for certain components in specific areas e.g. in Header `Header-component Component Component--primary`
-4. Use and make helpers e.g. `colorPrimary` or `textLeft` if you repeat certain small styles often
+4. Use and make helpers e.g. `colorPrimary` or `textLeft` if you repeat certain styles often
 5. Use hooks for triggering JavaScript e.g. `Button js-Button` 
 6. Use `is-stateName` syntax with JavaScript for changing the state of the component e.g. `Button is-open`
 7. Read [Coding style](style.md) and [Structure](structure.md) so you know how to structure your Sass files
@@ -35,7 +35,7 @@ This styleguide outlines standards for writing CSS (and more specifically, Sass)
     * Components
         * ComponentName
         * ComponentName--modifierName
-        * ComponentName.--chainableModifierName
+        * ComponentName.-chainableModifierName
         * ComponentName.is-stateOfComponent
         * ComponentName-descendantName
         * ComponentNameCollection
