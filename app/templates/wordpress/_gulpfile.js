@@ -84,7 +84,7 @@ gulp.task('stylesheets', function() {
     }));
 
   if (production) {
-    pipeline = pipeline
+    return pipeline = pipeline
       .pipe($.replace('../', '/wp-content/themes/' + config.dest + 'assets/'))
       .pipe($.combineMq({ beautify: false }))
       .pipe($.cssnano({ mergeRules: false }))

@@ -84,7 +84,7 @@ gulp.task('stylesheets', function() {
     }));
 
   if (production) {
-    pipeline = pipeline
+    return pipeline = pipeline
       .pipe($.replace('../', '/typo3conf/ext/' + config.dest + 'Assets/'))
       .pipe($.combineMq({ beautify: false }))
       .pipe($.cssnano({ mergeRules: false }))
