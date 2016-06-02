@@ -1,6 +1,6 @@
 # Changelog
 
-## 0.3.7 (2016-6-2)
+## 0.3.8 (2016-6-2)
 
 * Go back to the old structure in typo3/wordpress project types as it's easier to control individual extensions side by side this way. However now the cms files are included and installed outside the app root and included as separate example files in the version controlled theme/extension.
 * JSCS removed and ESlint added
