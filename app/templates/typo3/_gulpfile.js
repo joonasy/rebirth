@@ -99,7 +99,7 @@ gulp.task('stylesheets', function() {
 /**
  * Javascripts
  */
-gulp.task('javascripts', function(callback) {
+gulp.task('javascripts', ['modernizr'], function(callback) {
 
   var bundleQueue = config.javascripts.bundle.length;
 
@@ -123,6 +123,8 @@ gulp.task('javascripts', function(callback) {
 
       if (!production) {
         collect = collect.pipe(browserSync.stream())
+      } else {
+        collect = collect.pipe($.streamify($.uglify()));
       }
 
       return collect
@@ -209,19 +211,13 @@ gulp.task('watch', function(callback) {
 });
 
 /**
- * Copy necessary assets
- */
-gulp.task('copyAssets', function() {
-  return gulp.src('node_modules/jquery/dist/jquery.js')
-    .pipe(gulp.dest(config.javascripts.dest + 'vendors/'))
-});
-
-/**
  * JavasScript Coding style
  */
-gulp.task('jscs', function() {
-  return gulp.src(config.javascripts.src + '**/*.js')
-    .pipe($.jscs());
+gulp.task('eslint', function () {
+  return app.src(config.javascripts.src + '**/*.js')
+    .pipe($.eslint())
+    .pipe($.eslint.format())
+    .pipe($.eslint.failAfterError());
 });
 
 /**
@@ -245,30 +241,7 @@ gulp.task('modernizr', ['stylesheets'], function() {
       ]
     }))
     .on('error', handleError)
-    .pipe(gulp.dest(config.javascripts.dest));
-});
-
-/**
- * Concat and minify JavaScripts
- */
-gulp.task('minifyScripts', ['modernizr', 'javascripts'], function() {
-  var headScripts = gulp.src([
-    config.javascripts.dest + 'modernizr.js',
-    config.javascripts.dest + 'head.js'
-  ])
-    .pipe($.concat('head.js'))
-    .pipe($.uglify())
-    .pipe(gulp.dest(config.javascripts.dest));
-
-  var bottomScripts = gulp.src([
-    'bower_components/jquery/dist/jquery.js',
-    config.javascripts.dest + 'app.js'
-  ])
-    .pipe($.concat('app.js'))
-    .pipe($.uglify())
-    .pipe(gulp.dest(config.javascripts.dest));
-
-  return merge(headScripts, bottomScripts);
+    .pipe(gulp.dest(config.javascripts.dest + 'vendors'));
 });
 
 /**
@@ -300,7 +273,7 @@ gulp.task('createDistPartials', tasks.concat(['minifyScripts']), function() {
 gulp.task('rev', tasks.concat(['createDistPartials']), function() {
   rimraf.sync(config.stylesheets.dest);
   rimraf.sync(config.javascripts.dest + 'head.js');
-  rimraf.sync(config.javascripts.dest + 'modernizr.js');
+  rimraf.sync(config.javascripts.dest + 'vendors');
 
   return gulp.src([
     config.dest + 'Assets/{images,fonts,javascripts}/**'
@@ -335,12 +308,11 @@ gulp.task('updateReferences', tasks.concat(['rev']), function() {
  * Main collected tasks
  * ====== */
 
-gulp.task('build', ['jscs'], function() {
+gulp.task('build', ['eslint'], function() {
   rimraf.sync(config.dest);
   production = true;
   gulp.start(tasks.concat([
     'modernizr',
-    'minifyScripts',
     'createDistPartials',
     'rev',
     'updateReferences'
@@ -350,7 +322,6 @@ gulp.task('build', ['jscs'], function() {
 gulp.task('default', ['build']);
 
 gulp.task('dev', tasks.concat([
-  'copyAssets',
   'modernizr',
   'watch',
   'server'

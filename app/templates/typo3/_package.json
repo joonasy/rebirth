@@ -23,6 +23,11 @@
     "deamdify": "^0.1.1",
     "debowerify": "~0.9.1",
     "dploy": "^1.2.0",
+    "eslint": "^2.11.1",
+    "eslint-config-airbnb": "^9.0.1",
+    "eslint-plugin-import": "^1.8.1",
+    "eslint-plugin-jsx-a11y": "^1.2.2",
+    "eslint-plugin-react": "^5.1.1",
     "gulp": "~3.8.1",
     "gulp-autoprefixer": "1.0.1",
     "gulp-changed": "^1.2.1",
@@ -30,7 +35,6 @@
     "gulp-concat": "^2.5.2",
     "gulp-cssnano": "^2.1.0",
     "gulp-imagemin": "^2.2.1",
-    "gulp-jscs": "^1.6.0",
     "gulp-load-plugins": "^1.2.0",
     "gulp-modernizr": "^1.0.0-alpha",
     "gulp-rename": "^1.2.2",
@@ -42,7 +46,6 @@
     "gulp-uglify": "~1.0.1",
     "gulp-util": "~3.0.1",
     "install": "^0.1.8",
-    "merge-stream": "^1.0.0",
     "node-notifier": "^4.2.1",
     "pretty-hrtime": "^1.0.0",
     "rimraf": "^2.5.0",
@@ -66,8 +69,7 @@
     ]
   },
   "browserify-shim": {
-    "modernizr": "global:Modernizr",
-    "jquery": "global:$"
+    "modernizr": "global:Modernizr"
   }
 }
 

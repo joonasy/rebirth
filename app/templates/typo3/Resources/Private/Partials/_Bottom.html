@@ -1,8 +1,4 @@
 {namespace flux=FluidTYPO3\Flux\ViewHelpers}
 {namespace v=FluidTYPO3\Vhs\ViewHelpers}
 
-<f:if condition="{settings.dev}">
-  <v:asset.script path="EXT:<%= appRoot %>/Resources/Public/Assets/javascripts/vendors/jquery.js" rewrite="false"  standalone="true" />
-</f:if>
-
 <v:asset.script path="EXT:<%= appRoot %>/Resources/Public/Assets/javascripts/app.js" standalone="{settings.dev}" rewrite="{settings.dev} == 0" />
