@@ -20,6 +20,7 @@ var prettyHrtime = require('pretty-hrtime');
 var rimraf = require('rimraf');
 var source = require('vinyl-source-stream');
 var through = require('through2');
+var watch = require('base-watch');
 var watchify = require('watchify');
 var $ = require('gulp-load-plugins')();
 
@@ -83,6 +84,7 @@ var config = {
 app.data({ assets: 'assets' });
 app.data(config.html.data);
 app.helpers(config.html.helpers);
+app.use(watch());
 
 app.preLayout(/\/src\/templates\/.*\.hbs$/, function(view, next) {
   view.layout = 'default';
@@ -132,7 +134,7 @@ app.task('stylesheets', function() {
 /**
  * Javascripts
  */
-app.task('javascripts', function(callback) {
+app.task('javascripts', ['modernizr'], function(callback) {
 
   var bundleQueue = config.javascripts.bundle.length;
 
@@ -156,6 +158,8 @@ app.task('javascripts', function(callback) {
 
       if (!production) {
         collect = collect.pipe(browserSync.stream())
+      } else {
+        collect = collect.pipe($.streamify($.uglify()))
       }
 
       return collect
@@ -253,15 +257,18 @@ app.task('watch', function() {
 /**
  * JavasScript Coding style
  */
-app.task('jscs', function() {
+app.task('eslint', function () {
   return app.src(config.javascripts.src + '**/*.js')
-    .pipe($.jscs());
+    .pipe($.eslint())
+    .pipe($.eslint.format())
+    .pipe($.eslint.failAfterError())
+    .pipe(app.dest(config.javascripts.src));
 });
 
 /**
  * Modernizr
  */
-app.task('modernizr', function() {
+app.task('modernizr', ['stylesheets'], function() {
   return app.src([
     config.javascripts.src + '**/*.js',
     config.stylesheets.dest + 'app.css'
@@ -279,30 +286,7 @@ app.task('modernizr', function() {
       ]
     }))
     .on('error', handleError)
-    .pipe(app.dest(config.javascripts.dest));
-});
-
-/**
- * Concat and minify JavaScripts
- */
-app.task('minifyScripts', function() {
-  var headScripts = app.src([
-    config.javascripts.dest + 'modernizr.js',
-    config.javascripts.dest + 'head.js'
-  ])
-    .pipe($.concat('head.js'))
-    .pipe($.uglify())
-    .pipe(app.dest(config.javascripts.dest));
-
-  var bottomScripts = app.src([
-    'bower_components/jquery/dist/jquery.js',
-    config.javascripts.dest + 'app.js'
-  ])
-    .pipe($.concat('app.js'))
-    .pipe($.uglify())
-    .pipe(app.dest(config.javascripts.dest));
-
-  return merge(headScripts, bottomScripts);
+    .pipe(app.dest(config.javascripts.dest + 'vendors'));
 });
 
 /**
@@ -327,7 +311,7 @@ app.task('inline', function() {
 app.task('rev', function() {
   rimraf.sync(config.stylesheets.dest);
   rimraf.sync(config.javascripts.dest + 'head.js');
-  rimraf.sync(config.javascripts.dest + 'modernizr.js');
+  rimraf.sync(config.javascripts.dest + 'vendors');
 
   return app.src([
     config.dest + 'assets/{javascripts,images,fonts}/**'
@@ -362,13 +346,12 @@ app.task('updateReferences', function() {
 
 var tasks = ['stylesheets', 'javascripts', 'images', 'fonts'];
 
-app.task('build', ['jscs'], function() {
+app.task('build', ['eslint'], function() {
   rimraf.sync(config.dest);
   production = true;
   app.build(tasks.concat([
     'html',
     'modernizr',
-    'minifyScripts',
     'inline',
     'rev',
     'updateReferences'
