@@ -30,14 +30,6 @@ var MyGenerator = yeoman.generators.Base.extend({
       this.destinationRoot(dir);
       this.appRoot = dir;
     }
-
-    this.option('design', {
-      alias: 'd',
-      desc: 'Copy only the design assets',
-      type: String,
-      required: false,
-      defaults: null
-    });
   },
 
   /**
@@ -57,27 +49,9 @@ var MyGenerator = yeoman.generators.Base.extend({
   },
 
   /**
-   * Copy only the design assets
-   */
-  designAssets: function() {
-    if (!this.options.design) return
-    var dir = this.dir ? this.dir + '/' : '';
-
-    this.fs.copy(
-      this.templatePath('shared/design/app-layout.psd'),
-      this.destinationPath(this.options.design + '-layout.psd')
-    );
-
-    this.log(
-      chalk.green('  ❯'), 'Only the design assets copied to', chalk.cyan('./' + dir)
-    );
-  },
-
-  /**
    * Prompts
    */
   askQuestions: function () {
-    if (this.options.design) return
     var done = this.async();
     var appRoot = this.appRoot;
     var dir = this.dir ? this.dir + '/' : '';
@@ -304,8 +278,6 @@ var MyGenerator = yeoman.generators.Base.extend({
    * Setup configs
    */
   config: function() {
-    if (this.options.design) return
-
     if (this.typo3) {
       this.config.set('assetsPath', this.appRoot + '/Assets/');
     }
@@ -323,8 +295,6 @@ var MyGenerator = yeoman.generators.Base.extend({
    * Setup gulpfile or assemblefile
    */
   gulpfile: function() {
-    if (this.options.design) return
-
     if (this.typo3) {
       this.template(
         this.templatePath('typo3/_gulpfile.js'),
@@ -350,8 +320,6 @@ var MyGenerator = yeoman.generators.Base.extend({
    * Setup README.md
    */
   readme: function() {
-    if (this.options.design) return
-
     this.template('shared/_README.md', 'README.md');
   },
 
@@ -359,8 +327,6 @@ var MyGenerator = yeoman.generators.Base.extend({
    * Setup package.json
    */
   packageJSON: function () {
-    if (this.options.design) return
-
     if (this.typo3) {
       this.template('typo3/_package.json', this.destinationPath('package.json'));
     }
@@ -378,8 +344,6 @@ var MyGenerator = yeoman.generators.Base.extend({
    * Setup default assets
    */
   defaultAssets: function() {
-    if (this.options.design) return
-
     if (this.defaultAssets) {
       var _this = this;
       var startersDir = this.templatePath('starters/src/assets/');
@@ -411,7 +375,7 @@ var MyGenerator = yeoman.generators.Base.extend({
 
       var jsAssets = [
         'app.js',
-        'head.js',
+        'config.js',
         'lib/fixes.js',
         'components/Component.js'
       ].forEach(function(file) {
@@ -420,6 +384,11 @@ var MyGenerator = yeoman.generators.Base.extend({
           _this.destinationPath(_this.config.get('assetsPath') + 'javascripts/' + file)
         );
       });
+
+      this.template(
+        startersDir + 'javascripts/_head.js',
+        _this.config.get('assetsPath') + 'javascripts/head.js'
+      );
 
       this.mkdir(this.config.get('assetsPath')+'images');
       this.mkdir(this.config.get('assetsPath')+'fonts');
@@ -430,8 +399,6 @@ var MyGenerator = yeoman.generators.Base.extend({
    * Setup bower
    */
   bower: function() {
-    if (this.options.design) return
-
     this.template('shared/_bower.json', 'bower.json');
   },
 
@@ -439,8 +406,6 @@ var MyGenerator = yeoman.generators.Base.extend({
    * Setup deployment
    */
   deployment: function() {
-    if (this.options.design) return
-
     if (this.deployment) {
       this.template('shared/_dploy.example.yaml', 'dploy.example.yaml');
       this.template('shared/_dploy.example.yaml', 'dploy.yaml');
@@ -451,16 +416,14 @@ var MyGenerator = yeoman.generators.Base.extend({
    * Copy other templates
    */
   other: function() {
-    if (this.options.design) return
-
     this.fs.copy(
       this.templatePath('shared/editorconfig'),
       this.destinationPath('.editorconfig')
     );
 
     this.fs.copy(
-      this.templatePath('shared/jscsrc'),
-      this.destinationPath('.jscsrc')
+      this.templatePath('shared/eslintrc'),
+      this.destinationPath('.eslintrc')
     );
 
     this.template(
@@ -473,8 +436,6 @@ var MyGenerator = yeoman.generators.Base.extend({
    * Typo3
    */
   typo3: function() {
-    if (this.options.design) return
-
     if (this.typo3) {
       this.template(
         this.templatePath('typo3/Configuration/TypoScript/_setup.txt'),
@@ -522,8 +483,6 @@ var MyGenerator = yeoman.generators.Base.extend({
    * Html
    */
   html: function () {
-    if (this.options.design) return
-
     if (this.html) {
       this.fs.copy(
         this.templatePath('html/src/helpers/assets.js'),
@@ -561,8 +520,6 @@ var MyGenerator = yeoman.generators.Base.extend({
    * WordPress
    */
   wp: function() {
-    if (this.options.design) return
-
     if (this.wp) {
       var done = this.async();
       var _this = this;
@@ -707,7 +664,6 @@ var MyGenerator = yeoman.generators.Base.extend({
   },
 
   install: function() {
-    if (this.options.design) return
     var _this = this;
 
     this.installDependencies({
