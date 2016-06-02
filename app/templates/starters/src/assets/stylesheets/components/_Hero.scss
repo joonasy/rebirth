@@ -54,7 +54,43 @@
         width: 100%;
       }
 
+      img {
+        display: block;
+        height: 100%;
+        object-fit: cover;
+        width: 100%;
+      }
+
       .no-js & > img {
+        display: none;
+      }
+    }
+
+    .Hero-figure--video {
+      z-index: -1;
+
+      .no-js & {
+        z-index: 1;
+      }
+
+      video {
+        display: block;
+        height: 100%;
+        object-fit: cover;
+        width: 100%;
+      }
+
+      video::-webkit-media-controls {
+        display: none !important;
+      }
+
+      .no-object-fit & > video {
+        bottom: 0;
+        height: auto;
+        position: absolute;
+      }
+
+      .no-js & > video {
         display: none;
       }
     }
