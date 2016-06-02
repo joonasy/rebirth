@@ -5,8 +5,6 @@
  * https://github.com/twitter/typeahead.js/
  */
 
-'use strict'
-
 import $ from 'jquery';
 import typeahead from 'typeahead.js/dist/typeahead.jquery.js';
 
@@ -29,8 +27,8 @@ class FormTypeahead {
         empty: 'Form-typeahead-empty',
         open: 'Form-typeahead-open',
         cursor: 'Form-typeahead-cursor',
-        highlight: 'Form-typeahead-highlight'
-      }
+        highlight: 'Form-typeahead-highlight',
+      },
     });
   }
 }

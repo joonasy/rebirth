@@ -2,10 +2,8 @@
  * Navbar
  * ======================================== */
 
-'use strict'
-
 import $ from 'jquery';
-import ClassToggle from '../lib/classToggle';
+import classToggle from '../lib/classToggle';
 
 class Navbar {
   constructor() {
@@ -13,33 +11,35 @@ class Navbar {
   }
 
   init() {
-    this.$navbar.length ? this.navbarInit() : false;
+    if (this.$navbar.length) {
+      this.navbar();
+    }
   }
 
-  navbarInit() {
-    new ClassToggle({
+  navbar() {
+    classToggle({
       trigger: '.js-Navbar .js-NavbarTrigger',
       element: '.js-Navbar',
-      toggleClosest: true
+      toggleClosest: true,
     });
 
-    new ClassToggle({
+    classToggle({
       trigger: '.js-Navbar .Navbar-trigger',
       element: '.js-Navbar .Navbar-item',
       toggleClosest: true,
       unToggleParentSiblings: true,
-      unToggleOtherToggles: false
+      unToggleOtherToggles: false,
     });
 
     $('.js-Navbar .Navbar-trigger').parent().addClass('has-dropdown');
 
-    new ClassToggle({
+    classToggle({
       trigger: '.js-Navbar .has-dropdown > .Navbar-link',
       element: '.js-Navbar .Navbar-item',
       toggleClosest: true,
       unToggleParentSiblings: true,
       disableFirstClickOnTouch: true,
-      unToggleOtherToggles: false
+      unToggleOtherToggles: false,
     });
   }
 }

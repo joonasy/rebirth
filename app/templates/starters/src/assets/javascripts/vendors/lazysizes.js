@@ -2,8 +2,6 @@
  * Setup lazysizes
  * ======================================== */
 
-'use strict'
-
 import lazySizes from 'lazysizes';
 import respimg from 'lazysizes/plugins/respimg/ls.respimg.js';
 

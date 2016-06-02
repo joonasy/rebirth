@@ -2,16 +2,13 @@
  * Class toggle (beta)
  * ======================================== */
 
-'use strict'
-
 import $ from 'jquery';
 import Modernizr from 'modernizr';
 
 const classToggles = [];
 
 function classToggle(options) {
-
-  let config = $.extend({
+  const config = $.extend({
     trigger: '',
     triggerClass: '',
     element: '',
@@ -22,41 +19,50 @@ function classToggle(options) {
     unToggleParentSiblings: false,
     unToggleOtherToggles: true,
     unTogglable: true,
-    afterClick: function() {}
+    afterClick: () => {},
   }, options);
 
   const $element = $(config.element);
 
-  let init = () => {
-    classToggles.push(config);
+  const removeToggles = (currentNode) => {
+    classToggles.forEach(value => {
+      if (value.element && value.unTogglable) {
+        const $el = $(value.element);
 
-    $(document).on('click', config.trigger, function(e) {
-      _clickTrigger(e, $(this));
-    });
+        $el.each(function () {
+          const isToggled = $(this).hasClass(value.elementClass);
+          const currentEl = $(this).is(currentNode);
 
-    if (config.elementStopPropagation) {
-      let el = config.element;
-
-      if (typeof config.elementStopPropagation === 'string') {
-        el = config.elementStopPropagation;
+          if (!currentEl && isToggled) {
+            $(this).removeClass(value.elementClass);
+          }
+        });
       }
 
-      $(document).on('click', el, function(e) {
-        e.stopPropagation();
-      });
-    }
-  }
+      if (value.triggerClass && value.unTogglable) {
+        const $trigger = $(value.trigger);
 
-  let _clickTrigger = (e, selector) => {
+        $trigger.each(function () {
+          const isToggled = $(this).hasClass(value.triggerClass);
+          const currentTrigger = $(this).is(currentNode);
+
+          if (!currentTrigger && isToggled) {
+            $(this).removeClass(value.triggerClass);
+          }
+        });
+      }
+    });
+  };
+
+  const clickTrigger = (e, selector) => {
     const $this = $(selector);
-
     const firstTouch = $this.hasClass('is-touched');
 
     if (config.disableFirstClickOnTouch && !firstTouch && Modernizr.touchevents) {
-      $this.addClass('is-touched')
+      $this.addClass('is-touched');
       e.preventDefault();
       setTimeout(() => {
-        $this.removeClass('is-touched')
+        $this.removeClass('is-touched');
       }, 1000);
     }
 
@@ -92,43 +98,33 @@ function classToggle(options) {
     e.stopPropagation();
   };
 
-  let removeToggles = (currentNode) => {
-    classToggles.forEach(value => {
-      if (value.element && value.unTogglable) {
-        const $el = $(value.element);
+  const init = () => {
+    classToggles.push(config);
 
-        $el.each(function() {
-          const isToggled = $(this).hasClass(value.elementClass);
-          const currentEl = $(this).is(currentNode);
-
-          if (!currentEl && isToggled) {
-            $(this).removeClass(value.elementClass);
-          }
-        });
-      }
-
-      if (value.triggerClass && value.unTogglable) {
-        const $trigger = $(value.trigger);
-
-        $trigger.each(function() {
-          const isToggled = $(this).hasClass(value.triggerClass);
-          const currentTrigger = $(this).is(currentNode);
-
-          if (!currentTrigger && isToggled) {
-            $(this).removeClass(value.triggerClass);
-          }
-        });
-      }
+    $(document).on('click', config.trigger, function (e) {
+      clickTrigger(e, $(this));
     });
+
+    if (config.elementStopPropagation) {
+      let el = config.element;
+
+      if (typeof config.elementStopPropagation === 'string') {
+        el = config.elementStopPropagation;
+      }
+
+      $(document).on('click', el, e => {
+        e.stopPropagation();
+      });
+    }
   };
 
   return {
     init: config.trigger.length ? init() : false,
-    removeToggles
-  }
-};
+    removeToggles,
+  };
+}
 
-$(window).on('click', function() {
+$(window).on('click', () => {
   classToggle().removeToggles();
 });
 

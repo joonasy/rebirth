@@ -76,8 +76,6 @@
  * @param { boolean } targetIOS - target iOS
  */
 
-'use strict'
-
 import $ from 'jquery';
 import Modernizr from 'modernizr';
 
@@ -100,8 +98,9 @@ const imgToParentBg = (figure, targetSafari, targetIOS) => {
     let minDiff = 1000;
     let ans;
 
-    for (i in array) {
+    for (i in array) { // eslint-disable-line
       const m = Math.abs(num - array[i]);
+
       if (m < minDiff) {
         minDiff = m;
         ans = array[i];
@@ -111,78 +110,79 @@ const imgToParentBg = (figure, targetSafari, targetIOS) => {
     return ans;
   }
 
-  if (isSafari || isIOS || !objFit) {
-    function setBackground() {
-      $.each($figure, function() {
-        const $this = $(this);
-        const $img = $this.find('img');
-        const sourceLargest = $img.siblings('source').not('[media]');
-        const source = $img.siblings('source[media]');
-        const widths = [];
+  function matchNumber(str) {
+    return str.match(/(\d+)/)[0];
+  }
 
-        let srcset = $img.data('srcset');
+  function setBackground() {
+    $.each($figure, function () {
+      const $this = $(this);
+      const $img = $this.find('img');
+      const sourceLargest = $img.siblings('source').not('[media]');
+      const source = $img.siblings('source[media]');
+      const widths = [];
 
-        if ('lazySizes' in window && srcset) {
-          srcset = srcset.split(',');
-          const srcsetElements = [];
+      let srcset = $img.data('srcset');
 
-          srcset.forEach((value) => {
-            let val = value.trim();
-            const width = val.split(' ').pop().replace('w', '');
-            widths.push(width);
-            srcsetElements.push(val);
-          });
+      if ('lazySizes' in window && srcset) {
+        srcset = srcset.split(',');
+        const srcsetElements = [];
 
-          const closestWindowWidth = closest(widths, windowWidth);
+        srcset.forEach((value) => {
+          const val = value.trim();
+          const width = val.split(' ').pop().replace('w', '');
+          widths.push(width);
+          srcsetElements.push(val);
+        });
 
-          srcsetElements.forEach((value) => {
-            if (value.indexOf(closestWindowWidth + 'w') > -1) {
-              imgUrl = value.split(' ')[0];
+        const closestWindowWidth = closest(widths, windowWidth);
+
+        srcsetElements.forEach((value) => {
+          if (value.indexOf(`${closestWindowWidth}w`) > -1) {
+            imgUrl = value.split(' ')[0];
+          }
+        });
+      } else if ('lazySizes' in window && source.length) {
+        $.each(source, function () {
+          const media = $(this).attr('media');
+          widths.push(matchNumber(media));
+        });
+
+        const closestWindowWidth = closest(widths, windowWidth);
+        const largestMaxWidth = Math.max.apply(Math, widths);
+
+        if (largestMaxWidth > windowWidth) {
+          $.each(source, function () {
+            const $source = $(this);
+            const media = matchNumber($source.attr('media'));
+
+            if (media === closestWindowWidth) {
+              imgUrl = $source.attr('srcset').split(' ').pop();
             }
           });
-        } else if ('lazySizes' in window && source.length) {
-
-          function matchNumber(str) {
-            return str.match(/(\d+)/)[0]
-          }
-
-          $.each(source, function() {
-            const media = $(this).attr('media');
-            widths.push(matchNumber(media));
-          });
-
-          const closestWindowWidth = closest(widths, windowWidth);
-          const largestMaxWidth = Math.max.apply(Math, widths);
-
-          if (largestMaxWidth > windowWidth) {
-            $.each(source, function() {
-              const $this = $(this);
-              const media = matchNumber($this.attr('media'));
-
-              if (media === closestWindowWidth) {
-                imgUrl = $this.attr('srcset').split(' ').pop();
-              }
-            });
-          } else {
-            imgUrl = sourceLargest.attr('srcset');
-          }
         } else {
-          imgUrl = $img.attr('data-src') ? $img.attr('data-src') :
-            $img.attr('src');
+          imgUrl = sourceLargest.attr('srcset');
         }
+      } else {
+        imgUrl = $img.attr('data-src') ? $img.attr('data-src') :
+          $img.attr('src');
+      }
 
+      if ($img.length) {
         $img.css('visibility', 'hidden');
 
         $this.css({
-          'background-image': 'url(' + imgUrl + ')'
+          'background-image': `url(${imgUrl})`,
         });
-      });
-    }
+      }
+    });
+  }
 
+  if (isSafari || isIOS || !objFit) {
     setBackground();
 
-    var resize;
-    $(window).on('resize', function() {
+    let resize;
+    $(window).on('resize', () => {
       windowWidth = $(window).width();
       clearTimeout(resize);
       resize = setTimeout(setBackground, 250);

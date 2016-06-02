@@ -2,14 +2,13 @@
  * Card
  * ======================================== */
 
-'use strict'
-
 import $ from 'jquery';
-import imgToParentBg from '../lib/imgToParentBg';
+import fixObjectFitImage from '../lib/fixObjectFitImage';
 
 class Card {
   constructor() {
-    this.$cardFigure = $('.Card-figure.-figureFill figure, .Card-figure.-figureCrop figure');
+    this.$cardFillOrCrop = $('.Card.-figureFill, .Card.-figureCrop');
+    this.$cardFigure = $('.Card-figure figure', this.$cardFillOrCrop);
   }
 
   init() {
@@ -17,7 +16,7 @@ class Card {
   }
 
   cardImgToParentBg() {
-    imgToParentBg(this.$cardFigure);
+    fixObjectFitImage(this.$cardFigure);
   }
 }
 

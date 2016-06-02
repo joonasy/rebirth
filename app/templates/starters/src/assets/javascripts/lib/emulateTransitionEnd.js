@@ -2,48 +2,45 @@
  * Emulate CSS3 transition end
  * ======================================== */
 
-'use strict'
+import $ from 'jquery';
 
-var $ = require('jquery');
+const emulateTransitionEnd = () => {
+  function transitionSupport() { // eslint-disable-line
+    const el = document.createElement('app');
 
-var emulateTransitionEnd = function() {
-
-  function transitionSupport() {
-    var el = document.createElement('app');
-
-    var transEndEventNames = {
+    const transEndEventNames = {
       WebkitTransition: 'webkitTransitionEnd',
       MozTransition: 'transitionend',
       OTransition: 'oTransitionEnd otransitionend',
-      transition: 'transitionend'
-    }
+      transition: 'transitionend',
+    };
 
-    for (var name in transEndEventNames) {
+    for (const name in transEndEventNames) { // eslint-disable-line
       if (el.style[name] !== undefined) {
-        return { end: transEndEventNames[name] }
+        return { end: transEndEventNames[name] };
       }
     }
   }
 
-  $.fn.emulateTransitionEnd = function(duration) {
-    var called = false;
-    var _this = this;
+  $.fn.emulateTransitionEnd = function (duration) {
+    let called = false;
+    const $this = $(this);
 
-    $(this).one($.support.transition.end, function() {
-      called = true
+    $this.one($.support.transition.end, () => {
+      called = true;
     });
 
-    var callback = function() {
+    const callback = function () {
       if (!called) {
-        $(_this).trigger($.support.transition.end)
+        $this.trigger($.support.transition.end);
       }
-    }
+    };
 
     setTimeout(callback, duration);
     return this;
-  }
+  };
 
-  $(function() {
+  $(() => {
     $.support.transition = transitionSupport();
   });
 };

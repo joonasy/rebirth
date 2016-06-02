@@ -2,23 +2,19 @@
  * Button
  * ======================================== */
 
-'use strict'
-
 import $ from 'jquery';
-import ClassToggle from '../lib/classToggle';
+import classToggle from '../lib/classToggle';
 
 class Button {
-  constructor() {}
-
   init() {
     this.openButtonDropdown();
   }
 
   openButtonDropdown() {
-    new ClassToggle({
+    classToggle({
       trigger: '.js-Button',
       triggerClass: 'is-open',
-      elementStopPropagation: '.Button-dropdown'
+      elementStopPropagation: '.Button-dropdown',
     });
   }
 }
