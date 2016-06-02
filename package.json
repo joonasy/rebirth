@@ -13,9 +13,6 @@
   "engines": {
     "node": ">=0.10.0"
   },
-  "scripts": {
-    "test": "mocha"
-  },
   "files": [
     "app"
   ],
@@ -25,8 +22,5 @@
     "request": "^2.69.0",
     "yeoman-generator": "^0.18.0",
     "yosay": "^0.3.0"
-  },
-  "devDependencies": {
-    "mocha": "*"
   }
 }
