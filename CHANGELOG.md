@@ -1,5 +1,20 @@
 # Changelog
 
+## 0.3.7 (2016-6-2)
+
+* Go back to the old structure in typo3/wordpress project types as it's easier to control individual extensions side by side this way. However now the cms files are included and installed outside the app root and included as separate example files in the version controlled theme/extension.
+* JSCS removed and ESlint added
+* jQuery loaded and set global in `app.js`
+* Dev env instruction improved
+
+## 0.3.6 (2016-2-11)
+
+* Updated style guides
+* Shitload of Component fixes
+* Assemble updates
+* Typo3/WordPress: Structure to include cms installations inside the extension/theme w/ composer
+* Added WordPress project type
+
 ## 0.2.3 (2015-10-23)
 
 * Rest of IE9 support dropped

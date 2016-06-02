@@ -1,6 +1,6 @@
 {
   "name": "generator-my",
-  "version": "0.3.6",
+  "version": "0.3.7",
   "description": "My styleguide, starter kit and Yeoman generator for new web projects.",
   "license": "MIT",
   "main": "app/index.js",
