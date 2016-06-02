@@ -2,14 +2,17 @@
  * Docs head
  * ======================================== */
 
-'use strict'
-
 /**
- * Import head
+ * Global custom build modernizr
  */
-import head from './head';
+import '../../../dist/assets/javascripts/vendors/modernizr.js';
 
 /**
  * Setup and load lazysizes
  */
 import lazysizes from './vendors/lazysizes';
+
+/**
+ * Various browser related fixes
+ */
+import fixes from './lib/fixes';

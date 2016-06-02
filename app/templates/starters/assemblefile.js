@@ -13,19 +13,19 @@ var app = assemble();
 var fs = require('fs');
 var browserify = require('browserify');
 var browserSync = require('browser-sync').create();
-var merge = require('merge-stream');
 var notifier = require('node-notifier');
 var path = require('path');
 var prettyHrtime = require('pretty-hrtime');
 var rimraf = require('rimraf');
 var source = require('vinyl-source-stream');
 var through = require('through2');
+var vfs = require('vinyl-fs');
+var watch = require('base-watch');
 var watchify = require('watchify');
 var $ = require('gulp-load-plugins')();
 
 var production = false;
 var open = process.env.npm_config_open;
-
 
 /* ======
  * Config
@@ -56,6 +56,11 @@ var config = {
     dest: 'dist/assets/images/',
     watch: 'src/assets/images/*.{jpg,jpeg,png,gif,webp,svg}'
   },
+  videos: {
+    src: 'src/assets/videos/*.{mp4,ogg,webm}',
+    dest: 'dist/assets/videos/',
+    watch: 'src/assets/videos/'
+  },
   fonts: {
     src: 'src/assets/fonts/*.{eot,svg,ttf,woff}',
     dest: 'dist/assets/fonts/',
@@ -72,7 +77,6 @@ var config = {
   }
 }
 
-
 /* ======
  * Tasks
  * ====== */
@@ -83,6 +87,7 @@ var config = {
 app.data({ assets: 'assets' });
 app.data(config.html.data);
 app.helpers(config.html.helpers);
+app.use(watch());
 
 app.preLayout(/\/src\/templates\/.*\.hbs$/, function(view, next) {
   view.layout = 'default';
@@ -132,7 +137,7 @@ app.task('stylesheets', function() {
 /**
  * Javascripts
  */
-app.task('javascripts', function(callback) {
+app.task('javascripts', ['modernizr'], function(callback) {
 
   var bundleQueue = config.javascripts.bundle.length;
 
@@ -156,6 +161,8 @@ app.task('javascripts', function(callback) {
 
       if (!production) {
         collect = collect.pipe(browserSync.stream())
+      } else {
+        collect = collect.pipe($.streamify($.uglify()))
       }
 
       return collect
@@ -193,6 +200,20 @@ app.task('images', function() {
     .pipe($.imagemin())
     .on('error', handleError)
     .pipe(app.dest(config.images.dest));
+
+  if (production) {
+    return pipeline;
+  }
+
+  return pipeline.pipe(browserSync.stream());
+});
+
+/**
+ * Videos
+ */
+app.task('videos', function() {
+  var pipeline = vfs.src(config.videos.src)
+    .pipe(vfs.dest(config.videos.dest));
 
   if (production) {
     return pipeline;
@@ -248,20 +269,23 @@ app.task('watch', function() {
   app.watch(config.stylesheets.watch, ['stylesheets']);
   app.watch(config.fonts.watch, ['fonts']);
   app.watch(config.images.watch, ['images']);
+  app.watch(config.videos.watch, ['videos']);
 });
 
 /**
  * JavasScript Coding style
  */
-app.task('jscs', function() {
+app.task('eslint', function () {
   return app.src(config.javascripts.src + '**/*.js')
-    .pipe($.jscs());
+    .pipe($.eslint())
+    .pipe($.eslint.format())
+    .pipe($.eslint.failAfterError());
 });
 
 /**
  * Modernizr
  */
-app.task('modernizr', function() {
+app.task('modernizr', ['stylesheets'], function() {
   return app.src([
     config.javascripts.src + '**/*.js',
     config.stylesheets.dest + 'docs.css'
@@ -279,30 +303,7 @@ app.task('modernizr', function() {
       ]
     }))
     .on('error', handleError)
-    .pipe(app.dest(config.javascripts.dest));
-});
-
-/**
- * Concat and minify JavaScripts
- */
-app.task('minifyScripts', function() {
-  var headScripts = app.src([
-    config.javascripts.dest + 'modernizr.js',
-    config.javascripts.dest + 'docs.head.js'
-  ])
-    .pipe($.concat('docs.head.js'))
-    .pipe($.uglify())
-    .pipe(app.dest(config.javascripts.dest));
-
-  var bottomScripts = app.src([
-    'bower_components/jquery/dist/jquery.js',
-    config.javascripts.dest + 'docs.js'
-  ])
-    .pipe($.concat('docs.js'))
-    .pipe($.uglify())
-    .pipe(app.dest(config.javascripts.dest));
-
-  return merge(headScripts, bottomScripts);
+    .pipe(app.dest(config.javascripts.dest + 'vendors'));
 });
 
 /**
@@ -325,7 +326,7 @@ app.task('inline', function() {
  * Revision and remove unneeded files
  */
 app.task('rev', function() {
-  rimraf.sync(config.stylesheets.dest);
+  rimraf.sync(config.stylesheets.dest + 'vendors');
   rimraf.sync(config.javascripts.dest + 'docs.head.js');
   rimraf.sync(config.javascripts.dest + 'modernizr.js');
 
@@ -360,15 +361,14 @@ app.task('updateReferences', function() {
  * Main collected tasks
  * ====== */
 
-var tasks = ['stylesheets', 'javascripts', 'images', 'fonts'];
+var tasks = ['stylesheets', 'javascripts', 'images', 'fonts', 'videos'];
 
-app.task('build', ['jscs'], function() {
+app.task('build', ['eslint'], function() {
   rimraf.sync(config.dest);
   production = true;
   app.build(tasks.concat([
     'html',
     'modernizr',
-    'minifyScripts',
     'inline',
     'rev',
     'updateReferences'
@@ -402,9 +402,10 @@ function inline(opts) {
 
   if (opts.matchFile) {
     if (opts.matchFile.match(/.js/)) {
-      return new RegExp('<script(.*?)src="(.*?)'+opts.matchFile+'"(.*?)>(.*?)<\/script>');
+      return new RegExp('<script(.*?)src="(.*?)' + opts.matchFile + '"(.*?)>(.*?)<\/script>');
     }
-    return new RegExp('<link(.*?)href="(.*?)'+opts.matchFile+'"(.*?)>');
+
+    return new RegExp('<link(.*?)href="(.*?)' + opts.matchFile + '"(.*?)>');
   }
 
   if (opts.file) {
