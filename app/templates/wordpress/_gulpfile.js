@@ -33,33 +33,33 @@ var open = process.env.npm_config_open;
 
 var config = {
   host: '<%= appNameDasherize %>.dev',
-  src: '<%= appRoot %>/',
-  dest: '<%= appRoot %>/dist/',
+  src: './',
+  dest: 'dist/',
   stylesheets: {
-    src: '<%= appRoot %>/assets/stylesheets/app.scss',
-    dest: '<%= appRoot %>/dist/assets/stylesheets/',
-    watch: '<%= appRoot %>/assets/stylesheets/**/*.scss'
+    src: 'assets/stylesheets/app.scss',
+    dest: 'dist/assets/stylesheets/',
+    watch: 'assets/stylesheets/**/*.scss'
   },
   javascripts: {
-    src: '<%= appRoot %>/assets/javascripts/',
-    dest: '<%= appRoot %>/dist/assets/javascripts/',
+    src: 'assets/javascripts/',
+    dest: 'dist/assets/javascripts/',
     bundle: [{
-      src: '<%= appRoot %>/assets/javascripts/app.js',
+      src: 'assets/javascripts/app.js',
       file_name: 'app.js'
     }, {
-      src: '<%= appRoot %>/assets/javascripts/head.js',
+      src: 'assets/javascripts/head.js',
       file_name: 'head.js'
     }]
   },
   images: {
-    src: '<%= appRoot %>/assets/images/*.{jpg,jpeg,png,gif,webp,svg}',
-    dest: '<%= appRoot %>/dist/assets/images/',
-    watch: '<%= appRoot %>/assets/images/*.{jpg,jpeg,png,gif,webp,svg}'
+    src: 'assets/images/*.{jpg,jpeg,png,gif,webp,svg}',
+    dest: 'dist/assets/images/',
+    watch: 'assets/images/*.{jpg,jpeg,png,gif,webp,svg}'
   },
   fonts: {
-    src: '<%= appRoot %>/assets/fonts/*.{eot,svg,ttf,woff}',
-    dest: '<%= appRoot %>/dist/assets/fonts/',
-    watch: '<%= appRoot %>/assets/fonts/*.{eot,svg,ttf,woff}'
+    src: 'assets/fonts/*.{eot,svg,ttf,woff}',
+    dest: 'dist/assets/fonts/',
+    watch: 'assets/fonts/*.{eot,svg,ttf,woff}'
   }
 }
 
@@ -214,7 +214,7 @@ gulp.task('watch', function(callback) {
  * JavasScript Coding style
  */
  gulp.task('eslint', function () {
-   return app.src(config.javascripts.src + '**/*.js')
+   return gulp.src(config.javascripts.src + '**/*.js')
      .pipe($.eslint())
      .pipe($.eslint.format())
      .pipe($.eslint.failAfterError());
@@ -252,7 +252,7 @@ var tasks = ['stylesheets', 'javascripts', 'images', 'fonts'];
 /**
  * Create dist files and inline <head> css/js
  */
-gulp.task('createDistPartials', tasks.concat(['minifyScripts']), function() {
+gulp.task('createDistPartials', tasks, function() {
   return gulp.src([
     config.src + 'partials/top.php',
     config.src + 'partials/bottom.php',
@@ -313,7 +313,6 @@ gulp.task('build', ['eslint'], function() {
   production = true;
   gulp.start(tasks.concat([
     'modernizr',
-    'minifyScripts',
     'createDistPartials',
     'rev',
     'updateReferences'

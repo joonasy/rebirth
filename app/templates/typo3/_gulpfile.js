@@ -33,33 +33,33 @@ var open = process.env.npm_config_open;
 
 var config = {
   host: '<%= appNameDasherize %>.dev',
-  src: '<%= appRoot %>/Resources/Private/',
-  dest: '<%= appRoot %>/Resources/Public/',
+  src: 'Resources/Private/',
+  dest: 'Resources/Public/',
   stylesheets: {
-    src: '<%= appRoot %>/Assets/stylesheets/app.scss',
-    dest: '<%= appRoot %>/Resources/Public/Assets/stylesheets/',
-    watch: '<%= appRoot %>/Assets/stylesheets/**/*.scss'
+    src: 'Assets/stylesheets/app.scss',
+    dest: 'Resources/Public/Assets/stylesheets/',
+    watch: 'Assets/stylesheets/**/*.scss'
   },
   javascripts: {
-    src: '<%= appRoot %>/Assets/javascripts/',
-    dest: '<%= appRoot %>/Resources/Public/Assets/javascripts/',
+    src: 'Assets/javascripts/',
+    dest: 'Resources/Public/Assets/javascripts/',
     bundle: [{
-      src: '<%= appRoot %>/Assets/javascripts/app.js',
+      src: 'Assets/javascripts/app.js',
       file_name: 'app.js'
     }, {
-      src: '<%= appRoot %>/Assets/javascripts/head.js',
+      src: 'Assets/javascripts/head.js',
       file_name: 'head.js'
     }]
   },
   images: {
-    src: '<%= appRoot %>/Assets/images/*.{jpg,jpeg,png,gif,webp,svg}',
-    dest: '<%= appRoot %>/Resources/Public/Assets/images/',
-    watch: '<%= appRoot %>/Assets/images/*.{jpg,jpeg,png,gif,webp,svg}'
+    src: 'Assets/images/*.{jpg,jpeg,png,gif,webp,svg}',
+    dest: 'Resources/Public/Assets/images/',
+    watch: 'Assets/images/*.{jpg,jpeg,png,gif,webp,svg}'
   },
   fonts: {
-    src: '<%= appRoot %>/Assets/fonts/*.{eot,svg,ttf,woff}',
-    dest: '<%= appRoot %>/Resources/Public/Assets/fonts/',
-    watch: '<%= appRoot %>/Assets/fonts/*.{eot,svg,ttf,woff}'
+    src: 'Assets/fonts/*.{eot,svg,ttf,woff}',
+    dest: 'Resources/Public/Assets/fonts/',
+    watch: 'Assets/fonts/*.{eot,svg,ttf,woff}'
   }
 }
 
@@ -214,7 +214,7 @@ gulp.task('watch', function(callback) {
  * JavasScript Coding style
  */
 gulp.task('eslint', function () {
-  return app.src(config.javascripts.src + '**/*.js')
+  return gulp.src(config.javascripts.src + '**/*.js')
     .pipe($.eslint())
     .pipe($.eslint.format())
     .pipe($.eslint.failAfterError());
@@ -252,7 +252,7 @@ var tasks = ['stylesheets', 'javascripts', 'images', 'fonts'];
 /**
  * Create dist files and inline <head> css/js
  */
-gulp.task('createDistPartials', tasks.concat(['minifyScripts']), function() {
+gulp.task('createDistPartials', tasks, function() {
   return gulp.src([
     config.src + 'Partials/Top.html',
     config.src + 'Partials/Bottom.html',

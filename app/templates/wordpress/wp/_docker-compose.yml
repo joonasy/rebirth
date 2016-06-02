@@ -1,8 +1,5 @@
 wordpress:
   container_name: <%= appRoot %>-wp
-  extends:
-    file: docker-compose.dev.yml
-    service: wordpress
   image: joonasy/wordpress
   links:
     - database:mysql
@@ -12,11 +9,17 @@ wordpress:
     - ../<%= appRoot %>:/var/www/html/wp-content/themes/<%= appRoot %>
     - ./wp-content/mu-plugins:/var/www/html/wp-content/mu-plugins
     - ./wp-content/plugins:/var/www/html/wp-content/plugins
+    - ./wp-content/uploads:/var/www/html/wp-content/uploads
+    - ./wp-config.php:/var/www/html/wp-config.php
+    - ./wp-config.dev.php:/var/www/html/wp-config.dev.php
+  environment:
+    WORDPRESS_DB_NAME: <%= dbName %>
+    WORDPRESS_DB_USER: <%= dbUser %>
+    USE_EXTERNAL_FILES: 'true'
 database:
   container_name: <%= appRoot %>-db
-  extends:
-    file: docker-compose.dev.yml
-    service: database
   image: mariadb
   ports:
     - 3306:3306
+  environment:
+    MYSQL_ROOT_PASSWORD: <%= dbPassword %>

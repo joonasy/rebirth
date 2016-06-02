@@ -1,17 +1,15 @@
 production:
-  branch: master<% if (typo3) { %>
-  exclude: ["<%= appRoot %>/Assets/**/*"]<% } if (wp) { %>
-  exclude: ["<%= appRoot %>/assets/**/*"]<% } %>
+  branch: master
+  exclude: ["*.ini", "*.json", ".editorconfig", ".jscsrc", "bower.json", "gulpfile.js", "package.json", "README.md", "rev-manifest.json", <% if (typo3) { %>"Assets/**/*"<% } else { %>assets/**/*<% } %>, ".gitignore"]
   host: ""
   include:<% if (typo3) { %>
-    "<%= appRoot %>/Resources/Public/**": "Resources/Public"
-    "<%= appRoot %>/Resources/Private/Partials/*.dist.html": "Resources/Private/Partials"<% } if (html) { %>
-    "dist/**": "dist"<% } if (wp) {  %>
-    "<%= appRoot %>/dist/**": "dist"<% } %>
+    "Resources/Public/**": "Resources/Public"
+    "Resources/Private/Partials/*.dist.html": "Resources/Private/Partials"<% } if (html || wp) { %>
+    "dist/**/*": "dist"<% } %>
   pass: ""
-  path:<% if (wp || typo3) { %>
-    local: <%= appRoot %><% } %>
-    remote: <% if (html) { %>"your/path"<% } if (wp || typo3) { %>"webroot/ROOT/<%= appRoot %>"<% } %>
+  path:<% if (html) { %>
+    local: "dist"<% } %>
+    remote: "webroot/ROOT/<%= appRoot %>"
   port: 21
   scheme: "ftp"
   slots: 3

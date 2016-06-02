@@ -13,7 +13,7 @@
     "build": "gulp build",
     "dev": "gulp dev",
     "deploy": "npm run build && dploy production",
-    "docker": "cd wp && docker-compose up",
+    "docker": "cd ../wp && docker-compose up",
     "docker-wp": "docker exec -it <%= appRoot %>-wp bash",
     "docker-db": "docker exec -it <%= appRoot %>-db bash"
   },
@@ -37,6 +37,7 @@
     "gulp-combine-mq": "^0.4.0",
     "gulp-concat": "^2.5.2",
     "gulp-cssnano": "^2.1.0",
+    "gulp-eslint": "^2.0.0",
     "gulp-imagemin": "^2.2.1",
     "gulp-load-plugins": "^1.2.0",
     "gulp-modernizr": "^1.0.0-alpha",

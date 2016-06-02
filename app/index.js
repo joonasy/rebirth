@@ -142,7 +142,7 @@ var MyGenerator = yeoman.generators.Base.extend({
       }, {
         type: 'confirm',
         name: 'git',
-        message: 'Do you want to init git after the install?',
+        message: 'Do you want to git init for the project?',
         default: true
       }, {
         type: 'confirm',
@@ -250,8 +250,19 @@ var MyGenerator = yeoman.generators.Base.extend({
       this.html = this.projectType === 'html';
       this.wp = this.projectType === 'wp';
 
+      /**
+       * Make sure typo3 extension is underscored or it won't work
+       */
       if (this.typo3) {
         this.appRoot = this._.underscored(this.appRoot);
+        this.destinationRoot(this.appRoot);
+      }
+
+      /**
+       * We go one folder deeper here
+       */
+      if (this.wp) {
+        this.destinationRoot(this.appRoot);
       }
 
       this.appURL = props.url;
@@ -279,7 +290,7 @@ var MyGenerator = yeoman.generators.Base.extend({
    */
   config: function() {
     if (this.typo3) {
-      this.config.set('assetsPath', this.appRoot + '/Assets/');
+      this.config.set('assetsPath', 'Assets/');
     }
 
     if (this.html) {
@@ -287,7 +298,7 @@ var MyGenerator = yeoman.generators.Base.extend({
     }
 
     if (this.wp) {
-      this.config.set('assetsPath', this.appRoot + '/assets/');
+      this.config.set('assetsPath', 'assets/');
     }
   },
 
@@ -311,7 +322,7 @@ var MyGenerator = yeoman.generators.Base.extend({
     if (this.wp) {
       this.template(
         this.templatePath('wordpress/_gulpfile.js'),
-        this.destinationPath('gulpfile.js')
+        this.destinationPath('/gulpfile.js')
       );
     }
   },
@@ -439,42 +450,47 @@ var MyGenerator = yeoman.generators.Base.extend({
     if (this.typo3) {
       this.template(
         this.templatePath('typo3/Configuration/TypoScript/_setup.txt'),
-        this.destinationPath(this.appRoot + '/Configuration/TypoScript/setup.txt')
+        this.destinationPath('Configuration/TypoScript/setup.txt')
       );
 
       this.template(
         this.templatePath('typo3/Resources/Private/Templates/Page/_HomePage.html'),
-        this.destinationPath(this.appRoot + '/Resources/Private/Templates/Page/HomePage.html')
+        this.destinationPath('Resources/Private/Templates/Page/HomePage.html')
       );
 
       this.fs.copy(
         this.templatePath('typo3/Resources/Private/Layouts/App.html'),
-        this.destinationPath(this.appRoot + '/Resources/Private/Layouts/App.html')
+        this.destinationPath('Resources/Private/Layouts/App.html')
       );
 
       this.template(
         this.templatePath('typo3/Resources/Private/Partials/_Top.html'),
-        this.destinationPath(this.appRoot + '/Resources/Private/Partials/Top.html')
+        this.destinationPath('Resources/Private/Partials/Top.html')
       );
 
       this.template(
         this.templatePath('typo3/Resources/Private/Partials/_Bottom.html'),
-        this.destinationPath(this.appRoot + '/Resources/Private/Partials/Bottom.html')
+        this.destinationPath('Resources/Private/Partials/Bottom.html')
       );
 
       this.template(
         this.templatePath('typo3/_ext_emconf.php'),
-        this.destinationPath(this.appRoot + '/ext_emconf.php')
+        this.destinationPath('ext_emconf.php')
       );
 
       this.template(
         this.templatePath('typo3/_ext_tables.php'),
-        this.destinationPath(this.appRoot + '/ext_tables.php')
+        this.destinationPath('ext_tables.php')
       );
 
       this.template(
         this.templatePath('typo3/typo3/_composer.json'),
-        this.destinationPath('typo3/composer.json')
+        this.destinationPath('typo3-example/composer.json')
+      );
+
+      this.template(
+        this.templatePath('typo3/typo3/_composer.json'),
+        this.destinationPath('../typo3/composer.json')
       );
     }
   },
@@ -525,127 +541,127 @@ var MyGenerator = yeoman.generators.Base.extend({
       var _this = this;
       _this.salt = '';
 
-      this.mkdir(this.appRoot + '/acf-json');
+      this.mkdir('acf-json');
 
       if (_this.pluginWPMLuserID) {
-        this.mkdir(this.appRoot + '/languages');
+        this.mkdir('languages');
       }
 
       this.fs.copy(
         this.templatePath('wordpress/header.php'),
-        this.destinationPath(this.appRoot + '/header.php')
+        this.destinationPath('header.php')
       );
 
       this.fs.copy(
         this.templatePath('wordpress/footer.php'),
-        this.destinationPath(this.appRoot + '/footer.php')
+        this.destinationPath('footer.php')
       );
 
       this.directory(
         this.templatePath('wordpress/partials'),
-        this.destinationPath(this.appRoot + '/partials/')
+        this.destinationPath('partials/')
       );
 
       this.template(
         this.templatePath('wordpress/_functions.php'),
-        this.destinationPath(this.appRoot + '/functions.php')
+        this.destinationPath('functions.php')
       );
 
       this.template(
         this.templatePath('wordpress/lib/_clean-up.php'),
-        this.destinationPath(this.appRoot + '/lib/clean-up.php')
+        this.destinationPath('lib/clean-up.php')
       );
 
       this.template(
         this.templatePath('wordpress/lib/_cpt-name.php'),
-        this.destinationPath(this.appRoot + '/lib/cpt-name.php')
+        this.destinationPath('lib/cpt-name.php')
       );
 
       this.template(
         this.templatePath('wordpress/lib/_NavWalker.php'),
-        this.destinationPath(this.appRoot + '/lib/NavWalker.php')
+        this.destinationPath('lib/NavWalker.php')
       );
 
       this.template(
         this.templatePath('wordpress/lib/_sc-name.php'),
-        this.destinationPath(this.appRoot + '/lib/sc-name.php')
+        this.destinationPath('lib/sc-name.php')
       );
 
       this.template(
         this.templatePath('wordpress/lib/_setup.php'),
-        this.destinationPath(this.appRoot + '/lib/setup.php')
+        this.destinationPath('lib/setup.php')
       );
 
       if (_this.pluginACFkey) {
         this.template(
           this.templatePath('wordpress/lib/_utils-acf.php'),
-          this.destinationPath(this.appRoot + '/lib/utils-acf.php')
+          this.destinationPath('lib/utils-acf.php')
         );
       }
 
       this.template(
         this.templatePath('wordpress/lib/_utils.php'),
-        this.destinationPath(this.appRoot + '/lib/utils.php')
+        this.destinationPath('lib/utils.php')
       );
 
       this.template(
         this.templatePath('wordpress/_index.php'),
-        this.destinationPath(this.appRoot + '/index.php')
+        this.destinationPath('index.php')
       );
 
       this.template(
         this.templatePath('wordpress/_style.css'),
-        this.destinationPath(this.appRoot + '/style.css')
-      );
-
-      this.template(
-        this.templatePath('wordpress/wp/_docker-compose.dev.example.yml'),
-        this.destinationPath('wp/docker-compose.dev.example.yml')
-      );
-
-      this.template(
-        this.templatePath('wordpress/wp/_docker-compose.dev.example.yml'),
-        this.destinationPath('wp/docker-compose.dev.example.yml')
-      );
-
-      this.template(
-        this.templatePath('wordpress/wp/_docker-compose.dev.example.yml'),
-        this.destinationPath('wp/docker-compose.dev.yml')
+        this.destinationPath('style.css')
       );
 
       this.template(
         this.templatePath('wordpress/wp/_docker-compose.yml'),
-        this.destinationPath('wp/docker-compose.yml')
+        this.destinationPath('wp-example/docker-compose.yml')
+      );
+
+      this.template(
+        this.templatePath('wordpress/wp/_docker-compose.yml'),
+        this.destinationPath('../wp/docker-compose.yml')
       );
 
       this.template(
         this.templatePath('wordpress/wp/_composer.json'),
-        this.destinationPath('wp/composer.json')
+        this.destinationPath('wp-example/composer.json')
       );
 
       this.template(
-        this.templatePath('wordpress/wp/_wp-config.dev.example.php'),
-        this.destinationPath('wp/wp-config.dev.example.php')
+        this.templatePath('wordpress/wp/_composer.json'),
+        this.destinationPath('../wp/composer.json')
       );
 
       this.template(
-        this.templatePath('wordpress/wp/_wp-config.dev.example.php'),
-        this.destinationPath('wp/wp-config.dev.php')
+        this.templatePath('wordpress/wp/_wp-config.dev.php'),
+        this.destinationPath('wp-example/wp-config.dev.php')
       );
 
-      this.fs.copy(
-        this.templatePath('wordpress/wp/htaccess'),
-        this.destinationPath('wp/.htaccess')
+      this.template(
+        this.templatePath('wordpress/wp/_wp-config.dev.php'),
+        this.destinationPath('../wp/wp-config.dev.php')
       );
 
       this.fs.copy(
         this.templatePath('wordpress/wp/register-theme-directory.php'),
-        this.destinationPath('wp/wp-content/mu-plugins/register-theme-directory.php')
+        this.destinationPath('wp-example/wp-content/mu-plugins/register-theme-directory.php')
+      );
+
+      this.fs.copy(
+        this.templatePath('wordpress/wp/register-theme-directory.php'),
+        this.destinationPath('../wp/wp-content/mu-plugins/register-theme-directory.php')
       );
 
       this.fs.copy(
         this.templatePath('wordpress/wp/index.php'),
-        this.destinationPath('wp/index.php')
+        this.destinationPath('wp-example/index.php')
+      );
+
+      this.fs.copy(
+        this.templatePath('wordpress/wp/index.php'),
+        this.destinationPath('../wp/index.php')
       );
 
       request('https://api.wordpress.org/secret-key/1.1/salt', function(error, response, body) {
@@ -654,7 +670,12 @@ var MyGenerator = yeoman.generators.Base.extend({
 
           _this.template(
             _this.templatePath('wordpress/wp/_wp-config.php'),
-            _this.destinationPath('wp/wp-config.php')
+            _this.destinationPath('wp-example/wp-config.php')
+          );
+
+          _this.template(
+            _this.templatePath('wordpress/wp/_wp-config.php'),
+            _this.destinationPath('../wp/wp-config.php')
           );
 
           done();
@@ -669,10 +690,19 @@ var MyGenerator = yeoman.generators.Base.extend({
     this.installDependencies({
       skipInstall: this.options['skip-install'],
       callback: function() {
+        if (_this.git) {
+          _this.spawnCommand('git', ['init']);
+        }
+
         var composer = _this.composer && !_this.options['skip-install'];
 
         if (_this.typo3 && composer || _this.wp && composer) {
-          process.chdir(path.join(process.cwd(), _this.projectType));
+          /**
+           * We are one folder deeper in cms installations. Move back install root
+           * and to created cms folder to install composer.
+           */
+          process.chdir(path.join(process.cwd(), '../', _this.projectType));
+
           _this.spawnCommand('composer', ['install']).on('exit', function() {
             installFinished();
           });
@@ -683,11 +713,7 @@ var MyGenerator = yeoman.generators.Base.extend({
     });
 
     function installFinished() {
-      if (_this.git) {
-        _this.spawnCommand('git', ['init']).on('exit', info);
-      }
-
-      function info() {
+      // function info() {
         var devEnvString = '';
         var wordPressInfo = '';
         var projectType = _this.projectType === 'wp' ? 'WordPress' : _this._.humanize(_this.projectType);
@@ -723,7 +749,7 @@ var MyGenerator = yeoman.generators.Base.extend({
           '  ========================================' +
           '\n'
         );
-      }
+      // }
     }
   }
 });
