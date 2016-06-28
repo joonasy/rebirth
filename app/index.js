@@ -362,7 +362,7 @@ var MyGenerator = yeoman.generators.Base.extend({
       var cssAssets = [
         'components/_Component.scss',
         'components/_Container.scss',
-        'components/_Grid.scss',
+        'components/Grid/_Grid.scss',
         'components/_Heading.scss',
         'components/_Icon.scss',
         'components/_Ieframe.scss',

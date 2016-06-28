@@ -1,5 +1,12 @@
 # Changelog
 
+## 0.4.0 (2016-6-28)
+
+* Component collections are no named as plurals e.g. .Buttons. Switch button collection to --default modifier as there might be some additional button collection in the projects.
+* Mutual component files are now in their own folders
+* Fixes
+
+
 ## 0.3.9 (2016-6-2)
 
 * Go back to the old structure in typo3/wordpress project types as it's easier to control individual extensions side by side this way. However now the cms files are included and installed outside the app root and included as separate example files in the version controlled theme/extension.
