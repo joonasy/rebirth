@@ -194,13 +194,11 @@ Structure our partials in the following order to prevent errors. Remember to alp
 
 #### About 3rd party vendors
 
-CSS bower components (`./bower_components`) or CSS node modules (`./node_modules/`) can be imported to Primary Sass file like so `@import 'myPackage/scss/myPackage.scss'`. 
+CSS bower components (`./bower_components`) or CSS node modules (`./node_modules/`) can be imported to primary Sass file like so `@import 'myPackage/scss/myPackage.scss'`. 
 
 However usually vendors do not provide Sass files to be imported (and Sass can't `@import` CSS files) so place all CSS bower components to the vendor folder (`Assets/stylesheets/vendors`) and rename them to `_vendorName.scss` format. This of course requires manual updating if the new package version has updated CSS.  
 
 If the package supports Sass and you wan't to modify the package, import the package to the primary Sass file and add new vendor file preferably with the same name as the package to the vendors folder. Override the necessary styles in the newly added file.
-
-Alternatively you may add 3rd party vendors to the build process (gulp). Read about it in the [Project section](../project/)
 
 ## Component structure
 
@@ -317,17 +315,17 @@ Always name the isolated partials as they are presented in the markup. Example o
 
 ```
 components/_Button.scss                # [1]
-components/_ButtonCollection.scss      # [2]
-components/_Button-dropdown.scss       # [3]
-components/_Button.-modifierName.scss  # [4]
-components/_Button--primary.scss       # [5]
+components/_Button-dropdown.scss       # [2]
+components/_Button.-modifierName.scss  # [3]
+components/_Button--primary.scss       # [4]
+components/_Buttons.scss               # [5]
 ```
 
-If you are build a large component which, say, contains over 400 lines it is advisable to separate large component modifiers (**4.**), variations (**5.**) and descendants (**3.**) into their own partials. All of our isolated partials should always start with a first-level title.
+If you are build a large component which, say, contains over 400 lines it is advisable to separate large component modifiers (**3.**), variations (**4.**) and descendants (**2.**) into their own partials. All of our isolated partials should always start with a first-level title.
 
-If component modifiers (**4.**) or other component related partials contain _responsive variants_ (e.g `.Button.-m-modifierName {}`) it isn't necessary to include that variant in the file name.
+If component modifiers (**3.**) or other component related partials contain _responsive variants_ (e.g `.Button.-m-modifierName {}`) it isn't necessary to include that variant in the file name.
 
-Component collections (**2.**) are always isolated.
+Component collections (**5.**) are always isolated.
 
 ##### Component and theme configuration
 
@@ -356,11 +354,11 @@ If we are building a large project which contains lots of isolated component par
 
 ```
 components/Button/_Button.scss          
-components/Button/_ButtonCollection.scss 
+components/Button/_Buttons.scss 
 …
 
 components/Component/_Component.scss      
-components/Component/_ComponentCollection.scss
+components/Component/_Components.scss
 …   
 ```
 

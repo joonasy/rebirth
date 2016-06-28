@@ -1,12 +1,12 @@
 /* ========================================
- * Button collection
+ * Button collection - Default
  * ========================================
  *
  * @extends `.Button{}` in _Button.scss
  * @reusable true
  */
 
-.ButtonCollection {
+.Buttons--default {
   display: inline-block;
   margin-bottom: rem($baseSpace);
 
@@ -19,7 +19,7 @@
     }
 
     &:not(.-border) {
-      box-shadow: 0 -1px $ButtonCollection-separatorColor;
+      box-shadow: 0 -1px $Buttons-separatorColor;
     }
 
     &:first-child {

@@ -1,13 +1,13 @@
 /* ========================================
- * Button collection - Horizontal
+ * Button collection - Default - Horizontal
  * ========================================
  *
- * @extend `.ButtonCollection{}` in _ButtonCollection.scss
+ * @extend `.Buttons--default{}` in _Buttons--default.scss
  * @reusable true
  */
 
-@mixin ButtonCollectionHorizontal($namespace: '') {
-  .ButtonCollection.#{$namespace}-horizontal {
+@mixin Buttons($namespace: '') {
+  .Buttons--default.#{$namespace}-horizontal {
     align-items: flex-start;
     display: flex;
 
@@ -15,7 +15,7 @@
       border-left-width: 0;
 
       &:not(.-border) {
-        box-shadow: -$Button-borderWidth 0 $ButtonCollection-separatorColor;
+        box-shadow: -$Button-borderWidth 0 $Buttons-separatorColor;
       }
 
       &:first-child {
@@ -54,24 +54,24 @@
   }
 }
 
-@if $Button-collectionHorizontal {
-  @include ButtonCollectionHorizontal();
+@if $Buttons-horizontal {
+  @include Buttons();
 }
 
-@if $Button-collectionHorizontal-s {
+@if $Buttons-horizontal-s {
   @include breakpoint('smallUp') {
-    @include ButtonCollectionHorizontal(-s);
+    @include Buttons(-s);
   }
 }
 
-@if $Button-collectionHorizontal-m {
+@if $Buttons-horizontal-m {
   @include breakpoint('mediumUp') {
-    @include ButtonCollectionHorizontal(-m);
+    @include Buttons(-m);
   }
 }
 
-@if $Button-collectionHorizontal-l {
+@if $Buttons-horizontal-l {
   @include breakpoint('largeUp') {
-    @include ButtonCollectionHorizontal(-l);
+    @include Buttons(-l);
   }
 }

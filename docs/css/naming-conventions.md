@@ -135,7 +135,7 @@ Chainable modifiers extend main modifiers.
 Chainable modifiers can also be added to component collections.
 
 ```css
-.ButtonCollection {
+.Buttons {
   …
 
   &.-justify {
@@ -233,17 +233,17 @@ Parent component modifiers also modify their descendants by nesting, however in 
 </article>
 ```
 
-### ComponentNameCollection
+### Component collections (ComponentName in plural e.g. `Buttons`)
 
 > Components are descendants of component collections.
 
-Some components need parent components to work properly. Component collections override component specific settings. Component collections also use chainable modifiers.
+Some components need parent component collections to work properly. Component collections override component specific settings. Component collections also use chainable modifiers.
 
 ```css
 /**
  * Button collection for Buttons
  */ 
-.ButtonCollection {
+.Buttons {
   …
 
   > .Button {}
@@ -257,7 +257,7 @@ Some components need parent components to work properly. Component collections o
 ```
 
 ```html
-<div class="ButtonCollection -horizontal">
+<div class="Buttons -horizontal">
   <button class="Button">
     …
   </button>

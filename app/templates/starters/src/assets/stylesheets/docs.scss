@@ -84,14 +84,14 @@ $Hero-alignFigure-l: true;
 
 @import 'components/Button.config';
 
-$Button-collectionHorizontal: true;
-$Button-collectionHorizontal-s: true;
-$Button-collectionHorizontal-m: true;
-$Button-collectionHorizontal-l: true;
+$Buttons-horizontal: true;
+$Buttons-horizontal-s: true;
+$Buttons-horizontal-m: true;
+$Buttons-horizontal-l: true;
 
 @import 'components/Button';
-@import 'components/ButtonCollection';
-@import 'components/ButtonCollection.-horizontal';
+@import 'components/Buttons--default';
+@import 'components/Buttons.-horizontal';
 
 
 // ========================================
