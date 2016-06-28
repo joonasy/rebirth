@@ -14,7 +14,7 @@
 
   .Hero-item {
     @each $position in $positions {
-      &.#{$namespace}-alignFigure#{camelize($position)} {
+      &.#{$namespace}-alignFigure#{pascalize($position)} {
         .Hero-figure {
           background-position: unquote($position); /* Fallback set via .js */
 
