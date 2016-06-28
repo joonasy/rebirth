@@ -7,7 +7,7 @@
   "dependencies": {
     "fastclick": "^1.0.6",
     "jquery": "^2.2.1",
-    "lazysizes": "^1.1.4"
+    "lazysizes": "^2.0.0"
   },
   "main": "assemblefile.js",
   "scripts": {
