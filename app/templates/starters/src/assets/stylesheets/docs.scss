@@ -57,59 +57,59 @@
 // Hero
 // ========================================
 
-@import 'components/Hero.config';
+@import 'components/Hero/Hero.config';
 
 $Hero-alignFigure: true;
 $Hero-alignFigure-s: true;
 $Hero-alignFigure-m: true;
 $Hero-alignFigure-l: true;
 
-@import 'components/Hero';
-@import 'components/Hero-item.-alignFigure';
-@import 'components/Hero-slider.slick';
-@import 'components/Hero.starters';
+@import 'components/Hero/Hero';
+@import 'components/Hero/Hero-item.-alignFigure';
+@import 'components/Hero/Hero-slider.slick';
+@import 'components/Hero/Hero.starters';
 
 
 // ========================================
 // Card
 // ========================================
 
-@import 'components/Card.config';
-@import 'components/Card';
+@import 'components/Card/Card.config';
+@import 'components/Card/Card';
 
 
 // ========================================
 // Button
 // ========================================
 
-@import 'components/Button.config';
+@import 'components/Button/Button.config';
 
 $Buttons-horizontal: true;
 $Buttons-horizontal-s: true;
 $Buttons-horizontal-m: true;
 $Buttons-horizontal-l: true;
 
-@import 'components/Button';
-@import 'components/Buttons--default';
-@import 'components/Buttons.-horizontal';
+@import 'components/Button/Button';
+@import 'components/Button/Buttons--default';
+@import 'components/Button/Buttons.-horizontal';
 
 
 // ========================================
 // Form
 // ========================================
 
-@import 'components/Form.config';
+@import 'components/Form/Form.config';
 
 $Form-gridHorizontal: true;
 $Form-gridHorizontal-s: true;
 $Form-gridHorizontal-m: true;
 $Form-gridHorizontal-l: true;
 
-@import 'components/Form';
-@import 'components/Form-grid';
-@import 'components/Form-grid.-horizontal';
-@import 'components/Form-addon';
-@import 'components/Form-icon';
+@import 'components/Form/Form';
+@import 'components/Form/Form-grid';
+@import 'components/Form/Form-grid.-horizontal';
+@import 'components/Form/Form-addon';
+@import 'components/Form/Form-icon';
 
 
 // ========================================
@@ -123,26 +123,26 @@ $Form-gridHorizontal-l: true;
 // Navbar
 // ========================================
 
-@import 'components/Navbar.config';
-@import 'components/Navbar';
-@import 'components/Navbar.-horizontal';
-@import 'components/Navbar--default';
+@import 'components/Navbar/Navbar.config';
+@import 'components/Navbar/Navbar';
+@import 'components/Navbar/Navbar.-horizontal';
+@import 'components/Navbar/Navbar--default';
 
 
 // ========================================
 // Icon CSS
 // ========================================
 
-@import 'components/IconCss.-arrow';
-@import 'components/IconCss.-chevron';
-@import 'components/IconCss.-menu';
+@import 'components/IconCss/IconCss.-arrow';
+@import 'components/IconCss/IconCss.-chevron';
+@import 'components/IconCss/IconCss.-menu';
 
 
 // ========================================
 // Grid
 // ========================================
 
-@import 'components/Grid.config';
+@import 'components/Grid/Grid.config';
 
 $Grid-justify: true;
 $Grid-justify-s: true;
@@ -169,9 +169,9 @@ $Grid-cellOrder-s: true;
 $Grid-cellOrder-m: true;
 $Grid-cellOrder-l: true;
 
-@import 'components/Grid--ruler';
-@import 'components/Grid-cell.-align';
-@import 'components/Grid-cell.-order';
+@import 'components/Grid/Grid--ruler';
+@import 'components/Grid/Grid-cell.-align';
+@import 'components/Grid/Grid-cell.-order';
 
 
 // ========================================

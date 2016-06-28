@@ -348,9 +348,9 @@ $christmasColor: red;
 
 ```
 
-##### Components in larger projects
+##### Components which contain many files
 
-If we are building a large project which contains lots of isolated component partials it's wise to separate them into their own folder:  
+If we are building a project which contains lots of isolated component partials it's wise to separate them into their own folder:  
 
 ```
 components/Button/_Button.scss          
