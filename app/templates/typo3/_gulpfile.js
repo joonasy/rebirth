@@ -157,33 +157,21 @@ gulp.task('javascripts', ['modernizr'], function(callback) {
  * Images
  */
 gulp.task('images', function() {
-  var pipeline = gulp.src(config.images.src)
+  return gulp.src(config.images.src)
     .pipe($.changed(config.images.dest))
     .pipe($.imagemin())
     .on('error', handleError)
     .pipe(gulp.dest(config.images.dest));
-
-  if (production) {
-    return pipeline;
-  }
-
-  return pipeline.pipe(browserSync.stream());
 });
 
 /**
  * Fonts
  */
 gulp.task('fonts', function() {
-  var pipeline = gulp.src(config.fonts.src)
+  return gulp.src(config.fonts.src)
     .pipe($.changed(config.fonts.dest))
     .on('error', handleError)
     .pipe(gulp.dest(config.fonts.dest));
-
-  if (production) {
-    return pipeline;
-  }
-
-  return pipeline.pipe(browserSync.stream());
 });
 
 /**

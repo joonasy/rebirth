@@ -192,33 +192,21 @@ app.task('javascripts', ['modernizr'], function(callback) {
  * Images
  */
 app.task('images', function() {
-  var pipeline = app.src(config.images.src)
+  return app.src(config.images.src)
     .pipe($.changed(config.images.dest))
     .pipe($.imagemin())
     .on('error', handleError)
     .pipe(app.dest(config.images.dest));
-
-  if (production) {
-    return pipeline;
-  }
-
-  return pipeline.pipe(browserSync.stream());
 });
 
 /**
  * Fonts
  */
 app.task('fonts', function() {
-  var pipeline = app.src(config.fonts.src)
+  return app.src(config.fonts.src)
     .pipe($.changed(config.fonts.dest))
     .on('error', handleError)
     .pipe(app.dest(config.fonts.dest));
-
-  if (production) {
-    return pipeline;
-  }
-
-  return pipeline.pipe(browserSync.stream());
 });
 
 /**
