@@ -91,7 +91,7 @@ $Buttons-horizontal-l: true;
 
 @import 'components/Button/Button';
 @import 'components/Button/Buttons--default';
-@import 'components/Button/Buttons.-horizontal';
+@import 'components/Button/Buttons--default.-horizontal';
 
 
 // ========================================
@@ -183,7 +183,7 @@ $Pull-s: false;
 $Pull-m: false;
 $Pull-l: false;
 
-@import 'components/Pull';
+@import 'components/deprecated/Pull';
 
 
 // ========================================
@@ -195,7 +195,7 @@ $Push-s: false;
 $Push-m: false;
 $Push-l: false;
 
-@import 'components/Push';
+@import 'components/deprecated/Push';
 
 
 // ========================================
