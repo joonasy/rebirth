@@ -1,0 +1,33 @@
+/* ========================================
+ * Form - Additional starters
+ * ========================================
+ *
+ * @reusable true
+ */
+
+
+/* ======
+ * Form item - File input
+ * ======
+ *
+ * <div class="Form-item Form-item--file">
+ *  Choose file
+ *  <input type="file">
+ * </div>
+ */
+
+.Form-item--file {
+  text-align: center;
+  position: relative;
+
+  > input[type="file"] {
+    cursor: pointer;
+    bottom: 0;
+    left: 0;
+    opacity: 0;
+    position: absolute;
+    right: 0;
+    top: 0;
+    width: 100%;
+  }
+}

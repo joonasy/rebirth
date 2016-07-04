@@ -48,9 +48,16 @@
     }
   }
 
+  /**
+   * @extends `.Button{}` in _Button.scss
+   */
   .Form-button.Button {
     @extend %Form-item-layout;
     margin: 0;
+
+    &[disabled], fieldset[disabled] & {
+      @extend %disabled;
+    }
   }
 
   textarea {
