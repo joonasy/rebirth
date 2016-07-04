@@ -11,20 +11,10 @@
   margin-bottom: rem($baseSpace);
 
   > .Button {
-    display: block;
-    margin-right: 0;
-
-    &:not(:last-child) {
-      margin-bottom: 0;
-    }
-
-    &:not(.-border) {
-      box-shadow: 0 -1px $Buttons-separatorColor;
-    }
-
-    &:first-child {
-      box-shadow: none;
-    }
+    align-items: baseline;
+    display: flex;
+    justify-content: center;
+    margin: 0;
 
     &.-pill,
     &.-round {
@@ -60,6 +50,6 @@
   }
 
   &.-justify {
-    display: block;
+    width: 100%;
   }
 }

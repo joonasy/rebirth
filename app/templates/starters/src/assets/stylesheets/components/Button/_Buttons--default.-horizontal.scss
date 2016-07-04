@@ -8,19 +8,11 @@
 
 @mixin Buttons($namespace: '') {
   .Buttons--default.#{$namespace}-horizontal {
-    align-items: flex-start;
     display: flex;
 
     > .Button {
-      border-left-width: 0;
-
-      &:not(.-border) {
-        box-shadow: -$Button-borderWidth 0 $Buttons-separatorColor;
-      }
-
-      &:first-child {
-        border-left-width: $Button-borderWidth;
-        box-shadow: none;
+      &:not(:first-child) {
+        border-left-width: 0;
       }
     }
 
@@ -45,8 +37,6 @@
     }
 
     &.-justify {
-      width: 100%;
-
       > .Button {
         flex-grow: 1;
       }
