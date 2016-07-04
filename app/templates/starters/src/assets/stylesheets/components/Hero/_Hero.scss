@@ -10,6 +10,8 @@
 }
 
   .Hero-item {
+    background-color: #ffffff;
+    color: #ffffff;
     position: relative;
     overflow: hidden;
     width: 100%;
@@ -95,12 +97,6 @@
       }
     }
 
-    .Hero-overlay {
-      @extend %positionAbsoluteFill;
-      content: '';
-      z-index: 1;
-    }
-
 
 /* ======
  * Hero - Size
@@ -144,21 +140,14 @@
  * ====== */
 
 .Hero-item {
-  &.-colorLight {
+  &.-colorInverse {
     background-color: #ffffff;
-    color: #ffffff;
-
-    .Hero-overlay {
-      background-color: rgba(#000000, 0.5);
-    }
-  }
-
-  &.-colorDark {
-    background-color: $colorText;
     color: $colorText;
 
-    .Hero-overlay {
-      background-color: rgba(#ffffff, 0.75);
+    &.-overlay {
+      .Hero-overlay {
+        background-color: rgba(#ffffff, 0.75);
+      }
     }
   }
 }
@@ -191,6 +180,23 @@
     }
   }
 }
+
+
+/* ======
+ * Hero item - Various modifiers
+ * ====== */
+
+.Hero-item {
+  &.-overlay {
+    &:after {
+      @extend %positionAbsoluteFill;
+      background-color: rgba(#000000, 0.5);
+      content: '';
+      z-index: 1;
+    }
+  }
+}
+
 
 
 /* ======
