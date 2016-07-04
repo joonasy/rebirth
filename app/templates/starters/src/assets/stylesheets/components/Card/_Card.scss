@@ -44,8 +44,6 @@
 
     .Card-title {}
 
-    .Card-button {}
-
   .Card-footer {
     @extend %Text.-s;
     position: relative;
@@ -75,14 +73,9 @@
  * ====== */
 
 .Card {
-  &.-colorLightOnDark {
+  &.-colorInverse {
     background-color: $colorBgDarkest;
     color: $colorLight;
-  }
-
-  &.-colorDarkOnLight {
-    background-color: $colorBgLightest;
-    color: $colorText;
   }
 }
 
@@ -93,7 +86,8 @@
 
 .Card.-figureCrop, %Card.-figureCrop {
   .Card-figure {
-    min-height: rem($baseSpace * 10);
+    min-height: rem($baseSpace * 12);
+    width: 100%;
 
     figure {
       @extend %positionAbsoluteFill;
