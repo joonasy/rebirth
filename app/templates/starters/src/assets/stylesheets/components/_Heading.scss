@@ -12,9 +12,13 @@
  * Heading - Size
  * ====== */
 
+%Heading.-l { @include fontSize($Heading-fontSize-l, $Heading-lineHeight-l); }
+%Heading.-m { @include fontSize($Heading-fontSize-m, $Heading-lineHeight-m); }
+%Heading.-s { @include fontSize($Heading-fontSize-s, $Heading-lineHeight-s); }
+
 .Heading {
   &.-l {
-    @include fontSize($Heading-fontSize-l, $Heading-lineHeight-l);
+    @extend %Heading.-l;
 
     @include breakpoint("mediumDown") {
       @include fontSize($Heading-fontSize-m, $Heading-lineHeight-m);
@@ -22,7 +26,7 @@
   }
 
   &.-m {
-    @include fontSize($Heading-fontSize-m, $Heading-lineHeight-m);
+    @extend %Heading.-m;
 
     @include breakpoint("mediumDown") {
       @include fontSize($Heading-fontSize-s, $Heading-lineHeight-s);
@@ -30,7 +34,7 @@
   }
 
   &.-s {
-    @include fontSize($Heading-fontSize-s, $Heading-lineHeight-s);
+   @extend %Heading.-s;
 
     @include breakpoint("mediumDown") {
       @include fontSize($h1FontSize, $h1LineHeight);

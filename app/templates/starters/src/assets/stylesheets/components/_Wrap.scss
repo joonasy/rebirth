@@ -15,6 +15,7 @@
 
 .Wrap {
   @include Wrap();
+
   @include breakpoint('largeUp') {
     padding-left: $Wrap-edgeSpace-l;
     padding-right: $Wrap-edgeSpace-l;

@@ -2,16 +2,32 @@
  * Component
  * ========================================
  *
- * @extends `.Component{}` in _Component.scss
- * @reusable true/false
+ * @reusable true
  */
 
+.Component {}
+
+  .Component-item {}
+
+
+/* ======
+ * Component - States
+ * ====== */
+
 .Component {
-  &.is-stateName {}
+  &.is-state {}
 }
 
-  .Component-descendantName {}
 
-.Component--variationName {}
+/* ======
+ * Component - Various modifiers
+ * ====== */
 
 .Component.-modifierName {}
+
+
+/* ======
+ * Component - Default
+ * ====== */
+
+.Component--default {}

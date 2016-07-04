@@ -9,60 +9,15 @@
 
 
 /* ======
- * Text - Type
- * ====== */
-
-.Text {
-  &.-typeMeta {}
-}
-
-
-/* ======
- * Text - Transform
- * ====== */
-
-.Text {
-  &.-transformUpper {
-    text-transform: uppercase;
-  }
-}
-
-
-/* ======
- * Text - Align
- * ====== */
-
-.Text {
-  &.-center {
-    text-align: center;
-  }
-
-  &.-left {
-    text-align: left;
-  }
-
-  &.-right {
-    text-align: right;
-  }
-}
-
-
-/* ======
  * Text - Size
  * ====== */
 
-.Text.-l, %Text.-l {
-  @include fontSize($baseFontSize-l, $baseLineHeight-l);
+%Text.-l  { @include fontSize($baseFontSize-l, $baseLineHeight-l);   }
+%Text.-s  { @include fontSize($baseFontSize-s, $baseLineHeight-s);   }
+%Text.-xs { @include fontSize($baseFontSize-xs, $baseLineHeight-xs); }
 
-  @include breakpoint('mediumDown') {
-    @include fontSize($baseFontSize, $baseLineHeight);
-  }
-}
-
-.Text.-s, %Text.-s {
-  @include fontSize($baseFontSize-s, $baseLineHeight-s);
-}
-
-.Text.-xs, %Text.-xs {
-  @include fontSize($baseFontSize-xs, $baseLineHeight-xs);
+.Text {
+  &.-l  { @extend %Text.-l;  }
+  &.-s  { @extend %Text.-s;  }
+  &.-xs { @extend %Text.-xs; }
 }
