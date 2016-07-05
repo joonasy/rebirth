@@ -53,6 +53,7 @@
     "node-notifier": "^4.4.0",
     "pretty-hrtime": "^1.0.0",
     "rimraf": "^2.5.0",
+    "sass-mq": "^3.2.9",
     "through2": "^0.6.5",
     "vinyl-source-stream": "~1.0.0",
     "watchify": "^3.7.0"
