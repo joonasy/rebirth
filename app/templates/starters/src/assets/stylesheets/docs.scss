@@ -2,26 +2,8 @@
 // Docs
 // ========================================
 
-// Default configs
-@import 'config';
-
-// Mixins
-@import 'mixins/breakpoint';
-@import 'mixins/color';
-@import 'mixins/display';
-@import 'mixins/dropdown';
-@import 'mixins/center';
-@import 'mixins/clearfix';
-@import 'mixins/fontSize';
-@import 'mixins/position';
-@import 'mixins/text';
-@import 'mixins/utility';
-@import 'mixins/quantityQuery';
-
-// UI mixins
-@import 'mixins/shapeArrow';
-@import 'mixins/shapeMenu';
-@import 'mixins/shapeTriangle';
+// Default app and components
+@import 'app';
 
 // All helpers
 @import 'helpers/display';
@@ -133,6 +115,7 @@ $Form-gridHorizontal-l: true;
 // Icon CSS
 // ========================================
 
+@import 'components/IconCss/IconCss.config';
 @import 'components/IconCss/IconCss.-arrow';
 @import 'components/IconCss/IconCss.-chevron';
 @import 'components/IconCss/IconCss.-menu';
@@ -196,13 +179,6 @@ $Push-m: false;
 $Push-l: false;
 
 @import 'components/deprecated/Push';
-
-
-// ========================================
-// Import all default components
-// ========================================
-
-@import 'app';
 
 
 // ========================================
