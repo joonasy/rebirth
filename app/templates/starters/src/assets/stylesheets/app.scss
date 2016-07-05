@@ -7,8 +7,11 @@
 // Config
 @import 'config';
 
+// Vendors
+@import 'vendors/normalize';
+@import 'sass-mq/mq';
+
 // Mixins
-@import 'mixins/breakpoint';
 @import 'mixins/color';
 @import 'mixins/display';
 @import 'mixins/dropdown';
@@ -24,9 +27,6 @@
 @import 'mixins/shapeArrow';
 @import 'mixins/shapeMenu';
 @import 'mixins/shapeTriangle';
-
-// Vendors
-@import 'vendors/normalize';
 
 // Generic
 @import 'generic/base';

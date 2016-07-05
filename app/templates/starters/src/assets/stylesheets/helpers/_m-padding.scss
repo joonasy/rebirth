@@ -2,7 +2,7 @@
  * Responsive padding helpers - medium vw
  * ======================================== */
 
-@include breakpoint('mediumUp') {
+@include mq(m) {
 
   /**
    * All paddings

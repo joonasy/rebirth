@@ -28,19 +28,19 @@
 }
 
 @if $Push-s  {
-  @include breakpoint('smallUp') {
+  @include mq(s) {
     @include Pull(s-);
   }
 }
 
 @if $Push-m  {
-  @include breakpoint('mediumUp') {
+  @include mq(m) {
     @include Pull(m-);
   }
 }
 
 @if $Push-l  {
-  @include breakpoint('largeUp') {
+  @include mq(l) {
     @include Pull(l-);
   }
 }

@@ -20,7 +20,7 @@
   &.-l {
     @extend %Heading.-l;
 
-    @include breakpoint("mediumDown") {
+    @include mq($until: m) {
       @include fontSize($Heading-fontSize-m, $Heading-lineHeight-m);
     }
   }
@@ -28,7 +28,7 @@
   &.-m {
     @extend %Heading.-m;
 
-    @include breakpoint("mediumDown") {
+    @include mq($until: m) {
       @include fontSize($Heading-fontSize-s, $Heading-lineHeight-s);
     }
   }
@@ -36,7 +36,7 @@
   &.-s {
    @extend %Heading.-s;
 
-    @include breakpoint("mediumDown") {
+    @include mq($until: m) {
       @include fontSize($h1FontSize, $h1LineHeight);
     }
   }

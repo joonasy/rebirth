@@ -66,19 +66,19 @@
 }
 
 @if $Form-gridHorizontal-s {
-  @include breakpoint('smallUp') {
+  @include mq(s) {
     @include FormGridHorizontal(-s);
   }
 }
 
 @if $Form-gridHorizontal-m {
-  @include breakpoint('mediumUp') {
+  @include mq(m) {
     @include FormGridHorizontal(-m);
   }
 }
 
 @if $Form-gridHorizontal-l {
-  @include breakpoint('largeUp') {
+  @include mq(l) {
     @include FormGridHorizontal(-l);
   }
 }

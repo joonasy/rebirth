@@ -28,7 +28,7 @@ html, body { height: 100%; }
 .docs-Container {
   border-radius: 3px;
 
-  @include breakpoint("mediumUp") {
+  @include mq(m) {
     margin: rem($baseSpace);
   }
 }

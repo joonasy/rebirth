@@ -19,19 +19,19 @@
 }
 
 @if $Grid-cellOrder-s {
-  @include breakpoint('smallUp') {
+  @include mq(s) {
     @include GridCellOrder(-s);
   }
 }
 
 @if $Grid-cellOrder-m {
-  @include breakpoint('mediumUp') {
+  @include mq(m) {
     @include GridCellOrder(-m);
   }
 }
 
 @if $Grid-cellOrder-l {
-  @include breakpoint('largeUp') {
+  @include mq(l) {
     @include GridCellOrder(-l);
   }
 }

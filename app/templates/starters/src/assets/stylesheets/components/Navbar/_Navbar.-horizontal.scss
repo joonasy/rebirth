@@ -112,19 +112,19 @@
 }
 
 @if $Navbar-horizontal-s {
-  @include breakpoint('smallUp') {
+  @include mq(s) {
     @include NavbarHorizontal(-s, $Navbar-horizontalKeepTitle);
   }
 }
 
 @if $Navbar-horizontal-m {
-  @include breakpoint('mediumUp') {
+  @include mq(m) {
     @include NavbarHorizontal(-m, $Navbar-horizontalKeepTitle);
   }
 }
 
 @if $Navbar-horizontal-l {
-  @include breakpoint('largeUp') {
+  @include mq(l) {
     @include NavbarHorizontal(-l, $Navbar-horizontalKeepTitle);
   }
 }

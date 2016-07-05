@@ -2,7 +2,7 @@
  * Responsive margin helpers - small vw
  * ======================================== */
 
-@include breakpoint('smallUp') {
+@include mq(s) {
 
   /**
    * All margins

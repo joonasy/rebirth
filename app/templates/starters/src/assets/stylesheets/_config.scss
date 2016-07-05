@@ -47,6 +47,15 @@ $breakpoint-ml: 900px;
 $breakpoint-l: 1024px;
 $breakpoint-xl: 1200px;
 
+$mq-breakpoints: (
+  xs: 320px,
+  s:  600px,
+  m:  768px,
+  ml: 900px,
+  l:  1024px,
+  xl: 1200px
+);
+
 
 // ========================================
 // Spacing
@@ -109,9 +118,6 @@ $colorInfo: #5bc0de;
 // ========================================
 
 $borderRadius: 3px;
-$IconCss-s: 0.85;
-$IconCss-xs: 0.75;
-
 $imagesPath: '../images';
 $fontsPath: '../fonts';
 
@@ -120,7 +126,7 @@ $fontsPath: '../fonts';
 // Wrap
 // ========================================
 
-$Wrap-width: 1140px;
+$Wrap-width: 1200px;
 $Wrap-edgeSpace: $baseEdgeSpace;
 $Wrap-edgeSpace-l: $baseSpace * 2;
 $Wrap-maxWidth: $Wrap-width + ($Wrap-edgeSpace-l * 2);

@@ -25,19 +25,19 @@
 }
 
 @if $Width-s  {
-  @include breakpoint('smallUp') {
+  @include mq(s) {
     @include Width(s-);
   }
 }
 
 @if $Width-m  {
-  @include breakpoint('mediumUp') {
+  @include mq(m) {
     @include Width(m-);
   }
 }
 
 @if $Width-l  {
-  @include breakpoint('largeUp') {
+  @include mq(l) {
     @include Width(l-);
   }
 }

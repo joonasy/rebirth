@@ -2,7 +2,7 @@
  * Responsive padding helpers - large vw
  * ======================================== */
 
-@include breakpoint('largeUp') {
+@include mq(l) {
 
   /**
    * All paddings

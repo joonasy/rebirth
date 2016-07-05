@@ -20,7 +20,7 @@
     padding: 0 $baseEdgeSpace;
     max-width: rem($baseSpace * 20);
 
-    @include breakpoint('mediumUp') {
+    @include mq(m) {
       padding: 0 rem($baseSpace * 2);
     }
   }

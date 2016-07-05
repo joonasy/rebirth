@@ -81,19 +81,19 @@
 }
 
 @if $Grid-justify-s {
-  @include breakpoint('smallUp') {
+  @include mq(s) {
     @include GridJustify(-s);
   }
 }
 
 @if $Grid-justify-m {
-  @include breakpoint('mediumUp') {
+  @include mq(m) {
     @include GridJustify(-m);
   }
 }
 
 @if $Grid-justify-l {
-  @include breakpoint('largeUp') {
+  @include mq(l) {
     @include GridJustify(-l);
   }
 }
@@ -114,19 +114,19 @@
 }
 
 @if $Grid-align-s  {
-  @include breakpoint('smallUp') {
+  @include mq(s) {
     @include GridAlign(-s);
   }
 }
 
 @if $Grid-align-m  {
-  @include breakpoint('mediumUp') {
+  @include mq(m) {
     @include GridAlign(-m);
   }
 }
 
 @if $Grid-align-s  {
-  @include breakpoint('largeUp') {
+  @include mq(l) {
     @include GridAlign(-l);
   }
 }

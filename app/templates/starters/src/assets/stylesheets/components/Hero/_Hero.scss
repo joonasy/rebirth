@@ -114,7 +114,7 @@
       min-height: rem($baseSpace * 18);
     }
 
-    @include breakpoint('mediumUp') {
+    @include mq(s) {
       .Hero-content {
         min-height: rem($baseSpace * 28);
       }
@@ -126,7 +126,7 @@
       min-height: rem($baseSpace * 14);
     }
 
-    @include breakpoint('mediumUp') {
+    @include mq(m) {
       .Hero-content {
         min-height: rem($baseSpace * 16);
       }
@@ -207,11 +207,11 @@
   .Hero-content {
     width: 80%;
 
-    @include breakpoint('smallUp') {
+    @include mq(s) {
       width: 75%;
     }
 
-    @include breakpoint('mediumUp') {
+    @include mq(m) {
       width: 50%;
     }
   }

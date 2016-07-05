@@ -13,7 +13,7 @@
   display: none !important;
 }
 
-@include breakpoint('smallUp') {
+@include mq(s) {
   .s-visible     { display: inherit !important; }
   .s-visible--f  { display: flex !important; }
   .s-visible--i  { display: inline !important; }
@@ -22,7 +22,7 @@
   .s-hidden      { display: none !important; }
 }
 
-@include breakpoint('mediumUp') {
+@include mq(m) {
   .m-visible     { display: inherit !important; }
   .m-visible--f  { display: flex !important; }
   .m-visible--i  { display: inline !important; }
@@ -31,7 +31,7 @@
   .m-hidden      { display: none !important; }
 }
 
-@include breakpoint('largeUp') {
+@include mq(l) {
   .l-visible     { display: inherit !important; }
   .l-visible--f  { display: flex !important; }
   .l-visible--i  { display: inline !important; }
@@ -40,7 +40,7 @@
   .l-hidden      { display: none !important; }
 }
 
-@include breakpoint('xLargeUp') {
+@include mq(xl) {
   .xl-visible     { display: inherit !important; }
   .xl-visible--f  { display: flex !important; }
   .xl-visible--i  { display: inline !important; }

@@ -49,19 +49,19 @@
 }
 
 @if $Buttons-horizontal-s {
-  @include breakpoint('smallUp') {
+  @include mq(s) {
     @include Buttons(-s);
   }
 }
 
 @if $Buttons-horizontal-m {
-  @include breakpoint('mediumUp') {
+  @include mq(m) {
     @include Buttons(-m);
   }
 }
 
 @if $Buttons-horizontal-l {
-  @include breakpoint('largeUp') {
+  @include mq(l) {
     @include Buttons(-l);
   }
 }

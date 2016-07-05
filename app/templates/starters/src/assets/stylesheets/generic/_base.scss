@@ -23,7 +23,7 @@
   -webkit-font-smoothing: antialiased;
   tap-highlight-color: transparent;
 
-  @include breakpoint('smallDown') {
+  @include mq($until: s) {
     font-size: 87.5%;
   }
 }

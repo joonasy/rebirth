@@ -23,19 +23,19 @@
 }
 
 @if $Grid-ruler-s {
-  @include breakpoint('smallUp') {
+  @include mq(s) {
     @include GridRuler(s-);
   }
 }
 
 @if $Grid-ruler-m {
-  @include breakpoint('mediumUp') {
+  @include mq(m) {
     @include GridRuler(m-);
   }
 }
 
 @if $Grid-ruler-l {
-  @include breakpoint('largeUp') {
+  @include mq(l) {
     @include GridRuler(l-);
   }
 }

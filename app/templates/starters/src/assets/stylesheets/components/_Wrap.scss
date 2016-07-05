@@ -16,7 +16,7 @@
 .Wrap {
   @include Wrap();
 
-  @include breakpoint('largeUp') {
+  @include mq(l) {
     padding-left: $Wrap-edgeSpace-l;
     padding-right: $Wrap-edgeSpace-l;
   }
@@ -35,7 +35,7 @@
   right: $Wrap-edgeSpace;
   width: 100%;
 
-  @include breakpoint('largeUp') {
+  @include mq(l) {
     left: $Wrap-edgeSpace-l;
     right: $Wrap-edgeSpace-l;
   }
