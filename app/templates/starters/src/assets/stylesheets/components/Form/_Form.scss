@@ -15,6 +15,7 @@
     border: $Form-borderWidth solid transparent;
     color: $colorText;
     font-weight: $Form-fontWeight;
+    outline: 0;
   }
 
   %Form-item-layout {
@@ -31,7 +32,6 @@
     display: block;
     flex: 1;
     margin-bottom: rem($baseSpace);
-    outline: 0;
     padding: 0 rem($Form-padding);
     position: relative;
     text-align: left;

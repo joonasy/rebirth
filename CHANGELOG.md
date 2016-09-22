@@ -1,11 +1,17 @@
 # Changelog
 
+## 0.4.1 (2016-9-22)
+
+* Breakpoint mixin -> sass-mq
+* Updated normalize
+* Removed Pull/Push components
+* Other minor dependency updates and fixes
+
 ## 0.4.0 (2016-6-28)
 
 * Component collections are no named as plurals e.g. .Buttons. Switch button collection to --default modifier as there might be some additional button collection in the projects.
 * Mutual component files are now in their own folders
 * Fixes
-
 
 ## 0.3.9 (2016-6-2)
 
