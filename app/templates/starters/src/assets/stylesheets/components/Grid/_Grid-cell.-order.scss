@@ -3,7 +3,6 @@
  * ========================================
  *
  * @extends `.Grid-cell{}` in _Grid.scss.
- * @reusable true
  */
 
 @mixin GridCellOrder($namespace: '', $amount: 4) {

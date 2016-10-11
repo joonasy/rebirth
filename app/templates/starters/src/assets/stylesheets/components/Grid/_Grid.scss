@@ -7,8 +7,8 @@
 
 .Grid {
   display: flex;
-  list-style: none;
   flex-wrap: wrap;
+  list-style: none;
   margin-bottom: 0;
   margin-left: rem(-($Grid-gutter));
   margin-right: rem(-($Grid-gutter));
