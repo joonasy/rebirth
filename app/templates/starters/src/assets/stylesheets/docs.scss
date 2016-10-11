@@ -25,107 +25,83 @@
 // Alert
 // ========================================
 
-@import 'components/Alert';
+@import 'components/Alert/index';
 
 
 // ========================================
 // Dropdown
 // ========================================
 
-@import 'components/Dropdown';
+@import 'components/Dropdown/index';
 
 
 // ========================================
 // Hero
 // ========================================
 
-@import 'components/Hero/Hero.config';
-
 $Hero-alignFigure: true;
 $Hero-alignFigure-s: true;
 $Hero-alignFigure-m: true;
 $Hero-alignFigure-l: true;
 
-@import 'components/Hero/Hero';
-@import 'components/Hero/Hero-item.-alignFigure';
-@import 'components/Hero/Hero-slider.slick';
-@import 'components/Hero/Hero.starters';
-
+@import 'components/Hero/index';
 
 // ========================================
 // Card
 // ========================================
 
-@import 'components/Card/Card.config';
-@import 'components/Card/Card';
+@import 'components/Card/index';
 
 
 // ========================================
 // Button
 // ========================================
 
-@import 'components/Button/Button.config';
-
 $Buttons-horizontal: true;
 $Buttons-horizontal-s: true;
 $Buttons-horizontal-m: true;
 $Buttons-horizontal-l: true;
 
-@import 'components/Button/Button';
-@import 'components/Button/Buttons--default';
-@import 'components/Button/Buttons--default.-horizontal';
+@import 'components/Button/index';
+@import 'components/Button/Buttons/index';
 
 
 // ========================================
 // Form
 // ========================================
 
-@import 'components/Form/Form.config';
-
 $Form-gridHorizontal: true;
 $Form-gridHorizontal-s: true;
 $Form-gridHorizontal-m: true;
 $Form-gridHorizontal-l: true;
 
-@import 'components/Form/Form';
-@import 'components/Form/Form-grid';
-@import 'components/Form/Form-grid.-horizontal';
-@import 'components/Form/Form-addon';
-@import 'components/Form/Form-icon';
+@import 'components/Form/index';
 
 
 // ========================================
 // Label
 // ========================================
 
-@import 'components/Label';
+@import 'components/Label/index';
 
 
 // ========================================
 // Navbar
 // ========================================
 
-@import 'components/Navbar/Navbar.config';
-@import 'components/Navbar/Navbar';
-@import 'components/Navbar/Navbar.-horizontal';
-@import 'components/Navbar/Navbar--default';
+@import 'components/Navbar/index';
 
 
 // ========================================
 // Icon CSS
 // ========================================
 
-@import 'components/IconCss/IconCss.config';
-@import 'components/IconCss/IconCss.-arrow';
-@import 'components/IconCss/IconCss.-chevron';
-@import 'components/IconCss/IconCss.-menu';
+@import 'components/IconCss/index';
 
 
 // ========================================
 // Grid
 // ========================================
-
-@import 'components/Grid/Grid.config';
 
 $Grid-justify: true;
 $Grid-justify-s: true;
@@ -155,30 +131,6 @@ $Grid-cellOrder-l: true;
 @import 'components/Grid/Grid--ruler';
 @import 'components/Grid/Grid-cell.-align';
 @import 'components/Grid/Grid-cell.-order';
-
-
-// ========================================
-// Pull
-// ========================================
-
-$Pull: false;
-$Pull-s: false;
-$Pull-m: false;
-$Pull-l: false;
-
-@import 'components/deprecated/Pull';
-
-
-// ========================================
-// Push
-// ========================================
-
-$Push: false;
-$Push-s: false;
-$Push-m: false;
-$Push-l: false;
-
-@import 'components/deprecated/Push';
 
 
 // ========================================
