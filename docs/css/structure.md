@@ -9,7 +9,7 @@ Here is listed default partial structure used across projects:
     stylesheets/
     |
     |── components/            # Common project modules [1]
-    |   |── _Component.sass    # Component placeholder
+    |   |── _Component.scss    # Component placeholder
     |   |── _Container.scss    # Default container component
     |   |── _Grid.scss         # Default grid component
     |   |── _Heading.sass      # Default heading component
@@ -71,7 +71,7 @@ Here is listed default partial structure used across projects:
 
 ### About layout components
 
-Layout components are components that structure only specific sections our site like _Header_, _Home_ or _AppSection_.  Sometimes it's necessary to control default components in a specific way at some portions of the site.  
+Layout components are components that structure only specific sections our site like _Header_, _Home_ or _AppSection_. Usually it's necessary to control default components in a specific way at some portions of the site.  
 
 Example of `layout/_Header.scss`
 
@@ -243,10 +243,6 @@ Here is an example of an component with the correct structure:
   &.-round { 
     … 
   }
-
-  &.-border { 
-    … 
-  }
 }
 
 
@@ -288,7 +284,7 @@ Here is an example of an component with the correct structure:
     …
   }
 
-  &.-border {
+  &.-round {
     …
   }
 }
