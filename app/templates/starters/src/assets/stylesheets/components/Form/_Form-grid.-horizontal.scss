@@ -3,7 +3,6 @@
  * ========================================
  *
  * @extends `.Form-grid{}` in _Form-grid.scss
- * @reusable true
  */
 
 @mixin FormGridHorizontal($namespace: '') {
@@ -12,6 +11,12 @@
 
     > .Form-cell {
       flex-direction: row;
+
+      .Form-item,
+      .Form-addon {
+        border-top-width: $Form-borderWidth;
+        border-right-width: 0;
+      }
 
       &:first-child {
         .-round {
@@ -26,36 +31,28 @@
       }
 
       &:last-child {
-        .-round {
-          border-radius: 0;
-        }
-
-        .-border {
+        .Form-item,
+        .Form-addon {
           &:last-child {
             border-right-width: $Form-borderWidth;
           }
         }
 
         .-round {
+          border-radius: 0;
+
           &:last-child {
             border-radius: 0 $Form-borderRadius $Form-borderRadius 0;
           }
         }
       }
-
-      > .-border {
-        border-top-width: $Form-borderWidth;
-        border-right-width: 0;
-      }
     }
 
     > .Form-button {
+      border-top-width: $Form-borderWidth;
+
       &.-round {
         border-radius: 0 $Form-borderRadius $Form-borderRadius 0;
-      }
-
-      &.-border {
-        border-top-width: $Form-borderWidth;
       }
     }
   }

@@ -2,14 +2,14 @@
 // Form
 // ========================================
 
-$Form-fontSize: $baseFontSize-s;
-$Form-height: $baseSpace * 2;
 $Form-borderWidth: 1px;
 $Form-borderRadius: $borderRadius;
+$Form-fontSize: $baseFontSize-s;
 $Form-fontWeight: $baseFontWeight;
+$Form-height: $baseSpace * 2;
 $Form-padding: $baseSpace / 1.5;
 
-$Form-gridHorizontal: false;
-$Form-gridHorizontal-s: false;
-$Form-gridHorizontal-m: false;
-$Form-gridHorizontal-l: false;
+$Form-gridHorizontal: false !default;
+$Form-gridHorizontal-s: false !default;
+$Form-gridHorizontal-m: false !default;
+$Form-gridHorizontal-l: false !default;

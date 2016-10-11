@@ -3,7 +3,6 @@
  * ========================================
  *
  * @extends `.Form-item{}, .Form-addon{}, .Form-button{}` in _Form.scss
- * @reusable true
  */
 
 .Form-grid {
@@ -18,10 +17,14 @@
     .Form-item,
     .Form-addon,
     .Form-button {
+      border-radius: 0;
       margin-bottom: 0;
+    }
 
-      &.-round {
-        border-radius: 0;
+    .Form-item,
+    .Form-addon {
+      &:first-child:not(:only-child) {
+        border-right-width: 0;
       }
     }
 
@@ -31,9 +34,14 @@
     }
 
     &:not(:first-child) {
-      .-border {
+      .Form-item,
+      .Form-addon {
         border-top-width: 0;
       }
+    }
+
+    &:last-child {
+      margin-bottom: rem($baseSpace);
     }
 
     &:first-child:not(:only-child) {
@@ -68,10 +76,6 @@
       }
     }
 
-    &:last-child {
-      margin-bottom: rem($baseSpace);
-    }
-
     &:only-child {
       .-round {
         &:first-child {
@@ -85,12 +89,6 @@
         &:only-child {
           border-radius: $Form-borderRadius $Form-borderRadius;
         }
-      }
-    }
-
-    > .-border {
-      &:first-child:not(:only-child) {
-        border-right-width: 0;
       }
     }
 

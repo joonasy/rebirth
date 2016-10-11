@@ -1,9 +1,6 @@
 /* ========================================
  * Form
- * ========================================
- *
- * @reusable true
- */
+ * ======================================== */
 
 .Form {
   position: relative;
@@ -94,45 +91,11 @@
 
 
 /* ======
- * Form item - Various modifiers
+ * Form item - Style
  * ====== */
 
 .Form-item {
   &.-round {
     @extend %round;
-  }
-}
-
-
-/* ======
- * Form - Default
- * ====== */
-
-.Form--default {
-  %Form--default-Form-item, .Form-item {
-    background-color: #ffffff;
-    color: $colorTextLight;
-
-    &.-border {
-      border-color: $colorBorderDefault;
-    }
-  }
-
-  .Form-item {
-    @include colorPlaceholder($colorTextLight);
-    color: $colorTextLight;
-
-    &:hover,
-    &:focus {
-      @include colorPlaceholder($colorText);
-      color: $colorText;
-    }
-
-    &.-border {
-      &:hover,
-      &:focus {
-        border-color: $colorBorderDefault;
-      }
-    }
   }
 }
