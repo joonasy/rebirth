@@ -32,15 +32,4 @@
       color: #ffffff;
     }
   }
-
-  &.-border {
-    border-color: $colorBorderDefault;
-
-    &:hover,
-    &:focus {
-      background-color: #ffffff;
-      border-color: $colorBorderDefault;
-      color: $colorPrimary;
-    }
-  }
 }
