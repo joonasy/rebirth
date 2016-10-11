@@ -3,7 +3,6 @@
  * ========================================
  *
  * @extends `.Button{}` in _Button.scss
- * @reusable true
  */
 
 .Buttons--default {
@@ -12,30 +11,13 @@
 
   > .Button {
     align-items: baseline;
+    border-radius: 0;
     display: flex;
     justify-content: center;
     margin: 0;
 
-    &.-pill,
-    &.-round {
-      border-radius: 0;
-    }
-  }
-
-  &:not([class*='-horizontal']) {
-    > .-border {
-      &:not(:last-child) {
-        border-bottom-width: 0;
-        line-height: rem($Button-height - $Button-borderWidth);
-
-        &.-l {
-          line-height: rem(($Button-height * $Button-l) - ($Button-borderWidth));
-        }
-
-        &.-s {
-          line-height: rem(($Button-height * $Button-s) - ($Button-borderWidth));
-        }
-      }
+    &:not(:last-child) {
+      border-bottom-width: 0;
     }
   }
 

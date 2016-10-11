@@ -3,7 +3,6 @@
  * ========================================
  *
  * @extend `.Buttons--default{}` in _Buttons--default.scss
- * @reusable true
  */
 
 @mixin Buttons($namespace: '') {
@@ -13,6 +12,10 @@
     > .Button {
       &:not(:first-child) {
         border-left-width: 0;
+      }
+
+      &:not(:last-child) {
+        border-bottom-width: $Button-borderWidth;
       }
     }
 
