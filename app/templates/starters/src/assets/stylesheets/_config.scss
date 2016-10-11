@@ -123,43 +123,6 @@ $fontsPath: '../fonts';
 
 
 // ========================================
-// Wrap
-// ========================================
-
-$Wrap-width: 1200px;
-$Wrap-edgeSpace: $baseEdgeSpace;
-$Wrap-edgeSpace-l: $baseSpace * 2;
-$Wrap-maxWidth: $Wrap-width + ($Wrap-edgeSpace-l * 2);
-
-
-// ========================================
-// Grid
-// ========================================
-
-$Grid-gutter: $baseSpace / 2;
-
-$Grid-justify: true;
-$Grid-justify-s: false;
-$Grid-justify-m: false;
-$Grid-justify-l: false;
-
-$Grid-align: true;
-$Grid-align-s: false;
-$Grid-align-m: false;
-$Grid-align-l: false;
-
-
-// ========================================
-// Width
-// ========================================
-
-$Width: true;
-$Width-s: true;
-$Width-m: true;
-$Width-l: true;
-
-
-// ========================================
 // Easings and transitions
 // ========================================
 
