@@ -5,4 +5,7 @@
  * @reusable false
  */
 
-.Header {}
+.Header {
+  position: relative;
+  z-index: $Header-zIndex;
+}
