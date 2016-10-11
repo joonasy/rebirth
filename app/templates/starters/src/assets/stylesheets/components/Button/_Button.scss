@@ -1,18 +1,15 @@
 /* ========================================
  * Button
- * ========================================
- *
- * @reusable true
- */
+ * ======================================== */
 
 .Button {
   @extend %textTruncate;
-  @include fontSize($baseFontSize, rem($Button-height));
+  @include fontSize($Button-fontSize, rem(($Button-height) - ($Button-borderWidth * 2)));
   background-color: transparent;
-  border: 0;
+  border: $Button-borderWidth solid transparent;
   cursor: pointer;
   display: inline-block;
-  font-weight: $baseFontWeightStrong;
+  font-weight: $Button-fontWeight;
   margin-bottom: rem($baseSpace);
   margin-right: rem($baseSpace / 2);
   outline: 0;
@@ -42,45 +39,6 @@
   &.-pill {
     @extend %pill;
   }
-
-  &.-border {
-    border: $Button-borderWidth solid transparent;
-    line-height: rem(($Button-height) - ($Button-borderWidth * 2));
-  }
-}
-
-
-/* ======
- * Button - Size
- * ====== */
-
-.Button {
-  $h: $Button-height;
-  $l: $Button-l;
-  $s: $Button-s;
-
-  &.-l {
-    @include fontSize($baseFontSize-l, rem(($h * $l)));
-    padding: 0 rem($baseSpace * $l);
-
-    &.-border {
-      line-height: rem(($h * $l) - ($Button-borderWidth * 2));
-    }
-  }
-
-  &.-s {
-    @include fontSize($baseFontSize-s, rem(($h * $s)));
-    padding: 0 rem($baseSpace * $s);
-
-    &.-border {
-      line-height: rem(($h * $s) - ($Button-borderWidth * 2));
-    }
-  }
-
-  &.-full {
-    display: block;
-    width: 100%;
-  }
 }
 
 
@@ -100,69 +58,22 @@
 
 
 /* ======
- * Button - Default
+ * Button - Size
  * ====== */
 
-.Button--default {
-  background-color: #ffffff;
-  color: $colorPrimary;
-
-  &:hover,
-  &:focus {
-    background-color: darken(#ffffff, 3);
+.Button {
+  &.-l {
+    @include fontSize($baseFontSize-l, rem(($Button-height * $Button-l) - ($Button-borderWidth * 2)));
+    padding: 0 rem($baseSpace * $Button-l);
   }
 
-  &.-transparent {
-    background-color: transparent;
-
-    &:hover,
-    &:focus {
-      background-color: $colorPrimary;
-      border-color: $colorPrimary;
-      color: #ffffff;
-    }
+  &.-s {
+    @include fontSize($baseFontSize-s, rem(($Button-height * $Button-s) - ($Button-borderWidth * 2)));
+    padding: 0 rem($baseSpace * $Button-s);
   }
 
-  &.-border {
-    border-color: $colorBorderDefault;
-
-    &:hover,
-    &:focus {
-      background-color: #ffffff;
-      border-color: $colorBorderDefault;
-      color: $colorPrimary;
-    }
-  }
-}
-
-
-/* ======
- * Button - Primary
- * ====== */
-
-.Button--primary {
-  background-color: $colorPrimary;
-  color: #ffffff;
-
-  &:hover,
-  &:focus {
-    background-color: darken($colorPrimary, 5);
-    color: #ffffff;
-  }
-
-  &.-transparent {
-    background-color: transparent;
-    color: $colorPrimary;
-
-    &:hover,
-    &:focus {
-      background-color: $colorPrimary;
-      border-color: $colorPrimary;
-      color: #ffffff;
-    }
-  }
-
-  &.-border {
-    border-color: darken($colorPrimary, 5);
+  &.-full {
+    display: block;
+    width: 100%;
   }
 }

@@ -1,20 +1,11 @@
 // ========================================
-// Button
+// Button - Config
 // ========================================
 
-$Button-borderWidth: 1px;
-$Button-height: $baseSpace * 1.75;
 $Button-borderRadius: 4px;
-
+$Button-borderWidth: 1px;
+$Button-fontSize: $baseFontSize;
+$Button-fontWeight: $baseFontWeightStrong;
+$Button-height: $baseSpace * 1.75;
 $Button-l: 1.5;
 $Button-s: 0.78;
-
-
-// ======
-// Buttons
-// ======
-
-$Buttons-horizontal: false;
-$Buttons-horizontal-s: false;
-$Buttons-horizontal-m: false;
-$Buttons-horizontal-l: false;
