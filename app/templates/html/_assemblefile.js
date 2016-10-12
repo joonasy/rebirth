@@ -39,7 +39,7 @@ var config = {
   stylesheets: {
     src: 'src/assets/stylesheets/app.scss',
     dest: 'dist/assets/stylesheets/',
-    watch: 'src/assets/stylesheets/**/*.scss'
+    watch: 'src/assets/stylesheets/**/**/*.scss'
   },
   javascripts: {
     src: 'src/assets/javascripts/',
@@ -194,7 +194,11 @@ app.task('javascripts', ['modernizr'], function(callback) {
 app.task('images', function() {
   return app.src(config.images.src)
     .pipe($.changed(config.images.dest))
-    .pipe($.imagemin())
+    .pipe($.imagemin({
+      svgoPlugins: [
+        { cleanupIDs: false },
+      ],
+    }))
     .on('error', handleError)
     .pipe(app.dest(config.images.dest));
 });
