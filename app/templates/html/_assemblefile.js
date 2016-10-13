@@ -14,7 +14,6 @@ var fs = require('fs');
 var browserify = require('browserify');
 var browserSync = require('browser-sync').create();
 var handlebarsHelpers = require('handlebars-helpers')();
-var merge = require('merge-stream');
 var notifier = require('node-notifier');
 var path = require('path');
 var prettyHrtime = require('pretty-hrtime');

@@ -12,7 +12,6 @@ var fs = require('fs');
 var browserify = require('browserify');
 var browserSync = require('browser-sync').create();
 var gulp = require('gulp');
-var merge = require('merge-stream');
 var notifier = require('node-notifier');
 var path = require('path');
 var prettyHrtime = require('pretty-hrtime');
