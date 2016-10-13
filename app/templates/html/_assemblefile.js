@@ -13,6 +13,7 @@ var app = assemble();
 var fs = require('fs');
 var browserify = require('browserify');
 var browserSync = require('browser-sync').create();
+var handlebarsHelpers = require('handlebars-helpers')();
 var merge = require('merge-stream');
 var notifier = require('node-notifier');
 var path = require('path');
@@ -84,6 +85,7 @@ var config = {
 app.data({ assets: 'assets' });
 app.data(config.html.data);
 app.helpers(config.html.helpers);
+app.helpers(handlebarsHelpers);
 app.use(watch());
 
 app.preLayout(/\/src\/templates\/.*\.hbs$/, function(view, next) {
