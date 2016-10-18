@@ -7,7 +7,7 @@ import $ from 'jquery';
 const config = {
   $document: $(document),
   $window: $(window),
-  breakpoint: {
+  mq: {
     xs: 320,
     s: 600,
     m: 768,
