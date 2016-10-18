@@ -38,15 +38,15 @@
 @import 'helpers/helper';
 
 // Components
-@import 'components/Container';
-@import 'components/Grid/Grid';
-@import 'components/Heading';
-@import 'components/Ieframe';
-@import 'components/Icon';
-@import 'components/Text';
-@import 'components/Width';
-@import 'components/Wrap';
+@import 'components/Container/index';
+@import 'components/Grid/index';
+@import 'components/Heading/index';
+@import 'components/Ieframe/index';
+@import 'components/Icon/index';
+@import 'components/Text/index';
+@import 'components/Width/index';
+@import 'components/Wrap/index';
 
 // Layout components
-@import 'layout/Header';
-@import 'layout/Footer';
+@import 'layout/Header/index';
+@import 'layout/Footer/index';

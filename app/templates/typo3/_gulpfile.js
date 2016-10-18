@@ -12,7 +12,6 @@ var fs = require('fs');
 var browserify = require('browserify');
 var browserSync = require('browser-sync').create();
 var gulp = require('gulp');
-var merge = require('merge-stream');
 var notifier = require('node-notifier');
 var path = require('path');
 var prettyHrtime = require('pretty-hrtime');
@@ -38,7 +37,7 @@ var config = {
   stylesheets: {
     src: 'Assets/stylesheets/app.scss',
     dest: 'Resources/Public/Assets/stylesheets/',
-    watch: 'Assets/stylesheets/**/*.scss'
+    watch: 'Assets/stylesheets/**/**/*.scss'
   },
   javascripts: {
     src: 'Assets/javascripts/',
@@ -159,7 +158,11 @@ gulp.task('javascripts', ['modernizr'], function(callback) {
 gulp.task('images', function() {
   return gulp.src(config.images.src)
     .pipe($.changed(config.images.dest))
-    .pipe($.imagemin())
+    .pipe($.imagemin({
+      svgoPlugins: [
+        { cleanupIDs: false },
+      ],
+    }))
     .on('error', handleError)
     .pipe(gulp.dest(config.images.dest));
 });

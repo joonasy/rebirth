@@ -2,17 +2,14 @@
 // Grid
 // ========================================
 
-$Grid-ruler: false;
-$Grid-ruler-s: false;
-$Grid-ruler-m: false;
-$Grid-ruler-l: false;
+$Grid-gutter: $baseSpace / 2;
 
-$Grid-cellAlign: false;
-$Grid-cellAlign-s: false;
-$Grid-cellAlign-m: false;
-$Grid-cellAlign-l: false;
+$Grid-justify: true !default;
+$Grid-justify-s: false !default;
+$Grid-justify-m: false !default;
+$Grid-justify-l: false !default;
 
-$Grid-cellOrder: false;
-$Grid-cellOrder-s: false;
-$Grid-cellOrder-m: false;
-$Grid-cellOrder-l: false;
+$Grid-align: true !default;
+$Grid-align-s: false !default;
+$Grid-align-m: false !default;
+$Grid-align-l: false !default;

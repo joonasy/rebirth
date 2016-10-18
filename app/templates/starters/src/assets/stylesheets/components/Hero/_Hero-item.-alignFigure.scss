@@ -4,9 +4,7 @@
  *
  * Align figure in .Hero{} component
  *
- * @extends `.Hero-item{}` in _Hero.scss
- * @reusable true
- */
+ * @extends `.Hero-item{}` in _Hero.scss */
 
 @mixin HeroAlignFigure($namespace: '') {
   $positions: 'top left', 'top', 'top right', 'right', 'bottom right', 'bottom',

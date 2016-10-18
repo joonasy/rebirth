@@ -1,11 +1,35 @@
 # Changelog
 
+## 0.4.2 (2016-10-11)
+
+* New folder structure for CSS components and layout components:
+
+```
+components/
+|
+|── ComponentName/
+|   `── _ComponentName.config.scss     # Component specific configs
+|   `── _ComponentName.scss            # Default component CSS
+|   `── _ComponentName--modifier.scss  # Component modifier and so on ...
+|   `── _index.scss                    # Import all components
+```
+
+* Default .Page{} element added
+* Fix chrome issues with the custom select
+* Switched border (`.-border`) as part of the default button/form implementation
+
+## 0.4.1 (2016-9-22)
+
+* Breakpoint mixin -> sass-mq
+* Updated normalize
+* Removed Pull/Push components
+* Other minor dependency updates and fixes
+
 ## 0.4.0 (2016-6-28)
 
-* Component collections are no named as plurals e.g. .Buttons. Switch button collection to --default modifier as there might be some additional button collection in the projects.
+* Component collections are no named as plurals e.g. .Buttons{}. Switch button collection to --default modifier as there might be some additional button collection in the projects.
 * Mutual component files are now in their own folders
 * Fixes
-
 
 ## 0.3.9 (2016-6-2)
 

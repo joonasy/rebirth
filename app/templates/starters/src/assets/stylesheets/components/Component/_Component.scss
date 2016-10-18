@@ -1,0 +1,30 @@
+/* ========================================
+ * Component
+ * ======================================== */
+
+.Component {}
+
+  .Component-item {}
+
+
+/* ======
+ * Component - States
+ * ====== */
+
+.Component {
+  &.is-state {}
+}
+
+
+/* ======
+ * Component - Various modifiers
+ * ====== */
+
+.Component.-modifierName {}
+
+
+/* ======
+ * Component - Default
+ * ====== */
+
+.Component--default {}

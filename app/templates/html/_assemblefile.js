@@ -13,7 +13,7 @@ var app = assemble();
 var fs = require('fs');
 var browserify = require('browserify');
 var browserSync = require('browser-sync').create();
-var merge = require('merge-stream');
+var handlebarsHelpers = require('handlebars-helpers')();
 var notifier = require('node-notifier');
 var path = require('path');
 var prettyHrtime = require('pretty-hrtime');
@@ -39,7 +39,7 @@ var config = {
   stylesheets: {
     src: 'src/assets/stylesheets/app.scss',
     dest: 'dist/assets/stylesheets/',
-    watch: 'src/assets/stylesheets/**/*.scss'
+    watch: 'src/assets/stylesheets/**/**/*.scss'
   },
   javascripts: {
     src: 'src/assets/javascripts/',
@@ -84,6 +84,7 @@ var config = {
 app.data({ assets: 'assets' });
 app.data(config.html.data);
 app.helpers(config.html.helpers);
+app.helpers(handlebarsHelpers);
 app.use(watch());
 
 app.preLayout(/\/src\/templates\/.*\.hbs$/, function(view, next) {
@@ -194,7 +195,11 @@ app.task('javascripts', ['modernizr'], function(callback) {
 app.task('images', function() {
   return app.src(config.images.src)
     .pipe($.changed(config.images.dest))
-    .pipe($.imagemin())
+    .pipe($.imagemin({
+      svgoPlugins: [
+        { cleanupIDs: false },
+      ],
+    }))
     .on('error', handleError)
     .pipe(app.dest(config.images.dest));
 });

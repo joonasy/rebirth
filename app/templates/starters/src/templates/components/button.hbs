@@ -9,7 +9,26 @@ title: Button
 
     <div class="Grid -auto">
       <div class="Grid-cell">
-        <div class="Button Button--primary js-Button">
+        <a href="#" class="Button Button--default -s">
+          Button small
+        </a>
+        <a href="#" class="Button Button--default">
+          Button default
+        </a>
+        <a href="#" class="Button Button--default -l">
+          Button large
+        </a>
+        <a href="#" class="Button Button--primary">
+          Button primary
+        </a>
+      </div>
+    </div>
+
+    <h1>Button advanced</h1>
+
+    <div class="Grid -auto">
+      <div class="Grid-cell">
+        <div class="Button Button--default -round js-Button">
           Button
           <ul class="Button-dropdown Dropdown">
             <li class="Dropdown-item">
@@ -17,44 +36,21 @@ title: Button
             </li>
           </ul>
         </div>
-        <a href="#" class="Button Button--default -round -border">
+        <a href="#" class="Button Button--default -pill">
           Button
         </a>
-        <a href="#" class="Button Button--default -round -border -transparent">
-          Button
-        </a>
-        <a class="Button Button--primary -pill -border -transparent" href="#">
-          Button
-        </a>
-        <a class="Button Button--primary -s" href="#">
-          Button
-        </a>
-        <a href="#" class="Button Button--primary -round -s">
-          Button
-        </a>
-        <a class="Button Button--primary -pill -s" href="#">
+        <a href="#" class="Button Button--default -pill -transparent">
           Button
         </a>
       </div>
       <div class="Grid-cell">
-        <div class="Button Button--primary -border -transparent js-Button">
-          Button
-          <ul class="Button-dropdown Dropdown">
-            <li class="Dropdown-item">
-              <a href="#">Dropdown item</a>
-            </li>
-          </ul>
-        </div>
-        <a class="Button Button--primary -round -border" href="#">
-          Round button
-        </a>
-        <a class="Button Button--primary -pill -border" href="#">
-          Pill button
-        </a>
-        <a class="Button Button--primary -l" href="#">
+        <a class="Button Button--primary -round" href="#">
           Button
         </a>
-        <a class="Button Button--primary -l -border -round" href="#">
+        <a class="Button Button--primary -pill" href="#">
+          Button
+        </a>
+        <a class="Button Button--primary -pill -transparent" href="#">
           Button
         </a>
       </div>
@@ -81,27 +77,15 @@ title: Button
           </a>
         </div>
 
-        <div class="Buttons Buttons--default -horizontal">
-          <a class="Button Button--primary -round -s" href="#">
-            Button
-          </a>
-          <a class="Button Button--primary -round -s" href="#">
-            Button
-          </a>
-          <a class="Button Button--primary -round -s" href="#">
-            Button
-          </a>
-        </div>
-
         {{!-- Bordered horizontal collection --}}
         <div class="Buttons Buttons--default -horizontal">
-          <a class="Button Button--primary -border -pill" href="#">
+          <a class="Button Button--primary -pill" href="#">
             Button
           </a>
-          <a class="Button Button--primary -border -pill" href="#">
+          <a class="Button Button--primary -pill" href="#">
             Button
           </a>
-          <a class="Button Button--primary -border -pill" href="#">
+          <a class="Button Button--primary -pill" href="#">
             Button
           </a>
         </div>
@@ -110,13 +94,13 @@ title: Button
           <div class="Grid-cell">
             {{!-- Rounded vertical collection --}}
             <div class="Buttons Buttons--default">
-              <a class="Button Button--primary -round -s -transparent -border" href="#">
+              <a class="Button Button--primary -round -s -transparent" href="#">
                 Button
               </a>
-              <a class="Button Button--primary -round -s -transparent -border" href="#">
+              <a class="Button Button--primary -round -s -transparent" href="#">
                 Button wider
               </a>
-              <a class="Button Button--primary -round -s -transparent -border" href="#">
+              <a class="Button Button--primary -round -s -transparent" href="#">
                 Button
               </a>
             </div>
@@ -125,10 +109,10 @@ title: Button
           <div class="Grid-cell">
             {{!-- Bordered vertical collection --}}
             <div class="Buttons Buttons--default -justify">
-              <a class="Button Button--primary -border" href="#">
+              <a class="Button Button--primary" href="#">
                 Button
               </a>
-              <a class="Button Button--primary -border" href="#">
+              <a class="Button Button--primary" href="#">
                 Button
               </a>
             </div>
@@ -154,41 +138,41 @@ title: Button
 
       <div class="Grid-cell">
 
-        {{!-- Justified and rounded collection --}}
-        <div class="Buttons Buttons--default -m-horizontal -justify">
-          <a class="Button Button--primary -round -pill" href="#">
+        {{!-- Bordered and justified collection --}}
+        <div class="Buttons Buttons--default -horizontal -justify">
+          <a class="Button Button--primary" href="#">
             Button
           </a>
-          <a class="Button Button--primary -round -pill" href="#">
+          <a class="Button Button--primary" href="#">
             Button
           </a>
-          <a class="Button Button--primary -round -pill" href="#">
+          <a class="Button Button--primary" href="#">
             Button
           </a>
         </div>
 
         {{!-- Justified and rounded collection --}}
         <div class="Buttons Buttons--default -m-horizontal -justify">
-          <a class="Button Button--primary -round -s" href="#">
+          <a class="Button Button--primary -round -pill" href="#">
             Button
           </a>
-          <a class="Button Button--primary -round -s" href="#">
+          <a class="Button Button--primary -round -pill" href="#">
             Button
           </a>
-          <a class="Button Button--primary -round -s" href="#">
+          <a class="Button Button--primary -round -pill" href="#">
             Button
           </a>
         </div>
 
         {{!-- Justified and pill collection --}}
         <div class="Buttons Buttons--default -horizontal -justify">
-          <a class="Button Button--primary -border -pill -transparent" href="#">
+          <a class="Button Button--primary -pill -transparent" href="#">
             Button
           </a>
-          <a class="Button Button--primary -border -pill -transparent" href="#">
+          <a class="Button Button--primary -pill -transparent" href="#">
             Button
           </a>
-          <a class="Button Button--primary -border -pill -transparent" href="#">
+          <a class="Button Button--primary -pill -transparent" href="#">
             Button
           </a>
         </div>
@@ -202,19 +186,6 @@ title: Button
             Button
           </a>
           <a class="Button Button--primary" href="#">
-            Button
-          </a>
-        </div>
-
-        {{!-- Bordered and justified collection --}}
-        <div class="Buttons Buttons--default -horizontal -justify">
-          <a class="Button Button--primary -border" href="#">
-            Button
-          </a>
-          <a class="Button Button--primary -border" href="#">
-            Button
-          </a>
-          <a class="Button Button--primary -border" href="#">
             Button
           </a>
         </div>

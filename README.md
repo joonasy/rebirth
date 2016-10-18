@@ -2,9 +2,13 @@
 
 > My combined styleguide, starter kit and Yeoman generator for new web projects (Typo3/Html).
 
-This starterkit contains methods and ideas from various sources such as [BEM](https://bem.info/), [HTML5BP](http://html5boilerplate.com/), [Bootstrap](http://getbootstrap.com), [Foundation](http://foundation.zurb.com/), [INUITCSS](https://github.com/inuitcss), [SMACSS](https://smacss.com/), [OOCSS](http://oocss.org/) and [SUIT CSS](https://github.com/suitcss/suit). By default this template supports IE10+, Mobile first -ideology and progressive enhancement.
+This starter kit contains methods and ideas from various sources such as [BEM](https://bem.info/), [HTML5BP](http://html5boilerplate.com/), [Bootstrap](http://getbootstrap.com), [Foundation](http://foundation.zurb.com/), [INUITCSS](https://github.com/inuitcss), [SMACSS](https://smacss.com/), [OOCSS](http://oocss.org/) and [SUIT CSS](https://github.com/suitcss/suit). By default this template supports IE10+, Mobile first -ideology and progressive enhancement.
 
 This starter kit is **not a framework** but it contains predefined components and helpers that are meant to be modified based on your project needs.
+
+## WORK IN PROGRESS!
+
+Use only if you know what you are doing or you are working together with the author. Docs are currently very much outdated.
 
 ## Features
 
@@ -84,7 +88,11 @@ Please discuss about new ideas and things that you think should be modified. Cur
 
 ## Todo (in random order)
 
+* Apply new structural changes to docs
+* Figure out some useful name for this project
 * WordPress project guide
+* Separate starters, docs and the yeoman generator
+* Publish and finish the documentation
 * Consider Capistrano for WordPress projects
 * Typo3 content element starters
 * WordPress content element (ACF) starters
@@ -94,7 +102,6 @@ Please discuss about new ideas and things that you think should be modified. Cur
 * Maybe some sort of integration/forking with [generator-typo3](https://github.com/Milanowicz/generator-typo3)
 * Testing for JavaScript
 * Consider removing jQuery
-* Consider separating starters and the generator
 * Dockerfile for Typo3
 
 ## License
