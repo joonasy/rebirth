@@ -18,7 +18,12 @@ bower_components/
 rev-manifest.json<% if (typo3) { %>
 Bottom.dist.html
 Top.dist.html
+typo3/*
+!typo3/composer.json
 Resources/Public/Assets<% } if (deployment) { %>
 dploy.yaml
-.rev<% } if (wp || html) { %>
+.rev<% } if (wp) { %>
+wp/*
+!wp/composer.json
+dist/<% } if (html) { %>
 dist/<% } %>

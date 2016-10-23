@@ -488,7 +488,7 @@ var MyGenerator = yeoman.generators.Base.extend({
 
       this.template(
         this.templatePath('typo3/typo3/_composer.json'),
-        this.destinationPath('typo3-example/composer.json')
+        this.destinationPath('typo3/composer.json')
       );
 
       this.template(

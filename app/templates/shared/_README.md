@@ -46,23 +46,23 @@ Choose your preferred approach.
 
 > e.g. Vagrant w/ Homestead 
 
-**1.** Copy `wp-example` one folder above of this repo and rename it to `wp`. Structure:
+**1.** Copy `wp` and its contents one folder above of this repo and rename it to `wp`. Structure:
 
 ```
 <%= appRoot %>_root/
 |
 |── <%= appRoot %>/
-|   |── wp-example
+|   |── wp/
 |── wp/
 ```
 
-Even better is that you symlink your `wp/composer.json` to `wp-example/composer.json` as that file is version controlled. For example in Unix:
+Even better is that you symlink your outer `wp/composer.json` to `<%= appRoot %>/wp/composer.json` as that file is version controlled. For example in Unix:
 
 ```
-ln -s ../<%= appRoot %>/wp-example/composer.json composer.json
+ln -s ../<%= appRoot %>/wp/composer.json composer.json
 ```
 
-**2.** Run `composer install` in `wp/`
+**2.** Run `composer install` in your newly created `wp/` folder
 
 **3.** Point your environment document root to `wp/` 
 
@@ -105,24 +105,24 @@ Note that the we are using the same structure of files as in the [joonasy/wordpr
 
 > e.g. Vagrant w/ Homestead 
 
-**1.** Copy `typo3-example` one folder above of this repo and rename it to `typo3`. Structure:
+**1.** Copy `typo3` and its contents one folder above of this repo. Structure:
   
 ```
 <%= appRoot %>_root/
 |
 |── <%= appRoot %>/
-|   |── typo3-example
+|   |── typo3/
 |── typo3/
 ```
 
-Even better is that you symlink your `typo3/composer.json` to `typo3-example/composer.json` as that file is version controlled. For example in Unix:
+Even better is that you symlink your outer `typo3/composer.json` to `<%= appRoot %>/typo3/composer.json` as that file is version controlled. For example in Unix:
 
 ```
 // <%= appRoot %>_root/typo3/
-ln -s ../<%= appRoot %>/typo3-example/composer.json composer.json
+ln -s ../<%= appRoot %>/typo3/composer.json composer.json
 ```
 
-**2.** Run `composer install` in `typo3/`
+**2.** Run `composer install` in your newly created `typo3/` folder
 
 **3.** Point your environment document root to `typo3/` 
 
