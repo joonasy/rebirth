@@ -345,7 +345,7 @@ function inline(opts) {
 
   if (opts.file) {
     var content;
-    var tagBegin = '<v:asset.script standalone="true" allowMoveToFooter="false">';
+    var tagBegin = '<v:asset.script standalone="true" movable="false">';
     var tagEnd = '</v:asset.script>';
 
     if (opts.file.match(/.js/)) {
