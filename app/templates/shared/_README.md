@@ -51,7 +51,7 @@ Choose your preferred approach.
 
 > e.g. Vagrant w/ Homestead 
 
-**1.** Copy `wp` and its contents one folder above of this repo and rename it to `wp`. Structure:
+**1.** Copy `wp` and its contents one folder above of this repo and rename it to `wp` (This has been already done if you installed the project with the starter kit). Structure:
 
 ```
 <%= appRoot %>_root/
@@ -111,7 +111,7 @@ Note that the we are using the same structure of files as in the [joonasy/wordpr
 
 > e.g. Vagrant w/ Homestead 
 
-**1.** Copy `typo3` and its contents one folder above of this repo. Structure:
+**1.** Copy `typo3` and its contents one folder above of this repo (This has been already done if you installed the project with the starter kit). Structure:
   
 ```
 <%= appRoot %>_root/
