@@ -123,7 +123,7 @@ var MyGenerator = yeoman.generators.Base.extend({
         when: function (props) {
           if (props.projectType === 'typo3') {
             _this.log(
-              chalk.green('  ❯'), 'Flux extension key is:',
+              chalk.green('  ❯'), 'Flux extension key:',
                 chalk.cyan(
                   _this._.capitalize(_this._.camelize(props.appNameSpace)) + '.' +
                   _this._.capitalize(_this._.underscored(appRoot).replace(/_/g, ''))
@@ -727,10 +727,18 @@ var MyGenerator = yeoman.generators.Base.extend({
     function installFinished() {
       var devEnvString = '';
       var wordPressInfo = '';
+      var typo3Info = '';
       var projectType = _this.projectType === 'wp' ? 'WordPress' : _this._.humanize(_this.projectType);
 
       if (_this.typo3 || _this.wp) {
         devEnvString = ' development enviroment instructions,'
+      }
+
+      if (_this.typo3) {
+        typo3Info = '\n' +
+          chalk.green('❯ ') + 'Extension key: ' + chalk.cyan(_this.extensionKey) + '\n' +
+          chalk.green('❯ ') + 'Extension folder: ' + chalk.cyan(_this.appRoot) + '\n' +
+          chalk.green('❯ ') + 'Flux extension key: ' + chalk.cyan(_this.appNameSpace + '.' + _this.extensionKeyCapitalize) + '\n';
       }
 
       if (_this.wp) {
@@ -751,6 +759,7 @@ var MyGenerator = yeoman.generators.Base.extend({
         chalk.green('❯'), 'Author:', chalk.cyan(_this.appAuthor), '\n' +
         chalk.green('❯'), 'Type:', chalk.cyan(projectType), '\n' +
         chalk.green('❯'), 'Project URL (production):', chalk.cyan(_this.appURL), '\n' +
+        typo3Info,
         wordPressInfo,
         '\n' +
         chalk.green('❯'), 'Please read', chalk.cyan('README.md'), 'for' + devEnvString + ' available commands and other useful info.', '\n' +
