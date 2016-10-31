@@ -5,15 +5,40 @@
 import $ from 'jquery';
 
 const config = {
-  $document: $(document),
-  $window: $(window),
-  mq: {
-    xs: 320,
-    s: 600,
-    m: 768,
-    ml: 900,
-    l: 1024,
-    xl: 1200,
+  dom: {
+    $document: $(document),
+    $window: $(window),
+    $html: $('html'),
+  },
+  anim: {
+    duration: 800,
+    easing: 'easeOutQuint',
+  },
+  bp: {
+    xs: {
+      px: 320,
+      mq: 'screen and (min-width: 320px)',
+    },
+    s: {
+      px: 600,
+      mq: 'screen and (min-width: 600px)',
+    },
+    m: {
+      px: 768,
+      mq: 'screen and (min-width: 768px)',
+    },
+    ml: {
+      px: 900,
+      mq: 'screen and (min-width: 900px)',
+    },
+    l: {
+      px: 1024,
+      mq: 'screen and (min-width: 1024px)',
+    },
+    xl: {
+      px: 1200,
+      mq: 'screen and (min-width: 1200px)',
+    },
   },
 };
 

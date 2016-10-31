@@ -63,9 +63,9 @@ var config = {
     watch: 'src/assets/videos/'
   },
   fonts: {
-    src: 'src/assets/fonts/*.{eot,svg,ttf,woff}',
+    src: 'src/assets/fonts/*.{eot,svg,ttf,woff,woff2}',
     dest: 'dist/assets/fonts/',
-    watch: 'src/assets/fonts/*.{eot,svg,ttf,woff}'
+    watch: 'src/assets/fonts/*.{eot,svg,ttf,woff,woff2}'
   },
   html: {
     data: 'src/*.{json,yml}',

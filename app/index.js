@@ -92,7 +92,7 @@ var MyGenerator = yeoman.generators.Base.extend({
           if (props.projectType === 'typo3') {
             _this.log(
               chalk.green('  ❯'), 'Project install path:', chalk.cyan('./' + dir), '\n' +
-              chalk.green('  ❯'), 'Extension name:', _this._.underscored(chalk.cyan(appRoot)), '\n' +
+              chalk.green('  ❯'), 'Extension name:', chalk.cyan(_this._.underscored(appRoot).replace(/_/g, '')), '\n' +
               chalk.green('  ❯'), 'Extension path:', chalk.cyan('./' + appRoot + '/' + _this._.underscored(dir)), '\n'  +
               chalk.green('  ❯'), 'Build path:', chalk.cyan('./' + appRoot + '/' + _this._.underscored(appRoot) + '/Resources/Public/')
             );
@@ -251,10 +251,12 @@ var MyGenerator = yeoman.generators.Base.extend({
       this.wp = this.projectType === 'wp';
 
       /**
-       * Make sure typo3 extension is underscored or it won't work
+       * Make sure typo3 extension name is all lowercase without any underscores or it won't work
        */
       if (this.typo3) {
         this.appRoot = this._.underscored(this.appRoot);
+        this.extensionName = this.appRoot.replace(/_/g, '');
+        this.extensionNamePascalize = this._.capitalize(this._.camelize(this.appRoot));
         this.destinationRoot(this.appRoot);
       }
 

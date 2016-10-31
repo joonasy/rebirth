@@ -56,9 +56,9 @@ var config = {
     watch: 'Assets/images/*.{jpg,jpeg,png,gif,webp,svg}'
   },
   fonts: {
-    src: 'Assets/fonts/*.{eot,svg,ttf,woff}',
+    src: 'Assets/fonts/*.{eot,svg,ttf,woff,woff2}',
     dest: 'Resources/Public/Assets/fonts/',
-    watch: 'Assets/fonts/*.{eot,svg,ttf,woff}'
+    watch: 'Assets/fonts/*.{eot,svg,ttf,woff,woff2}'
   }
 }
 
