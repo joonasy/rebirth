@@ -1,6 +1,6 @@
 <?php
 $EM_CONF[$_EXTKEY] = array(
-  'title' => '<%= appRoot %>',
+  'title' => '<%= extensionName %>',
   'description' => '<%= appDescription %>',
   'category' => 'misc',
   'shy' => 0,
