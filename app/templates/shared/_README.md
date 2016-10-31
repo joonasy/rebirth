@@ -64,6 +64,7 @@ Choose your preferred approach.
 Even better is that you symlink your outer `wp/composer.json` to `<%= appRoot %>/wp/composer.json` as that file is version controlled. For example in Unix:
 
 ```
+// <%= appRoot %>_root/wp/
 ln -s ../<%= appRoot %>/wp/composer.json composer.json
 ```
 

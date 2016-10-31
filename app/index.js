@@ -628,7 +628,7 @@ var MyGenerator = yeoman.generators.Base.extend({
 
       this.template(
         this.templatePath('wordpress/wp/_docker-compose.yml'),
-        this.destinationPath('wp-example/docker-compose.yml')
+        this.destinationPath('wp/docker-compose.yml')
       );
 
       this.template(
@@ -638,7 +638,7 @@ var MyGenerator = yeoman.generators.Base.extend({
 
       this.template(
         this.templatePath('wordpress/wp/_composer.json'),
-        this.destinationPath('wp-example/composer.json')
+        this.destinationPath('wp/composer.json')
       );
 
       this.template(
@@ -648,7 +648,7 @@ var MyGenerator = yeoman.generators.Base.extend({
 
       this.template(
         this.templatePath('wordpress/wp/_wp-config.dev.php'),
-        this.destinationPath('wp-example/wp-config.dev.php')
+        this.destinationPath('wp/wp-config.dev.php')
       );
 
       this.template(
@@ -658,7 +658,7 @@ var MyGenerator = yeoman.generators.Base.extend({
 
       this.fs.copy(
         this.templatePath('wordpress/wp/register-theme-directory.php'),
-        this.destinationPath('wp-example/wp-content/mu-plugins/register-theme-directory.php')
+        this.destinationPath('wp/wp-content/mu-plugins/register-theme-directory.php')
       );
 
       this.fs.copy(
@@ -668,7 +668,7 @@ var MyGenerator = yeoman.generators.Base.extend({
 
       this.fs.copy(
         this.templatePath('wordpress/wp/index.php'),
-        this.destinationPath('wp-example/index.php')
+        this.destinationPath('wp/index.php')
       );
 
       this.fs.copy(
@@ -682,7 +682,7 @@ var MyGenerator = yeoman.generators.Base.extend({
 
           _this.template(
             _this.templatePath('wordpress/wp/_wp-config.php'),
-            _this.destinationPath('wp-example/wp-config.php')
+            _this.destinationPath('wp/wp-config.php')
           );
 
           _this.template(
