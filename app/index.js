@@ -29,6 +29,7 @@ var MyGenerator = yeoman.generators.Base.extend({
       var dir = this.dir.toLowerCase();
       this.destinationRoot(dir);
       this.appRoot = dir;
+      this.dir = dir;
     }
   },
 
@@ -92,9 +93,9 @@ var MyGenerator = yeoman.generators.Base.extend({
           if (props.projectType === 'typo3') {
             _this.log(
               chalk.green('  ❯'), 'Project install path:', chalk.cyan('./' + dir), '\n' +
-              chalk.green('  ❯'), 'Extension name:', chalk.cyan(_this._.underscored(appRoot).replace(/_/g, '')), '\n' +
+              chalk.green('  ❯'), 'Extension key:', chalk.cyan(_this._.underscored(appRoot).replace(/_/g, '')), '\n' +
               chalk.green('  ❯'), 'Extension path:', chalk.cyan('./' + appRoot + '/' + _this._.underscored(dir)), '\n'  +
-              chalk.green('  ❯'), 'Build path:', chalk.cyan('./' + appRoot + '/' + _this._.underscored(appRoot) + '/Resources/Public/')
+              chalk.green('  ❯'), 'Build path:', chalk.cyan('./' + appRoot + '/' + _this._.underscored(dir) + 'Resources/Public/')
             );
           } else if (props.projectType === 'html') {
             _this.log(
@@ -108,6 +109,26 @@ var MyGenerator = yeoman.generators.Base.extend({
               chalk.green('  ❯'), 'Theme will be installed in:', chalk.cyan('./' + appRoot + '/' + dir), '\n' +
               chalk.green('  ❯'), 'Build path:', chalk.cyan('./' + appRoot + '/' + appRoot + '/dist/')
             );
+          }
+        }
+      }, {
+          type: 'input',
+          name: 'appNameSpace',
+          message: 'Project namespace:',
+          default: 'App',
+          when: function(props) {
+            return props.projectType === 'wp' || props.projectType === 'typo3'
+          }
+      }, {
+        when: function (props) {
+          if (props.projectType === 'typo3') {
+            _this.log(
+              chalk.green('  ❯'), 'Flux extension key is:',
+                chalk.cyan(
+                  _this._.capitalize(_this._.camelize(props.appNameSpace)) + '.' +
+                  _this._.capitalize(_this._.underscored(appRoot).replace(/_/g, ''))
+                )
+            )
           }
         }
       }, {
@@ -152,14 +173,6 @@ var MyGenerator = yeoman.generators.Base.extend({
         when: function(props) {
           return props.projectType === 'wp' || props.projectType === 'typo3'
         }
-      }, {
-          type: 'input',
-          name: 'appNameSpace',
-          message: 'Project namespace:',
-          default: 'App',
-          when: function(props) {
-            return props.projectType === 'wp' || props.projectType === 'typo3'
-          }
       }, {
         type: 'input',
         name: 'dbName',
@@ -250,19 +263,13 @@ var MyGenerator = yeoman.generators.Base.extend({
       this.html = this.projectType === 'html';
       this.wp = this.projectType === 'wp';
 
-      /**
-       * Make sure typo3 extension name is all lowercase without any underscores or it won't work
-       */
       if (this.typo3) {
         this.appRoot = this._.underscored(this.appRoot);
-        this.extensionName = this.appRoot.replace(/_/g, '');
-        this.extensionNamePascalize = this._.capitalize(this._.camelize(this.appRoot));
+        this.extensionKey = this.appRoot.replace(/_/g, '');
+        this.extensionKeyCapitalize = this._.capitalize(this.extensionKey);
         this.destinationRoot(this.appRoot);
       }
 
-      /**
-       * We go one folder deeper here
-       */
       if (this.wp) {
         this.destinationRoot(this.appRoot);
       }
@@ -718,43 +725,41 @@ var MyGenerator = yeoman.generators.Base.extend({
     });
 
     function installFinished() {
-      // function info() {
-        var devEnvString = '';
-        var wordPressInfo = '';
-        var projectType = _this.projectType === 'wp' ? 'WordPress' : _this._.humanize(_this.projectType);
+      var devEnvString = '';
+      var wordPressInfo = '';
+      var projectType = _this.projectType === 'wp' ? 'WordPress' : _this._.humanize(_this.projectType);
 
-        if (_this.typo3 || _this.wp) {
-          devEnvString = ' development enviroment instructions,'
-        }
+      if (_this.typo3 || _this.wp) {
+        devEnvString = ' development enviroment instructions,'
+      }
 
-        if (_this.wp) {
-          wordPressInfo = '\n' +
-            chalk.green('❯ ') + 'Database name: ' + chalk.cyan(_this.dbName) + '\n' +
-            chalk.green('❯ ') + 'Database user: ' + chalk.cyan(_this.dbUser) + '\n' +
-            chalk.green('❯ ') + 'Database password: ' + chalk.cyan(_this.dbPassword) + '\n' +
-            chalk.green('❯ ') + 'Database host: ' + chalk.cyan(_this.dbHost) + '\n';
-        }
+      if (_this.wp) {
+        wordPressInfo = '\n' +
+          chalk.green('❯ ') + 'Database name: ' + chalk.cyan(_this.dbName) + '\n' +
+          chalk.green('❯ ') + 'Database user: ' + chalk.cyan(_this.dbUser) + '\n' +
+          chalk.green('❯ ') + 'Database password: ' + chalk.cyan(_this.dbPassword) + '\n' +
+          chalk.green('❯ ') + 'Database host: ' + chalk.cyan(_this.dbHost) + '\n';
+      }
 
-        _this.log(
-          '\n' +
-          '  ========================================', '\n' +
-          '\n' +
-          chalk.green('!'),  chalk.bold('Project details'), '\n\n' +
-          chalk.green('❯'), 'Name:', chalk.cyan(_this.appNameDasherize), '\n' +
-          chalk.green('❯'), 'Description:', chalk.cyan(_this.appDescription), '\n' +
-          chalk.green('❯'), 'Author:', chalk.cyan(_this.appAuthor), '\n' +
-          chalk.green('❯'), 'Type:', chalk.cyan(projectType), '\n' +
-          chalk.green('❯'), 'Project URL (production):', chalk.cyan(_this.appURL), '\n' +
-          wordPressInfo,
-          '\n' +
-          chalk.green('❯'), 'Please read', chalk.cyan('README.md'), 'for' + devEnvString + ' available commands and other useful info.', '\n' +
-          chalk.green('❯'), 'Then just run', chalk.yellow('npm run dev'), 'to kickstart your project.', '\n' +
-          chalk.green('❯ Happy developing! :)'), '\n' +
-          '\n' +
-          '  ========================================' +
-          '\n'
-        );
-      // }
+      _this.log(
+        '\n' +
+        '  ========================================', '\n' +
+        '\n' +
+        chalk.green('!'),  chalk.bold('Project details'), '\n\n' +
+        chalk.green('❯'), 'Name:', chalk.cyan(_this.appNameDasherize), '\n' +
+        chalk.green('❯'), 'Description:', chalk.cyan(_this.appDescription), '\n' +
+        chalk.green('❯'), 'Author:', chalk.cyan(_this.appAuthor), '\n' +
+        chalk.green('❯'), 'Type:', chalk.cyan(projectType), '\n' +
+        chalk.green('❯'), 'Project URL (production):', chalk.cyan(_this.appURL), '\n' +
+        wordPressInfo,
+        '\n' +
+        chalk.green('❯'), 'Please read', chalk.cyan('README.md'), 'for' + devEnvString + ' available commands and other useful info.', '\n' +
+        chalk.green('❯'), 'Then just run', chalk.yellow('npm run dev'), 'to kickstart your project.', '\n' +
+        chalk.green('❯ Happy developing! :)'), '\n' +
+        '\n' +
+        '  ========================================' +
+        '\n'
+      );
     }
   }
 });

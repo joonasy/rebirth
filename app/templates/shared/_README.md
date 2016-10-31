@@ -1,8 +1,11 @@
 # <%= appNameHumanize %>
 
-> <%= appDescription %>. Generated on <%= (generatorDate) %> with [<%= pkg.name %> v<%= pkg.version %>](<%= (generatorRepository) %>)<% if (typo3) { %> using the Typo3 extension name `<%= appRoot %>`<% } %>.
+> <%= appDescription %>. Generated on <%= (generatorDate) %> with [<%= pkg.name %> v<%= pkg.version %>](<%= (generatorRepository) %>).
 
-## Instructions 
+## Project information<% if (typo3) { %> 
+* Extension key: `<%= extensionKey %>`
+* Extension folder: `<%= appRoot %>`
+* Flux extension key: `<%= appNameSpace %>.<%= extensionKeyCapitalize %>`<% } %>
 
 Please read [My Web Starter Kit](https://bitbucket.org/mediasignal/my-web-starter-kit) guide.
 
@@ -21,11 +24,13 @@ Please read [My Web Starter Kit](https://bitbucket.org/mediasignal/my-web-starte
 
 ## Install
 
-Install node modules
+**1.** Clone this repository<% if (typo3) { %> to `<%= appRoot %>` folder<% } %>
+
+**2.** Install node modules
   
     npm install
 
-Install bower packages
+**3.** Install bower packages
   
     bower install
 

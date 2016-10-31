@@ -1,11 +1,11 @@
-plugin.tx_<%= extensionName %>.view {
-  templateRootPath = {$plugin.tx_<%= extensionName %>.view.templateRootPath}
-  partialRootPath = {$plugin.tx_<%= extensionName %>.view.partialRootPath}
-  layoutRootPath = {$plugin.tx_<%= extensionName %>.view.layoutRootPath}
+plugin.tx_<%= extensionKey %>.view {
+  templateRootPath = {$plugin.tx_<%= extensionKey %>.view.templateRootPath}
+  partialRootPath = {$plugin.tx_<%= extensionKey %>.view.partialRootPath}
+  layoutRootPath = {$plugin.tx_<%= extensionKey %>.view.layoutRootPath}
 }
 
 [globalString = ENV:HTTP_HOST = <%= appNameDasherize %>.dev]
-  plugin.tx_<%= extensionName %>.settings.dev = 1
+  plugin.tx_<%= extensionKey %>.settings.dev = 1
 [END]
 
 config.htmlTag_setParams = class="no-js"
