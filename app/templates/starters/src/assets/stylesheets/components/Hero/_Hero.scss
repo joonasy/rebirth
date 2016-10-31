@@ -53,13 +53,6 @@
         width: 100%;
       }
 
-      img {
-        display: block;
-        height: 100%;
-        object-fit: cover;
-        width: 100%;
-      }
-
       .no-js & > img {
         display: none;
       }
@@ -190,25 +183,6 @@
       background-color: rgba(#000000, 0.5);
       content: '';
       z-index: 1;
-    }
-  }
-}
-
-
-/* ======
- * Hero item - Default
- * ====== */
-
-.Hero-item--default {
-  .Hero-content {
-    width: 80%;
-
-    @include mq(s) {
-      width: 75%;
-    }
-
-    @include mq(m) {
-      width: 50%;
     }
   }
 }
