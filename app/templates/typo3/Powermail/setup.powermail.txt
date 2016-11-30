@@ -3,17 +3,17 @@ plugin.tx_powermail {
     templateRootPath >
     templateRootPaths {
       0 = EXT:powermail/Resources/Private/Templates/
-      1 = EXT:<%= appRoot %>/Resources/Powermail/Private/Templates/
+      1 = EXT:<%= dir %>/Resources/Powermail/Private/Templates/
     }
     partialRootPath >
     partialRootPaths {
       0 = EXT:powermail/Resources/Private/Partials/
-      1 = EXT:<%= appRoot %>/Resources/Powermail/Private/Templates/
+      1 = EXT:<%= dir %>/Resources/Powermail/Private/Templates/
     }
     layoutRootPath >
     layoutRootPaths {
       0 = EXT:powermail/Resources/Private/Layouts/
-      1 = EXT:<%= appRoot %>/Resources/Powermail/Private/Templates/
+      1 = EXT:<%= dir %>/Resources/Powermail/Private/Templates/
     }
   }
   settings {

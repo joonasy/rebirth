@@ -1,12 +1,12 @@
 wordpress:
-  container_name: <%= appRoot %>-wp
+  container_name: <%= dir %>-wp
   image: joonasy/wordpress
   links:
     - database:mysql
   ports:
     - 80:80
   volumes:
-    - ../<%= appRoot %>:/var/www/html/wp-content/themes/<%= appRoot %>
+    - ../<%= dir %>:/var/www/html/wp-content/themes/<%= dir %>
     - ./wp-content/mu-plugins:/var/www/html/wp-content/mu-plugins
     - ./wp-content/plugins:/var/www/html/wp-content/plugins
     - ./wp-content/uploads:/var/www/html/wp-content/uploads
@@ -17,7 +17,7 @@ wordpress:
     WORDPRESS_DB_USER: <%= dbUser %>
     USE_EXTERNAL_FILES: 'true'
 database:
-  container_name: <%= appRoot %>-db
+  container_name: <%= dir %>-db
   image: mariadb
   ports:
     - 3306:3306

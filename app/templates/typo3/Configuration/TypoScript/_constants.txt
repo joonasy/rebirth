@@ -1,6 +1,6 @@
-plugin.tx_<%= appRoot %>.view {
-  templateRootPath = EXT:<%= appRoot %>/Resources/Private/Templates/
-  partialRootPath = EXT:<%= appRoot %>/Resources/Private/Partials/
-  layoutRootPath = EXT:<%= appRoot %>/Resources/Private/Layouts/
+plugin.tx_<%= dir %>.view {
+  templateRootPath = EXT:<%= dir %>/Resources/Private/Templates/
+  partialRootPath = EXT:<%= dir %>/Resources/Private/Partials/
+  layoutRootPath = EXT:<%= dir %>/Resources/Private/Layouts/
 }
 

@@ -4,32 +4,59 @@
 
 'use strict'
 
-var chalk = require('chalk');
-var moment = require('moment');
-var path = require('path');
-var request = require('request');
-var yeoman = require('yeoman-generator');
-var yosay = require('yosay');
+var chalk = require('chalk')
+var moment = require('moment')
+var path = require('path')
+var request = require('request')
+var yeoman = require('yeoman-generator')
+var yosay = require('yosay')
 
 var MyGenerator = yeoman.generators.Base.extend({
   constructor: function () {
-    yeoman.generators.Base.apply(this, arguments);
-
-    this.pkg = require('../package.json');
-    this.appRoot = path.basename(process.cwd());
-    this.generatorDate = moment().format('D.M.YYYY');
-    this.generatorRepository = this.pkg.repository;
+    yeoman.generators.Base.apply(this, arguments)
+    this.pkg = require('../package.json')
+    this.generatorDate = moment().format('D.M.YYYY')
+    this.generatorRepository = this.pkg.repository
 
     this.argument('dir', {
-      type: String,
-      required: false
-    });
+      alias: 'd',
+      desc: 'Your project folder',
+      required: true,
+      type: String
+    })
 
-    if (this.dir) {
-      var dir = this.dir.toLowerCase();
-      this.destinationRoot(dir);
-      this.appRoot = dir;
-      this.dir = dir;
+    this.option('project', {
+      alias: 'p',
+      defaults: 'typo3',
+      type: String
+    })
+
+    this.options.project = {
+      value: this.options.project,
+      name: function() {
+        if (this.value === 'typo3') {
+          return 'Typo3'
+        } else if (this.value === 'wordpress') {
+          return 'WordPress'
+        } else {
+          return 'Html'
+        }
+      }
+    }
+
+    /**
+     * Setup proper install directory
+     */
+    this.dir = this.dir.toLowerCase()
+    this.destinationRoot(this.dir)
+
+    if (this.options.project.value === 'typo3') {
+      this.dir = this._.underscored(this.dir).replace(/_/g, '')
+      this.destinationRoot(this.dir)
+    }
+
+    if (this.options.project.value === 'wordpress') {
+      this.destinationRoot(this.dir)
     }
   },
 
@@ -38,28 +65,48 @@ var MyGenerator = yeoman.generators.Base.extend({
    */
   greet: function() {
     this.log(yosay(
-      'Hi! Welcome to ' + chalk.blue('My Web Starter Kit')+'.'
-    ));
-
-    if (!this.dir) {
-      this.log(
-        chalk.green('!'), chalk.yellow('Make sure your are in the correct installation folder. Your current folder is'),
-        chalk.cyan(path.dirname(process.cwd()) + '/' + path.basename(process.cwd()))
-      );
-    }
+      'Hi! Welcome to ' + chalk.blue('My Web Starter Kit')+'. ' +
+      'Let\'s create ' + chalk.green(this.options.project.name()) + ' project!'
+    ))
   },
 
   /**
    * Prompts
    */
   askQuestions: function () {
-    var done = this.async();
-    var appRoot = this.appRoot;
-    var dir = this.dir ? this.dir + '/' : '';
-    var _this = this;
+    var done = this.async()
+    var dir = this.dir
+    var _this = this
 
     this.prompt([
       {
+        when: function (props) {
+          if (_this.options.project.value === 'typo3') {
+            var extension =  _this._.underscored(dir).replace(/_/g, '')
+
+            _this.log(
+              chalk.green('❯'), 'Project install path:', chalk.cyan('./' + dir), '\n' +
+              chalk.green('❯'), 'Extension key:', chalk.cyan(extension), '\n' +
+
+              chalk.green('❯'), 'Extension path:', chalk.cyan('./' + dir + '/' + extension), '\n'  +
+              chalk.green('❯'), 'Build path:', chalk.cyan('./' + dir  + '/' + extension + '/Resources/Public/')
+            )
+          } else if (_this.options.project.value === 'html') {
+            _this.log(
+              chalk.green('❯'), 'Project install path:', chalk.cyan('./' + dir), '\n' +
+              chalk.green('❯'), 'Development path:', chalk.cyan('./' + dir + '/src/'), '\n' +
+              chalk.green('❯'), 'Build path:', chalk.cyan('./' + dir + '/dist/')
+            )
+          } else if (_this.options.project.value === 'wordpress') {
+            _this.log(
+              chalk.green('❯'), 'Project install path:', chalk.cyan('./' + dir), '\n' +
+
+              chalk.green('❯'), 'Theme will be installed in:', chalk.cyan('./' + dir + '/' + dir), '\n' +
+              chalk.green('❯'), 'Build path:', chalk.cyan('./' + dir + '/' + dir + '/dist/')
+            )
+          }
+        }
+      }, {
         type: 'input',
         name: 'name',
         message: 'Project name:',
@@ -70,63 +117,21 @@ var MyGenerator = yeoman.generators.Base.extend({
         message: 'Author name:',
         default: 'Author'
       }, {
-        type: 'list',
-        name: 'projectType',
-        message: 'What kind of project this is?',
-        choices: [
-          {
-            name: 'Typo3',
-            value: 'typo3',
-            checked: true
-          }, {
-            name: 'Html',
-            value: 'html',
-            checked: false
-          }, {
-            name: 'WordPress',
-            value: 'wp',
-            checked: false
-          }
-        ]
-      }, {
-        when: function (props) {
-          if (props.projectType === 'typo3') {
-            _this.log(
-              chalk.green('  ❯'), 'Project install path:', chalk.cyan('./' + dir), '\n' +
-              chalk.green('  ❯'), 'Extension key:', chalk.cyan(_this._.underscored(appRoot).replace(/_/g, '')), '\n' +
-              chalk.green('  ❯'), 'Extension path:', chalk.cyan('./' + appRoot + '/' + _this._.underscored(dir)), '\n'  +
-              chalk.green('  ❯'), 'Build path:', chalk.cyan('./' + appRoot + '/' + _this._.underscored(dir) + 'Resources/Public/')
-            );
-          } else if (props.projectType === 'html') {
-            _this.log(
-              chalk.green('  ❯'), 'Project install path:', chalk.cyan('./' + dir), '\n' +
-              chalk.green('  ❯'), 'Development path:', chalk.cyan('./' + dir + 'src/'), '\n' +
-              chalk.green('  ❯'), 'Build path:', chalk.cyan('./' + dir + 'dist/')
-            );
-          } else if (props.projectType === 'wp') {
-            _this.log(
-              chalk.green('  ❯'), 'Project install path:', chalk.cyan('./' + dir), '\n' +
-              chalk.green('  ❯'), 'Theme will be installed in:', chalk.cyan('./' + appRoot + '/' + dir), '\n' +
-              chalk.green('  ❯'), 'Build path:', chalk.cyan('./' + appRoot + '/' + appRoot + '/dist/')
-            );
-          }
-        }
-      }, {
           type: 'input',
           name: 'appNameSpace',
           message: 'Project namespace:',
           default: 'App',
           when: function(props) {
-            return props.projectType === 'wp' || props.projectType === 'typo3'
+            return _this.options.project.value === 'wordpress' || _this.options.project.value === 'typo3'
           }
       }, {
         when: function (props) {
-          if (props.projectType === 'typo3') {
+          if (_this.options.project.value === 'typo3') {
             _this.log(
-              chalk.green('  ❯'), 'Flux extension key:',
+              chalk.green('❯'), 'Flux extension key:',
                 chalk.cyan(
                   _this._.capitalize(_this._.camelize(props.appNameSpace)) + '.' +
-                  _this._.capitalize(_this._.underscored(appRoot).replace(/_/g, ''))
+                  _this._.capitalize(_this._.underscored(dir).replace(/_/g, ''))
                 )
             )
           }
@@ -171,7 +176,7 @@ var MyGenerator = yeoman.generators.Base.extend({
         message: 'Do you want to install Composer dependencies?',
         default: true,
         when: function(props) {
-          return props.projectType === 'wp' || props.projectType === 'typo3'
+          return _this.options.project.value === 'wordpress' || _this.options.project.value === 'typo3'
         }
       }, {
         type: 'input',
@@ -181,7 +186,7 @@ var MyGenerator = yeoman.generators.Base.extend({
           return _this._.underscored(_this._.dasherize(_this._.slugify(props.name)))
         },
         when: function(props) {
-          return props.projectType === 'wp'
+          return _this.options.project.value === 'wordpress'
         }
       }, {
         type: 'input',
@@ -189,7 +194,7 @@ var MyGenerator = yeoman.generators.Base.extend({
         message: 'Database user:',
         default: 'root',
         when: function(props) {
-          return props.projectType === 'wp'
+          return _this.options.project.value === 'wordpress'
         }
       }, {
         type: 'input',
@@ -197,7 +202,7 @@ var MyGenerator = yeoman.generators.Base.extend({
         message: 'Database password:',
         default: 'password',
         when: function(props) {
-          return props.projectType === 'wp'
+          return _this.options.project.value === 'wordpress'
         }
       }, {
         type: 'input',
@@ -205,11 +210,11 @@ var MyGenerator = yeoman.generators.Base.extend({
         message: 'Database host (use ' + chalk.cyan('mysql') + ' for Docker):',
         default: 'mysql',
         when: function(props) {
-          return props.projectType === 'wp'
+          return _this.options.project.value === 'wordpress'
         }
       }, {
         when: function (props) {
-          if (props.projectType === 'wp') {
+          if (_this.options.project.value === 'wordpress') {
             _this.log(
               chalk.green('  !'), 'WPML user id and subscription key can be found from the download link in \n' +
               chalk.green('  !'), chalk.underline.yellow('https://wpml.org/account/downloads/'), '\n' +
@@ -223,7 +228,7 @@ var MyGenerator = yeoman.generators.Base.extend({
         message: 'WPML user ID (leave empty for not installing):',
         default: false,
         when: function(props) {
-          return props.projectType === 'wp'
+          return _this.options.project.value === 'wordpress'
         }
       }, {
         type: 'input',
@@ -235,7 +240,7 @@ var MyGenerator = yeoman.generators.Base.extend({
         }
       }, {
         when: function (props) {
-          if (props.projectType === 'wp') {
+          if (_this.options.project.value === 'wordpress') {
             _this.log(
               chalk.green('  !'), 'ACF subscription key can be found from ' +
               chalk.underline.yellow('http://www.advancedcustomfields.com/my-account/')
@@ -248,50 +253,37 @@ var MyGenerator = yeoman.generators.Base.extend({
         message: 'ACF key (leave empty for not installing):',
         default: false,
         when: function(props) {
-          return props.projectType === 'wp'
+          return _this.options.project.value === 'wordpress'
         }
       }
     ], function(props) {
-      this.appNameDasherize = this._.dasherize(this._.slugify(props.name));
-      this.appNameHumanize = this._.humanize(this.appNameDasherize);
-      this.appNameUnderscored = this._.underscored(this.appNameDasherize);
-      this.appNamePascalize = this._.capitalize(this._.camelize(this.appNameDasherize));
-      this.appAuthor = props.author;
+      this.appNameDasherize = this._.dasherize(this._.slugify(props.name))
+      this.appNameHumanize = this._.humanize(this.appNameDasherize)
+      this.appNameUnderscored = this._.underscored(this.appNameDasherize)
+      this.appNamePascalize = this._.capitalize(this._.camelize(this.appNameDasherize))
+      this.appAuthor = props.author
+      this.appNameSpace = this._.capitalize(this._.camelize(props.appNameSpace))
+      this.appURL = props.url
+      this.appDescription = props.description
+      this.composer = props.composer
+      this.defaultAssets = props.whatStarters.indexOf('defaultAssets') !== -1
+      this.deployment = props.whatStarters.indexOf('deployment') !== -1
+      this.dirCapitalize = this._.capitalize(this.dir)
+      this.dbName = props.dbName
+      this.dbUser = props.dbUser
+      this.dbPassword = props.dbPassword
+      this.dbHost = props.dbHost
+      this.git = props.git
+      this.pluginWPMLuserID = props.pluginWPMLuserID
+      this.pluginWPMLkey = props.pluginWPMLkey
+      this.pluginACFkey = props.pluginACFkey
 
-      this.projectType = props.projectType;
-      this.typo3 = this.projectType === 'typo3';
-      this.html = this.projectType === 'html';
-      this.wp = this.projectType === 'wp';
-
-      if (this.typo3) {
-        this.appRoot = this._.underscored(this.appRoot);
-        this.extensionKey = this.appRoot.replace(/_/g, '');
-        this.extensionKeyCapitalize = this._.capitalize(this.extensionKey);
-        this.destinationRoot(this.appRoot);
-      }
-
-      if (this.wp) {
-        this.destinationRoot(this.appRoot);
-      }
-
-      this.appURL = props.url;
-      this.appDescription = props.description;
-      this.git = props.git;
-      this.defaultAssets = props.whatStarters.indexOf('defaultAssets') !== -1;
-      this.deployment = props.whatStarters.indexOf('deployment') !== -1;
-      this.composer = props.composer;
-
-      this.appNameSpace = this._.capitalize(this._.camelize(props.appNameSpace));
-
-      this.dbName = props.dbName;
-      this.dbUser = props.dbUser;
-      this.dbPassword = props.dbPassword;
-      this.dbHost = props.dbHost;
-      this.pluginWPMLuserID = props.pluginWPMLuserID;
-      this.pluginWPMLkey = props.pluginWPMLkey;
-      this.pluginACFkey = props.pluginACFkey;
-      done();
-    }.bind(this));
+      this.projectType = _this.options.project.value
+      this.typo3 = this.projectType === 'typo3'
+      this.html = this.projectType === 'html'
+      this.wp = this.projectType === 'wordpress'
+      done()
+    }.bind(this))
   },
 
   /**
@@ -299,15 +291,15 @@ var MyGenerator = yeoman.generators.Base.extend({
    */
   config: function() {
     if (this.typo3) {
-      this.config.set('assetsPath', 'Assets/');
+      this.config.set('assetsPath', 'Assets/')
     }
 
     if (this.html) {
-      this.config.set('assetsPath', 'src/assets/');
+      this.config.set('assetsPath', 'src/assets/')
     }
 
     if (this.wp) {
-      this.config.set('assetsPath', 'assets/');
+      this.config.set('assetsPath', 'assets/')
     }
   },
 
@@ -318,21 +310,21 @@ var MyGenerator = yeoman.generators.Base.extend({
     if (this.typo3) {
       this.template(
         this.templatePath('typo3/_gulpfile.js'),
-        this.destinationPath('gulpfile.js'));
+        this.destinationPath('gulpfile.js'))
     }
 
     if (this.html) {
       this.template(
         this.templatePath('html/_assemblefile.js'),
         this.destinationPath('assemblefile.js')
-      );
+      )
     }
 
     if (this.wp) {
       this.template(
         this.templatePath('wordpress/_gulpfile.js'),
         this.destinationPath('/gulpfile.js')
-      );
+      )
     }
   },
 
@@ -340,7 +332,7 @@ var MyGenerator = yeoman.generators.Base.extend({
    * Setup README.md
    */
   readme: function() {
-    this.template('shared/_README.md', 'README.md');
+    this.template('shared/_README.md', 'README.md')
   },
 
   /**
@@ -348,15 +340,15 @@ var MyGenerator = yeoman.generators.Base.extend({
    */
   packageJSON: function () {
     if (this.typo3) {
-      this.template('typo3/_package.json', this.destinationPath('package.json'));
+      this.template('typo3/_package.json', this.destinationPath('package.json'))
     }
 
     if (this.html) {
-      this.template('html/_package.json', this.destinationPath('package.json'));
+      this.template('html/_package.json', this.destinationPath('package.json'))
     }
 
     if (this.wp) {
-      this.template('wordpress/_package.json', this.destinationPath('package.json'));
+      this.template('wordpress/_package.json', this.destinationPath('package.json'))
     }
   },
 
@@ -365,8 +357,8 @@ var MyGenerator = yeoman.generators.Base.extend({
    */
   defaultAssets: function() {
     if (this.defaultAssets) {
-      var _this = this;
-      var startersDir = this.templatePath('starters/src/assets/');
+      var _this = this
+      var startersDir = this.templatePath('starters/src/assets/')
 
       var cssAssets = [
         'components/Component/',
@@ -393,8 +385,8 @@ var MyGenerator = yeoman.generators.Base.extend({
         _this.fs.copy(
           startersDir + 'stylesheets/' + file,
           _this.destinationPath(_this.config.get('assetsPath') + 'stylesheets/' + file)
-        );
-      });
+        )
+      })
 
       var jsAssets = [
         'app.js',
@@ -405,16 +397,16 @@ var MyGenerator = yeoman.generators.Base.extend({
         _this.fs.copy(
           startersDir + 'javascripts/' + file,
           _this.destinationPath(_this.config.get('assetsPath') + 'javascripts/' + file)
-        );
-      });
+        )
+      })
 
       this.template(
         startersDir + 'javascripts/_head.js',
         _this.config.get('assetsPath') + 'javascripts/head.js'
-      );
+      )
 
-      this.mkdir(this.config.get('assetsPath')+'images');
-      this.mkdir(this.config.get('assetsPath')+'fonts');
+      this.mkdir(this.config.get('assetsPath')+'images')
+      this.mkdir(this.config.get('assetsPath')+'fonts')
     }
   },
 
@@ -422,7 +414,7 @@ var MyGenerator = yeoman.generators.Base.extend({
    * Setup bower
    */
   bower: function() {
-    this.template('shared/_bower.json', 'bower.json');
+    this.template('shared/_bower.json', 'bower.json')
   },
 
   /**
@@ -430,8 +422,8 @@ var MyGenerator = yeoman.generators.Base.extend({
    */
   deployment: function() {
     if (this.deployment) {
-      this.template('shared/_dploy.example.yaml', 'dploy.example.yaml');
-      this.template('shared/_dploy.example.yaml', 'dploy.yaml');
+      this.template('shared/_dploy.example.yaml', 'dploy.example.yaml')
+      this.template('shared/_dploy.example.yaml', 'dploy.yaml')
     }
   },
 
@@ -442,17 +434,17 @@ var MyGenerator = yeoman.generators.Base.extend({
     this.fs.copy(
       this.templatePath('shared/editorconfig'),
       this.destinationPath('.editorconfig')
-    );
+    )
 
     this.fs.copy(
       this.templatePath('shared/eslintrc'),
       this.destinationPath('.eslintrc')
-    );
+    )
 
     this.template(
       this.templatePath('shared/_gitignore'),
       this.destinationPath('.gitignore')
-    );
+    )
   },
 
   /**
@@ -463,47 +455,47 @@ var MyGenerator = yeoman.generators.Base.extend({
       this.template(
         this.templatePath('typo3/Configuration/TypoScript/_setup.txt'),
         this.destinationPath('Configuration/TypoScript/setup.txt')
-      );
+      )
 
       this.template(
         this.templatePath('typo3/Resources/Private/Templates/Page/_HomePage.html'),
         this.destinationPath('Resources/Private/Templates/Page/HomePage.html')
-      );
+      )
 
       this.fs.copy(
         this.templatePath('typo3/Resources/Private/Layouts/App.html'),
         this.destinationPath('Resources/Private/Layouts/App.html')
-      );
+      )
 
       this.template(
         this.templatePath('typo3/Resources/Private/Partials/_Top.html'),
         this.destinationPath('Resources/Private/Partials/Top.html')
-      );
+      )
 
       this.template(
         this.templatePath('typo3/Resources/Private/Partials/_Bottom.html'),
         this.destinationPath('Resources/Private/Partials/Bottom.html')
-      );
+      )
 
       this.template(
         this.templatePath('typo3/_ext_emconf.php'),
         this.destinationPath('ext_emconf.php')
-      );
+      )
 
       this.template(
         this.templatePath('typo3/_ext_tables.php'),
         this.destinationPath('ext_tables.php')
-      );
+      )
 
       this.template(
         this.templatePath('typo3/typo3/_composer.json'),
         this.destinationPath('typo3/composer.json')
-      );
+      )
 
       this.template(
         this.templatePath('typo3/typo3/_composer.json'),
         this.destinationPath('../typo3/composer.json')
-      );
+      )
     }
   },
 
@@ -515,32 +507,32 @@ var MyGenerator = yeoman.generators.Base.extend({
       this.fs.copy(
         this.templatePath('html/src/helpers/assets.js'),
         this.destinationPath('src/helpers/assets.js')
-      );
+      )
 
       this.template(
         this.templatePath('html/src/_app.json'),
         this.destinationPath('src/app.json')
-      );
+      )
 
       this.template(
         this.templatePath('html/src/templates/_index.hbs'),
         this.destinationPath('src/templates/index.hbs')
-      );
+      )
 
       this.fs.copy(
         this.templatePath('html/src/layouts/default.hbs'),
         this.destinationPath('src/layouts/default.hbs')
-      );
+      )
 
       this.fs.copy(
         this.templatePath('html/src/partials/top.hbs'),
         this.destinationPath('src/partials/top.hbs')
-      );
+      )
 
       this.template(
         this.templatePath('html/src/partials/bottom.hbs'),
         this.destinationPath('src/partials/bottom.hbs')
-      );
+      )
     }
   },
 
@@ -549,186 +541,186 @@ var MyGenerator = yeoman.generators.Base.extend({
    */
   wp: function() {
     if (this.wp) {
-      var done = this.async();
-      var _this = this;
-      _this.salt = '';
+      var done = this.async()
+      var _this = this
+      _this.salt = ''
 
-      this.mkdir('acf-json');
+      this.mkdir('acf-json')
 
       if (_this.pluginWPMLuserID) {
-        this.mkdir('languages');
+        this.mkdir('languages')
       }
 
       this.fs.copy(
         this.templatePath('wordpress/header.php'),
         this.destinationPath('header.php')
-      );
+      )
 
       this.fs.copy(
         this.templatePath('wordpress/footer.php'),
         this.destinationPath('footer.php')
-      );
+      )
 
       this.directory(
         this.templatePath('wordpress/partials'),
         this.destinationPath('partials/')
-      );
+      )
 
       this.template(
         this.templatePath('wordpress/_functions.php'),
         this.destinationPath('functions.php')
-      );
+      )
 
       this.template(
         this.templatePath('wordpress/lib/_clean-up.php'),
         this.destinationPath('lib/clean-up.php')
-      );
+      )
 
       this.template(
         this.templatePath('wordpress/lib/_cpt-name.php'),
         this.destinationPath('lib/cpt-name.php')
-      );
+      )
 
       this.template(
         this.templatePath('wordpress/lib/_NavWalker.php'),
         this.destinationPath('lib/NavWalker.php')
-      );
+      )
 
       this.template(
         this.templatePath('wordpress/lib/_sc-name.php'),
         this.destinationPath('lib/sc-name.php')
-      );
+      )
 
       this.template(
         this.templatePath('wordpress/lib/_setup.php'),
         this.destinationPath('lib/setup.php')
-      );
+      )
 
       if (_this.pluginACFkey) {
         this.template(
           this.templatePath('wordpress/lib/_utils-acf.php'),
           this.destinationPath('lib/utils-acf.php')
-        );
+        )
       }
 
       this.template(
         this.templatePath('wordpress/lib/_utils.php'),
         this.destinationPath('lib/utils.php')
-      );
+      )
 
       this.template(
         this.templatePath('wordpress/_index.php'),
         this.destinationPath('index.php')
-      );
+      )
 
       this.template(
         this.templatePath('wordpress/_style.css'),
         this.destinationPath('style.css')
-      );
+      )
 
       this.template(
         this.templatePath('wordpress/wp/_docker-compose.yml'),
         this.destinationPath('wp/docker-compose.yml')
-      );
+      )
 
       this.template(
         this.templatePath('wordpress/wp/_docker-compose.yml'),
         this.destinationPath('../wp/docker-compose.yml')
-      );
+      )
 
       this.template(
         this.templatePath('wordpress/wp/_composer.json'),
         this.destinationPath('wp/composer.json')
-      );
+      )
 
       this.template(
         this.templatePath('wordpress/wp/_composer.json'),
         this.destinationPath('../wp/composer.json')
-      );
+      )
 
       this.template(
         this.templatePath('wordpress/wp/_wp-config.dev.php'),
         this.destinationPath('wp/wp-config.dev.php')
-      );
+      )
 
       this.template(
         this.templatePath('wordpress/wp/_wp-config.dev.php'),
         this.destinationPath('../wp/wp-config.dev.php')
-      );
+      )
 
       this.fs.copy(
         this.templatePath('wordpress/wp/register-theme-directory.php'),
         this.destinationPath('wp/wp-content/mu-plugins/register-theme-directory.php')
-      );
+      )
 
       this.fs.copy(
         this.templatePath('wordpress/wp/register-theme-directory.php'),
         this.destinationPath('../wp/wp-content/mu-plugins/register-theme-directory.php')
-      );
+      )
 
       this.fs.copy(
         this.templatePath('wordpress/wp/index.php'),
         this.destinationPath('wp/index.php')
-      );
+      )
 
       this.fs.copy(
         this.templatePath('wordpress/wp/index.php'),
         this.destinationPath('../wp/index.php')
-      );
+      )
 
       request('https://api.wordpress.org/secret-key/1.1/salt', function(error, response, body) {
         if (!error && response.statusCode == 200) {
-          _this.salt = body;
+          _this.salt = body
 
           _this.template(
             _this.templatePath('wordpress/wp/_wp-config.php'),
             _this.destinationPath('wp/wp-config.php')
-          );
+          )
 
           _this.template(
             _this.templatePath('wordpress/wp/_wp-config.php'),
             _this.destinationPath('../wp/wp-config.php')
-          );
+          )
 
-          done();
+          done()
         }
-      });
+      })
     }
   },
 
   install: function() {
-    var _this = this;
+    var _this = this
 
     this.installDependencies({
       skipInstall: this.options['skip-install'],
       callback: function() {
         if (_this.git) {
-          _this.spawnCommand('git', ['init']);
+          _this.spawnCommand('git', ['init'])
         }
 
-        var composer = _this.composer && !_this.options['skip-install'];
+        var composer = _this.composer && !_this.options['skip-install']
 
         if (_this.typo3 && composer || _this.wp && composer) {
           /**
            * We are one folder deeper in cms installations. Move back install root
            * and to created cms folder to install composer.
            */
-          process.chdir(path.join(process.cwd(), '../', _this.projectType));
+          process.chdir(path.join(process.cwd(), '../', _this.projectType))
 
           _this.spawnCommand('composer', ['install']).on('exit', function() {
-            installFinished();
-          });
+            installFinished()
+          })
         } else {
-          installFinished();
+          installFinished()
         }
       }.bind(this)
-    });
+    })
 
     function installFinished() {
-      var devEnvString = '';
-      var wordPressInfo = '';
-      var typo3Info = '';
-      var projectType = _this.projectType === 'wp' ? 'WordPress' : _this._.humanize(_this.projectType);
+      var devEnvString = ''
+      var wordPressInfo = ''
+      var typo3Info = ''
+      var projectType = _this.projectType === 'wordpress' ? 'WordPress' : _this._.humanize(_this.projectType)
 
       if (_this.typo3 || _this.wp) {
         devEnvString = ' development enviroment instructions,'
@@ -736,9 +728,9 @@ var MyGenerator = yeoman.generators.Base.extend({
 
       if (_this.typo3) {
         typo3Info = '\n' +
-          chalk.green('❯ ') + 'Extension key: ' + chalk.cyan(_this.extensionKey) + '\n' +
-          chalk.green('❯ ') + 'Extension folder: ' + chalk.cyan(_this.appRoot) + '\n' +
-          chalk.green('❯ ') + 'Flux extension key: ' + chalk.cyan(_this.appNameSpace + '.' + _this.extensionKeyCapitalize) + '\n';
+          chalk.green('❯ ') + 'Extension key: ' + chalk.cyan(_this.dir) + '\n' +
+          chalk.green('❯ ') + 'Extension folder: ' + chalk.cyan('./' + _this.dir) + '\n' +
+          chalk.green('❯ ') + 'Flux extension key: ' + chalk.cyan(_this.appNameSpace + '.' + _this.dirCapitalize) + '\n'
       }
 
       if (_this.wp) {
@@ -746,7 +738,7 @@ var MyGenerator = yeoman.generators.Base.extend({
           chalk.green('❯ ') + 'Database name: ' + chalk.cyan(_this.dbName) + '\n' +
           chalk.green('❯ ') + 'Database user: ' + chalk.cyan(_this.dbUser) + '\n' +
           chalk.green('❯ ') + 'Database password: ' + chalk.cyan(_this.dbPassword) + '\n' +
-          chalk.green('❯ ') + 'Database host: ' + chalk.cyan(_this.dbHost) + '\n';
+          chalk.green('❯ ') + 'Database host: ' + chalk.cyan(_this.dbHost) + '\n'
       }
 
       _this.log(
@@ -768,9 +760,9 @@ var MyGenerator = yeoman.generators.Base.extend({
         '\n' +
         '  ========================================' +
         '\n'
-      );
+      )
     }
   }
-});
+})
 
-module.exports = MyGenerator;
+module.exports = MyGenerator

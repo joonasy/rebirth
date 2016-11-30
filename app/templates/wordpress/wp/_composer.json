@@ -1,5 +1,5 @@
 {
-  "name": "<%= appRoot %>/wp",
+  "name": "<%= dir %>/wp",
   "description" : "<%= appNameHumanize %> WordPress Installer",
   "repositories": [
     {

@@ -3,9 +3,9 @@
 > <%= appDescription %>. Generated on <%= (generatorDate) %> with [<%= pkg.name %> v<%= pkg.version %>](<%= (generatorRepository) %>).
 
 ## Project information<% if (typo3) { %> 
-* Extension key: `<%= extensionKey %>`
-* Extension folder: `<%= appRoot %>`
-* Flux extension key: `<%= appNameSpace %>.<%= extensionKeyCapitalize %>`<% } %>
+* Extension key: `<%= dir %>`
+* Extension folder: `<%= dir %>`
+* Flux extension key: `<%= appNameSpace %>.<%= dirCapitalize %>`<% } %>
 
 Please read [My Web Starter Kit](https://bitbucket.org/mediasignal/my-web-starter-kit) guide.
 
@@ -24,7 +24,7 @@ Please read [My Web Starter Kit](https://bitbucket.org/mediasignal/my-web-starte
 
 ## Install
 
-**1.** Clone this repository<% if (typo3) { %> to `<%= appRoot %>` folder<% } %>
+**1.** Clone this repository<% if (typo3) { %> to `<%= dir %>` folder<% } %>
 
 **2.** Install node modules
   
@@ -49,23 +49,23 @@ Choose your preferred approach.
 
 ### a) LAMP/LEMP 
 
-> e.g. Vagrant w/ Homestead 
+> e.g. Vagrant w/ Homestead
 
 **1.** Copy `wp` and its contents one folder above of this repo and rename it to `wp` (This has been done already if you installed the project with the starter kit). Structure:
 
 ```
-<%= appRoot %>_root/
+<%= dir %>_root/
 |
-|── <%= appRoot %>/
+|── <%= dir %>/
 |   |── wp/
 |── wp/
 ```
 
-Even better is that you symlink your outer `wp/composer.json` to `<%= appRoot %>/wp/composer.json` as that file is version controlled. For example in Unix:
+Even better is that you symlink your outer `wp/composer.json` to `<%= dir %>/wp/composer.json` as that file is version controlled. For example in Unix:
 
 ```
-// <%= appRoot %>_root/wp/
-ln -s ../<%= appRoot %>/wp/composer.json composer.json
+// <%= dir %>_root/wp/
+ln -s ../<%= dir %>/wp/composer.json composer.json
 ```
 
 **2.** Run `composer install` in your newly created `wp/` folder
@@ -90,7 +90,7 @@ define('DB_HOST', 'localhost');
 **6.** Make themes folder in `wp/wp_content/themes/`, Symlink from `wp/wp-content/themes/` to your theme. For example in Unix:
 
 ```
-ln -s ../../../<%= appRoot %> <%= appRoot %>
+ln -s ../../../<%= dir %> <%= dir %>
 ```
 
 **7.** Open `<%= appNameDasherize %>.dev`, setup your new site and activate your theme
@@ -101,7 +101,7 @@ ln -s ../../../<%= appRoot %> <%= appRoot %>
 
 **1.** Make sure docker machine is running
 **2.** Do steps `1.)`, `2.)` and `4.)` from the LAMP/LEMP instruction above.
-**3.** In `wp-config.dev.php` make sure database credentials match and theme path points to correct location (e.g. `../<%= appRoot %>:/var/www/html/wp-content/themes/<%= appRoot %>`) . Define `DB_HOST` to `'mysql'` if not already.
+**3.** In `wp-config.dev.php` make sure database credentials match and theme path points to correct location (e.g. `../<%= dir %>:/var/www/html/wp-content/themes/<%= dir %>`) . Define `DB_HOST` to `'mysql'` if not already.
 **4.** Run `npm run docker`, open `<%= appNameDasherize %>.dev`, setup your site and activate your theme
 **5.** Do step `7.)` from the LAMP/LEMP instruction
  
@@ -109,23 +109,23 @@ Note that the we are using the same structure of files as in the [joonasy/wordpr
  
 ### LAMP/LEMP 
 
-> e.g. Vagrant w/ Homestead 
+> e.g. Vagrant w/ Homestead v0.3.3 
 
 **1.** Copy `typo3` and its contents one folder above of this repo (This has been done already if you installed the project with the starter kit). Structure:
   
 ```
-<%= appRoot %>_root/
+<%= dir %>_root/
 |
-|── <%= appRoot %>/
+|── <%= dir %>/
 |   |── typo3/
 |── typo3/
 ```
 
-Even better is that you symlink your outer `typo3/composer.json` to `<%= appRoot %>/typo3/composer.json` as that file is version controlled. For example in Unix:
+Even better is that you symlink your outer `typo3/composer.json` to `<%= dir %>/typo3/composer.json` as that file is version controlled. For example in Unix:
 
 ```
-// <%= appRoot %>_root/typo3/
-ln -s ../<%= appRoot %>/typo3/composer.json composer.json
+// <%= dir %>_root/typo3/
+ln -s ../<%= dir %>/typo3/composer.json composer.json
 ```
 
 **2.** Run `composer install` in your newly created `typo3/` folder
@@ -143,7 +143,7 @@ ln -s ../<%= appRoot %>/typo3/composer.json composer.json
 **6.** Symlink from  `typo3/typo3conf/ext/` to your extension in app root. For example in Unix:
 
 ```
-ln -s ../../../<%= appRoot %> <%= appRoot %>
+ln -s ../../../<%= dir %> <%= dir %>
 ```
 
 **7.** Open `<%= appNameDasherize %>.dev`, setup your new site and activate your extension.

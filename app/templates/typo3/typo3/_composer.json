@@ -9,7 +9,7 @@
   ],
   "autoload": {
     "psr-4": {
-      "<%= appNameSpace %>\\<%= appNamePascalize %>\\": "typo3conf/ext/<%= appRoot %>/Classes"
+      "<%= appNameSpace %>\\<%= appNamePascalize %>\\": "typo3conf/ext/<%= dir %>/Classes"
     }
   },
   "require": {

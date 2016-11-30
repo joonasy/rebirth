@@ -9,7 +9,7 @@ production:
   pass: ""
   path:<% if (html) { %>
     local: "dist"<% } %>
-    remote: "webroot/ROOT/<%= appRoot %>"
+    remote: "webroot/ROOT/<%= dir %>"
   port: 21
   scheme: "ftp"
   slots: 3

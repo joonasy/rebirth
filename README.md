@@ -12,7 +12,7 @@ Use only if you know what you are doing or you are working together with the aut
 
 ## Features
 
-* Choose between `Html`, `Typo3` or `WordPress` project types
+* Choose between Typo3, WordPress or html project types
 * CSS Autoprefixing
 * Livereloading with Browsersync
 * Automatically compile Sass
@@ -68,13 +68,11 @@ Please read and understand all of the following before doing anything. All of th
 
     npm install -g generator-my
 
-**2.** Run the generator in your current directory or optionally pass a new install location (If you are building a *Typo3 project* use underscores as spaces in your directory name e.g. `my_project_name`):
+**2.** Run the generator in your desired location, pass install directory and your project type (`typo3`, `html`, `wordpress`):
 
-    yo my [my-new-project-directory]
+    yo my [my-new-project-directory] --project=typo3
 
-or make a new directory, cd into it and run the generator:
-
-    mkdir my-new-project && cd $_ && yo my
+(If you are building a *Typo3 project* all special characters are removed from the extension directory name e.g. `my-project_name` -> `myprojectname`)
 
 ## Usage
 
