@@ -19,7 +19,6 @@ var MyGenerator = yeoman.generators.Base.extend({
     this.generatorRepository = this.pkg.repository
 
     this.argument('dir', {
-      alias: 'd',
       desc: 'Your project folder',
       required: true,
       type: String
@@ -33,6 +32,7 @@ var MyGenerator = yeoman.generators.Base.extend({
 
     this.options.project = {
       value: this.options.project,
+      cms: this.options.project === 'typo3' || this.options.project === 'wordpress',
       name: function() {
         if (this.value === 'typo3') {
           return 'Typo3'
@@ -75,42 +75,55 @@ var MyGenerator = yeoman.generators.Base.extend({
    */
   askQuestions: function () {
     var done = this.async()
-    var dir = this.dir
     var _this = this
 
     this.prompt([
       {
-        when: function (props) {
-          if (_this.options.project.value === 'typo3') {
-            var extension =  _this._.underscored(dir).replace(/_/g, '')
-
-            _this.log(
-              chalk.green('❯'), 'Project install path:', chalk.cyan('./' + dir), '\n' +
-              chalk.green('❯'), 'Extension key:', chalk.cyan(extension), '\n' +
-
-              chalk.green('❯'), 'Extension path:', chalk.cyan('./' + dir + '/' + extension), '\n'  +
-              chalk.green('❯'), 'Build path:', chalk.cyan('./' + dir  + '/' + extension + '/Resources/Public/')
-            )
-          } else if (_this.options.project.value === 'html') {
-            _this.log(
-              chalk.green('❯'), 'Project install path:', chalk.cyan('./' + dir), '\n' +
-              chalk.green('❯'), 'Development path:', chalk.cyan('./' + dir + '/src/'), '\n' +
-              chalk.green('❯'), 'Build path:', chalk.cyan('./' + dir + '/dist/')
-            )
-          } else if (_this.options.project.value === 'wordpress') {
-            _this.log(
-              chalk.green('❯'), 'Project install path:', chalk.cyan('./' + dir), '\n' +
-
-              chalk.green('❯'), 'Theme will be installed in:', chalk.cyan('./' + dir + '/' + dir), '\n' +
-              chalk.green('❯'), 'Build path:', chalk.cyan('./' + dir + '/' + dir + '/dist/')
-            )
-          }
-        }
-      }, {
         type: 'input',
         name: 'name',
         message: 'Project name:',
         default: path.basename(process.cwd())
+      }, {
+        type: 'confirm',
+        name: 'docker',
+        message: 'Create Docker development environment also?',
+        default: true,
+        when: function(props) {
+          return _this.options.project.cms
+        }
+      }, {
+        when: function (props) {
+          var docker = props.docker;
+
+          if (_this.options.project.cms) {
+            var deeperDir = docker ? _this.dir + '/' : '';
+          }
+
+          if (_this.options.project.value === 'typo3') {
+            var extension =  _this._.underscored(_this.dir).replace(/_/g, '')
+
+            _this.log(
+              chalk.green('❯'), 'Project install path:', chalk.cyan('./' + _this.dir), '\n' +
+              chalk.green('❯'), 'Extension key:', chalk.cyan(extension), '\n' +
+
+              chalk.green('❯'), 'Extension path:', chalk.cyan('./' + deeperDir + extension), '\n'  +
+              chalk.green('❯'), 'Build path:', chalk.cyan('./' + deeperDir + extension + '/Resources/Public/')
+            )
+          } else if (_this.options.project.value === 'wordpress') {
+            _this.log(
+              chalk.green('❯'), 'Project install path:', chalk.cyan('./' + _this.dir), '\n' +
+
+              chalk.green('❯'), 'Theme will be installed in:', chalk.cyan('./' + deeperDir + _this.dir), '\n' +
+              chalk.green('❯'), 'Build path:', chalk.cyan('./' + deeperDir + _this.dir + '/dist/')
+            )
+          } else {
+            _this.log(
+              chalk.green('❯'), 'Project install path:', chalk.cyan('./' + _this.dir), '\n' +
+              chalk.green('❯'), 'Development path:', chalk.cyan('./' + _this.dir + '/src/'), '\n' +
+              chalk.green('❯'), 'Build path:', chalk.cyan('./' + _this.dir + '/dist/')
+            )
+          }
+        }
       }, {
         type: 'input',
         name: 'author',
@@ -122,7 +135,7 @@ var MyGenerator = yeoman.generators.Base.extend({
           message: 'Project namespace:',
           default: 'App',
           when: function(props) {
-            return _this.options.project.value === 'wordpress' || _this.options.project.value === 'typo3'
+            return _this.options.project.cms
           }
       }, {
         when: function (props) {
@@ -131,7 +144,7 @@ var MyGenerator = yeoman.generators.Base.extend({
               chalk.green('❯'), 'Flux extension key:',
                 chalk.cyan(
                   _this._.capitalize(_this._.camelize(props.appNameSpace)) + '.' +
-                  _this._.capitalize(_this._.underscored(dir).replace(/_/g, ''))
+                  _this._.capitalize(_this._.underscored(_this.dir).replace(/_/g, ''))
                 )
             )
           }
@@ -176,7 +189,7 @@ var MyGenerator = yeoman.generators.Base.extend({
         message: 'Do you want to install Composer dependencies?',
         default: true,
         when: function(props) {
-          return _this.options.project.value === 'wordpress' || _this.options.project.value === 'typo3'
+          return _this.options.project.cms
         }
       }, {
         type: 'input',
@@ -265,10 +278,11 @@ var MyGenerator = yeoman.generators.Base.extend({
       this.appNameSpace = this._.capitalize(this._.camelize(props.appNameSpace))
       this.appURL = props.url
       this.appDescription = props.description
-      this.composer = props.composer
+      this.composer = props.composer// && !_this.options['skip-install']
       this.defaultAssets = props.whatStarters.indexOf('defaultAssets') !== -1
       this.deployment = props.whatStarters.indexOf('deployment') !== -1
       this.dirCapitalize = this._.capitalize(this.dir)
+      this.docker = props.docker
       this.dbName = props.dbName
       this.dbUser = props.dbUser
       this.dbPassword = props.dbPassword
@@ -491,11 +505,6 @@ var MyGenerator = yeoman.generators.Base.extend({
         this.templatePath('typo3/typo3/_composer.json'),
         this.destinationPath('typo3/composer.json')
       )
-
-      this.template(
-        this.templatePath('typo3/typo3/_composer.json'),
-        this.destinationPath('../typo3/composer.json')
-      )
     }
   },
 
@@ -688,6 +697,82 @@ var MyGenerator = yeoman.generators.Base.extend({
     }
   },
 
+  _installFinished: function() {
+    var _this = this;
+    var devEnvString = ''
+    var wordPressInfo = ''
+    var typo3Info = ''
+    var projectType = _this.projectType === 'wordpress' ? 'WordPress' : _this._.humanize(_this.projectType)
+
+    if (_this.cms) {
+      devEnvString = ' development enviroment instructions,'
+    }
+
+    if (_this.typo3) {
+      typo3Info = '\n' +
+        chalk.green('❯ ') + 'Extension key: ' + chalk.cyan(_this.dir) + '\n' +
+        chalk.green('❯ ') + 'Extension folder: ' + chalk.cyan('./' + _this.dir) + '\n' +
+        chalk.green('❯ ') + 'Flux extension key: ' + chalk.cyan(_this.appNameSpace + '.' + _this.dirCapitalize) + '\n'
+    }
+
+    if (_this.wp) {
+      wordPressInfo = '\n' +
+        chalk.green('❯ ') + 'Database name: ' + chalk.cyan(_this.dbName) + '\n' +
+        chalk.green('❯ ') + 'Database user: ' + chalk.cyan(_this.dbUser) + '\n' +
+        chalk.green('❯ ') + 'Database password: ' + chalk.cyan(_this.dbPassword) + '\n' +
+        chalk.green('❯ ') + 'Database host: ' + chalk.cyan(_this.dbHost) + '\n'
+    }
+
+    _this.log(
+      '\n' +
+      '  ========================================', '\n' +
+      '\n' +
+      chalk.green('!'),  chalk.bold('Project details'), '\n\n' +
+      chalk.green('❯'), 'Name:', chalk.cyan(_this.appNameDasherize), '\n' +
+      chalk.green('❯'), 'Description:', chalk.cyan(_this.appDescription), '\n' +
+      chalk.green('❯'), 'Author:', chalk.cyan(_this.appAuthor), '\n' +
+      chalk.green('❯'), 'Type:', chalk.cyan(projectType), '\n' +
+      chalk.green('❯'), 'Project URL (production):', chalk.cyan(_this.appURL), '\n' +
+      typo3Info,
+      wordPressInfo,
+      '\n' +
+      chalk.green('❯'), 'Please read', chalk.cyan('README.md'), 'for' + devEnvString + ' available commands and other useful info.', '\n' +
+      chalk.green('❯'), 'Then just run', chalk.yellow('npm run dev'), 'to kickstart your project.', '\n' +
+      chalk.green('❯ Happy developing! :)'), '\n' +
+      '\n' +
+      '  ========================================' +
+      '\n'
+    )
+  },
+
+  _installTypo3Docker: function() {
+    var _this = this;
+    var cwd = '../' + _this.dir + '-docker/app/web/composer.json'
+
+    _this.spawnCommand('git', ['clone', 'https://github.com/webdevops/TYPO3-docker-boilerplate.git', this.dir + '-docker'], {
+      cwd: '../'
+    }).on('exit', function() {
+      _this.template(
+        _this.templatePath('typo3/typo3/_composer.json'),
+        _this.destinationPath(cwd)
+      )
+
+      if (_this.composer) {
+        _this.spawnCommand('composer', ['install'], {
+          cwd: cwd
+        }).on('exit', function() {
+          _this._installFinished()
+        })
+      } else {
+        _this._installFinished()
+      }
+    })
+  },
+
+  _installWordPressDocker: function() {
+    var _this = this;
+  },
+
   install: function() {
     var _this = this
 
@@ -698,70 +783,15 @@ var MyGenerator = yeoman.generators.Base.extend({
           _this.spawnCommand('git', ['init'])
         }
 
-        var composer = _this.composer && !_this.options['skip-install']
-
-        if (_this.typo3 && composer || _this.wp && composer) {
-          /**
-           * We are one folder deeper in cms installations. Move back install root
-           * and to created cms folder to install composer.
-           */
-          process.chdir(path.join(process.cwd(), '../', _this.projectType))
-
-          _this.spawnCommand('composer', ['install']).on('exit', function() {
-            installFinished()
-          })
+        if (_this.typo3 && _this.docker) {
+          _this._installTypo3Docker()
+        } else if (_this.wordpress && _this.docker) {
+          _this._installWordPressDocker()
         } else {
-          installFinished()
+          _this._installFinished()
         }
       }.bind(this)
     })
-
-    function installFinished() {
-      var devEnvString = ''
-      var wordPressInfo = ''
-      var typo3Info = ''
-      var projectType = _this.projectType === 'wordpress' ? 'WordPress' : _this._.humanize(_this.projectType)
-
-      if (_this.typo3 || _this.wp) {
-        devEnvString = ' development enviroment instructions,'
-      }
-
-      if (_this.typo3) {
-        typo3Info = '\n' +
-          chalk.green('❯ ') + 'Extension key: ' + chalk.cyan(_this.dir) + '\n' +
-          chalk.green('❯ ') + 'Extension folder: ' + chalk.cyan('./' + _this.dir) + '\n' +
-          chalk.green('❯ ') + 'Flux extension key: ' + chalk.cyan(_this.appNameSpace + '.' + _this.dirCapitalize) + '\n'
-      }
-
-      if (_this.wp) {
-        wordPressInfo = '\n' +
-          chalk.green('❯ ') + 'Database name: ' + chalk.cyan(_this.dbName) + '\n' +
-          chalk.green('❯ ') + 'Database user: ' + chalk.cyan(_this.dbUser) + '\n' +
-          chalk.green('❯ ') + 'Database password: ' + chalk.cyan(_this.dbPassword) + '\n' +
-          chalk.green('❯ ') + 'Database host: ' + chalk.cyan(_this.dbHost) + '\n'
-      }
-
-      _this.log(
-        '\n' +
-        '  ========================================', '\n' +
-        '\n' +
-        chalk.green('!'),  chalk.bold('Project details'), '\n\n' +
-        chalk.green('❯'), 'Name:', chalk.cyan(_this.appNameDasherize), '\n' +
-        chalk.green('❯'), 'Description:', chalk.cyan(_this.appDescription), '\n' +
-        chalk.green('❯'), 'Author:', chalk.cyan(_this.appAuthor), '\n' +
-        chalk.green('❯'), 'Type:', chalk.cyan(projectType), '\n' +
-        chalk.green('❯'), 'Project URL (production):', chalk.cyan(_this.appURL), '\n' +
-        typo3Info,
-        wordPressInfo,
-        '\n' +
-        chalk.green('❯'), 'Please read', chalk.cyan('README.md'), 'for' + devEnvString + ' available commands and other useful info.', '\n' +
-        chalk.green('❯'), 'Then just run', chalk.yellow('npm run dev'), 'to kickstart your project.', '\n' +
-        chalk.green('❯ Happy developing! :)'), '\n' +
-        '\n' +
-        '  ========================================' +
-        '\n'
-      )
-    }
   }
 })
 
