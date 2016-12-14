@@ -4,6 +4,8 @@ Typo3 is Open Source Enterprise CMS and Scalable Web Application Framework.
 
 ## Starter extension folder structure
 
+For all the shared files and structure see [shared files across project types](../)
+
 ```
 project-folder/                       
     extension_name/                   # [1]
@@ -46,8 +48,6 @@ project-folder/
 * **14.** Typo3 installation folder
 * **15.** Contains all Typo3 dependencies
 * **16., 17.** Typo extension configuration
-
-For all the shared files and structure see [shared files across project types](../)
 
 ## Usual Workflow
 

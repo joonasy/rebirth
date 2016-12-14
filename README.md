@@ -33,8 +33,7 @@ Install all the requirements and setup your development environment before insta
 My Web Starter Kit also provides configuration files setting up your development environment. Requirements for `Typo3/WordPress` project types:
 
 * [Composer](https://getcomposer.org/)
-* [Vagrant](https://www.vagrantup.com/), recommended [Homestead](https://laravel.com/docs/4.2/homestead). Or any similar LAMP/LEMP stack.
-* [Docker Toolbox](https://www.docker.com/products/docker-toolbox) (alternatively for WordPress projects)
+* [Docker Toolbox](https://www.docker.com/products/docker-toolbox)
 
 ### Typo3 requirements
 
@@ -73,10 +72,6 @@ Please read and understand all of the following before doing anything. All of th
     yo my [my-new-project-directory] --project=typo3
 
 (If you are building a *Typo3 project* all special characters are removed from the extension directory name e.g. `my-project_name` -> `myprojectname`)
-
-## Usage
-
-Run `npm run build` for building and `npm run dev` for developing.
 
 ## Contribute
 

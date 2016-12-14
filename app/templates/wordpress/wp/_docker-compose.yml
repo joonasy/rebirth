@@ -13,8 +13,8 @@ wordpress:
     - ./wp-config.php:/var/www/html/wp-config.php
     - ./wp-config.dev.php:/var/www/html/wp-config.dev.php
   environment:
-    WORDPRESS_DB_NAME: <%= dbName %>
-    WORDPRESS_DB_USER: <%= dbUser %>
+    WORDPRESS_DB_NAME: wordpress
+    WORDPRESS_DB_USER: root
     USE_EXTERNAL_FILES: 'true'
 database:
   container_name: <%= dir %>-db
@@ -22,4 +22,4 @@ database:
   ports:
     - 3306:3306
   environment:
-    MYSQL_ROOT_PASSWORD: <%= dbPassword %>
+    MYSQL_ROOT_PASSWORD: wordpress

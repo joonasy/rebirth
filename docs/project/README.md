@@ -8,7 +8,16 @@ Project specific instructions:
 
 * [Typo3](typo3)
 
-### Shared starter files and folder structure across project types
+## Usage
+
+* `npm run build`: Build the application
+* `npm run deploy`: Build the application and deploy it to the server. Required [dploy](https://github.com/lucasmotta/dploy) setup.
+* `npm run dev`: Watches files and sets up development environment.
+    * `--open=false`: Disables automatic browser opening.
+    * `--host=yourlocalhost.app`: Assign your custom host for BrowserSync
+
+
+## Shared starter files and folder structure across project types
 
 ```
 project-folder/

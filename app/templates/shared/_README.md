@@ -38,7 +38,7 @@ Please read [My Web Starter Kit](https://bitbucket.org/mediasignal/my-web-starte
 
 * `npm run build`: Build the application
 <% if (deployment) { %>* `npm run deploy`: Build the application and deploy it to the server<% } %><% if (html) { %>* `npm run dist`: Build the application and start a local server for testing purposes<% } %>
-* `npm run dev`: Watches files and activates Browsersync. Use this for developing.<% if (wp) { %>
+* `npm run dev`: Watches files and sets up development environment.<% if (wp) { %>
 * `npm run docker`: Start the docker container
 * `npm run docker-wp`: Connect to the WordPress container
 * `npm run docker-db`: Connect to the database container<% } if (typo3 || wp) { %>
@@ -81,7 +81,7 @@ ln -s ../<%= dir %>/wp/composer.json composer.json
 **5.** Setup your database credentials in `wp-config.dev.php`. For example:
 
 ```
-define('DB_NAME', '<%= dbName %>');
+define('DB_NAME', 'wordpress');
 define('DB_USER', 'homestead');
 define('DB_PASSWORD', 'secret');
 define('DB_HOST', 'localhost');
