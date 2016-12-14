@@ -67,11 +67,18 @@ Please read and understand all of the following before doing anything. All of th
 
     npm install -g generator-my
 
-**2.** Run the generator in your desired location, pass install directory and your project type (`typo3`, `html`, `wordpress`):
+**2.** Run the generator in your desired location, pass install directory, docker option, and your project type (`typo3`, `html` or `wordpress`):
 
-    yo my [my-new-project-directory] --project=typo3
+    yo my [my-new-project-directory] --project=typo3 --docker=true
 
 (If you are building a *Typo3 project* all special characters are removed from the extension directory name e.g. `my-project_name` -> `myprojectname`)
+
+### Options
+
+| Option      | Type    | Default | Description                                                  |
+|-------------|---------|---------|--------------------------------------------------------------|
+| `--docker`  | Boolean | true    | Set to false if you want to install extension/theme only.    |
+| `--project` | String  | typo3   | Choose between `typo3`, `html` and `wordpress` project types |
 
 ## Contribute
 
