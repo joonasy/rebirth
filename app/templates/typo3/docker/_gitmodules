@@ -1,0 +1,3 @@
+[submodule "<%= dir %>"]
+  path = <%= dir %>
+  url = git@bitbucket.org:<%= appAuthorDasherize %>/<%= dir %>.git
