@@ -4,7 +4,7 @@ plugin.tx_<%= dir %>.view {
   layoutRootPath = {$plugin.tx_<%= dir %>.view.layoutRootPath}
 }
 
-[globalString = ENV:HTTP_HOST = <%= appNameDasherize %>.dev]
+[globalString = ENV:HTTP_HOST = <%= dir %>.dev:8000]
   plugin.tx_<%= dir %>.settings.dev = 1
 [END]
 

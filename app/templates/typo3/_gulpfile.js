@@ -31,7 +31,7 @@ var open = process.env.npm_config_open
  * ====== */
 
 var config = {
-  host: '<%= appNameDasherize %>.dev',
+  host: '<%= dir %>.dev',
   src: 'Resources/Private/',
   dest: 'Resources/Public/',
   stylesheets: {
