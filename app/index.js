@@ -58,35 +58,22 @@ var MyGenerator = yeoman.generators.Base.extend({
     this.dir = this.dir.toLowerCase()
 
     if (this.typo3) {
-      var installFolder = this._.underscored(this.dir).replace(/_/g, '')
+      var extension = this._.underscored(this.dir).replace(/_/g, '')
 
       if (this.docker) {
         this.mkdir(this.dir)
-        this.destinationRoot(this.dir + '/' + installFolder)
+        this.destinationRoot(this.dir + '/' + extension)
       } else {
-        this.destinationRoot(installFolder)
+        this.destinationRoot(extension)
       }
 
-      this.dir = installFolder
+      this.writtenDir = this.dir
+      this.dir = extension
     }
 
-    if (this.wp) {
+    if (this.wp || this.html) {
       this.destinationRoot(this.dir)
     }
-
-    if (this.html) {
-      this.destinationRoot(this.dir)
-    }
-  },
-
-  /**
-   * Greet the user
-   */
-  greet: function() {
-    this.log(yosay(
-      'Hi! Welcome to ' + chalk.blue('My Web Starter Kit')+'. ' +
-      'Let\'s create ' + chalk.green(this.name()) + ' project!'
-    ))
   },
 
   /**
@@ -94,6 +81,11 @@ var MyGenerator = yeoman.generators.Base.extend({
    */
   prompts: function () {
     var done = this.async()
+
+    this.log(yosay(
+      'Hi! Welcome to ' + chalk.blue('My Web Starter Kit')+'. ' +
+      'Let\'s create ' + chalk.green(this.name()) + ' project!'
+    ))
 
     this.prompt([
       {
@@ -107,7 +99,7 @@ var MyGenerator = yeoman.generators.Base.extend({
           var dockerPath = ''
 
           if (this.docker) {
-            deeperDir = this.docker ? this.dir + '/' : ''
+            deeperDir = this.docker ? this.writtenDir + '/' : ''
             dockerPath = '\n' + chalk.green('  ❯ ') + 'Docker path:' + chalk.cyan('./' +
               deeperDir + this.dir + '-docker')
           }
@@ -116,7 +108,7 @@ var MyGenerator = yeoman.generators.Base.extend({
             var extension =  this._.underscored(this.dir).replace(/_/g, '')
 
             this.log(
-              chalk.green('  ❯'), 'Install path:', chalk.cyan('./' + this.dir), '\n' +
+              chalk.green('  ❯'), 'Install path:', chalk.cyan('./' + this.writtenDir), '\n' +
               chalk.green('  ❯'), 'Extension key:', chalk.cyan(extension), '\n' +
               chalk.green('  ❯'), 'Extension path:', chalk.cyan('./' + deeperDir + extension),
               dockerPath
@@ -181,7 +173,7 @@ var MyGenerator = yeoman.generators.Base.extend({
         choices: [
           {
             name: 'Default stylesheets and JavaScripts',
-            value: 'defaultAssets',
+            value: 'assets',
             checked: true
           }, {
             name: 'Deployment configuration',
@@ -242,6 +234,7 @@ var MyGenerator = yeoman.generators.Base.extend({
         }.bind(this)
       }
     ], function(props) {
+      this.assets = props.whatStarters.indexOf('assets') !== -1
       this.appNameDasherize = this._.dasherize(this._.slugify(props.name))
       this.appNameHumanize = this._.humanize(this.appNameDasherize)
       this.appNameUnderscored = this._.underscored(this.appNameDasherize)
@@ -250,8 +243,7 @@ var MyGenerator = yeoman.generators.Base.extend({
       this.appNameSpace = this._.capitalize(this._.camelize(props.appNameSpace))
       this.appURL = props.url
       this.appDescription = props.description
-      this.composer = props.composer// && !this.options['skip-install']
-      this.defaultAssets = props.whatStarters.indexOf('defaultAssets') !== -1
+      this.composer = props.composer && !this.options['skip-install']
       this.deployment = props.whatStarters.indexOf('deployment') !== -1
       this.dirCapitalize = this._.capitalize(this.dir)
       this.git = props.git
@@ -280,61 +272,29 @@ var MyGenerator = yeoman.generators.Base.extend({
   },
 
   /**
-   * Setup gulpfile or assemblefile
+   * Copy various templates
    */
-  gulpfile: function() {
-    if (this.typo3) {
-      this.template(
-        this.templatePath('typo3/_gulpfile.js'),
-        this.destinationPath('gulpfile.js')
-      )
-    }
+  copy: function() {
+    this.fs.copyTpl(this.templatePath('shared/_README.md'),
+      this.destinationPath('README.md'), this)
+    this.fs.copyTpl(this.templatePath('shared/_bower.json'),
+      this.destinationPath('bower.json'), this)
+    this.fs.copyTpl(this.templatePath('shared/_gitignore'),
+      this.destinationPath('.gitignore'), this)
+    this.fs.copy(this.templatePath('shared/editorconfig'), this.destinationPath('.editorconfig'))
+    this.fs.copy(this.templatePath('shared/eslintrc'), this.destinationPath('.eslintrc'))
 
-    if (this.html) {
-      this.template(
-        this.templatePath('html/_assemblefile.js'),
-        this.destinationPath('assemblefile.js')
-      )
-    }
-
-    if (this.wp) {
-      this.template(
-        this.templatePath('wordpress/_gulpfile.js'),
-        this.destinationPath('gulpfile.js')
-      )
-    }
-  },
-
-  /**
-   * Setup README.md
-   */
-  readme: function() {
-    this.template('shared/_README.md', 'README.md')
-  },
-
-  /**
-   * Setup package.json
-   */
-  packageJSON: function () {
-    if (this.typo3) {
-      this.template('typo3/_package.json', this.destinationPath('package.json'))
-    }
-
-    if (this.html) {
-      this.template('html/_package.json', this.destinationPath('package.json'))
-    }
-
-    if (this.wp) {
-      this.template('wordpress/_package.json', this.destinationPath('package.json'))
+    if (this.deployment) {
+      this.fs.copyTpl(this.templatePath('shared/_dploy.example.yaml'), this.destinationPath('dploy.example.yaml'), this)
+      this.fs.copyTpl(this.templatePath('shared/_dploy.example.yaml'), this.destinationPath('dploy.yaml'), this)
     }
   },
 
   /**
    * Setup default assets
    */
-  defaultAssets: function() {
-    if (this.defaultAssets) {
-
+  assets: function() {
+    if (this.assets) {
       var _this = this
       var startersDir = this.templatePath('starters/src/assets/')
 
@@ -378,10 +338,8 @@ var MyGenerator = yeoman.generators.Base.extend({
         )
       })
 
-      this.template(
-        startersDir + 'javascripts/_head.js',
-        _this.config.get('assetsPath') + 'javascripts/head.js'
-      )
+      this.fs.copyTpl(startersDir + 'javascripts/_head.js',
+        _this.config.get('assetsPath') + 'javascripts/head.js', this)
 
       this.mkdir(this.config.get('assetsPath')+'images')
       this.mkdir(this.config.get('assetsPath')+'fonts')
@@ -389,86 +347,29 @@ var MyGenerator = yeoman.generators.Base.extend({
   },
 
   /**
-   * Setup bower
-   */
-  bower: function() {
-    this.template('shared/_bower.json', 'bower.json')
-  },
-
-  /**
-   * Setup deployment
-   */
-  deployment: function() {
-    if (this.deployment) {
-      this.template('shared/_dploy.example.yaml', 'dploy.example.yaml')
-      this.template('shared/_dploy.example.yaml', 'dploy.yaml')
-    }
-  },
-
-  /**
-   * Copy other templates
-   */
-  other: function() {
-    this.fs.copy(
-      this.templatePath('shared/editorconfig'),
-      this.destinationPath('.editorconfig')
-    )
-
-    this.fs.copy(
-      this.templatePath('shared/eslintrc'),
-      this.destinationPath('.eslintrc')
-    )
-
-    this.template(
-      this.templatePath('shared/_gitignore'),
-      this.destinationPath('.gitignore')
-    )
-  },
-
-  /**
    * Typo3
    */
   typo3: function() {
     if (this.typo3) {
-      this.template(
-        this.templatePath('typo3/Configuration/TypoScript/_setup.txt'),
-        this.destinationPath('Configuration/TypoScript/setup.txt')
-      )
-
-      this.template(
-        this.templatePath('typo3/Resources/Private/Templates/Page/_HomePage.html'),
-        this.destinationPath('Resources/Private/Templates/Page/HomePage.html')
-      )
-
-      this.fs.copy(
-        this.templatePath('typo3/Resources/Private/Layouts/App.html'),
-        this.destinationPath('Resources/Private/Layouts/App.html')
-      )
-
-      this.template(
-        this.templatePath('typo3/Resources/Private/Partials/_Top.html'),
-        this.destinationPath('Resources/Private/Partials/Top.html')
-      )
-
-      this.template(
-        this.templatePath('typo3/Resources/Private/Partials/_Bottom.html'),
-        this.destinationPath('Resources/Private/Partials/Bottom.html')
-      )
-
-      this.template(
-        this.templatePath('typo3/_ext_emconf.php'),
-        this.destinationPath('ext_emconf.php')
-      )
-
-      this.template(
-        this.templatePath('typo3/_ext_tables.php'),
-        this.destinationPath('ext_tables.php')
-      )
-
-      this.template(
-        this.templatePath('typo3/typo3/_composer.json'),
-        this.destinationPath('typo3/composer.json')
-      )
+      this.fs.copyTpl(this.templatePath('typo3/_package.json'), this.destinationPath('package.json'), this)
+      this.fs.copyTpl(this.templatePath('typo3/_gulpfile.js'),
+        this.destinationPath('gulpfile.js'), this)
+      this.fs.copyTpl(this.templatePath('typo3/Configuration/TypoScript/_setup.txt'),
+        this.destinationPath('Configuration/TypoScript/setup.txt'), this)
+      this.fs.copyTpl(this.templatePath('typo3/Resources/Private/Templates/Page/_HomePage.html'),
+        this.destinationPath('Resources/Private/Templates/Page/HomePage.html'), this)
+      this.fs.copyTpl(this.templatePath('typo3/Resources/Private/Partials/_Top.html'),
+        this.destinationPath('Resources/Private/Partials/Top.html'), this)
+      this.fs.copyTpl(this.templatePath('typo3/Resources/Private/Partials/_Bottom.html'),
+        this.destinationPath('Resources/Private/Partials/Bottom.html'), this)
+      this.fs.copyTpl(this.templatePath('typo3/_ext_emconf.php'),
+        this.destinationPath('ext_emconf.php'), this)
+      this.fs.copyTpl(this.templatePath('typo3/_ext_tables.php'),
+        this.destinationPath('ext_tables.php'), this)
+      this.fs.copyTpl(this.templatePath('typo3/typo3/_composer.json'),
+        this.destinationPath('typo3/composer.json'), this)
+      this.fs.copy(this.templatePath('typo3/Resources/Private/Layouts/App.html'),
+        this.destinationPath('Resources/Private/Layouts/App.html'))
     }
   },
 
@@ -477,35 +378,21 @@ var MyGenerator = yeoman.generators.Base.extend({
    */
   html: function () {
     if (this.html) {
-      this.fs.copy(
-        this.templatePath('html/src/helpers/assets.js'),
-        this.destinationPath('src/helpers/assets.js')
-      )
-
-      this.template(
-        this.templatePath('html/src/_app.json'),
-        this.destinationPath('src/app.json')
-      )
-
-      this.template(
-        this.templatePath('html/src/templates/_index.hbs'),
-        this.destinationPath('src/templates/index.hbs')
-      )
-
-      this.fs.copy(
-        this.templatePath('html/src/layouts/default.hbs'),
-        this.destinationPath('src/layouts/default.hbs')
-      )
-
-      this.fs.copy(
-        this.templatePath('html/src/partials/top.hbs'),
-        this.destinationPath('src/partials/top.hbs')
-      )
-
-      this.template(
-        this.templatePath('html/src/partials/bottom.hbs'),
-        this.destinationPath('src/partials/bottom.hbs')
-      )
+      this.fs.copyTpl('html/_package.json', this.destinationPath('package.json'), this)
+      this.fs.copyTpl(this.templatePath('html/_assemblefile.js'),
+        this.destinationPath('assemblefile.js'), this)
+      this.fs.copyTpl(this.templatePath('html/src/_app.json'),
+        this.destinationPath('src/app.json'), this)
+      this.fs.copyTpl(this.templatePath('html/src/templates/_index.hbs'),
+        this.destinationPath('src/templates/index.hbs'), this)
+      this.fs.copyTpl(this.templatePath('html/src/partials/bottom.hbs'),
+        this.destinationPath('src/partials/bottom.hbs'), this)
+      this.fs.copy(this.templatePath('html/src/helpers/assets.js'),
+        this.destinationPath('src/helpers/assets.js'))
+      this.fs.copy(this.templatePath('html/src/layouts/default.hbs'),
+        this.destinationPath('src/layouts/default.hbs'))
+      this.fs.copy(this.templatePath('html/src/partials/top.hbs'),
+        this.destinationPath('src/partials/top.hbs'))
     }
   },
 
@@ -516,87 +403,44 @@ var MyGenerator = yeoman.generators.Base.extend({
     if (this.wp) {
       var done = this.async()
 
+      this.fs.copyTpl('wordpress/_package.json', this.destinationPath('package.json'), this)
+      this.fs.copyTpl( this.templatePath('wordpress/_gulpfile.js'),
+        this.destinationPath('gulpfile.js'), this)
+      this.fs.copyTpl(this.templatePath('wordpress/_functions.php'),
+        this.destinationPath('functions.php'), this)
+      this.fs.copyTpl(this.templatePath('wordpress/lib/_clean-up.php'),
+        this.destinationPath('lib/clean-up.php'), this)
+      this.fs.copyTpl(this.templatePath('wordpress/lib/_cpt-name.php'),
+        this.destinationPath('lib/cpt-name.php'), this)
+      this.fs.copyTpl(this.templatePath('wordpress/lib/_NavWalker.php'),
+        this.destinationPath('lib/NavWalker.php'), this)
+      this.fs.copyTpl(this.templatePath('wordpress/lib/_sc-name.php'),
+        this.destinationPath('lib/sc-name.php'), this)
+      this.fs.copyTpl(this.templatePath('wordpress/lib/_setup.php'),
+        this.destinationPath('lib/setup.php'), this)
+      this.fs.copyTpl(this.templatePath('wordpress/lib/_utils.php'),
+        this.destinationPath('lib/utils.php'), this)
+      this.fs.copyTpl(this.templatePath('wordpress/_index.php'),
+        this.destinationPath('index.php'), this)
+      this.fs.copyTpl(this.templatePath('wordpress/_style.css'),
+        this.destinationPath('style.css'), this)
+      this.fs.copyTpl( this.templatePath('wordpress/wp/_composer.json'),
+        this.destinationPath('wp/composer.json'), this)
+      this.fs.copy( this.templatePath('wordpress/header.php'), this.destinationPath('header.php'))
+      this.fs.copy(this.templatePath('wordpress/footer.php'), this.destinationPath('footer.php'))
+      this.directory(this.templatePath('wordpress/partials'), this.destinationPath('partials/'))
+
       if (this.pluginACFkey) {
         this.mkdir('acf-json')
+        this.fs.copyTpl(this.templatePath('wordpress/lib/_utils-acf.php'),
+          this.destinationPath('lib/utils-acf.php'), this)
       }
 
       if (this.pluginWPMLuserID) {
         this.mkdir('languages')
       }
 
-      this.fs.copy(
-        this.templatePath('wordpress/header.php'),
-        this.destinationPath('header.php')
-      )
-
-      this.fs.copy(
-        this.templatePath('wordpress/footer.php'),
-        this.destinationPath('footer.php')
-      )
-
-      this.directory(
-        this.templatePath('wordpress/partials'),
-        this.destinationPath('partials/')
-      )
-
-      this.template(
-        this.templatePath('wordpress/_functions.php'),
-        this.destinationPath('functions.php')
-      )
-
-      this.template(
-        this.templatePath('wordpress/lib/_clean-up.php'),
-        this.destinationPath('lib/clean-up.php')
-      )
-
-      this.template(
-        this.templatePath('wordpress/lib/_cpt-name.php'),
-        this.destinationPath('lib/cpt-name.php')
-      )
-
-      this.template(
-        this.templatePath('wordpress/lib/_NavWalker.php'),
-        this.destinationPath('lib/NavWalker.php')
-      )
-
-      this.template(
-        this.templatePath('wordpress/lib/_sc-name.php'),
-        this.destinationPath('lib/sc-name.php')
-      )
-
-      this.template(
-        this.templatePath('wordpress/lib/_setup.php'),
-        this.destinationPath('lib/setup.php')
-      )
-
-      if (this.pluginACFkey) {
-        this.template(
-          this.templatePath('wordpress/lib/_utils-acf.php'),
-          this.destinationPath('lib/utils-acf.php')
-        )
-      }
-
-      this.template(
-        this.templatePath('wordpress/lib/_utils.php'),
-        this.destinationPath('lib/utils.php')
-      )
-
-      this.template(
-        this.templatePath('wordpress/_index.php'),
-        this.destinationPath('index.php')
-      )
-
-      this.template(
-        this.templatePath('wordpress/_style.css'),
-        this.destinationPath('style.css')
-      )
-
-      this.template(
-        this.templatePath('wordpress/wp/_composer.json'),
-        this.destinationPath('wp/composer.json')
-      )
-
-      if (this.wp && this.docker) {
+      if (this.docker) {
         var url = 'https://api.wordpress.org/secret-key/1.1/salt'
         var cwd = '../' + this.dir + '-docker/'
         this.salt = ''
@@ -605,30 +449,17 @@ var MyGenerator = yeoman.generators.Base.extend({
           if (!error && response.statusCode == 200) {
             this.salt = body
 
-            this.template(
-              this.templatePath('wordpress/wp/_wp-config.php'),
-              this.destinationPath(cwd + 'wp-config.php')
+            this.fs.copyTpl(this.templatePath('wordpress/wp/_wp-config.php'),
+              this.destinationPath(cwd + 'wp-config.php'), this)
+            this.fs.copyTpl(this.templatePath('wordpress/wp/_docker-compose.yml'),
+              this.destinationPath(cwd + 'docker-compose.yml'), this)
+            this.fs.copyTpl(this.templatePath('wordpress/wp/_wp-config.dev.php'),
+              this.destinationPath(cwd + 'wp-config.dev.php'), this)
+            this.fs.copy(this.templatePath('wordpress/wp/register-theme-directory.php'),
+              this.destinationPath(cwd + 'wp-content/mu-plugins/register-theme-directory.php'), this
             )
-
-            this.template(
-              this.templatePath('wordpress/wp/_docker-compose.yml'),
-              this.destinationPath(cwd + 'docker-compose.yml')
-            )
-
-            this.template(
-              this.templatePath('wordpress/wp/_wp-config.dev.php'),
-              this.destinationPath(cwd + 'wp-config.dev.php')
-            )
-
-            this.fs.copy(
-              this.templatePath('wordpress/wp/register-theme-directory.php'),
-              this.destinationPath(cwd + 'wp-content/mu-plugins/register-theme-directory.php')
-            )
-
-            this.fs.copy(
-              this.templatePath('wordpress/wp/index.php'),
-              this.destinationPath(cwd + 'index.php')
-            )
+            this.fs.copy(this.templatePath('wordpress/wp/index.php'),
+              this.destinationPath(cwd + 'index.php'), this)
 
             done()
           }
@@ -642,9 +473,7 @@ var MyGenerator = yeoman.generators.Base.extend({
     this.spawnCommand('git', ['init'])
 
     if (this.docker) {
-      this.spawnCommand('git', ['init'], {
-        cwd: '../'
-      })
+      this.spawnCommand('git', ['init'], { cwd: '../' })
     }
   },
 
@@ -665,10 +494,8 @@ var MyGenerator = yeoman.generators.Base.extend({
           _this.spawnCommand('git', ['checkout', '4d394a7'], { cwd: docker })
           _this.spawnCommand('touch', ['FIRST_INSTALL'], { cwd: web })
 
-          _this.template(
-            _this.templatePath('typo3/docker/docker-compose.development.yaml'),
-            _this.destinationPath(docker + '/docker-compose.yaml')
-          )
+          _this.fs.copyTpl(_this.templatePath('typo3/docker/_docker-compose.development.yaml'),
+            _this.destinationPath(docker + '/docker-compose.yaml'), _this)
 
           _this.spawnCommand('ln', ['-s', '../../../' + _this.dir + '/typo3/composer.json'], {
             cwd: web
