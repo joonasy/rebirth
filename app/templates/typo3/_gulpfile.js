@@ -6,24 +6,24 @@
  * @url <%= (generatorRepository) %>
  */
 
-'use strict';
+'use strict'
 
-var fs = require('fs');
-var browserify = require('browserify');
-var browserSync = require('browser-sync').create();
-var gulp = require('gulp');
-var notifier = require('node-notifier');
-var path = require('path');
-var prettyHrtime = require('pretty-hrtime');
-var rimraf = require('rimraf');
-var source = require('vinyl-source-stream');
-var through = require('through2');
-var watchify = require('watchify');
-var $ = require('gulp-load-plugins')();
+var fs = require('fs')
+var browserify = require('browserify')
+var browserSync = require('browser-sync').create()
+var gulp = require('gulp')
+var notifier = require('node-notifier')
+var path = require('path')
+var prettyHrtime = require('pretty-hrtime')
+var rimraf = require('rimraf')
+var source = require('vinyl-source-stream')
+var through = require('through2')
+var watchify = require('watchify')
+var $ = require('gulp-load-plugins')()
 
-var production = false;
-var host = process.env.npm_config_host;
-var open = process.env.npm_config_open;
+var production = process.env.NODE_ENV === 'production'
+var host = process.env.npm_config_host
+var open = process.env.npm_config_open
 
 
 /* ======
@@ -80,27 +80,27 @@ gulp.task('stylesheets', function() {
     .on('error', $.sass.logError)
     .pipe($.autoprefixer({
       browsers: ['last 2 versions', 'IE 10', 'Safari >= 8']
-    }));
+    }))
 
   if (production) {
     return pipeline = pipeline
       .pipe($.replace('../', '/typo3conf/ext/' + config.dest + 'Assets/'))
       .pipe($.combineMq({ beautify: false }))
       .pipe($.cssnano({ mergeRules: false }))
-      .pipe(gulp.dest(config.stylesheets.dest));
+      .pipe(gulp.dest(config.stylesheets.dest))
   } else {
     return pipeline = pipeline
       .pipe(gulp.dest(config.stylesheets.dest))
-      .pipe(browserSync.stream());
+      .pipe(browserSync.stream())
   }
-});
+})
 
 /**
  * Javascripts
  */
 gulp.task('javascripts', ['modernizr'], function(callback) {
 
-  var bundleQueue = config.javascripts.bundle.length;
+  var bundleQueue = config.javascripts.bundle.length
 
   var browserifyBundle = function(bundleConfig) {
 
@@ -110,47 +110,47 @@ gulp.task('javascripts', ['modernizr'], function(callback) {
       fullPaths: false,
       entries: bundleConfig.src,
       debug: !production
-    });
+    })
 
     var bundle = function() {
-      bundleLogger.start(bundleConfig.file_name);
+      bundleLogger.start(bundleConfig.file_name)
 
       var collect = pipeline
         .bundle()
         .on('error', handleError)
-        .pipe(source(bundleConfig.file_name));
+        .pipe(source(bundleConfig.file_name))
 
       if (!production) {
         collect = collect.pipe(browserSync.stream())
       } else {
-        collect = collect.pipe($.streamify($.uglify()));
+        collect = collect.pipe($.streamify($.uglify()))
       }
 
       return collect
         .pipe(gulp.dest(config.javascripts.dest))
-        .on('end', reportFinished);
-    };
+        .on('end', reportFinished)
+    }
 
     if (!production) {
-      pipeline = watchify(pipeline).on('update', bundle);
+      pipeline = watchify(pipeline).on('update', bundle)
     }
 
     var reportFinished = function() {
       bundleLogger.end(bundleConfig.file_name)
 
       if (bundleQueue) {
-        bundleQueue--;
+        bundleQueue--
         if (bundleQueue === 0) {
-          callback();
+          callback()
         }
       }
-    };
+    }
 
-    return bundle();
-  };
+    return bundle()
+  }
 
-  config.javascripts.bundle.forEach(browserifyBundle);
-});
+  config.javascripts.bundle.forEach(browserifyBundle)
+})
 
 /**
  * Images
@@ -164,8 +164,8 @@ gulp.task('images', function() {
       ],
     }))
     .on('error', handleError)
-    .pipe(gulp.dest(config.images.dest));
-});
+    .pipe(gulp.dest(config.images.dest))
+})
 
 /**
  * Fonts
@@ -174,8 +174,8 @@ gulp.task('fonts', function() {
   return gulp.src(config.fonts.src)
     .pipe($.changed(config.fonts.dest))
     .on('error', handleError)
-    .pipe(gulp.dest(config.fonts.dest));
-});
+    .pipe(gulp.dest(config.fonts.dest))
+})
 
 /**
  * Server
@@ -187,19 +187,19 @@ gulp.task('server', function() {
     proxy: host ? host : config.host,
     notify: false,
     serveStatic: ['./']
-  });
-});
+  })
+})
 
 /**
  * Watch
  */
 gulp.task('watch', function(callback) {
-  gulp.watch(config.src + '**/*.html').on('change', browserSync.reload);
-  gulp.watch(config.stylesheets.watch, ['stylesheets']);
-  gulp.watch(config.fonts.watch, ['fonts']);
-  gulp.watch(config.images.watch, ['images']);
-  gulp.watch('gulpfile.js', ['default']);
-});
+  gulp.watch(config.src + '**/*.html').on('change', browserSync.reload)
+  gulp.watch(config.stylesheets.watch, ['stylesheets'])
+  gulp.watch(config.fonts.watch, ['fonts'])
+  gulp.watch(config.images.watch, ['images'])
+  gulp.watch('gulpfile.js', ['default'])
+})
 
 /**
  * JavasScript Coding style
@@ -208,8 +208,8 @@ gulp.task('eslint', function () {
   return gulp.src(config.javascripts.src + '**/*.js')
     .pipe($.eslint())
     .pipe($.eslint.format())
-    .pipe($.eslint.failAfterError());
-});
+    .pipe($.eslint.failAfterError())
+})
 
 /**
  * Modernizr
@@ -232,13 +232,13 @@ gulp.task('modernizr', ['stylesheets'], function() {
       ]
     }))
     .on('error', handleError)
-    .pipe(gulp.dest(config.javascripts.dest + 'vendors'));
-});
+    .pipe(gulp.dest(config.javascripts.dest + 'vendors'))
+})
 
 /**
  * Tasks
  */
-var tasks = ['stylesheets', 'javascripts', 'images', 'fonts'];
+var tasks = ['stylesheets', 'javascripts', 'images', 'fonts']
 
 /**
  * Create dist files and inline <head> css/js
@@ -249,22 +249,22 @@ gulp.task('createDistPartials', tasks, function() {
     config.src + 'Partials/Bottom.html',
   ], { base: config.src })
     .pipe($.replace(inline({ matchFile: 'app.css' }), function() {
-      return inline({ file: 'app.css' });
+      return inline({ file: 'app.css' })
     }))
     .pipe($.replace(inline({ matchFile: 'head.js' }), function() {
-      return inline({ file: 'head.js' });
+      return inline({ file: 'head.js' })
     }))
     .pipe($.rename({ suffix: '.dist' }))
-    .pipe(gulp.dest(config.src));
-});
+    .pipe(gulp.dest(config.src))
+})
 
 /**
  * Revision
  */
 gulp.task('rev', tasks.concat(['createDistPartials']), function() {
-  rimraf.sync(config.stylesheets.dest);
-  rimraf.sync(config.javascripts.dest + 'head.js');
-  rimraf.sync(config.javascripts.dest + 'vendors');
+  rimraf.sync(config.stylesheets.dest)
+  rimraf.sync(config.javascripts.dest + 'head.js')
+  rimraf.sync(config.javascripts.dest + 'vendors')
 
   return gulp.src([
     config.dest + 'Assets/{images,fonts,javascripts}/**'
@@ -273,14 +273,14 @@ gulp.task('rev', tasks.concat(['createDistPartials']), function() {
     .pipe(gulp.dest(config.dest + 'Assets/'))
     .pipe(rmOriginalFiles())
     .pipe($.rev.manifest())
-    .pipe(gulp.dest('./'));
-});
+    .pipe(gulp.dest('./'))
+})
 
 /**
  * Update references
  */
 gulp.task('updateReferences', tasks.concat(['rev']), function() {
-  var manifest = gulp.src('./rev-manifest.json');
+  var manifest = gulp.src('./rev-manifest.json')
 
   return gulp.src([
     config.dest + 'Assets/**',
@@ -291,8 +291,8 @@ gulp.task('updateReferences', tasks.concat(['rev']), function() {
       manifest: manifest,
       replaceInExtensions: ['.js', '.css', '.html']
     }))
-    .pipe(gulp.dest(config.dest));
-});
+    .pipe(gulp.dest(config.dest))
+})
 
 
 /* ======
@@ -300,23 +300,22 @@ gulp.task('updateReferences', tasks.concat(['rev']), function() {
  * ====== */
 
 gulp.task('build', ['eslint'], function() {
-  rimraf.sync(config.dest);
-  production = true;
+  rimraf.sync(config.dest)
   gulp.start(tasks.concat([
     'modernizr',
     'createDistPartials',
     'rev',
     'updateReferences'
-  ]));
-});
+  ]))
+})
 
-gulp.task('default', ['build']);
+gulp.task('default', ['build'])
 
 gulp.task('dev', tasks.concat([
   'modernizr',
   'watch',
   'server'
-]));
+]))
 
 
 /* ======
@@ -324,51 +323,51 @@ gulp.task('dev', tasks.concat([
  * ====== */
 
 function handleError(err) {
-  $.util.log(err);
-  $.util.beep();
+  $.util.log(err)
+  $.util.beep()
   notifier.notify({
     title: 'Compile Error',
     message: err.message
-  });
-  return this.emit('end');
+  })
+  return this.emit('end')
 }
 
 function inline(opts) {
-  opts = opts || {};
+  opts = opts || {}
 
   if (opts.matchFile) {
     if (opts.matchFile.match(/.js/)) {
-      return new RegExp('<v:asset.script(.*?)path="(.*?)'+opts.matchFile+'"(.*?)>');
+      return new RegExp('<v:asset.script(.*?)path="(.*?)'+opts.matchFile+'"(.*?)>')
     }
-    return new RegExp('<v:asset.style(.*?)path="(.*?)'+opts.matchFile+'"(.*?)>');
+    return new RegExp('<v:asset.style(.*?)path="(.*?)'+opts.matchFile+'"(.*?)>')
   }
 
   if (opts.file) {
-    var content;
-    var tagBegin = '<v:asset.script standalone="true" movable="false">';
-    var tagEnd = '</v:asset.script>';
+    var content
+    var tagBegin = '<v:asset.script standalone="true" movable="false">'
+    var tagEnd = '</v:asset.script>'
 
     if (opts.file.match(/.js/)) {
-      content = fs.readFileSync(config.javascripts.dest + opts.file, 'utf8');
+      content = fs.readFileSync(config.javascripts.dest + opts.file, 'utf8')
     } else {
-      tagBegin = '<v:asset.style standalone="true">';
-      tagEnd = '</v:asset.style>';
-      content = fs.readFileSync(config.stylesheets.dest + opts.file, 'utf8');
+      tagBegin = '<v:asset.style standalone="true">'
+      tagEnd = '</v:asset.style>'
+      content = fs.readFileSync(config.stylesheets.dest + opts.file, 'utf8')
     }
 
-    return tagBegin + content + tagEnd;
+    return tagBegin + content + tagEnd
   }
 }
 
 var startTime, bundleLogger = {
   start: function(filepath) {
-    startTime = process.hrtime();
-    $.util.log('Bundling', $.util.colors.green(filepath));
+    startTime = process.hrtime()
+    $.util.log('Bundling', $.util.colors.green(filepath))
   },
   end: function(filepath) {
-    var taskTime = process.hrtime(startTime);
-    var prettyTime = prettyHrtime(taskTime);
-    $.util.log('Bundled', $.util.colors.green(filepath), 'after', $.util.colors.magenta(prettyTime));
+    var taskTime = process.hrtime(startTime)
+    var prettyTime = prettyHrtime(taskTime)
+    $.util.log('Bundled', $.util.colors.green(filepath), 'after', $.util.colors.magenta(prettyTime))
   }
 }
 
@@ -376,11 +375,11 @@ function rmOriginalFiles() {
   return through.obj(function(file, enc, cb) {
 
     if (file.revOrigPath) {
-      fs.unlink(file.revOrigPath);
+      fs.unlink(file.revOrigPath)
     }
 
-    this.push(file);
-    return cb();
-  });
+    this.push(file)
+    return cb()
+  })
 }
 
