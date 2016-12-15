@@ -597,10 +597,11 @@ var MyGenerator = yeoman.generators.Base.extend({
       )
 
       if (this.wp && this.docker) {
+        var url = 'https://api.wordpress.org/secret-key/1.1/salt'
         var cwd = '../' + this.dir + '-docker/'
         this.salt = ''
 
-        request('https://api.wordpress.org/secret-key/1.1/salt', function(error, response, body) {
+        request(url, function(error, response, body) {
           if (!error && response.statusCode == 200) {
             this.salt = body
 
@@ -677,7 +678,6 @@ var MyGenerator = yeoman.generators.Base.extend({
             }).on('exit', function() {
               _this.spawnCommand('rm', ['-rf', '.git'], { cwd: docker })
               _this.spawnCommand('rm', ['.gitignore'], { cwd: docker })
-
               done()
               _this._end()
             })
@@ -694,17 +694,17 @@ var MyGenerator = yeoman.generators.Base.extend({
     if (this.wp && this.docker) {
       var done = this.async()
       var _this = this
-      var cwd = '../' + this.dir + '-docker/'
+      var docker = '../' + this.dir + '-docker/'
 
       /**
        * Welcome to temporary callback hell.
        */
       if (this.composer) {
         this.spawnCommand('ln', ['-s', '../' + this.dir + '/wp/composer.json'], {
-          cwd: cwd
+          cwd: docker
         }).on('exit', function() {
           _this.spawnCommand('composer', ['install'], {
-            cwd: cwd
+            cwd: docker
           }).on('exit', function() {
             done()
             _this._end()
@@ -723,6 +723,10 @@ var MyGenerator = yeoman.generators.Base.extend({
       callback: function() {
         this._installTypo3Docker()
         this._installWordPressDocker()
+
+        if (this.html) {
+          this._end()
+        }
       }.bind(this)
     })
   },
