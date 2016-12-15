@@ -99,6 +99,7 @@ Please discuss about new ideas and things that you think should be modified. Cur
 * All necessary CSS components
 * Sub generators for starters
 * CSS modular scale
+* Browserify -> Webpack (?)
 * Maybe some sort of integration/forking with [generator-typo3](https://github.com/Milanowicz/generator-typo3)
 * Testing for JavaScript
 * Consider removing jQuery

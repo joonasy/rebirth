@@ -65,7 +65,7 @@ It's recommended to keep consistent naming and not to bloat the repository with 
 * 1. Use host flag `npm run dev --host=mycustomhost.app` to setup proxy
 * 2. Add your host to the dev environment in _Configuration/TypoScript/setup.txt_:
 ```
-[globalString = ENV:HTTP_HOST = mycustomhost.app]
+[globalString = ENV:HTTP_HOST = project-name.dev:8000] || [globalString = ENV:HTTP_HOST = mycustomhost.app] 
   plugin.tx_myextension.settings.dev = 1
 [END]
 ```
