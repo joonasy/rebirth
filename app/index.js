@@ -583,6 +583,10 @@ var MyGenerator = yeoman.generators.Base.extend({
       '  ======================================================================' +
       '\n'
     )
+  },
+
+  end: function() {
+    console.log('o');
   }
 })
 
