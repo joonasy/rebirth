@@ -175,10 +175,6 @@ var MyGenerator = yeoman.generators.Base.extend({
             name: 'Default stylesheets and JavaScripts',
             value: 'assets',
             checked: true
-          }, {
-            name: 'Deployment configuration',
-            value: 'deployment',
-            checked: true
           }
         ]
       }, {
@@ -240,11 +236,11 @@ var MyGenerator = yeoman.generators.Base.extend({
       this.appNameUnderscored = this._.underscored(this.appNameDasherize)
       this.appNamePascalize = this._.capitalize(this._.camelize(this.appNameDasherize))
       this.appAuthor = props.author
+      this.appAuthorDasherize = this._.dasherize(this._.slugify(this.appAuthor))
       this.appNameSpace = this._.capitalize(this._.camelize(props.appNameSpace))
       this.appURL = props.url
       this.appDescription = props.description
       this.composer = props.composer && !this.options['skip-install']
-      this.deployment = props.whatStarters.indexOf('deployment') !== -1
       this.dirCapitalize = this._.capitalize(this.dir)
       this.git = props.git
       this.pluginWPMLuserID = props.pluginWPMLuserID
@@ -283,11 +279,10 @@ var MyGenerator = yeoman.generators.Base.extend({
       this.destinationPath('.gitignore'), this)
     this.fs.copy(this.templatePath('shared/editorconfig'), this.destinationPath('.editorconfig'))
     this.fs.copy(this.templatePath('shared/eslintrc'), this.destinationPath('.eslintrc'))
-
-    if (this.deployment) {
-      this.fs.copyTpl(this.templatePath('shared/_dploy.example.yaml'), this.destinationPath('dploy.example.yaml'), this)
-      this.fs.copyTpl(this.templatePath('shared/_dploy.example.yaml'), this.destinationPath('dploy.yaml'), this)
-    }
+    this.fs.copyTpl(this.templatePath('shared/_dploy.example.yaml'),
+      this.destinationPath('dploy.example.yaml'), this)
+    this.fs.copyTpl(this.templatePath('shared/_dploy.example.yaml'),
+      this.destinationPath('dploy.yaml'), this)
   },
 
   /**
@@ -370,6 +365,11 @@ var MyGenerator = yeoman.generators.Base.extend({
         this.destinationPath('typo3/composer.json'), this)
       this.fs.copy(this.templatePath('typo3/Resources/Private/Layouts/App.html'),
         this.destinationPath('Resources/Private/Layouts/App.html'))
+
+      if (this.docker) {
+        this.fs.copyTpl(this.templatePath('typo3/docker/_README.md'),
+          this.destinationPath('../README.md'), this)
+      }
     }
   },
 
@@ -493,7 +493,8 @@ var MyGenerator = yeoman.generators.Base.extend({
         if (_this.composer) {
           _this.spawnCommand('git', ['checkout', '4d394a7'], { cwd: docker })
           _this.spawnCommand('touch', ['FIRST_INSTALL'], { cwd: web })
-
+          _this.fs.copyTpl(_this.templatePath('typo3/docker/_docker-compose.development.yaml'),
+            _this.destinationPath(docker + '/docker-compose.development.yaml'), _this)
           _this.fs.copyTpl(_this.templatePath('typo3/docker/_docker-compose.development.yaml'),
             _this.destinationPath(docker + '/docker-compose.yaml'), _this)
 
@@ -564,14 +565,14 @@ var MyGenerator = yeoman.generators.Base.extend({
       '  ========================================', '\n' +
       '\n' +
       chalk.green('!'),  chalk.bold('Project details'), '\n\n' +
-      chalk.green('❯'), 'Name:', chalk.cyan(this.appNameDasherize), '\n' +
-      chalk.green('❯'), 'Description:', chalk.cyan(this.appDescription), '\n' +
-      chalk.green('❯'), 'Author:', chalk.cyan(this.appAuthor), '\n' +
-      chalk.green('❯'), 'Type:', chalk.cyan(this.name()), '\n' +
-      chalk.green('❯'), 'Project URL (production):', chalk.cyan(this.appURL), '\n' +
+      chalk.green('  ❯'), 'Name:', chalk.cyan(this.appNameDasherize), '\n' +
+      chalk.green('  ❯'), 'Description:', chalk.cyan(this.appDescription), '\n' +
+      chalk.green('  ❯'), 'Author:', chalk.cyan(this.appAuthor), '\n' +
+      chalk.green('  ❯'), 'Type:', chalk.cyan(this.name()), '\n' +
+      chalk.green('  ❯'), 'Project URL (production):', chalk.cyan(this.appURL), '\n' +
       '\n' +
-      chalk.green('❯'), 'Please read', chalk.cyan('README.md'), 'for available commands and other useful info.', '\n' +
-      chalk.green('❯ Happy developing!'), '\n' +
+      chalk.green('  ❯'), 'Please read every', chalk.cyan('README.md'), 'for available commands and instructions. Make sure all the settings such as links are correctly generated.', '\n' +
+      chalk.green('  ❯ Happy developing!'), '\n' +
       '\n' +
       '  ========================================' +
       '\n'

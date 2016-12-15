@@ -20,7 +20,7 @@ Bottom.dist.html
 Top.dist.html
 typo3/*
 !typo3/composer.json
-Resources/Public/Assets<% } if (deployment) { %>
+Resources/Public/Assets
 dploy.yaml
 .rev<% } if (wp) { %>
 wp/wp-content/plugins/*
