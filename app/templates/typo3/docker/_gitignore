@@ -1,0 +1,6 @@
+.DS_Store
+.idea
+<%= dir %>-docker/backup
+<%= dir %>-docker/app/web/*
+!<%= dir %>-docker/app/web/composer.json
+docker-compose.yaml

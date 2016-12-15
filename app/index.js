@@ -67,7 +67,7 @@ var MyGenerator = yeoman.generators.Base.extend({
         this.destinationRoot(extension)
       }
 
-      this.writtenDir = this.dir
+      this.dirOrig = this.dir
       this.dir = extension
     }
 
@@ -99,7 +99,7 @@ var MyGenerator = yeoman.generators.Base.extend({
           var dockerPath = ''
 
           if (this.docker) {
-            deeperDir = this.docker ? this.writtenDir + '/' : ''
+            deeperDir = this.docker ? this.dirOrig + '/' : ''
             dockerPath = '\n' + chalk.green('  ❯ ') + 'Docker path:' + chalk.cyan('./' +
               deeperDir + this.dir + '-docker')
           }
@@ -108,7 +108,7 @@ var MyGenerator = yeoman.generators.Base.extend({
             var extension =  this._.underscored(this.dir).replace(/_/g, '')
 
             this.log(
-              chalk.green('  ❯'), 'Install path:', chalk.cyan('./' + this.writtenDir), '\n' +
+              chalk.green('  ❯'), 'Install path:', chalk.cyan('./' + deeperDir + extension), '\n' +
               chalk.green('  ❯'), 'Extension key:', chalk.cyan(extension), '\n' +
               chalk.green('  ❯'), 'Extension path:', chalk.cyan('./' + deeperDir + extension),
               dockerPath
@@ -493,10 +493,15 @@ var MyGenerator = yeoman.generators.Base.extend({
         if (_this.composer) {
           _this.spawnCommand('git', ['checkout', '4d394a7'], { cwd: docker })
           _this.spawnCommand('touch', ['FIRST_INSTALL'], { cwd: web })
+
           _this.fs.copyTpl(_this.templatePath('typo3/docker/_docker-compose.development.yaml'),
             _this.destinationPath(docker + '/docker-compose.development.yaml'), _this)
           _this.fs.copyTpl(_this.templatePath('typo3/docker/_docker-compose.development.yaml'),
             _this.destinationPath(docker + '/docker-compose.yaml'), _this)
+          _this.fs.copyTpl(_this.templatePath('typo3/docker/_gitignore'),
+            _this.destinationPath('../.gitignore'), _this)
+          _this.fs.copyTpl(_this.templatePath('typo3/docker/_gitmodules'),
+            _this.destinationPath('../.gitmodules'), _this)
 
           _this.spawnCommand('ln', ['-s', '../../../' + _this.dir + '/typo3/composer.json'], {
             cwd: web
@@ -562,21 +567,26 @@ var MyGenerator = yeoman.generators.Base.extend({
   _end: function() {
     this.log(
       '\n' +
-      '  ========================================', '\n' +
+      '  ======================================================================', '\n' +
       '\n' +
-      chalk.green('!'),  chalk.bold('Project details'), '\n\n' +
+      chalk.green('  !'),  chalk.bold('Project details'), '\n\n' +
       chalk.green('  ❯'), 'Name:', chalk.cyan(this.appNameDasherize), '\n' +
       chalk.green('  ❯'), 'Description:', chalk.cyan(this.appDescription), '\n' +
       chalk.green('  ❯'), 'Author:', chalk.cyan(this.appAuthor), '\n' +
       chalk.green('  ❯'), 'Type:', chalk.cyan(this.name()), '\n' +
       chalk.green('  ❯'), 'Project URL (production):', chalk.cyan(this.appURL), '\n' +
       '\n' +
-      chalk.green('  ❯'), 'Please read every', chalk.cyan('README.md'), 'for available commands and instructions. Make sure all the settings such as links are correctly generated.', '\n' +
-      chalk.green('  ❯ Happy developing!'), '\n' +
+      chalk.green('  ❯'), 'Please read', chalk.cyan('README.md'), 'for instructions and available commands.', '\n' +
+      chalk.green('  ❯'), chalk.bold('Make sure all the settings such as git urls are correctly generated.'), '\n' +
+      chalk.green('  ❯ Happy developing! :)'), '\n' +
       '\n' +
-      '  ========================================' +
+      '  ======================================================================' +
       '\n'
     )
+  },
+
+  end: function() {
+    console.log('o');
   }
 })
 
