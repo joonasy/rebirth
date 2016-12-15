@@ -1,6 +1,6 @@
 # My Web Starter Kit ([generator-my](https://bitbucket.org/mediasignal/generator-my.git))
 
-> My combined styleguide, starter kit and Yeoman generator for new web projects (Typo3/Html).
+> My combined styleguide, starter kit and Yeoman generator for new web projects (TYPO3/WordPress/Html).
 
 This starter kit contains methods and ideas from various sources such as [BEM](https://bem.info/), [HTML5BP](http://html5boilerplate.com/), [Bootstrap](http://getbootstrap.com), [Foundation](http://foundation.zurb.com/), [INUITCSS](https://github.com/inuitcss), [SMACSS](https://smacss.com/), [OOCSS](http://oocss.org/) and [SUIT CSS](https://github.com/suitcss/suit). By default this template supports IE10+, Mobile first -ideology and progressive enhancement.
 
@@ -12,7 +12,7 @@ Use only if you know what you are doing or you are working together with the aut
 
 ## Features
 
-* Choose between Typo3, WordPress or html project types
+* Choose between TYPO3, WordPress or html project types
 * CSS Autoprefixing
 * Livereloading with Browsersync
 * Automatically compile Sass
@@ -35,9 +35,9 @@ My Web Starter Kit also provides configuration files setting up your development
 * [Composer](https://getcomposer.org/)
 * [Docker Toolbox](https://www.docker.com/products/docker-toolbox)
 
-### Typo3 requirements
+### TYPO3 requirements
 
-* [Typo3 v^7.6.0](http://typo3.org)
+* [TYPO3 v^7.6.0](http://typo3.org)
 * [Flux](http://typo3.org/extensions/repository/view/flux)
 * [Fluid Pages Engine](http://typo3.org/extensions/repository/view/fluidpages)
 * [Fluid Content Engine](http://typo3.org/extensions/repository/view/fluidcontent)
@@ -58,7 +58,7 @@ Please read and understand all of the following before doing anything. All of th
 
 ### Project instructions
 
-* [Typo3](docs/project/typo)
+* [TYPO3](docs/project/typo)
 * [Html](docs/project)
 
 ## Installing

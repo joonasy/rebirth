@@ -1,4 +1,4 @@
-# <%= appNameHumanize %> docker
+# <%= appNameHumanize %> - TYPO3 Docker
 
 > Docker development environment for `<%= dir %>`. Generated on <%= (generatorDate) %> with [<%= pkg.name %> v<%= pkg.version %>](<%= (generatorRepository) %>). Currently using [TYPO3-docker](https://github.com/webdevops/TYPO3-docker-boilerplate/releases/tag/5.2.0-beta2) boilerplate located in [<%= dir %>-docker](<%= dir %>-docker/).
 
@@ -16,25 +16,22 @@
 
 **2.** Make sure there is symlink <%= dir %>-docker/app/web/composer.json to <%= dir %>/typo3/composer.json. If not then create or copy it.
 
-**3.** Install composer dependencies either with docker or with bash
+**3.** Install composer dependencies
 
 ```
-// docker
-`docker run --rm -v $(pwd):/app/web/ composer/composer:alpine install´ 
-
 // #!/usr/bin/env bash
 `composer install´ 
 ```
 
-**4.** Copy docker-compose.development.yml to docker-compose.yml
+**4.** Copy docker-compose.development.yaml to docker-compose.yaml
 
-**5.** Run `docker-compose up -d` or use the commands provided by the boilerplate.
-
-**6.** Map your environment host to the development domain in your host machine's hosts-file (`/etc/hosts` in linux/osx, somewhere in sys files in windows). For example:
+**5.** Map your environment host to the development domain in your host machine's hosts-file (`/etc/hosts` in linux/osx, somewhere in sys files in windows). For example:
 
 ```
 192.168.10.10 <%= dir %>.dev
 ```
+
+**6.** Run `docker-compose up -d` or use the commands provided by the boilerplate.
 
 **7.** Locate to <%= dir %>.dev/typo3 and install Typo3
 
