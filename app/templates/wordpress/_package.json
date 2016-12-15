@@ -12,10 +12,7 @@
   "scripts": {
     "build": "cross-env NODE_ENV=production gulp build",
     "dev": "gulp dev",
-    "deploy": "npm run build && dploy production",
-    "docker": "cd ../wp && docker-compose up",
-    "docker-wp": "docker exec -it <%= dir %>-wp bash",
-    "docker-db": "docker exec -it <%= dir %>-db bash"
+    "deploy": "npm run build && dploy production"
   },
   "devDependencies": {
     "babel-preset-es2015": "^6.3.13",

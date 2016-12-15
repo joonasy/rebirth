@@ -23,7 +23,7 @@ typo3/*
 Resources/Public/Assets
 dploy.yaml
 .rev<% } if (wp) { %>
-wp/wp-content/plugins/*
-wp/wp-content/themes/*
+wp/*
+!wp/composer.json
 dist/<% } if (html) { %>
 dist/<% } %>

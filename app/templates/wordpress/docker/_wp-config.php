@@ -9,8 +9,8 @@
 /**
  * Load database info and local development parameters
  */
-if (file_exists(dirname( __FILE__ ) . '/wp-config.dev.php')) {
-  include(dirname( __FILE__ ) . '/wp-config.dev.php');
+if (file_exists(dirname( __FILE__ ) . '/wp-config.development.php')) {
+  include(dirname( __FILE__ ) . '/wp-config.development.php');
 } else {
   define('DB_NAME', 'database_name_here');
   define('DB_USER', 'username_here');

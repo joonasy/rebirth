@@ -44,7 +44,7 @@ var MyGenerator = yeoman.generators.Base.extend({
 
     this.name = function() {
       if (this.typo3) {
-        return 'Typo3'
+        return 'TYPO3'
       } else if (this.wp) {
         return 'WordPress'
       } else {
@@ -56,6 +56,7 @@ var MyGenerator = yeoman.generators.Base.extend({
      * Setup proper install directory
      */
     this.dir = this.dir.toLowerCase()
+    this.dirOrig = this.dir
 
     if (this.typo3) {
       var extension = this._.underscored(this.dir).replace(/_/g, '')
@@ -67,13 +68,22 @@ var MyGenerator = yeoman.generators.Base.extend({
         this.destinationRoot(extension)
       }
 
-      this.dirOrig = this.dir
       this.dir = extension
     }
 
-    if (this.wp || this.html) {
+    if (this.wp) {
+      if (this.docker) {
+        this.destinationRoot(this.dir + '/' + this.dir)
+      } else {
+        this.destinationRoot(this.dir)
+      }
+    }
+
+    if (this.html) {
       this.destinationRoot(this.dir)
     }
+
+    console.log(this.destinationRoot());
   },
 
   /**
@@ -84,7 +94,7 @@ var MyGenerator = yeoman.generators.Base.extend({
 
     this.log(yosay(
       'Hi! Welcome to ' + chalk.blue('My Web Starter Kit')+'. ' +
-      'Let\'s create ' + chalk.green(this.name()) + ' project!'
+      'Let\'s create a ' + chalk.green(this.name()) + ' project!'
     ))
 
     this.prompt([
@@ -285,6 +295,14 @@ var MyGenerator = yeoman.generators.Base.extend({
       this.destinationPath('dploy.yaml'), this)
   },
 
+  git: function() {
+    this.spawnCommand('git', ['init'])
+
+    if (this.docker) {
+      this.spawnCommand('git', ['init'], { cwd: '../' })
+    }
+  },
+
   /**
    * Setup default assets
    */
@@ -365,11 +383,6 @@ var MyGenerator = yeoman.generators.Base.extend({
         this.destinationPath('typo3/composer.json'), this)
       this.fs.copy(this.templatePath('typo3/Resources/Private/Layouts/App.html'),
         this.destinationPath('Resources/Private/Layouts/App.html'))
-
-      if (this.docker) {
-        this.fs.copyTpl(this.templatePath('typo3/docker/_README.md'),
-          this.destinationPath('../README.md'), this)
-      }
     }
   },
 
@@ -378,7 +391,8 @@ var MyGenerator = yeoman.generators.Base.extend({
    */
   html: function () {
     if (this.html) {
-      this.fs.copyTpl('html/_package.json', this.destinationPath('package.json'), this)
+      this.fs.copyTpl(this.templatePath('html/_package.json'),
+        this.destinationPath('package.json'), this)
       this.fs.copyTpl(this.templatePath('html/_assemblefile.js'),
         this.destinationPath('assemblefile.js'), this)
       this.fs.copyTpl(this.templatePath('html/src/_app.json'),
@@ -401,10 +415,9 @@ var MyGenerator = yeoman.generators.Base.extend({
    */
   wp: function() {
     if (this.wp) {
-      var done = this.async()
-
-      this.fs.copyTpl('wordpress/_package.json', this.destinationPath('package.json'), this)
-      this.fs.copyTpl( this.templatePath('wordpress/_gulpfile.js'),
+      this.fs.copyTpl(this.templatePath('wordpress/_package.json'),
+        this.destinationPath('package.json'), this)
+      this.fs.copyTpl(this.templatePath('wordpress/_gulpfile.js'),
         this.destinationPath('gulpfile.js'), this)
       this.fs.copyTpl(this.templatePath('wordpress/_functions.php'),
         this.destinationPath('functions.php'), this)
@@ -424,11 +437,11 @@ var MyGenerator = yeoman.generators.Base.extend({
         this.destinationPath('index.php'), this)
       this.fs.copyTpl(this.templatePath('wordpress/_style.css'),
         this.destinationPath('style.css'), this)
-      this.fs.copyTpl( this.templatePath('wordpress/wp/_composer.json'),
+      this.fs.copyTpl(this.templatePath('wordpress/wp/_composer.json'),
         this.destinationPath('wp/composer.json'), this)
-      this.fs.copy( this.templatePath('wordpress/header.php'), this.destinationPath('header.php'))
+      this.fs.copy(this.templatePath('wordpress/header.php'), this.destinationPath('header.php'))
       this.fs.copy(this.templatePath('wordpress/footer.php'), this.destinationPath('footer.php'))
-      this.directory(this.templatePath('wordpress/partials'), this.destinationPath('partials/'))
+      this.fs.copy(this.templatePath('wordpress/partials'), this.destinationPath('partials'))
 
       if (this.pluginACFkey) {
         this.mkdir('acf-json')
@@ -441,39 +454,42 @@ var MyGenerator = yeoman.generators.Base.extend({
       }
 
       if (this.docker) {
+        var done = this.async()
         var url = 'https://api.wordpress.org/secret-key/1.1/salt'
         var cwd = '../' + this.dir + '-docker/'
         this.salt = ''
 
+        this.fs.copyTpl(this.templatePath('wordpress/docker/_README.md'),
+          this.destinationPath('../README.md'), this)
+        this.fs.copyTpl(this.templatePath('wordpress/docker/_gitignore'),
+          this.destinationPath('../.gitignore'), this)
+        this.fs.copyTpl(this.templatePath('wordpress/docker/_gitmodules'),
+          this.destinationPath('../.gitmodules'), this)
+        this.fs.copyTpl(this.templatePath('wordpress/docker/_docker-compose.yaml'),
+          this.destinationPath(cwd + 'docker-compose.development.yaml'), this)
+        this.fs.copyTpl(this.templatePath('wordpress/docker/_docker-compose.yaml'),
+          this.destinationPath(cwd + 'docker-compose.yaml'), this)
+        this.fs.copyTpl(this.templatePath('wordpress/docker/_wp-config.development.php'),
+          this.destinationPath(cwd + 'wp-config.development.example.php'), this)
+        this.fs.copyTpl(this.templatePath('wordpress/docker/_wp-config.development.php'),
+          this.destinationPath(cwd + 'wp-config.development.php'), this)
+        this.fs.copy(this.templatePath('wordpress/docker/register-theme-directory.php'),
+          this.destinationPath(cwd + 'wp-content/mu-plugins/register-theme-directory.php'))
+        this.fs.copy(this.templatePath('wordpress/docker/index.php'),
+          this.destinationPath(cwd + 'index.php'))
+
         request(url, function(error, response, body) {
           if (!error && response.statusCode == 200) {
             this.salt = body
-
-            this.fs.copyTpl(this.templatePath('wordpress/wp/_wp-config.php'),
+            this.fs.copyTpl(this.templatePath('wordpress/docker/_wp-config.php'),
+              this.destinationPath(cwd + 'wp-config.example.php'), this)
+            this.fs.copyTpl(this.templatePath('wordpress/docker/_wp-config.php'),
               this.destinationPath(cwd + 'wp-config.php'), this)
-            this.fs.copyTpl(this.templatePath('wordpress/wp/_docker-compose.yml'),
-              this.destinationPath(cwd + 'docker-compose.yml'), this)
-            this.fs.copyTpl(this.templatePath('wordpress/wp/_wp-config.dev.php'),
-              this.destinationPath(cwd + 'wp-config.dev.php'), this)
-            this.fs.copy(this.templatePath('wordpress/wp/register-theme-directory.php'),
-              this.destinationPath(cwd + 'wp-content/mu-plugins/register-theme-directory.php'), this
-            )
-            this.fs.copy(this.templatePath('wordpress/wp/index.php'),
-              this.destinationPath(cwd + 'index.php'), this)
-
             done()
           }
         }.bind(this))
       }
 
-    }
-  },
-
-  git: function() {
-    this.spawnCommand('git', ['init'])
-
-    if (this.docker) {
-      this.spawnCommand('git', ['init'], { cwd: '../' })
     }
   },
 
@@ -502,6 +518,8 @@ var MyGenerator = yeoman.generators.Base.extend({
             _this.destinationPath('../.gitignore'), _this)
           _this.fs.copyTpl(_this.templatePath('typo3/docker/_gitmodules'),
             _this.destinationPath('../.gitmodules'), _this)
+          _this.fs.copyTpl(_this.templatePath('typo3/docker/_README.md'),
+            _this.destinationPath('../README.md'), _this)
 
           _this.spawnCommand('ln', ['-s', '../../../' + _this.dir + '/typo3/composer.json'], {
             cwd: web
@@ -583,10 +601,6 @@ var MyGenerator = yeoman.generators.Base.extend({
       '  ======================================================================' +
       '\n'
     )
-  },
-
-  end: function() {
-    console.log('o');
   }
 })
 
