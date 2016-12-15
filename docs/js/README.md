@@ -1,6 +1,22 @@
 # JavaScript Styleguide
 
-We use [Airbnb JavaScript Style Guide](https://github.com/airbnb/javascript) as our JavaScript styleguide.
+We use [Airbnb JavaScript Style Guide](https://github.com/airbnb/javascript) as our JavaScript styleguide with the following exceptions:
+
+```
+{
+  'extends': 'airbnb',
+  'globals': {
+    'jquery': true,
+  },
+  'rules': {
+    'no-unused-vars': 0,
+    'import/no-unresolved': 0,
+    'func-names': 0,
+    'semi': [0, 'never'],
+    'no-underscore-dangle': 0
+  }
+}
+```
 
 ## Structure
 
