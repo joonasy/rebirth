@@ -1,5 +1,17 @@
 # Changelog
 
+## 0.4.3 (2016-12-15)
+
+* Added [TYPO3 docker boilerplate](https://github.com/webdevops/TYPO3-docker-boilerplate)
+* WordPress boilerplate tweaked
+* New created docker repository git inited and extension/theme set as submodule
+* New flags for generator `--docker`, `--project` see README.md
+* `dir` is required argument
+* TYPO3 dir is now always underscored and without special chars
+* Removed unneeded prompts
+* `NODE_ENV` added back w/ [cross-env](https://www.npmjs.com/package/cross-env)
+* Eslint rules updated
+
 ## 0.4.2 (2016-10-11)
 
 * New folder structure for CSS components and layout components:
