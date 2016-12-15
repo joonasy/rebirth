@@ -6,26 +6,26 @@
  * @url <%= (generatorRepository) %>
  */
 
-'use strict';
+'use strict'
 
-var assemble = require('assemble');
-var app = assemble();
-var fs = require('fs');
-var browserify = require('browserify');
-var browserSync = require('browser-sync').create();
-var handlebarsHelpers = require('handlebars-helpers')();
-var notifier = require('node-notifier');
-var path = require('path');
-var prettyHrtime = require('pretty-hrtime');
-var rimraf = require('rimraf');
-var source = require('vinyl-source-stream');
-var through = require('through2');
-var watch = require('base-watch');
-var watchify = require('watchify');
-var $ = require('gulp-load-plugins')();
+var assemble = require('assemble')
+var app = assemble()
+var fs = require('fs')
+var browserify = require('browserify')
+var browserSync = require('browser-sync').create()
+var handlebarsHelpers = require('handlebars-helpers')()
+var notifier = require('node-notifier')
+var path = require('path')
+var prettyHrtime = require('pretty-hrtime')
+var rimraf = require('rimraf')
+var source = require('vinyl-source-stream')
+var through = require('through2')
+var watch = require('base-watch')
+var watchify = require('watchify')
+var $ = require('gulp-load-plugins')()
 
-var production = false;
-var open = process.env.npm_config_open;
+var production = process.env.NODE_ENV === 'production'
+var open = process.env.npm_config_open
 
 
 /* ======
@@ -81,28 +81,28 @@ var config = {
 /**
  * Assemble
  */
-app.data({ assets: 'assets' });
-app.data(config.html.data);
-app.helpers(config.html.helpers);
-app.helpers(handlebarsHelpers);
-app.use(watch());
+app.data({ assets: 'assets' })
+app.data(config.html.data)
+app.helpers(config.html.helpers)
+app.helpers(handlebarsHelpers)
+app.use(watch())
 
 app.preLayout(/\/src\/templates\/.*\.hbs$/, function(view, next) {
-  view.layout = 'default';
-  next();
-});
+  view.layout = 'default'
+  next()
+})
 
 app.task('html', function() {
-  app.data({ dev: !production });
-  app.layouts(config.html.layouts);
-  app.partials(config.html.partials);
+  app.data({ dev: !production })
+  app.layouts(config.html.layouts)
+  app.partials(config.html.partials)
 
   return app.src(config.html.templates)
     .pipe(app.renderFile())
     .on('error', handleError)
     .pipe($.rename({ extname: '.html' }))
-    .pipe(app.dest(config.html.dest));
-});
+    .pipe(app.dest(config.html.dest))
+})
 
 /**
  * Stylesheets
@@ -124,20 +124,20 @@ app.task('stylesheets', function() {
       .pipe($.replace('../', config.buildPath + 'assets/'))
       .pipe($.combineMq({ beautify: false }))
       .pipe($.cssnano({ mergeRules: false }))
-      .pipe(app.dest(config.stylesheets.dest));
+      .pipe(app.dest(config.stylesheets.dest))
   } else {
     return pipeline = pipeline
       .pipe(app.dest(config.stylesheets.dest))
-      .pipe(browserSync.stream());
+      .pipe(browserSync.stream())
   }
-});
+})
 
 /**
  * Javascripts
  */
-app.task('javascripts', ['modernizr'], function(callback) {
+app.task('javascripts', function(callback) {
 
-  var bundleQueue = config.javascripts.bundle.length;
+  var bundleQueue = config.javascripts.bundle.length
 
   var browserifyBundle = function(bundleConfig) {
 
@@ -147,15 +147,15 @@ app.task('javascripts', ['modernizr'], function(callback) {
       fullPaths: false,
       entries: bundleConfig.src,
       debug: !production
-    });
+    })
 
     var bundle = function() {
-      bundleLogger.start(bundleConfig.file_name);
+      bundleLogger.start(bundleConfig.file_name)
 
       var collect = pipeline
         .bundle()
         .on('error', handleError)
-        .pipe(source(bundleConfig.file_name));
+        .pipe(source(bundleConfig.file_name))
 
       if (!production) {
         collect = collect.pipe(browserSync.stream())
@@ -165,29 +165,29 @@ app.task('javascripts', ['modernizr'], function(callback) {
 
       return collect
         .pipe(app.dest(config.javascripts.dest))
-        .on('end', reportFinished);
-    };
+        .on('end', reportFinished)
+    }
 
     if (!production) {
-      pipeline = watchify(pipeline).on('update', bundle);
+      pipeline = watchify(pipeline).on('update', bundle)
     }
 
     var reportFinished = function() {
       bundleLogger.end(bundleConfig.file_name)
 
       if (bundleQueue) {
-        bundleQueue--;
+        bundleQueue--
         if (bundleQueue === 0) {
-          callback();
+          callback()
         }
       }
-    };
+    }
 
-    return bundle();
-  };
+    return bundle()
+  }
 
-  config.javascripts.bundle.forEach(browserifyBundle);
-});
+  config.javascripts.bundle.forEach(browserifyBundle)
+})
 
 /**
  * Images
@@ -201,8 +201,8 @@ app.task('images', function() {
       ],
     }))
     .on('error', handleError)
-    .pipe(app.dest(config.images.dest));
-});
+    .pipe(app.dest(config.images.dest))
+})
 
 /**
  * Fonts
@@ -211,8 +211,8 @@ app.task('fonts', function() {
   return app.src(config.fonts.src)
     .pipe($.changed(config.fonts.dest))
     .on('error', handleError)
-    .pipe(app.dest(config.fonts.dest));
-});
+    .pipe(app.dest(config.fonts.dest))
+})
 
 /**
  * Server
@@ -229,8 +229,8 @@ app.task('server', function() {
         '/node_modules': 'node_modules'
       }
     }
-  });
-});
+  })
+})
 
 /**
  * Watch
@@ -238,14 +238,14 @@ app.task('server', function() {
 app.task('watch', function() {
   app.watch(config.html.watch, ['html'], function(cb) {
     setTimeout(function() {
-      browserSync.reload();
-      cb();
-    }, 150);
-  });
-  app.watch(config.stylesheets.watch, ['stylesheets']);
-  app.watch(config.fonts.watch, ['fonts']);
-  app.watch(config.images.watch, ['images']);
-});
+      browserSync.reload()
+      cb()
+    }, 150)
+  })
+  app.watch(config.stylesheets.watch, ['stylesheets'])
+  app.watch(config.fonts.watch, ['fonts'])
+  app.watch(config.images.watch, ['images'])
+})
 
 /**
  * JavasScript Coding style
@@ -255,13 +255,13 @@ app.task('eslint', function () {
     .pipe($.eslint())
     .pipe($.eslint.format())
     .pipe($.eslint.failAfterError())
-    .pipe(app.dest(config.javascripts.src));
-});
+    .pipe(app.dest(config.javascripts.src))
+})
 
 /**
  * Modernizr
  */
-app.task('modernizr', ['stylesheets'], function() {
+app.task('modernizr', function() {
   return app.src([
     config.javascripts.src + '**/*.js',
     config.stylesheets.dest + 'app.css'
@@ -279,8 +279,8 @@ app.task('modernizr', ['stylesheets'], function() {
       ]
     }))
     .on('error', handleError)
-    .pipe(app.dest(config.javascripts.dest + 'vendors'));
-});
+    .pipe(app.dest(config.javascripts.dest + 'vendors'))
+})
 
 /**
  * Inline <head> css/js
@@ -290,21 +290,21 @@ app.task('inline', function() {
     config.dest + '**/*.html'
   ], { base: config.dest })
     .pipe($.replace(inline({ matchFile: 'app.css' }), function() {
-      return inline({ file: 'app.css' });
+      return inline({ file: 'app.css' })
     }))
     .pipe($.replace(inline({ matchFile: 'head.js' }), function() {
-      return inline({ file: 'head.js' });
+      return inline({ file: 'head.js' })
     }))
-    .pipe(app.dest(config.dest));
-});
+    .pipe(app.dest(config.dest))
+})
 
 /**
  * Revision and remove unneeded files
  */
 app.task('rev', function() {
-  rimraf.sync(config.stylesheets.dest);
-  rimraf.sync(config.javascripts.dest + 'head.js');
-  rimraf.sync(config.javascripts.dest + 'vendors');
+  rimraf.sync(config.stylesheets.dest)
+  rimraf.sync(config.javascripts.dest + 'head.js')
+  rimraf.sync(config.javascripts.dest + 'vendors')
 
   return app.src([
     config.dest + 'assets/{javascripts,images,fonts}/**'
@@ -313,14 +313,14 @@ app.task('rev', function() {
     .pipe(app.dest(config.dest + 'assets/'))
     .pipe(rmOriginalFiles())
     .pipe($.rev.manifest())
-    .pipe(app.dest('./'));
-});
+    .pipe(app.dest('./'))
+})
 
 /**
  * Update references
  */
 app.task('updateReferences', function() {
-  var manifest = app.src('./rev-manifest.json');
+  var manifest = app.src('./rev-manifest.json')
 
   return app.src([
     config.dest + '**'
@@ -329,86 +329,85 @@ app.task('updateReferences', function() {
       manifest: manifest,
       replaceInExtensions: ['.js', '.css', '.html']
     }))
-    .pipe(app.dest(config.dest));
-});
+    .pipe(app.dest(config.dest))
+})
 
 
 /* ======
  * Main collected tasks
  * ====== */
 
-var tasks = ['stylesheets', 'javascripts', 'images', 'fonts'];
+var tasks = ['stylesheets', 'modernizr', 'javascripts', 'images', 'fonts', 'videos']
 
 app.task('build', ['eslint'], function() {
-  rimraf.sync(config.dest);
-  production = true;
+  rimraf.sync(config.dest)
   app.build(tasks.concat([
     'html',
-    'modernizr',
     'inline',
     'rev',
     'updateReferences'
-  ]), function() {});
-});
+  ]), function(err) {
+    if (err) throw err
+  })
+})
 
-app.task('default', ['build']);
+app.task('default', ['build'])
 
 app.task('dev', function() {
-  rimraf.sync(config.dest);
-  app.build(tasks.concat(['html', 'modernizr']), app.parallel(['server', 'watch']));
-});
-
+  rimraf.sync(config.dest)
+  app.build(tasks.concat(['html']), app.parallel(['server', 'watch']))
+})
 
 /* ======
  * Utilities
  * ====== */
 
 function handleError(err) {
-  $.util.log(err);
-  $.util.beep();
+  $.util.log(err)
+  $.util.beep()
   notifier.notify({
     title: 'Compile Error',
     message: err.message
-  });
-  return this.emit('end');
+  })
+  return this.emit('end')
 }
 
 function inline(opts) {
-  opts = opts || {};
+  opts = opts || {}
 
   if (opts.matchFile) {
     if (opts.matchFile.match(/.js/)) {
-      return new RegExp('<script(.*?)src="(.*?)'+opts.matchFile+'"(.*?)>(.*?)<\/script>');
+      return new RegExp('<script(.*?)src="(.*?)'+opts.matchFile+'"(.*?)>(.*?)<\/script>')
     }
-    return new RegExp('<link(.*?)href="(.*?)'+opts.matchFile+'"(.*?)>');
+    return new RegExp('<link(.*?)href="(.*?)'+opts.matchFile+'"(.*?)>')
   }
 
   if (opts.file) {
-    var content;
-    var tagBegin = '<script>';
-    var tagEnd = '</script>';
+    var content
+    var tagBegin = '<script>'
+    var tagEnd = '</script>'
 
     if (opts.file.match(/.js/)) {
-      content = fs.readFileSync(config.javascripts.dest + opts.file, 'utf8');
+      content = fs.readFileSync(config.javascripts.dest + opts.file, 'utf8')
     } else {
-      tagBegin = '<style>';
-      tagEnd = '</style>';
-      content = fs.readFileSync(config.stylesheets.dest + opts.file, 'utf8');
+      tagBegin = '<style>'
+      tagEnd = '</style>'
+      content = fs.readFileSync(config.stylesheets.dest + opts.file, 'utf8')
     }
 
-    return tagBegin + content + tagEnd;
+    return tagBegin + content + tagEnd
   }
 }
 
 var startTime, bundleLogger = {
   start: function(filepath) {
-    startTime = process.hrtime();
-    $.util.log('Bundling', $.util.colors.green(filepath));
+    startTime = process.hrtime()
+    $.util.log('Bundling', $.util.colors.green(filepath))
   },
   end: function(filepath) {
-    var taskTime = process.hrtime(startTime);
-    var prettyTime = prettyHrtime(taskTime);
-    $.util.log('Bundled', $.util.colors.green(filepath), 'after', $.util.colors.magenta(prettyTime));
+    var taskTime = process.hrtime(startTime)
+    var prettyTime = prettyHrtime(taskTime)
+    $.util.log('Bundled', $.util.colors.green(filepath), 'after', $.util.colors.magenta(prettyTime))
   }
 }
 
@@ -416,12 +415,12 @@ function rmOriginalFiles() {
   return through.obj(function(file, enc, cb) {
 
     if (file.revOrigPath) {
-      fs.unlink(file.revOrigPath);
+      fs.unlink(file.revOrigPath)
     }
 
-    this.push(file);
-    return cb();
-  });
+    this.push(file)
+    return cb()
+  })
 }
 
-module.exports = app;
+module.exports = app
