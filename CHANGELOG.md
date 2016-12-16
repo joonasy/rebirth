@@ -4,7 +4,7 @@
 
 * Added [TYPO3 docker boilerplate](https://github.com/webdevops/TYPO3-docker-boilerplate)
 * WordPress boilerplate tweaked
-* New created docker repository git inited and extension/theme set as submodule
+* Docker repository git inited and extension/theme set as submodule
 * New flags for generator `--docker`, `--project` see README.md
 * `dir` is required argument
 * TYPO3 dir is now always underscored and without special chars

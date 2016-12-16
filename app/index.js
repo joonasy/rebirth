@@ -250,7 +250,7 @@ var MyGenerator = yeoman.generators.Base.extend({
       this.appNameSpace = this._.capitalize(this._.camelize(props.appNameSpace))
       this.appURL = props.url
       this.appDescription = props.description
-      this.composer = props.composer && !this.options['skip-install']
+      this.composer = props.composer// && !this.options['skip-install']
       this.dirCapitalize = this._.capitalize(this.dir)
       this.git = props.git
       this.pluginWPMLuserID = props.pluginWPMLuserID
@@ -296,10 +296,20 @@ var MyGenerator = yeoman.generators.Base.extend({
   },
 
   git: function() {
+    var _this = this
+
     this.spawnCommand('git', ['init'])
+    // .on('exit', function() {
+      // _this.spawnCommand('git', ['add', '-A']).on('exit', function() {
+        this.spawnCommand('git', ['commit', '-a', '-m', '"init"'])
+      // });
+    // })
 
     if (this.docker) {
       this.spawnCommand('git', ['init'], { cwd: '../' })
+      this.spawnCommand('git', ['submodule', 'add',
+        'git@bitbucket.org:' + this.appAuthorDasherize + '/' + this.dir + '.git', this.dir],
+        { cwd: '../' })
     }
   },
 
@@ -516,22 +526,26 @@ var MyGenerator = yeoman.generators.Base.extend({
             _this.destinationPath(docker + '/docker-compose.yaml'), _this)
           _this.fs.copyTpl(_this.templatePath('typo3/docker/_gitignore'),
             _this.destinationPath('../.gitignore'), _this)
-          _this.fs.copyTpl(_this.templatePath('typo3/docker/_gitmodules'),
-            _this.destinationPath('../.gitmodules'), _this)
+          // _this.fs.copyTpl(_this.templatePath('typo3/docker/_gitmodules'),
+          //   _this.destinationPath('../.gitmodules'), _this)
           _this.fs.copyTpl(_this.templatePath('typo3/docker/_README.md'),
             _this.destinationPath('../README.md'), _this)
+
+          console.log('what');
+
+          done()
 
           _this.spawnCommand('ln', ['-s', '../../../' + _this.dir + '/typo3/composer.json'], {
             cwd: web
           }).on('exit', function() {
-            _this.spawnCommand('composer', ['install'], {
-              cwd: web
-            }).on('exit', function() {
-              _this.spawnCommand('rm', ['-rf', '.git'], { cwd: docker })
-              _this.spawnCommand('rm', ['.gitignore'], { cwd: docker })
-              done()
-              _this._end()
-            })
+            // _this.spawnCommand('composer', ['install'], {
+            //   cwd: web
+            // }).on('exit', function() {
+            //   // _this.spawnCommand('rm', ['-rf', '.git'], { cwd: docker })
+            //   // _this.spawnCommand('rm', ['.gitignore'], { cwd: docker })
+            //   done()
+            //   _this._end()
+            // })
           })
         } else {
           done()
