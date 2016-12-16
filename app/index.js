@@ -485,24 +485,6 @@ var MyGenerator = yeoman.generators.Base.extend({
     }
   },
 
-  git: function() {
-    // var _this = this
-
-    this.spawnCommand('git', ['init'])
-    // .on('exit', function() {
-      // _this.spawnCommand('git', ['add', '-A']).on('exit', function() {
-        this.spawnCommand('git', ['commit', '-a', '-m', '"init"'])
-      // });
-    // })
-
-    if (this.docker) {
-      this.spawnCommand('git', ['init'], { cwd: '../' })
-      this.spawnCommand('git', ['submodule', 'add',
-        'git@bitbucket.org:' + this.appAuthorDasherize + '/' + this.dir + '.git', this.dir],
-        { cwd: '../' })
-    }
-  },
-
   _installTypo3Docker: function() {
     if (this.typo3 && this.docker) {
       var done = this.async()
@@ -534,6 +516,7 @@ var MyGenerator = yeoman.generators.Base.extend({
           console.log('what');
 
           done()
+          _this._end()
 
           _this.spawnCommand('ln', ['-s', '../../../' + _this.dir + '/typo3/composer.json'], {
             cwd: web
@@ -596,7 +579,27 @@ var MyGenerator = yeoman.generators.Base.extend({
     })
   },
 
+  _git: function() {
+    // var _this = this
+
+    this.spawnCommand('git', ['init'])
+    // .on('exit', function() {
+      // _this.spawnCommand('git', ['add', '-A']).on('exit', function() {
+        this.spawnCommand('git', ['commit', '-a', '-m', '"init"'])
+      // });
+    // })
+
+    if (this.docker) {
+      this.spawnCommand('git', ['init'], { cwd: '../' })
+      this.spawnCommand('git', ['submodule', 'add',
+        'git@bitbucket.org:' + this.appAuthorDasherize + '/' + this.dir + '.git', this.dir],
+        { cwd: '../' })
+    }
+  },
+
   _end: function() {
+    this._git()
+
     this.log(
       '\n' +
       '  ======================================================================', '\n' +
