@@ -295,24 +295,6 @@ var MyGenerator = yeoman.generators.Base.extend({
       this.destinationPath('dploy.yaml'), this)
   },
 
-  git: function() {
-    var _this = this
-
-    this.spawnCommand('git', ['init'])
-    // .on('exit', function() {
-      // _this.spawnCommand('git', ['add', '-A']).on('exit', function() {
-        this.spawnCommand('git', ['commit', '-a', '-m', '"init"'])
-      // });
-    // })
-
-    if (this.docker) {
-      this.spawnCommand('git', ['init'], { cwd: '../' })
-      this.spawnCommand('git', ['submodule', 'add',
-        'git@bitbucket.org:' + this.appAuthorDasherize + '/' + this.dir + '.git', this.dir],
-        { cwd: '../' })
-    }
-  },
-
   /**
    * Setup default assets
    */
@@ -500,6 +482,24 @@ var MyGenerator = yeoman.generators.Base.extend({
         }.bind(this))
       }
 
+    }
+  },
+
+  git: function() {
+    // var _this = this
+
+    this.spawnCommand('git', ['init'])
+    // .on('exit', function() {
+      // _this.spawnCommand('git', ['add', '-A']).on('exit', function() {
+        this.spawnCommand('git', ['commit', '-a', '-m', '"init"'])
+      // });
+    // })
+
+    if (this.docker) {
+      this.spawnCommand('git', ['init'], { cwd: '../' })
+      this.spawnCommand('git', ['submodule', 'add',
+        'git@bitbucket.org:' + this.appAuthorDasherize + '/' + this.dir + '.git', this.dir],
+        { cwd: '../' })
     }
   },
 
