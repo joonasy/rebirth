@@ -581,15 +581,15 @@ var MyGenerator = yeoman.generators.Base.extend({
 
     this.spawnCommand('git', ['init'])
     this.spawnCommand('git', ['commit', '-a', '-m', '"init"']).on('exit', function() {
-      if (this.docker) {
-        this.spawnCommand('git', ['init'], { cwd: '../' })
-        this.spawnCommand('git', ['commit', '-a', '-m', '"init"'], { cwd: '../' })
-        this.spawnCommand('git', ['submodule', 'add',
-          'git@bitbucket.org:' + this.appAuthorDasherize + '/' + this.dir + '.git', this.dir],
+      if (_this.docker) {
+        _this.spawnCommand('git', ['init'], { cwd: '../' })
+        _this.spawnCommand('git', ['commit', '-a', '-m', '"init"'], { cwd: '../' })
+        _this.spawnCommand('git', ['submodule', 'add',
+          'git@bitbucket.org:' + _this.appAuthorDasherize + '/' + _this.dir + '.git', _this.dir],
           { cwd: '../' }).on('exit', function() {
-            if (this.typo3) {
-              this.spawnCommand('git', ['submodule', 'add',
-                'https://github.com/webdevops/TYPO3-docker-boilerplate.git', this.dir + '-docker'],
+            if (_this.typo3) {
+              _this.spawnCommand('git', ['submodule', 'add',
+                'https://github.com/webdevops/TYPO3-docker-boilerplate.git', _this.dir + '-docker'],
                 { cwd: '../' }).on('exit', function() {
                   _this._end()
                   done()
