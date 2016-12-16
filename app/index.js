@@ -577,6 +577,8 @@ var MyGenerator = yeoman.generators.Base.extend({
 
   _git: function() {
     var done = this.async()
+    var _this = this
+
     this.spawnCommand('git', ['init'])
     this.spawnCommand('git', ['commit', '-a', '-m', '"init"']).on('exit', function() {
       if (this.docker) {
