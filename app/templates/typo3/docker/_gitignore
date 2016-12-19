@@ -1,5 +1,1 @@
-.DS_Store
-<%= dir %>-docker/backup
-<%= dir %>-docker/app/web/*
-!<%= dir %>-docker/app/web/composer.json
-<%= dir %>-docker/docker-compose.yml
+/typo3

@@ -20,7 +20,19 @@
     "fluidtypo3/fluidcontent": "*",
     "fluidtypo3/builder": "*",
     "helhum/realurl": "*",
+    "helhum/typo3-console": "^4.0",
     "typo3-ter/news": "*",
     "typo3-ter/powermail": "*"
+  },
+  "config": {
+    "preferred-install": {
+      "*": "dist"
+    }
+  },
+  "extra": {
+    "typo3/cms": {
+      "cms-package-dir": "{$vendor-dir}/typo3/cms",
+      "web-dir": "./"
+    }
   }
 }

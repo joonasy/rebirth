@@ -1,0 +1,30 @@
+app:
+  container_name: <%= dir %>-app
+  build: .
+  dockerfile: Dockerfile
+  links:
+    - mysql
+    - mail
+  ports:
+    - "8000:80"
+    - "9000:9000"
+  volumes:
+    - ./<%= dir %>/typo3/composer.json:/var/www/html/typo3/composer.json
+    - ./:/var/www/html/
+
+mysql:
+  container_name: <%= dir %>-mysql
+  image: mysql:5.7
+  ports:
+    - "13306:3306"
+  environment:
+    MYSQL_ROOT_PASSWORD: root
+    MYSQL_DATABASE: typo3
+    MYSQL_USER: typo3
+    MYSQL_PASSWORD: typo3
+
+mail:
+  container_name: <%= dir %>-mail
+  image: helder/mailcatcher
+  ports:
+    - "1080:80"

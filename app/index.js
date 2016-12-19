@@ -379,6 +379,12 @@ var MyGenerator = yeoman.generators.Base.extend({
           this.destinationPath('../.gitignore'), this)
         this.fs.copyTpl(this.templatePath('typo3/docker/_README.md'),
           this.destinationPath('../README.md'), this)
+        this.fs.copyTpl(this.templatePath('typo3/docker/_start.sh'),
+          this.destinationPath('../start.sh'), this)
+        this.fs.copyTpl(this.templatePath('typo3/docker/_docker-compose.yml'),
+          this.destinationPath('../docker-compose.yml'), this)
+        this.fs.copy(this.templatePath('typo3/docker/Dockerfile'),
+          this.destinationPath('../Dockerfile'))
       }
     }
   },
@@ -492,45 +498,13 @@ var MyGenerator = yeoman.generators.Base.extend({
     if (this.typo3 && this.docker) {
       var done = this.async()
       var _this = this
-      var docker = '../' + this.dir + '-docker'
-      var web = docker + '/app/web/'
 
-      /**
-       * Welcome to temporary callback hell.
-       */
-      this.spawnCommand('git', ['clone', 'https://github.com/webdevops/TYPO3-docker-boilerplate.git', this.dir + '-docker'], {
-        cwd: '../'
-      }).on('exit', function() {
-        if (_this.composer) {
-          /**
-           * Copy these after cloning because cloning doesn't work to an existing directory
-           */
-          _this.spawnCommand('git', ['checkout', '4d394a7'], { cwd: docker }).on('exit', function() {
-            _this.spawnCommand('rm', ['docker-compose.development.yml'], { cwd: docker }).on('exit', function() {
-              _this.fs.copyTpl(_this.templatePath('typo3/docker/_docker-compose.development.yml'),
-                _this.destinationPath(docker + '/docker-compose.development.yml'), _this)
-              _this.fs.copyTpl(_this.templatePath('typo3/docker/_docker-compose.development.yml'),
-                _this.destinationPath(docker + '/docker-compose.yml'), _this)
-            })
-          })
-
-          _this.spawnCommand('touch', ['FIRST_INSTALL'], { cwd: web })
-
-          _this.spawnCommand('ln', ['-s', '../../../' + _this.dir + '/typo3/composer.json'], {
-            cwd: web
-          }).on('exit', function() {
-            _this.spawnCommand('composer', ['install'], {
-              cwd: web
-            }).on('exit', function() {
-              done()
-              _this._git()
-            })
-          })
-        } else {
+      if (this.composer) {
+        this.spawnCommand('./start.sh', [''], { cwd: '../' }).on('exit', function() {
           done()
           _this._git()
-        }
-      })
+        })
+      }
     }
   },
 
@@ -580,10 +554,7 @@ var MyGenerator = yeoman.generators.Base.extend({
    * Waiting for es6 conversion w/ generators/await
    *
    * 1. Init, add & commit theme/extension/html
-   * 2. Init docker boilerplate repo and add theme/extension as submodule
-   * 3. Add TYPO3 submodules, commit docker development repo (root)
-   *    and commit docker boilerplate repo
-   * 4. Commit WordPress docker development repo (root)
+   * 2. Init, add & commit Docker development repo with submodules
    */
   _git: function() {
     var done = this.async()
@@ -605,35 +576,12 @@ var MyGenerator = yeoman.generators.Base.extend({
               _this.spawnCommand('git', ['submodule', 'add',
                 'git@bitbucket.org:' + _this.appAuthorDasherize + '/' + _this.dir + '.git', _this.dir],
                 { cwd: '../' }).on('exit', function() {
-                /**
-                 * [3.]
-                 */
-                if (_this.typo3) {
-                  _this.spawnCommand('git', ['submodule', 'add',
-                    'https://github.com/webdevops/TYPO3-docker-boilerplate.git', _this.dir + '-docker'],
-                    { cwd: '../' }).on('exit', function() {
-                      _this.spawnCommand('git', ['add', '-A'], { cwd: docker }).on('exit', function() {
-                        _this.spawnCommand('git', ['commit', '-m', '"Added project specific docker-compose"'], { cwd: docker }).on('exit', function() {
-                          _this.spawnCommand('git', ['add', '-A'], { cwd: '../' }).on('exit', function() {
-                            _this.spawnCommand('git', ['commit',  '-m', 'init'], { cwd: '../' }).on('exit', function() {
-                                done()
-                                _this._end()
-                              })
-                            })
-                          })
-                      })
-                  })
-                } else {
-                  /**
-                   * [4.]
-                   */
-                  _this.spawnCommand('git', ['add', '-A']).on('exit', function() {
-                    _this.spawnCommand('git', ['commit',  '-m', 'init'], { cwd: '../' }).on('exit', function() {
+                  _this.spawnCommand('git', ['add', '-A'], { cwd: '../' }).on('exit', function() {
+                    _this.spawnCommand('git', ['commit', '-m', 'init'], { cwd: '../' }).on('exit', function() {
                       done()
                       _this._end()
                     })
                   })
-                }
               })
             })
           } else {
