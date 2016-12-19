@@ -82,8 +82,6 @@ var MyGenerator = yeoman.generators.Base.extend({
     if (this.html) {
       this.destinationRoot(this.dir)
     }
-
-    console.log(this.destinationRoot());
   },
 
   /**
@@ -250,7 +248,7 @@ var MyGenerator = yeoman.generators.Base.extend({
       this.appNameSpace = this._.capitalize(this._.camelize(props.appNameSpace))
       this.appURL = props.url
       this.appDescription = props.description
-      this.composer = props.composer// && !this.options['skip-install']
+      this.composer = props.composer && !this.options['skip-install']
       this.dirCapitalize = this._.capitalize(this.dir)
       this.git = props.git
       this.pluginWPMLuserID = props.pluginWPMLuserID
@@ -289,10 +287,10 @@ var MyGenerator = yeoman.generators.Base.extend({
       this.destinationPath('.gitignore'), this)
     this.fs.copy(this.templatePath('shared/editorconfig'), this.destinationPath('.editorconfig'))
     this.fs.copy(this.templatePath('shared/eslintrc'), this.destinationPath('.eslintrc'))
-    this.fs.copyTpl(this.templatePath('shared/_dploy.example.yaml'),
-      this.destinationPath('dploy.example.yaml'), this)
-    this.fs.copyTpl(this.templatePath('shared/_dploy.example.yaml'),
-      this.destinationPath('dploy.yaml'), this)
+    this.fs.copyTpl(this.templatePath('shared/_dploy.example.yml'),
+      this.destinationPath('dploy.example.yml'), this)
+    this.fs.copyTpl(this.templatePath('shared/_dploy.example.yml'),
+      this.destinationPath('dploy.yml'), this)
   },
 
   /**
@@ -375,6 +373,13 @@ var MyGenerator = yeoman.generators.Base.extend({
         this.destinationPath('typo3/composer.json'), this)
       this.fs.copy(this.templatePath('typo3/Resources/Private/Layouts/App.html'),
         this.destinationPath('Resources/Private/Layouts/App.html'))
+
+      if (this.docker) {
+        this.fs.copyTpl(this.templatePath('typo3/docker/_gitignore'),
+          this.destinationPath('../.gitignore'), this)
+        this.fs.copyTpl(this.templatePath('typo3/docker/_README.md'),
+          this.destinationPath('../README.md'), this)
+      }
     }
   },
 
@@ -455,12 +460,10 @@ var MyGenerator = yeoman.generators.Base.extend({
           this.destinationPath('../README.md'), this)
         this.fs.copyTpl(this.templatePath('wordpress/docker/_gitignore'),
           this.destinationPath('../.gitignore'), this)
-        this.fs.copyTpl(this.templatePath('wordpress/docker/_gitmodules'),
-          this.destinationPath('../.gitmodules'), this)
-        this.fs.copyTpl(this.templatePath('wordpress/docker/_docker-compose.yaml'),
-          this.destinationPath(cwd + 'docker-compose.development.yaml'), this)
-        this.fs.copyTpl(this.templatePath('wordpress/docker/_docker-compose.yaml'),
-          this.destinationPath(cwd + 'docker-compose.yaml'), this)
+        this.fs.copyTpl(this.templatePath('wordpress/docker/_docker-compose.yml'),
+          this.destinationPath(cwd + 'docker-compose.development.yml'), this)
+        this.fs.copyTpl(this.templatePath('wordpress/docker/_docker-compose.yml'),
+          this.destinationPath(cwd + 'docker-compose.yml'), this)
         this.fs.copyTpl(this.templatePath('wordpress/docker/_wp-config.development.php'),
           this.destinationPath(cwd + 'wp-config.development.example.php'), this)
         this.fs.copyTpl(this.templatePath('wordpress/docker/_wp-config.development.php'),
@@ -499,32 +502,29 @@ var MyGenerator = yeoman.generators.Base.extend({
         cwd: '../'
       }).on('exit', function() {
         if (_this.composer) {
-          _this.spawnCommand('git', ['checkout', '4d394a7'], { cwd: docker })
+          /**
+           * Copy these after cloning because cloning doesn't work to an existing directory
+           */
+          _this.spawnCommand('git', ['checkout', '4d394a7'], { cwd: docker }).on('exit', function() {
+            _this.spawnCommand('rm', ['docker-compose.development.yml'], { cwd: docker }).on('exit', function() {
+              _this.fs.copyTpl(_this.templatePath('typo3/docker/_docker-compose.development.yml'),
+                _this.destinationPath(docker + '/docker-compose.development.yml'), _this)
+              _this.fs.copyTpl(_this.templatePath('typo3/docker/_docker-compose.development.yml'),
+                _this.destinationPath(docker + '/docker-compose.yml'), _this)
+            })
+          })
+
           _this.spawnCommand('touch', ['FIRST_INSTALL'], { cwd: web })
-
-          _this.fs.copyTpl(_this.templatePath('typo3/docker/_docker-compose.development.yaml'),
-            _this.destinationPath(docker + '/docker-compose.development.yaml'), _this)
-          _this.fs.copyTpl(_this.templatePath('typo3/docker/_docker-compose.development.yaml'),
-            _this.destinationPath(docker + '/docker-compose.yaml'), _this)
-          _this.fs.copyTpl(_this.templatePath('typo3/docker/_gitignore'),
-            _this.destinationPath('../.gitignore'), _this)
-          _this.fs.copyTpl(_this.templatePath('typo3/docker/_README.md'),
-            _this.destinationPath('../README.md'), _this)
-
-          done()
-          _this._git()
 
           _this.spawnCommand('ln', ['-s', '../../../' + _this.dir + '/typo3/composer.json'], {
             cwd: web
           }).on('exit', function() {
-            // _this.spawnCommand('composer', ['install'], {
-            //   cwd: web
-            // }).on('exit', function() {
-            //   // _this.spawnCommand('rm', ['-rf', '.git'], { cwd: docker })
-            //   // _this.spawnCommand('rm', ['.gitignore'], { cwd: docker })
-            //   done()
-            //   _this._git()
-            // })
+            _this.spawnCommand('composer', ['install'], {
+              cwd: web
+            }).on('exit', function() {
+              done()
+              _this._git()
+            })
           })
         } else {
           done()
@@ -575,34 +575,73 @@ var MyGenerator = yeoman.generators.Base.extend({
     })
   },
 
+  /**
+   * Welcome to temporary callback hell. Fuck this.
+   * Waiting for es6 conversion w/ generators/await
+   *
+   * 1. Init, add & commit theme/extension/html
+   * 2. Init docker boilerplate repo and add theme/extension as submodule
+   * 3. Add TYPO3 submodules, commit docker development repo (root)
+   *    and commit docker boilerplate repo
+   * 4. Commit WordPress docker development repo (root)
+   */
   _git: function() {
     var done = this.async()
     var _this = this
+    var docker = '../' + this.dir + '-docker/'
 
-    this.spawnCommand('git', ['init'])
-    this.spawnCommand('git', ['commit', '-a', '-m', '"init"']).on('exit', function() {
-      if (_this.docker) {
-        _this.spawnCommand('git', ['init'], { cwd: '../' })
-        _this.spawnCommand('git', ['commit', '-a', '-m', '"init"'], { cwd: '../' })
-        _this.spawnCommand('git', ['submodule', 'add',
-          'git@bitbucket.org:' + _this.appAuthorDasherize + '/' + _this.dir + '.git', _this.dir],
-          { cwd: '../' }).on('exit', function() {
-            if (_this.typo3) {
+    /**
+     * [1.]
+     */
+    this.spawnCommand('git', ['init']).on('exit', function() {
+      _this.spawnCommand('git', ['add', '-A']).on('exit', function() {
+        _this.spawnCommand('git', ['commit', '-m', 'init']).on('exit', function() {
+
+          if (_this.docker) {
+            /**
+             * [2.]
+             */
+            _this.spawnCommand('git', ['init'], { cwd: '../' }).on('exit', function() {
               _this.spawnCommand('git', ['submodule', 'add',
-                'https://github.com/webdevops/TYPO3-docker-boilerplate.git', _this.dir + '-docker'],
+                'git@bitbucket.org:' + _this.appAuthorDasherize + '/' + _this.dir + '.git', _this.dir],
                 { cwd: '../' }).on('exit', function() {
-                  _this._end()
-                  done()
-                })
-            } else {
-              _this._end()
-              done()
-            }
-          })
-      } else {
-        _this._end()
-        done()
-      }
+                /**
+                 * [3.]
+                 */
+                if (_this.typo3) {
+                  _this.spawnCommand('git', ['submodule', 'add',
+                    'https://github.com/webdevops/TYPO3-docker-boilerplate.git', _this.dir + '-docker'],
+                    { cwd: '../' }).on('exit', function() {
+                      _this.spawnCommand('git', ['add', '-A'], { cwd: docker }).on('exit', function() {
+                        _this.spawnCommand('git', ['commit', '-m', '"Added project specific docker-compose"'], { cwd: docker }).on('exit', function() {
+                          _this.spawnCommand('git', ['add', '-A'], { cwd: '../' }).on('exit', function() {
+                            _this.spawnCommand('git', ['commit',  '-m', 'init'], { cwd: '../' }).on('exit', function() {
+                                done()
+                                _this._end()
+                              })
+                            })
+                          })
+                      })
+                  })
+                } else {
+                  /**
+                   * [4.]
+                   */
+                  _this.spawnCommand('git', ['add', '-A']).on('exit', function() {
+                    _this.spawnCommand('git', ['commit',  '-m', 'init'], { cwd: '../' }).on('exit', function() {
+                      done()
+                      _this._end()
+                    })
+                  })
+                }
+              })
+            })
+          } else {
+            done()
+            _this._end()
+          }
+        })
+      })
     })
   },
 

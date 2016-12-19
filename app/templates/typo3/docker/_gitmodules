@@ -1,7 +1,0 @@
-[submodule "<%= dir %>"]
-  path = <%= dir %>
-  url = git@bitbucket.org:<%= appAuthorDasherize %>/<%= dir %>.git
-
-[submodule "<%= dir %>-docker"]
-  path = <%= dir %>-docker
-  url = https://github.com/webdevops/TYPO3-docker-boilerplate.git
