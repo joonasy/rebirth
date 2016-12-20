@@ -1,5 +1,12 @@
 # Changelog
 
+## 0.4.31 (2016-12-20)
+
+* TYPO3: Remove the bloated boilerplate and use simpler Docker approach
+* Simple WordPress boilerplate
+* Added Makefile for docker install
+* Better instructions
+
 ## 0.4.3 (2016-12-15)
 
 * Added [TYPO3 docker boilerplate](https://github.com/webdevops/TYPO3-docker-boilerplate)
