@@ -11,7 +11,7 @@ then
 fi
 
 # Start docker containers
-docker-compose up -d --force-recreate
+docker-compose up -d
 
 # Run composer install
 if [ ! -d "typo3/vendor" ]

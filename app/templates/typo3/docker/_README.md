@@ -6,6 +6,7 @@
 
 * GNU/Linux/Unix with Docker ([Docker toolbox](https://www.docker.com/products/docker-toolbox), [Vagrant](https://www.vagrantup.com/downloads.html) VM with Docker or [native Linux with Docker](http://docs.docker.com/linux/step_one/)). Could also work in [Windows](https://docs.docker.com/docker-for-windows/#/what-to-know-before-you-install) but not tested just yet.
 * [Docker-compose](https://github.com/docker/compose)
+* [make](https://www.gnu.org/software/make/manual/make.html) (GNU/Linux/Unix, optional)
 
 # Installation 
 
@@ -15,15 +16,15 @@
 $ git clone git@bitbucket.org:<%= appAuthorDasherize %>/<%= dir %>.git --recursive
 ```
 
-**2.** If you are able to run shell scripts you are in luck (first, start your docker-machine if you need to): 
+**2.** If you are able to run make / shell scripts you are in luck (first, start your docker-machine if you need to): 
 
 ```
-$ ./start.sh
+$ make install
 ```
 
-Otherwise run the commands manually from [start.sh](start.sh).
+Otherwise run [install.sh](install.sh) or run the commands manually.
 
-**3.** Map your localhost to the development address in your host machine's hosts-file (`/etc/hosts` in linux/osx, somewhere in sys files in windows). For example:
+**3.** Map your localhost to the development address in your host machine's hosts-file (/etc/hosts in linux/osx, somewhere in sys files in windows). For example:
 
 ```
 192.168.10.10 <%= dir %>.dev
@@ -31,13 +32,20 @@ Otherwise run the commands manually from [start.sh](start.sh).
 
 **4.** Locate to [<%= dir %>.dev:8000/typo3](http://<%= dir %>.dev:8000/typo3) and setup your extension
 
-**5.** Install extension dependencies and see development usage in [<%= dir %>](<%= dir %>) 
+**5.** See extension development usage in [<%= dir %>](<%= dir %>) 
 
 # Usage
 
-* `docker-compose up -d`: Start your development environment in detached mode
-* `docker-compose stop`: Stop your development environment
-* [Docker compose reference](https://docs.docker.com/compose/reference)
+All the commands are near equivalents to docker / docker-compose commands. If you are not able to run these please refer to the [Makefile](Makefile), [Docker compose reference](https://docs.docker.com/compose/reference) and [ Docker CLI](https://docs.docker.com/engine/reference/commandline/). 
+
+* `make install`: Kickstart your project and/or update all dependencies
+* `make start`: Start containers
+* `make stop`: Stop containers
+* `make up`: Build, create and start your containers if not already build
+* `make bash`: Connect to TYPO3 container
+* `make mysql`: Connect to MySQL container
+* `make rebuild`: Rebuild TYPO3 container
+* `make reinstall`: Rebuild and reinstall everything, including your MySQL container (Note that you will lose your data)
 
 # Information
 
@@ -64,20 +72,6 @@ mysql:
   volumes:
     - /folder-to-local-sql-dump/:/docker-entrypoint-initdb.d/
 ```
-
-### Reinstall
-
-**1.** Delete your existing containers (especially the mysql):
-
-```
-docker rm -f <%= dir %>-app
-docker rm -f <%= dir %>-mail
-docker rm -f <%= dir %>-mysql
-```
-
-**2.** Remove typo3/ folder
-
-**3.** Run `$ ./start.sh` or run the commands manually
 
 ---
 
