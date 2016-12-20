@@ -228,14 +228,6 @@ var MyGenerator = yeoman.generators.Base.extend({
         when: function(props) {
           return this.wp
         }.bind(this)
-      }, {
-        type: 'confirm',
-        name: 'composer',
-        message: 'Do you want to install Composer dependencies?',
-        default: true,
-        when: function(props) {
-          return this.docker
-        }.bind(this)
       }
     ], function(props) {
       this.assets = props.whatStarters.indexOf('assets') !== -1
@@ -248,7 +240,6 @@ var MyGenerator = yeoman.generators.Base.extend({
       this.appNameSpace = this._.capitalize(this._.camelize(props.appNameSpace))
       this.appURL = props.url
       this.appDescription = props.description
-      this.composer = props.composer && !this.options['skip-install']
       this.dirCapitalize = this._.capitalize(this.dir)
       this.git = props.git
       this.pluginWPMLuserID = props.pluginWPMLuserID
@@ -501,15 +492,10 @@ var MyGenerator = yeoman.generators.Base.extend({
       var done = this.async()
       var _this = this
 
-      if (this.composer) {
-        this.spawnCommand('./start.sh', [''], { cwd: '../' }).on('exit', function() {
-          done()
-          _this._git()
-        })
-      } else {
+      this.spawnCommand('./start.sh', [''], { cwd: '../' }).on('exit', function() {
         done()
         _this._git()
-      }
+      })
     }
   },
 
@@ -522,21 +508,16 @@ var MyGenerator = yeoman.generators.Base.extend({
       /**
        * Welcome to temporary callback hell.
        */
-      if (this.composer) {
-        this.spawnCommand('ln', ['-s', '../' + this.dir + '/wp/composer.json'], {
+      this.spawnCommand('ln', ['-s', '../' + this.dir + '/wp/composer.json'], {
+        cwd: docker
+      }).on('exit', function() {
+        _this.spawnCommand('composer', ['install'], {
           cwd: docker
         }).on('exit', function() {
-          _this.spawnCommand('composer', ['install'], {
-            cwd: docker
-          }).on('exit', function() {
-            done()
-            _this._git()
-          })
+          done()
+          _this._git()
         })
-      } else {
-        done()
-        _this._git()
-      }
+      })
     }
   },
 
@@ -544,10 +525,10 @@ var MyGenerator = yeoman.generators.Base.extend({
     this.installDependencies({
       skipInstall: this.options['skip-install'],
       callback: function() {
-        this._installTypo3Docker()
-        this._installWordPressDocker()
-
-        if (this.html) {
+        if (!this.options['skip-install'] || this.html) {
+          this._installTypo3Docker()
+          this._installWordPressDocker()
+        } else {
           this._git()
         }
       }.bind(this)
