@@ -30,7 +30,7 @@ Otherwise run [install.sh](install.sh) or run the commands manually.
 192.168.10.10 <%= dir %>.dev
 ```
 
-**4.** Locate to [<%= dir %>.dev:8000/typo3](http://<%= dir %>.dev:8000/typo3) and setup WordPress
+**4.** Locate to [<%= dir %>.dev:8000](http://<%= dir %>.dev:8000) and setup WordPress
 
 **5.** Activate theme and see theme development usage in [<%= dir %>](<%= dir %>) 
 
