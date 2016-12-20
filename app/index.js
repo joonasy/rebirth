@@ -383,6 +383,8 @@ var MyGenerator = yeoman.generators.Base.extend({
           this.destinationPath('../start.sh'), this)
         this.fs.copyTpl(this.templatePath('typo3/docker/_docker-compose.yml'),
           this.destinationPath('../docker-compose.yml'), this)
+        this.fs.copyTpl(this.templatePath('typo3/docker/_docker-compose.override.yml'),
+          this.destinationPath('../docker-compose.override.yml'), this)
         this.fs.copy(this.templatePath('typo3/docker/Dockerfile'),
           this.destinationPath('../Dockerfile'))
       }
@@ -504,6 +506,9 @@ var MyGenerator = yeoman.generators.Base.extend({
           done()
           _this._git()
         })
+      } else {
+        done()
+        _this._git()
       }
     }
   },
@@ -550,8 +555,7 @@ var MyGenerator = yeoman.generators.Base.extend({
   },
 
   /**
-   * Welcome to temporary callback hell. Fuck this.
-   * Waiting for es6 conversion w/ generators/await
+   * Welcome to temporary callback hell. Fuck this. Waiting for es6 conversion w/ generators/await
    *
    * 1. Init, add & commit theme/extension/html
    * 2. Init, add & commit Docker development repo with submodules
