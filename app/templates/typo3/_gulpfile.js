@@ -31,6 +31,7 @@ var open = process.env.npm_config_open
  * ====== */
 
 var config = {
+  ext: '<%= dir %>/',
   host: '<%= dir %>.dev',
   src: 'Resources/Private/',
   dest: 'Resources/Public/',
@@ -84,7 +85,7 @@ gulp.task('stylesheets', function() {
 
   if (production) {
     return pipeline = pipeline
-      .pipe($.replace('../', '/typo3conf/ext/' + config.dest + 'Assets/'))
+      .pipe($.replace('../', '/' + config.ext + config.dest))
       .pipe($.combineMq({ beautify: false }))
       .pipe($.cssnano({ mergeRules: false }))
       .pipe(gulp.dest(config.stylesheets.dest))
