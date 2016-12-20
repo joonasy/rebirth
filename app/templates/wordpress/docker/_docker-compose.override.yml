@@ -1,0 +1,3 @@
+app:
+  # volumes:
+    # - /my-custom-uploads-folder:/var/www/html/wp-content/uploads

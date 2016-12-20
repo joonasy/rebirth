@@ -1,40 +1,73 @@
 # <%= appNameHumanize %> - WordPress Docker
 
-> Docker development environment for `<%= dir %>`. Generated on <%= (generatorDate) %> with [<%= pkg.name %> v<%= pkg.version %>](<%= (generatorRepository) %>). Currently using [Wordpress docker image](https://github.com/joonasy/wordpress) boilerplate located in [<%= dir %>-docker](<%= dir %>-docker/).
+> Docker development environment for `<%= dir %>`. Generated on <%= (generatorDate) %> with [<%= pkg.name %> v<%= pkg.version %>](<%= (generatorRepository) %>).
 
 # Requirements
 
-* GNU/Linux/Unix with Docker ([Vagrant](https://www.vagrantup.com/downloads.html) VM with Docker, [Docker Toolbox](https://www.docker.com/products/docker-toolbox) or [native Linux with Docker](http://docs.docker.com/linux/step_one/)). Could also work in Windows but not tested.
-* [Composer](https://getcomposer.org/)
+* GNU/Linux/Unix with Docker ([Docker toolbox](https://www.docker.com/products/docker-toolbox), [Vagrant](https://www.vagrantup.com/downloads.html) VM with Docker or [native Linux with Docker](http://docs.docker.com/linux/step_one/)). Could also work in [Windows](https://docs.docker.com/docker-for-windows/#/what-to-know-before-you-install) but not tested just yet.
 * [Docker-compose](https://github.com/docker/compose)
+* [make](https://www.gnu.org/software/make/manual/make.html) (GNU/Linux/Unix, optional)
 
 # Installation 
 
-**1.** Clone this repo recursively (`--recursive`) and start your docker-machine if you need to
-
-**2.** Make sure there is symlink <%= dir %>-docker/composer.json to <%= dir %>/wp/composer.json. If not then create or copy it.
-
-**3.** Install composer dependencies
+**1.** Clone this repository recursively:
 
 ```
-// #!/usr/bin/env bash
-`composer install´ 
+$ git clone git@bitbucket.org:<%= appAuthorDasherize %>/<%= dir %>.git --recursive
 ```
 
-**4.** Copy docker-compose.development.yaml to docker-compose.yaml
+**2.** If you are able to run make / shell scripts you are in luck (first, start your docker-machine if you need to): 
 
-**5.** Copy wp-config.development.example.php to wp-config.development.php
+```
+$ make install
+```
 
-**6.** Copy wp-config.example.php to wp-config.php
+Otherwise run [install.sh](install.sh) or run the commands manually.
 
-**7.** Map your environment host to the development domain in your host machine's hosts-file (`/etc/hosts` in linux/osx, somewhere in sys files in windows). For example:
+**3.** Map your localhost to the development address in your host machine's hosts-file (/etc/hosts in linux/osx, somewhere in sys files in windows). For example:
 
 ```
 192.168.10.10 <%= dir %>.dev
 ```
 
-**8.** Run `docker-compose up -d`
+**4.** Locate to [<%= dir %>.dev:8000/typo3](http://<%= dir %>.dev:8000/typo3) and setup WordPress
 
-**7.** Locate to <%= dir %>.dev and install WordPress
+**5.** Activate theme and see theme development usage in [<%= dir %>](<%= dir %>) 
 
-Locate to [<%= dir %>](<%= dir %>) and setup the theme. Learn more about the theme and the project structure in [My Web Starter Kit](https://bitbucket.org/mediasignal/my-web-starter-kit/src/master/docs/project/README.md).
+# Usage
+
+All the commands are near equivalents to docker / docker-compose commands. If you are not able to run these please refer to the [Makefile](Makefile), [Docker compose reference](https://docs.docker.com/compose/reference) and [ Docker CLI](https://docs.docker.com/engine/reference/commandline/). 
+
+* `make install`: Kickstart your project and/or update all dependencies
+* `make start`: Start containers
+* `make stop`: Stop containers
+* `make up`: Build, create and start your containers if not already build
+* `make bash`: Connect to WordPress container
+* `make mysql`: Connect to MySQL container
+* `make rebuild`: Rebuild WordPress container
+* `make reinstall`: Rebuild and reinstall everything, including your MySQL container (Note that you will lose your data)
+
+# Information
+
+### Default database credentials
+
+```
+define('DB_NAME', 'wordpress');
+define('DB_USER', 'root');
+define('DB_PASSWORD', 'password');
+define('DB_HOST', 'mysql');
+```
+
+### Custom settings
+
+If you want to have custom docker-compose settings create docker-compose.override.yml and extend all the things your need. For example add your custom uploads folder:
+
+```
+app:
+  volumes:
+    - /my-custom-uploads:/var/www/html/wp-content/uploads
+```
+
+---
+
+Learn more about the project structure in [My Web Starter Kit](https://bitbucket.org/mediasignal/my-web-starter-kit/src/master/docs/project/README.md)

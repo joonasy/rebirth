@@ -1,25 +1,26 @@
-wordpress:
+app:
   container_name: <%= dir %>-wp
   image: joonasy/wordpress
   links:
-    - database:mysql
+    - mysql
   ports:
-    - 80:80
+    - 8000:80
   volumes:
-    - ../<%= dir %>:/var/www/html/wp-content/themes/<%= dir %>
-    - ./wp-content/mu-plugins:/var/www/html/wp-content/mu-plugins
-    - ./wp-content/plugins:/var/www/html/wp-content/plugins
-    - ./wp-content/uploads:/var/www/html/wp-content/uploads
-    - ./wp-config.php:/var/www/html/wp-config.php
+    - ./<%= dir %>:/var/www/html/wp-content/themes/<%= dir %>
+    - ./<%= dir %>/wp/composer.json:/var/www/html/composer.json
+    - ./wp/wp-content/mu-plugins:/var/www/html/wp-content/mu-plugins
+    - ./wp/wp-content/plugins:/var/www/html/wp-content/plugins
+    - ./wp/wp-content/uploads:/var/www/html/wp-content/uploads
     - ./wp-config.development.php:/var/www/html/wp-config.development.php
   environment:
     WORDPRESS_DB_NAME: wordpress
     WORDPRESS_DB_USER: root
-    USE_EXTERNAL_FILES: 'true'
-database:
-  container_name: <%= dir %>-db
+    WORDPRESS_DB_PASSWORD: password
+
+mysql:
+  container_name: <%= dir %>-mysql
   image: mariadb
   ports:
-    - 3306:3306
+    - 13306:3306
   environment:
     MYSQL_ROOT_PASSWORD: password

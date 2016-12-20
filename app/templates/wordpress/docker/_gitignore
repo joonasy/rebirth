@@ -1,9 +1,2 @@
-.DS_Store
-<%= dir %>-docker/wp
-<%= dir %>-docker/wp-content/*
-!<%= dir %>-docker/wp-content/mu-plugins/
-<%= dir %>-docker/vendor
-<%= dir %>-docker/composer.lock
-<%= dir %>-docker/wp-config.development.php
-<%= dir %>-docker/wp-config.php
-<%= dir %>-docker/docker-compose.yaml
+/wp
+docker-compose.override.yml

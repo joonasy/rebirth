@@ -7,7 +7,6 @@
 var chalk = require('chalk')
 var moment = require('moment')
 var path = require('path')
-var request = require('request')
 var yeoman = require('yeoman-generator')
 var yosay = require('yosay')
 
@@ -104,12 +103,9 @@ var MyGenerator = yeoman.generators.Base.extend({
       }, {
         when: function (props) {
           var deeperDir = ''
-          var dockerPath = ''
 
           if (this.docker) {
             deeperDir = this.docker ? this.dirOrig + '/' : ''
-            dockerPath = '\n' + chalk.green('  ❯ ') + 'Docker path:' + chalk.cyan('./' +
-              deeperDir + this.dir + '-docker')
           }
 
           if (this.typo3) {
@@ -119,13 +115,15 @@ var MyGenerator = yeoman.generators.Base.extend({
               chalk.green('  ❯'), 'Install path:', chalk.cyan('./' + deeperDir + extension), '\n' +
               chalk.green('  ❯'), 'Extension key:', chalk.cyan(extension), '\n' +
               chalk.green('  ❯'), 'Extension path:', chalk.cyan('./' + deeperDir + extension),
-              dockerPath
+              this.docker ? '\n' + chalk.green('  ❯ ') + 'TYPO3 path:' + chalk.cyan('./' +
+              deeperDir + 'typo3') : ''
             )
           } else if (this.wp) {
             this.log(
               chalk.green('  ❯'), 'Install path:', chalk.cyan('./' + this.dir), '\n' +
               chalk.green('  ❯'), 'Theme path:', chalk.cyan('./' + deeperDir + this.dir),
-              dockerPath
+              this.docker ? '\n' + chalk.green('  ❯ ') + 'WordPress path:' + chalk.cyan('./' +
+              deeperDir + 'wp') : ''
             )
           } else {
             this.log(
@@ -187,7 +185,7 @@ var MyGenerator = yeoman.generators.Base.extend({
         ]
       }, {
         when: function (props) {
-          if (this.wp) {
+          if (this.wp && this.docker) {
             this.log(
               chalk.green('  !'), 'WPML user id and subscription key can be found from the download link in \n' +
               chalk.green('  !'), chalk.underline.yellow('https://wpml.org/account/downloads/'), '\n' +
@@ -201,7 +199,7 @@ var MyGenerator = yeoman.generators.Base.extend({
         message: 'WPML user ID (leave empty for not installing):',
         default: false,
         when: function() {
-          return this.wp
+          return this.wp && this.docker
         }.bind(this)
       }, {
         type: 'input',
@@ -213,7 +211,7 @@ var MyGenerator = yeoman.generators.Base.extend({
         }.bind(this)
       }, {
         when: function (props) {
-          if (this.wp) {
+          if (this.wp && this.docker) {
             this.log(
               chalk.green('  !'), 'ACF subscription key can be found from ' +
               chalk.underline.yellow('http://www.advancedcustomfields.com/my-account/')
@@ -226,7 +224,7 @@ var MyGenerator = yeoman.generators.Base.extend({
         message: 'ACF key (leave empty for not installing):',
         default: false,
         when: function(props) {
-          return this.wp
+          return this.wp && this.docker
         }.bind(this)
       }
     ], function(props) {
@@ -370,8 +368,10 @@ var MyGenerator = yeoman.generators.Base.extend({
           this.destinationPath('../.gitignore'), this)
         this.fs.copyTpl(this.templatePath('typo3/docker/_README.md'),
           this.destinationPath('../README.md'), this)
-        this.fs.copyTpl(this.templatePath('typo3/docker/_start.sh'),
-          this.destinationPath('../start.sh'), this)
+        this.fs.copyTpl(this.templatePath('typo3/docker/_install.sh'),
+          this.destinationPath('../install.sh'), this)
+        this.fs.copyTpl(this.templatePath('typo3/docker/_Makefile'),
+          this.destinationPath('../Makefile'), this)
         this.fs.copyTpl(this.templatePath('typo3/docker/_docker-compose.yml'),
           this.destinationPath('../docker-compose.yml'), this)
         this.fs.copyTpl(this.templatePath('typo3/docker/_docker-compose.override.yml'),
@@ -450,38 +450,20 @@ var MyGenerator = yeoman.generators.Base.extend({
       }
 
       if (this.docker) {
-        var done = this.async()
-        var url = 'https://api.wordpress.org/secret-key/1.1/salt'
-        var cwd = '../' + this.dir + '-docker/'
-        this.salt = ''
-
         this.fs.copyTpl(this.templatePath('wordpress/docker/_README.md'),
           this.destinationPath('../README.md'), this)
         this.fs.copyTpl(this.templatePath('wordpress/docker/_gitignore'),
           this.destinationPath('../.gitignore'), this)
         this.fs.copyTpl(this.templatePath('wordpress/docker/_docker-compose.yml'),
-          this.destinationPath(cwd + 'docker-compose.development.yml'), this)
-        this.fs.copyTpl(this.templatePath('wordpress/docker/_docker-compose.yml'),
-          this.destinationPath(cwd + 'docker-compose.yml'), this)
+          this.destinationPath('../docker-compose.yml'), this)
+        this.fs.copyTpl(this.templatePath('wordpress/docker/_docker-compose.override.yml'),
+          this.destinationPath('../docker-compose.override.yml'), this)
         this.fs.copyTpl(this.templatePath('wordpress/docker/_wp-config.development.php'),
-          this.destinationPath(cwd + 'wp-config.development.example.php'), this)
-        this.fs.copyTpl(this.templatePath('wordpress/docker/_wp-config.development.php'),
-          this.destinationPath(cwd + 'wp-config.development.php'), this)
-        this.fs.copy(this.templatePath('wordpress/docker/register-theme-directory.php'),
-          this.destinationPath(cwd + 'wp-content/mu-plugins/register-theme-directory.php'))
-        this.fs.copy(this.templatePath('wordpress/docker/index.php'),
-          this.destinationPath(cwd + 'index.php'))
-
-        request(url, function(error, response, body) {
-          if (!error && response.statusCode == 200) {
-            this.salt = body
-            this.fs.copyTpl(this.templatePath('wordpress/docker/_wp-config.php'),
-              this.destinationPath(cwd + 'wp-config.example.php'), this)
-            this.fs.copyTpl(this.templatePath('wordpress/docker/_wp-config.php'),
-              this.destinationPath(cwd + 'wp-config.php'), this)
-            done()
-          }
-        }.bind(this))
+          this.destinationPath('../wp-config.development.php'), this)
+        this.fs.copyTpl(this.templatePath('wordpress/docker/_install.sh'),
+          this.destinationPath('../install.sh'), this)
+        this.fs.copyTpl(this.templatePath('wordpress/docker/_Makefile'),
+          this.destinationPath('../Makefile'), this)
       }
 
     }
@@ -492,7 +474,7 @@ var MyGenerator = yeoman.generators.Base.extend({
       var done = this.async()
       var _this = this
 
-      this.spawnCommand('./start.sh', [''], { cwd: '../' }).on('exit', function() {
+      this.spawnCommand('./install.sh', [''], { cwd: '../' }).on('exit', function() {
         done()
         _this._git()
       })
@@ -503,20 +485,10 @@ var MyGenerator = yeoman.generators.Base.extend({
     if (this.wp && this.docker) {
       var done = this.async()
       var _this = this
-      var docker = '../' + this.dir + '-docker/'
 
-      /**
-       * Welcome to temporary callback hell.
-       */
-      this.spawnCommand('ln', ['-s', '../' + this.dir + '/wp/composer.json'], {
-        cwd: docker
-      }).on('exit', function() {
-        _this.spawnCommand('composer', ['install'], {
-          cwd: docker
-        }).on('exit', function() {
-          done()
-          _this._git()
-        })
+      this.spawnCommand('./install.sh', [''], { cwd: '../' }).on('exit', function() {
+        done()
+        _this._git()
       })
     }
   },
@@ -544,7 +516,6 @@ var MyGenerator = yeoman.generators.Base.extend({
   _git: function() {
     var done = this.async()
     var _this = this
-    var docker = '../' + this.dir + '-docker/'
 
     /**
      * [1.]
