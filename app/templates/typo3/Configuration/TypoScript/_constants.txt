@@ -1,6 +1,0 @@
-plugin.tx_<%= dir %>.view {
-  templateRootPath = EXT:<%= dir %>/Resources/Private/Templates/
-  partialRootPath = EXT:<%= dir %>/Resources/Private/Partials/
-  layoutRootPath = EXT:<%= dir %>/Resources/Private/Layouts/
-}
-
