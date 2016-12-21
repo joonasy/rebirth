@@ -4,15 +4,17 @@
 
 'use strict'
 
+var _ = require('underscore.string')
 var chalk = require('chalk')
+var generator = require('yeoman-generator')
 var moment = require('moment')
+var mkdirp = require('mkdirp')
 var path = require('path')
-var yeoman = require('yeoman-generator')
 var yosay = require('yosay')
 
-var MyGenerator = yeoman.generators.Base.extend({
+var MyGenerator = generator.extend({
   constructor: function () {
-    yeoman.generators.Base.apply(this, arguments)
+    generator.apply(this, arguments)
     this.pkg = require('../package.json')
     this.generatorDate = moment().format('D.M.YYYY')
     this.generatorRepository = this.pkg.repository
@@ -24,15 +26,13 @@ var MyGenerator = yeoman.generators.Base.extend({
     })
 
     this.option('project', {
-      alias: 'p',
       defaults: 'typo3',
       type: String
     })
 
     this.option('docker', {
-      alias: 'd',
       defaults: true,
-      type: Boolean
+      type: String
     })
 
     this.typo3 = this.options.project === 'typo3'
@@ -54,14 +54,14 @@ var MyGenerator = yeoman.generators.Base.extend({
     /**
      * Setup proper install directory
      */
-    this.dir = this.dir.toLowerCase()
-    this.dirOrig = this.dir
+    this.dir = this.options.dir.toLowerCase()
+    this.dirOrig = this.options.dir
 
     if (this.typo3) {
-      var extension = this._.underscored(this.dir).replace(/_/g, '')
+      var extension = _.underscored(this.dir).replace(/_/g, '')
 
       if (this.docker) {
-        this.mkdir(this.dir)
+        mkdirp(this.dir)
         this.destinationRoot(this.dir + '/' + extension)
       } else {
         this.destinationRoot(extension)
@@ -87,14 +87,12 @@ var MyGenerator = yeoman.generators.Base.extend({
    * Prompts
    */
   prompts: function () {
-    var done = this.async()
-
     this.log(yosay(
       'Hi! Welcome to ' + chalk.blue('My Web Starter Kit')+'. ' +
       'Let\'s create a ' + chalk.green(this.name()) + ' project!'
     ))
 
-    this.prompt([
+    var prompts = [
       {
         type: 'input',
         name: 'name',
@@ -109,7 +107,7 @@ var MyGenerator = yeoman.generators.Base.extend({
           }
 
           if (this.typo3) {
-            var extension =  this._.underscored(this.dir).replace(/_/g, '')
+            var extension =  _.underscored(this.dir).replace(/_/g, '')
 
             this.log(
               chalk.green('  ❯'), 'Install path:', chalk.cyan('./' + deeperDir + extension), '\n' +
@@ -137,7 +135,7 @@ var MyGenerator = yeoman.generators.Base.extend({
         type: 'input',
         name: 'author',
         message: 'Author name:',
-        default: 'Author'
+        default: this.user.git.name() ? this.user.git.name() : 'Author'
       }, {
           type: 'input',
           name: 'appNameSpace',
@@ -152,8 +150,8 @@ var MyGenerator = yeoman.generators.Base.extend({
             this.log(
               chalk.green('  ❯'), 'Flux extension key:',
                 chalk.cyan(
-                  this._.capitalize(this._.camelize(props.appNameSpace)) + '.' +
-                  this._.capitalize(this._.underscored(this.dir).replace(/_/g, ''))
+                  _.capitalize(_.camelize(props.appNameSpace)) + '.' +
+                  _.capitalize(_.underscored(this.dir).replace(/_/g, ''))
                 )
             )
           }
@@ -163,18 +161,18 @@ var MyGenerator = yeoman.generators.Base.extend({
         name: 'url',
         message: 'Project URL (production):',
         default: function(props) {
-          return 'http://' + this._.dasherize(this._.slugify(props.name)) + '.com'
+          return 'http://' + _.dasherize(_.slugify(props.name)) + '.com'
         }.bind(this)
       }, {
         type: 'input',
         name: 'description',
         message: 'Project description:',
         default: function(props) {
-          return 'Website for '+ this._.humanize(props.name)
+          return 'Website for '+ _.humanize(props.name)
         }.bind(this)
       }, {
         type: 'checkbox',
-        name: 'whatStarters',
+        name: 'assets',
         message: 'What starters do you want?',
         choices: [
           {
@@ -227,31 +225,32 @@ var MyGenerator = yeoman.generators.Base.extend({
           return this.wp && this.docker
         }.bind(this)
       }
-    ], function(props) {
-      this.assets = props.whatStarters.indexOf('assets') !== -1
+    ]
+
+    return this.prompt(prompts).then(function (props) {
+      this.assets = props.assets.indexOf('assets') !== -1
       this.appName = props.name
-      this.appNameDasherize = this._.dasherize(this._.slugify(props.name))
-      this.appNameHumanize = this._.humanize(this.appNameDasherize)
-      this.appNameUnderscored = this._.underscored(this.appNameDasherize)
-      this.appNamePascalize = this._.capitalize(this._.camelize(this.appNameDasherize))
+      this.appNameDasherize = _.dasherize(_.slugify(props.name))
+      this.appNameHumanize = _.humanize(this.appNameDasherize)
+      this.appNameUnderscored = _.underscored(this.appNameDasherize)
+      this.appNamePascalize = _.capitalize(_.camelize(this.appNameDasherize))
       this.appAuthor = props.author
-      this.appAuthorDasherize = this._.dasherize(this._.slugify(this.appAuthor))
-      this.appNameSpace = this._.capitalize(this._.camelize(props.appNameSpace))
+      this.appAuthorDasherize = _.dasherize(_.slugify(this.appAuthor))
+      this.appNameSpace = _.capitalize(_.camelize(props.appNameSpace))
       this.appURL = props.url
       this.appDescription = props.description
-      this.dirCapitalize = this._.capitalize(this.dir)
+      this.dirCapitalize = _.capitalize(this.dir)
       this.git = props.git
       this.pluginWPMLuserID = props.pluginWPMLuserID
       this.pluginWPMLkey = props.pluginWPMLkey
       this.pluginACFkey = props.pluginACFkey
-      done()
     }.bind(this))
   },
 
   /**
    * Setup configs
    */
-  configuring: function() {
+  setup: function() {
     if (this.typo3) {
       this.config.set('assetsPath', 'Assets/')
     }
@@ -334,8 +333,8 @@ var MyGenerator = yeoman.generators.Base.extend({
       this.fs.copyTpl(startersDir + 'javascripts/_head.js',
         _this.config.get('assetsPath') + 'javascripts/head.js', this)
 
-      this.mkdir(this.config.get('assetsPath')+'images')
-      this.mkdir(this.config.get('assetsPath')+'fonts')
+      mkdirp(this.config.get('assetsPath')+'images')
+      mkdirp(this.config.get('assetsPath')+'fonts')
     }
   },
 
@@ -441,13 +440,13 @@ var MyGenerator = yeoman.generators.Base.extend({
       this.fs.copy(this.templatePath('wordpress/partials'), this.destinationPath('partials'))
 
       if (this.pluginACFkey) {
-        this.mkdir('acf-json')
+        mkdirp('acf-json')
         this.fs.copyTpl(this.templatePath('wordpress/lib/_utils-acf.php'),
           this.destinationPath('lib/utils-acf.php'), this)
       }
 
       if (this.pluginWPMLuserID) {
-        this.mkdir('languages')
+        mkdirp('languages')
       }
 
       if (this.docker) {
@@ -466,16 +465,13 @@ var MyGenerator = yeoman.generators.Base.extend({
         this.fs.copyTpl(this.templatePath('wordpress/docker/_Makefile'),
           this.destinationPath('../Makefile'), this)
       }
-
     }
   },
 
   _installDocker: function() {
-    var done = this.async()
     var _this = this
 
-    this.spawnCommand('./install.sh', [''], { cwd: '../' }).on('exit', function() {
-      done()
+    return this.spawnCommand('./install.sh', [''], { cwd: '../' }).on('exit', function() {
       _this._git()
     })
   },

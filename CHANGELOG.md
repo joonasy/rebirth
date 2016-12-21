@@ -1,11 +1,14 @@
 # Changelog
 
-## 0.4.31 (2016-12-20)
+## 0.4.3x (2016-12-21)
 
 * TYPO3: Remove the bloated boilerplate and use simpler Docker approach
 * Simple WordPress boilerplate
-* Added Makefile for docker install
+* Added Makefile for docker installs
 * Better instructions
+* Updated [yeoman-generator 1.0](http://yeoman.io/blog/hello-generator-1.0.html) and dependencies
+* Use global git user if provided
+* Fit html build / generation
 
 ## 0.4.3 (2016-12-15)
 
