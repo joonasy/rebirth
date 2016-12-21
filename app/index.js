@@ -35,11 +35,11 @@ var MyGenerator = yeoman.generators.Base.extend({
       type: Boolean
     })
 
-    this.docker = this.options.docker === true || this.options.docker === 'true' // (ノಠ益ಠ)ノ彡┻━┻
     this.typo3 = this.options.project === 'typo3'
     this.wp = this.options.project === 'wordpress'
     this.html = this.options.project === 'html'
     this.cms = this.typo3 || this.wp
+    this.docker = (this.options.docker === true || this.options.docker === 'true') && !this.html
 
     this.name = function() {
       if (this.typo3) {
@@ -229,6 +229,7 @@ var MyGenerator = yeoman.generators.Base.extend({
       }
     ], function(props) {
       this.assets = props.whatStarters.indexOf('assets') !== -1
+      this.appName = props.name
       this.appNameDasherize = this._.dasherize(this._.slugify(props.name))
       this.appNameHumanize = this._.humanize(this.appNameDasherize)
       this.appNameUnderscored = this._.underscored(this.appNameDasherize)
@@ -469,37 +470,26 @@ var MyGenerator = yeoman.generators.Base.extend({
     }
   },
 
-  _installTypo3Docker: function() {
-    if (this.typo3 && this.docker) {
-      var done = this.async()
-      var _this = this
+  _installDocker: function() {
+    var done = this.async()
+    var _this = this
 
-      this.spawnCommand('./install.sh', [''], { cwd: '../' }).on('exit', function() {
-        done()
-        _this._git()
-      })
-    }
-  },
-
-  _installWordPressDocker: function() {
-    if (this.wp && this.docker) {
-      var done = this.async()
-      var _this = this
-
-      this.spawnCommand('./install.sh', [''], { cwd: '../' }).on('exit', function() {
-        done()
-        _this._git()
-      })
-    }
+    this.spawnCommand('./install.sh', [''], { cwd: '../' }).on('exit', function() {
+      done()
+      _this._git()
+    })
   },
 
   install: function() {
     this.installDependencies({
       skipInstall: this.options['skip-install'],
       callback: function() {
-        if (!this.options['skip-install'] || this.html) {
-          this._installTypo3Docker()
-          this._installWordPressDocker()
+        if (!this.options['skip-install']) {
+          if (this.docker) {
+            this._installDocker()
+          } else {
+            this._git()
+          }
         } else {
           this._git()
         }
@@ -550,19 +540,27 @@ var MyGenerator = yeoman.generators.Base.extend({
   },
 
   _end: function() {
+    var dockerMessage = ''
+
+    if (this.docker) {
+      dockerMessage = '\n' + chalk.green('  ❯') + ' Your Docker containers are up and running. See points '
+        + chalk.bold('3.') + ' and ' + chalk.bold('4.') + ' in ' + '\n' + chalk.cyan('    README.md') +
+        ' to finish your setup.'
+    }
+
     this.log(
       '\n' +
       '  ======================================================================', '\n' +
       '\n' +
       chalk.green('  !'),  chalk.bold('Project details'), '\n\n' +
-      chalk.green('  ❯'), 'Name:', chalk.cyan(this.appNameDasherize), '\n' +
+      chalk.green('  ❯'), 'Name:', chalk.cyan(this.appName), '\n' +
       chalk.green('  ❯'), 'Description:', chalk.cyan(this.appDescription), '\n' +
       chalk.green('  ❯'), 'Author:', chalk.cyan(this.appAuthor), '\n' +
       chalk.green('  ❯'), 'Type:', chalk.cyan(this.name()), '\n' +
       chalk.green('  ❯'), 'Project URL (production):', chalk.cyan(this.appURL), '\n' +
-      '\n' +
-      chalk.green('  ❯'), 'Please read', chalk.cyan('README.md'), 'for instructions and available commands.', '\n' +
-      chalk.green('  ❯'), chalk.bold('Make sure all the settings such as git urls are correctly generated.'), '\n' +
+      dockerMessage, '\n' +
+      chalk.green('  ❯'), 'Please read every', chalk.cyan('README.md'), 'for instructions and available commands.', '\n' +
+      chalk.green('  ❯'), 'Make sure all the settings such as git urls are correctly generated.', '\n' +
       chalk.green('  ❯ Happy developing! :)'), '\n' +
       '\n' +
       '  ======================================================================' +
