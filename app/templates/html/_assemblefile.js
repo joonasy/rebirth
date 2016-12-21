@@ -337,7 +337,7 @@ app.task('updateReferences', function() {
  * Main collected tasks
  * ====== */
 
-var tasks = ['stylesheets', 'modernizr', 'javascripts', 'images', 'fonts', 'videos']
+var tasks = ['stylesheets', 'modernizr', 'javascripts', 'images', 'fonts']
 
 app.task('build', ['eslint'], function() {
   rimraf.sync(config.dest)
