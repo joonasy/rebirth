@@ -23,17 +23,18 @@ Use only if you know what you are doing or you are working together with the aut
 
 ## Requirements
 
-Install all the requirements and setup your development environment before installing the generator.
+Install all the requirements before installing the generator.
 
 * [Node.js](http://nodejs.org/) & [Npm](https://www.npmjs.org/)
 * [Yeoman](http://yeoman.io/) `npm install -g yo`
 * [Bower](http://bower.io/) `npm install -g bower`
 * [Git](https://git-scm.com/) (optional)
 
-My Web Starter Kit also provides configuration files setting up your development environment. Requirements for `Typo3/WordPress` project types:
+My Web Starter Kit also provides Docker development environment. Requirements for TYPO3 and WordPress project types:
 
-* [Composer](https://getcomposer.org/)
-* [Docker Toolbox](https://www.docker.com/products/docker-toolbox)
+* GNU/Linux/Unix with Docker ([Docker toolbox](https://www.docker.com/products/docker-toolbox), [Vagrant](https://www.vagrantup.com/downloads.html) VM with Docker or [native Linux with Docker](http://docs.docker.com/linux/step_one/)). Could also work in [Windows](https://docs.docker.com/docker-for-windows/#/what-to-know-before-you-install) but not tested just yet.
+* [Docker-compose](https://github.com/docker/compose)
+* [make](https://www.gnu.org/software/make/manual/make.html) (GNU/Linux/Unix, optional)
 
 ### TYPO3 requirements
 
@@ -77,7 +78,7 @@ If you are building a *Typo3 project* all special characters are removed from th
 
 | Option      | Type    | Default | Description                                                                                                                    |
 |-------------|---------|---------|--------------------------------------------------------------------------------------------------------------------------------|
-| `--docker`  | Boolean | true    | Set to false if you want to install extension/theme only. <br> Before install stop all your other containers. |
+| `--docker`  | Boolean | true    | Set to false if you want to install extension/theme only. <br> Before install run docker-machine if you need to and stop all your other containers. |
 | `--project` | String  | typo3   | Choose between `typo3`, `html` and `wordpress` project types                                                                   |
 
 ## Contribute
