@@ -3,7 +3,7 @@
  * ======================================== */
 
 const fixes = () => {
-  const msViewportStyle = document.createElement('style');
+  const msViewportStyle = document.createElement('style')
 
   /**
    * A fix is on the way to get Windows Phone 8 to recognize
@@ -13,9 +13,9 @@ const fixes = () => {
    * http://trentwalton.com/2013/01/16/windows-phone-8-viewport-fix/
    */
   if (navigator.userAgent.match(/IEMobile\/10\.0/)) {
-    msViewportStyle.appendChild(document.createTextNode('@-ms-viewport{width:auto!important}'));
-    document.getElementsByTagName('head')[0].appendChild(msViewportStyle);
+    msViewportStyle.appendChild(document.createTextNode('@-ms-viewport{width:auto!important}'))
+    document.getElementsByTagName('head')[0].appendChild(msViewportStyle)
   }
-};
+}
 
-export default fixes();
+export default fixes()

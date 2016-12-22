@@ -2,7 +2,7 @@
  * Config
  * ======================================== */
 
-import $ from 'jquery';
+import $ from 'jquery'
 
 const config = {
   dom: {
@@ -40,6 +40,6 @@ const config = {
       mq: 'screen and (min-width: 1200px)',
     },
   },
-};
+}
 
-export default config;
+export default config

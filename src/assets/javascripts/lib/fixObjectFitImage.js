@@ -60,134 +60,134 @@
  *    </figure>
  *
  *  JavaScript:
- *    If you need lazysizes load `import lazySizes from 'lazysizes';`
+ *    If you need lazysizes load `import lazySizes from 'lazysizes'`
  *    in <head>. And in case you need responsive images add
- *    `import respimg from 'lazysizes/plugins/respimg/ls.respimg.js';` to <head>
+ *    `import respimg from 'lazysizes/plugins/respimg/ls.respimg.js'` to <head>
  *    also
  *
  *    In component:
- *      const $context = $('.js-MyComponent');
- *      import imgToParentBg from '../plugins/imgToParentBg';
+ *      const $context = $('.js-MyComponent')
+ *      import imgToParentBg from '../plugins/imgToParentBg'
  *      $figure = $('.My-figure', $context)
- *      imgToParentBg($figure);
+ *      imgToParentBg($figure)
  *
  * @param { jquerySelector|string } figure - Node to search
  * @param { boolean } targetSafari - target Safari
  * @param { boolean } targetIOS - target iOS
  */
 
-import $ from 'jquery';
-import Modernizr from 'modernizr';
+import $ from 'jquery'
+import Modernizr from 'modernizr'
 
-let windowWidth = $(window).width();
-const objFit = Modernizr['object-fit'];
+let windowWidth = $(window).width()
+const objFit = Modernizr['object-fit']
 
-let isSafari = /Constructor/.test(window.HTMLElement);
-let isIOS = /iP(ad|hone|od)/i.test(navigator.userAgent);
+let isSafari = /Constructor/.test(window.HTMLElement)
+let isIOS = /iP(ad|hone|od)/i.test(navigator.userAgent)
 
 const imgToParentBg = (figure, targetSafari, targetIOS) => {
-  const $figure = $(figure);
+  const $figure = $(figure)
 
-  isSafari = isSafari && targetSafari;
-  isIOS = isIOS && targetIOS;
+  isSafari = isSafari && targetSafari
+  isIOS = isIOS && targetIOS
 
-  let imgUrl;
+  let imgUrl
 
   function closest(array, num) {
-    let i = 0;
-    let minDiff = 1000;
-    let ans;
+    let i = 0
+    let minDiff = 1000
+    let ans
 
     for (i in array) { // eslint-disable-line
-      const m = Math.abs(num - array[i]);
+      const m = Math.abs(num - array[i])
 
       if (m < minDiff) {
-        minDiff = m;
-        ans = array[i];
+        minDiff = m
+        ans = array[i]
       }
     }
 
-    return ans;
+    return ans
   }
 
   function matchNumber(str) {
-    return str.match(/(\d+)/)[0];
+    return str.match(/(\d+)/)[0]
   }
 
   function setBackground() {
     $.each($figure, function () {
-      const $this = $(this);
-      const $img = $this.find('img');
-      const sourceLargest = $img.siblings('source').not('[media]');
-      const source = $img.siblings('source[media]');
-      const widths = [];
+      const $this = $(this)
+      const $img = $this.find('img')
+      const sourceLargest = $img.siblings('source').not('[media]')
+      const source = $img.siblings('source[media]')
+      const widths = []
 
-      let srcset = $img.data('srcset');
+      let srcset = $img.data('srcset')
 
       if ('lazySizes' in window && srcset) {
-        srcset = srcset.split(',');
-        const srcsetElements = [];
+        srcset = srcset.split(',')
+        const srcsetElements = []
 
         srcset.forEach((value) => {
-          const val = value.trim();
-          const width = val.split(' ').pop().replace('w', '');
-          widths.push(width);
-          srcsetElements.push(val);
-        });
+          const val = value.trim()
+          const width = val.split(' ').pop().replace('w', '')
+          widths.push(width)
+          srcsetElements.push(val)
+        })
 
-        const closestWindowWidth = closest(widths, windowWidth);
+        const closestWindowWidth = closest(widths, windowWidth)
 
         srcsetElements.forEach((value) => {
           if (value.indexOf(`${closestWindowWidth}w`) > -1) {
-            imgUrl = value.split(' ')[0];
+            imgUrl = value.split(' ')[0]
           }
-        });
+        })
       } else if ('lazySizes' in window && source.length) {
         $.each(source, function () {
-          const media = $(this).attr('media');
-          widths.push(matchNumber(media));
-        });
+          const media = $(this).attr('media')
+          widths.push(matchNumber(media))
+        })
 
-        const closestWindowWidth = closest(widths, windowWidth);
-        const largestMaxWidth = Math.max.apply(Math, widths);
+        const closestWindowWidth = closest(widths, windowWidth)
+        const largestMaxWidth = Math.max.apply(Math, widths) // eslint-disable-line
 
         if (largestMaxWidth > windowWidth) {
           $.each(source, function () {
-            const $source = $(this);
-            const media = matchNumber($source.attr('media'));
+            const $source = $(this)
+            const media = matchNumber($source.attr('media'))
 
             if (media === closestWindowWidth) {
-              imgUrl = $source.attr('srcset').split(' ').pop();
+              imgUrl = $source.attr('srcset').split(' ').pop()
             }
-          });
+          })
         } else {
-          imgUrl = sourceLargest.attr('srcset');
+          imgUrl = sourceLargest.attr('srcset')
         }
       } else {
         imgUrl = $img.attr('data-src') ? $img.attr('data-src') :
-          $img.attr('src');
+          $img.attr('src')
       }
 
       if ($img.length) {
-        $img.css('visibility', 'hidden');
+        $img.css('visibility', 'hidden')
 
         $this.css({
           'background-image': `url(${imgUrl})`,
-        });
+        })
       }
-    });
+    })
   }
 
   if (isSafari || isIOS || !objFit) {
-    setBackground();
+    setBackground()
 
-    let resize;
+    let resize
     $(window).on('resize', () => {
-      windowWidth = $(window).width();
-      clearTimeout(resize);
-      resize = setTimeout(setBackground, 250);
-    });
+      windowWidth = $(window).width()
+      clearTimeout(resize)
+      resize = setTimeout(setBackground, 250)
+    })
   }
-};
+}
 
-export default imgToParentBg;
+export default imgToParentBg

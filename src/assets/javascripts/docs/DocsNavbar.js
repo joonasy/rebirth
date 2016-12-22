@@ -2,17 +2,17 @@
  * Docs navbar
  * ======================================== */
 
-import $ from 'jquery';
-import classToggle from '../lib/classToggle';
+import $ from 'jquery'
+import classToggle from '../lib/classToggle'
 
 class DocsNavbar {
   constructor() {
-    this.$navbar = $('#js-docsNavbar');
+    this.$navbar = $('#js-docsNavbar')
   }
 
   init() {
     if (this.$navbar.length) {
-      this.navbar();
+      this.navbar()
     }
   }
 
@@ -20,7 +20,7 @@ class DocsNavbar {
     classToggle({
       trigger: '#js-docsNavbarTrigger',
       element: '#js-docsNavbar',
-    });
+    })
 
     classToggle({
       trigger: '#js-docsNavbar .Navbar-trigger',
@@ -28,9 +28,9 @@ class DocsNavbar {
       toggleClosest: true,
       unToggleParentSiblings: true,
       unToggleOtherToggles: false,
-    });
+    })
 
-    $('#js-docsNavbar .Navbar-trigger').parent().addClass('has-dropdown');
+    $('#js-docsNavbar .Navbar-trigger').parent().addClass('has-dropdown')
 
     classToggle({
       trigger: '#js-docsNavbar .Navbar-item.has-dropdown > .Navbar-link',
@@ -39,9 +39,9 @@ class DocsNavbar {
       unToggleParentSiblings: true,
       disableFirstClickOnTouch: true,
       unToggleOtherToggles: false,
-    });
+    })
   }
 }
 
-export default DocsNavbar;
+export default DocsNavbar
 

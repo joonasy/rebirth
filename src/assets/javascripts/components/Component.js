@@ -4,10 +4,10 @@
 
 class Component {
   init() {
-    this.initSomething();
+    this.initSomething()
   }
 
   initSomething() {}
 }
 
-export default Component;
+export default Component

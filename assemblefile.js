@@ -1,12 +1,10 @@
 /* ========================================
- * Gruntfile for `Rebirth`
+ * Gulpfile for `Rebirth`
  * ========================================
  *
- * @generated 4.8.2015 using `generator-my v0.2.0`
- * @url https://bitbucket.org/mediasignal/my-web-starter-kit.git
+ * @generated 4.8.2015 using `generator-rebirth v0.2.0`
+ * @url https://github.com/joonasy/generator-rebirth
  */
-
-'use strict'
 
 var assemble = require('assemble')
 var app = assemble()
@@ -280,7 +278,6 @@ app.task('eslint', function () {
  * Modernizr
  */
 app.task('modernizr', function() {
-  console.log('run modernizr');
   return app.src([
     config.javascripts.src + '**/*.js',
     config.stylesheets.dest + 'docs.css'

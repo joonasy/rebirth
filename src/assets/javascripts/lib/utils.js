@@ -2,36 +2,36 @@
  * Utilities
  * ======================================== */
 
-import $ from 'jquery';
+import $ from 'jquery'
 
-const $window = $(window);
+const $window = $(window)
 
 export function windowWidth() {
-  let wW = $window.width();
+  let wW = $window.width()
 
   $window.on('resize', () => {
-    wW = $window.width();
-  });
+    wW = $window.width()
+  })
 
-  return wW;
+  return wW
 }
 
 export function windowHeight() {
-  let wH = $window.height();
+  let wH = $window.height()
 
   $window.on('resize', () => {
-    wH = $window.height();
-  });
+    wH = $window.height()
+  })
 
-  return wH;
+  return wH
 }
 
 export function scrollPosition() {
-  let scrollPos = $window.scrollTop();
+  let scrollPos = $window.scrollTop()
 
   $window.on('scroll', () => {
-    scrollPos = $window.scrollTop();
-  });
+    scrollPos = $window.scrollTop()
+  })
 
-  return scrollPos;
+  return scrollPos
 }

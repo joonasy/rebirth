@@ -2,33 +2,33 @@
  * Hero
  * ======================================== */
 
-import $ from 'jquery';
-import fixObjectFitImage from '../lib/fixObjectFitImage';
-import fixObjectFitVideo from '../lib/fixObjectFitVideo';
-import * as ua from '../lib/userAgents';
-import cfg from '../config';
+import $ from 'jquery'
+import fixObjectFitImage from '../lib/fixObjectFitImage'
+import fixObjectFitVideo from '../lib/fixObjectFitVideo'
+import * as ua from '../lib/userAgents'
+import cfg from '../config'
 
 class Hero {
   constructor() {
-    this.$hero = $('.js-Hero');
-    this.$figure = $('.Hero-figure', this.$hero);
-    this.$figureVideo = $('.Hero-figure--video', this.$hero);
-    this.$fullContent = $('.Hero-content', '.js-Hero.-full');
+    this.$hero = $('.js-Hero')
+    this.$figure = $('.Hero-figure', this.$hero)
+    this.$figureVideo = $('.Hero-figure--video', this.$hero)
+    this.$fullContent = $('.Hero-content', '.js-Hero.-full')
   }
 
   init() {
-    this.fixes();
-    this.heroVideo();
+    this.fixes()
+    this.heroVideo()
   }
 
   fixes() {
-    fixObjectFitVideo(this.$figureVideo);
+    fixObjectFitVideo(this.$figureVideo)
 
     $.each(this.$figure, function () {
-      const $this = $(this);
-      const hasObjPos = $this.parent().is('[class*="-alignFigure"]');
-      fixObjectFitImage($this, hasObjPos, hasObjPos);
-    });
+      const $this = $(this)
+      const hasObjPos = $this.parent().is('[class*="-alignFigure"]')
+      fixObjectFitImage($this, hasObjPos, hasObjPos)
+    })
 
     /**
      * Fix to prevent android from changing the height of the hero content item
@@ -37,12 +37,12 @@ class Hero {
     if (ua.isAndroid()) {
       const minHeight = () => {
         $.each(this.$fullContent, function () {
-          const $this = $(this);
-          $this.css('min-height', '').css('min-height', $this.outerHeight());
-        });
-      };
-      minHeight();
-      cfg.$window.on('orientationchange', minHeight);
+          const $this = $(this)
+          $this.css('min-height', '').css('min-height', $this.outerHeight())
+        })
+      }
+      minHeight()
+      cfg.$window.on('orientationchange', minHeight)
     }
 
     /**
@@ -52,12 +52,12 @@ class Hero {
     if (ua.isIOS()) {
       const minHeight = () => {
         $.each(this.$fullContent, function () {
-          const $this = $(this);
-          $this.css('min-height', cfg.$window.height());
-        });
-      };
-      minHeight();
-      cfg.$window.on('orientationchange', minHeight);
+          const $this = $(this)
+          $this.css('min-height', cfg.$window.height())
+        })
+      }
+      minHeight()
+      cfg.$window.on('orientationchange', minHeight)
     }
   }
 
@@ -67,18 +67,18 @@ class Hero {
    */
   heroVideo() {
     $.each(this.$figureVideo, function () {
-      const $this = $(this);
-      const video = $this.find('video').get(0);
+      const $this = $(this)
+      const video = $this.find('video').get(0)
 
       if (video) {
-        video.play();
+        video.play()
 
         if (!video.paused) {
-          $this.css({ zIndex: 1 });
+          $this.css({ zIndex: 1 })
         }
       }
-    });
+    })
   }
 }
 
-export default Hero;
+export default Hero

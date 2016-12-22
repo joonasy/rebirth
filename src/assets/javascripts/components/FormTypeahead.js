@@ -5,12 +5,12 @@
  * https://github.com/twitter/typeahead.js/
  */
 
-import $ from 'jquery';
-import typeahead from 'typeahead.js/dist/typeahead.jquery.js';
+import $ from 'jquery'
+import typeahead from 'typeahead.js/dist/typeahead.jquery.js'
 
 class FormTypeahead {
   constructor() {
-    this.$typeAhead = $('.js-Form-item-typeahead');
+    this.$typeAhead = $('.js-Form-item-typeahead')
   }
 
   init() {
@@ -29,8 +29,8 @@ class FormTypeahead {
         cursor: 'Form-typeahead-cursor',
         highlight: 'Form-typeahead-highlight',
       },
-    });
+    })
   }
 }
 
-export default FormTypeahead;
+export default FormTypeahead

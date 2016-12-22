@@ -2,47 +2,47 @@
  * Emulate CSS3 transition end
  * ======================================== */
 
-import $ from 'jquery';
+import $ from 'jquery'
 
 const emulateTransitionEnd = () => {
   function transitionSupport() { // eslint-disable-line
-    const el = document.createElement('app');
+    const el = document.createElement('app')
 
     const transEndEventNames = {
       WebkitTransition: 'webkitTransitionEnd',
       MozTransition: 'transitionend',
       OTransition: 'oTransitionEnd otransitionend',
       transition: 'transitionend',
-    };
+    }
 
     for (const name in transEndEventNames) { // eslint-disable-line
       if (el.style[name] !== undefined) {
-        return { end: transEndEventNames[name] };
+        return { end: transEndEventNames[name] }
       }
     }
   }
 
   $.fn.emulateTransitionEnd = function (duration) {
-    let called = false;
-    const $this = $(this);
+    let called = false
+    const $this = $(this)
 
     $this.one($.support.transition.end, () => {
-      called = true;
-    });
+      called = true
+    })
 
     const callback = function () {
       if (!called) {
-        $this.trigger($.support.transition.end);
+        $this.trigger($.support.transition.end)
       }
-    };
+    }
 
-    setTimeout(callback, duration);
-    return this;
-  };
+    setTimeout(callback, duration)
+    return this
+  }
 
   $(() => {
-    $.support.transition = transitionSupport();
-  });
-};
+    $.support.transition = transitionSupport()
+  })
+}
 
-export default emulateTransitionEnd();
+export default emulateTransitionEnd()

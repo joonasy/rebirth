@@ -2,12 +2,11 @@
  * Application
  * ======================================== */
 
-import $ from 'jquery';
-window.jQuery = window.$ = $;
-import fastClick from 'fastclick';
-import Component from './components/Component';
+import $ from 'jquery'
+import fastClick from 'fastclick'
+import Component from './components/Component'
 
-$(() => {
-  new Component().init();
-  fastClick(document.body);
-});
+window.jQuery = window.$ = $
+
+new Component().init()
+fastClick(document.body)

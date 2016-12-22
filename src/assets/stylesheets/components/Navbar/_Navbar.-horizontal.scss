@@ -77,8 +77,8 @@
        * Sub navigation states
        */
       .touchevents & .Navbar-item.is-open > .Navbar-sub,
-      .no-touchevents & .Navbar-item:hover > .Navbar-sub,
-      .no-touchevents & .Navbar-item:focus > .Navbar-sub {
+      .Navbar-item:hover > .Navbar-sub,
+      .Navbar-item:focus > .Navbar-sub {
         @include dropdown($state: 'is-open');
       }
   }

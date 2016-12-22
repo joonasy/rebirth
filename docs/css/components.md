@@ -1,6 +1,6 @@
 ## Components
 
-My Web Starter kit is designed for styling reusable, composable components (OOCSS). The benefits are most apparent in a system that considers components to be the buildingblocks of your application.
+Rebirth is designed for styling reusable, composable components (OOCSS). The benefits are most apparent in a system that considers components to be the buildingblocks of your application.
 
 Think of components as custom elements that enclose specific semantics,
 styling, and behaviour. For example, this `Pants` component and configuration:

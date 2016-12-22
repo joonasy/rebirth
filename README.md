@@ -4,7 +4,7 @@
 
 Rebirth contains methods and ideas from various sources such as [BEM](https://bem.info/), [HTML5BP](http://html5boilerplate.com/), [Bootstrap](http://getbootstrap.com), [Foundation](http://foundation.zurb.com/), [INUITCSS](https://github.com/inuitcss), [SMACSS](https://smacss.com/), [OOCSS](http://oocss.org/) and [SUIT CSS](https://github.com/suitcss/suit). By default this template supports IE11+, Mobile first -ideology and progressive enhancement.
 
-Basically Rebirth is **not a framework** but it contains predefined components and helpers that are meant to be modified based on your project needs.
+Rebirth is **not a framework** but it contains predefined components and helpers that are meant to be modified based on your project needs.
 
 ## WORK IN PROGRESS!
 

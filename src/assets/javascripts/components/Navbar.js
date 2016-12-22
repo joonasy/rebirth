@@ -2,17 +2,17 @@
  * Navbar
  * ======================================== */
 
-import $ from 'jquery';
-import classToggle from '../lib/classToggle';
+import $ from 'jquery'
+import classToggle from '../lib/classToggle'
 
 class Navbar {
   constructor() {
-    this.$navbar = $('.js-Navbar');
+    this.$navbar = $('.js-Navbar')
   }
 
   init() {
     if (this.$navbar.length) {
-      this.navbar();
+      this.navbar()
     }
   }
 
@@ -21,7 +21,7 @@ class Navbar {
       trigger: '.js-Navbar .js-NavbarTrigger',
       element: '.js-Navbar',
       toggleClosest: true,
-    });
+    })
 
     classToggle({
       trigger: '.js-Navbar .Navbar-trigger',
@@ -29,9 +29,9 @@ class Navbar {
       toggleClosest: true,
       unToggleParentSiblings: true,
       unToggleOtherToggles: false,
-    });
+    })
 
-    $('.js-Navbar .Navbar-trigger').parent().addClass('has-dropdown');
+    $('.js-Navbar .Navbar-trigger').parent().addClass('has-dropdown')
 
     classToggle({
       trigger: '.js-Navbar .has-dropdown > .Navbar-link',
@@ -40,8 +40,8 @@ class Navbar {
       unToggleParentSiblings: true,
       disableFirstClickOnTouch: true,
       unToggleOtherToggles: false,
-    });
+    })
   }
 }
 
-export default Navbar;
+export default Navbar
