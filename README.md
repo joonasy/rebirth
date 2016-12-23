@@ -4,6 +4,8 @@ Awesome front-end starter kit and opinionated styleguide for developing responsi
  
 Inspired by methods and ideas from various sources such as [SUIT CSS](https://github.com/suitcss/suit), [BEM](https://bem.info/), [INUITCSS](https://github.com/inuitcss), [SMACSS](https://smacss.com/), [OOCSS](http://oocss.org/) and [Bootstrap](http://getbootstrap.com). 
 
+Correct way to use Rebirth is together with [Rebirth Yeoman generator](https://github.com/joonasy/generator-rebirth.git).
+
 ## Requirements
 
 * [SASS](http://sass-lang.com/)
@@ -14,23 +16,25 @@ Inspired by methods and ideas from various sources such as [SUIT CSS](https://gi
 
 Read the [CSS styleguide](docs/css) and [JavaScript styleguide](docs/js) so you know how to build with Rebirth.
 
-### a) Create a new project
+### a) Install with generator
 
-Preferred way to start a new Rebirth project is together with [generator-rebirth](https://github.com/joonasy/generator-rebirth.git) which installs Rebirth and can scaffold new [WordPress](wordpress.org), [TYPO3](https://typo3.org/) or [HTML](https://github.com/assemble/assemble/) projects with development environment.
+Preferred way to start a new Rebirth project is together with [generator-rebirth](https://github.com/joonasy/generator-rebirth.git) which setups Rebirth and scaffolds new [Rebirth](https://github.com/joonasy/rebirth.git), [WordPress](wordpress.org), [TYPO3](https://typo3.org/) or [HTML (Assemble)](https://github.com/assemble/assemble/) project.
 
 Head to [Rebirth Yeoman generator](https://github.com/joonasy/generator-rebirth.git) and get started!
 
-### b) Install
+### b) Install from npm
 
-You can also install Rebirth directly with npm:
+You can also install directly from npm:
 
 ```
 npm install rebirth
 ```
 
+If you install directly from npm you can't use the generator without [creating the `yo-rc.json` manually](#) to your project.
+
 ## Usage (Work in progress!)
 
-### Generator
+### a) Generator
 
 You can create new components with the [Rebirth Yeoman generator](https://github.com/joonasy/generator-rebirth.git):
 
@@ -38,11 +42,11 @@ You can create new components with the [Rebirth Yeoman generator](https://github
 yo rebirth component:foo
 ```
 
-This will copy component dependencies (SCSS and JavaScript files) which you can start modifying. Head to [Rebirth Yeoman generator](https://github.com/joonasy/generator-rebirth.git) for more information about the generator usage.
+This will copy component dependencies (SCSS and JavaScript files) which you can start modifying. **This is the correct way of using Rebirth as a starting point.** Head to [Rebirth Yeoman generator](https://github.com/joonasy/generator-rebirth.git) for more information about the generator usage.
 
-### SASS
+### b) SASS
 
-If you use Rebirth without the generator you can also import all the SCSS files:
+If you use Rebirth without the generator (e.g override existing styles with your own) you can also import all the SCSS:
 
 ```
 import 'rebirth/src/assets/app';
@@ -50,7 +54,7 @@ import 'rebirth/src/assets/app';
 
 You can also import components explicitly. To start with a full list of modules copy _app.scss file into your project and comment out components you do not want. 
 
-### CSS
+### c) CSS
 
 If you only want all the compiled and minified CSS:
 
