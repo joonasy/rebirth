@@ -55,11 +55,6 @@ var config = {
     dest: 'dist/assets/images/',
     watch: 'src/assets/images/*.{jpg,jpeg,png,gif,webp,svg}'
   },
-  videos: {
-    src: 'src/assets/videos/*.{mp4,ogg,webm}',
-    dest: 'dist/assets/videos/',
-    watch: 'src/assets/videos/'
-  },
   fonts: {
     src: 'src/assets/fonts/*.{eot,svg,ttf,woff,woff2}',
     dest: 'dist/assets/fonts/',
@@ -207,20 +202,6 @@ app.task('images', function() {
 })
 
 /**
- * Videos
- */
-app.task('videos', function() {
-  var pipeline = vfs.src(config.videos.src)
-    .pipe(vfs.dest(config.videos.dest))
-
-  if (production) {
-    return pipeline
-  }
-
-  return pipeline.pipe(browserSync.stream())
-})
-
-/**
  * Fonts
  */
 app.task('fonts', function() {
@@ -353,7 +334,7 @@ app.task('updateReferences', function() {
  * Main collected tasks
  * ====== */
 
-var tasks = ['stylesheets', 'modernizr', 'javascripts', 'images', 'fonts', 'videos']
+var tasks = ['stylesheets', 'modernizr', 'javascripts', 'images', 'fonts']
 
 app.task('build', ['eslint'], function() {
   rimraf.sync(config.dest)
