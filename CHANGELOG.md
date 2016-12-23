@@ -2,9 +2,11 @@
 
 ## 0.5.0
 
-* **Do not use versions below this**
-* Project renamed to Rebirth
+* Project renamed to Rebirth **Do not use versions below this**
 * Old npm package deprecated
+* Downgrade assemble to working version
+* Updated dependencies
+* Updated eslint
 
 ## 0.4.2 (2016-10-11)
 
