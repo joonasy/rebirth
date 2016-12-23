@@ -27,7 +27,7 @@ Head to [Rebirth Yeoman generator](https://github.com/joonasy/generator-rebirth.
 You can also install directly from npm:
 
 ```
-npm install rebirth
+npm install rebirth-ui
 ```
 
 If you install directly from npm you can't use the generator without [creating the `yo-rc.json` manually](#) to your project.
