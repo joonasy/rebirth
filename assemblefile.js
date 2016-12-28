@@ -283,11 +283,11 @@ app.task('stylesheets', function() {
     .pipe($.autoprefixer({
       browsers: ['last 2 versions', 'IE 10', 'Safari >= 8']
     }))
+    .pipe($.cssnano({ core: false, mergeRules: false, zindex: false }))
     .pipe($.rename({ basename: config.stylesheets.rename }))
 
   if (production) {
     return pipeline = pipeline
-      .pipe($.cssnano({ core: false, mergeRules: false, zindex: false }))
       .pipe(app.dest(config.stylesheets.dest))
       .pipe($.rename({ suffix: '.min' }))
       .pipe($.combineMq({ beautify: false }))
