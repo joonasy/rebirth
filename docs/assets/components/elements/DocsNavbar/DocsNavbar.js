@@ -3,7 +3,7 @@
  * ======================================== */
 
 import $ from 'jquery'
-import classToggle from '../lib/classToggle'
+import classToggle from '../../../../../src/javascripts/plugins/classToggle'
 
 class DocsNavbar {
   constructor() {

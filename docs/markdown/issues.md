@@ -20,3 +20,14 @@ Collected coding issues I've been having either with this repo or plugins, brows
 **Description**: `gulp-modernizr` install fails even with `sudo`. This is probably [customizr](https://github.com/doctyper/customizr) issue. Related [https://github.com/doctyper/gulp-modernizr/issues/14](https://github.com/doctyper/gulp-modernizr/issues/14). 
 
 **Solution**: Got this working with `--unsafe-perm` flag. e.g. `sudo npm i --unsafe-perm` or `cd node_modules/modernizr && npm install --unsafe-perm`.
+
+## CSS build issues
+
+### z-index values change after build
+
+If using cssnano, remove the [z-index rebasing](http://cssnano.co/optimisations/zindex/).
+
+```
+.pipe($.cssnano({ zindex: false }))
+```
+

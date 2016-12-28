@@ -1,0 +1,34 @@
+// ========================================
+// Docs
+// ========================================
+
+@import 'config';
+@import 'sass-mq/mq';
+
+html.docs {
+  background-color: darken($colorBgLightest, 5);
+}
+
+html, body { height: 100%; }
+
+.docs-Hero {
+  &.-full {
+    .Hero-content {
+      min-height: calc(100vh - #{$baseSpace * 2}); /* Height of the navbar */
+    }
+  }
+}
+
+.docs-Navbar {
+  position: relative;
+  z-index: 1000;
+}
+
+.docs-Container {
+  border-radius: 3px;
+
+  @include mq(m) {
+    margin: rem($baseSpace);
+  }
+}
+
