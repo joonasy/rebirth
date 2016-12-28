@@ -2,7 +2,7 @@
  * Button
  * ======================================== */
 
-import classToggle from '../lib/classToggle'
+import classToggle from '../../../javascripts/plugins/classToggle'
 
 class ButtonDropdown {
   init() {
