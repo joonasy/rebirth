@@ -11065,21 +11065,881 @@ return jQuery;
 
 },{}],3:[function(require,module,exports){
 'use strict';
+var _jquery = require('jquery');
+var _jquery2 = _interopRequireDefault(_jquery);
+var _fastclick = require('fastclick');
+var _fastclick2 = _interopRequireDefault(_fastclick);
+require('./components/elements/Button');
+require('./components/elements/Navbar');
+require('./components/collections/Card');
+require('./components/collections/Hero');
+function _interopRequireDefault(obj) {
+    return obj && obj.__esModule ? obj : { default: obj };
+}
+(0, _fastclick2.default)(document.body);
+},{"./components/collections/Card":5,"./components/collections/Hero":7,"./components/elements/Button":9,"./components/elements/Navbar":11,"fastclick":1,"jquery":2}],4:[function(require,module,exports){
+'use strict';
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+
+var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }(); /* ========================================
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                      * Card
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                      * ======================================== */
 
 var _jquery = require('jquery');
 
 var _jquery2 = _interopRequireDefault(_jquery);
 
-var _fastclick = require('fastclick');
+var _objectFitImage = require('../../../javascripts/fixes/objectFitImage');
 
-var _fastclick2 = _interopRequireDefault(_fastclick);
+var _objectFitImage2 = _interopRequireDefault(_objectFitImage);
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+var Card = function () {
+  function Card() {
+    _classCallCheck(this, Card);
+
+    this.$cardFillAndCrop = (0, _jquery2.default)('.Card.-figureFill, .Card.-figureCrop');
+    this.$cardFigure = (0, _jquery2.default)('.Card-figure figure', this.$cardFillAndCrop);
+  }
+
+  _createClass(Card, [{
+    key: 'init',
+    value: function init() {
+      this.cardImgToParentBg();
+    }
+  }, {
+    key: 'cardImgToParentBg',
+    value: function cardImgToParentBg() {
+      (0, _objectFitImage2.default)(this.$cardFigure);
+    }
+  }]);
+
+  return Card;
+}();
+
+exports.default = Card;
+
+},{"../../../javascripts/fixes/objectFitImage":13,"jquery":2}],5:[function(require,module,exports){
+'use strict';
+
+var _Card = require('./Card');
+
+var _Card2 = _interopRequireDefault(_Card);
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+new _Card2.default().init(); /* ========================================
+                              * Card
+                              * ======================================== */
+
+},{"./Card":4}],6:[function(require,module,exports){
+'use strict';
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+
+var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }(); /* ========================================
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                      * Hero
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                      * ======================================== */
+
+var _jquery = require('jquery');
+
+var _jquery2 = _interopRequireDefault(_jquery);
+
+var _objectFitImage = require('../../../javascripts/fixes/objectFitImage');
+
+var _objectFitImage2 = _interopRequireDefault(_objectFitImage);
+
+var _objectFitVideo = require('../../../javascripts/fixes/objectFitVideo');
+
+var _objectFitVideo2 = _interopRequireDefault(_objectFitVideo);
+
+var _userAgents = require('../../../javascripts/utils/userAgents');
+
+var ua = _interopRequireWildcard(_userAgents);
+
+var _config = require('../../../config');
+
+var _config2 = _interopRequireDefault(_config);
+
+function _interopRequireWildcard(obj) { if (obj && obj.__esModule) { return obj; } else { var newObj = {}; if (obj != null) { for (var key in obj) { if (Object.prototype.hasOwnProperty.call(obj, key)) newObj[key] = obj[key]; } } newObj.default = obj; return newObj; } }
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+var Hero = function () {
+  function Hero() {
+    _classCallCheck(this, Hero);
+
+    this.$hero = (0, _jquery2.default)('.js-Hero');
+    this.$figure = (0, _jquery2.default)('.Hero-figure', this.$hero);
+    this.$figureVideo = (0, _jquery2.default)('.Hero-figure--video', this.$hero);
+    this.$fullContent = (0, _jquery2.default)('.Hero-content', '.js-Hero.-full');
+  }
+
+  _createClass(Hero, [{
+    key: 'init',
+    value: function init() {
+      this.fixes();
+      this.heroVideo();
+    }
+  }, {
+    key: 'fixes',
+    value: function fixes() {
+      var _this = this;
+
+      (0, _objectFitVideo2.default)(this.$figureVideo);
+
+      _jquery2.default.each(this.$figure, function () {
+        var $this = (0, _jquery2.default)(this);
+        var hasObjPos = $this.parent().is('[class*="-alignFigure"]');
+        (0, _objectFitImage2.default)($this, hasObjPos, hasObjPos);
+      });
+
+      /**
+       * Fix to prevent android from changing the height of the hero content item
+       * on touch scroll.
+       */
+      if (ua.isAndroid()) {
+        var minHeight = function minHeight() {
+          _jquery2.default.each(_this.$fullContent, function () {
+            var $this = (0, _jquery2.default)(this);
+            $this.css('min-height', '').css('min-height', $this.outerHeight());
+          });
+        };
+        minHeight();
+        _config2.default.$window.on('orientationchange', minHeight);
+      }
+
+      /**
+       * Fix to set correct viewport height to first hero content items.
+       * Tabs etc. in safari are not part of the viewport
+       */
+      if (ua.isIOS()) {
+        var _minHeight = function _minHeight() {
+          _jquery2.default.each(_this.$fullContent, function () {
+            var $this = (0, _jquery2.default)(this);
+            $this.css('min-height', _config2.default.$window.height());
+          });
+        };
+        _minHeight();
+        _config2.default.$window.on('orientationchange', _minHeight);
+      }
+    }
+
+    /**
+     * Set video on top of the hero image if autoplay is possible. We are using the poster
+     * figure as responsive poster for the video.
+     */
+
+  }, {
+    key: 'heroVideo',
+    value: function heroVideo() {
+      _jquery2.default.each(this.$figureVideo, function () {
+        var $this = (0, _jquery2.default)(this);
+        var video = $this.find('video').get(0);
+
+        if (video) {
+          video.play();
+
+          if (!video.paused) {
+            $this.css({ zIndex: 1 });
+          }
+        }
+      });
+    }
+  }]);
+
+  return Hero;
+}();
+
+exports.default = Hero;
+
+},{"../../../config":12,"../../../javascripts/fixes/objectFitImage":13,"../../../javascripts/fixes/objectFitVideo":14,"../../../javascripts/utils/userAgents":16,"jquery":2}],7:[function(require,module,exports){
+'use strict';
+
+var _Hero = require('./Hero');
+
+var _Hero2 = _interopRequireDefault(_Hero);
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+new _Hero2.default().init(); /* ========================================
+                              * Hero
+                              * ======================================== */
+
+},{"./Hero":6}],8:[function(require,module,exports){
+'use strict';
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+
+var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }(); /* ========================================
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                      * Button
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                      * ======================================== */
+
+var _classToggle = require('../../../javascripts/plugins/classToggle');
+
+var _classToggle2 = _interopRequireDefault(_classToggle);
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+var ButtonDropdown = function () {
+  function ButtonDropdown() {
+    _classCallCheck(this, ButtonDropdown);
+  }
+
+  _createClass(ButtonDropdown, [{
+    key: 'init',
+    value: function init() {
+      this.toggle();
+    }
+  }, {
+    key: 'toggle',
+    value: function toggle() {
+      (0, _classToggle2.default)({
+        trigger: '.js-ButtonDropdown',
+        triggerClass: 'is-open',
+        elementStopPropagation: '.Button-dropdown'
+      });
+    }
+  }]);
+
+  return ButtonDropdown;
+}();
+
+exports.default = ButtonDropdown;
+
+},{"../../../javascripts/plugins/classToggle":15}],9:[function(require,module,exports){
+'use strict';
+
+var _ButtonDropdown = require('./ButtonDropdown');
+
+var _ButtonDropdown2 = _interopRequireDefault(_ButtonDropdown);
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+new _ButtonDropdown2.default().init(); /* ========================================
+                                        * Button
+                                        * ======================================== */
+
+},{"./ButtonDropdown":8}],10:[function(require,module,exports){
+'use strict';
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+
+var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }(); /* ========================================
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                      * Navbar
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                      * ======================================== */
+
+var _jquery = require('jquery');
+
+var _jquery2 = _interopRequireDefault(_jquery);
+
+var _classToggle = require('../../../javascripts/plugins/classToggle');
+
+var _classToggle2 = _interopRequireDefault(_classToggle);
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+var Navbar = function () {
+  function Navbar() {
+    _classCallCheck(this, Navbar);
+
+    this.$navbar = (0, _jquery2.default)('.js-Navbar');
+  }
+
+  _createClass(Navbar, [{
+    key: 'init',
+    value: function init() {
+      if (this.$navbar.length) {
+        this.navbar();
+      }
+    }
+  }, {
+    key: 'navbar',
+    value: function navbar() {
+      (0, _classToggle2.default)({
+        trigger: '.js-Navbar .js-NavbarTrigger',
+        element: '.js-Navbar',
+        toggleClosest: true
+      });
+
+      (0, _classToggle2.default)({
+        trigger: '.js-Navbar .Navbar-trigger',
+        element: '.js-Navbar .Navbar-item',
+        toggleClosest: true,
+        unToggleParentSiblings: true,
+        unToggleOtherToggles: false
+      });
+
+      (0, _jquery2.default)('.js-Navbar .Navbar-trigger').parent().addClass('has-dropdown');
+
+      (0, _classToggle2.default)({
+        trigger: '.js-Navbar .has-dropdown > .Navbar-link',
+        element: '.js-Navbar .Navbar-item',
+        toggleClosest: true,
+        unToggleParentSiblings: true,
+        disableFirstClickOnTouch: true,
+        unToggleOtherToggles: false
+      });
+    }
+  }]);
+
+  return Navbar;
+}();
+
+exports.default = Navbar;
+
+},{"../../../javascripts/plugins/classToggle":15,"jquery":2}],11:[function(require,module,exports){
+'use strict';
+
+var _Navbar = require('./Navbar');
+
+var _Navbar2 = _interopRequireDefault(_Navbar);
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+new _Navbar2.default().init(); /* ========================================
+                                * Navbar
+                                * ======================================== */
+
+},{"./Navbar":10}],12:[function(require,module,exports){
+'use strict';
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+
+var _jquery = require('jquery');
+
+var _jquery2 = _interopRequireDefault(_jquery);
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+var config = {
+  dom: {
+    $document: (0, _jquery2.default)(document),
+    $window: (0, _jquery2.default)(window),
+    $html: (0, _jquery2.default)('html')
+  },
+  anim: {
+    duration: 800,
+    easing: 'easeOutQuint'
+  },
+  bp: {
+    xs: {
+      px: 320,
+      mq: 'screen and (min-width: 320px)'
+    },
+    s: {
+      px: 600,
+      mq: 'screen and (min-width: 600px)'
+    },
+    m: {
+      px: 768,
+      mq: 'screen and (min-width: 768px)'
+    },
+    ml: {
+      px: 900,
+      mq: 'screen and (min-width: 900px)'
+    },
+    l: {
+      px: 1024,
+      mq: 'screen and (min-width: 1024px)'
+    },
+    xl: {
+      px: 1200,
+      mq: 'screen and (min-width: 1200px)'
+    }
+  }
+}; /* ========================================
+    * Config
+    * ======================================== */
+
+exports.default = config;
+
+},{"jquery":2}],13:[function(require,module,exports){
+(function (global){
+'use strict';
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+
+var _jquery = require('jquery');
+
+var _jquery2 = _interopRequireDefault(_jquery);
+
+var _modernizr = (typeof window !== "undefined" ? window['Modernizr'] : typeof global !== "undefined" ? global['Modernizr'] : null);
+
+var _modernizr2 = _interopRequireDefault(_modernizr);
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 /* ========================================
- * Application
+ * Inner image as parent background image
+ * ========================================
+ *
+ * Fix object-fit by setting the image as the parent figure background. Targeted
+ * for browsers that don't support object-fit but support `background-size: cover`.
+ * Remember to add `background-size: cover` to the parent element
+ * (usually <figure>).
+ *
+ * Requires jQuery, Modernizr for feature detecting and Lazysizes for responsive
+ * images support until srcset/picture is supported well in all browsers. Because
+ * Safari and iOS doesn't support `object-position` so there are optional
+ * parameters to target them as well.
+ *
+ * Only single line strings supported in `data-srcset` and `media`.
+ *
+ * http://caniuse.com/#search=object-fit
+ * http://caniuse.com/#search=srcset
+ * http://caniuse.com/#search=background-size
+ * https://github.com/aFarkas/lazysizes
+ * https://github.com/aFarkas/lazysizes/tree/gh-pages/plugins/respimg
+ *
+ * @usage
+ *  With lazysizes and srcset:
+ *    <figure class="My-figure">
+ *      <img
+ *        data-sizes="auto"
+ *        src="smallest.jpg"
+ *        data-srcset="
+ *          ... 400w,
+ *          ... 768w,
+ *          ... 1200w"
+ *          class="js-lazyload">
+ *      <noscript>
+ *        <img src="smallest.jpg">
+ *      </noscript>
+ *    </figure>
+ *
+ *  With lazysizes, <picture> and srcset:
+ *    <figure class="My-figure">
+ *      <picture>
+ *        <source srcset="smallest.jpg" media="(max-width: 600px)" />
+ *        <source srcset="..." media="(max-width: 1000px)" />
+ *        <source srcset="largest.jpg" />
+ *        <img src="smallest.jpg" class="js-lazyload" />
+ *      </picture>
+ *    </figure>
+ *
+ *  With lazysizes:
+ *    <figure class="My-figure">
+ *      <img data-src="..." class="js-lazyload">
+ *      <noscript>
+ *        <img src="...">
+ *      </noscript>
+ *    </figure>
+ *
+ *  Without lazysizes:
+ *    <figure class="My-figure">
+ *      <img src="...">
+ *    </figure>
+ *
+ *  JavaScript:
+ *    If you need lazysizes load `import lazySizes from 'lazysizes'`
+ *    in <head>. And in case you need responsive images add
+ *    `import respimg from 'lazysizes/plugins/respimg/ls.respimg.js'` to <head>
+ *    also
+ *
+ *    In component:
+ *      const $context = $('.js-MyComponent')
+ *      import imgToParentBg from '../plugins/imgToParentBg'
+ *      $figure = $('.My-figure', $context)
+ *      imgToParentBg($figure)
+ *
+ * @param { jquerySelector|string } figure - Node to search
+ * @param { boolean } targetSafari - target Safari
+ * @param { boolean } targetIOS - target iOS
+ */
+
+var windowWidth = (0, _jquery2.default)(window).width();
+var objFit = _modernizr2.default['object-fit'];
+
+var isSafari = /Constructor/.test(window.HTMLElement);
+var isIOS = /iP(ad|hone|od)/i.test(navigator.userAgent);
+
+var imgToParentBg = function imgToParentBg(figure, targetSafari, targetIOS) {
+  var $figure = (0, _jquery2.default)(figure);
+
+  isSafari = isSafari && targetSafari;
+  isIOS = isIOS && targetIOS;
+
+  var imgUrl = void 0;
+
+  function closest(array, num) {
+    var i = 0;
+    var minDiff = 1000;
+    var ans = void 0;
+
+    for (i in array) {
+      // eslint-disable-line
+      var m = Math.abs(num - array[i]);
+
+      if (m < minDiff) {
+        minDiff = m;
+        ans = array[i];
+      }
+    }
+
+    return ans;
+  }
+
+  function matchNumber(str) {
+    return str.match(/(\d+)/)[0];
+  }
+
+  function setBackground() {
+    _jquery2.default.each($figure, function () {
+      var $this = (0, _jquery2.default)(this);
+      var $img = $this.find('img');
+      var sourceLargest = $img.siblings('source').not('[media]');
+      var source = $img.siblings('source[media]');
+      var widths = [];
+
+      var srcset = $img.data('srcset');
+
+      if ('lazySizes' in window && srcset) {
+        (function () {
+          srcset = srcset.split(',');
+          var srcsetElements = [];
+
+          srcset.forEach(function (value) {
+            var val = value.trim();
+            var width = val.split(' ').pop().replace('w', '');
+            widths.push(width);
+            srcsetElements.push(val);
+          });
+
+          var closestWindowWidth = closest(widths, windowWidth);
+
+          srcsetElements.forEach(function (value) {
+            if (value.indexOf(closestWindowWidth + 'w') > -1) {
+              imgUrl = value.split(' ')[0];
+            }
+          });
+        })();
+      } else if ('lazySizes' in window && source.length) {
+        (function () {
+          _jquery2.default.each(source, function () {
+            var media = (0, _jquery2.default)(this).attr('media');
+            widths.push(matchNumber(media));
+          });
+
+          var closestWindowWidth = closest(widths, windowWidth);
+          var largestMaxWidth = Math.max.apply(Math, widths); // eslint-disable-line
+
+          if (largestMaxWidth > windowWidth) {
+            _jquery2.default.each(source, function () {
+              var $source = (0, _jquery2.default)(this);
+              var media = matchNumber($source.attr('media'));
+
+              if (media === closestWindowWidth) {
+                imgUrl = $source.attr('srcset').split(' ').pop();
+              }
+            });
+          } else {
+            imgUrl = sourceLargest.attr('srcset');
+          }
+        })();
+      } else {
+        imgUrl = $img.attr('data-src') ? $img.attr('data-src') : $img.attr('src');
+      }
+
+      if ($img.length) {
+        $img.css('visibility', 'hidden');
+
+        $this.css({
+          'background-image': 'url(' + imgUrl + ')'
+        });
+      }
+    });
+  }
+
+  if (isSafari || isIOS || !objFit) {
+    (function () {
+      setBackground();
+
+      var resize = void 0;
+      (0, _jquery2.default)(window).on('resize', function () {
+        windowWidth = (0, _jquery2.default)(window).width();
+        clearTimeout(resize);
+        resize = setTimeout(setBackground, 250);
+      });
+    })();
+  }
+};
+
+exports.default = imgToParentBg;
+
+}).call(this,typeof global !== "undefined" ? global : typeof self !== "undefined" ? self : typeof window !== "undefined" ? window : {})
+},{"jquery":2}],14:[function(require,module,exports){
+(function (global){
+'use strict';
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+
+var _jquery = require('jquery');
+
+var _jquery2 = _interopRequireDefault(_jquery);
+
+var _modernizr = (typeof window !== "undefined" ? window['Modernizr'] : typeof global !== "undefined" ? global['Modernizr'] : null);
+
+var _modernizr2 = _interopRequireDefault(_modernizr);
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+/* ========================================
+ * Fix object fit video
  * ======================================== */
 
-(0, _fastclick2.default)(document.body);
+var objFit = _modernizr2.default['object-fit'];
+var windowWidth = (0, _jquery2.default)(window).width();
+var windowHeight = (0, _jquery2.default)(window).height();
+var videoWidth = void 0;
+var videoHeight = void 0;
 
-},{"fastclick":1,"jquery":2}]},{},[3]);
+var fixObjectFitVideo = function fixObjectFitVideo(video) {
+  function fitVideo() {
+    var $video = (0, _jquery2.default)(video);
+
+    $video.each(function () {
+      var $this = (0, _jquery2.default)(this);
+      var videoAspectRatio = $this.height() / $this.width();
+      var windowAspectRatio = windowHeight / windowWidth;
+
+      if (videoAspectRatio > windowAspectRatio) {
+        videoWidth = windowWidth;
+        videoHeight = videoWidth * videoAspectRatio;
+        $this.css({
+          top: -(videoHeight - windowHeight) / 2 + 'px',
+          marginLeft: 0
+        });
+      } else {
+        videoHeight = windowHeight;
+        videoWidth = videoHeight / videoAspectRatio;
+        $this.css({
+          marginTop: 0,
+          marginLeft: -(videoWidth - windowWidth) / 2 + 'px'
+        });
+      }
+
+      $this.width(videoWidth).height(videoHeight);
+    });
+  }
+
+  if (!objFit) {
+    (function () {
+      fitVideo();
+
+      var resize = void 0;
+      (0, _jquery2.default)(window).on('resize', function () {
+        windowWidth = (0, _jquery2.default)(window).width();
+        windowHeight = (0, _jquery2.default)(window).height();
+        clearTimeout(resize);
+        resize = setTimeout(fitVideo, 250);
+      });
+    })();
+  }
+};
+
+exports.default = fixObjectFitVideo;
+
+}).call(this,typeof global !== "undefined" ? global : typeof self !== "undefined" ? self : typeof window !== "undefined" ? window : {})
+},{"jquery":2}],15:[function(require,module,exports){
+(function (global){
+'use strict';
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+
+var _jquery = require('jquery');
+
+var _jquery2 = _interopRequireDefault(_jquery);
+
+var _modernizr = (typeof window !== "undefined" ? window['Modernizr'] : typeof global !== "undefined" ? global['Modernizr'] : null);
+
+var _modernizr2 = _interopRequireDefault(_modernizr);
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+/* ========================================
+ * Class toggle (beta)
+ * ======================================== */
+
+var classToggles = [];
+
+function classToggle(options) {
+  var config = _jquery2.default.extend({
+    trigger: '',
+    triggerClass: '',
+    element: '',
+    elementClass: 'is-open',
+    elementStopPropagation: false,
+    toggleClosest: false,
+    disableFirstClickOnTouch: false,
+    unToggleParentSiblings: false,
+    unToggleOtherToggles: true,
+    unTogglable: true,
+    afterClick: function afterClick() {}
+  }, options);
+
+  var $element = (0, _jquery2.default)(config.element);
+
+  var removeToggles = function removeToggles(currentNode) {
+    classToggles.forEach(function (value) {
+      if (value.element && value.unTogglable) {
+        var $el = (0, _jquery2.default)(value.element);
+
+        $el.each(function () {
+          var isToggled = (0, _jquery2.default)(this).hasClass(value.elementClass);
+          var currentEl = (0, _jquery2.default)(this).is(currentNode);
+
+          if (!currentEl && isToggled) {
+            (0, _jquery2.default)(this).removeClass(value.elementClass);
+          }
+        });
+      }
+
+      if (value.triggerClass && value.unTogglable) {
+        var $trigger = (0, _jquery2.default)(value.trigger);
+
+        $trigger.each(function () {
+          var isToggled = (0, _jquery2.default)(this).hasClass(value.triggerClass);
+          var currentTrigger = (0, _jquery2.default)(this).is(currentNode);
+
+          if (!currentTrigger && isToggled) {
+            (0, _jquery2.default)(this).removeClass(value.triggerClass);
+          }
+        });
+      }
+    });
+  };
+
+  var clickTrigger = function clickTrigger(e, selector) {
+    var $this = (0, _jquery2.default)(selector);
+    var firstTouch = $this.hasClass('is-touched');
+
+    if (config.disableFirstClickOnTouch && !firstTouch && _modernizr2.default.touchevents) {
+      $this.addClass('is-touched');
+      e.preventDefault();
+      setTimeout(function () {
+        $this.removeClass('is-touched');
+      }, 1000);
+    }
+
+    if (config.element) {
+      if (config.unToggleOtherToggles) {
+        removeToggles($element);
+      }
+
+      if (!config.toggleClosest) {
+        $element.toggleClass(config.elementClass);
+      } else {
+        $this.closest($element).toggleClass(config.elementClass);
+      }
+
+      if (config.unToggleParentSiblings) {
+        $this.parent().siblings($element).removeClass(config.elementClass);
+      }
+    }
+
+    if (config.triggerClass) {
+      if (config.unToggleOtherToggles) {
+        removeToggles($this);
+      }
+
+      $this.toggleClass(config.triggerClass);
+    }
+
+    if (!config.disableFirstClickOnTouch) {
+      e.preventDefault();
+    }
+
+    config.afterClick();
+    e.stopPropagation();
+  };
+
+  var init = function init() {
+    classToggles.push(config);
+
+    (0, _jquery2.default)(document).on('click', config.trigger, function (e) {
+      clickTrigger(e, (0, _jquery2.default)(this));
+    });
+
+    if (config.elementStopPropagation) {
+      var el = config.element;
+
+      if (typeof config.elementStopPropagation === 'string') {
+        el = config.elementStopPropagation;
+      }
+
+      (0, _jquery2.default)(document).on('click', el, function (e) {
+        e.stopPropagation();
+      });
+    }
+  };
+
+  return {
+    init: config.trigger.length ? init() : false,
+    removeToggles: removeToggles
+  };
+}
+
+(0, _jquery2.default)(window).on('click', function () {
+  classToggle().removeToggles();
+});
+
+exports.default = classToggle;
+
+}).call(this,typeof global !== "undefined" ? global : typeof self !== "undefined" ? self : typeof window !== "undefined" ? window : {})
+},{"jquery":2}],16:[function(require,module,exports){
+'use strict';
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+exports.isIE = isIE;
+exports.isIOS = isIOS;
+exports.isAndroid = isAndroid;
+/* ========================================
+ * User agents
+ * ======================================== */
+
+var ua = navigator.userAgent;
+
+function isIE() {
+  return !!Function('/*@cc_on return document.documentMode===10@*/')() // eslint-disable-line
+  || /(?:\sTrident\/7\.0.*\srv:11\.0)/i.test(navigator.userAgent);
+}
+
+function isIOS() {
+  return (/iP(ad|hone|od)/i.test(navigator.userAgent)
+  );
+}
+
+function isAndroid() {
+  return ua.indexOf('Android') > -1 && ua.indexOf('Mozilla/5.0') > -1 && ua.indexOf('AppleWebKit') > -1;
+}
+
+},{}]},{},[3]);
