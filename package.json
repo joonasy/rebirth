@@ -15,9 +15,11 @@
   "repository": "https://github.com/joonasy/rebirth.git",
   "scripts": {
     "build": "cross-env NODE_ENV=production assemble build",
-    "deploy": "npm run build && dploy production",
-    "dev": "assemble dev",
-    "dist": "npm run build && assemble server",
+    "dev": "npm run docs-dev",
+    "docs-build": "cross-env NODE_ENV=production assemble docs-build",
+    "docs-dev": "cross-env assemble docs-dev",
+    "docs-dist": "npm run docs-build && assemble docs-server",
+    "dist": "npm run docs-dist",
     "update-dependencies": "npm-check-updates -u && npm install"
   },
   "devDependencies": {
