@@ -2,21 +2,20 @@
  * Button
  * ======================================== */
 
-import $ from 'jquery'
 import classToggle from '../lib/classToggle'
 
-class Button {
+class ButtonDropdown {
   init() {
-    this.openButtonDropdown()
+    this.toggle()
   }
 
-  openButtonDropdown() {
+  toggle() {
     classToggle({
-      trigger: '.js-Button',
+      trigger: '.js-ButtonDropdown',
       triggerClass: 'is-open',
       elementStopPropagation: '.Button-dropdown',
     })
   }
 }
 
-export default Button
+export default ButtonDropdown

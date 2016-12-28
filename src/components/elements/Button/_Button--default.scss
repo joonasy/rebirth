@@ -15,21 +15,3 @@
     background-color: darken(#ffffff, 3);
   }
 }
-
-
-/* ======
- * Button - Default - Advanced modifiers
- * ====== */
-
-.Button--default {
-  &.-transparent {
-    background-color: transparent;
-
-    &:hover,
-    &:focus {
-      background-color: $colorPrimary;
-      border-color: $colorPrimary;
-      color: #ffffff;
-    }
-  }
-}

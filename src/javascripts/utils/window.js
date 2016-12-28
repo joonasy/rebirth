@@ -1,5 +1,5 @@
 /* ========================================
- * Utilities
+ * Window
  * ======================================== */
 
 import $ from 'jquery'
@@ -26,7 +26,7 @@ export function windowHeight() {
   return wH
 }
 
-export function scrollPosition() {
+export function windowScrollPosition() {
   let scrollPos = $window.scrollTop()
 
   $window.on('scroll', () => {

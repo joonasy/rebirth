@@ -26,6 +26,14 @@
   }
 }
 
+  .Button-dropdown {
+    @include dropdown();
+
+    .Button.is-open & {
+      @include dropdown($state: 'is-open');
+    }
+  }
+
 
 /* ======
  * Button - Style
