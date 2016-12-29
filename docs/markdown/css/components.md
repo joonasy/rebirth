@@ -27,9 +27,23 @@ could yield the following HTML:
 </article>
 ```
 
-Web Starter kit helps to partially isolate the CSS used in the `Pants` component's implementation. In doing so, it makes styling simpler by reducing the amount of styling entanglement between components, and prevents styles from leaking outside the component.
+This helps to partially isolate the CSS used in the `Pants` component's implementation. In doing so, it makes styling simpler by reducing the amount of styling entanglement between components, and prevents styles from leaking outside the component.
 
-(Read about [Naming conventions](#naming-conventions))
+(Read about [Naming conventions](naming-conventions.md))
+
+### Component types
+
+#### Elements
+
+UI elements are page elements with a single function. They can exist alone or in a plural form (groups) with elements sharing qualities.
+
+#### Collections
+
+Collections are heterogeneous groups of components which are usually found together. They describe a list of "usual suspects" which appear in a certain context. They may include and extend other UI elements for use in certain contexts—for example form may extend dropdown or input—as well as include their own content.
+
+#### Layouts
+
+Usually it's necessary to control other components in a specific way at some portions of the site. Layout components are doing just that by controlling only specific sections our site like _Header_.   
 
 ### Component scope
 
@@ -92,7 +106,7 @@ too much.
 **Each component should have a dedicated CSS file**. Ideally your component's
 files are grouped together in a dedicated directory.
 
-(Read about [Sass structure](#sass-structure).)
+(Read about [SASS structure](#sass-structure).)
 
 ### Documenting implementation details
 

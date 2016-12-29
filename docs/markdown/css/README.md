@@ -1,12 +1,13 @@
-# CSS Styleguide
+# Rebirth CSS Styleguide
 
-My CSS styleguide is based on the following styleguides. 
+Inspired by the following styleguides:
 
 * [SUIT CSS (0.6.0)](https://github.com/suitcss)
 * [CSS Guidelines (2.2.2)](http://cssguidelin.es)
-* [Sass Guidelines](http://sass-guidelin.es)
+* [SASS Guidelines](http://sass-guidelin.es)
+* [Semantic UI](http://semantic-ui.com/)
 
-This styleguide outlines standards for writing CSS (and more specifically, Sass).
+This styleguide outlines standards for writing CSS (and more specifically, SCSS).
 
 * What we want
     * keep stylesheets maintainable;
@@ -16,13 +17,13 @@ This styleguide outlines standards for writing CSS (and more specifically, Sass)
 
 ## TL;DR
 
-1. Only one modifier per component e.g. `Component Component--modifier` 
+1. Maximum two modifiers per component e.g. `Component Component--modifier Component--modifier--anotherModifier` 
 2. Extend components with chainable modifiers e.g. `Component Component--modifier -myChainableModifier`
-3. Use layout components if you need to have specific settings for certain components in specific areas e.g. in Header `Header-component Component Component--primary`
+3. Use layout components if you need to have specific settings for certain components in specific areas e.g. in Header `Header-component Component Component--modifier`
 4. Use and make helpers e.g. `colorPrimary` or `textLeft` if you repeat certain styles often
-5. Use hooks for triggering JavaScript e.g. `Button js-Button` 
-6. Use `is-stateName` syntax with JavaScript for changing the state of the component e.g. `Button is-open`
-7. Read [Coding style](style.md) and [Structure](structure.md) so you know how to structure your Sass files
+5. Use `-js` hooks _only_ for triggering (_not styling_) JavaScript e.g. `js-Button` 
+6. Use `is-stateName` syntax with JavaScript for changing the state of the component e.g. `is-open`
+7. Read [Coding style](style.md) and [Structure](../) so you know how to structure your SASS files
 
 ## TOC
 
@@ -38,19 +39,19 @@ This styleguide outlines standards for writing CSS (and more specifically, Sass)
         * ComponentName.-chainableModifierName
         * ComponentName.is-stateOfComponent
         * ComponentName-descendantName
-        * Component collection (Component name in plural)
+        * Component group (Component name in plural)
     * JavaScript hooks
         * data-* attributes
     * Reserved namespaces and other keywords
         * Responsive variations
         * Modifiers
-        * Prefixes and suffixes in Sass variables
+        * Prefixes and suffixes in SASS variables
 * [Coding style](style.md)
     * Stylesheet formatting
     * Comments & titling
     * Multi-line CSS
 * [Structure](structure.md)
-    * CSS/Sass folder structure
+    * CSS/SASS folder structure
     * Layout components
     * Themes
     * Component structure

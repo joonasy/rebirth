@@ -90,7 +90,7 @@ A component modifier is a class that modifies the presentation of the base compo
 
 ### ComponentName.-chainableModifierName
 
-Chainable modifiers are denoted by a leading hyphen `-` and a descriptor for the modification. As the name would indicate, chainable modifiers provide us with the ability to configure a module in the HTML with a short, concise syntax. Chainable component modifiers can be added to component modifiers and collections may also modify their descendants by nesting.   
+Chainable modifiers are denoted by a leading hyphen `-` and a descriptor for the modification. As the name would indicate, chainable modifiers provide us with the ability to configure a module in the HTML with a short, concise syntax. Chainable component modifiers can be added to component modifiers and group may also modify their descendants by nesting.   
 
 The golden rule is that **chainable modifiers should never modify the same CSS property twice**. This is to ensure that styles don’t get clobbered and that the order in which they are applied is irrelevant. 
 
@@ -132,7 +132,7 @@ Chainable modifiers extend main modifiers.
 }
 ```
 
-Chainable modifiers can also be added to component collections.
+Chainable modifiers can also be added to component groups.
 
 ```css
 .Buttons {
@@ -233,15 +233,15 @@ Parent component modifiers also modify their descendants by nesting, however in 
 </article>
 ```
 
-### Component collections (ComponentName in plural e.g. `Buttons`)
+### Component groups (ComponentName in plural e.g. `Buttons`)
 
-> Components are descendants of component collections.
+> Components are descendants of component groups.
 
-Some components need parent component collections to work properly. Component collections override component specific settings. Component collections also use chainable modifiers.
+Some components need parent component groups to work properly. Component groups override component specific settings. Component groups also use chainable modifiers.
 
 ```css
 /**
- * Button collection for Buttons
+ * Button group for Button
  */ 
 .Buttons {
   …
@@ -344,10 +344,10 @@ Example use of _margin_ helper which is activated in large breakpoint:
 * Sizing modifiers: `--[x...]s`, `--m`, `--ml`, `--[x...]l`
     * Used by helpers (e.g `.marginTop--l`). **For component sizing use chainable modifiers.**
 
-### Reserved prefixes and suffixes in Sass variables
+### Reserved prefixes and suffixes in SASS variables
 
-Default sass variables do not need hyphens, use camelCase instead. e.g. `$baseFontSize` not `$base-fontSize`. 
+Default SASS variables do not need hyphens, use camelCase instead. e.g. `$baseFontSize` not `$base-fontSize`. 
 
-Component sass variables however _do_ need hyphens e.g. `$MyComponent-heading` not `$MyComponentHeading`.
+Component SASS variables however _do_ need hyphens e.g. `$MyComponent-heading` not `$MyComponentHeading`.
 
-* Reserved sizing suffixes used in Sass variables:  `-[x...]s`, `-m`, `-ml`, `-[x...]l`
+* Reserved sizing suffixes used in SASS variables:  `-[x...]s`, `-m`, `-ml`, `-[x...]l`
