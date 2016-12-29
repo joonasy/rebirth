@@ -1,6 +1,6 @@
 # Rebirth
 
-Hey, we're in development. Prior to reaching [v1.0.0][6].
+Hey, we're in development. Prior to reaching [v1.0.0](https://github.com/joonasy/rebirth/milestone/1).
 
 Awesome front-end starter kit and opinionated styleguide for developing responsive, mobile first projects on the web. Everytime you start a new project with Rebirth, recreate it to your project design. The idea behind Rebirth is not to be a framework but a starting point with predefined HTML, CSS and JavaScript recipes.
  
