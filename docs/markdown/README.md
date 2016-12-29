@@ -3,7 +3,7 @@
 Asset structure and default partials installed by the [Rebirth Yeoman generator](https://github.com/joonasy/generator-rebirth.git):
 
 ```
-src/                           # Source folder
+assets/                      
 |
 |── components/                # All component types [1]
 |   |── collections/
