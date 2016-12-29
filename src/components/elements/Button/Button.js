@@ -4,12 +4,12 @@
 
 import classToggle from '../../../javascripts/plugins/classToggle'
 
-class ButtonDropdown {
+class Button {
   init() {
-    this.toggle()
+    this.dropdown()
   }
 
-  toggle() {
+  dropdown() {
     classToggle({
       trigger: '.js-ButtonDropdown',
       triggerClass: 'is-open',
@@ -18,4 +18,4 @@ class ButtonDropdown {
   }
 }
 
-export default ButtonDropdown
+export default Button

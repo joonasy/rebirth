@@ -2,6 +2,6 @@
  * Button
  * ======================================== */
 
-import ButtonDropdown from './ButtonDropdown'
+import Button from './Button'
 
-new ButtonDropdown().init()
+new Button().init()
