@@ -5,4 +5,4 @@
 /**
  * Global custom build modernizr
  */
-import '../dist/vendors/modernizr.js'
+import '../dist/assets/vendors/modernizr.js'

@@ -1,10 +1,6 @@
 /* ========================================
  * Gulpfile for `Rebirth`
- * ========================================
- *
- * @generated 4.8.2015 using `generator-rebirth v0.2.0`
- * @url https://github.com/joonasy/generator-rebirth
- */
+ * ======================================== */
 
 var assemble = require('assemble')
 var app = assemble()
@@ -24,7 +20,8 @@ var watchify = require('watchify')
 var $ = require('gulp-load-plugins')()
 
 var production = process.env.NODE_ENV === 'production'
-var open = process.env.npm_config_open
+var open = process.env.npm_config_disable_open ? false : 'external'
+
 
 /* ======
  * Config
@@ -51,11 +48,9 @@ var config = {
      src: 'docs/assets/',
      dest: 'docs-dist/assets/',
      bundle: [{
-        fileName: 'docs.js',
-        src: 'docs/assets/docs.js'
+        fileName: 'docs.js'
       }, {
-        fileName: 'docs.head.js',
-        src: 'docs/assets/docs.head.js'
+        fileName: 'docs.head.js'
       }]
     },
     layouts: 'docs/layouts/*.hbs',
@@ -189,7 +184,7 @@ app.task('docs-fonts', function() {
  */
 app.task('docs-server', function() {
   browserSync.init({
-    open: open === undefined ? 'external' : open,
+    open: open,
     port: 9001,
     notify: false,
     server: {
@@ -243,8 +238,8 @@ app.task('docs-rev', function() {
   rimraf.sync(config.docs.javascripts.dest + 'docs.head.js')
 
   return app.src([
-    config.docs.dest + 'assets/*.{js}',
-    config.docs.dest + 'assets/{javascripts,images,fonts}/**'
+    config.docs.dest + 'assets/*.js',
+    config.docs.dest + 'assets/{images,fonts}/**'
   ])
     .pipe($.rev())
     .pipe(app.dest(config.docs.dest + 'assets/'))
@@ -319,7 +314,7 @@ app.task('javascripts', function(callback) {
 app.task('modernizr', function() {
   return app.src([
     config.javascripts.src + '**/*.js',
-    config.stylesheets.dest + 'docs.css'
+    config.stylesheets.dest + 'rebirth.css'
   ])
     .pipe($.modernizr({
       excludeTests: ['hidden'],
@@ -334,14 +329,14 @@ app.task('modernizr', function() {
       ]
     }))
     .on('error', handleError)
-    .pipe(app.dest(config.javascripts.dest + 'vendors'))
+    .pipe(app.dest(config.javascripts.dest + '/assets/vendors'))
 })
 
 /**
  * Rebirth - Clean up build
  */
 app.task('cleanUp', function(cb) {
-  rimraf.sync(config.javascripts.dest + 'vendors')
+  rimraf.sync(config.javascripts.dest + 'assets')
   cb()
 })
 
@@ -360,11 +355,11 @@ app.task('eslint', function () {
  * Rebirth - Collected tasks
  * ====== */
 
-var tasks = ['stylesheets', 'modernizr', 'javascripts', 'cleanUp']
+var tasks = ['stylesheets', 'modernizr', 'javascripts']
 
 app.task('build', ['eslint'], function() {
   rimraf.sync(config.dest)
-  app.build(tasks, function(err) {
+  app.build(tasks.concat(['cleanUp']), function(err) {
     if (err) throw err
   })
 })

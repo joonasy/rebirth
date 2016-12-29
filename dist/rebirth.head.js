@@ -1816,5 +1816,5 @@ var _typeof = typeof Symbol === "function" && typeof Symbol.iterator === "symbol
 
 },{}],2:[function(require,module,exports){
 'use strict';
-require('../dist/vendors/modernizr.js');
-},{"../dist/vendors/modernizr.js":1}]},{},[2]);
+require('../dist/assets/vendors/modernizr.js');
+},{"../dist/assets/vendors/modernizr.js":1}]},{},[2]);
