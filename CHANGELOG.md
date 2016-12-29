@@ -1,6 +1,6 @@
 # Changelog
 
-## 0.5.1
+## 0.5.1x
 
 * **Do not use versions below this**
 * Applied new component structure and naming
