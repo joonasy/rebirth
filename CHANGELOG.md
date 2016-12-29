@@ -1,8 +1,16 @@
 # Changelog
 
+## 0.5.1
+
+* **Do not use versions below this**
+* Applied new component structure and naming
+* Docs and Rebirth isolated
+    * Rebirth CSS and JavaScipts now found in [dist/](dist/)
+    * Docs are build to docs-dist
+
 ## 0.5.0
 
-* Project renamed to Rebirth **Do not use versions below this**
+* Project renamed to Rebirth
 * Old npm package deprecated
 * Downgrade assemble to working version
 * Updated dependencies

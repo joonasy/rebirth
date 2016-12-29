@@ -1,5 +1,7 @@
 # Rebirth
 
+Hey, we're in development. Prior to reaching [v1.0.0][6].
+
 Awesome front-end starter kit and opinionated styleguide for developing responsive, mobile first projects on the web. Everytime you start a new project with Rebirth, recreate it to your project design. The idea behind Rebirth is not to be a framework but a starting point with predefined HTML, CSS and JavaScript recipes.
  
 Inspired by methods and ideas from various sources such as [SUIT CSS](https://github.com/suitcss/suit), [BEM](https://bem.info/), [INUITCSS](https://github.com/inuitcss), [SMACSS](https://smacss.com/), [OOCSS](http://oocss.org/) and [Bootstrap](http://getbootstrap.com). 
@@ -14,13 +16,13 @@ Correct way to use Rebirth is together with [Rebirth Yeoman generator](https://g
 
 ## Installing
 
-### a) Install with generator
+##### a) Install with generator
 
 Preferred way to start a new Rebirth project is together with [generator-rebirth](https://github.com/joonasy/generator-rebirth.git) which setups Rebirth and scaffolds new [Rebirth](https://github.com/joonasy/rebirth.git), [WordPress](wordpress.org), [TYPO3](https://typo3.org/) or [HTML (Assemble)](https://github.com/assemble/assemble/) project.
 
 Head to [Rebirth Yeoman generator](https://github.com/joonasy/generator-rebirth.git) and get started!
 
-### b) Package managers
+##### b) Package managers
 
 You can also install directly from npm:
 
@@ -34,17 +36,15 @@ If you install directly from npm you can't use the generator without [creating t
 
 Read the [CSS styleguide](docs/markdown/css) and [JavaScript styleguide](docs/markdown/js) so you know how to build with Rebirth.
 
-### a) Generating (Work in progress!)
+##### a) Generating (Work in progress!)
 
-You can create new components with the [Rebirth Yeoman generator](https://github.com/joonasy/generator-rebirth.git):
+You can create new components with the [Rebirth Yeoman generator](https://github.com/joonasy/generator-rebirth.git), which is the correct way of using Rebirth as a starting point. This will copy component dependencies (SCSS and JavaScript files) which you can start modifying. Head to [Rebirth Yeoman generator](https://github.com/joonasy/generator-rebirth.git) for more information about the generator usage.
 
 ```
 yo rebirth component:foo
 ```
 
-This will copy component dependencies (SCSS and JavaScript files) which you can start modifying. **This is the correct way of using Rebirth as a starting point.** Head to [Rebirth Yeoman generator](https://github.com/joonasy/generator-rebirth.git) for more information about the generator usage.
-
-### b) Importing (SCSS & ES2015 modules)
+##### b) Importing (SCSS & ES2015 modules)
 
 If you use Rebirth without the generator (e.g override existing styles with your own) you can also import all the SCSS:
 
@@ -54,24 +54,19 @@ import 'rebirth/src/app';
 
 You can also import components explicitly. To start with a full list of modules copy _app.scss file into your project and comment out components you do not want. 
 
-Import and load initial JavaScripts in your `<head>` before all other stylesheets and JavaScripts:
+Import and load initial JavaScripts in your `<head>` before all other stylesheets and JavaScripts. Add JavaScript components, plugins etc. (jQuery included) near the end of your pages, right before the closing `</body>` tag. 
 
 ```
 // In your app.head.js
 import 'rebirth/src/app.head';
-```
 
-Add JavaScript components, plugins etc. (jQuery included) near the end of your pages, right before the closing `</body>` tag. 
-
-```
 // In your app.js
 import 'rebirth/src/app';
 ```
 
+##### c) Referencing build material
 
-### c) Referencing build material
-
-If you only want reference compiled and minified CSS and JavaScript.
+If you only want reference compiled and minified CSS and JavaScript. However, using Rebirth this way fights against its ideology. Referencing these files are targeted only for prototyping Rebirth e.g. docs.
 
 ``` 
 // Add to <head>
@@ -84,8 +79,6 @@ If you only want reference compiled and minified CSS and JavaScript.
 <script src="rebirth/dist/rebirth.min.js" async></script>
 ```
 
-However, using Rebirth this way fights against its ideology. Referencing these files are targeted only for prototyping Rebirth e.g. docs.
-
 ## Documentation
 
 * [CSS styleguide](docs/markdown/css)
@@ -93,7 +86,7 @@ However, using Rebirth this way fights against its ideology. Referencing these f
 
 ## Contribute
 
-**Work in progress!** Use only if you know what you are doing or you are working together with the author. **All docs are currently very much outdated.**
+**Work in progress!** Use only if you know what you are doing or you are working together with the author. All docs are currently very much outdated.
 
 Please discuss about new ideas and things that you think should be modified. Currently all the styleguiding, components (CSS/JS) and generator logic has been made by Joonas Ylitalo [@joonasy](https://twitter.com/joonasy).
 

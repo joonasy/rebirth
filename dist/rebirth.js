@@ -11295,19 +11295,19 @@ function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { de
 
 function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
 
-var ButtonDropdown = function () {
-  function ButtonDropdown() {
-    _classCallCheck(this, ButtonDropdown);
+var Button = function () {
+  function Button() {
+    _classCallCheck(this, Button);
   }
 
-  _createClass(ButtonDropdown, [{
+  _createClass(Button, [{
     key: 'init',
     value: function init() {
-      this.toggle();
+      this.dropdown();
     }
   }, {
-    key: 'toggle',
-    value: function toggle() {
+    key: 'dropdown',
+    value: function dropdown() {
       (0, _classToggle2.default)({
         trigger: '.js-ButtonDropdown',
         triggerClass: 'is-open',
@@ -11316,25 +11316,25 @@ var ButtonDropdown = function () {
     }
   }]);
 
-  return ButtonDropdown;
+  return Button;
 }();
 
-exports.default = ButtonDropdown;
+exports.default = Button;
 
 },{"../../../javascripts/plugins/classToggle":15}],9:[function(require,module,exports){
 'use strict';
 
-var _ButtonDropdown = require('./ButtonDropdown');
+var _Button = require('./Button');
 
-var _ButtonDropdown2 = _interopRequireDefault(_ButtonDropdown);
+var _Button2 = _interopRequireDefault(_Button);
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
-new _ButtonDropdown2.default().init(); /* ========================================
-                                        * Button
-                                        * ======================================== */
+new _Button2.default().init(); /* ========================================
+                                * Button
+                                * ======================================== */
 
-},{"./ButtonDropdown":8}],10:[function(require,module,exports){
+},{"./Button":8}],10:[function(require,module,exports){
 'use strict';
 
 Object.defineProperty(exports, "__esModule", {
