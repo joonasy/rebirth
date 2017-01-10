@@ -109,10 +109,6 @@ img::-moz-selection {
   background: transparent;
 }
 
-::selection:window-inactive {
-  background: lighten($colorDark, 50%);
-}
-
 /**
  * Media
  */
