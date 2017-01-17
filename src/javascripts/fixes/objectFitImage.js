@@ -157,7 +157,8 @@ const imgToParentBg = (figure, targetSafari, targetIOS) => {
             const media = matchNumber($source.attr('media'))
 
             if (media === closestWindowWidth) {
-              imgUrl = $source.attr('srcset').split(' ').pop()
+              const attr = $source.attr('srcset') ? 'srcset' : 'data-srcset'
+              imgUrl = $source.attr(attr).split(' ').pop()
             }
           })
         } else {
