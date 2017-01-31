@@ -162,7 +162,8 @@ const imgToParentBg = (figure, targetSafari, targetIOS) => {
             }
           })
         } else {
-          imgUrl = sourceLargest.attr('srcset')
+          const attr = sourceLargest.attr('srcset') ? 'srcset' : 'data-srcset'
+          imgUrl = sourceLargest.attr(attr)
         }
       } else {
         imgUrl = $img.attr('data-src') ? $img.attr('data-src') :
