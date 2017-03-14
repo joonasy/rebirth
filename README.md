@@ -52,7 +52,7 @@ If you use Rebirth without the generator (e.g override existing styles with your
 import 'rebirth/src/app';
 ```
 
-You can also import components explicitly. To start with a full list of modules copy _app.scss file into your project and comment out components you do not want. 
+You can also import components explicitly. To start with a full list of modules copy app.scss and _config.scss files into your project and comment out components you do not want. 
 
 Import and load initial JavaScripts in your `<head>` before all other stylesheets and JavaScripts. Add JavaScript components, plugins etc. (jQuery included) near the end of your pages, right before the closing `</body>` tag. 
 
@@ -86,14 +86,7 @@ If you only want reference compiled and minified CSS and JavaScript. However, us
 
 ## Todo
 
-* Add milestones to replace this temporary TODO
-* **Document new structural changes!**
-* Isolate `.Form-input{}` and  `.Form-checkbox{}`
-* Create the documentation website for existing components
-* All necessary CSS components
-* CSS modular scale
-* Testing for JavaScript
-* Remove jQuery
+[Milestones - v1.0](https://github.com/joonasy/rebirth/milestone/1)
 
 ## License
 
