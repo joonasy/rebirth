@@ -11216,7 +11216,7 @@ var Hero = function () {
           });
         };
         minHeight();
-        _config2.default.$window.on('orientationchange', minHeight);
+        _config2.default.dom.$window.on('orientationchange', minHeight);
       }
 
       /**
@@ -11227,11 +11227,11 @@ var Hero = function () {
         var _minHeight = function _minHeight() {
           _jquery2.default.each(_this.$fullContent, function () {
             var $this = (0, _jquery2.default)(this);
-            $this.css('min-height', _config2.default.$window.height());
+            $this.css('min-height', _config2.default.dom.$window.height());
           });
         };
         _minHeight();
-        _config2.default.$window.on('orientationchange', _minHeight);
+        _config2.default.dom.$window.on('orientationchange', _minHeight);
       }
     }
 
@@ -11652,11 +11652,13 @@ var imgToParentBg = function imgToParentBg(figure, targetSafari, targetIOS) {
               var media = matchNumber($source.attr('media'));
 
               if (media === closestWindowWidth) {
-                imgUrl = $source.attr('srcset').split(' ').pop();
+                var attr = $source.attr('srcset') ? 'srcset' : 'data-srcset';
+                imgUrl = $source.attr(attr).split(' ').pop();
               }
             });
           } else {
-            imgUrl = sourceLargest.attr('srcset');
+            var attr = sourceLargest.attr('srcset') ? 'srcset' : 'data-srcset';
+            imgUrl = sourceLargest.attr(attr);
           }
         })();
       } else {

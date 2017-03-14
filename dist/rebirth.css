@@ -214,14 +214,6 @@ img::selection{
 img::-moz-selection{
   background:transparent;
 }
-
-::-moz-selection:window-inactive{
-  background:gray;
-}
-
-::selection:window-inactive{
-  background:gray;
-}
 embed,iframe,img,object{
   max-width:100%;
 }
@@ -2804,8 +2796,8 @@ textarea.Form-item{
   padding-right:.75rem;
 }
 .Grid.-auto>.Grid-cell:not([class*=Width]){
-  -ms-flex:1 0 0px;
-      flex:1 0 0;
+  -ms-flex:1 0 0%;
+      flex:1 0 0%;
   width:auto;
 }
 

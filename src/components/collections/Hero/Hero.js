@@ -42,7 +42,7 @@ class Hero {
         })
       }
       minHeight()
-      cfg.$window.on('orientationchange', minHeight)
+      cfg.dom.$window.on('orientationchange', minHeight)
     }
 
     /**
@@ -53,11 +53,11 @@ class Hero {
       const minHeight = () => {
         $.each(this.$fullContent, function () {
           const $this = $(this)
-          $this.css('min-height', cfg.$window.height())
+          $this.css('min-height', cfg.dom.$window.height())
         })
       }
       minHeight()
-      cfg.$window.on('orientationchange', minHeight)
+      cfg.dom.$window.on('orientationchange', minHeight)
     }
   }
 

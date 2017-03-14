@@ -1,5 +1,9 @@
 # Changelog
 
+## 0.5.2x
+
+* Fix bunch of bugs
+
 ## 0.5.1x
 
 * **Do not use versions below this**
