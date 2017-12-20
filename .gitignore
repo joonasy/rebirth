@@ -13,3 +13,4 @@ bower_components/
 rev-manifest.json
 docs-dist
 dist/assets
+yarn-error.log
