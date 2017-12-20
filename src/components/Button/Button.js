@@ -2,7 +2,7 @@
  * Button
  * ======================================== */
 
-import classToggle from '../../../javascripts/plugins/classToggle'
+import classToggle from '../../javascripts/plugins/classToggle'
 
 class Button {
   init() {

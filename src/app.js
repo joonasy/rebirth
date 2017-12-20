@@ -8,10 +8,10 @@ import fastClick from 'fastclick'
 /**
  * Components
  */
-import './components/elements/Button'
-import './components/elements/Navbar'
-import './components/collections/Card'
-import './components/collections/Hero'
+import './components/Button'
+import './components/Navbar'
+import './components/Card'
+import './components/Hero'
 
 /**
  * Scripts

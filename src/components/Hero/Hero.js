@@ -3,10 +3,10 @@
  * ======================================== */
 
 import $ from 'jquery'
-import fixObjectFitImage from '../../../javascripts/fixes/objectFitImage'
-import fixObjectFitVideo from '../../../javascripts/fixes/objectFitVideo'
-import * as ua from '../../../javascripts/utils/userAgents'
-import cfg from '../../../config'
+import fixObjectFitImage from '../../javascripts/fixes/objectFitImage'
+import fixObjectFitVideo from '../../javascripts/fixes/objectFitVideo'
+import * as ua from '../../javascripts/utils/userAgents'
+import cfg from '../../config'
 
 class Hero {
   constructor() {

@@ -83,6 +83,7 @@
 
       .Navbar-trigger-icon {
         @include shapeArrow('down', $colorTextLight);
+        pointer-events: none;
 
         .Navbar-item.is-open > .Navbar-trigger > & {
           transform: rotate(0);

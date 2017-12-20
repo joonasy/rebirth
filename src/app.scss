@@ -45,29 +45,30 @@
 @import 'stylesheets/helpers/l-padding';
 @import 'stylesheets/helpers/text';
 
-// Elements
-@import 'components/elements/Alert/index';
-@import 'components/elements/Button/index';
-@import 'components/elements/Container/index';
-@import 'components/elements/Embed/index';
-@import 'components/elements/Heading/index';
-@import 'components/elements/Ieframe/index';
-@import 'components/elements/Icon/index';
-@import 'components/elements/IconCss/index';
-@import 'components/elements/Indicator/index';
-@import 'components/elements/Label/index';
-@import 'components/elements/List/index';
-@import 'components/elements/Navbar/index';
-@import 'components/elements/Text/index';
-@import 'components/elements/Width/index';
-@import 'components/elements/Wrap/index';
+// Layout
+@import 'components/Header/index';
+@import 'components/Footer/index';
 
 // Collections
-@import 'components/collections/Card/index';
-@import 'components/collections/Form/index';
-@import 'components/collections/Grid/index';
-@import 'components/collections/Hero/index';
+@import 'components/Card/index';
+@import 'components/Form/index';
+@import 'components/Grid/index';
+@import 'components/Hero/index';
 
-// Layout
-@import 'components/layouts/Header/index';
-@import 'components/layouts/Footer/index';
+// Elements
+@import 'components/Alert/index';
+@import 'components/Button/index';
+@import 'components/Container/index';
+@import 'components/Embed/index';
+@import 'components/Heading/index';
+@import 'components/Ieframe/index';
+@import 'components/Icon/index';
+@import 'components/IconCss/index';
+@import 'components/Indicator/index';
+@import 'components/Label/index';
+@import 'components/List/index';
+@import 'components/Navbar/index';
+@import 'components/Text/index';
+@import 'components/Width/index';
+@import 'components/Wrap/index';
+

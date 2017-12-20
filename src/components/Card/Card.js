@@ -3,7 +3,7 @@
  * ======================================== */
 
 import $ from 'jquery'
-import fixObjectFitImage from '../../../javascripts/fixes/objectFitImage'
+import fixObjectFitImage from '../../javascripts/fixes/objectFitImage'
 
 class Card {
   constructor() {
