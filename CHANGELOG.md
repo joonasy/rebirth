@@ -1,5 +1,10 @@
 # Changelog
 
+## 0.5.3x
+ 
+* Remove jQuery from some of the components ([#14]([../../issues/14))
+* Remove collections, elements, layouts model ([#19]([../../issues/19))
+
 ## 0.5.2x
 
 * Fix bunch of bugs
