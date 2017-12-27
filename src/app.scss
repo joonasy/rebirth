@@ -6,7 +6,7 @@
 @import 'config';
 
 // Vendors
-@import 'stylesheets/vendors/normalize';
+@import 'normalize.css/normalize';
 @import 'sass-mq/mq';
 
 // Mixins
@@ -45,16 +45,6 @@
 @import 'stylesheets/helpers/l-padding';
 @import 'stylesheets/helpers/text';
 
-// Layout
-@import 'components/Header/index';
-@import 'components/Footer/index';
-
-// Collections
-@import 'components/Card/index';
-@import 'components/Form/index';
-@import 'components/Grid/index';
-@import 'components/Hero/index';
-
 // Elements
 @import 'components/Alert/index';
 @import 'components/Button/index';
@@ -72,3 +62,12 @@
 @import 'components/Width/index';
 @import 'components/Wrap/index';
 
+// Collections
+@import 'components/Card/index';
+@import 'components/Form/index';
+@import 'components/Grid/index';
+@import 'components/Hero/index';
+
+// Layout
+@import 'components/Header/index';
+@import 'components/Footer/index';

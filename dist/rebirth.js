@@ -11452,23 +11452,11 @@ new _Navbar2.default().init(); /* ========================================
 Object.defineProperty(exports, "__esModule", {
   value: true
 });
-
-var _jquery = require('jquery');
-
-var _jquery2 = _interopRequireDefault(_jquery);
-
-function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+/* ========================================
+ * Config
+ * ======================================== */
 
 var config = {
-  dom: {
-    $document: (0, _jquery2.default)(document),
-    $window: (0, _jquery2.default)(window),
-    $html: (0, _jquery2.default)('html')
-  },
-  anim: {
-    duration: 800,
-    easing: 'easeOutQuint'
-  },
   bp: {
     xs: {
       px: 320,
@@ -11495,13 +11483,11 @@ var config = {
       mq: 'screen and (min-width: 1200px)'
     }
   }
-}; /* ========================================
-    * Config
-    * ======================================== */
+};
 
 exports.default = config;
 
-},{"jquery":2}],13:[function(require,module,exports){
+},{}],13:[function(require,module,exports){
 (function (global){
 'use strict';
 
