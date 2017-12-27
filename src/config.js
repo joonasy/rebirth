@@ -2,18 +2,7 @@
  * Config
  * ======================================== */
 
-import $ from 'jquery'
-
 const config = {
-  dom: {
-    $document: $(document),
-    $window: $(window),
-    $html: $('html'),
-  },
-  anim: {
-    duration: 800,
-    easing: 'easeOutQuint',
-  },
   bp: {
     xs: {
       px: 320,
