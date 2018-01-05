@@ -1,37 +1,28 @@
 // ========================================
 // Dropdown
 // ========================================
-//
-// 1. Hide
 
-@mixin dropdown(
-  $align: 'left',
-  $arrow: true,
-  $arrowColor: lighten(#000000, 85),
-  $backgroundColor: #ffffff,
-  $borderRadius: $borderRadius,
-  $default: true,
-  $min-width: 240px,
-  $padding: rem($baseSpace / 2) rem($baseSpace),
-  $shadowColor: rgba(#000000, 0.1),
-  $state: false
-  ) {
+@mixin dropdown($align: 'left', $arrow: true, $arrowColor: lighten(#000000, 85),
+  $backgroundColor: #ffffff, $borderRadius: $borderRadius, $default: true, $min-width: 240px,
+  $padding: rem($baseSpace / 2) rem($baseSpace), $boxShadow: 0 rgba(#000000, 0.1), $state: false) {
+
   @if $state == false and $default  {
     background-color: $backgroundColor;
-    box-shadow: 0 0 0 1px $shadowColor;
+    box-shadow: $boxShadow;
     border-radius: $borderRadius;
-    clip: rect(0,0,0,0); // [1.]
-    height: 0; // [1.]
     left: 0;
     list-style: none;
     margin: 0;
     min-width: $min-width;
-    opacity: 0; // [1.]
     padding: $padding;
     position: absolute;
     top: 100%;
-    transition: opacity ($transitionDuration * 2); // [1.]
+    transition: opacity ($transitionDuration * 2);
     z-index: 999;
+
+    clip: rect(0,0,0,0);
+    height: 0;
+    opacity: 0;
   }
 
   @if $state == 'is-open' {

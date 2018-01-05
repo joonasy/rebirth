@@ -16,13 +16,13 @@ $baseFontSize-xs: 12px;
 $baseLineHeight-xs: 18px / $baseFontSize-xs;
 
 $baseFontFamilySerif: Georgia, serif;
-$baseFontFamily: -apple-system-body, 'BlinkMacSystemFont', Helvetica, Arial, sans-serif;
+$baseFontFamily: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
 $baseFontWeight: 400;
-$baseFontWeightStrong: 800;
+$baseFontWeightStrong: 700;
 
 $headingFontFamily: inherit;
-$headingFontWeight: 800;
-$headingFontWeight-alt: 800;
+$headingFontWeight: 700;
+$headingFontWeight-alt: 700;
 
 $h1FontSize: 32px;
 $h1LineHeight: 38px / $h1FontSize;
@@ -37,7 +37,7 @@ $h5LineHeight: 24px / $h5FontSize;
 
 
 // ========================================
-// Media query breakpoints
+// Breakpoints
 // ========================================
 
 $mq-breakpoints: (
@@ -56,23 +56,15 @@ $mq-breakpoints: (
 
 $baseSpace: $baseLineHeightPx;
 $baseEdgeSpace: 6.25%;
+$uiSpace: $baseLineHeightPx / $baseFontSize * 1rem; //
 
 
 // ========================================
-// Default colors
+// Colors
 // ========================================
-
-// Grays
-$colorGrayDarkest: #121212;
-$colorGrayDarker: #222;
-$colorGrayDark: #333;
-$colorGray: #555;
-$colorGrayLight: #a2a2a2;
-$colorGrayLighter: #ccc;
-$colorGrayLightest: #E6E6E6;
 
 // Brand colors
-$colorPrimary: #4d4dff;
+$colorPrimary: #000000;
 
 // Base colors
 $colorDark: #000000;
@@ -86,18 +78,20 @@ $colorBgDark: #000000;
 $colorBgDarkest: #000000;
 
 // Text colors
-$colorText: #333333;
+$colorText: #000000;
 $colorTextLight: lighten($colorText, 20);
+$colorTextLightest: lighten($colorText, 30);
 
 // Heading color
 $colorHeading: inherit;
 
 // Link colors
-$colorLink: $colorPrimary;
+$colorLink: #4d4dff;
 $colorLinkHover: darken($colorLink, 15%);
 
 // Border colors
-$colorBorderDefault: darken($colorGrayLightest, 5);
+$colorBorder: rgba(#000000, 0.08);
+$colorBorderDefault: rgba(#000000, 0.08);
 
 // State colors
 $colorSuccess: #5cb85c;
@@ -110,7 +104,7 @@ $colorInfo: #5bc0de;
 // Various global settings
 // ========================================
 
-$borderRadius: 3px;
+$borderRadius: 0;
 $imagesPath: './images';
 $fontsPath: './fonts';
 
