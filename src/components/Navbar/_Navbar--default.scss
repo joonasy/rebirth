@@ -122,10 +122,10 @@
 
 
   /* ======
-   * Wider Breakpoint
+   * Media Query Breakpoints
    * ====== */
 
-  @include mq(m) {
+  @mixin NavbarDefault-expand() {
     display: flex;
 
     &.is-open > ul {
@@ -178,9 +178,9 @@
     .Navbar-sub {
       @include dropdown($arrow: false);
       @include fontSize($baseFontSize-s, $baseLineHeight-s);
-      display: block;
       border-top-left-radius: 0;
       border-top-right-radius: 0;
+      display: block;
       left: 0;
 
       .Navbar-item {
@@ -196,9 +196,23 @@
       }
     }
 
-    .touchevents & .Navbar-item.is-open, .Navbar-item:hover, .Navbar-item:focus {
+    .has-touchevents & .Navbar-item.is-open,
+    .no-touchevents & .Navbar-item:hover,
+    .no-touchevents & .Navbar-item:focus {
       > .Navbar-sub {
         @include dropdown($state: 'is-open');
+      }
+    }
+  }
+
+  @each $name, $px in $NavbarDefault-breakpoints {
+    @media (min-width: em($px)) {
+      @if length(map-values($NavbarDefault-breakpoints)) > 1 {
+        &.-#{$name}-expand {
+          @include NavbarDefault-expand()
+        }
+      } @else {
+        @include NavbarDefault-expand()
       }
     }
   }

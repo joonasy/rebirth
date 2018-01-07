@@ -2,3 +2,6 @@
 // Navbar - Config
 // ========================================
 
+$NavbarDefault-breakpoints: (
+  l: map-get($mq-breakpoints, l)
+);
