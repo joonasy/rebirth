@@ -1,5 +1,5 @@
 /* ========================================
- * Gulpfile for `Rebirth`
+ * Assemble for `Rebirth`
  * ======================================== */
 
 var assemble = require('assemble')

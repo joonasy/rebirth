@@ -3,7 +3,6 @@
  * ======================================== */
 
 .List {
-  @extend %clearfix;
   @extend %resetList;
   margin-bottom: rem($baseSpace);
 }

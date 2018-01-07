@@ -3,13 +3,6 @@
  * ======================================== */
 
 /**
- * Clearfix
- */
-.clearfix {
-  @include clearfix();
-}
-
-/**
  * Floats
  */
 .floatLeft  { float: left !important; }
@@ -21,21 +14,6 @@
 .centerAbsolute {
   @include center('absolute', !important);
 }
-
-/**
- * Centering with table
- */
-.centerTable {
-  @include center('table', !important);
-}
-
-  .centerTable-cell {
-    @include center('table-cell', !important);
-  }
-
-    .centerTable-cell-item {
-      @include center('table-cell-item', !important);
-    }
 
 /**
  * Centering with margin (requires width)
