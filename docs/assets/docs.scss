@@ -5,6 +5,18 @@
 @import 'config';
 @import 'sass-mq/mq';
 
+$NavbarDefault-breakpoints: (
+  m: map-get($mq-breakpoints, m),
+  l: map-get($mq-breakpoints, l)
+);
+
+@import 'stylesheets/mixins/shapeArrow';
+@import 'stylesheets/mixins/shapeMenu';
+@import 'stylesheets/mixins/fontSize';
+@import 'stylesheets/mixins/dropdown';
+@import 'components/Navbar/Navbar--default';
+
+
 html.docs {
   background-color: darken($colorBgLightest, 5);
 }
