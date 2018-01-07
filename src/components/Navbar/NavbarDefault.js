@@ -50,10 +50,8 @@ export default class NavbarDefault {
     });
 
     window.addEventListener('click', e => {
-      if (hasTouch) {
-        navbarItem.forEach(item => item.classList.remove('is-open'));
-        navbar.forEach(nav => nav.classList.remove('is-open'));
-      }
+      navbarItem.forEach(item => item.classList.remove('is-open'));
+      navbar.forEach(nav => nav.classList.remove('is-open'));
     });
   }
 }
