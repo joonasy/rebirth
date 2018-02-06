@@ -33,11 +33,19 @@
     1: [
       function(require, module, exports) {
         'use strict';
-        require('./components/Navbar');
+        require('app');
+        require('components/Navbar/starters/stacked');
       },
-      { './components/Navbar': 3 },
+      { app: 2, 'components/Navbar/starters/stacked': 6 },
     ],
     2: [
+      function(require, module, exports) {
+        'use strict';
+        require('./components/Navbar');
+      },
+      { './components/Navbar': 4 },
+    ],
+    3: [
       function(require, module, exports) {
         'use strict';
 
@@ -139,9 +147,9 @@
 
         exports.default = NavbarDefault;
       },
-      { 'javascripts/feature': 4, 'javascripts/utility': 5 },
+      { 'javascripts/feature': 7, 'javascripts/utility': 8 },
     ],
-    3: [
+    4: [
       function(require, module, exports) {
         'use strict';
 
@@ -157,9 +165,129 @@
                                 * Navbar
                                 * ======================================== */
       },
-      { './NavbarDefault': 2 },
+      { './NavbarDefault': 3 },
     ],
-    4: [
+    5: [
+      function(require, module, exports) {
+        'use strict';
+
+        Object.defineProperty(exports, '__esModule', {
+          value: true,
+        });
+
+        var _utility = require('javascripts/utility');
+
+        var _feature = require('javascripts/feature');
+
+        function _toConsumableArray(arr) {
+          if (Array.isArray(arr)) {
+            for (var i = 0, arr2 = Array(arr.length); i < arr.length; i++) {
+              arr2[i] = arr[i];
+            }
+            return arr2;
+          } else {
+            return Array.from(arr);
+          }
+        }
+
+        function _classCallCheck(instance, Constructor) {
+          if (!(instance instanceof Constructor)) {
+            throw new TypeError('Cannot call a class as a function');
+          }
+        } /* =======================================
+                                                                                                                                                           * Navbar - Stacked
+                                                                                                                                                           * ======================================= */
+
+        var NavbarStacked = function NavbarStacked() {
+          _classCallCheck(this, NavbarStacked);
+
+          var navbarClass = '.js-NavbarStacked';
+          var navbar = (0, _utility.$$)(navbarClass);
+          var navbarTrigger = (0, _utility.$$)('.js-NavbarStackedTrigger');
+          var navbarItem = (0, _utility.$$)('.js-NavbarStacked .Navbar-item');
+
+          navbar.forEach(function(nav) {
+            nav.addEventListener(
+              'click',
+              function(e) {
+                var isTrigger = e.target.className === 'Navbar-trigger';
+                var isLink = e.target.className === 'Navbar-link';
+                var parent = e.target.closest('.Navbar-item');
+                e.stopPropagation();
+
+                if (isLink && _feature.hasTouch) e.preventDefault();
+
+                if (isTrigger || (isLink && _feature.hasTouch)) {
+                  if (parent.classList.contains('is-open')) {
+                    parent.classList.remove('is-open');
+                  } else {
+                    []
+                      .concat(_toConsumableArray(parent.parentNode.childNodes))
+                      .filter(function(item) {
+                        if (
+                          item.classList &&
+                          item.classList.contains('is-open')
+                        ) {
+                          item.classList.remove('is-open');
+                        } else {
+                          parent.classList.add('is-open');
+                        }
+                      });
+                  }
+                }
+              },
+              false,
+            );
+          });
+
+          navbarTrigger.forEach(function(trigger) {
+            trigger.addEventListener(
+              'click',
+              function(e) {
+                var parent = e.target.closest(navbarClass);
+                e.stopPropagation();
+
+                if (parent.classList.contains('is-open')) {
+                  parent.classList.remove('is-open');
+                } else {
+                  parent.classList.add('is-open');
+                }
+              },
+              false,
+            );
+          });
+
+          window.addEventListener('click', function(e) {
+            navbarItem.forEach(function(item) {
+              return item.classList.remove('is-open');
+            });
+            navbar.forEach(function(nav) {
+              return nav.classList.remove('is-open');
+            });
+          });
+        };
+
+        exports.default = NavbarStacked;
+      },
+      { 'javascripts/feature': 7, 'javascripts/utility': 8 },
+    ],
+    6: [
+      function(require, module, exports) {
+        'use strict';
+
+        var _NavbarStacked = require('./NavbarStacked');
+
+        var _NavbarStacked2 = _interopRequireDefault(_NavbarStacked);
+
+        function _interopRequireDefault(obj) {
+          return obj && obj.__esModule ? obj : { default: obj };
+        }
+
+        new _NavbarStacked2.default();
+      },
+      { './NavbarStacked': 5 },
+    ],
+    7: [
       function(require, module, exports) {
         'use strict';
 
@@ -216,7 +344,7 @@
       },
       {},
     ],
-    5: [
+    8: [
       function(require, module, exports) {
         'use strict';
 

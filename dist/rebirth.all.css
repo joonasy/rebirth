@@ -528,6 +528,54 @@ img {
   vertical-align: middle;
 }
 
+/* =======================================
+ * Code
+ * ======================================= */
+code,
+kbd,
+pre,
+samp {
+  font-family: SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace;
+}
+
+code {
+  font-size: 0.75rem;
+  line-height: 1.5;
+  color: #e83e8c;
+  word-break: break-word;
+}
+
+a > code {
+  color: inherit;
+}
+
+kbd {
+  font-size: 0.875rem;
+  line-height: 1.42857;
+  background-color: #f7f7f7;
+  border-radius: 0;
+  color: #333333;
+  padding: 4px 6px;
+}
+
+kbd kbd {
+  font-size: 100%;
+  padding: 0;
+}
+
+pre {
+  font-size: 0.75rem;
+  line-height: 1.5;
+  color: #333333;
+  display: block;
+}
+
+pre code {
+  color: inherit;
+  font-size: inherit;
+  word-break: normal;
+}
+
 /* ========================================
  * Fonts
  * ======================================== */
@@ -3750,6 +3798,252 @@ textarea.Form-item {
   }
 }
 
+/* =======================================
+ * Navbar - Stacked
+ * =======================================
+ *
+ * @extends `.Navbar{}` in _Navbar.scss
+ */
+.Navbar--stacked {
+  background-color: #ffffff;
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-flex-wrap: wrap;
+      -ms-flex-wrap: wrap;
+          flex-wrap: wrap;
+  /* ======
+   * Media Query Breakpoints
+   * ====== */
+}
+
+.Navbar--stacked.is-open > ul {
+  display: block;
+}
+
+.Navbar--stacked > ul {
+  display: none;
+  width: 100%;
+}
+
+.Navbar--stacked .Navbar-logo {
+  font-size: 1.125rem;
+  line-height: 1.44444;
+  -webkit-box-align: center;
+  -webkit-align-items: center;
+      -ms-flex-align: center;
+          align-items: center;
+  color: #000000;
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  padding: 0 1.5rem;
+}
+
+.Navbar--stacked .Navbar-ctrl {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  margin-left: auto;
+  min-height: 3rem;
+}
+
+.Navbar--stacked .Navbar-ctrl-trigger {
+  -webkit-box-align: center;
+  -webkit-align-items: center;
+      -ms-flex-align: center;
+          align-items: center;
+  color: #000000;
+  cursor: pointer;
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+  -webkit-justify-content: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  min-width: 3rem;
+  padding: 0 0.75rem;
+}
+
+.Navbar--stacked .Navbar-ctrl-trigger-icon {
+  border-top: 2px solid #000000;
+  display: inline-block;
+  height: 14px;
+  position: relative;
+  top: 6px;
+  -webkit-user-select: none;
+     -moz-user-select: none;
+      -ms-user-select: none;
+          user-select: none;
+  min-width: 22px;
+}
+
+.Navbar--stacked .Navbar-ctrl-trigger-icon:before, .Navbar--stacked .Navbar-ctrl-trigger-icon:after {
+  background-color: #000000;
+  content: '';
+  display: block;
+  height: 2px;
+  position: absolute;
+  width: 22px;
+}
+
+.Navbar--stacked .Navbar-ctrl-trigger-icon:before {
+  top: -8px;
+}
+
+.Navbar--stacked .Navbar-ctrl-trigger-icon:after {
+  top: 4px;
+}
+
+.Navbar--stacked .Navbar-item {
+  border-top: 1px solid rgba(0, 0, 0, 0.08);
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-flex-wrap: wrap;
+      -ms-flex-wrap: wrap;
+          flex-wrap: wrap;
+}
+
+.Navbar--stacked .Navbar-item.is-active > .Navbar-link {
+  color: #4d4dff;
+}
+
+.Navbar--stacked .Navbar-item.is-open > .Navbar-trigger > .Navbar-trigger-icon {
+  -webkit-transform: rotate(0deg);
+          transform: rotate(0deg);
+}
+
+.Navbar--stacked .Navbar-item.is-open > .Navbar-sub {
+  display: block;
+}
+
+.Navbar--stacked .Navbar-link {
+  -webkit-box-align: center;
+  -webkit-align-items: center;
+      -ms-flex-align: center;
+          align-items: center;
+  color: #000000;
+  cursor: pointer;
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-flex: 1;
+  -webkit-flex: 1;
+      -ms-flex: 1;
+          flex: 1;
+  padding: 0.75rem 1.5rem;
+}
+
+.Navbar--stacked .Navbar-link:hover {
+  color: #4d4dff;
+}
+
+.Navbar--stacked .Navbar-trigger {
+  -webkit-box-align: center;
+  -webkit-align-items: center;
+      -ms-flex-align: center;
+          align-items: center;
+  border-left: 1px solid rgba(0, 0, 0, 0.08);
+  color: #000000;
+  cursor: pointer;
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+  -webkit-justify-content: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  min-width: 3rem;
+  padding: 0 0.75rem;
+}
+
+.Navbar--stacked .Navbar-trigger-icon {
+  display: inline-block;
+  position: relative;
+  height: 8px;
+  width: 8px;
+  -webkit-transform: rotate(180deg);
+          transform: rotate(180deg);
+  pointer-events: none;
+}
+
+.Navbar--stacked .Navbar-trigger-icon:after {
+  border-left: 2px solid;
+  border-top: 2px solid;
+  color: #737373;
+  content: '';
+  display: block;
+  height: 8px;
+  position: absolute;
+  -webkit-transform: rotate(45deg);
+          transform: rotate(45deg);
+  width: 8px;
+  top: 3px;
+}
+
+.Navbar--stacked .Navbar-sub {
+  display: none;
+  background-color: #f0f0f0;
+  width: 100%;
+}
+
+.Navbar--stacked .Navbar-sub .Navbar-link {
+  background-color: transparent;
+}
+
+.Navbar--stacked .Navbar-sub .Navbar-link:hover {
+  color: #4d4dff;
+}
+
+.Navbar--stacked .Navbar-sub ul {
+  background-color: rgba(0, 0, 0, 0.03);
+}
+
+.Navbar--stacked .Navbar-sub ul .Navbar-trigger {
+  background-color: transparent;
+}
+
+@media (min-width: 64em) {
+  .Navbar--stacked > ul {
+    display: block;
+    padding: 1.5rem 0;
+  }
+  .Navbar--stacked .Navbar-ctrl {
+    display: none;
+  }
+  .Navbar--stacked .Navbar-item {
+    border: 0;
+  }
+  .Navbar--stacked .Navbar-item.is-active .Navbar-sub {
+    display: block;
+  }
+  .Navbar--stacked .Navbar-link {
+    padding: 0.25rem 1.5rem;
+  }
+  .Navbar--stacked .Navbar-trigger {
+    display: none;
+  }
+  .Navbar--stacked .Navbar-sub {
+    font-size: 0.875rem;
+    line-height: 1.42857;
+    background-color: transparent;
+    display: none;
+    margin-bottom: 0.75rem;
+  }
+  .Navbar--stacked .Navbar-sub .Navbar-link {
+    color: #737373;
+  }
+}
+
 /* ========================================
  * Text
  * ======================================== */
@@ -3769,6 +4063,45 @@ textarea.Form-item {
 .Text.-xs {
   font-size: 0.75rem;
   line-height: 1.5;
+}
+
+/* ========================================
+ * Text
+ * ======================================== */
+/* ======
+ * Size
+ * ====== */
+.Text.-l {
+  font-size: 1.125rem;
+  line-height: 1.44444;
+}
+
+.Card-footer, .List-text, .List-meta, .Text.-s {
+  font-size: 0.875rem;
+  line-height: 1.42857;
+}
+
+.Text.-xs {
+  font-size: 0.75rem;
+  line-height: 1.5;
+}
+
+/* ======
+ * Lead
+ * ====== */
+.Text--lead {
+  font-size: 1.625rem;
+  line-height: 36px;
+  color: #737373;
+  font-weight: 300;
+  margin-bottom: 2.25rem;
+}
+
+@media (max-width: 37.49em) {
+  .Text--lead {
+    font-size: 1.125rem;
+    line-height: 1.44444;
+  }
 }
 
 /* ========================================
