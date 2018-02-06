@@ -3,9 +3,11 @@
   "version": "0.5.31",
   "author": "Joonas Ylitalo",
   "homepage": "http://joonasy.com",
-  "description": "Front-end starter kit and styleguide for developing responsive, mobile first projects on the web.",
+  "description":
+    "Front-end starter kit and styleguide for developing responsive, mobile first projects on the web.",
   "license": "MIT",
   "dependencies": {
+    "highlight.js": "^9.12.0",
     "jquery": "^3.1.1",
     "lazysizes": "^4.0.1",
     "normalize.css": "^7.0.0"
@@ -13,12 +15,18 @@
   "main": "assemblefile.js",
   "repository": "https://github.com/joonasy/rebirth.git",
   "scripts": {
-    "docs-dev": "assemble docs-dev",
-    "docs-build": "NODE_ENV=production assemble docs-build",
-    "docs-dist": "npm run docs-build && assemble docs-server",
     "build": "NODE_ENV=production assemble build",
     "dev": "npm run docs-dev",
-    "dist": "npm run docs-dist"
+    "dist": "npm run docs-dist",
+    "docs-build": "NODE_ENV=production assemble docs-build",
+    "docs-dev": "assemble docs-dev",
+    "docs-dist": "npm run docs-build && assemble docs-server",
+    "precommit": "lint-staged",
+    "prepublishOnly": "npm run build",
+    "publish": "npm publish --tag beta"
+  },
+  "lint-staged": {
+    "*.{js,json,md}": ["prettier --write", "git add"]
   },
   "devDependencies": {
     "assemble": "^0.24.3",
@@ -32,8 +40,7 @@
     "browserify-shim": "^3.8.9",
     "deamdify": "^0.3.0",
     "debowerify": "~1.5.0",
-    "dploy": "^1.2.0",
-    "eslint": "^4.14.0",
+    "eslint": "^4.17.0",
     "eslint-config-airbnb": "^16.1.0",
     "eslint-plugin-import": "^2.2.0",
     "eslint-plugin-jsx-a11y": "^6.0.3",
@@ -48,7 +55,6 @@
     "gulp-eslint": "^4.0.0",
     "gulp-imagemin": "^4.1.0",
     "gulp-load-plugins": "^1.0.0-rc.1",
-    "gulp-modernizr": "^1.0.0-alpha",
     "gulp-rename": "^1.2.2",
     "gulp-replace": "^0.6.1",
     "gulp-rev": "^8.1.1",
@@ -59,47 +65,35 @@
     "gulp-util": "~3.0.1",
     "handlebars-helpers": "^0.10.0",
     "helper-markdown": "^1.0.0",
+    "husky": "^0.14.3",
     "install": "^0.10.2",
+    "js-yaml": "^3.10.0",
+    "lint-staged": "^6.1.0",
+    "node-fetch": "^1.7.3",
     "node-notifier": "^5.1.2",
     "pretty-hrtime": "^1.0.0",
-    "relative-dest": "^0.1.0",
     "rimraf": "^2.5.3",
     "sass-mq": "^3.2.9",
     "through2": "^2.0.3",
     "vinyl-fs": "^3.0.1",
     "vinyl-source-stream": "^2.0.0",
-    "watchify": "^3.2.1"
+    "watchify": "^3.2.1",
+    "whatwg-fetch": "^2.0.3"
   },
   "browserify": {
     "transform": [
       [
         "babelify",
         {
-          "presets": [
-            [
-              "env",
-              {
-                "targets": {
-                  "browsers": [
-                    "last 2 versions",
-                    "IE 10",
-                    "safari >= 8"
-                  ]
-                }
-              }
-            ]
-          ],
-          "plugins": [
-            "transform-object-rest-spread"
-          ]
+          "presets": [["env"]],
+          "plugins": ["transform-object-rest-spread"]
         }
       ],
       "browserify-shim",
-      "debowerify",
       "deamdify"
     ]
   },
-  "browserify-shim": {
-    "modernizr": "global:Modernizr"
+  "engines": {
+    "node": ">=9.3.0"
   }
 }
