@@ -1,12 +1,12 @@
-/* ========================================
+/* =======================================
  * Navbar - Default
- * ========================================
+ * =======================================
  *
  * @extends `.Navbar{}` in _Navbar.scss
  */
 
 .Navbar--default {
-  background-color: $colorBgLight;
+  background-color: $colorBgLightest;
   display: flex;
   flex-wrap: wrap;
 
@@ -38,12 +38,13 @@
       color: $colorText;
       cursor: pointer;
       display: flex;
-      min-width: $uiSpace * 2;
       justify-content: center;
+      min-width: $uiSpace * 2;
+      padding: 0 ($uiSpace / 2);
     }
 
       .Navbar-ctrl-trigger-icon {
-        @include shapeMenu($colorPrimary);
+        @include shapeMenu();
       }
 
   .Navbar-item {
@@ -52,8 +53,6 @@
     flex-wrap: wrap;
 
     &.is-active {
-      background: red;
-
       > .Navbar-link {
         color: $colorLink;
       }
@@ -91,6 +90,7 @@
     display: flex;
     justify-content: center;
     min-width: $uiSpace * 2;
+    padding: 0 ($uiSpace / 2);
   }
 
     .Navbar-trigger-icon {
@@ -127,6 +127,7 @@
 
   @mixin NavbarDefault-expand() {
     display: flex;
+    min-height: $uiSpace * 3;
 
     &.is-open > ul {
       display: flex;
@@ -154,13 +155,14 @@
 
       > .Navbar-link {
         border: 0;
-        padding: $uiSpace ($uiSpace / 2);
+        padding: 0 ($uiSpace / 2);
       }
 
       > .Navbar-trigger {
         border: 0;
         margin: 2px ($uiSpace / 2) 0 (-($uiSpace / 6));
         min-width: 0;
+        padding: 0;
       }
 
       &:nth-last-child(2), &:last-child {
@@ -206,7 +208,7 @@
   }
 
   @each $name, $px in $NavbarDefault-breakpoints {
-    @media (min-width: em($px)) {
+    @media (min-width: mq-px2em($px)) {
       @if length(map-values($NavbarDefault-breakpoints)) > 1 {
         &.-#{$name}-expand {
           @include NavbarDefault-expand()

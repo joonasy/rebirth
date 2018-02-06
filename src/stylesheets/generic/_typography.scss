@@ -21,9 +21,12 @@ hr {
   padding: 0;
 }
 
-/**
- * Headings
- */
+hgroup {
+  > *:not(:last-child) {
+    margin-bottom: rem($baseSpace / 2);
+  }
+}
+
 h1,
 h2,
 h3,

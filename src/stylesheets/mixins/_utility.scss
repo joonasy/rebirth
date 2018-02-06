@@ -31,14 +31,14 @@
 }
 
 //
-// Simple image urls
+// Image urls
 //
 @function imageUrl($path: './images') {
   @return url('#{$imagesPath}/#{$path}');
 }
 
 //
-// Simple font urls
+// Font urls
 //
 @function fontUrl($path: './fonts') {
   @return url('#{$fontsPath}/#{$path}');

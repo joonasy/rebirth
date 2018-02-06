@@ -1,6 +1,6 @@
-// ========================================
+// =======================================
 // Application
-// ========================================
+// =======================================
 
 // Config
 @import 'config';
@@ -44,6 +44,17 @@
 @import 'stylesheets/helpers/l-padding';
 @import 'stylesheets/helpers/text';
 
+// Layout
+@import 'components/Header/index';
+@import 'components/Page/index';
+@import 'components/Footer/index';
+
+// Collections
+@import 'components/Card/index';
+@import 'components/Form/index';
+@import 'components/Grid/index';
+@import 'components/Hero/index';
+
 // Elements
 @import 'components/Alert/index';
 @import 'components/Button/index';
@@ -59,14 +70,3 @@
 @import 'components/Text/index';
 @import 'components/Width/index';
 @import 'components/Wrap/index';
-
-// Collections
-@import 'components/Card/index';
-@import 'components/Form/index';
-@import 'components/Grid/index';
-@import 'components/Hero/index';
-
-// Layout
-@import 'components/Header/index';
-@import 'components/Page/index';
-@import 'components/Footer/index';
