@@ -1,0 +1,37 @@
+/* ========================================
+ * Text
+ * ======================================== */
+
+.Text {}
+
+
+/* ======
+ * Size
+ * ====== */
+
+%Text.-l  { @include fontSize($baseFontSize-l, $baseLineHeight-l);   }
+%Text.-s  { @include fontSize($baseFontSize-s, $baseLineHeight-s);   }
+%Text.-xs { @include fontSize($baseFontSize-xs, $baseLineHeight-xs); }
+
+.Text {
+  &.-l  { @extend %Text.-l;  }
+  &.-s  { @extend %Text.-s;  }
+  &.-xs { @extend %Text.-xs; }
+}
+
+
+/* ======
+ * Lead
+ * ====== */
+
+.Text--lead {
+  @include fontSize(26px, 36px);
+  color: $colorTextLightest;
+  font-weight: 300;
+  margin-bottom: rem($baseSpace * 1.5);
+
+  @include mq($until: s) {
+    @include fontSize($baseFontSize-l, $baseLineHeight-l);
+  }
+}
+
