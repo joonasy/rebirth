@@ -1,6 +1,11 @@
-// ========================================
+// =======================================
+// Config
+// =======================================
+
+
+// =========
 // Typography
-// ========================================
+// =========
 
 $baseFontSize: 16px;
 $baseLineHeightPx: 24px;
@@ -15,14 +20,15 @@ $baseLineHeight-s: 20px / $baseFontSize-s;
 $baseFontSize-xs: 12px;
 $baseLineHeight-xs: 18px / $baseFontSize-xs;
 
-$baseFontFamilySerif: Georgia, serif;
-$baseFontFamily: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
+$baseFontFamilySans: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
+$baseFontFamilyMono: SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace;
+$baseFontFamilySerif: serif;
+$baseFontFamily: $baseFontFamilySans;
 $baseFontWeight: 400;
-$baseFontWeightStrong: 700;
+$baseFontWeightStrong: bolder;
 
 $headingFontFamily: inherit;
-$headingFontWeight: 700;
-$headingFontWeight-alt: 700;
+$headingFontWeight: 500;
 
 $h1FontSize: 32px;
 $h1LineHeight: 38px / $h1FontSize;
@@ -36,9 +42,9 @@ $h5FontSize: 18px;
 $h5LineHeight: 24px / $h5FontSize;
 
 
-// ========================================
+// =========
 // Breakpoints
-// ========================================
+// =========
 
 $mq-breakpoints: (
   xxxs: 320px,
@@ -56,18 +62,18 @@ $mq-breakpoints: (
 $mq-base-font-size: $baseFontSize;
 
 
-// ========================================
+// =========
 // Spacing
-// ========================================
+// =========
 
 $baseSpace: $baseLineHeightPx;
 $baseEdgeSpace: 6.25%;
 $uiSpace: $baseLineHeightPx / $baseFontSize * 1rem;
 
 
-// ========================================
+// =========
 // Colors
-// ========================================
+// =========
 
 // Brand colors
 $colorPrimary: #000000;
@@ -77,16 +83,16 @@ $colorDark: #000000;
 $colorLight: #ffffff;
 
 // Background colors
-$colorBgHtml: #ffffff;
-$colorBgLight: #ffffff;
-$colorBgLightest: darken($colorBgLight, 5);
+$colorBgLight: darken(#ffffff, 10);
+$colorBgLighter: darken(#ffffff, 3);
+$colorBgLightest: #ffffff;
 $colorBgDark: #000000;
-$colorBgDarkest: #000000;
 
 // Text colors
 $colorText: #000000;
 $colorTextLight: lighten($colorText, 20);
-$colorTextLightest: lighten($colorText, 30);
+$colorTextLighter: lighten($colorText, 30);
+$colorTextLightest: lighten($colorText, 45);
 
 // Heading color
 $colorHeading: inherit;
@@ -106,18 +112,9 @@ $colorDanger: #d9534f;
 $colorInfo: #5bc0de;
 
 
-// ========================================
+// =========
 // Various global settings
-// ========================================
+// =========
 
 $borderRadius: 0;
-$imagesPath: './images';
-$fontsPath: './fonts';
-
-
-// ========================================
-// Easings and transitions
-// ========================================
-
 $transitionDuration: 0.15s;
-$transitionDelay: $transitionDuration;

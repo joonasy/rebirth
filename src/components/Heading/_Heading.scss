@@ -2,7 +2,9 @@
  * Heading
  * ======================================== */
 
-.Heading {}
+.Heading {
+  font-weight: $Heading-fontWeight;
+}
 
 
 /* ======
