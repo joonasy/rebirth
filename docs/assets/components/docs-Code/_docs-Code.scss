@@ -1,0 +1,28 @@
+/* =======================================
+ * Code
+ * ======================================= */
+
+.docs-Code {}
+
+  .docs-Code-example {
+    background-color: $colorBgLighter;
+    border-radius: 6px 6px 0 0;
+    padding: rem($baseSpace);
+  }
+
+  .docs-Code-highlight {
+    @extend %Text.-xs;
+    background-color: $colorBgLighter;
+    border-radius: 0 0 6px 6px;
+    border-top: 3px solid $colorBgLightest;
+    overflow: auto;
+    padding: rem($baseSpace);
+
+    &:only-child {
+      border-radius: 6px;
+    }
+
+    pre {
+      margin-bottom: 0;
+    }
+  }

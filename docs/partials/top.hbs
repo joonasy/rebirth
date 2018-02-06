@@ -2,15 +2,21 @@
 <html class="no-js docs">
   <head>
     <meta charset="utf-8">
-    <title>{{#if title}} {{../title}} - {{/if}}{{docs.title}}</title>
+    <title>{{#if title}}{{../title}} - {{/if}}{{docs.title}}</title>
     <meta name="description" content="{{docs.description}}">
-    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
 
-    <script src="{{assets}}/docs.head.js"></script>
-    <link href="{{assets}}/docs.css" rel="stylesheet">
+    <script src="{{root}}assets/docs.head.js"></script>
+    <link href="{{root}}assets/docs.css" rel="stylesheet">
 
-    <script src="/dist/rebirth.head{{#unless dev}}.min{{/unless}}.js"></script>
-    <link href="/dist/rebirth{{#unless dev}}.min{{/unless}}.css" rel="stylesheet">
+    <script src="{{root}}dist/rebirth.head{{#unless dev}}.min{{/unless}}.js"></script>
+    <link href="{{root}}dist/rebirth.all{{#unless dev}}.min{{/unless}}.css" rel="stylesheet">
+
+    {{#if redirect}}
+      <meta name="robots" content="noindex">
+      <meta http-equiv="refresh" content="0; url={{root}}{{redirect}}">
+      <link rel="canonical" href="{{root}}{{redirect}}">
+    {{/if}}
   </head>
   <body>

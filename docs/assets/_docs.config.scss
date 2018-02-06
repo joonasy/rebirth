@@ -1,0 +1,23 @@
+// =======================================
+// Docs Config
+// =======================================
+
+
+// =========
+// Component overrides
+// =========
+
+// Navbar
+$NavbarDefault-breakpoints: (
+  xs: 560px,
+  m: map-get($mq-breakpoints, m),
+  l: map-get($mq-breakpoints, l)
+);
+
+
+// =========
+// Colors
+// =========
+
+// Brand colors
+$docs-colorPrimary: #000000;

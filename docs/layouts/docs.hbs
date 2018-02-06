@@ -1,0 +1,41 @@
+{{> top}}
+
+  <div class="docs-App">
+
+    {{> header content=docs.nav}}
+
+    {{#each docs.nav.getting-started.pages as |item|}}
+      {{#if (isActive title ../docs.nav.getting-started.path)}}
+        {{> aside path=docs.nav.getting-started.path content=docs.nav.getting-started.pages }}
+      {{/if}}
+    {{/each}}
+
+    {{#each docs.nav.components.pages as |item|}}
+      {{#if (isActive title ../docs.nav.components.path)}}
+        {{> aside path=docs.nav.components.path content=docs.nav.components.pages }}
+      {{/if}}
+    {{/each}}
+
+    {{#each docs.nav.layouts.pages as |item|}}
+      {{#if (isActive title ../docs.nav.layouts.path)}}
+        {{> aside path=docs.nav.layouts.path content=docs.nav.layouts.pages }}
+      {{/if}}
+    {{/each}}
+
+    <main class="docs-Page docs-Page--docs">
+      <div class="Container">
+        <div class="Wrap">
+          <div class="Content">
+            <hgroup class="Page-hgroup">
+              <h1 class="Page-heading Heading -m">{{title}}</h1>
+              <h4 class="Page-lead Text Text--lead">{{description}}</h4>
+            </hgroup>
+            {{#markdown}}{% body %}{{/markdown}}
+          </div>
+        </div>
+      </div>
+    </main>
+
+  </div>
+
+{{> bottom}}

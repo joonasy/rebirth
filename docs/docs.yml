@@ -1,0 +1,80 @@
+title: Rebirth
+description: Front-end starter kit and styleguide for developing responsive, mobile
+  first projects on the web.
+url: https://rebirth.com
+nav:
+  getting-started:
+    title: Getting started
+    path: docs/getting-started
+    pages:
+      - title: Introduction
+        toc:
+          - Core idea
+          - Installation
+      - title: Requirements
+        toc:
+          - Rebirth
+          - Generator
+          - TYPO3
+          - WordPress
+      - title: Generator
+        toc:
+          - Features
+          - Generate project
+          - Generate component
+          # - Structure
+          - Defaults
+          - Gulpfile
+      - title: Structure?
+      - title: Contents
+  components:
+    title: Components
+    path: docs/components
+    pages:
+      - title: Overview
+      - title: Accordion
+      - title: Alert
+      - title: Badge
+      - title: Breadcrumb
+      - title: Button
+      - title: Card
+      - title: Content
+      - title: Form
+      - title: Heading
+      - title: Hero
+      - title: Modal
+      - title: Navbar
+        toc:
+          - Install
+          - Default
+          - Advanced
+          - Starters
+      - title: Pagination
+      - title: Text
+  layouts:
+    title: Layouts
+    path: docs/layouts
+    pages:
+      - title: Overview
+        toc:
+          - Responsive breakpoints
+      - title: Container & Wrap
+      - title: Grid
+  content:
+    title: Content
+    path: docs/content
+    pages:
+      - title: Base
+      - title: Content
+        toc:
+          - TYPO3 Elements
+          - WordPress Elements
+      - title: Typography
+      - title: Code
+      - title: Images
+      - title: Tables
+      - title: Figures
+  utilities:
+    title: Utilities
+  mixins:
+    title: Mixins

@@ -1,0 +1,97 @@
+/* =======================================
+ * Header
+ * =======================================
+ *
+ * @extends `.Navbar--default{}` in _Navbar--default.scss
+ */
+
+.docs-Header.Header {
+  @include mq(l) {
+    position: sticky;
+    top: -$docs-Header-navbarSecondaryHeight-expand;
+    width: 100%;
+  }
+}
+
+  .docs-Header-navbarPrimary {
+    .Navbar-logo-version {
+      @include fontSize($baseFontSize-xs, $baseLineHeight-xs);
+      color: $colorTextLightest;
+      display: inline-block;
+      margin-left: $baseSpace / 4;
+    }
+  }
+
+  .docs-Header-navbarSecondary.Navbar--default {
+    border-top: 1px solid $colorBorder;
+    background-color: $colorPrimary;
+
+    .Navbar-ctrl-trigger-icon {
+      border-color: $colorBgLightest;
+
+      &:before, &:after {
+        background-color: $colorBgLightest;
+      }
+    }
+
+    .Navbar-item,
+    .Navbar-trigger {
+      border-color: rgba(#ffffff, 0.1);
+    }
+
+    .Navbar-item {
+      &.is-active {
+        > .Navbar-link {
+          color: #ffffff;
+          font-weight: bolder;
+        }
+      }
+    }
+
+    .Navbar-link {
+      color: $colorLight;
+
+      &:hover {
+        color: #ffffff;
+      }
+    }
+
+    .Navbar-trigger-icon {
+      &:after {
+        color: rgba($colorBgLightest, 0.4);
+      }
+    }
+
+    .Navbar-sub {
+      background-color: lighten($colorBgDark, 10);
+
+      .Navbar-item, .Navbar-trigger {
+        border-color: rgba(#ffffff, 0.03);
+      }
+    }
+
+    &.-m-expand {
+      @include mq(m) {
+        > ul {
+          margin-left: $uiSpace / 2;
+
+          > .Navbar-item {
+            > .Navbar-link {
+              padding: ($uiSpace / 1.5) ($uiSpace / 2);
+            }
+          }
+        }
+      }
+    }
+
+    @include mq(l) {
+      .Navbar-sub, .Navbar-trigger {
+        display: none;
+      }
+    }
+  }
+
+
+
+
+

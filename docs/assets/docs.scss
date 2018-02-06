@@ -1,46 +1,39 @@
-// ========================================
+// =======================================
 // Docs
-// ========================================
+// =======================================
 
-@import 'config';
+// Rebirth config
+@import '../../src/config';
+@import '../../src/components/Navbar/starters/stacked/Navbar--stacked.config';
+@import '../../src/components/Header/Header.config';
+@import '../../src/components/Page/Page.config';
+
+// Docs config
+@import 'docs.config';
+
+// Vendors
 @import 'sass-mq/mq';
+@import 'highlight.js/styles/github';
 
-$NavbarDefault-breakpoints: (
-  m: map-get($mq-breakpoints, m),
-  l: map-get($mq-breakpoints, l)
-);
+// Rebirth mixins used in docs
+@import '../../src/stylesheets/mixins/fontSize';
+@import '../../src/stylesheets/mixins/dropdown';
+@import '../../src/stylesheets/mixins/position';
+@import '../../src/stylesheets/mixins/shapeArrow';
+@import '../../src/stylesheets/mixins/shapeMenu';
+@import '../../src/stylesheets/mixins/utility';
 
-@import 'stylesheets/mixins/shapeArrow';
-@import 'stylesheets/mixins/shapeMenu';
-@import 'stylesheets/mixins/fontSize';
-@import 'stylesheets/mixins/dropdown';
-@import 'components/Navbar/Navbar--default';
+// Generic
+@import 'stylesheets/generic/docs-base';
 
+// Rebirth components used in docs
+@import '../../src/components/Navbar/Navbar--default';
+@import '../../src/components/Text/Text';
 
-html.docs {
-  background-color: darken($colorBgLightest, 5);
-}
-
-html, body { height: 100%; }
-
-.docs-Hero {
-  &.-full {
-    .Hero-content {
-      min-height: calc(100vh - #{$baseSpace * 2}); /* Height of the navbar */
-    }
-  }
-}
-
-.docs-Navbar {
-  position: relative;
-  z-index: 1000;
-}
-
-.docs-Container {
-  border-radius: 3px;
-
-  @include mq(m) {
-    margin: rem($baseSpace);
-  }
-}
-
+// Docs components
+@import 'components/docs-App/index';
+@import 'components/docs-Aside/index';
+@import 'components/docs-Code/index';
+@import 'components/docs-Header/index';
+@import 'components/docs-Hero/index';
+@import 'components/docs-Page/index';

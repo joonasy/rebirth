@@ -1,0 +1,50 @@
+/* =======================================
+ * Aside
+ * =======================================
+ *
+ * @extends `.Navbar--stacked{}` in _Navbar--stacked.scss
+ */
+
+.docs-Aside {
+  display: none;
+
+  @include mq(l) {
+    align-self: flex-start;
+    // background-color: $colorBgLighter;
+    border-right: 2px solid $colorBorder;
+    // box-shadow: 2px 0 12px rgba(#000000, 0.15);
+    display: block;
+    height: calc(100vh - #{$docs-Header-navbarSecondaryHeight-expand});
+    // margin-bottom: -($docs-Header-navbarSecondaryHeight-expand);
+    // padding-bottom: $baseSpace * 30;
+    position: sticky;
+    top: $docs-Header-navbarSecondaryHeight-expand;
+    width: 18%;
+
+    .docs-Aside-navbar {
+      background-color: transparent;
+      max-height: calc(100vh - #{$docs-Header-navbarSecondaryHeight-expand});
+      margin-bottom: $docs-Header-navbarPrimaryHeight-expand;
+      overflow: auto;
+
+      > ul {
+        > .Navbar-item {
+          &:last-child {
+            margin-bottom: $baseSpace * 4;
+          }
+        }
+      }
+
+      .Navbar-sub {
+        border-left: 1px solid $colorBorder;
+        margin-left: $uiSpace;
+        margin-top: $uiSpace / 4;
+
+        .Navbar-link {
+          padding-left: $uiSpace / 2;
+        }
+      }
+    }
+  }
+}
+

@@ -1,8 +1,7 @@
 /* ========================================
- * Docs
+ * Base
  * ======================================== */
 
-/**
- * Components
- */
-import 'components/docs-Code';
+:root.docs {
+  overflow-y: scroll;
+}

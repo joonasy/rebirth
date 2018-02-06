@@ -1,8 +1,7 @@
 /* ========================================
- * Docs
+ * Code
  * ======================================== */
 
-/**
- * Components
- */
-import 'components/docs-Code';
+import Code from './docs-Code';
+
+new Code();

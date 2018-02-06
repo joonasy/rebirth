@@ -1,0 +1,56 @@
+<header class="docs-Header Header">
+
+  <nav class="docs-Header-navbarPrimary Navbar Navbar--default -xs-expand js-NavbarDefault">
+    <a href="/" class="Navbar-logo">
+      Rebirth <sub class="Navbar-logo-version">v{{version}}-beta</sub>
+    </a>
+    <div class="Navbar-ctrl">
+      <div class="Navbar-ctrl-trigger js-NavbarDefaultTrigger">
+        <i class="Navbar-ctrl-trigger-icon"></i>
+      </div>
+    </div>
+    <ul>
+      <li class="Navbar-item">
+        <a class="Navbar-link" href="{{root}}docs/getting-started/introduction/">Docs</a>
+      </li>
+      <li class="Navbar-item">
+        <a class="Navbar-link" href="{{root}}styleguide/">Styleguide</a>
+      </li>
+      <li class="Navbar-item">
+        <a class="Navbar-link" href="{{root}}examples/">Examples</a>
+      </li>
+      <li class="Navbar-item">
+        <a class="Navbar-link" href="{{root}}about/">About</a>
+      </li>
+    </ul>
+  </nav>
+
+  <nav class="docs-Header-navbarSecondary Navbar Navbar--default -m-expand js-NavbarStacked">
+    <div class="Navbar-ctrl">
+      <div class="Navbar-ctrl-trigger js-NavbarStackedTrigger">
+        <i class="Navbar-ctrl-trigger-icon"></i>
+      </div>
+    </div>
+    <ul>
+      {{#each content as |item|}}
+        <li class="Navbar-item{{#each item.pages}} {{#if (isActive ../../title item.path)}}is-active{{/if}}{{/each}}">
+          <a class="Navbar-link" href="{{../root}}{{path}}/{{dashcase item.pages.0.title}}">{{title}}</a>
+
+          {{#if item.pages}}
+          <span class="Navbar-trigger">
+            <i class="Navbar-trigger-icon"></i>
+          </span>
+          <ul class="Navbar-sub">
+            {{#each item.pages}}
+            <li class="Navbar-item {{#if (isActive title item.path)}}is-active{{/if}}">
+              <a class="Navbar-link" href="{{../root}}{{item.path}}/{{dashcase title}}">{{title}}</a>
+            </li>
+            {{/each}}
+          </ul>
+          {{/if}}
+        </li>
+      {{/each}}
+    </ul>
+  </nav>
+
+</header>
