@@ -2,519 +2,498 @@
  * Assemble for `Rebirth`
  * ======================================== */
 
-var assemble = require('assemble')
-var app = assemble()
-var fs = require('fs')
-var browserify = require('browserify')
-var browserSync = require('browser-sync').create()
-var handlebarsHelpers = require('handlebars-helpers')()
-var notifier = require('node-notifier')
-var path = require('path')
-var prettyHrtime = require('pretty-hrtime')
-var rimraf = require('rimraf')
-var source = require('vinyl-source-stream')
-var through = require('through2')
-var vfs = require('vinyl-fs')
-var watch = require('base-watch')
-var watchify = require('watchify')
-var $ = require('gulp-load-plugins')()
+const assemble = require('assemble');
+const fs = require('fs');
+const browserify = require('browserify');
+const browserSync = require('browser-sync').create();
+const handlebarsHelpers = require('handlebars-helpers')();
+const notifier = require('node-notifier');
+const path = require('path');
+const pkg = require('./package.json');
+const prettyHrtime = require('pretty-hrtime');
+const rimraf = require('rimraf');
+const source = require('vinyl-source-stream');
+const through = require('through2');
+const vfs = require('vinyl-fs');
+const watch = require('base-watch');
+const watchify = require('watchify');
+const $ = require('gulp-load-plugins')();
+const yaml = require('js-yaml');
 
-var production = process.env.NODE_ENV === 'production'
-var open = process.env.npm_config_disable_open ? false : 'external'
+const production = process.env.NODE_ENV === 'production';
+const open = process.env.npm_config_disable_open ? false : 'external';
 
-
-/* ======
- * Config
- * ====== */
-
-var config = {
-  buildPath: '/',
-  dest: 'dist/',
-  docs: {
-    data: 'docs/*.{json,yml}',
-    dest: 'docs-dist/',
-    fonts: {
-      dest: 'docs-dist/assets/fonts/',
-      src: 'docs/assets/fonts/*.{eot,svg,ttf,woff,woff2}',
-      watch: 'docs/assets/fonts/*.{eot,svg,ttf,woff,woff2}'
-    },
-    helpers: 'docs/helpers/*.js',
-    images: {
-      dest: 'docs-dist/assets/images/',
-      src: 'docs/assets/images/*.{jpg,jpeg,png,gif,webp,svg}',
-      watch: 'docs/assets/images/*.{jpg,jpeg,png,gif,webp,svg}'
-    },
-    javascripts: {
-     src: 'docs/assets/',
-     dest: 'docs-dist/assets/',
-     bundle: [{
-        fileName: 'docs.js'
-      }, {
-        fileName: 'docs.head.js'
-      }]
-    },
-    layouts: 'docs/layouts/*.hbs',
-    partials: 'docs/partials/*.hbs',
-    stylesheets: {
-      src: 'docs/assets/docs.scss',
-      dest: 'docs-dist/assets/',
-      watch: 'docs/assets/**/**/*.scss'
-    },
-    templates: 'docs/templates/**/*.hbs',
-    watch: ['docs/{layouts,templates,partials}/**/*.hbs', 'docs/*.{json,yml}']
-  },
-  javascripts: {
-    src: 'src/',
-    dest: 'dist/',
-    bundle: [{
-      fileName: 'app.js',
-      rename: 'rebirth'
-    }, {
-      fileName: 'app.head.js',
-      rename: 'rebirth.head'
-    }]
-  },
-  src: 'src/',
-  stylesheets: {
-    dest: 'dist/',
-    rename: 'rebirth',
-    src: 'src/app.scss',
-    watch: 'src/**/**/*.scss'
-  }
-}
+const app = assemble();
 
 /* ======
  * Docs - Tasks
  * ====== */
 
 /**
+ * Config
+ */
+const config = {
+  root: '/',
+  version: pkg.version,
+};
+
+/**
  * Docs - Assemble
  */
-app.data({ assets: 'assets' })
-app.data(config.docs.data)
-app.helpers(config.docs.helpers)
-app.helpers(handlebarsHelpers)
-app.use(watch())
+app.helpers('docs/helpers/*.js');
+app.helpers(handlebarsHelpers);
+app.helper('markdown', require('helper-markdown'));
 
-app.preLayout(/\/docs\/templates\/.*\.hbs$/, function(view, next) {
-  view.layout = 'default'
-  next()
-})
+app.data({
+  dev: !production,
+  root: production ? config.root : '/',
+  version: config.version,
+});
 
-app.task('docs-html', function() {
-  app.data({ dev: !production })
-  app.layouts(config.docs.layouts)
-  app.partials(config.docs.partials)
+app.use(watch());
 
-  return app.src(config.docs.templates)
+app.create('templates');
+app.create('contents');
+
+app.dataLoader('yml', (str, fp) => yaml.safeLoad(str));
+
+app.preLayout(/\.md$/, (view, next) => {
+  if (!view.layout) view.layout = 'docs';
+  next();
+});
+
+app.task('docs-html', () => {
+  app.data('docs/*.{json,yml}');
+  app.layouts('docs/layouts/*.hbs');
+  app.partials('docs/partials/*.hbs');
+  app.contents('docs/content/**/*.md');
+
+  return app
+    .src('docs/templates/**/*.hbs')
+    .pipe(app.toStream('contents'))
     .pipe(app.renderFile())
     .on('error', handleError)
-    .pipe($.rename({ extname: '.html' }))
-    .pipe(app.dest(config.docs.dest))
-})
+    .pipe(
+      $.rename((path) => {
+        if (path.basename !== 'index') {
+          path.dirname = `${path.dirname}/${path.basename}`;
+          path.basename = 'index';
+        }
+
+        path.extname = '.html';
+      }),
+    )
+    .pipe(app.dest('rebirth'));
+});
 
 /**
  * Docs - Stylesheets
  */
-app.task('docs-stylesheets', function() {
-  var pipeline = app.src(config.docs.stylesheets.src)
-    .pipe($.sass({
-      includePaths: ['node_modules', 'bower_components', 'src'],
-      outputStyle: 'expanded'
-    }))
+app.task('docs-stylesheets', () => {
+  const pipeline = app
+    .src('docs/assets/docs.scss')
+    .pipe(
+      $.sass({
+        includePaths: ['node_modules'],
+        outputStyle: 'expanded',
+      }),
+    )
     .on('error', handleError)
     .on('error', $.sass.logError)
-    .pipe($.autoprefixer({
-      browsers: ['last 2 versions', 'IE 10', 'Safari >= 8']
-    }))
+    .pipe($.autoprefixer());
 
   if (production) {
-    return pipeline = pipeline
-      .pipe($.replace('../', config.buildPath + 'assets/'))
+    return pipeline
+      .pipe($.replace('./', `${config.root}assets`))
       .pipe($.combineMq({ beautify: false }))
       .pipe($.cssnano({ mergeRules: false, zindex: false }))
-      .pipe(app.dest(config.docs.stylesheets.dest))
-  } else {
-    return pipeline = pipeline
-      .pipe(app.dest(config.docs.stylesheets.dest))
-      .pipe(browserSync.stream())
+      .pipe(app.dest('rebirth/assets'));
   }
-})
+  return pipeline.pipe(app.dest('rebirth/assets')).pipe(browserSync.stream());
+});
 
 /**
  * Docs - JavaScripts
  */
-app.task('docs-javascripts', function(callback) {
+app.task('docs-javascripts', (cb) => {
+  const scripts = [{ fileName: 'docs.js' }, { fileName: 'docs.head.js' }];
+
   return bundleJavaScripts(
-    config.docs.javascripts.src,
-    config.docs.javascripts.dest,
-    config.docs.javascripts.bundle,
+    'docs/assets/',
+    'rebirth/assets/',
+    scripts,
     false,
-    callback
-  )
+    cb,
+  );
 });
 
 /**
  * Docs - Images
  */
-app.task('docs-images', function() {
-  return app.src(config.docs.images.src)
-    .pipe($.changed(config.docs.images.dest))
-    .pipe($.imagemin({
-      svgoPlugins: [
-        { cleanupIDs: false },
-      ],
-    }))
+app.task('docs-images', () =>
+  app
+    .src('docs/assets/images/*.{jpg,jpeg,png,gif,webp,svg}')
+    .pipe($.changed('rebirth/assets/images/'))
+    .pipe(
+      $.imagemin({
+        svgoPlugins: [{ cleanupIDs: false }],
+      }),
+    )
     .on('error', handleError)
-    .pipe(app.dest(config.docs.images.dest))
-})
+    .pipe(app.dest('rebirth/assets/images/')),
+);
 
 /**
  * Docs - Fonts
  */
-app.task('docs-fonts', function() {
-  return app.src(config.docs.fonts.src)
-    .pipe($.changed(config.docs.fonts.dest))
+app.task('docs-fonts', () =>
+  app
+    .src('docs/assets/fonts/*.{eot,svg,ttf,woff,woff2}')
+    .pipe($.changed('rebirth/assets/fonts'))
     .on('error', handleError)
-    .pipe(app.dest(config.docs.fonts.dest))
-})
+    .pipe(app.dest('rebirth/assets/fonts')),
+);
 
 /**
  * Docs - Server
  */
-app.task('docs-server', function() {
+app.task('docs-server', () => {
   browserSync.init({
-    open: open,
+    open,
     port: 9001,
     notify: false,
     server: {
-      baseDir: config.docs.dest,
+      baseDir: './rebirth',
       routes: {
-        '/bower_components': 'bower_components',
         '/dist': 'dist',
-        '/node_modules': 'node_modules'
-      }
-    }
-  })
-})
+      },
+    },
+  });
+});
 
 /**
  * Docs - Watch
  */
-app.task('docs-watch', function() {
-  app.watch(config.docs.watch, ['docs-html'], function(cb) {
-    setTimeout(function() {
-      browserSync.reload()
-      cb()
-    }, 150)
-  })
-  app.watch(config.docs.fonts.watch, ['docs-fonts'])
-  app.watch(config.docs.images.watch, ['docs-images'])
-  app.watch(config.docs.stylesheets.watch, ['docs-stylesheets'])
-  app.watch(config.stylesheets.watch, ['stylesheets'])
-})
+app.task('docs-watch', () => {
+  app.watch(
+    [
+      'docs/{layouts,templates,partials}/**/*.hbs',
+      'docs/*.{json,yml}',
+      'docs/content/**/*.md',
+    ],
+    ['docs-html'],
+    (cb) => {
+      setTimeout(() => {
+        browserSync.reload();
+        cb();
+      }, 150);
+    },
+  );
+  app.watch('docs/assets/fonts/*.{eot,svg,ttf,woff,woff2}', ['docs-fonts']);
+  app.watch('docs/assets/images/*.{jpg,jpeg,png,gif,webp,svg}', [
+    'docs-images',
+  ]);
+  app.watch('docs/assets/**/**/*.scss', ['docs-stylesheets']);
+  app.watch('src/**/**/*.scss', ['docs-stylesheets', 'stylesheets']);
+});
 
 /**
  * Docs - Inline <head> css/js
  */
-app.task('docs-inline', function() {
-  return app.src([
-    config.docs.dest + '**/*.html'
-  ], { base: config.docs.dest })
-    .pipe($.replace(inline({ matchFile: 'docs.css' }), function() {
-      return inline({ file: 'docs.css' })
-    }))
-    .pipe($.replace(inline({ matchFile: 'docs.head.js' }), function() {
-      return inline({ file: 'docs.head.js' })
-    }))
-    .pipe(app.dest(config.docs.dest))
-})
+app.task('docs-inline', () =>
+  app
+    .src(['rebirth/**/*.html'], { base: 'rebirth' })
+    .pipe(
+      $.replace(inline({ matchFile: 'docs.css' }), () =>
+        inline({ file: 'docs.css' }),
+      ),
+    )
+    .pipe(
+      $.replace(inline({ matchFile: 'docs.head.js' }), () =>
+        inline({ file: 'docs.head.js' }),
+      ),
+    )
+    .pipe(app.dest('rebirth')),
+);
 
 /**
  * Docs - Revision and remove unneeded files
  */
-app.task('docs-rev', function() {
-  rimraf.sync(config.docs.stylesheets.dest + '*.css')
-  rimraf.sync(config.docs.javascripts.dest + 'docs.head.js')
+app.task('docs-rev', () => {
+  rimraf.sync('rebirth/assets/*.css');
+  rimraf.sync('rebirth/assets/app.head.js');
 
-  return app.src([
-    config.docs.dest + 'assets/*.js',
-    config.docs.dest + 'assets/{images,fonts}/**'
-  ])
+  return app
+    .src(['rebirth/assets/*.js', 'rebirth/assets/{images,fonts}/**'])
     .pipe($.rev())
-    .pipe(app.dest(config.docs.dest + 'assets/'))
+    .pipe(app.dest('rebirth/assets'))
     .pipe(rmOriginalFiles())
     .pipe($.rev.manifest())
-    .pipe(app.dest('./'))
-})
+    .pipe(app.dest('./'));
+});
 
 /**
  * Docs - Update references
  */
-app.task('docs-updateReferences', function() {
-  var manifest = app.src('./rev-manifest.json')
+app.task('docs-updateReferences', () => {
+  const manifest = app.src('./rev-manifest.json');
 
-  return app.src([
-    config.docs.dest + '**'
-  ], { base: config.docs.dest })
-    .pipe($.revReplace({
-      manifest: manifest,
-      replaceInExtensions: ['.js', '.css', '.html']
-    }))
-    .pipe(app.dest(config.docs.dest))
-})
+  return app
+    .src(['rebirth/**'], { base: 'rebirth' })
+    .pipe(
+      $.revReplace({
+        manifest,
+        replaceInExtensions: ['.js', '.css', '.html'],
+      }),
+    )
+    .pipe(app.dest('rebirth'));
+});
 
 /**
  * Rebirth - Stylesheets
  */
-app.task('stylesheets', function() {
-  var pipeline = app.src(config.stylesheets.src)
-    .pipe($.sass({
-      includePaths: ['node_modules', 'bower_components'],
-      outputStyle: 'expanded'
-    }))
+app.task('stylesheets', () => {
+  const pipeline = app
+    .src(['src/app.scss', 'src/app.all.scss'])
+    .pipe(
+      $.sass({
+        includePaths: ['node_modules', 'bower_components'],
+        outputStyle: 'expanded',
+      }),
+    )
     .on('error', handleError)
     .on('error', $.sass.logError)
-    .pipe($.autoprefixer({
-      browsers: ['last 2 versions', 'IE 10', 'Safari >= 8']
-    }))
-    .pipe($.cssnano({ core: false, mergeRules: false, zindex: false }))
-    .pipe($.rename({ basename: config.stylesheets.rename }))
+    .pipe($.autoprefixer())
+    .pipe(
+      $.rename((path) => {
+        const first = path.basename.split('.')[0];
+        path.basename = path.basename.replace(first, 'rebirth');
+      }),
+    );
 
   if (production) {
-    return pipeline = pipeline
-      .pipe(app.dest(config.stylesheets.dest))
+    return pipeline
+      .pipe(app.dest('dist/'))
       .pipe($.rename({ suffix: '.min' }))
       .pipe($.combineMq({ beautify: false }))
       .pipe($.cssnano({ mergeRules: false, zindex: false }))
-      .pipe(app.dest(config.stylesheets.dest))
-  } else {
-    return pipeline = pipeline
-      .pipe(app.dest(config.stylesheets.dest))
-      .pipe(browserSync.stream())
+      .pipe(app.dest('dist/'));
   }
-})
+  return pipeline.pipe(app.dest('dist/')).pipe(browserSync.stream());
+});
 
 /**
  * Rebirth - Javascripts
  */
-app.task('javascripts', function(callback) {
-  return bundleJavaScripts(
-    config.javascripts.src,
-    config.javascripts.dest,
-    config.javascripts.bundle,
-    true,
-    callback
-  )
-})
+app.task('javascripts', (callback) => {
+  const scripts = [
+    {
+      fileName: 'app.js',
+      rename: 'rebirth',
+    },
+    {
+      fileName: 'app.all.js',
+      rename: 'rebirth.all',
+    },
+    {
+      fileName: 'app.head.js',
+      rename: 'rebirth.head',
+    },
+  ];
 
-/**
- * Rebirth - Modernizr
- */
-app.task('modernizr', function() {
-  return app.src([
-    config.javascripts.src + '**/*.js',
-    config.stylesheets.dest + 'rebirth.css'
-  ])
-    .pipe($.modernizr({
-      excludeTests: ['hidden'],
-      tests: ['objectfit'],
-      options: [
-        'setClasses',
-        'addTest',
-        'html5printshiv',
-        'testProp',
-        'fnBind',
-        'prefixed'
-      ]
-    }))
-    .on('error', handleError)
-    .pipe(app.dest(config.javascripts.dest + '/assets/vendors'))
-})
+  return bundleJavaScripts('src/', 'dist/', scripts, true, callback);
+});
 
 /**
  * Rebirth - Clean up build
  */
-app.task('cleanUp', function(cb) {
-  rimraf.sync(config.javascripts.dest + 'assets')
-  cb()
-})
+app.task('cleanUp', (cb) => {
+  rimraf.sync('dist/assets');
+  cb();
+});
 
 /**
- * Docs & Rebirth - JavasScript coding style
+ * App & Rebirth - JavasScript coding style
  */
-app.task('eslint', function () {
-  return app.src(config.javascripts.src + '**/*.js')
+app.task('eslint', () =>
+  app
+    .src('src/**/*.js')
     .pipe($.eslint())
     .pipe($.eslint.format())
-    .pipe($.eslint.failAfterError())
-})
-
+    .pipe($.eslint.failAfterError()),
+);
 
 /* ======
  * Rebirth - Collected tasks
  * ====== */
 
-var tasks = ['stylesheets', 'modernizr', 'javascripts']
+const tasks = ['stylesheets', 'javascripts'];
 
-app.task('build', ['eslint'], function() {
-  rimraf.sync(config.dest)
-  app.build(tasks.concat(['cleanUp']), function(err) {
-    if (err) throw err
-  })
-})
+app.task('build', () => {
+  rimraf.sync('dist');
 
+  app.build(tasks.concat(['cleanUp']), (err) => {
+    if (err) throw err;
+  });
+});
 
 /* ======
  * Docs - Collected tasks
  * ====== */
 
-var docsTasks = tasks.concat(['docs-javascripts', 'docs-stylesheets', 'docs-images', 'docs-fonts', 'docs-html'])
+const docsTasks = tasks.concat([
+  'docs-javascripts',
+  'docs-stylesheets',
+  'docs-images',
+  'docs-fonts',
+  'docs-html',
+]);
 
-app.task('docs-build', ['eslint'], function() {
-  rimraf.sync(config.docs.dest)
+app.task('docs-build', () => {
+  rimraf.sync('rebirth');
 
-  app.build(docsTasks.concat([
-    'docs-inline',
-    'docs-rev',
-    'docs-updateReferences'
-  ]), function(err) {
-    if (err) throw err
-  })
-})
+  app.build(
+    docsTasks.concat(['docs-inline', 'docs-rev', 'docs-updateReferences']),
+    (err) => {
+      if (err) throw err;
+    },
+  );
+});
 
-app.task('docs-dev', function() {
-  rimraf.sync(config.docs.dest)
-  rimraf.sync(config.dest)
-  app.build(docsTasks, app.parallel(['docs-server', 'docs-watch']))
-})
-
+app.task('docs-dev', () => {
+  rimraf.sync('rebirth');
+  rimraf.sync('dist');
+  app.build(docsTasks, app.parallel(['docs-server', 'docs-watch']));
+});
 
 /* ======
  * Utilities
  * ====== */
 
 function handleError(err) {
-  $.util.log(err)
-  $.util.beep()
+  $.util.log(err);
+  $.util.beep();
   notifier.notify({
     title: 'Compile Error',
-    message: err.message
-  })
-  return this.emit('end')
+    message: err.message,
+  });
+  return this.emit('end');
 }
 
 function inline(opts) {
-  opts = opts || {}
+  opts = opts || {};
 
   if (opts.matchFile) {
     if (opts.matchFile.match(/.js/)) {
-      return new RegExp('<script(.*?)src="(.*?)' + opts.matchFile + '"(.*?)>(.*?)<\/script>')
+      return new RegExp(
+        `<script(.*?)src="(.*?)${opts.matchFile}"(.*?)>(.*?)<\/script>`,
+      );
     }
 
-    return new RegExp('<link(.*?)href="(.*?)' + opts.matchFile + '"(.*?)>')
+    return new RegExp(`<link(.*?)href="(.*?)${opts.matchFile}"(.*?)>`);
   }
 
   if (opts.file) {
-    var content
-    var tagBegin = '<script>'
-    var tagEnd = '</script>'
+    let content;
+    let tagBegin = '<script>';
+    let tagEnd = '</script>';
 
     if (opts.file.match(/.js/)) {
-      content = fs.readFileSync(config.docs.javascripts.dest + opts.file, 'utf8')
+      content = fs.readFileSync(`rebirth/assets/${opts.file}`, 'utf8');
     } else {
-      tagBegin = '<style>'
-      tagEnd = '</style>'
-      content = fs.readFileSync(config.docs.stylesheets.dest + opts.file, 'utf8')
+      tagBegin = '<style>';
+      tagEnd = '</style>';
+      content = fs.readFileSync(`rebirth/assets/${opts.file}`, 'utf8');
     }
 
-    return tagBegin + content + tagEnd
+    return tagBegin + content + tagEnd;
   }
 }
 
-var startTime, bundleLogger = {
-  start: function(filepath) {
-    startTime = process.hrtime()
-    $.util.log('Bundling', $.util.colors.green(filepath))
-  },
-  end: function(filepath) {
-    var taskTime = process.hrtime(startTime)
-    var prettyTime = prettyHrtime(taskTime)
-    $.util.log('Bundled', $.util.colors.green(filepath), 'after', $.util.colors.magenta(prettyTime))
-  }
-}
+let startTime,
+  bundleLogger = {
+    start(filepath) {
+      startTime = process.hrtime();
+      $.util.log('Bundling', $.util.colors.green(filepath));
+    },
+    end(filepath) {
+      const taskTime = process.hrtime(startTime);
+      const prettyTime = prettyHrtime(taskTime);
+      $.util.log(
+        'Bundled',
+        $.util.colors.green(filepath),
+        'after',
+        $.util.colors.magenta(prettyTime),
+      );
+    },
+  };
 
 function rmOriginalFiles() {
   return through.obj(function(file, enc, cb) {
-
     if (file.revOrigPath) {
-      fs.unlinkSync(file.revOrigPath)
+      fs.unlinkSync(file.revOrigPath);
     }
 
-    this.push(file)
-    return cb()
-  })
+    this.push(file);
+    return cb();
+  });
 }
 
-function bundleJavaScripts(src, dest, bundleSource, rename, cb) {
-  var bundleQueue = bundleSource.length
+function bundleJavaScripts(src, dest, scripts, rename, cb) {
+  let bundleQueue = scripts.length;
 
-  var browserifyBundle = function(bundleConfig) {
-    var pipeline = browserify({
-      cache: {},
-      packageCache: {},
-      fullPaths: false,
-      entries: src + bundleConfig.fileName,
-      debug: !production
-    })
+  const browserifyBundle = function(entry) {
+    let pipeline = browserify({
+      entries: src + entry.fileName,
+      debug: !production,
+      paths: ['src', 'docs/assets'],
+    });
 
-    var bundle = function() {
-      bundleLogger.start(bundleConfig.fileName)
+    const bundle = function() {
+      bundleLogger.start(entry.fileName);
 
-      var collect = pipeline
+      let collect = pipeline
         .bundle()
         .on('error', handleError)
-        .pipe(source(bundleConfig.fileName))
+        .pipe(source(entry.fileName));
 
       if (rename) {
-        collect = collect.pipe($.rename({ basename: bundleConfig.rename }))
+        collect = collect.pipe($.rename({ basename: entry.rename }));
       }
 
       if (production) {
         if (rename) {
           collect = collect
             .pipe(app.dest(dest))
-            .pipe($.rename({ suffix: '.min'}))
+            .pipe($.rename({ suffix: '.min' }));
         }
 
-        collect = collect.pipe($.streamify($.uglify()))
+        collect = collect.pipe($.streamify($.uglify()));
       } else {
-        collect = collect.pipe(browserSync.stream())
+        collect = collect.pipe(browserSync.stream());
       }
 
-      return collect
-        .pipe(app.dest(dest))
-        .on('end', reportFinished)
-    }
+      return collect.pipe(app.dest(dest)).on('end', reportFinished);
+    };
 
     if (!production) {
-      pipeline = watchify(pipeline).on('update', bundle)
+      pipeline = watchify(pipeline).on('update', bundle);
     }
 
     var reportFinished = function() {
-      bundleLogger.end(bundleConfig.fileName)
+      bundleLogger.end(entry.fileName);
       if (bundleQueue) {
-        bundleQueue--
+        bundleQueue--;
         if (bundleQueue === 0) {
-          cb()
+          cb();
         }
       }
-    }
+    };
 
-    return bundle()
-  }
+    return bundle();
+  };
 
-  bundleSource.forEach(browserifyBundle)
+  scripts.forEach(browserifyBundle);
 }
 
-module.exports = app
+module.exports = app;
