@@ -12,7 +12,7 @@ Correct way to use Rebirth is together with [Rebirth Yeoman generator](https://g
 
 ```shell
 $ yarn global add generator-rebirth@beta
-$ npx yo rebirth [my-new-project-dir] --project=my-project-type
+$ npx yo rebirth [my-new-project] --project=my-project-type
 ```
 
 Other quick start options are available:
