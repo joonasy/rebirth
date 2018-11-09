@@ -45,22 +45,23 @@
 @import 'stylesheets/helpers/l-padding';
 @import 'stylesheets/helpers/text';
 
-// Layout
-@import 'components/Header/index';
-@import 'components/Page/index';
-@import 'components/Footer/index';
+// Layout Components
+@import 'layouts/Container/index';
+@import 'layouts/Footer/index';
+@import 'layouts/Grid/index';
+@import 'layouts/Header/index';
+@import 'layouts/Template/index';
+@import 'layouts/Width/index';
+@import 'layouts/Wrap/index';
 
-// Collections
-@import 'components/Card/index';
-@import 'components/Form/index';
-@import 'components/Grid/index';
-@import 'components/Hero/index';
 
-// Elements
+// Components
 @import 'components/Alert/index';
 @import 'components/Button/index';
-@import 'components/Container/index';
+@import 'components/Card/index';
 @import 'components/Embed/index';
+@import 'components/Form/index';
+@import 'components/Hero/index';
 @import 'components/Heading/index';
 @import 'components/Icon/index';
 @import 'components/IconCss/index';
@@ -71,5 +72,3 @@
 @import 'components/Navbar/starters/stacked/index';
 @import 'components/Text/index.advanced';
 @import 'components/Text/Text.advanced';
-@import 'components/Width/index';
-@import 'components/Wrap/index';
