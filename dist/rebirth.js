@@ -64,9 +64,10 @@
           if (!(instance instanceof Constructor)) {
             throw new TypeError('Cannot call a class as a function');
           }
-        } /* =======================================
-                                                                                                                                                           * Navbar - Default
-                                                                                                                                                           * ======================================= */
+        }
+        /* =======================================
+         * Navbar - Default
+         * ======================================= */
 
         var NavbarDefault = function NavbarDefault() {
           _classCallCheck(this, NavbarDefault);
@@ -76,7 +77,7 @@
           var navbarTrigger = (0, _utility.$$)('.js-NavbarDefaultTrigger');
           var navbarItem = (0, _utility.$$)('.js-NavbarDefault .Navbar-item');
 
-          navbar.forEach(function(nav) {
+          [].forEach.call(navbar, function(nav) {
             nav.addEventListener(
               'click',
               function(e) {
@@ -110,7 +111,7 @@
             );
           });
 
-          navbarTrigger.forEach(function(trigger) {
+          [].forEach.call(navbarTrigger, function(trigger) {
             trigger.addEventListener(
               'click',
               function(e) {
@@ -128,10 +129,10 @@
           });
 
           window.addEventListener('click', function(e) {
-            navbarItem.forEach(function(item) {
+            [].forEach.call(navbarItem, function(item) {
               return item.classList.remove('is-open');
             });
-            navbar.forEach(function(nav) {
+            [].forEach.call(nav, function(nav) {
               return nav.classList.remove('is-open');
             });
           });
@@ -153,9 +154,10 @@
           return obj && obj.__esModule ? obj : { default: obj };
         }
 
-        new _NavbarDefault2.default(); /* ========================================
-                                * Navbar
-                                * ======================================== */
+        new _NavbarDefault2.default();
+        /* ========================================
+         * Navbar
+         * ======================================== */
       },
       { './NavbarDefault': 2 },
     ],
@@ -170,15 +172,16 @@
         exports.isIOS = isIOS;
         exports.isAndroid = isAndroid;
         /* ========================================
- * Features & User Agents
- * ======================================== */
+         * Features & User Agents
+         * ======================================== */
 
         var ua = navigator.userAgent;
         var win = window;
         var doc = document;
 
         /**
-         * Tests if touch events are supported, but doesn't necessarily reflect a touchscreen device
+         * Tests if touch events are supported, but doesn't necessarily reflect a
+         * touchscreen device
          */
         var hasTouch = (exports.hasTouch = !!(
           'ontouchstart' in win ||
@@ -224,8 +227,8 @@
           value: true,
         });
         /* ========================================
- * Utility
- * ======================================== */
+         * Utility
+         * ======================================== */
 
         /**
          * Select the first match only, context is optional

@@ -588,7 +588,7 @@ nav ul, .List, .Navbar ul {
   padding: 0;
 }
 
-.Form-button.Button[disabled], fieldset[disabled] .Form-button.Button, .Button.is-disabled {
+.Button.is-disabled, .Form-button.Button[disabled], fieldset[disabled] .Form-button.Button {
   cursor: not-allowed;
   opacity: 0.5;
   pointer-events: none;
@@ -602,7 +602,7 @@ nav ul, .List, .Navbar ul {
   word-wrap: normal;
 }
 
-.Card.-round, .Card.-figureFill.-round .Card-figure img, .Form-item.-round, .Button.-round {
+.Button.-round, .Card.-round, .Card.-figureFill.-round .Card-figure img, .Form-item.-round {
   border-radius: 0;
 }
 
@@ -1899,6 +1899,158 @@ h6, .h6 {
   word-wrap: normal !important;
 }
 
+/* ========================================
+ * Container
+ * ======================================== */
+.Container {
+  padding-bottom: 1.5rem;
+  padding-top: 1.5rem;
+}
+
+@media (min-width: 48em) {
+  .Container {
+    padding-bottom: 3rem;
+    padding-top: 3rem;
+  }
+}
+
+/* ========================================
+ * Footer
+ * ========================================
+ *
+ * @reusable probably true but intented to be used once
+ */
+/* ========================================
+ * Grid
+ * ========================================
+ *
+ * @reusable true
+ */
+.Grid {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-flex-wrap: wrap;
+      -ms-flex-wrap: wrap;
+          flex-wrap: wrap;
+  list-style: none;
+  margin-bottom: 0;
+  margin-left: -0.75rem;
+  margin-right: -0.75rem;
+}
+
+.Grid-cell {
+  max-width: 100%;
+  padding-left: 0.75rem;
+  padding-right: 0.75rem;
+}
+
+/* ======
+ * Grid - Sizing and layout
+ * ====== */
+.Grid.-auto > .Grid-cell:not([class*="Width"]) {
+  -webkit-box-flex: 1;
+  -webkit-flex: 1 0 0%;
+      -ms-flex: 1 0 0%;
+          flex: 1 0 0%;
+  width: auto;
+}
+
+.Grid.-equalContent > .Grid-cell {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-flex-wrap: wrap;
+      -ms-flex-wrap: wrap;
+          flex-wrap: wrap;
+}
+
+.Grid.-full {
+  margin-left: 0rem;
+  margin-right: 0rem;
+}
+
+.Grid.-full > .Grid-cell {
+  padding-left: 0rem;
+  padding-right: 0rem;
+}
+
+.Grid.-xl {
+  margin-left: -3rem;
+  margin-right: -3rem;
+}
+
+.Grid.-xl > .Grid-cell {
+  padding-left: 3rem;
+  padding-right: 3rem;
+}
+
+.Grid.-l {
+  margin-left: -1.5rem;
+  margin-right: -1.5rem;
+}
+
+.Grid.-l > .Grid-cell {
+  padding-left: 1.5rem;
+  padding-right: 1.5rem;
+}
+
+/* ======
+ * Grid - Justify
+ * ====== */
+.Grid.-justifyAround {
+  -webkit-justify-content: space-around;
+      -ms-flex-pack: distribute;
+          justify-content: space-around;
+}
+
+.Grid.-justifyBetween {
+  -webkit-box-pack: justify;
+  -webkit-justify-content: space-between;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+}
+
+.Grid.-justifyCenter {
+  -webkit-box-pack: center;
+  -webkit-justify-content: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+}
+
+.Grid.-justifyEnd {
+  -webkit-box-pack: end;
+  -webkit-justify-content: flex-end;
+      -ms-flex-pack: end;
+          justify-content: flex-end;
+}
+
+/* ======
+ * Grid - Aligning of cells
+ * ====== */
+.Grid.-alignBottom {
+  -webkit-box-align: end;
+  -webkit-align-items: flex-end;
+      -ms-flex-align: end;
+          align-items: flex-end;
+}
+
+.Grid.-alignCenter {
+  -webkit-box-align: center;
+  -webkit-align-items: center;
+      -ms-flex-align: center;
+          align-items: center;
+}
+
+.Grid.-alignTop {
+  -webkit-box-align: start;
+  -webkit-align-items: flex-start;
+      -ms-flex-align: start;
+          align-items: flex-start;
+}
+
 /* =======================================
  * Header
  * ======================================= */
@@ -1908,21 +2060,460 @@ h6, .h6 {
 }
 
 /* ========================================
- * Page
+ * Template
  * ========================================
  *
  * @reusable probably true but intented to be used once
  */
-.Page {
+.Template {
   position: relative;
   z-index: 99;
 }
 
 /* ========================================
- * Footer
+ * Width
  * ========================================
  *
- * @reusable probably true but intented to be used once
+ * @reusable true
+ */
+.Width--1of12 {
+  width: 8.333%;
+}
+
+.Width--2of12 {
+  width: 16.666%;
+}
+
+.Width--3of12 {
+  width: 25%;
+}
+
+.Width--4of12 {
+  width: 33.333%;
+}
+
+.Width--5of12 {
+  width: 41.666%;
+}
+
+.Width--6of12 {
+  width: 50%;
+}
+
+.Width--7of12 {
+  width: 58.333%;
+}
+
+.Width--8of12 {
+  width: 66.666%;
+}
+
+.Width--9of12 {
+  width: 75%;
+}
+
+.Width--10of12 {
+  width: 83.333%;
+}
+
+.Width--11of12 {
+  width: 91.666%;
+}
+
+.Width--12of12 {
+  width: 100%;
+}
+
+@media (min-width: 37.5em) {
+  .s-Width--1of12 {
+    width: 8.333%;
+  }
+  .s-Width--2of12 {
+    width: 16.666%;
+  }
+  .s-Width--3of12 {
+    width: 25%;
+  }
+  .s-Width--4of12 {
+    width: 33.333%;
+  }
+  .s-Width--5of12 {
+    width: 41.666%;
+  }
+  .s-Width--6of12 {
+    width: 50%;
+  }
+  .s-Width--7of12 {
+    width: 58.333%;
+  }
+  .s-Width--8of12 {
+    width: 66.666%;
+  }
+  .s-Width--9of12 {
+    width: 75%;
+  }
+  .s-Width--10of12 {
+    width: 83.333%;
+  }
+  .s-Width--11of12 {
+    width: 91.666%;
+  }
+  .s-Width--12of12 {
+    width: 100%;
+  }
+}
+
+@media (min-width: 48em) {
+  .m-Width--1of12 {
+    width: 8.333%;
+  }
+  .m-Width--2of12 {
+    width: 16.666%;
+  }
+  .m-Width--3of12 {
+    width: 25%;
+  }
+  .m-Width--4of12 {
+    width: 33.333%;
+  }
+  .m-Width--5of12 {
+    width: 41.666%;
+  }
+  .m-Width--6of12 {
+    width: 50%;
+  }
+  .m-Width--7of12 {
+    width: 58.333%;
+  }
+  .m-Width--8of12 {
+    width: 66.666%;
+  }
+  .m-Width--9of12 {
+    width: 75%;
+  }
+  .m-Width--10of12 {
+    width: 83.333%;
+  }
+  .m-Width--11of12 {
+    width: 91.666%;
+  }
+  .m-Width--12of12 {
+    width: 100%;
+  }
+}
+
+@media (min-width: 64em) {
+  .l-Width--1of12 {
+    width: 8.333%;
+  }
+  .l-Width--2of12 {
+    width: 16.666%;
+  }
+  .l-Width--3of12 {
+    width: 25%;
+  }
+  .l-Width--4of12 {
+    width: 33.333%;
+  }
+  .l-Width--5of12 {
+    width: 41.666%;
+  }
+  .l-Width--6of12 {
+    width: 50%;
+  }
+  .l-Width--7of12 {
+    width: 58.333%;
+  }
+  .l-Width--8of12 {
+    width: 66.666%;
+  }
+  .l-Width--9of12 {
+    width: 75%;
+  }
+  .l-Width--10of12 {
+    width: 83.333%;
+  }
+  .l-Width--11of12 {
+    width: 91.666%;
+  }
+  .l-Width--12of12 {
+    width: 100%;
+  }
+}
+
+/* ========================================
+ * Wrap
+ * ======================================== */
+.Wrap {
+  margin-left: auto;
+  margin-right: auto;
+  max-width: 1296px;
+  padding-left: 6.25%;
+  padding-right: 6.25%;
+}
+
+@media (min-width: 64em) {
+  .Wrap {
+    padding-left: 48px;
+    padding-right: 48px;
+  }
+}
+
+/* ======
+ * Wrap - absolute
+ * ====== */
+.Wrap--absolute {
+  left: 6.25%;
+  max-width: 1200px;
+  padding: 0;
+  position: absolute;
+  right: 6.25%;
+  width: 100%;
+}
+
+@media (min-width: 64em) {
+  .Wrap--absolute {
+    left: 48px;
+    right: 48px;
+  }
+}
+
+/* ========================================
+ * Alert
+ * ======================================== */
+.Alert {
+  margin-bottom: 1.5rem;
+  padding: 1.5rem 1.5rem;
+  text-align: center;
+}
+
+/* ======
+ * Alert - Success
+ * ====== */
+.Alert--success {
+  background-color: #bce2bc;
+  -webkit-box-shadow: inset 0 0 0 1px #80c780;
+          box-shadow: inset 0 0 0 1px #80c780;
+}
+
+/* ======
+ * Alert - Info
+ * ====== */
+.Alert--info {
+  background-color: #ceecf5;
+  -webkit-box-shadow: inset 0 0 0 1px #b0e1ef;
+          box-shadow: inset 0 0 0 1px #b0e1ef;
+}
+
+/* ======
+ * Alert - Warning
+ * ====== */
+.Alert--warning {
+  background-color: #fbe8cd;
+  -webkit-box-shadow: inset 0 0 0 1px #f6ce95;
+          box-shadow: inset 0 0 0 1px #f6ce95;
+}
+
+/* ======
+ * Alert - Danger
+ * ====== */
+.Alert--danger {
+  background-color: #f1c2c0;
+  -webkit-box-shadow: inset 0 0 0 1px #eba5a3;
+          box-shadow: inset 0 0 0 1px #eba5a3;
+}
+
+/* ========================================
+ * Button
+ * ======================================== */
+.Button {
+  font-size: 1rem;
+  line-height: 2.5rem;
+  background-color: transparent;
+  border: 1px solid transparent;
+  cursor: pointer;
+  display: inline-block;
+  font-weight: bolder;
+  margin-bottom: 1.5rem;
+  margin-right: 0.75rem;
+  outline: 0;
+  padding: 0 1.5rem;
+  position: relative;
+  text-align: center;
+  -webkit-transition: 0.15s;
+  transition: 0.15s;
+  -webkit-user-select: none;
+     -moz-user-select: none;
+      -ms-user-select: none;
+          user-select: none;
+  vertical-align: top;
+}
+
+.Button:hover, .Button:focus {
+  text-decoration: none;
+}
+
+.Button-dropdown {
+  background-color: #ffffff;
+  -webkit-box-shadow: 0 rgba(0, 0, 0, 0.1);
+          box-shadow: 0 rgba(0, 0, 0, 0.1);
+  border-radius: 0;
+  left: 0;
+  list-style: none;
+  margin: 0;
+  min-width: 240px;
+  padding: 0.75rem 1.5rem;
+  position: absolute;
+  top: 100%;
+  -webkit-transition: opacity 0.3s;
+  transition: opacity 0.3s;
+  z-index: 999;
+  clip: rect(0, 0, 0, 0);
+  height: 0;
+  opacity: 0;
+  /**
+   * Caret
+   */
+  /**
+   * Aligning
+   */
+}
+
+.Button-dropdown:before {
+  border-bottom: 8px solid #d9d9d9;
+  border-left: 8px solid transparent;
+  border-right: 8px solid transparent;
+  content: "";
+  left: 24px;
+  margin-left: -0.25rem;
+  position: absolute;
+  top: -0.5rem;
+}
+
+.Button.is-open .Button-dropdown {
+  clip: auto;
+  height: auto;
+  opacity: 1;
+  /**
+   * Caret
+   */
+  /**
+   * Aligning
+   */
+}
+
+/* ======
+ * Button - Style
+ * ====== */
+/* ======
+ * Button - States
+ * ====== */
+.Button.is-open {
+  overflow: visible;
+}
+
+/* ======
+ * Button - Size
+ * ====== */
+.Button.-l {
+  font-size: 1.125rem;
+  line-height: 3.8125rem;
+  padding: 0 2.25rem;
+}
+
+.Button.-s {
+  font-size: 0.875rem;
+  line-height: 1.9225rem;
+  padding: 0 1.17rem;
+}
+
+.Button.-full {
+  display: block;
+  width: 100%;
+}
+
+/* ========================================
+ * Button - Primary
+ * ========================================
+ *
+ * @extends `.Button{}` in _Button.scss
+ */
+.Button--primary {
+  background-color: #000000;
+  border-color: black;
+  color: #ffffff;
+}
+
+.Button--primary:hover, .Button--primary:focus {
+  background-color: black;
+  color: #ffffff;
+}
+
+/* ========================================
+ * Button - Default
+ * ========================================
+ *
+ * @extends `.Button{}` in _Button.scss
+ */
+.Button--default {
+  background-color: #ffffff;
+  border-color: rgba(0, 0, 0, 0.08);
+  color: #000000;
+}
+
+.Button--default:hover, .Button--default:focus {
+  background-color: #f7f7f7;
+}
+
+/* ========================================
+ * Button collection - Default
+ * ========================================
+ *
+ * @extends `.Button{}` in _Button.scss
+ */
+.Buttons--default {
+  display: inline-block;
+  margin-bottom: 1.5rem;
+}
+
+.Buttons--default > .Button {
+  -webkit-box-align: baseline;
+  -webkit-align-items: baseline;
+      -ms-flex-align: baseline;
+          align-items: baseline;
+  border-radius: 0;
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+  -webkit-justify-content: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  margin: 0;
+}
+
+.Buttons--default > .Button:not(:last-child) {
+  border-bottom-width: 0;
+}
+
+.Buttons--default > .-round:first-child {
+  border-radius: 4px 4px 0 0;
+}
+
+.Buttons--default > .-round:last-child {
+  border-radius: 0 0 4px 4px;
+}
+
+.Buttons--default.-justify {
+  width: 100%;
+}
+
+/* ========================================
+ * Button collection - Default - Horizontal
+ * ========================================
+ *
+ * @extend `.Buttons--default{}` in _Buttons--default.scss
  */
 /* ========================================
  * Card
@@ -2052,6 +2643,25 @@ h6, .h6 {
 .Card--default.-border {
   -webkit-box-shadow: 0 0 0 1px rgba(0, 0, 0, 0.08);
           box-shadow: 0 0 0 1px rgba(0, 0, 0, 0.08);
+}
+
+/* ========================================
+ * Responsive embed content
+ * ======================================== */
+.Embed {
+  padding-bottom: 60%;
+  position: relative;
+  overflow: hidden;
+}
+
+.Embed iframe,
+.Embed embed,
+.Embed object {
+  height: 100% !important;
+  left: 0;
+  position: absolute;
+  top: 0;
+  width: 100% !important;
 }
 
 /* ========================================
@@ -2372,155 +2982,6 @@ textarea.Form-item {
 }
 
 /* ========================================
- * Grid
- * ========================================
- *
- * @reusable true
- */
-.Grid {
-  display: -webkit-box;
-  display: -webkit-flex;
-  display: -ms-flexbox;
-  display: flex;
-  -webkit-flex-wrap: wrap;
-      -ms-flex-wrap: wrap;
-          flex-wrap: wrap;
-  list-style: none;
-  margin-bottom: 0;
-  margin-left: -0.75rem;
-  margin-right: -0.75rem;
-}
-
-.Grid-cell {
-  max-width: 100%;
-  padding-left: 0.75rem;
-  padding-right: 0.75rem;
-}
-
-/* ======
- * Grid - Sizing and layout
- * ====== */
-.Grid.-auto > .Grid-cell:not([class*="Width"]) {
-  -webkit-box-flex: 1;
-  -webkit-flex: 1 0 0%;
-      -ms-flex: 1 0 0%;
-          flex: 1 0 0%;
-  width: auto;
-}
-
-.Grid.-equalContent > .Grid-cell {
-  display: -webkit-box;
-  display: -webkit-flex;
-  display: -ms-flexbox;
-  display: flex;
-  -webkit-flex-wrap: wrap;
-      -ms-flex-wrap: wrap;
-          flex-wrap: wrap;
-}
-
-.Grid.-full {
-  margin-left: 0rem;
-  margin-right: 0rem;
-}
-
-.Grid.-full > .Grid-cell {
-  padding-left: 0rem;
-  padding-right: 0rem;
-}
-
-.Grid.-xl {
-  margin-left: -3rem;
-  margin-right: -3rem;
-}
-
-.Grid.-xl > .Grid-cell {
-  padding-left: 3rem;
-  padding-right: 3rem;
-}
-
-.Grid.-l {
-  margin-left: -1.5rem;
-  margin-right: -1.5rem;
-}
-
-.Grid.-l > .Grid-cell {
-  padding-left: 1.5rem;
-  padding-right: 1.5rem;
-}
-
-/* ======
- * Grid - Justify
- * ====== */
-.Grid.-justifyAround {
-  -webkit-justify-content: space-around;
-      -ms-flex-pack: distribute;
-          justify-content: space-around;
-}
-
-.Grid.-justifyBetween {
-  -webkit-box-pack: justify;
-  -webkit-justify-content: space-between;
-      -ms-flex-pack: justify;
-          justify-content: space-between;
-}
-
-.Grid.-justifyCenter {
-  -webkit-box-pack: center;
-  -webkit-justify-content: center;
-      -ms-flex-pack: center;
-          justify-content: center;
-}
-
-.Grid.-justifyEnd {
-  -webkit-box-pack: end;
-  -webkit-justify-content: flex-end;
-      -ms-flex-pack: end;
-          justify-content: flex-end;
-}
-
-/* ======
- * Grid - Aligning of cells
- * ====== */
-.Grid.-alignBottom {
-  -webkit-box-align: end;
-  -webkit-align-items: flex-end;
-      -ms-flex-align: end;
-          align-items: flex-end;
-}
-
-.Grid.-alignCenter {
-  -webkit-box-align: center;
-  -webkit-align-items: center;
-      -ms-flex-align: center;
-          align-items: center;
-}
-
-.Grid.-alignTop {
-  -webkit-box-align: start;
-  -webkit-align-items: flex-start;
-      -ms-flex-align: start;
-          align-items: flex-start;
-}
-
-/* ========================================
- * Grid - Columns with rulers
- * ========================================
- *
- * @extends `.Grid{}` in _Grid.scss.
- */
-/* ========================================
- * Grid cell - Alignment
- * ========================================
- *
- * @extends `.Grid-cell{}` in _Grid.scss.
- */
-/* ========================================
- * Grid cell - Order
- * ========================================
- *
- * @extends `.Grid-cell{}` in _Grid.scss.
- */
-/* ========================================
  * Hero
  * ======================================== */
 .Hero {
@@ -2782,277 +3243,6 @@ textarea.Form-item {
   .Hero-item--block .Hero-content {
     padding: 0 3rem;
   }
-}
-
-/* ========================================
- * Alert
- * ======================================== */
-.Alert {
-  margin-bottom: 1.5rem;
-  padding: 1.5rem 1.5rem;
-  text-align: center;
-}
-
-/* ======
- * Alert - Success
- * ====== */
-.Alert--success {
-  background-color: #bce2bc;
-  -webkit-box-shadow: inset 0 0 0 1px #80c780;
-          box-shadow: inset 0 0 0 1px #80c780;
-}
-
-/* ======
- * Alert - Info
- * ====== */
-.Alert--info {
-  background-color: #ceecf5;
-  -webkit-box-shadow: inset 0 0 0 1px #b0e1ef;
-          box-shadow: inset 0 0 0 1px #b0e1ef;
-}
-
-/* ======
- * Alert - Warning
- * ====== */
-.Alert--warning {
-  background-color: #fbe8cd;
-  -webkit-box-shadow: inset 0 0 0 1px #f6ce95;
-          box-shadow: inset 0 0 0 1px #f6ce95;
-}
-
-/* ======
- * Alert - Danger
- * ====== */
-.Alert--danger {
-  background-color: #f1c2c0;
-  -webkit-box-shadow: inset 0 0 0 1px #eba5a3;
-          box-shadow: inset 0 0 0 1px #eba5a3;
-}
-
-/* ========================================
- * Button
- * ======================================== */
-.Button {
-  font-size: 1rem;
-  line-height: 2.5rem;
-  background-color: transparent;
-  border: 1px solid transparent;
-  cursor: pointer;
-  display: inline-block;
-  font-weight: bolder;
-  margin-bottom: 1.5rem;
-  margin-right: 0.75rem;
-  outline: 0;
-  padding: 0 1.5rem;
-  position: relative;
-  text-align: center;
-  -webkit-transition: 0.15s;
-  transition: 0.15s;
-  -webkit-user-select: none;
-     -moz-user-select: none;
-      -ms-user-select: none;
-          user-select: none;
-  vertical-align: top;
-}
-
-.Button:hover, .Button:focus {
-  text-decoration: none;
-}
-
-.Button-dropdown {
-  background-color: #ffffff;
-  -webkit-box-shadow: 0 rgba(0, 0, 0, 0.1);
-          box-shadow: 0 rgba(0, 0, 0, 0.1);
-  border-radius: 0;
-  left: 0;
-  list-style: none;
-  margin: 0;
-  min-width: 240px;
-  padding: 0.75rem 1.5rem;
-  position: absolute;
-  top: 100%;
-  -webkit-transition: opacity 0.3s;
-  transition: opacity 0.3s;
-  z-index: 999;
-  clip: rect(0, 0, 0, 0);
-  height: 0;
-  opacity: 0;
-  /**
-   * Caret
-   */
-  /**
-   * Aligning
-   */
-}
-
-.Button-dropdown:before {
-  border-bottom: 8px solid #d9d9d9;
-  border-left: 8px solid transparent;
-  border-right: 8px solid transparent;
-  content: "";
-  left: 24px;
-  margin-left: -0.25rem;
-  position: absolute;
-  top: -0.5rem;
-}
-
-.Button.is-open .Button-dropdown {
-  clip: auto;
-  height: auto;
-  opacity: 1;
-  /**
-   * Caret
-   */
-  /**
-   * Aligning
-   */
-}
-
-/* ======
- * Button - Style
- * ====== */
-/* ======
- * Button - States
- * ====== */
-.Button.is-open {
-  overflow: visible;
-}
-
-/* ======
- * Button - Size
- * ====== */
-.Button.-l {
-  font-size: 1.125rem;
-  line-height: 3.8125rem;
-  padding: 0 2.25rem;
-}
-
-.Button.-s {
-  font-size: 0.875rem;
-  line-height: 1.9225rem;
-  padding: 0 1.17rem;
-}
-
-.Button.-full {
-  display: block;
-  width: 100%;
-}
-
-/* ========================================
- * Button - Primary
- * ========================================
- *
- * @extends `.Button{}` in _Button.scss
- */
-.Button--primary {
-  background-color: #000000;
-  border-color: black;
-  color: #ffffff;
-}
-
-.Button--primary:hover, .Button--primary:focus {
-  background-color: black;
-  color: #ffffff;
-}
-
-/* ========================================
- * Button - Default
- * ========================================
- *
- * @extends `.Button{}` in _Button.scss
- */
-.Button--default {
-  background-color: #ffffff;
-  border-color: rgba(0, 0, 0, 0.08);
-  color: #000000;
-}
-
-.Button--default:hover, .Button--default:focus {
-  background-color: #f7f7f7;
-}
-
-/* ========================================
- * Button collection - Default
- * ========================================
- *
- * @extends `.Button{}` in _Button.scss
- */
-.Buttons--default {
-  display: inline-block;
-  margin-bottom: 1.5rem;
-}
-
-.Buttons--default > .Button {
-  -webkit-box-align: baseline;
-  -webkit-align-items: baseline;
-      -ms-flex-align: baseline;
-          align-items: baseline;
-  border-radius: 0;
-  display: -webkit-box;
-  display: -webkit-flex;
-  display: -ms-flexbox;
-  display: flex;
-  -webkit-box-pack: center;
-  -webkit-justify-content: center;
-      -ms-flex-pack: center;
-          justify-content: center;
-  margin: 0;
-}
-
-.Buttons--default > .Button:not(:last-child) {
-  border-bottom-width: 0;
-}
-
-.Buttons--default > .-round:first-child {
-  border-radius: 4px 4px 0 0;
-}
-
-.Buttons--default > .-round:last-child {
-  border-radius: 0 0 4px 4px;
-}
-
-.Buttons--default.-justify {
-  width: 100%;
-}
-
-/* ========================================
- * Button collection - Default - Horizontal
- * ========================================
- *
- * @extend `.Buttons--default{}` in _Buttons--default.scss
- */
-/* ========================================
- * Container
- * ======================================== */
-.Container {
-  padding-bottom: 1.5rem;
-  padding-top: 1.5rem;
-}
-
-@media (min-width: 48em) {
-  .Container {
-    padding-bottom: 3rem;
-    padding-top: 3rem;
-  }
-}
-
-/* ========================================
- * Responsive embed content
- * ======================================== */
-.Embed {
-  padding-bottom: 60%;
-  position: relative;
-  overflow: hidden;
-}
-
-.Embed iframe,
-.Embed embed,
-.Embed object {
-  height: 100% !important;
-  left: 0;
-  position: absolute;
-  top: 0;
-  width: 100% !important;
 }
 
 /* ========================================
@@ -4101,213 +4291,5 @@ textarea.Form-item {
   .Text--lead {
     font-size: 1.125rem;
     line-height: 1.44444;
-  }
-}
-
-/* ========================================
- * Width
- * ========================================
- *
- * @reusable true
- */
-.Width--1of12 {
-  width: 8.333%;
-}
-
-.Width--2of12 {
-  width: 16.666%;
-}
-
-.Width--3of12 {
-  width: 25%;
-}
-
-.Width--4of12 {
-  width: 33.333%;
-}
-
-.Width--5of12 {
-  width: 41.666%;
-}
-
-.Width--6of12 {
-  width: 50%;
-}
-
-.Width--7of12 {
-  width: 58.333%;
-}
-
-.Width--8of12 {
-  width: 66.666%;
-}
-
-.Width--9of12 {
-  width: 75%;
-}
-
-.Width--10of12 {
-  width: 83.333%;
-}
-
-.Width--11of12 {
-  width: 91.666%;
-}
-
-.Width--12of12 {
-  width: 100%;
-}
-
-@media (min-width: 37.5em) {
-  .s-Width--1of12 {
-    width: 8.333%;
-  }
-  .s-Width--2of12 {
-    width: 16.666%;
-  }
-  .s-Width--3of12 {
-    width: 25%;
-  }
-  .s-Width--4of12 {
-    width: 33.333%;
-  }
-  .s-Width--5of12 {
-    width: 41.666%;
-  }
-  .s-Width--6of12 {
-    width: 50%;
-  }
-  .s-Width--7of12 {
-    width: 58.333%;
-  }
-  .s-Width--8of12 {
-    width: 66.666%;
-  }
-  .s-Width--9of12 {
-    width: 75%;
-  }
-  .s-Width--10of12 {
-    width: 83.333%;
-  }
-  .s-Width--11of12 {
-    width: 91.666%;
-  }
-  .s-Width--12of12 {
-    width: 100%;
-  }
-}
-
-@media (min-width: 48em) {
-  .m-Width--1of12 {
-    width: 8.333%;
-  }
-  .m-Width--2of12 {
-    width: 16.666%;
-  }
-  .m-Width--3of12 {
-    width: 25%;
-  }
-  .m-Width--4of12 {
-    width: 33.333%;
-  }
-  .m-Width--5of12 {
-    width: 41.666%;
-  }
-  .m-Width--6of12 {
-    width: 50%;
-  }
-  .m-Width--7of12 {
-    width: 58.333%;
-  }
-  .m-Width--8of12 {
-    width: 66.666%;
-  }
-  .m-Width--9of12 {
-    width: 75%;
-  }
-  .m-Width--10of12 {
-    width: 83.333%;
-  }
-  .m-Width--11of12 {
-    width: 91.666%;
-  }
-  .m-Width--12of12 {
-    width: 100%;
-  }
-}
-
-@media (min-width: 64em) {
-  .l-Width--1of12 {
-    width: 8.333%;
-  }
-  .l-Width--2of12 {
-    width: 16.666%;
-  }
-  .l-Width--3of12 {
-    width: 25%;
-  }
-  .l-Width--4of12 {
-    width: 33.333%;
-  }
-  .l-Width--5of12 {
-    width: 41.666%;
-  }
-  .l-Width--6of12 {
-    width: 50%;
-  }
-  .l-Width--7of12 {
-    width: 58.333%;
-  }
-  .l-Width--8of12 {
-    width: 66.666%;
-  }
-  .l-Width--9of12 {
-    width: 75%;
-  }
-  .l-Width--10of12 {
-    width: 83.333%;
-  }
-  .l-Width--11of12 {
-    width: 91.666%;
-  }
-  .l-Width--12of12 {
-    width: 100%;
-  }
-}
-
-/* ========================================
- * Wrap
- * ======================================== */
-.Wrap {
-  margin-left: auto;
-  margin-right: auto;
-  max-width: 1296px;
-  padding-left: 6.25%;
-  padding-right: 6.25%;
-}
-
-@media (min-width: 64em) {
-  .Wrap {
-    padding-left: 48px;
-    padding-right: 48px;
-  }
-}
-
-/* ======
- * Wrap - absolute
- * ====== */
-.Wrap--absolute {
-  left: 6.25%;
-  max-width: 1200px;
-  padding: 0;
-  position: absolute;
-  right: 6.25%;
-  width: 100%;
-}
-
-@media (min-width: 64em) {
-  .Wrap--absolute {
-    left: 48px;
-    right: 48px;
   }
 }

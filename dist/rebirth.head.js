@@ -36,9 +36,10 @@
 
         var _feature = require('./javascripts/feature');
 
-        var doc = document; /* =======================================
-                     * App Head
-                     * ======================================= */
+        var doc = document;
+        /* =======================================
+         * App Head
+         * ======================================= */
 
         var html = doc.documentElement;
 
@@ -66,15 +67,16 @@
         exports.isIOS = isIOS;
         exports.isAndroid = isAndroid;
         /* ========================================
- * Features & User Agents
- * ======================================== */
+         * Features & User Agents
+         * ======================================== */
 
         var ua = navigator.userAgent;
         var win = window;
         var doc = document;
 
         /**
-         * Tests if touch events are supported, but doesn't necessarily reflect a touchscreen device
+         * Tests if touch events are supported, but doesn't necessarily reflect a
+         * touchscreen device
          */
         var hasTouch = (exports.hasTouch = !!(
           'ontouchstart' in win ||
