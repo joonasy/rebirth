@@ -3,6 +3,7 @@
  * ======================================== */
 
 const assemble = require('assemble');
+const ghpages = require('gh-pages');
 const fs = require('fs');
 const browserify = require('browserify');
 const browserSync = require('browser-sync').create();
@@ -33,7 +34,7 @@ const app = assemble();
  * Config
  */
 const config = {
-  root: '/',
+  root: '/rebirth/',
   version: pkg.version,
 };
 
@@ -217,14 +218,20 @@ app.task('docs-inline', () =>
 );
 
 /**
- * Docs - Revision and remove unneeded files
+ * Docs - Revision, copy and remove unneeded files
  */
 app.task('docs-rev', () => {
   rimraf.sync('rebirth/assets/*.css');
   rimraf.sync('rebirth/assets/app.head.js');
 
   return app
-    .src(['rebirth/assets/*.js', 'rebirth/assets/{images,fonts}/**'])
+    .src([
+      'rebirth/assets/*.js',
+      'rebirth/assets/{images,fonts}/**',
+      'dist/rebirth.head.min.js',
+      'dist/rebirth.all.min.js',
+      'dist/rebirth.all.min.css',
+    ])
     .pipe($.rev())
     .pipe(app.dest('rebirth/assets'))
     .pipe(rmOriginalFiles())
@@ -248,6 +255,19 @@ app.task('docs-updateReferences', () => {
     )
     .pipe(app.dest('rebirth'));
 });
+
+/**
+ * Docs - Deploy to GH pages
+ */
+app.task('docs-deploy', () => {
+  ghpages.publish('rebirth', (err) => {
+    console.log(err);
+  });
+});
+
+/* ======
+ * Rebirth - Tasks
+ * ====== */
 
 /**
  * Rebirth - Stylesheets
