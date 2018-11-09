@@ -22,7 +22,7 @@ Other quick start options are available:
 
 ## Documentation
 
-Rebirths documentation, included in this repo in the root directory, is built with Assemble and publicly hosted on GitHub Pages at .... The docs may also be run locally.
+Rebirths documentation, included in this repo in the root directory, is built with Assemble and publicly hosted on GitHub Pages at [https://joonasy.github.io/rebirth](https://joonasy.github.io/rebirth). The docs may also be run locally.
 
 ## License
 
