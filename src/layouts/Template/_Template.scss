@@ -1,11 +1,11 @@
 /* ========================================
- * Page
+ * Template
  * ========================================
  *
  * @reusable probably true but intented to be used once
  */
 
-.Page {
+.Template {
   position: relative;
-  z-index: $Page-zIndex;
+  z-index: $Template-zIndex;
 }
