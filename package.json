@@ -23,7 +23,7 @@
     "docs-deploy": "yarn docs-build && assemble docs-deploy",
     "precommit": "lint-staged",
     "prepublishOnly": "yarn build",
-    "publish": "yarn publish --tag beta"
+    "release": "yarn publish --tag beta"
   },
   "lint-staged": {
     "*.{js,json,md}": [
