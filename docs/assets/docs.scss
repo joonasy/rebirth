@@ -4,16 +4,9 @@
 
 // Rebirth config
 @import '../../src/config';
-@import '../../src/components/Navbar/starters/stacked/Navbar--stacked.config';
-@import '../../src/components/Header/Header.config';
-@import '../../src/components/Page/Page.config';
 
 // Docs config
 @import 'docs.config';
-
-// Vendors
-@import 'sass-mq/mq';
-@import 'highlight.js/styles/github';
 
 // Rebirth mixins used in docs
 @import '../../src/stylesheets/mixins/fontSize';
@@ -23,12 +16,13 @@
 @import '../../src/stylesheets/mixins/shapeMenu';
 @import '../../src/stylesheets/mixins/utility';
 
+// Vendors
+@import 'sass-mq/mq';
+@import 'highlight.js/styles/github';
+@import 'vendors/highlight';
+
 // Generic
 @import 'stylesheets/generic/docs-base';
-
-// Rebirth components used in docs
-@import '../../src/components/Navbar/Navbar--default';
-@import '../../src/components/Text/Text';
 
 // Docs components
 @import 'components/docs-App/index';

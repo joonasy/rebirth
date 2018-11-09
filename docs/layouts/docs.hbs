@@ -2,23 +2,23 @@
 
   <div class="docs-App">
 
-    {{> header content=docs.nav}}
+    {{> header content=docs.nav.docs}}
 
-    {{#each docs.nav.getting-started.pages as |item|}}
-      {{#if (isActive title ../docs.nav.getting-started.path)}}
-        {{> aside path=docs.nav.getting-started.path content=docs.nav.getting-started.pages }}
+    {{#each docs.nav.docs.getting-started.pages as |item|}}
+      {{#if (isActive title ../docs.nav.docs.getting-started.path)}}
+        {{> aside path=docs.nav.docs.getting-started.path content=docs.nav.docs.getting-started.pages }}
       {{/if}}
     {{/each}}
 
-    {{#each docs.nav.components.pages as |item|}}
-      {{#if (isActive title ../docs.nav.components.path)}}
-        {{> aside path=docs.nav.components.path content=docs.nav.components.pages }}
+    {{#each docs.nav.docs.components.pages as |item|}}
+      {{#if (isActive title ../docs.nav.docs.components.path)}}
+        {{> aside path=docs.nav.docs.components.path content=docs.nav.docs.components.pages }}
       {{/if}}
     {{/each}}
 
-    {{#each docs.nav.layouts.pages as |item|}}
-      {{#if (isActive title ../docs.nav.layouts.path)}}
-        {{> aside path=docs.nav.layouts.path content=docs.nav.layouts.pages }}
+    {{#each docs.nav.docs.layouts.pages as |item|}}
+      {{#if (isActive title ../docs.nav.docs.layouts.path)}}
+        {{> aside path=docs.nav.docs.layouts.path content=docs.nav.docs.layouts.pages }}
       {{/if}}
     {{/each}}
 

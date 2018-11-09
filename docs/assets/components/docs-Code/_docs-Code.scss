@@ -2,7 +2,9 @@
  * Code
  * ======================================= */
 
-.docs-Code {}
+.docs-Code {
+  margin-bottom: rem($baseSpace);
+}
 
   .docs-Code-example {
     background-color: $colorBgLighter;
@@ -11,12 +13,11 @@
   }
 
   .docs-Code-highlight {
-    @extend %Text.-xs;
+    @include fontSize($baseFontSize-xs, $baseLineHeight-xs);
     background-color: $colorBgLighter;
     border-radius: 0 0 6px 6px;
     border-top: 3px solid $colorBgLightest;
     overflow: auto;
-    padding: rem($baseSpace);
 
     &:only-child {
       border-radius: 6px;
