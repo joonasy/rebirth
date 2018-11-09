@@ -16,10 +16,10 @@ So far the preferred way to start a new Rebirth project is together with [genera
 $ yarn global add yo && yarn global add generator-rebirth@beta
 ```
 
-See [requirements](/docs/getting-started/requirements/), learn about the [generator](/docs/getting-started/generator/), read the [styleguide](/styleguide/). Run the generator in your desired location, pass in your project directory name (required; this will be your installation directory) and your project type (`typo3`, `html` or `wordpress`):
+See [requirements](/docs/getting-started/requirements/), learn about the [generator](/docs/getting-started/generator/), read the [styleguide](/styleguide/). Run the generator in your desired location, pass in your project name (required; this will be your installation directory also) and your project type (`typo3`, `html` or `wordpress`):
 
 ```shell
-$ yo rebirth [my-new-project-dir] --project=my-project-type
+$ yo rebirth [my-new-project] --project=my-project-type
 ```
 
 If you are building a _Typo3 project_ all special characters are removed from the extension directory name e.g. `my-project_folder` -> `myprojectfolder`.
