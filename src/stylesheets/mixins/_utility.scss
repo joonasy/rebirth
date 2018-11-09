@@ -31,17 +31,17 @@
 }
 
 //
-// Image urls
+// Simple image urls
 //
-@function imageUrl($path: './images') {
-  @return url('#{$imagesPath}/#{$path}');
+@function imageUrl($path) {
+  @return url('./images/#{$path}');
 }
 
 //
-// Font urls
+// Simple font urls
 //
-@function fontUrl($path: './fonts') {
-  @return url('#{$fontsPath}/#{$path}');
+@function fontUrl($path) {
+  @return url('./fonts/#{$path}');
 }
 
 //
@@ -79,6 +79,7 @@
 
   @return $result;
 }
+
 
 //
 // Pascalize string

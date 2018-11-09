@@ -7,7 +7,8 @@ const win = window;
 const doc = document;
 
 /**
- * Tests if touch events are supported, but doesn't necessarily reflect a touchscreen device
+ * Tests if touch events are supported, but doesn't necessarily reflect a
+ * touchscreen device
  */
 export const hasTouch = !!(
   'ontouchstart' in win ||

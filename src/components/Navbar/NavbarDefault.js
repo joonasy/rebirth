@@ -12,7 +12,7 @@ export default class NavbarDefault {
     const navbarTrigger = $$('.js-NavbarDefaultTrigger');
     const navbarItem = $$('.js-NavbarDefault .Navbar-item');
 
-    navbar.forEach((nav) => {
+    [].forEach.call(navbar, (nav) => {
       nav.addEventListener(
         'click',
         (e) => {
@@ -41,7 +41,7 @@ export default class NavbarDefault {
       );
     });
 
-    navbarTrigger.forEach((trigger) => {
+    [].forEach.call(navbarTrigger, (trigger) => {
       trigger.addEventListener(
         'click',
         (e) => {
@@ -59,8 +59,8 @@ export default class NavbarDefault {
     });
 
     window.addEventListener('click', (e) => {
-      navbarItem.forEach((item) => item.classList.remove('is-open'));
-      navbar.forEach((nav) => nav.classList.remove('is-open'));
+      [].forEach.call(navbarItem, (item) => item.classList.remove('is-open'));
+      [].forEach.call(nav, (nav) => nav.classList.remove('is-open'));
     });
   }
 }
