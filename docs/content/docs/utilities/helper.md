@@ -1,5 +1,5 @@
 ---
-title: Contents
+title: Helper
 description: ...
 layout: docs
 ---

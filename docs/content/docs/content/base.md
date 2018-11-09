@@ -1,5 +1,5 @@
 ---
-title: Contents
+title: Base
 description: ...
 layout: docs
 ---

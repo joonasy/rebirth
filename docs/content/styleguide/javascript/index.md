@@ -1,4 +1,7 @@
-# JavaScript Styleguide
+---
+title: JavaScript
+layout: styleguide
+---
 
 We use [Airbnb JavaScript Style Guide](https://github.com/airbnb/javascript) as our JavaScript styleguide with the following exceptions:
 
@@ -23,9 +26,9 @@ We use [Airbnb JavaScript Style Guide](https://github.com/airbnb/javascript) as 
 }
 ```
 
-## Structure
+<!-- ## Structure
 
-``` 
+```
     javascripts/
     |
     |── components/           # [1]
@@ -33,12 +36,12 @@ We use [Airbnb JavaScript Style Guide](https://github.com/airbnb/javascript) as 
     |   …
     |
     |── plugins/              # [3]
-    |   |── imgToParentBg.js  
-    |   |── toggle.js         
+    |   |── imgToParentBg.js
+    |   |── toggle.js
     |   …
-    | 
+    |
     |── vendors/              # [4]
-    |   |── vendor.js  
+    |   |── vendor.js
     |   …
     |
     `── head.js               # [5]
@@ -50,5 +53,4 @@ We use [Airbnb JavaScript Style Guide](https://github.com/airbnb/javascript) as 
 * **3.** Place all your own plugins here
 * **4.** 3rd party vendors that aren't added from Bower/Npm
 * **5.** Place all JavaScript here you want to init in the head section of the HTML document
-* **6.** Init all the components. Placed in the bottom of the HTML document.
-
+* **6.** Init all the components. Placed in the bottom of the HTML document. -->

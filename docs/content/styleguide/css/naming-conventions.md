@@ -1,12 +1,18 @@
+---
+title: Naming conventions
+description: We use a methodology focused on improving the CSS authoring experience for component-based development.
+layout: styleguide
+---
+
 # Naming conventions
 
 Naming conventions in CSS are hugely useful in making your code more strict, more transparent, and more informative.
 
 A good naming convention will tell you and your team
 
-* what type of thing a class does;
-* where a class can be used;
-* what (else) a class might be related to.
+- what type of thing a class does;
+- where a class can be used;
+- what (else) a class might be related to.
 
 We rely on structured class names, partly BEM-like naming, and meaningful hyphens (i.e., not using hyphens merely to separate words) except for separating numbers. This helps to work around the current limits of applying CSS to the DOM (i.e., the lack of style encapsulation), and to better communicate the relationships between classes.
 
@@ -21,20 +27,19 @@ Low-level structural and positional traits. Helpers can be applied directly to a
 Helpers must use a camelCase name. Helpers may also have modifiers and responsive variants like components do. What follows is an example of how various helpers can be used to create a simple structure within or without a component.
 
 ```html
-<div class="Component marginTop--m clearfix">        # [1]
-  <div class="Component-item floatLeft padding--m">  # [2]
-    <img src="…" alt="…" class="m-center--block">    # [3]
-    <p class="m-text--l">                            # [4]
-      …
-    </p>
-  </div>  
+<div class="Component marginTop--m clearfix">
+  # [1]
+  <div class="Component-item floatLeft padding--m">
+    # [2] <img src="…" alt="…" class="m-center--block" /> # [3]
+    <p class="m-text--l"># [4] …</p>
+  </div>
 </div>
 ```
 
-* **1.** Sets up bigger margin top and cleafixes the component
-* **2.** Aligns components item to left and adds default medium padding
-* **3.** Centers image in large Media Query breakpoint
-* **4.** Sets up large text in medium Media Query breakpoint
+1. Sets up bigger margin top and cleafixes the component
+2. Aligns components item to left and adds default medium padding
+3. Centers image in large Media Query breakpoint
+4. Sets up large text in medium Media Query breakpoint
 
 ## Components
 
@@ -44,9 +49,9 @@ Syntax: `[<prefix>-]<ComponentName>[--modifierName|-chainable-modifierName|-desc
 
 This has several benefits when reading and writing HTML and CSS:
 
-* It helps to distinguish between the classes for the root of the component, descendant elements, and modifications.
-* It keeps the specificity of selectors low.
-* It helps to decouple presentation semantics from document semantics.
+- It helps to distinguish between the classes for the root of the component, descendant elements, and modifications.
+- It keeps the specificity of selectors low.
+- It helps to decouple presentation semantics from document semantics.
 
 ## Naming components and modifiers
 
@@ -59,27 +64,28 @@ The differences in these names is that the first of each two examples is tied to
 The component's name must be written in [PascalCase](http://c2.com/cgi/wiki?PascalCase). Nothing else in the HTML/CSS uses PascalCase.
 
 ```css
-.MyPants {}
+.MyPants {
+}
 ```
 
 ```html
-<section class="MyPants">
-  …
-</section>
+<section class="MyPants">…</section>
 ```
 
 ### ComponentName--modifierName
 
 **Use only single modifier per component and extend it with chainable modifiers**
 
-A component modifier is a class that modifies the presentation of the base component in some form (e.g., for a certain configuration of the component). Component modifiers also modify their descendants by nesting, however if descendants need altering modifiers then modify the descendants directly. modifier names must be written in camelCase and be separated from the component name by two hyphens. The class should be included in the HTML in addition to the base component class. 
+A component modifier is a class that modifies the presentation of the base component in some form (e.g., for a certain configuration of the component). Component modifiers also modify their descendants by nesting, however if descendants need altering modifiers then modify the descendants directly. modifier names must be written in camelCase and be separated from the component name by two hyphens. The class should be included in the HTML in addition to the base component class.
 
 ```css
 /* Core button component */
-.Button {}
+.Button {
+}
 
 /* Primary button modifier */
-.Button--primary {}
+.Button--primary {
+}
 ```
 
 ```html
@@ -90,22 +96,26 @@ A component modifier is a class that modifies the presentation of the base compo
 
 ### ComponentName.-chainableModifierName
 
-Chainable modifiers are denoted by a leading hyphen `-` and a descriptor for the modification. As the name would indicate, chainable modifiers provide us with the ability to configure a module in the HTML with a short, concise syntax. Chainable component modifiers can be added to component modifiers and group may also modify their descendants by nesting.   
+Chainable modifiers are denoted by a leading hyphen `-` and a descriptor for the modification. As the name would indicate, chainable modifiers provide us with the ability to configure a module in the HTML with a short, concise syntax. Chainable component modifiers can be added to component modifiers and group may also modify their descendants by nesting.
 
-The golden rule is that **chainable modifiers should never modify the same CSS property twice**. This is to ensure that styles don’t get clobbered and that the order in which they are applied is irrelevant. 
+The golden rule is that **chainable modifiers should never modify the same CSS property twice**. This is to ensure that styles don’t get clobbered and that the order in which they are applied is irrelevant.
 
-Descriptors are not required however add them if the modifier modifies some specific value such as `color` or `align`. 
+Descriptors are not required however add them if the modifier modifies some specific value such as `color` or `align`.
 
 ```css
 /* Core button */
-.Button {}
+.Button {
+}
 
 /* Chainable modifiers */
-.Button.-l {}
+.Button.-l {
+}
 
-.Button.-round {}
+.Button.-round {
+}
 
-.Button.-colorDarkOnLight {}
+.Button.-colorDarkOnLight {
+}
 ```
 
 ```html
@@ -136,12 +146,9 @@ Chainable modifiers can also be added to component groups.
 
 ```css
 .Buttons {
-  …
-
-  &.-justify {
-    …
-
-    > .Button {}
+  … &.-justify {
+    … > .Button {
+    }
   }
 }
 ```
@@ -158,18 +165,14 @@ the component).
 
 ```css
 .Block {
-  …
-
-  &.is-open {
+  … &.is-open {
     @extend %is-open;
   }
 }
 ```
 
 ```html
-<article class="Block is-open">
-  …
-</article>
+<article class="Block is-open">…</article>
 ```
 
 ### ComponentName-descendantName
@@ -177,59 +180,63 @@ the component).
 A component descendant is a class that is attached to a descendant node of a
 component. It's responsible for applying presentation directly to the
 descendant on behalf of a particular component. descendant names must be
-written in camelCase. 
+written in camelCase.
 
 Parent component modifiers also modify their descendants by nesting, however in some cases (rarely) descendants may need direct modifiers (`1`). Be careful in these situations not to override direct descendant modifiers with the parent modifier (`2`).
 
 ```css
 /**
  * Core block
- */ 
-.Block {}
+ */
+.Block {
+}
 
-  .Block-header {}
+.Block-header {
+}
 
-    .Block-image {}
+.Block-image {
+}
 
-  .Block-content {}
+.Block-content {
+}
 
-    .Block-text {}
+.Block-text {
+}
 
-      .Block-text--meta {} // [1] Example of direct descendant modifier
+.Block-text--meta {
+} // [1] Example of direct descendant modifier
 
-.Block-footer {}
+.Block-footer {
+}
 
 /**
  * Primary block modifier
- */ 
+ */
 .Block--primary {
-  …
+  … .Block-header {
+  }
 
-  .Block-header {}
+  .Block-image {
+  }
 
-    .Block-image {}
+  .Block-text {
+  }
 
-  .Block-text {}
+  .Block-text--meta {
+  } // [2] Be careful not to override direct modifier
 
-    .Block-text--meta {} // [2] Be careful not to override direct modifier
-
-  .Block-footer {}
+  .Block-footer {
+  }
 }
 ```
 
 ```html
 <article class="Block">
   <header class="Block-header">
-    <img class="Block-image" src="" alt="">
+    <img class="Block-image" src="" alt="" />
   </header>
-  <div class="Block-content">
-    <div class="Block-text">
-      …
-    </div>
-  </div>
-  <div class="Block-footer">
-    …
-  </div>
+  <div class="Block-content"><div class="Block-text">…</div></div>
+  <div class="Block-footer">…</div>
 </article>
 ```
 
@@ -242,28 +249,21 @@ Some components need parent component groups to work properly. Component groups 
 ```css
 /**
  * Button group for Button
- */ 
+ */
 .Buttons {
-  …
-
-  > .Button {}
+  … > .Button {
+  }
 
   &.-horizontal {
-    …
-
-    > .Button {}
-  } 
+    … > .Button {
+    }
+  }
 }
 ```
 
 ```html
 <div class="Buttons -horizontal">
-  <button class="Button">
-    …
-  </button>
-  <button class="Button">
-    …
-  </button>
+  <button class="Button">…</button> <button class="Button">…</button>
 </div>
 ```
 
@@ -281,7 +281,7 @@ This means that we can have an element elsewhere which can carry with style of `
 
 When setting JavaScript to components which affect only the component directly it is preferable to use the same naming convention in the hook (PascalCase e.g. `js-Component`). Otherwise use camelCase e.g. `js-myTrigger`.
 
-### data-* attributes
+### data-\* attributes
 
 A common practice is to use `data-*` attributes as JS hooks, but this is incorrect. `data-*` attributes, as per the spec, are used _to store custom data private to the page or application_. `data-*` attributes are designed to store data, not be bound to.
 
@@ -291,35 +291,35 @@ The following namespaces are reserved for specific use.
 
 ### Responsive variants
 
-* `[x...]s-<name>`: Small viewports (e.g. Mobile phones)
-* `m-<name>`: Medium viewport (e.g. Tablets)
-* `[x...]l-<name>`: Large viewports (e.g. Desktop computers)
+- `[x...]s-<name>`: Small viewports (e.g. Mobile phones)
+- `m-<name>`: Medium viewport (e.g. Tablets)
+- `[x...]l-<name>`: Large viewports (e.g. Desktop computers)
 
 Responsive variants are activated in the given Media Query breakpoint (mobile first ideology). These prefixes are mainly used by helpers and components (e.g. `Width` component) but can also be used by chainable component modifiers (rarely).
 
-Example use of responsive `Width` component which is activated in medium  and extra large breakpoints:
+Example use of responsive `Width` component which is activated in medium and extra large breakpoints:
 
 ```css
 @inlude breakpoint("mediumUp") {
-  .m-Width--6-12 { width: 50%; }
+  .m-Width--6-12 {
+    width: 50%;
+  }
 }
 
 @inlude breakpoint("xLargeUp") {
-  .xl-Width--4-12 { width: 33.333%; }
+  .xl-Width--4-12 {
+    width: 33.333%;
+  }
 }
 ```
 
 ```html
 <div class="Grid">
   <div class="Grid-item m-Width--6of12 xl-Width--4of12">
-    <div class="Component">
-      …
-    </div>
+    <div class="Component">…</div>
   </div>
   <div class="Grid-item m-Width--6of12 xl-Width--8of12">
-    <div class="Component">
-      …
-    </div>
+    <div class="Component">…</div>
   </div>
 </div>
 ```
@@ -328,26 +328,26 @@ Example use of _margin_ helper which is activated in large breakpoint:
 
 ```css
 @inlude breakpoint("largeUp") {
-  .l-marginTop--m { margin-top: rem($baseSpace * 2) !important; }
+  .l-marginTop--m {
+    margin-top: rem($baseSpace * 2) !important;
+  }
 }
 ```
 
 ```html
-<div class="l-marginTop--m">
-  …
-</div>
+<div class="l-marginTop--m">…</div>
 ```
 
 ### Reserved modifier names
 
-* Abstract modifier definitions for components (e.g `.Button--primary`): `--primary`, `--secondary`, `--tertiary`, `--quaternary`, `--quinary`, `--senary`, `--septenary`, `--octonary`, `--nonary`, `--denary`
-* Sizing modifiers: `--[x...]s`, `--m`, `--ml`, `--[x...]l`
-    * Used by helpers (e.g `.marginTop--l`). **For component sizing use chainable modifiers.**
+- Abstract modifier definitions for components (e.g `.Button--primary`): `--primary`, `--secondary`, `--tertiary`, `--quaternary`, `--quinary`, `--senary`, `--septenary`, `--octonary`, `--nonary`, `--denary`
+- Sizing modifiers: `--[x...]s`, `--m`, `--ml`, `--[x...]l`
+  - Used by helpers (e.g `.marginTop--l`). **For component sizing use chainable modifiers.**
 
 ### Reserved prefixes and suffixes in SASS variables
 
-Default SASS variables do not need hyphens, use camelCase instead. e.g. `$baseFontSize` not `$base-fontSize`. 
+Default SASS variables do not need hyphens, use camelCase instead. e.g. `$baseFontSize` not `$base-fontSize`.
 
 Component SASS variables however _do_ need hyphens e.g. `$MyComponent-heading` not `$MyComponentHeading`.
 
-* Reserved sizing suffixes used in SASS variables:  `-[x...]s`, `-m`, `-ml`, `-[x...]l`
+- Reserved sizing suffixes used in SASS variables: `-[x...]s`, `-m`, `-ml`, `-[x...]l`

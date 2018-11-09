@@ -1,5 +1,5 @@
 ---
-title: Contents
+title: Mixins
 description: ...
 layout: docs
 ---
