@@ -6,9 +6,9 @@ Awesome front-end starter kit and opinionated styleguide for developing responsi
 
 Inspired by methods and ideas from various sources such as [SUIT CSS](https://github.com/suitcss/suit), [BEM](https://bem.info/), [INUITCSS](https://github.com/inuitcss), [SMACSS](https://smacss.com/), [OOCSS](http://oocss.org/) and [Bootstrap](http://getbootstrap.com).
 
-Correct way to use Rebirth is together with [Rebirth Yeoman generator](https://github.com/joonasy/generator-rebirth.git).
-
 ## Quick start
+
+Correct way to use Rebirth is together with [Rebirth Yeoman generator](https://github.com/joonasy/generator-rebirth.git), learn more in [Docs](https://joonasy.github.io/rebirth/docs/getting-started/generator/).
 
 ```shell
 $ yarn global add generator-rebirth@beta
@@ -17,7 +17,7 @@ $ npx yo rebirth [my-new-project-dir] --project=my-project-type
 
 Other quick start options are available:
 
-- [Download the latest release](https://github.com/joonasy/rebirth/releases/tag/0.6.0)
+- [Download the latest release](https://github.com/joonasy/rebirth/releases/tag/0.5.4)
 - Clone the repo: `$ git clone https://github.com/joonasy/rebirth`
 
 ## Documentation
