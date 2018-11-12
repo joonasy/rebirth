@@ -11,12 +11,12 @@
     </div>
     <ul>
       <li class="Navbar-item">
-        <a class="Navbar-link" href="/docs/getting-started/introduction/">
+        <a class="Navbar-link" href="docs/getting-started/introduction/">
           Docs
         </a>
       </li>
       <li class="Navbar-item">
-        <a class="Navbar-link" href="/styleguide/overview">
+        <a class="Navbar-link" href="styleguide/overview">
           Styleguide
         </a>
       </li>
@@ -42,7 +42,7 @@
       <ul>
         {{#each content as |item|}}
           <li class="Navbar-item{{#each item.pages}} {{#if (isActive ../../title item.path)}}is-active{{/if}}{{/each}}">
-            <a class="Navbar-link" href="/{{path}}/{{dashcase item.pages.0.title}}">{{title}}</a>
+            <a class="Navbar-link" href="{{path}}/{{dashcase item.pages.0.title}}">{{title}}</a>
             {{#if item.pages.0.title}}
               <span class="Navbar-trigger">
                 <i class="Navbar-trigger-icon"></i>
@@ -50,7 +50,7 @@
               <ul class="Navbar-sub">
                 {{#each item.pages}}
                 <li class="Navbar-item {{#if (isActive title item.path)}}is-active{{/if}}">
-                  <a class="Navbar-link" href="/{{item.path}}/{{dashcase title}}">{{title}}</a>
+                  <a class="Navbar-link" href="{{item.path}}/{{dashcase title}}">{{title}}</a>
                 </li>
                 {{/each}}
               </ul>

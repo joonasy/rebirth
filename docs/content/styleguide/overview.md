@@ -6,7 +6,7 @@ layout: styleguide
 
 Just scratching the surface here. Todo:
 
-- [CSS](/styleguide/css/design-principles)
+- [CSS](styleguide/css/design-principles)
 - [JavaScript](styleguide/javascript)
 - WordPress
 - TYPO3

@@ -34,7 +34,7 @@ const app = assemble();
  * Config
  */
 const config = {
-  root: '/rebirth/',
+  root: 'https://joonasy.github.io/rebirth/',
   version: pkg.version,
 };
 
