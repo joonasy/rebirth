@@ -9,7 +9,7 @@
     <base href="https://joonasy.github.io/rebirth/">
 
     <script src="assets/rebirth-51de74d479.head.min.js"></script>
-    <link href="/assets/rebirth-35bbb6224e.all.min.css" rel="stylesheet">
+    <link href="assets/rebirth-35bbb6224e.all.min.css" rel="stylesheet">
 
     <script>!function e(t,i,n){function r(s,o){if(!i[s]){if(!t[s]){var l="function"==typeof require&&require;if(!o&&l)return l(s,!0);if(a)return a(s,!0);var c=new Error("Cannot find module '"+s+"'");throw c.code="MODULE_NOT_FOUND",c}var u=i[s]={exports:{}};t[s][0].call(u.exports,function(e){var i=t[s][1][e];return r(i||e)},u,u.exports,e,t,i,n)}return i[s].exports}for(var a="function"==typeof require&&require,s=0;s<n.length;s++)r(n[s]);return r}({1:[function(e,t,i){"use strict";n(e("lazysizes")),n(e("lazysizes/plugins/respimg/ls.respimg.js"));function n(e){return e&&e.__esModule?e:{default:e}}window.lazySizesConfig=window.lazySizesConfig||{},window.lazySizesConfig.lazyClass="js-lazyload",window.lazySizesConfig.loadingClass="is-lazyload",window.lazySizesConfig.loadedClass="is-lazyloaded"},{lazysizes:2,"lazysizes/plugins/respimg/ls.respimg.js":4}],2:[function(e,t,i){var n,r;n=window,r=function(e,t){"use strict";if(!t.getElementsByClassName)return;var i,n,r=t.documentElement,a=e.Date,s=e.HTMLPictureElement,o="addEventListener",l="getAttribute",c=e[o],u=e.setTimeout,d=e.requestAnimationFrame||u,f=e.requestIdleCallback,z=/^picture$/i,y=["load","error","lazyincluded","_lazyloaded"],p={},g=Array.prototype.forEach,m=function(e,t){return p[t]||(p[t]=new RegExp("(\\s|^)"+t+"(\\s|$)")),p[t].test(e[l]("class")||"")&&p[t]},v=function(e,t){m(e,t)||e.setAttribute("class",(e[l]("class")||"").trim()+" "+t)},h=function(e,t){var i;(i=m(e,t))&&e.setAttribute("class",(e[l]("class")||"").replace(i," "))},C=function(e,t,i){var n=i?o:"removeEventListener";i&&C(e,t),y.forEach(function(i){e[n](i,t)})},b=function(e,n,r,a,s){var o=t.createEvent("CustomEvent");return r||(r={}),r.instance=i,o.initCustomEvent(n,!a,!s,r),e.dispatchEvent(o),o},A=function(t,i){var r;!s&&(r=e.picturefill||n.pf)?r({reevaluate:!0,elements:[t]}):i&&i.src&&(t.src=i.src)},E=function(e,t){return(getComputedStyle(e,null)||{})[t]},w=function(e,t,i){for(i=i||e.offsetWidth;i<n.minSize&&t&&!e._lazysizesWidth;)i=t.offsetWidth,t=t.parentNode;return i},_=(T=[],L=[],P=T,R=function(){var e=P;for(P=T.length?L:T,x=!0,M=!1;e.length;)e.shift()();x=!1},B=function(e,i){x&&!i?e.apply(this,arguments):(P.push(e),M||(M=!0,(t.hidden?u:d)(R)))},B._lsFlush=R,B),S=function(e,t){return t?function(){_(e)}:function(){var t=this,i=arguments;_(function(){e.apply(t,i)})}},N=function(e){var t,i,n=function(){t=null,e()},r=function(){var e=a.now()-i;e<99?u(r,99-e):(f||n)(n)};return function(){i=a.now(),t||(t=u(r,99))}};var x,M,T,L,P,R,B;!function(){var t,i={lazyClass:"lazyload",loadedClass:"lazyloaded",loadingClass:"lazyloading",preloadClass:"lazypreload",errorClass:"lazyerror",autosizesClass:"lazyautosizes",srcAttr:"data-src",srcsetAttr:"data-srcset",sizesAttr:"data-sizes",minSize:40,customMedia:{},init:!0,expFactor:1.5,hFac:.8,loadMode:2,loadHidden:!0,ricTimeout:300};for(t in n=e.lazySizesConfig||e.lazysizesConfig||{},i)t in n||(n[t]=i[t]);e.lazySizesConfig=n,u(function(){n.init&&F()})}();var $=(le=/^img$/i,ce=/^iframe$/i,ue="onscroll"in e&&!/glebot/.test(navigator.userAgent),de=0,fe=0,ze=-1,ye=function(e){fe--,e&&e.target&&C(e.target,ye),(!e||fe<0||!e.target)&&(fe=0)},pe=function(e,i){var n,a=e,s="hidden"==E(t.body,"visibility")||"hidden"!=E(e,"visibility");for(K-=i,Y+=i,Q-=i,V+=i;s&&(a=a.offsetParent)&&a!=t.body&&a!=r;)(s=(E(a,"opacity")||1)>0)&&"visible"!=E(a,"overflow")&&(n=a.getBoundingClientRect(),s=V>n.left&&Q<n.right&&Y>n.top-1&&K<n.bottom+1);return s},ge=function(){var e,a,s,o,c,u,d,f,z,y=i.elements;if((D=n.loadMode)&&fe<8&&(e=y.length)){a=0,ze++,null==ee&&("expand"in n||(n.expand=r.clientHeight>500&&r.clientWidth>500?500:370),Z=n.expand,ee=Z*n.expFactor),de<ee&&fe<1&&ze>2&&D>2&&!t.hidden?(de=ee,ze=0):de=D>1&&ze>1&&fe<6?Z:0;for(;a<e;a++)if(y[a]&&!y[a]._lazyRace)if(ue)if((f=y[a][l]("data-expand"))&&(u=1*f)||(u=de),z!==u&&(G=innerWidth+u*te,J=innerHeight+u,d=-1*u,z=u),s=y[a].getBoundingClientRect(),(Y=s.bottom)>=d&&(K=s.top)<=J&&(V=s.right)>=d*te&&(Q=s.left)<=G&&(Y||V||Q||K)&&(n.loadHidden||"hidden"!=E(y[a],"visibility"))&&(H&&fe<3&&!f&&(D<3||ze<4)||pe(y[a],u))){if(Ee(y[a]),c=!0,fe>9)break}else!c&&H&&!o&&fe<4&&ze<4&&D>2&&(q[0]||n.preloadAfterLoad)&&(q[0]||!f&&(Y||V||Q||K||"auto"!=y[a][l](n.sizesAttr)))&&(o=q[0]||y[a]);else Ee(y[a]);o&&!c&&Ee(o)}},ie=ge,re=0,ae=n.ricTimeout,se=function(){ne=!1,re=a.now(),ie()},oe=f&&n.ricTimeout?function(){f(se,{timeout:ae}),ae!==n.ricTimeout&&(ae=n.ricTimeout)}:S(function(){u(se)},!0),me=function(e){var t;(e=!0===e)&&(ae=33),ne||(ne=!0,(t=125-(a.now()-re))<0&&(t=0),e||t<9&&f?oe():u(oe,t))},ve=function(e){v(e.target,n.loadedClass),h(e.target,n.loadingClass),C(e.target,Ce),b(e.target,"lazyloaded")},he=S(ve),Ce=function(e){he({target:e.target})},be=function(e){var t,i=e[l](n.srcsetAttr);(t=n.customMedia[e[l]("data-media")||e[l]("media")])&&e.setAttribute("media",t),i&&e.setAttribute("srcset",i)},Ae=S(function(e,t,i,r,a){var s,o,c,d,f,y;(f=b(e,"lazybeforeunveil",t)).defaultPrevented||(r&&(i?v(e,n.autosizesClass):e.setAttribute("sizes",r)),o=e[l](n.srcsetAttr),s=e[l](n.srcAttr),a&&(c=e.parentNode,d=c&&z.test(c.nodeName||"")),y=t.firesLoad||"src"in e&&(o||s||d),f={target:e},y&&(C(e,ye,!0),clearTimeout(U),U=u(ye,2500),v(e,n.loadingClass),C(e,Ce,!0)),d&&g.call(c.getElementsByTagName("source"),be),o?e.setAttribute("srcset",o):s&&!d&&(ce.test(e.nodeName)?function(e,t){try{e.contentWindow.location.replace(t)}catch(i){e.src=t}}(e,s):e.src=s),a&&(o||d)&&A(e,{src:s})),e._lazyRace&&delete e._lazyRace,h(e,n.lazyClass),_(function(){(!y||e.complete&&e.naturalWidth>1)&&(y?ye(f):fe--,ve(f))},!0)}),Ee=function(e){var t,i=le.test(e.nodeName),r=i&&(e[l](n.sizesAttr)||e[l]("sizes")),a="auto"==r;(!a&&H||!i||!e[l]("src")&&!e.srcset||e.complete||m(e,n.errorClass)||!m(e,n.lazyClass))&&(t=b(e,"lazyunveilread").detail,a&&W.updateElem(e,!0,e.offsetWidth),e._lazyRace=!0,fe++,Ae(e,t,a,r,i))},we=function(){if(!H)if(a.now()-X<999)u(we,999);else{var e=N(function(){n.loadMode=3,me()});H=!0,n.loadMode=3,me(),c("scroll",function(){3==n.loadMode&&(n.loadMode=2),e()},!0)}},{_:function(){X=a.now(),i.elements=t.getElementsByClassName(n.lazyClass),q=t.getElementsByClassName(n.lazyClass+" "+n.preloadClass),te=n.hFac,c("scroll",me,!0),c("resize",me,!0),e.MutationObserver?new MutationObserver(me).observe(r,{childList:!0,subtree:!0,attributes:!0}):(r[o]("DOMNodeInserted",me,!0),r[o]("DOMAttrModified",me,!0),setInterval(me,999)),c("hashchange",me,!0),["focus","mouseover","click","load","transitionend","animationend","webkitAnimationEnd"].forEach(function(e){t[o](e,me,!0)}),/d$|^c/.test(t.readyState)?we():(c("load",we),t[o]("DOMContentLoaded",me),u(we,2e4)),i.elements.length?(ge(),_._lsFlush()):me()},checkElems:me,unveil:Ee}),W=(O=S(function(e,t,i,n){var r,a,s;if(e._lazysizesWidth=n,n+="px",e.setAttribute("sizes",n),z.test(t.nodeName||""))for(r=t.getElementsByTagName("source"),a=0,s=r.length;a<s;a++)r[a].setAttribute("sizes",n);i.detail.dataAttr||A(e,i.detail)}),j=function(e,t,i){var n,r=e.parentNode;r&&(i=w(e,r,i),(n=b(e,"lazybeforesizes",{width:i,dataAttr:!!t})).defaultPrevented||(i=n.detail.width)&&i!==e._lazysizesWidth&&O(e,r,n,i))},k=N(function(){var e,t=I.length;if(t)for(e=0;e<t;e++)j(I[e])}),{_:function(){I=t.getElementsByClassName(n.autosizesClass),c("resize",k)},checkElems:k,updateElem:j}),F=function(){F.i||(F.i=!0,W._(),$._())};var I,O,j,k;var q,H,U,D,X,G,J,K,Q,V,Y,Z,ee,te,ie,ne,re,ae,se,oe,le,ce,ue,de,fe,ze,ye,pe,ge,me,ve,he,Ce,be,Ae,Ee,we;return i={cfg:n,autoSizer:W,loader:$,init:F,uP:A,aC:v,rC:h,hC:m,fire:b,gW:w,rAF:_}}(n,n.document),n.lazySizes=r,"object"==typeof t&&t.exports&&(t.exports=r)},{}],3:[function(e,t,i){var n,r,a;n=window,a=function(){r(n.lazySizes),n.removeEventListener("lazyunveilread",a,!0)},r=(r=function(e,t,i){"use strict";var n,r=t.createElement("img");!("srcset"in r)||"sizes"in r||e.HTMLPictureElement||(n=/^picture$/i,t.addEventListener("lazybeforeunveil",function(e){var r,a,s,o,l,c,u;e.detail.instance==i&&(!e.defaultPrevented&&!lazySizesConfig.noIOSFix&&(r=e.target)&&(s=r.getAttribute(lazySizesConfig.srcsetAttr))&&(a=r.parentNode)&&((l=n.test(a.nodeName||""))||(o=r.getAttribute("sizes")||r.getAttribute(lazySizesConfig.sizesAttr)))&&(c=l?a:t.createElement("picture"),r._lazyImgSrc||Object.defineProperty(r,"_lazyImgSrc",{value:t.createElement("source"),writable:!0}),u=r._lazyImgSrc,o&&u.setAttribute("sizes",o),u.setAttribute(lazySizesConfig.srcsetAttr,s),r.setAttribute("data-pfsrcset",s),r.removeAttribute(lazySizesConfig.srcsetAttr),l||(a.insertBefore(c,r),c.appendChild(r)),c.insertBefore(u,r)))}))}).bind(null,n,n.document),"object"==typeof t&&t.exports?r(e("lazysizes")):n.lazySizes?a():n.addEventListener("lazyunveilread",a,!0)},{lazysizes:2}],4:[function(e,t,i){var n,r,a;n=window,a=function(){r(n.lazySizes),n.removeEventListener("lazyunveilread",a,!0)},r=(r=function(e,t,i){"use strict";var n,r,a,s=i&&i.cfg||e.lazySizesConfig,o=t.createElement("img"),l="sizes"in o&&"srcset"in o,c=/\s+\d+h/g,u=(r=/\s+(\d+)(w|h)\s+(\d+)(w|h)/,a=Array.prototype.forEach,function(e){var i=t.createElement("img"),n=function(e){var t,i=e.getAttribute(lazySizesConfig.srcsetAttr);i&&(i.match(r)&&(t="w"==RegExp.$2?RegExp.$1/RegExp.$3:RegExp.$3/RegExp.$1)&&e.setAttribute("data-aspectratio",t),e.setAttribute(lazySizesConfig.srcsetAttr,i.replace(c,"")))},s=function(e){var t=e.target.parentNode;t&&"PICTURE"==t.nodeName&&a.call(t.getElementsByTagName("source"),n),n(e.target)},o=function(){i.currentSrc&&t.removeEventListener("lazybeforeunveil",s)};e[1]&&(t.addEventListener("lazybeforeunveil",s),i.onload=o,i.onerror=o,i.srcset="data:,a 1w 1h",i.complete&&o())});if(s||(s={},e.lazySizesConfig=s),s.supportsType||(s.supportsType=function(e){return!e}),!e.picturefill&&!s.pf){if(e.HTMLPictureElement&&l)return t.msElementsFromPoint&&u(navigator.userAgent.match(/Edge\/(\d+)/)),void(s.pf=function(){});var d,f,z,y,p,g,m,v,h,C,b,A,E;s.pf=function(t){var i,r;if(!e.picturefill)for(i=0,r=t.elements.length;i<r;i++)n(t.elements[i])},p=function(e,t){return e.w-t.w},g=/^\s*\d+\.*\d*px\s*$/,f=/(([^,\s].[^\s]+)\s+(\d+)w)/g,z=/\s/,y=function(e,t,i,n){d.push({c:t,u:i,w:1*n})},v=function(){var e,i,r;v.init||(v.init=!0,addEventListener("resize",(i=t.getElementsByClassName("lazymatchmedia"),r=function(){var e,t;for(e=0,t=i.length;e<t;e++)n(i[e])},function(){clearTimeout(e),e=setTimeout(r,66)})))},h=function(t,n){var r,a=t.getAttribute("srcset")||t.getAttribute(s.srcsetAttr);!a&&n&&(a=t._lazypolyfill?t._lazypolyfill._set:t.getAttribute(s.srcAttr)||t.getAttribute("src")),t._lazypolyfill&&t._lazypolyfill._set==a||(r=m(a||""),n&&t.parentNode&&(r.isPicture="PICTURE"==t.parentNode.nodeName.toUpperCase(),r.isPicture&&e.matchMedia&&(i.aC(t,"lazymatchmedia"),v())),r._set=a,Object.defineProperty(t,"_lazypolyfill",{value:r,writable:!0}))},C=function(t){return e.matchMedia?(C=function(e){return!e||(matchMedia(e)||{}).matches})(t):!t},b=function(t){var n,r,a,o,l,c,u,d,f,z;if(h(o=t,!0),(l=o._lazypolyfill).isPicture)for(r=0,a=(n=t.parentNode.getElementsByTagName("source")).length;r<a;r++)if(s.supportsType(n[r].getAttribute("type"),t)&&C(n[r].getAttribute("media"))){o=n[r],h(o),l=o._lazypolyfill;break}return l.length>1?(u=o.getAttribute("sizes")||"",u=g.test(u)&&parseInt(u,10)||i.gW(t,t.parentNode),l.d=(d=t,f=e.devicePixelRatio||1,z=i.getX&&i.getX(d),Math.min(z||f,2.5,f)),!l.src||!l.w||l.w<u?(l.w=u,c=function(e){for(var t,i,n=e.length,r=e[n-1],a=0;a<n;a++)if((r=e[a]).d=r.w/e.w,r.d>=e.d){!r.cached&&(t=e[a-1])&&t.d>e.d-.13*Math.pow(e.d,2.2)&&(i=Math.pow(t.d-.6,1.6),t.cached&&(t.d+=.15*i),t.d+(r.d-e.d)*i>e.d&&(r=t));break}return r}(l.sort(p)),l.src=c):c=l.src):c=l[0],c},(A=function(e){if(!l||!e.parentNode||"PICTURE"==e.parentNode.nodeName.toUpperCase()){var t=b(e);t&&t.u&&e._lazypolyfill.cur!=t.u&&(e._lazypolyfill.cur=t.u,t.cached=!0,e.setAttribute(s.srcAttr,t.u),e.setAttribute("src",t.u))}}).parse=m=function(e){return d=[],(e=e.trim()).replace(c,"").replace(f,y),d.length||!e||z.test(e)||d.push({c:e,u:e,w:99}),d},n=A,s.loadedClass&&s.loadingClass&&(E=[],['img[sizes$="px"][srcset].',"picture > img:not([srcset])."].forEach(function(e){E.push(e+s.loadedClass),E.push(e+s.loadingClass)}),s.pf({elements:t.querySelectorAll(E.join(", "))}))}}).bind(null,n,n.document),"object"==typeof t&&t.exports?r(e("lazysizes"),e("../fix-ios-sizes/fix-ios-sizes")):n.lazySizes?a():n.addEventListener("lazyunveilread",a,!0)},{"../fix-ios-sizes/fix-ios-sizes":3,lazysizes:2}]},{},[1]);</script>
     <style>.hljs{display:block;overflow-x:auto;padding:.5em;color:#333;background:#f8f8f8}.hljs-comment,.hljs-quote{color:#998;font-style:italic}.hljs-keyword,.hljs-selector-tag,.hljs-subst{color:#333;font-weight:700}.hljs-literal,.hljs-number,.hljs-tag .hljs-attr,.hljs-template-variable,.hljs-variable{color:teal}.hljs-doctag,.hljs-string{color:#d14}.hljs-section,.hljs-selector-id,.hljs-title{color:#900;font-weight:700}.hljs-subst{font-weight:400}.hljs-class .hljs-title,.hljs-type{color:#458;font-weight:700}.hljs-attribute,.hljs-name,.hljs-tag{color:navy;font-weight:400}.hljs-link,.hljs-regexp{color:#009926}.hljs-bullet,.hljs-symbol{color:#990073}.hljs-built_in,.hljs-builtin-name{color:#0086b3}.hljs-meta{color:#999;font-weight:700}.hljs-deletion{background:#fdd}.hljs-addition{background:#dfd}.hljs-emphasis{font-style:italic}.hljs-strong{font-weight:700}.hljs{padding:1.5rem}:root.docs{overflow-y:scroll}.docs-Aside{display:none}.docs-Code{margin-bottom:1.5rem}.docs-Code-example{background-color:#f7f7f7;border-radius:6px 6px 0 0;padding:1.5rem}.docs-Code-highlight{font-size:.75rem;line-height:1.5;background-color:#f7f7f7;border-radius:0 0 6px 6px;border-top:3px solid #fff;overflow:auto}.docs-Code-highlight:only-child{border-radius:6px}.docs-Code-highlight pre{margin-bottom:0}.docs-Header-navbarPrimary .Navbar-logo-version{font-size:.75rem;line-height:1.5;color:#737373;display:inline-block;margin-left:6px}.docs-Header-navbarSecondary.Navbar--default{border-top:1px solid rgba(0,0,0,.08);background-color:#000}.docs-Header-navbarSecondary.Navbar--default .Navbar-ctrl-trigger-icon{border-color:#fff}.docs-Header-navbarSecondary.Navbar--default .Navbar-ctrl-trigger-icon:after,.docs-Header-navbarSecondary.Navbar--default .Navbar-ctrl-trigger-icon:before{background-color:#fff}.docs-Header-navbarSecondary.Navbar--default .Navbar-item,.docs-Header-navbarSecondary.Navbar--default .Navbar-trigger{border-color:hsla(0,0%,100%,.1)}.docs-Header-navbarSecondary.Navbar--default .Navbar-item.is-active>.Navbar-link{color:#fff;font-weight:bolder}.docs-Header-navbarSecondary.Navbar--default .Navbar-link{color:#fff}.docs-Header-navbarSecondary.Navbar--default .Navbar-link:hover{color:#fff}.docs-Header-navbarSecondary.Navbar--default .Navbar-trigger-icon:after{color:hsla(0,0%,100%,.4)}.docs-Header-navbarSecondary.Navbar--default .Navbar-sub{background-color:#1a1a1a}.docs-Header-navbarSecondary.Navbar--default .Navbar-sub .Navbar-item,.docs-Header-navbarSecondary.Navbar--default .Navbar-sub .Navbar-trigger{border-color:hsla(0,0%,100%,.03)}.docs-Hero.Hero.-full .Hero-content{min-height:calc(100vh - 4.5rem)}@media (min-width:30em){.docs-Header-navbarPrimary.-xs-expand{display:-webkit-box;display:-ms-flexbox;display:flex;min-height:4.5rem}.docs-Header-navbarPrimary.-xs-expand.is-open>ul{display:-webkit-box;display:-ms-flexbox;display:flex}.docs-Header-navbarPrimary.-xs-expand>ul{display:-webkit-box;display:-ms-flexbox;display:flex;margin-left:auto;padding-right:1rem;width:auto}.docs-Header-navbarPrimary.-xs-expand .Navbar-ctrl{margin-left:0;-webkit-box-ordinal-group:4;-ms-flex-order:3;order:3}.docs-Header-navbarPrimary.-xs-expand .Navbar-ctrl-trigger{display:none}.docs-Header-navbarPrimary.-xs-expand>ul>.Navbar-item{border:0;position:relative}.docs-Header-navbarPrimary.-xs-expand>ul>.Navbar-item>.Navbar-link{border:0;padding:0 .75rem}.docs-Header-navbarPrimary.-xs-expand>ul>.Navbar-item>.Navbar-trigger{border:0;margin:2px .75rem 0 -.25rem;min-width:0;padding:0}.docs-Header-navbarPrimary.-xs-expand>ul>.Navbar-item:last-child>.Navbar-sub,.docs-Header-navbarPrimary.-xs-expand>ul>.Navbar-item:nth-last-child(2)>.Navbar-sub{left:auto;right:0}.no-touchevents .docs-Header-navbarPrimary.-xs-expand .Navbar-item.is-open>.Navbar-trigger>.Navbar-trigger-icon{-webkit-transform:rotate(180deg);transform:rotate(180deg)}.docs-Header-navbarPrimary.-xs-expand .Navbar-sub{background-color:#fff;box-shadow:0 rgba(0,0,0,.1);border-radius:0;list-style:none;margin:0;min-width:240px;padding:.75rem 1.5rem;position:absolute;top:100%;transition:opacity .3s;z-index:999;clip:rect(0,0,0,0);height:0;opacity:0;font-size:.875rem;line-height:1.42857;border-top-left-radius:0;border-top-right-radius:0;display:block;left:0}.docs-Header-navbarPrimary.-xs-expand .Navbar-sub .Navbar-item{border:0}.docs-Header-navbarPrimary.-xs-expand .Navbar-sub .Navbar-link{padding:.5rem 0}.docs-Header-navbarPrimary.-xs-expand .Navbar-sub .Navbar-trigger,.docs-Header-navbarPrimary.-xs-expand .Navbar-sub ul{display:none!important}.has-touchevents .docs-Header-navbarPrimary.-xs-expand .Navbar-item.is-open>.Navbar-sub,.no-touchevents .docs-Header-navbarPrimary.-xs-expand .Navbar-item:focus>.Navbar-sub,.no-touchevents .docs-Header-navbarPrimary.-xs-expand .Navbar-item:hover>.Navbar-sub{clip:auto;height:auto;opacity:1}}@media (min-width:48em){.docs-Header-navbarSecondary.Navbar--default.-m-expand{display:-webkit-box;display:-ms-flexbox;display:flex;min-height:4.5rem}.docs-Header-navbarSecondary.Navbar--default.-m-expand.is-open>ul{display:-webkit-box;display:-ms-flexbox;display:flex}.docs-Header-navbarSecondary.Navbar--default.-m-expand>ul{display:-webkit-box;display:-ms-flexbox;display:flex;margin-left:.75rem;padding-right:1rem;width:auto}.docs-Header-navbarSecondary.Navbar--default.-m-expand .Navbar-ctrl{margin-left:0;-webkit-box-ordinal-group:4;-ms-flex-order:3;order:3}.docs-Header-navbarSecondary.Navbar--default.-m-expand .Navbar-ctrl-trigger{display:none}.docs-Header-navbarSecondary.Navbar--default.-m-expand>ul>.Navbar-item{border:0;position:relative}.docs-Header-navbarSecondary.Navbar--default.-m-expand>ul>.Navbar-item>.Navbar-link{border:0;padding:0 .75rem}.docs-Header-navbarSecondary.Navbar--default.-m-expand>ul>.Navbar-item>.Navbar-trigger{border:0;margin:2px .75rem 0 -.25rem;min-width:0;padding:0}.docs-Header-navbarSecondary.Navbar--default.-m-expand>ul>.Navbar-item:last-child>.Navbar-sub{left:0;right:auto}.no-touchevents .docs-Header-navbarSecondary.Navbar--default.-m-expand .Navbar-item.is-open>.Navbar-trigger>.Navbar-trigger-icon{-webkit-transform:rotate(180deg);transform:rotate(180deg)}.docs-Header-navbarSecondary.Navbar--default.-m-expand .Navbar-sub{background-color:#fff;box-shadow:0 rgba(0,0,0,.1);border-radius:0;list-style:none;margin:0;min-width:240px;padding:.75rem 1.5rem;position:absolute;top:100%;transition:opacity .3s;z-index:999;clip:rect(0,0,0,0);height:0;opacity:0;font-size:.875rem;line-height:1.42857;background-color:#1a1a1a;border-top-left-radius:0;border-top-right-radius:0;display:block;left:0}.docs-Header-navbarSecondary.Navbar--default.-m-expand .Navbar-sub .Navbar-item{border:0}.docs-Header-navbarSecondary.Navbar--default.-m-expand .Navbar-sub .Navbar-link{padding:.5rem 0}.docs-Header-navbarSecondary.Navbar--default.-m-expand .Navbar-sub .Navbar-trigger,.docs-Header-navbarSecondary.Navbar--default.-m-expand .Navbar-sub ul{display:none!important}.has-touchevents .docs-Header-navbarSecondary.Navbar--default.-m-expand .Navbar-item.is-open>.Navbar-sub,.no-touchevents .docs-Header-navbarSecondary.Navbar--default.-m-expand .Navbar-item:focus>.Navbar-sub,.no-touchevents .docs-Header-navbarSecondary.Navbar--default.-m-expand .Navbar-item:hover>.Navbar-sub{clip:auto;height:auto;opacity:1}}@media (min-width:64em){.docs-App{display:-webkit-box;display:-ms-flexbox;display:flex;-ms-flex-wrap:wrap;flex-wrap:wrap}.docs-Aside{-webkit-align-self:flex-start;-ms-flex-item-align:start;align-self:flex-start;border-right:2px solid rgba(0,0,0,.08);display:block;height:calc(100vh - 4.5rem);position:-webkit-sticky;position:sticky;top:4.5rem;width:18%}.docs-Aside .docs-Aside-navbar{background-color:transparent;max-height:calc(100vh - 4.5rem);margin-bottom:4.5rem;overflow:auto}.docs-Aside .docs-Aside-navbar>ul>.Navbar-item:last-child{margin-bottom:96px}.docs-Aside .docs-Aside-navbar .Navbar-sub{border-left:1px solid rgba(0,0,0,.08);margin-left:1.5rem;margin-top:.375rem}.docs-Aside .docs-Aside-navbar .Navbar-sub .Navbar-link{padding-left:.75rem}.docs-Header.Header{position:-webkit-sticky;position:sticky;top:-4.5rem;width:100%}.docs-Header-navbarSecondary.Navbar--default .Navbar-sub,.docs-Header-navbarSecondary.Navbar--default .Navbar-trigger{display:none}.docs-Page{-webkit-box-flex:1;-ms-flex:1;flex:1}}</style>
@@ -32,12 +32,12 @@
         </div>
         <ul>
           <li class="Navbar-item">
-            <a class="Navbar-link" href="/docs/getting-started/introduction/">
+            <a class="Navbar-link" href="docs/getting-started/introduction/">
               Docs
             </a>
           </li>
           <li class="Navbar-item">
-            <a class="Navbar-link" href="/styleguide/overview">
+            <a class="Navbar-link" href="styleguide/overview">
               Styleguide
             </a>
           </li>
@@ -55,140 +55,140 @@
       </div>
       <ul>
           <li class="Navbar-item     ">
-            <a class="Navbar-link" href="/docs/getting-started/introduction">Getting started</a>
+            <a class="Navbar-link" href="docs/getting-started/introduction">Getting started</a>
               <span class="Navbar-trigger">
                 <i class="Navbar-trigger-icon"></i>
               </span>
               <ul class="Navbar-sub">
                 <li class="Navbar-item ">
-                  <a class="Navbar-link" href="/docs/getting-started/introduction">Introduction</a>
+                  <a class="Navbar-link" href="docs/getting-started/introduction">Introduction</a>
                 </li>
                 <li class="Navbar-item ">
-                  <a class="Navbar-link" href="/docs/getting-started/requirements">Requirements</a>
+                  <a class="Navbar-link" href="docs/getting-started/requirements">Requirements</a>
                 </li>
                 <li class="Navbar-item ">
-                  <a class="Navbar-link" href="/docs/getting-started/generator">Generator</a>
+                  <a class="Navbar-link" href="docs/getting-started/generator">Generator</a>
                 </li>
                 <li class="Navbar-item ">
-                  <a class="Navbar-link" href="/docs/getting-started/structure">Structure</a>
+                  <a class="Navbar-link" href="docs/getting-started/structure">Structure</a>
                 </li>
                 <li class="Navbar-item ">
-                  <a class="Navbar-link" href="/docs/getting-started/contents">Contents</a>
+                  <a class="Navbar-link" href="docs/getting-started/contents">Contents</a>
                 </li>
               </ul>
           </li>
           <li class="Navbar-item is-active is-active is-active is-active is-active is-active is-active is-active is-active is-active is-active is-active is-active is-active is-active">
-            <a class="Navbar-link" href="/docs/components/navbar">Components</a>
+            <a class="Navbar-link" href="docs/components/navbar">Components</a>
               <span class="Navbar-trigger">
                 <i class="Navbar-trigger-icon"></i>
               </span>
               <ul class="Navbar-sub">
                 <li class="Navbar-item ">
-                  <a class="Navbar-link" href="/docs/components/navbar">Navbar</a>
+                  <a class="Navbar-link" href="docs/components/navbar">Navbar</a>
                 </li>
                 <li class="Navbar-item ">
-                  <a class="Navbar-link" href="/docs/components/overview">Overview</a>
+                  <a class="Navbar-link" href="docs/components/overview">Overview</a>
                 </li>
                 <li class="Navbar-item ">
-                  <a class="Navbar-link" href="/docs/components/accordion">Accordion</a>
+                  <a class="Navbar-link" href="docs/components/accordion">Accordion</a>
                 </li>
                 <li class="Navbar-item ">
-                  <a class="Navbar-link" href="/docs/components/alert">Alert</a>
+                  <a class="Navbar-link" href="docs/components/alert">Alert</a>
                 </li>
                 <li class="Navbar-item ">
-                  <a class="Navbar-link" href="/docs/components/badge">Badge</a>
+                  <a class="Navbar-link" href="docs/components/badge">Badge</a>
                 </li>
                 <li class="Navbar-item ">
-                  <a class="Navbar-link" href="/docs/components/breadcrumb">Breadcrumb</a>
+                  <a class="Navbar-link" href="docs/components/breadcrumb">Breadcrumb</a>
                 </li>
                 <li class="Navbar-item ">
-                  <a class="Navbar-link" href="/docs/components/button">Button</a>
+                  <a class="Navbar-link" href="docs/components/button">Button</a>
                 </li>
                 <li class="Navbar-item ">
-                  <a class="Navbar-link" href="/docs/components/card">Card</a>
+                  <a class="Navbar-link" href="docs/components/card">Card</a>
                 </li>
                 <li class="Navbar-item ">
-                  <a class="Navbar-link" href="/docs/components/content">Content</a>
+                  <a class="Navbar-link" href="docs/components/content">Content</a>
                 </li>
                 <li class="Navbar-item is-active">
-                  <a class="Navbar-link" href="/docs/components/form">Form</a>
+                  <a class="Navbar-link" href="docs/components/form">Form</a>
                 </li>
                 <li class="Navbar-item ">
-                  <a class="Navbar-link" href="/docs/components/heading">Heading</a>
+                  <a class="Navbar-link" href="docs/components/heading">Heading</a>
                 </li>
                 <li class="Navbar-item ">
-                  <a class="Navbar-link" href="/docs/components/hero">Hero</a>
+                  <a class="Navbar-link" href="docs/components/hero">Hero</a>
                 </li>
                 <li class="Navbar-item ">
-                  <a class="Navbar-link" href="/docs/components/modal">Modal</a>
+                  <a class="Navbar-link" href="docs/components/modal">Modal</a>
                 </li>
                 <li class="Navbar-item ">
-                  <a class="Navbar-link" href="/docs/components/pagination">Pagination</a>
+                  <a class="Navbar-link" href="docs/components/pagination">Pagination</a>
                 </li>
                 <li class="Navbar-item ">
-                  <a class="Navbar-link" href="/docs/components/text">Text</a>
+                  <a class="Navbar-link" href="docs/components/text">Text</a>
                 </li>
               </ul>
           </li>
           <li class="Navbar-item ">
-            <a class="Navbar-link" href="/docs/layouts/overview">Layouts</a>
+            <a class="Navbar-link" href="docs/layouts/overview">Layouts</a>
               <span class="Navbar-trigger">
                 <i class="Navbar-trigger-icon"></i>
               </span>
               <ul class="Navbar-sub">
                 <li class="Navbar-item ">
-                  <a class="Navbar-link" href="/docs/layouts/overview">Overview</a>
+                  <a class="Navbar-link" href="docs/layouts/overview">Overview</a>
                 </li>
               </ul>
           </li>
           <li class="Navbar-item       ">
-            <a class="Navbar-link" href="/docs/content/base">Content</a>
+            <a class="Navbar-link" href="docs/content/base">Content</a>
               <span class="Navbar-trigger">
                 <i class="Navbar-trigger-icon"></i>
               </span>
               <ul class="Navbar-sub">
                 <li class="Navbar-item ">
-                  <a class="Navbar-link" href="/docs/content/base">Base</a>
+                  <a class="Navbar-link" href="docs/content/base">Base</a>
                 </li>
                 <li class="Navbar-item ">
-                  <a class="Navbar-link" href="/docs/content/content">Content</a>
+                  <a class="Navbar-link" href="docs/content/content">Content</a>
                 </li>
                 <li class="Navbar-item ">
-                  <a class="Navbar-link" href="/docs/content/typography">Typography</a>
+                  <a class="Navbar-link" href="docs/content/typography">Typography</a>
                 </li>
                 <li class="Navbar-item ">
-                  <a class="Navbar-link" href="/docs/content/code">Code</a>
+                  <a class="Navbar-link" href="docs/content/code">Code</a>
                 </li>
                 <li class="Navbar-item ">
-                  <a class="Navbar-link" href="/docs/content/images">Images</a>
+                  <a class="Navbar-link" href="docs/content/images">Images</a>
                 </li>
                 <li class="Navbar-item ">
-                  <a class="Navbar-link" href="/docs/content/tables">Tables</a>
+                  <a class="Navbar-link" href="docs/content/tables">Tables</a>
                 </li>
                 <li class="Navbar-item ">
-                  <a class="Navbar-link" href="/docs/content/figures">Figures</a>
+                  <a class="Navbar-link" href="docs/content/figures">Figures</a>
                 </li>
               </ul>
           </li>
           <li class="Navbar-item ">
-            <a class="Navbar-link" href="/docs/utilities/helper">Utilities</a>
+            <a class="Navbar-link" href="docs/utilities/helper">Utilities</a>
               <span class="Navbar-trigger">
                 <i class="Navbar-trigger-icon"></i>
               </span>
               <ul class="Navbar-sub">
                 <li class="Navbar-item ">
-                  <a class="Navbar-link" href="/docs/utilities/helper">Helper</a>
+                  <a class="Navbar-link" href="docs/utilities/helper">Helper</a>
                 </li>
               </ul>
           </li>
           <li class="Navbar-item ">
-            <a class="Navbar-link" href="/docs/mixins/mixin">Mixins</a>
+            <a class="Navbar-link" href="docs/mixins/mixin">Mixins</a>
               <span class="Navbar-trigger">
                 <i class="Navbar-trigger-icon"></i>
               </span>
               <ul class="Navbar-sub">
                 <li class="Navbar-item ">
-                  <a class="Navbar-link" href="/docs/mixins/mixin">Mixin</a>
+                  <a class="Navbar-link" href="docs/mixins/mixin">Mixin</a>
                 </li>
               </ul>
           </li>
@@ -208,7 +208,7 @@
             <ul>
         
         <li class="Navbar-item ">
-          <a class="Navbar-link" href="/docs/components/navbar">
+          <a class="Navbar-link" href="docs/components/navbar">
              Navbar
           </a>
 
@@ -231,7 +231,7 @@
 
 
         <li class="Navbar-item ">
-          <a class="Navbar-link" href="/docs/components/overview">
+          <a class="Navbar-link" href="docs/components/overview">
              Overview
           </a>
 
@@ -240,7 +240,7 @@
 
 
         <li class="Navbar-item ">
-          <a class="Navbar-link" href="/docs/components/accordion">
+          <a class="Navbar-link" href="docs/components/accordion">
              Accordion
           </a>
 
@@ -249,7 +249,7 @@
 
 
         <li class="Navbar-item ">
-          <a class="Navbar-link" href="/docs/components/alert">
+          <a class="Navbar-link" href="docs/components/alert">
              Alert
           </a>
 
@@ -258,7 +258,7 @@
 
 
         <li class="Navbar-item ">
-          <a class="Navbar-link" href="/docs/components/badge">
+          <a class="Navbar-link" href="docs/components/badge">
              Badge
           </a>
 
@@ -267,7 +267,7 @@
 
 
         <li class="Navbar-item ">
-          <a class="Navbar-link" href="/docs/components/breadcrumb">
+          <a class="Navbar-link" href="docs/components/breadcrumb">
              Breadcrumb
           </a>
 
@@ -276,7 +276,7 @@
 
 
         <li class="Navbar-item ">
-          <a class="Navbar-link" href="/docs/components/button">
+          <a class="Navbar-link" href="docs/components/button">
              Button
           </a>
 
@@ -285,7 +285,7 @@
 
 
         <li class="Navbar-item ">
-          <a class="Navbar-link" href="/docs/components/card">
+          <a class="Navbar-link" href="docs/components/card">
              Card
           </a>
 
@@ -294,7 +294,7 @@
 
 
         <li class="Navbar-item ">
-          <a class="Navbar-link" href="/docs/components/content">
+          <a class="Navbar-link" href="docs/components/content">
              Content
           </a>
 
@@ -303,7 +303,7 @@
 
 
         <li class="Navbar-item is-active">
-          <a class="Navbar-link" href="/docs/components/form">
+          <a class="Navbar-link" href="docs/components/form">
             &darr; Form
           </a>
 
@@ -312,7 +312,7 @@
 
 
         <li class="Navbar-item ">
-          <a class="Navbar-link" href="/docs/components/heading">
+          <a class="Navbar-link" href="docs/components/heading">
              Heading
           </a>
 
@@ -321,7 +321,7 @@
 
 
         <li class="Navbar-item ">
-          <a class="Navbar-link" href="/docs/components/hero">
+          <a class="Navbar-link" href="docs/components/hero">
              Hero
           </a>
 
@@ -330,7 +330,7 @@
 
 
         <li class="Navbar-item ">
-          <a class="Navbar-link" href="/docs/components/modal">
+          <a class="Navbar-link" href="docs/components/modal">
              Modal
           </a>
 
@@ -339,7 +339,7 @@
 
 
         <li class="Navbar-item ">
-          <a class="Navbar-link" href="/docs/components/pagination">
+          <a class="Navbar-link" href="docs/components/pagination">
              Pagination
           </a>
 
@@ -348,7 +348,7 @@
 
 
         <li class="Navbar-item ">
-          <a class="Navbar-link" href="/docs/components/text">
+          <a class="Navbar-link" href="docs/components/text">
              Text
           </a>
 
@@ -376,7 +376,7 @@
 
   </div>
 
-    <script src="/assets/rebirth-0b137bfa00.all.min.js" async></script>
-    <script src="/assets/docs-dc5b5e1642.js" async></script>
+    <script src="assets/rebirth-0b137bfa00.all.min.js" async></script>
+    <script src="assets/docs-dc5b5e1642.js" async></script>
   </body>
 </html>
