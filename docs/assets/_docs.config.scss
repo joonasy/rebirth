@@ -4,18 +4,6 @@
 
 
 // =========
-// Component overrides
-// =========
-
-// Navbar
-$NavbarDefault-breakpoints: (
-  xs: 560px,
-  m: map-get($mq-breakpoints, m),
-  l: map-get($mq-breakpoints, l)
-);
-
-
-// =========
 // Colors
 // =========
 

@@ -90,8 +90,8 @@ nav:
     overview:
       title: Overview
       path: styleguide/overview
-      pages:
-        - title: ''
+      # pages:
+      #   - title: ''
           # toc:
           #   - This is temporary
     css:
@@ -107,8 +107,8 @@ nav:
     javascript:
       title: JavaScript
       path: styleguide/javascript
-      pages:
-        - title: ''
+      # pages:
+      #   - title: ''
     # wordpress:
     #   title: WordPress
     #   path: styleguide/wordpress
