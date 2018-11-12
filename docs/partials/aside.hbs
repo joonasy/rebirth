@@ -9,7 +9,7 @@
       {{#each content as |item|}}
 
         <li class="Navbar-item {{#if (is title ../title)}}is-active{{/if}}">
-          <a class="Navbar-link" href="{{../root}}{{#if ../path}}{{../../path}}{{else}}{{path}}{{/if}}/{{dashcase title}}">
+          <a class="Navbar-link" href="/{{#if ../path}}{{../../path}}{{else}}{{path}}{{/if}}/{{dashcase title}}">
             {{#if (is title ../title)}}&darr;{{/if}} {{title}}
           </a>
 
@@ -17,7 +17,7 @@
             <ul class="Navbar-sub">
               {{#each item.pages}}
                 <li class="Navbar-item">
-                  <a class="Navbar-link" href="{{../../root}}{{item.path}}/{{dashcase title}}">{{title}}</a>
+                  <a class="Navbar-link" href="/{{item.path}}/{{dashcase title}}">{{title}}</a>
                 </li>
               {{/each}}
             </ul>

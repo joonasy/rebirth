@@ -6,17 +6,18 @@
     <meta name="description" content="{{docs.description}}">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <base href="{{root}}">
 
-    <script src="{{root}}assets/docs.head.js"></script>
-    <link href="{{root}}assets/docs.css" rel="stylesheet">
+    <script src="/{{#if dev}}dist/{{else}}assets/{{/if}}rebirth.head{{#unless dev}}.min{{/unless}}.js"></script>
+    <link href="/{{#if dev}}dist/{{else}}assets/{{/if}}rebirth.all{{#unless dev}}.min{{/unless}}.css" rel="stylesheet">
 
-    <script src="{{root}}{{#if dev}}dist/{{else}}assets/{{/if}}rebirth.head{{#unless dev}}.min{{/unless}}.js"></script>
-    <link href="{{root}}{{#if dev}}dist/{{else}}assets/{{/if}}rebirth.all{{#unless dev}}.min{{/unless}}.css" rel="stylesheet">
+    <script src="/assets/docs.head.js"></script>
+    <link href="/assets/docs.css" rel="stylesheet">
 
     {{#if redirect}}
       <meta name="robots" content="noindex">
-      <meta http-equiv="refresh" content="0; url={{root}}{{redirect}}">
-      <link rel="canonical" href="{{root}}{{redirect}}">
+      <meta http-equiv="refresh" content="0; url={{redirect}}">
+      <link rel="canonical" href="{{redirect}}">
     {{/if}}
   </head>
   <body>
