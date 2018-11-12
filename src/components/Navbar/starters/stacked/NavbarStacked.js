@@ -12,7 +12,7 @@ export default class NavbarStacked {
     const navbarTrigger = $$('.js-NavbarStackedTrigger');
     const navbarItem = $$('.js-NavbarStacked .Navbar-item');
 
-    navbar.forEach((nav) => {
+    [].forEach.call(navbar, (nav) => {
       nav.addEventListener(
         'click',
         (e) => {
@@ -42,7 +42,7 @@ export default class NavbarStacked {
       );
     });
 
-    navbarTrigger.forEach((trigger) => {
+    [].forEach.call(navbarTrigger, (trigger) => {
       trigger.addEventListener(
         'click',
         (e) => {
@@ -60,8 +60,8 @@ export default class NavbarStacked {
     });
 
     window.addEventListener('click', (e) => {
-      navbarItem.forEach((item) => item.classList.remove('is-open'));
-      navbar.forEach((nav) => nav.classList.remove('is-open'));
+      [].forEach.call(navbarItem, (item) => item.classList.remove('is-open'));
+      [].forEach.call(navbar, (nav) => nav.classList.remove('is-open'));
     });
   }
 }

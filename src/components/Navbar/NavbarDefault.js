@@ -61,7 +61,7 @@ export default class NavbarDefault {
 
     window.addEventListener('click', (e) => {
       [].forEach.call(navbarItem, (item) => item.classList.remove('is-open'));
-      [].forEach.call(nav, (nav) => nav.classList.remove('is-open'));
+      [].forEach.call(navbar, (nav) => nav.classList.remove('is-open'));
     });
   }
 }
