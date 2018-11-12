@@ -1216,7 +1216,6 @@ h6, .h6 {
   -webkit-align-items: center;
       -ms-flex-align: center;
           align-items: center;
-  border-left: 1px solid rgba(0, 0, 0, 0.08);
   color: #000000;
   cursor: pointer;
   display: -webkit-box;
@@ -1324,7 +1323,7 @@ h6, .h6 {
     min-width: 0;
     padding: 0;
   }
-  .Navbar--default > ul > .Navbar-item:nth-last-child(2) > .Navbar-sub, .Navbar--default > ul > .Navbar-item:last-child > .Navbar-sub {
+  .Navbar--default > ul > .Navbar-item:last-child > .Navbar-sub {
     left: auto;
     right: 0;
   }

@@ -92,11 +92,12 @@
                 var isTrigger = e.target.className === 'Navbar-trigger';
                 var isLink = e.target.className === 'Navbar-link';
                 var parent = e.target.closest('.Navbar-item');
+                var hasDropdown = (0, _utility.$)('.Navbar-sub', parent);
                 e.stopPropagation();
 
-                if (isLink && _feature.hasTouch) e.preventDefault();
+                if (isTrigger || (isLink && _feature.hasTouch && hasDropdown)) {
+                  e.preventDefault();
 
-                if (isTrigger || (isLink && _feature.hasTouch)) {
                   if (parent.classList.contains('is-open')) {
                     parent.classList.remove('is-open');
                   } else {
@@ -216,11 +217,12 @@
                 var isTrigger = e.target.className === 'Navbar-trigger';
                 var isLink = e.target.className === 'Navbar-link';
                 var parent = e.target.closest('.Navbar-item');
+                var hasDropdown = $('.Navbar-sub', parent);
                 e.stopPropagation();
 
-                if (isLink && _feature.hasTouch) e.preventDefault();
+                if (isTrigger || (isLink && _feature.hasTouch && hasDropdown)) {
+                  e.preventDefault();
 
-                if (isTrigger || (isLink && _feature.hasTouch)) {
                   if (parent.classList.contains('is-open')) {
                     parent.classList.remove('is-open');
                   } else {
