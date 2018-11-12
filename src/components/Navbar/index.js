@@ -2,6 +2,6 @@
  * Navbar
  * ======================================== */
 
-import NavbarDefault from './NavbarDefault'
+import NavbarDefault from './NavbarDefault';
 
-new NavbarDefault()
+new NavbarDefault();

@@ -2,7 +2,7 @@
  * Navbar - Default
  * ======================================= */
 
-import { $, $$ } from 'javascripts/utility';
+import { $$, $ } from 'javascripts/utility';
 import { hasTouch } from 'javascripts/feature';
 
 export default class NavbarDefault {
@@ -19,11 +19,12 @@ export default class NavbarDefault {
           const isTrigger = e.target.className === 'Navbar-trigger';
           const isLink = e.target.className === 'Navbar-link';
           const parent = e.target.closest('.Navbar-item');
+          const hasDropdown = $('.Navbar-sub', parent);
           e.stopPropagation();
 
-          if (isLink && hasTouch) e.preventDefault();
+          if (isTrigger || (isLink && hasTouch && hasDropdown)) {
+            e.preventDefault();
 
-          if (isTrigger || (isLink && hasTouch)) {
             if (parent.classList.contains('is-open')) {
               parent.classList.remove('is-open');
             } else {
