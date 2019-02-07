@@ -7,7 +7,9 @@
 
 .Navbar--stacked {
   background-color: $colorBgLightest;
+  border: 1px solid $colorBorder;
   display: flex;
+  margin-bottom: rem($baseSpace);
   flex-wrap: wrap;
 
   &.is-open > ul {
@@ -20,17 +22,18 @@
   }
 
   .Navbar-logo {
-    @include fontSize($baseFontSize-l, $baseLineHeight-l);
+    @include fontSize($baseFontSize-s, $baseLineHeight-s);
     align-items: center;
     color: $colorText;
+    font-weight: $baseFontWeightStrong;
     display: flex;
+    min-height: $uiSpace * 2;
     padding: 0 $uiSpace;
   }
 
   .Navbar-ctrl {
     display: flex;
     margin-left: auto;
-    min-height: $uiSpace * 2;
   }
 
     .Navbar-ctrl-trigger {
@@ -84,6 +87,7 @@
 
   .Navbar-trigger {
     align-items: center;
+    border-left: 1px solid $colorBorder;
     color: $colorText;
     cursor: pointer;
     display: flex;
@@ -99,7 +103,7 @@
 
   .Navbar-sub {
     display: none;
-    background-color: darken($colorLight, 6);
+    background-color: $colorBgLighter; //darken($colorLight, 6);
     width: 100%;
 
     .Navbar-link  {
@@ -111,8 +115,6 @@
     }
 
     ul {
-      background-color: rgba($colorDark, 0.03);
-
       .Navbar-trigger {
         background-color: transparent;
       }
@@ -127,7 +129,6 @@
   @mixin NavbarStacked-expand() {
     > ul {
       display: block;
-      padding: $uiSpace 0;
     }
 
     .Navbar-ctrl {
@@ -135,8 +136,6 @@
     }
 
     .Navbar-item {
-      border: 0;
-
       &.is-active {
         .Navbar-sub {
           display: block;
@@ -144,23 +143,8 @@
       }
     }
 
-      .Navbar-link {
-        padding: ($uiSpace / 6) $uiSpace;
-      }
-
-      .Navbar-trigger {
-        display: none;
-      }
-
     .Navbar-sub {
       @include fontSize($baseFontSize-s, $baseLineHeight-s);
-      background-color: transparent;
-      display: none;
-      margin-bottom: $uiSpace / 2;
-
-      .Navbar-link {
-        color: $colorTextLightest;
-      }
     }
   }
 

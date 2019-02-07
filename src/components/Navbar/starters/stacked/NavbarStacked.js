@@ -3,65 +3,44 @@
  * ======================================= */
 
 import { $$ } from 'javascripts/utility';
-import { hasTouch } from 'javascripts/feature';
 
 export default class NavbarStacked {
   constructor() {
     const navbarClass = '.js-NavbarStacked';
     const navbar = $$(navbarClass);
-    const navbarTrigger = $$('.js-NavbarStackedTrigger');
-    const navbarItem = $$('.js-NavbarStacked .Navbar-item');
 
     [].forEach.call(navbar, (nav) => {
       nav.addEventListener(
         'click',
         (e) => {
-          const isTrigger = e.target.className === 'Navbar-trigger';
-          const isLink = e.target.className === 'Navbar-link';
-          const parent = e.target.closest('.Navbar-item');
-          const hasDropdown = $('.Navbar-sub', parent);
-          e.stopPropagation();
+          const isTrigger = e.target.classList.contains('Navbar-trigger');
 
-          if (isTrigger || (isLink && hasTouch && hasDropdown)) {
-            e.preventDefault();
+          if (isTrigger) {
+            const parent = e.target.closest('.Navbar-item');
 
             if (parent.classList.contains('is-open')) {
               parent.classList.remove('is-open');
             } else {
-              [...parent.parentNode.childNodes].filter((item) => {
-                if (item.classList && item.classList.contains('is-open')) {
-                  item.classList.remove('is-open');
-                } else {
-                  parent.classList.add('is-open');
-                }
-              });
+              parent.classList.add('is-open');
+            }
+          }
+
+          const isCtrlTrigger = e.target.classList.contains(
+            'Navbar-ctrl-trigger',
+          );
+
+          if (isCtrlTrigger) {
+            const parent = e.target.closest(navbarClass);
+
+            if (parent.classList.contains('is-open')) {
+              parent.classList.remove('is-open');
+            } else {
+              parent.classList.add('is-open');
             }
           }
         },
         false,
       );
-    });
-
-    [].forEach.call(navbarTrigger, (trigger) => {
-      trigger.addEventListener(
-        'click',
-        (e) => {
-          const parent = e.target.closest(navbarClass);
-          e.stopPropagation();
-
-          if (parent.classList.contains('is-open')) {
-            parent.classList.remove('is-open');
-          } else {
-            parent.classList.add('is-open');
-          }
-        },
-        false,
-      );
-    });
-
-    window.addEventListener('click', (e) => {
-      [].forEach.call(navbarItem, (item) => item.classList.remove('is-open'));
-      [].forEach.call(navbar, (nav) => nav.classList.remove('is-open'));
     });
   }
 }
