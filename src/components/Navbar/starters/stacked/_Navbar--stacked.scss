@@ -48,6 +48,7 @@
 
       .Navbar-ctrl-trigger-icon {
         @include shapeMenu($colorPrimary);
+        pointer-events: none;
       }
 
   .Navbar-item {
