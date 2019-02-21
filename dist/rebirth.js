@@ -133,7 +133,7 @@
             [].forEach.call(navbarItem, function(item) {
               return item.classList.remove('is-open');
             });
-            [].forEach.call(nav, function(nav) {
+            [].forEach.call(navbar, function(nav) {
               return nav.classList.remove('is-open');
             });
           });

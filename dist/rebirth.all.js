@@ -141,7 +141,7 @@
             [].forEach.call(navbarItem, function(item) {
               return item.classList.remove('is-open');
             });
-            [].forEach.call(nav, function(nav) {
+            [].forEach.call(navbar, function(nav) {
               return nav.classList.remove('is-open');
             });
           });
@@ -180,19 +180,6 @@
 
         var _utility = require('javascripts/utility');
 
-        var _feature = require('javascripts/feature');
-
-        function _toConsumableArray(arr) {
-          if (Array.isArray(arr)) {
-            for (var i = 0, arr2 = Array(arr.length); i < arr.length; i++) {
-              arr2[i] = arr[i];
-            }
-            return arr2;
-          } else {
-            return Array.from(arr);
-          }
-        }
-
         function _classCallCheck(instance, Constructor) {
           if (!(instance instanceof Constructor)) {
             throw new TypeError('Cannot call a class as a function');
@@ -207,74 +194,45 @@
 
           var navbarClass = '.js-NavbarStacked';
           var navbar = (0, _utility.$$)(navbarClass);
-          var navbarTrigger = (0, _utility.$$)('.js-NavbarStackedTrigger');
-          var navbarItem = (0, _utility.$$)('.js-NavbarStacked .Navbar-item');
 
-          navbar.forEach(function(nav) {
+          [].forEach.call(navbar, function(nav) {
             nav.addEventListener(
               'click',
               function(e) {
-                var isTrigger = e.target.className === 'Navbar-trigger';
-                var isLink = e.target.className === 'Navbar-link';
-                var parent = e.target.closest('.Navbar-item');
-                var hasDropdown = $('.Navbar-sub', parent);
-                e.stopPropagation();
+                var isTrigger = e.target.classList.contains('Navbar-trigger');
 
-                if (isTrigger || (isLink && _feature.hasTouch && hasDropdown)) {
-                  e.preventDefault();
+                if (isTrigger) {
+                  var parent = e.target.closest('.Navbar-item');
 
                   if (parent.classList.contains('is-open')) {
                     parent.classList.remove('is-open');
                   } else {
-                    []
-                      .concat(_toConsumableArray(parent.parentNode.childNodes))
-                      .filter(function(item) {
-                        if (
-                          item.classList &&
-                          item.classList.contains('is-open')
-                        ) {
-                          item.classList.remove('is-open');
-                        } else {
-                          parent.classList.add('is-open');
-                        }
-                      });
+                    parent.classList.add('is-open');
+                  }
+                }
+
+                var isCtrlTrigger = e.target.classList.contains(
+                  'Navbar-ctrl-trigger',
+                );
+
+                if (isCtrlTrigger) {
+                  var _parent = e.target.closest(navbarClass);
+
+                  if (_parent.classList.contains('is-open')) {
+                    _parent.classList.remove('is-open');
+                  } else {
+                    _parent.classList.add('is-open');
                   }
                 }
               },
               false,
             );
           });
-
-          navbarTrigger.forEach(function(trigger) {
-            trigger.addEventListener(
-              'click',
-              function(e) {
-                var parent = e.target.closest(navbarClass);
-                e.stopPropagation();
-
-                if (parent.classList.contains('is-open')) {
-                  parent.classList.remove('is-open');
-                } else {
-                  parent.classList.add('is-open');
-                }
-              },
-              false,
-            );
-          });
-
-          window.addEventListener('click', function(e) {
-            navbarItem.forEach(function(item) {
-              return item.classList.remove('is-open');
-            });
-            navbar.forEach(function(nav) {
-              return nav.classList.remove('is-open');
-            });
-          });
         };
 
         exports.default = NavbarStacked;
       },
-      { 'javascripts/feature': 7, 'javascripts/utility': 8 },
+      { 'javascripts/utility': 8 },
     ],
     6: [
       function(require, module, exports) {

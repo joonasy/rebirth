@@ -20,6 +20,7 @@ const watch = require('base-watch');
 const watchify = require('watchify');
 const $ = require('gulp-load-plugins')();
 const yaml = require('js-yaml');
+const uglify = require('gulp-uglify-es').default;
 
 const production = process.env.NODE_ENV === 'production';
 const open = process.env.npm_config_disable_open ? false : 'external';
@@ -488,7 +489,7 @@ function bundleJavaScripts(src, dest, scripts, rename, cb) {
             .pipe($.rename({ suffix: '.min' }));
         }
 
-        collect = collect.pipe($.streamify($.uglify()));
+        collect = collect.pipe($.streamify(uglify));
       } else {
         collect = collect.pipe(browserSync.stream());
       }

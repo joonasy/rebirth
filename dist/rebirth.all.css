@@ -446,6 +446,7 @@ template {
   font-size: 16px;
   line-height: 1.5;
   min-width: 300px;
+  scroll-behavior: smooth;
   -moz-osx-font-smoothing: grayscale;
   -webkit-tap-highlight-color: transparent;
   -webkit-touch-callout: none;
@@ -3995,10 +3996,12 @@ textarea.Form-item {
  */
 .Navbar--stacked {
   background-color: #ffffff;
+  border: 1px solid rgba(0, 0, 0, 0.08);
   display: -webkit-box;
   display: -webkit-flex;
   display: -ms-flexbox;
   display: flex;
+  margin-bottom: 1.5rem;
   -webkit-flex-wrap: wrap;
       -ms-flex-wrap: wrap;
           flex-wrap: wrap;
@@ -4017,17 +4020,19 @@ textarea.Form-item {
 }
 
 .Navbar--stacked .Navbar-logo {
-  font-size: 1.125rem;
-  line-height: 1.44444;
+  font-size: 0.875rem;
+  line-height: 1.42857;
   -webkit-box-align: center;
   -webkit-align-items: center;
       -ms-flex-align: center;
           align-items: center;
   color: #000000;
+  font-weight: bolder;
   display: -webkit-box;
   display: -webkit-flex;
   display: -ms-flexbox;
   display: flex;
+  min-height: 3rem;
   padding: 0 1.5rem;
 }
 
@@ -4037,7 +4042,6 @@ textarea.Form-item {
   display: -ms-flexbox;
   display: flex;
   margin-left: auto;
-  min-height: 3rem;
 }
 
 .Navbar--stacked .Navbar-ctrl-trigger {
@@ -4070,6 +4074,7 @@ textarea.Form-item {
       -ms-user-select: none;
           user-select: none;
   min-width: 22px;
+  pointer-events: none;
 }
 
 .Navbar--stacked .Navbar-ctrl-trigger-icon:before, .Navbar--stacked .Navbar-ctrl-trigger-icon:after {
@@ -4140,6 +4145,7 @@ textarea.Form-item {
   -webkit-align-items: center;
       -ms-flex-align: center;
           align-items: center;
+  border-left: 1px solid rgba(0, 0, 0, 0.08);
   color: #000000;
   cursor: pointer;
   display: -webkit-box;
@@ -4180,7 +4186,7 @@ textarea.Form-item {
 
 .Navbar--stacked .Navbar-sub {
   display: none;
-  background-color: #f0f0f0;
+  background-color: #f7f7f7;
   width: 100%;
 }
 
@@ -4192,10 +4198,6 @@ textarea.Form-item {
   color: #4d4dff;
 }
 
-.Navbar--stacked .Navbar-sub ul {
-  background-color: rgba(0, 0, 0, 0.03);
-}
-
 .Navbar--stacked .Navbar-sub ul .Navbar-trigger {
   background-color: transparent;
 }
@@ -4203,32 +4205,16 @@ textarea.Form-item {
 @media (min-width: 64em) {
   .Navbar--stacked > ul {
     display: block;
-    padding: 1.5rem 0;
   }
   .Navbar--stacked .Navbar-ctrl {
     display: none;
   }
-  .Navbar--stacked .Navbar-item {
-    border: 0;
-  }
   .Navbar--stacked .Navbar-item.is-active .Navbar-sub {
     display: block;
-  }
-  .Navbar--stacked .Navbar-link {
-    padding: 0.25rem 1.5rem;
-  }
-  .Navbar--stacked .Navbar-trigger {
-    display: none;
   }
   .Navbar--stacked .Navbar-sub {
     font-size: 0.875rem;
     line-height: 1.42857;
-    background-color: transparent;
-    display: none;
-    margin-bottom: 0.75rem;
-  }
-  .Navbar--stacked .Navbar-sub .Navbar-link {
-    color: #737373;
   }
 }
 
