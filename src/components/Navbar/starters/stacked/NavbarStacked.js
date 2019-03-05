@@ -14,8 +14,12 @@ export default class NavbarStacked {
         'click',
         (e) => {
           const isTrigger = e.target.classList.contains('Navbar-trigger');
+          const isLink =
+            e.target.classList.contains('Navbar-link') &&
+            (e.target.getAttribute('href') === null ||
+              e.target.getAttribute('href') === '#');
 
-          if (isTrigger) {
+          if (isTrigger || isLink) {
             const parent = e.target.closest('.Navbar-item');
 
             if (parent.classList.contains('is-open')) {
@@ -23,6 +27,8 @@ export default class NavbarStacked {
             } else {
               parent.classList.add('is-open');
             }
+
+            e.preventDefault();
           }
 
           const isCtrlTrigger = e.target.classList.contains(
@@ -37,6 +43,8 @@ export default class NavbarStacked {
             } else {
               parent.classList.add('is-open');
             }
+
+            e.preventDefault();
           }
         },
         false,
