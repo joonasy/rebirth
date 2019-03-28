@@ -101,9 +101,9 @@ Titling, however, should be used always.
 Begin every new major section of a CSS file with a title comment:
 
 ```css
-/* ========================================
+/* =======================================
  * My title
- * ======================================== 
+ * ======================================= 
  * 
  * Some useful comment. This is comment isn't always necessary. Lorem ipsum
  * sit amet, consectetur adipiscing elit. Istam voluptatem perpetuam quis.
@@ -118,16 +118,16 @@ Leave a carriage return between this title and the next line of code (be that a 
 This title should appear at the top of each file (.scss, .css). If you are working on a file with multiple sections, each title should be preceded by four (2) carriage returns. This extra whitespace coupled with a title makes new sections much easier to spot when scrolling through large files:
 
 ```css
-/* ========================================
+/* =======================================
  * My title
- * ======================================== */
+ * ======================================= */
 
 .selector {
 }
 
-/* ========================================
+/* =======================================
  * My second title
- * ======================================== */
+ * ======================================= */
 
 .another-selector {
 }
@@ -195,9 +195,9 @@ These types of multiline + singleline comments allow us to keep all of our docum
 As a rule, use these comments to document code that would not get written out to that CSS file either. If you are documenting code which will get compiled, use comments that will compile also. For example, this is correct:
 
 ```css
-// ========================================
+// =======================================
 // Button
-// ========================================
+// =======================================
 
 $Button-fontSize: $baseFontSize;
 $Button-lineHeight: $baseLineHeightPx * 1.5;
