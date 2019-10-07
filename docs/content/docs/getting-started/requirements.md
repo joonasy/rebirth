@@ -9,13 +9,13 @@ layout: docs
 - [SASS](http://sass-lang.com/)
 - [Babel](https://babeljs.io/) or similar ES2015 syntax transformer
 - [Node.js](http://nodejs.org)
-- [Yarn](https://yarnpkg.com/lang/en)
+- [Npm](https://npmpkg.com/lang/en)
 - [Browserify](http://browserify.org/) or [Webpack](https://webpack.github.io/)
 
 # Rebirth Yeoman Generator
 
 - [Node.js](http://nodejs.org)
-- [Yarn](https://yarnpkg.com/lang/en)
+- [Npm](https://npmpkg.com/lang/en)
 - [Yeoman](http://yeoman.io)
 
 ### TYPO3

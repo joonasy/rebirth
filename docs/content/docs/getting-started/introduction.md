@@ -13,7 +13,7 @@ Rebirth provides you with a solid architectural baseline with predefined HTML, C
 So far the preferred way to start a new Rebirth project is together with [generator-rebirth](https://github.com/joonasy/generator-rebirth.git) which setups Rebirth and scaffolds new [Rebirth](https://github.com/joonasy/rebirth.git), [WordPress](wordpress.org), [TYPO3](https://typo3.org/), [HTML (Assemble)](https://github.com/assemble/assemble/) or custom (TODO) project.
 
 ```shell
-$ yarn global add yo && yarn global add generator-rebirth@beta
+$ npm install yo -g && npm install generator-rebirth@beta -g
 ```
 
 See [requirements](/docs/getting-started/requirements/), learn about the [generator](/docs/getting-started/generator/), read the [styleguide](/styleguide/). Run the generator in your desired location, pass in your project name (required; this will be your installation directory also) and your project type (`typo3`, `html` or `wordpress`):
@@ -23,12 +23,6 @@ $ yo rebirth [my-new-project] --project=my-project-type
 ```
 
 If you are building a _Typo3 project_ all special characters are removed from the extension directory name e.g. `my-project_folder` -> `myprojectfolder`.
-
-<!-- You may use [npx](https://www.npmjs.com/package/npx) also: -->
-<!-- ```shell -->
-<!-- $ yarn global add generator-rebirth@beta -->
-<!-- $ npx yo rebirth [my-new-project-dir] --project=my-project-type -->
-<!-- ``` -->
 
 ## Installation
 
@@ -45,7 +39,7 @@ Using Rebirth this way fights against its core ideology.
 ### Importing
 
 ```shell
-$ yarn add rebirth-ui@beta
+$ npm install generator-rebirth@beta
 ```
 
 Importing examples assume that you have set your `node_modules` as a base for importing modules. Importing all the default scss components:
