@@ -11,7 +11,7 @@ Inspired by methods and ideas from various sources such as [SUIT CSS](https://gi
 Correct way to use Rebirth is together with [Rebirth Yeoman generator](https://github.com/joonasy/generator-rebirth.git), learn more in [Docs](https://joonasy.github.io/rebirth/docs/getting-started/generator/).
 
 ```shell
-$ npm install yo -g && npm install generator-rebirth@beta -g
+$ npm install yo -g && npm install generator-rebirth -g
 $ yo rebirth [my-new-project] --project=wordpress
 ```
 

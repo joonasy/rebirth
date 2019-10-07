@@ -19,7 +19,7 @@ layout: docs
 So far the preferred way to start a new Rebirth project is together with [generator-rebirth](https://github.com/joonasy/generator-rebirth.git) which setups Rebirth and scaffolds new [Rebirth](https://github.com/joonasy/rebirth.git), [WordPress](wordpress.org), [TYPO3](https://typo3.org/), [HTML (Assemble)](https://github.com/assemble/assemble/) or custom (TODO) project.
 
 ```shell
-$ npm install yo -g && npm install generator-rebirth@beta -g
+$ npm install yo -g && npm install generator-rebirth -g
 ```
 
 Run the generator in your desired location, pass in your project name (required; this will be your installation directory also) and your project type (`typo3`, `html` or `wordpress`):
