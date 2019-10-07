@@ -13,7 +13,7 @@ Helper classes map to fixed, low-level, structural and positional traits. These 
 Certain CSS properties and patterns are used frequently. For example: floats, containing floats, vertical alignment, text truncation. Relying on helpers can help to reduce repetition and provide consistent implementations.
 
 ```html
-<div class="cf m-visible">
+<div class="cf visible@m">
   <p class="textTruncate">…</p>
   <img class="floatLeft" src="…" alt="" />
   <img class="floatLeft" src="…" alt="" />
@@ -29,9 +29,9 @@ Helpers can be added to any element; multiple helpers can be used together;
 and helpers can be used alongside component classes.
 
 ```html
-<div class="Pants cf">
-  <a class="colorPrimary" href="…"> <img class="block" src="…" alt="" /> </a>
-  <p class="Pants-content textBreak">…</p>
+<div class="Pant cf">
+  <a class="colorPrimary" href="…"><img class="block" src="…" alt=""/></a>
+  <p class="Pant-content textBreak">…</p>
 </div>
 ```
 

@@ -32,14 +32,15 @@
 // Helpers
 @import 'stylesheets/helpers/helper';
 
-// Layout Components
-@import 'layouts/Container/index';
-@import 'layouts/Footer/index';
-@import 'layouts/Grid/index';
-@import 'layouts/Header/index';
-@import 'layouts/Template/index';
-@import 'layouts/Width/index';
-@import 'layouts/Wrap/index';
+// Container Components
+@import 'containers/App/index';
+@import 'containers/Container/index';
+@import 'containers/Footer/index';
+@import 'containers/Grid/index';
+@import 'containers/Header/index';
+@import 'containers/Template/index';
+@import 'containers/Width/index';
+@import 'containers/Wrap/index';
 
 // Components
 @import 'components/Heading/index';

@@ -66,7 +66,7 @@ app.preLayout(/\.md$/, (view, next) => {
 
 app.task('docs-html', () => {
   app.data('docs/*.{json,yml}');
-  app.layouts('docs/layouts/*.hbs');
+  app.layouts('docs/containers/*.hbs');
   app.partials('docs/partials/*.hbs');
   app.contents('docs/content/**/*.md');
 
@@ -223,7 +223,7 @@ app.task('docs-inline', () =>
  */
 app.task('docs-rev', () => {
   rimraf.sync('rebirth/assets/*.css');
-  rimraf.sync('rebirth/assets/app.head.js');
+  rimraf.sync('rebirth/assets/head.js');
 
   return app
     .src([
@@ -275,7 +275,7 @@ app.task('docs-deploy', () => {
  */
 app.task('stylesheets', () => {
   const pipeline = app
-    .src(['src/app.scss', 'src/app.all.scss'])
+    .src(['src/index.scss', 'src/index.all.scss'])
     .pipe(
       $.sass({
         includePaths: ['node_modules', 'bower_components'],
@@ -309,15 +309,15 @@ app.task('stylesheets', () => {
 app.task('javascripts', (callback) => {
   const scripts = [
     {
-      fileName: 'app.js',
+      fileName: 'index.js',
       rename: 'rebirth',
     },
     {
-      fileName: 'app.all.js',
+      fileName: 'index.all.js',
       rename: 'rebirth.all',
     },
     {
-      fileName: 'app.head.js',
+      fileName: 'head.js',
       rename: 'rebirth.head',
     },
   ];
@@ -501,7 +501,7 @@ function bundleJavaScripts(src, dest, scripts, rename, cb) {
       pipeline = watchify(pipeline).on('update', bundle);
     }
 
-    var reportFinished = function() {
+    let reportFinished = function() {
       bundleLogger.end(entry.fileName);
       if (bundleQueue) {
         bundleQueue--;

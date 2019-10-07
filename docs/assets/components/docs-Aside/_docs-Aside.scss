@@ -37,11 +37,10 @@
 
       .Navbar-sub {
         border-left: 1px solid $colorBorder;
-        margin-left: $uiSpace;
         margin-top: $uiSpace / 4;
 
         .Navbar-link {
-          padding-left: $uiSpace / 2;
+          padding-left: $uiSpace;
         }
       }
     }

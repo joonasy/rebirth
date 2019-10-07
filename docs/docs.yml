@@ -53,9 +53,9 @@ nav:
         - title: Modal
         - title: Pagination
         - title: Text
-    layouts:
-      title: Layouts
-      path: docs/layouts
+    containers:
+      title: Containers
+      path: docs/containers
       pages:
         - title: Overview
           toc:

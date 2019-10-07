@@ -23,11 +23,11 @@ This styleguide outlines standards for writing CSS (and more specifically, SCSS)
 
 1. Maximum two modifiers per component e.g. `Component Component--modifier Component--modifier--anotherModifier`
 2. Extend components with chainable modifiers e.g. `Component Component--modifier -myChainableModifier`
-3. Use layout components if you need to have specific settings for certain components in specific areas e.g. in Header `Header-component Component Component--modifier`
+3. Use container components if you need to have specific settings for certain components in specific areas e.g. in Header `Header-component Component Component--modifier`
 4. Use and make helpers e.g. `colorPrimary` or `textLeft` if you repeat certain styles often
-5. Use `-js` hooks _only_ for triggering (_not styling_) JavaScript e.g. `js-Button`
+5. Use `-js` hooks _only_ for triggering (_not styling_) JavaScript e.g. `js-myTrigger`
 6. Use `is-stateName` syntax with JavaScript for changing the state of the component e.g. `is-open`
-7. Read [Coding style](style.md) and [Structure](../) so you know how to structure your SASS files
+7. Read Coding style and Structure so you know how to structure your SASS files
 
 <!-- ## TOC
 

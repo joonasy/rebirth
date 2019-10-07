@@ -5,7 +5,7 @@
 /**
  * Import all default components
  */
-import 'app';
+import 'index';
 
 /**
  * Import all starter components

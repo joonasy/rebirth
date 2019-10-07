@@ -1,16 +1,13 @@
-/*! normalize.css v7.0.0 | MIT License | github.com/necolas/normalize.css */
+/*! normalize.css v8.0.1 | MIT License | github.com/necolas/normalize.css */
 /* Document
    ========================================================================== */
 /**
  * 1. Correct the line height in all browsers.
- * 2. Prevent adjustments of font size after orientation changes in
- *    IE on Windows Phone and in iOS.
+ * 2. Prevent adjustments of font size after orientation changes in iOS.
  */
 html {
   line-height: 1.15;
   /* 1 */
-  -ms-text-size-adjust: 100%;
-  /* 2 */
   -webkit-text-size-adjust: 100%;
   /* 2 */
 }
@@ -18,21 +15,16 @@ html {
 /* Sections
    ========================================================================== */
 /**
- * Remove the margin in all browsers (opinionated).
+ * Remove the margin in all browsers.
  */
 body {
   margin: 0;
 }
 
 /**
- * Add the correct display in IE 9-.
+ * Render the `main` element consistently in IE.
  */
-article,
-aside,
-footer,
-header,
-nav,
-section {
+main {
   display: block;
 }
 
@@ -48,30 +40,11 @@ h1 {
 /* Grouping content
    ========================================================================== */
 /**
- * Add the correct display in IE 9-.
- * 1. Add the correct display in IE.
- */
-figcaption,
-figure,
-main {
-  /* 1 */
-  display: block;
-}
-
-/**
- * Add the correct margin in IE 8.
- */
-figure {
-  margin: 1em 40px;
-}
-
-/**
  * 1. Add the correct box sizing in Firefox.
  * 2. Show the overflow in Edge and IE.
  */
 hr {
-  -webkit-box-sizing: content-box;
-          box-sizing: content-box;
+  box-sizing: content-box;
   /* 1 */
   height: 0;
   /* 1 */
@@ -93,18 +66,14 @@ pre {
 /* Text-level semantics
    ========================================================================== */
 /**
- * 1. Remove the gray background on active links in IE 10.
- * 2. Remove gaps in links underline in iOS 8+ and Safari 8+.
+ * Remove the gray background on active links in IE 10.
  */
 a {
   background-color: transparent;
-  /* 1 */
-  -webkit-text-decoration-skip: objects;
-  /* 2 */
 }
 
 /**
- * 1. Remove the bottom border in Chrome 57- and Firefox 39-.
+ * 1. Remove the bottom border in Chrome 57-
  * 2. Add the correct text decoration in Chrome, Edge, IE, Opera, and Safari.
  */
 abbr[title] {
@@ -115,14 +84,6 @@ abbr[title] {
   -webkit-text-decoration: underline dotted;
           text-decoration: underline dotted;
   /* 2 */
-}
-
-/**
- * Prevent the duplicate application of `bolder` by the next rule in Safari 6.
- */
-b,
-strong {
-  font-weight: inherit;
 }
 
 /**
@@ -144,21 +105,6 @@ samp {
   /* 1 */
   font-size: 1em;
   /* 2 */
-}
-
-/**
- * Add the correct font style in Android 4.3-.
- */
-dfn {
-  font-style: italic;
-}
-
-/**
- * Add the correct background and color in IE 9-.
- */
-mark {
-  background-color: #ff0;
-  color: #000;
 }
 
 /**
@@ -191,39 +137,16 @@ sup {
 /* Embedded content
    ========================================================================== */
 /**
- * Add the correct display in IE 9-.
- */
-audio,
-video {
-  display: inline-block;
-}
-
-/**
- * Add the correct display in iOS 4-7.
- */
-audio:not([controls]) {
-  display: none;
-  height: 0;
-}
-
-/**
- * Remove the border on images inside links in IE 10-.
+ * Remove the border on images inside links in IE 10.
  */
 img {
   border-style: none;
 }
 
-/**
- * Hide the overflow in IE.
- */
-svg:not(:root) {
-  overflow: hidden;
-}
-
 /* Forms
    ========================================================================== */
 /**
- * 1. Change the font styles in all browsers (opinionated).
+ * 1. Change the font styles in all browsers.
  * 2. Remove the margin in Firefox and Safari.
  */
 button,
@@ -231,7 +154,7 @@ input,
 optgroup,
 select,
 textarea {
-  font-family: sans-serif;
+  font-family: inherit;
   /* 1 */
   font-size: 100%;
   /* 1 */
@@ -262,16 +185,13 @@ select {
 }
 
 /**
- * 1. Prevent a WebKit bug where (2) destroys native `audio` and `video`
- *    controls in Android 4.
- * 2. Correct the inability to style clickable types in iOS and Safari.
+ * Correct the inability to style clickable types in iOS and Safari.
  */
 button,
-html [type="button"],
+[type="button"],
 [type="reset"],
 [type="submit"] {
   -webkit-appearance: button;
-  /* 2 */
 }
 
 /**
@@ -309,8 +229,7 @@ fieldset {
  *    `fieldset` elements in all browsers.
  */
 legend {
-  -webkit-box-sizing: border-box;
-          box-sizing: border-box;
+  box-sizing: border-box;
   /* 1 */
   color: inherit;
   /* 2 */
@@ -325,31 +244,26 @@ legend {
 }
 
 /**
- * 1. Add the correct display in IE 9-.
- * 2. Add the correct vertical alignment in Chrome, Firefox, and Opera.
+ * Add the correct vertical alignment in Chrome, Firefox, and Opera.
  */
 progress {
-  display: inline-block;
-  /* 1 */
   vertical-align: baseline;
-  /* 2 */
 }
 
 /**
- * Remove the default vertical scrollbar in IE.
+ * Remove the default vertical scrollbar in IE 10+.
  */
 textarea {
   overflow: auto;
 }
 
 /**
- * 1. Add the correct box sizing in IE 10-.
- * 2. Remove the padding in IE 10-.
+ * 1. Add the correct box sizing in IE 10.
+ * 2. Remove the padding in IE 10.
  */
 [type="checkbox"],
 [type="radio"] {
-  -webkit-box-sizing: border-box;
-          box-sizing: border-box;
+  box-sizing: border-box;
   /* 1 */
   padding: 0;
   /* 2 */
@@ -375,9 +289,8 @@ textarea {
 }
 
 /**
- * Remove the inner padding and cancel buttons in Chrome and Safari on macOS.
+ * Remove the inner padding in Chrome and Safari on macOS.
  */
-[type="search"]::-webkit-search-cancel-button,
 [type="search"]::-webkit-search-decoration {
   -webkit-appearance: none;
 }
@@ -396,11 +309,9 @@ textarea {
 /* Interactive
    ========================================================================== */
 /*
- * Add the correct display in IE 9-.
- * 1. Add the correct display in Edge, IE, and Firefox.
+ * Add the correct display in Edge, IE 10+, and Firefox.
  */
-details,
-menu {
+details {
   display: block;
 }
 
@@ -411,34 +322,25 @@ summary {
   display: list-item;
 }
 
-/* Scripting
+/* Misc
    ========================================================================== */
 /**
- * Add the correct display in IE 9-.
- */
-canvas {
-  display: inline-block;
-}
-
-/**
- * Add the correct display in IE.
+ * Add the correct display in IE 10+.
  */
 template {
   display: none;
 }
 
-/* Hidden
-   ========================================================================== */
 /**
- * Add the correct display in IE 10-.
+ * Add the correct display in IE 10.
  */
 [hidden] {
   display: none;
 }
 
-/* ========================================
+/* =======================================
  * Base
- * ======================================== */
+ * ======================================= */
 :root {
   background-color: #ffffff;
   color: #000000;
@@ -455,8 +357,7 @@ template {
 }
 
 *, *:before, *:after {
-  -webkit-box-sizing: border-box;
-          box-sizing: border-box;
+  box-sizing: border-box;
 }
 
 hgroup,
@@ -529,21 +430,21 @@ img {
   vertical-align: middle;
 }
 
-/* ========================================
+/* =======================================
  * Fonts
- * ======================================== */
-/* ========================================
+ * ======================================= */
+/* =======================================
  * Global uncategorized placeholders
- * ======================================== */
+ * ======================================= */
 nav ul, .Navbar ul {
   list-style: none;
   margin: 0;
   padding: 0;
 }
 
-/* ========================================
+/* =======================================
  * Typography
- * ======================================== */
+ * ======================================= */
 p {
   margin: 0 0 1.5rem;
 }
@@ -611,12 +512,15 @@ h6, .h6 {
   font-weight: bolder;
 }
 
-/* ========================================
+/* =======================================
  * Global uncategorized helpers
- * ======================================== */
-/* ========================================
+ * ======================================= */
+/* =======================================
+ * App
+ * ======================================= */
+/* =======================================
  * Container
- * ======================================== */
+ * ======================================= */
 .Container {
   padding-bottom: 1.5rem;
   padding-top: 1.5rem;
@@ -629,26 +533,19 @@ h6, .h6 {
   }
 }
 
-/* ========================================
+/* =======================================
  * Footer
- * ========================================
+ * =======================================
  *
  * @reusable probably true but intented to be used once
  */
-/* ========================================
+/* =======================================
  * Grid
- * ========================================
- *
- * @reusable true
- */
+ * ======================================= */
 .Grid {
   display: -webkit-box;
-  display: -webkit-flex;
-  display: -ms-flexbox;
   display: flex;
-  -webkit-flex-wrap: wrap;
-      -ms-flex-wrap: wrap;
-          flex-wrap: wrap;
+  flex-wrap: wrap;
   list-style: none;
   margin-bottom: 0;
   margin-left: -0.75rem;
@@ -666,20 +563,14 @@ h6, .h6 {
  * ====== */
 .Grid.-auto > .Grid-cell:not([class*="Width"]) {
   -webkit-box-flex: 1;
-  -webkit-flex: 1 0 0%;
-      -ms-flex: 1 0 0%;
           flex: 1 0 0%;
   width: auto;
 }
 
 .Grid.-equalContent > .Grid-cell {
   display: -webkit-box;
-  display: -webkit-flex;
-  display: -ms-flexbox;
   display: flex;
-  -webkit-flex-wrap: wrap;
-      -ms-flex-wrap: wrap;
-          flex-wrap: wrap;
+  flex-wrap: wrap;
 }
 
 .Grid.-full {
@@ -716,29 +607,21 @@ h6, .h6 {
  * Grid - Justify
  * ====== */
 .Grid.-justifyAround {
-  -webkit-justify-content: space-around;
-      -ms-flex-pack: distribute;
-          justify-content: space-around;
+  justify-content: space-around;
 }
 
 .Grid.-justifyBetween {
   -webkit-box-pack: justify;
-  -webkit-justify-content: space-between;
-      -ms-flex-pack: justify;
           justify-content: space-between;
 }
 
 .Grid.-justifyCenter {
   -webkit-box-pack: center;
-  -webkit-justify-content: center;
-      -ms-flex-pack: center;
           justify-content: center;
 }
 
 .Grid.-justifyEnd {
   -webkit-box-pack: end;
-  -webkit-justify-content: flex-end;
-      -ms-flex-pack: end;
           justify-content: flex-end;
 }
 
@@ -747,22 +630,16 @@ h6, .h6 {
  * ====== */
 .Grid.-alignBottom {
   -webkit-box-align: end;
-  -webkit-align-items: flex-end;
-      -ms-flex-align: end;
           align-items: flex-end;
 }
 
 .Grid.-alignCenter {
   -webkit-box-align: center;
-  -webkit-align-items: center;
-      -ms-flex-align: center;
           align-items: center;
 }
 
 .Grid.-alignTop {
   -webkit-box-align: start;
-  -webkit-align-items: flex-start;
-      -ms-flex-align: start;
           align-items: flex-start;
 }
 
@@ -774,9 +651,9 @@ h6, .h6 {
   z-index: 100;
 }
 
-/* ========================================
+/* =======================================
  * Template
- * ========================================
+ * =======================================
  *
  * @reusable probably true but intented to be used once
  */
@@ -785,180 +662,177 @@ h6, .h6 {
   z-index: 99;
 }
 
-/* ========================================
+/* =======================================
  * Width
- * ========================================
- *
- * @reusable true
- */
-.Width--1of12 {
+ * ======================================= */
+.Width--1\/12 {
   width: 8.333%;
 }
 
-.Width--2of12 {
+.Width--2\/12 {
   width: 16.666%;
 }
 
-.Width--3of12 {
+.Width--3\/12 {
   width: 25%;
 }
 
-.Width--4of12 {
+.Width--4\/12 {
   width: 33.333%;
 }
 
-.Width--5of12 {
+.Width--5\/12 {
   width: 41.666%;
 }
 
-.Width--6of12 {
+.Width--6\/12 {
   width: 50%;
 }
 
-.Width--7of12 {
+.Width--7\/12 {
   width: 58.333%;
 }
 
-.Width--8of12 {
+.Width--8\/12 {
   width: 66.666%;
 }
 
-.Width--9of12 {
+.Width--9\/12 {
   width: 75%;
 }
 
-.Width--10of12 {
+.Width--10\/12 {
   width: 83.333%;
 }
 
-.Width--11of12 {
+.Width--11\/12 {
   width: 91.666%;
 }
 
-.Width--12of12 {
+.Width--12\/12 {
   width: 100%;
 }
 
 @media (min-width: 37.5em) {
-  .s-Width--1of12 {
+  .Width--1\/12\@s {
     width: 8.333%;
   }
-  .s-Width--2of12 {
+  .Width--2\/12\@s {
     width: 16.666%;
   }
-  .s-Width--3of12 {
+  .Width--3\/12\@s {
     width: 25%;
   }
-  .s-Width--4of12 {
+  .Width--4\/12\@s {
     width: 33.333%;
   }
-  .s-Width--5of12 {
+  .Width--5\/12\@s {
     width: 41.666%;
   }
-  .s-Width--6of12 {
+  .Width--6\/12\@s {
     width: 50%;
   }
-  .s-Width--7of12 {
+  .Width--7\/12\@s {
     width: 58.333%;
   }
-  .s-Width--8of12 {
+  .Width--8\/12\@s {
     width: 66.666%;
   }
-  .s-Width--9of12 {
+  .Width--9\/12\@s {
     width: 75%;
   }
-  .s-Width--10of12 {
+  .Width--10\/12\@s {
     width: 83.333%;
   }
-  .s-Width--11of12 {
+  .Width--11\/12\@s {
     width: 91.666%;
   }
-  .s-Width--12of12 {
+  .Width--12\/12\@s {
     width: 100%;
   }
 }
 
 @media (min-width: 48em) {
-  .m-Width--1of12 {
+  .Width--1\/12\@m {
     width: 8.333%;
   }
-  .m-Width--2of12 {
+  .Width--2\/12\@m {
     width: 16.666%;
   }
-  .m-Width--3of12 {
+  .Width--3\/12\@m {
     width: 25%;
   }
-  .m-Width--4of12 {
+  .Width--4\/12\@m {
     width: 33.333%;
   }
-  .m-Width--5of12 {
+  .Width--5\/12\@m {
     width: 41.666%;
   }
-  .m-Width--6of12 {
+  .Width--6\/12\@m {
     width: 50%;
   }
-  .m-Width--7of12 {
+  .Width--7\/12\@m {
     width: 58.333%;
   }
-  .m-Width--8of12 {
+  .Width--8\/12\@m {
     width: 66.666%;
   }
-  .m-Width--9of12 {
+  .Width--9\/12\@m {
     width: 75%;
   }
-  .m-Width--10of12 {
+  .Width--10\/12\@m {
     width: 83.333%;
   }
-  .m-Width--11of12 {
+  .Width--11\/12\@m {
     width: 91.666%;
   }
-  .m-Width--12of12 {
+  .Width--12\/12\@m {
     width: 100%;
   }
 }
 
 @media (min-width: 64em) {
-  .l-Width--1of12 {
+  .Width--1\/12\@l {
     width: 8.333%;
   }
-  .l-Width--2of12 {
+  .Width--2\/12\@l {
     width: 16.666%;
   }
-  .l-Width--3of12 {
+  .Width--3\/12\@l {
     width: 25%;
   }
-  .l-Width--4of12 {
+  .Width--4\/12\@l {
     width: 33.333%;
   }
-  .l-Width--5of12 {
+  .Width--5\/12\@l {
     width: 41.666%;
   }
-  .l-Width--6of12 {
+  .Width--6\/12\@l {
     width: 50%;
   }
-  .l-Width--7of12 {
+  .Width--7\/12\@l {
     width: 58.333%;
   }
-  .l-Width--8of12 {
+  .Width--8\/12\@l {
     width: 66.666%;
   }
-  .l-Width--9of12 {
+  .Width--9\/12\@l {
     width: 75%;
   }
-  .l-Width--10of12 {
+  .Width--10\/12\@l {
     width: 83.333%;
   }
-  .l-Width--11of12 {
+  .Width--11\/12\@l {
     width: 91.666%;
   }
-  .l-Width--12of12 {
+  .Width--12\/12\@l {
     width: 100%;
   }
 }
 
-/* ========================================
+/* =======================================
  * Wrap
- * ======================================== */
+ * ======================================= */
 .Wrap {
   margin-left: auto;
   margin-right: auto;
@@ -1008,28 +882,28 @@ h6, .h6 {
   line-height: 1.16129;
 }
 
+@media (max-width: 47.99em) {
+  .Heading.-l {
+    font-size: 2.25rem;
+    line-height: 1.27778;
+  }
+}
+
 .Heading.-m {
   font-size: 3rem;
   line-height: 1.20833;
 }
 
-.Heading.-s {
-  font-size: 2.25rem;
-  line-height: 1.27778;
-}
-
-@media (max-width: 47.99em) {
-  .Heading.-l {
-    font-size: 3rem;
-    line-height: 1.20833;
-  }
-}
-
-@media (max-width: 47.99em) {
+@media (max-width: 63.99em) {
   .Heading.-m {
     font-size: 2.25rem;
     line-height: 1.27778;
   }
+}
+
+.Heading.-s {
+  font-size: 2.25rem;
+  line-height: 1.27778;
 }
 
 @media (max-width: 47.99em) {
@@ -1039,9 +913,9 @@ h6, .h6 {
   }
 }
 
-/* ========================================
+/* =======================================
  * Icons
- * ========================================
+ * =======================================
  *
  * @reusable true
  */
@@ -1054,9 +928,9 @@ h6, .h6 {
   width: 1em;
 }
 
-/* ========================================
+/* =======================================
  * Navbar
- * ======================================== */
+ * ======================================= */
 .Navbar {
   -webkit-user-select: none;
      -moz-user-select: none;
@@ -1073,12 +947,8 @@ h6, .h6 {
 .Navbar--default {
   background-color: #ffffff;
   display: -webkit-box;
-  display: -webkit-flex;
-  display: -ms-flexbox;
   display: flex;
-  -webkit-flex-wrap: wrap;
-      -ms-flex-wrap: wrap;
-          flex-wrap: wrap;
+  flex-wrap: wrap;
   /* ======
    * Media Query Breakpoints
    * ====== */
@@ -1097,21 +967,15 @@ h6, .h6 {
   font-size: 1.125rem;
   line-height: 1.44444;
   -webkit-box-align: center;
-  -webkit-align-items: center;
-      -ms-flex-align: center;
           align-items: center;
   color: #000000;
   display: -webkit-box;
-  display: -webkit-flex;
-  display: -ms-flexbox;
   display: flex;
   padding: 0 1.5rem;
 }
 
 .Navbar--default .Navbar-ctrl {
   display: -webkit-box;
-  display: -webkit-flex;
-  display: -ms-flexbox;
   display: flex;
   margin-left: auto;
   min-height: 3rem;
@@ -1119,18 +983,12 @@ h6, .h6 {
 
 .Navbar--default .Navbar-ctrl-trigger {
   -webkit-box-align: center;
-  -webkit-align-items: center;
-      -ms-flex-align: center;
           align-items: center;
   color: #000000;
   cursor: pointer;
   display: -webkit-box;
-  display: -webkit-flex;
-  display: -ms-flexbox;
   display: flex;
   -webkit-box-pack: center;
-  -webkit-justify-content: center;
-      -ms-flex-pack: center;
           justify-content: center;
   min-width: 3rem;
   padding: 0 0.75rem;
@@ -1169,12 +1027,8 @@ h6, .h6 {
 .Navbar--default .Navbar-item {
   border-top: 1px solid rgba(0, 0, 0, 0.08);
   display: -webkit-box;
-  display: -webkit-flex;
-  display: -ms-flexbox;
   display: flex;
-  -webkit-flex-wrap: wrap;
-      -ms-flex-wrap: wrap;
-          flex-wrap: wrap;
+  flex-wrap: wrap;
 }
 
 .Navbar--default .Navbar-item.is-active > .Navbar-link {
@@ -1192,18 +1046,12 @@ h6, .h6 {
 
 .Navbar--default .Navbar-link {
   -webkit-box-align: center;
-  -webkit-align-items: center;
-      -ms-flex-align: center;
           align-items: center;
   color: #000000;
   cursor: pointer;
   display: -webkit-box;
-  display: -webkit-flex;
-  display: -ms-flexbox;
   display: flex;
   -webkit-box-flex: 1;
-  -webkit-flex: 1;
-      -ms-flex: 1;
           flex: 1;
   padding: 0.75rem 1.5rem;
 }
@@ -1214,18 +1062,12 @@ h6, .h6 {
 
 .Navbar--default .Navbar-trigger {
   -webkit-box-align: center;
-  -webkit-align-items: center;
-      -ms-flex-align: center;
           align-items: center;
   color: #000000;
   cursor: pointer;
   display: -webkit-box;
-  display: -webkit-flex;
-  display: -ms-flexbox;
   display: flex;
   -webkit-box-pack: center;
-  -webkit-justify-content: center;
-      -ms-flex-pack: center;
           justify-content: center;
   min-width: 3rem;
   padding: 0 0.75rem;
@@ -1280,21 +1122,15 @@ h6, .h6 {
 @media (min-width: 64em) {
   .Navbar--default {
     display: -webkit-box;
-    display: -webkit-flex;
-    display: -ms-flexbox;
     display: flex;
     min-height: 4.5rem;
   }
   .Navbar--default.is-open > ul {
     display: -webkit-box;
-    display: -webkit-flex;
-    display: -ms-flexbox;
     display: flex;
   }
   .Navbar--default > ul {
     display: -webkit-box;
-    display: -webkit-flex;
-    display: -ms-flexbox;
     display: flex;
     margin-left: auto;
     padding-right: 1rem;
@@ -1303,8 +1139,6 @@ h6, .h6 {
   .Navbar--default .Navbar-ctrl {
     margin-left: 0;
     -webkit-box-ordinal-group: 4;
-    -webkit-order: 3;
-        -ms-flex-order: 3;
             order: 3;
   }
   .Navbar--default .Navbar-ctrl-trigger {
@@ -1334,8 +1168,7 @@ h6, .h6 {
   }
   .Navbar--default .Navbar-sub {
     background-color: #ffffff;
-    -webkit-box-shadow: 0 rgba(0, 0, 0, 0.1);
-            box-shadow: 0 rgba(0, 0, 0, 0.1);
+    box-shadow: 0 rgba(0, 0, 0, 0.1);
     border-radius: 0;
     left: 0;
     list-style: none;
@@ -1387,9 +1220,9 @@ h6, .h6 {
   }
 }
 
-/* ========================================
+/* =======================================
  * Text
- * ======================================== */
+ * ======================================= */
 /* ======
  * Text - Size
  * ====== */

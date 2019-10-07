@@ -1,5 +1,25 @@
 # Changelog
 
+All notable changes to this project will be documented in this file. The format is based on [Keep a Changelog](http://keepachangelog.com/en/1.0.0/) and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.html).
+
+## 0.6.0x
+
+- Layout components are now Container components
+  - `layouts/` -> `containers/`
+  - Add new master container component `.App {}`
+- `app.scss` -> `index.scss`
+- `app.js` -> `index.js`
+- `app.head.js` -> `head.js`
+- New responsive variant naming convention: `m-<name>` -> `<name>@m`. Following components and helpers modified to use this convention: `_Width.scss`, `_Grid.scss`, `_margin@*.scss`, `_padding@*.scss`, `_displayResponsive.scss`.
+- `js-hooks` not anymore necessary to use if targeting components directly
+- Docs:
+  - Add core-js
+  - Remove bower things
+  - Update deps, especially the ones with vulnerabilities
+  - Update browserslist
+  - Update docs content to match new naming conventions. Docs are still in very early stage and needs to be updated asap
+  - Update node version (10.13.0)
+
 ## 0.5.4x
 
 - Add initial docs. Publish to github pages

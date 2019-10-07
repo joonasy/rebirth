@@ -36,7 +36,7 @@ But, as with anything, the specifics are somewhat irrelevant—consistency is ke
 - our closing brace (`}`) on its own new line
 - each declaration indented by two (2) spaces
 
-```css
+```scss
 /**
  * Example
  */
@@ -67,7 +67,7 @@ CSS should be written across multiple lines, except in very specific circumstanc
 
 Exceptions to this rule should be fairly apparent, such as similar rulesets that only carry one declaration each, for example:
 
-```css
+```scss
 .margin {
   margin: rem($baseSpace) !important;
 }
@@ -117,7 +117,7 @@ Leave a carriage return between this title and the next line of code (be that a 
 
 This title should appear at the top of each file (.scss, .css). If you are working on a file with multiple sections, each title should be preceded by four (2) carriage returns. This extra whitespace coupled with a title makes new sections much easier to spot when scrolling through large files:
 
-```css
+```scss
 /* =======================================
  * My title
  * ======================================= */
@@ -137,7 +137,7 @@ This title should appear at the top of each file (.scss, .css). If you are worki
 
 Use second-level titling for example if defining modifiers for a component. Leave a carriage return between this title and the next line of code. Each second-level title should be preceded by two (2) carriage returns.
 
-```css
+```scss
 /* ======
  * Component modifier
  * ====== */
@@ -161,7 +161,7 @@ Use second-level titling for example if defining modifiers for a component. Leav
 
 For large comments that document entire sections or components, we use a DocBlock-esque multi-line comment which adheres to our 80 column width. Leave a carriage return between this title/comment and the next line of code.
 
-```css
+```scss
 /**
  * This is my third-level title / comment
  */
@@ -194,7 +194,7 @@ These types of multiline + singleline comments allow us to keep all of our docum
 
 As a rule, use these comments to document code that would not get written out to that CSS file either. If you are documenting code which will get compiled, use comments that will compile also. For example, this is correct:
 
-```css
+```scss
 // =======================================
 // Button
 // =======================================
