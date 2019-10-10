@@ -1,6 +1,6 @@
 {
   "name": "rebirth-ui",
-  "version": "0.6.13",
+  "version": "0.6.14",
   "author": "Joonas Ylitalo",
   "homepage": "http://joonasy.com",
   "description": "Front-end starter kit and styleguide for developing responsive, mobile first projects on the web.",
@@ -22,7 +22,7 @@
     "docs-dev": "assemble docs-dev",
     "docs-dist": "npm run docs-build && assemble docs-server",
     "docs-deploy": "npm run docs-build && assemble docs-deploy",
-    "prepublishOnly": "npm run build && git add dist && git commit -m 'Build $npm_package_version' && git push --follow-tags"
+    "prepublishOnly": "npm run build && git add package.json && git add dist && git commit -m \"Build: $npm_package_version\" && git push origin $npm_package_version"
   },
   "husky": {
     "hooks": {

@@ -2187,6 +2187,15 @@ new _NavbarDefault.default();
 
 require("./components/Navbar");
 
+/* =======================================
+ * App
+ * ======================================= */
+
+/**
+ * Components
+ */
+console.log('test');
+
 },{"./components/Navbar":97}],99:[function(require,module,exports){
 "use strict";
 
