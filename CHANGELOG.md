@@ -13,7 +13,10 @@ All notable changes to this project will be documented in this file. The format 
 - New responsive variant naming convention: `m-<name>` -> `<name>@m`. Following components and helpers modified to use this convention: `_Width.scss`, `_Grid.scss`, `_margin@*.scss`, `_padding@*.scss`, `_displayResponsive.scss`.
 - `js-hooks` not anymore necessary to use if targeting components directly
 - Docs:
-  - Add core-js
+  - Yarn -> Npm
+  - Add core-js@3 w/ `"useBuiltIns": "usage"`
+    - Add `"regenerator-runtime": "^0.13.3"` to allow async funcs
+  - Correct way to define husky in package.json
   - Remove bower things
   - Update deps, especially the ones with vulnerabilities
   - Update browserslist
