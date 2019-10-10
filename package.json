@@ -1,6 +1,6 @@
 {
   "name": "rebirth-ui",
-  "version": "0.6.1",
+  "version": "0.6.11",
   "author": "Joonas Ylitalo",
   "homepage": "http://joonasy.com",
   "description": "Front-end starter kit and styleguide for developing responsive, mobile first projects on the web.",
@@ -22,8 +22,13 @@
     "docs-dev": "assemble docs-dev",
     "docs-dist": "npm run docs-build && assemble docs-server",
     "docs-deploy": "npm run docs-build && assemble docs-deploy",
-    "precommit": "lint-staged",
-    "prepublishOnly": "npm run build"
+    "prepublishOnly": "npm run build && git add dist && git commit -m \"Build $npm_package_version\" && git push --follow-tags"
+  },
+  "husky": {
+    "hooks": {
+      "pre-commit": "lint-staged",
+      "pre-push": "npm run build"
+    }
   },
   "lint-staged": {
     "*.{js,json,md}": [
@@ -72,6 +77,7 @@
     "node-notifier": "^6.0.0",
     "prettier": "^1.18.2",
     "pretty-hrtime": "^1.0.3",
+    "regenerator-runtime": "^0.13.3",
     "rimraf": "^3.0.0",
     "sass-mq": "^5.0.1",
     "through2": "^3.0.1",
@@ -89,9 +95,9 @@
             [
               "@babel/preset-env",
               {
-                "useBuiltIns": "entry",
+                "useBuiltIns": "usage",
                 "corejs": {
-                  "version": 3
+                  "version": "3"
                 }
               }
             ]
