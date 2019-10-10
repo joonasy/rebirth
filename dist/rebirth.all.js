@@ -2260,15 +2260,6 @@ require("components/Navbar/starters/stacked");
 
 require("./components/Navbar");
 
-/* =======================================
- * App
- * ======================================= */
-
-/**
- * Components
- */
-console.log('test');
-
 },{"./components/Navbar":97}],102:[function(require,module,exports){
 "use strict";
 
