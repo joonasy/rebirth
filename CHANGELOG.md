@@ -14,7 +14,7 @@ All notable changes to this project will be documented in this file. The format 
 - `js-hooks` not anymore necessary to use if targeting components directly
 - Docs:
   - Yarn -> Npm
-  - Add core-js@3 w/ `"useBuiltIns": "usage"`
+  - Add core-js@3 w/ `"useBuiltIns": "entry"`
     - Add `"regenerator-runtime": "^0.13.3"` to allow async funcs
   - Correct way to define husky in package.json
   - Remove bower things
