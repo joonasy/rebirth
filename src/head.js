@@ -1,7 +1,8 @@
 /* =======================================
- * App Head
+ * Head
  * ======================================= */
 
+import './javascripts/polyfill';
 import { hasTouch } from './javascripts/feature';
 
 const doc = document;
