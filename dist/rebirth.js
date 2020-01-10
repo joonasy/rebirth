@@ -4937,10 +4937,7 @@ require("./components/Navbar");
 Object.defineProperty(exports, "__esModule", {
   value: true
 });
-exports.isIE = isIE;
-exports.isIOS = isIOS;
-exports.isAndroid = isAndroid;
-exports.hasTouch = void 0;
+exports.isMac = exports.isAndroid = exports.isIOS = exports.isFirefox = exports.isEdge = exports.isIE = exports.hasTouch = void 0;
 
 /* =======================================
  * Features & User Agents
@@ -4955,31 +4952,57 @@ const doc = document;
 
 const hasTouch = !!('ontouchstart' in win || win.navigator && win.navigator.msPointerEnabled && win.MSGesture || win.DocumentTouch && doc instanceof DocumentTouch);
 /**
- * Internet Explorer
+ * Internet Explorer (11)
  */
 
 exports.hasTouch = hasTouch;
 
-function isIE() {
+const isIE = () => {
   return !!Function('/*@cc_on return document.documentMode===10@*/')() || // eslint-disable-line
-  /(?:\sTrident\/7\.0.*\srv:11\.0)/i.test(navigator.userAgent);
-}
+  /(?:\sTrident\/7\.0.*\srv:11\.0)/i.test(ua);
+};
+/**
+ * Edge
+ */
+
+
+exports.isIE = isIE;
+
+const isEdge = () => /edge\//i.test(ua);
+/**
+ * Firefox
+ */
+
+
+exports.isEdge = isEdge;
+
+const isFirefox = () => 'InstallTrigger' in window;
 /**
  * iOS
  */
 
 
-function isIOS() {
-  return /iP(ad|hone|od)/i.test(navigator.userAgent);
-}
+exports.isFirefox = isFirefox;
+
+const isIOS = () => /iP(ad|hone|od)/i.test(ua);
 /**
  * Android
  */
 
 
-function isAndroid() {
-  return ua.indexOf('Android') > -1 && ua.indexOf('Mozilla/5.0') > -1 && ua.indexOf('AppleWebKit') > -1;
-}
+exports.isIOS = isIOS;
+
+const isAndroid = () => ua.indexOf('Android') > -1 && ua.indexOf('Mozilla/5.0') > -1 && ua.indexOf('AppleWebKit') > -1;
+/**
+ * Mac
+ */
+
+
+exports.isAndroid = isAndroid;
+
+const isMac = () => /mac/i.test(navigator.platform);
+
+exports.isMac = isMac;
 
 },{}],211:[function(require,module,exports){
 "use strict";
