@@ -1,11 +1,9 @@
 /* =======================================
  * Template
- * =======================================
- *
- * @reusable probably true but intented to be used once
- */
+ * ======================================= */
 
 .Template {
+  flex: 1;
   position: relative;
   z-index: $Template-zIndex;
 }
