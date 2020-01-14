@@ -2,6 +2,14 @@
 
 All notable changes to this project will be documented in this file. The format is based on [Keep a Changelog](http://keepachangelog.com/en/1.0.0/) and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.html).
 
+
+## 0.6.2x
+
+- Remove placeholders and use mixins instead
+- Add Article, Nav & List components
+- Add Aside container component placeholder
+- Push footer to bottom in default layout
+
 ## 0.6.0x
 
 - Layout components are now Container components
