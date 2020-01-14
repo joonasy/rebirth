@@ -339,10 +339,13 @@ template {
 }
 
 /* =======================================
+ * Text Mixins
+ * ======================================= */
+/* =======================================
  * Base
  * ======================================= */
 :root {
-  background-color: #ffffff;
+  background-color: #e6e6e6;
   color: #000000;
   font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
   font-size: 16px;
@@ -481,45 +484,6 @@ pre code {
 /* =======================================
  * Fonts
  * ======================================= */
-/* =======================================
- * Global uncategorized placeholders
- * ======================================= */
-nav ul, .List, .Navbar ul {
-  list-style: none;
-  margin: 0;
-  padding: 0;
-}
-
-.Button.is-disabled, .Form-button.Button[disabled], fieldset[disabled] .Form-button.Button {
-  cursor: not-allowed;
-  opacity: 0.5;
-  pointer-events: none;
-}
-
-.Button {
-  max-width: 100%;
-  overflow: hidden;
-  text-overflow: ellipsis;
-  white-space: nowrap;
-  word-wrap: normal;
-}
-
-.Button.-round, .Card.-round, .Card.-figureFill.-round .Card-figure img, .Form-item.-round {
-  border-radius: 0;
-}
-
-.Button.-pill {
-  border-radius: 60px;
-}
-
-.Card.-figureCrop .Card-figure figure, .Card.-figureFill .Card-figure figure, .Card.-figureFill .Card-figure, .Hero-figure, .Hero-item.-overlay:after {
-  bottom: 0;
-  left: 0;
-  position: absolute;
-  right: 0;
-  top: 0;
-}
-
 /* =======================================
  * Typography
  * ======================================= */
@@ -1793,6 +1757,15 @@ h6, .h6 {
 /* =======================================
  * App
  * ======================================= */
+.App {
+  display: -webkit-box;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+          flex-direction: column;
+  min-height: 100vh;
+}
+
 /* =======================================
  * Container
  * ======================================= */
@@ -1803,17 +1776,18 @@ h6, .h6 {
 
 @media (min-width: 48em) {
   .Container {
-    padding-bottom: 3rem;
-    padding-top: 3rem;
+    padding-bottom: 4.5rem;
+    padding-top: 4.5rem;
   }
 }
 
 /* =======================================
  * Footer
- * =======================================
- *
- * @reusable probably true but intented to be used once
- */
+ * ======================================= */
+.Footer {
+  background-color: #ffffff;
+}
+
 /* =======================================
  * Grid
  * ======================================= */
@@ -1928,11 +1902,10 @@ h6, .h6 {
 
 /* =======================================
  * Template
- * =======================================
- *
- * @reusable probably true but intented to be used once
- */
+ * ======================================= */
 .Template {
+  -webkit-box-flex: 1;
+          flex: 1;
   position: relative;
   z-index: 99;
 }
@@ -2187,6 +2160,11 @@ h6, .h6 {
  * Button
  * ======================================= */
 .Button {
+  max-width: 100%;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  word-wrap: normal;
   font-size: 1rem;
   line-height: 2.5rem;
   background-color: transparent;
@@ -2264,9 +2242,23 @@ h6, .h6 {
 /* ======
  * Button - Style
  * ====== */
+.Button.-round {
+  border-radius: 0;
+}
+
+.Button.-pill {
+  border-radius: 60px;
+}
+
 /* ======
  * Button - States
  * ====== */
+.Button.is-disabled, .Button [disabled] {
+  cursor: not-allowed;
+  opacity: 0.5;
+  pointer-events: none;
+}
+
 .Button.is-open {
   overflow: visible;
 }
@@ -2428,6 +2420,10 @@ h6, .h6 {
 /* ======
  * Card - Style
  * ====== */
+.Card.-round {
+  border-radius: 0;
+}
+
 /* ======
  * Card - Color
  * ====== */
@@ -2445,6 +2441,11 @@ h6, .h6 {
 }
 
 .Card.-figureCrop .Card-figure figure, .Card.-figureFill .Card-figure figure {
+  bottom: 0;
+  left: 0;
+  position: absolute;
+  right: 0;
+  top: 0;
   background-position: center;
   background-repeat: no-repeat;
   background-size: cover;
@@ -2458,6 +2459,18 @@ h6, .h6 {
 
 .Card.-figureFill {
   background: transparent;
+}
+
+.Card.-figureFill .Card-figure {
+  bottom: 0;
+  left: 0;
+  position: absolute;
+  right: 0;
+  top: 0;
+}
+
+.Card.-figureFill.-round .Card-figure img {
+  border-radius: 0;
 }
 
 /* =======================================
@@ -2564,6 +2577,12 @@ h6, .h6 {
   margin: 0;
 }
 
+.Form-button.Button[disabled], fieldset[disabled] .Form-button.Button {
+  cursor: not-allowed;
+  opacity: 0.5;
+  pointer-events: none;
+}
+
 textarea.Form-item {
   line-height: 1.5;
   min-height: 9rem;
@@ -2597,6 +2616,10 @@ textarea.Form-item {
 /* ======
  * Form item - Style
  * ====== */
+.Form-item.-round {
+  border-radius: 0;
+}
+
 /* =======================================
  * Form grid
  * =======================================
@@ -2861,6 +2884,11 @@ textarea.Form-item {
 }
 
 .Hero-figure {
+  bottom: 0;
+  left: 0;
+  position: absolute;
+  right: 0;
+  top: 0;
   background-position: center;
   background-size: cover;
   background-position: center;
@@ -2972,6 +3000,11 @@ textarea.Form-item {
  * Hero item - Various modifiers
  * ====== */
 .Hero-item.-overlay:after {
+  bottom: 0;
+  left: 0;
+  position: absolute;
+  right: 0;
+  top: 0;
   background-color: rgba(0, 0, 0, 0.5);
   content: '';
   z-index: 1;
@@ -3427,6 +3460,9 @@ textarea.Form-item {
  * List
  * ======================================= */
 .List {
+  list-style: none;
+  margin: 0;
+  padding: 0;
   margin-bottom: 1.5rem;
 }
 
@@ -3438,24 +3474,37 @@ textarea.Form-item {
   margin-bottom: 0;
 }
 
-.List-text {
-  text-align: left;
+.List-meta {
+  font-size: 0.875rem;
+  line-height: 1.42857;
+}
+
+.List-heading {
+  font-size: 0.875rem;
+  line-height: 1.42857;
   display: block;
 }
 
-/* ======
- * List - Icon
- * ====== */
-.List--icon .List-item {
-  padding-left: 1rem;
-  position: relative;
-  margin-bottom: 0.375rem;
+/* =======================================
+ * List - Default
+ * ======================================= */
+.List--default > ul {
+  list-style: none;
+  margin: 0;
+  padding: 0;
 }
 
-.List--icon .List-item-icon {
-  position: absolute;
-  top: 5px;
-  left: 0;
+.List--default .List-meta {
+  color: #737373;
+}
+
+.List--default .List-link {
+  color: #000000;
+  display: block;
+}
+
+.List--default .List-link:hover, .List--default .List-link:focus {
+  color: #4d4dff;
 }
 
 /* =======================================
@@ -3466,6 +3515,12 @@ textarea.Form-item {
      -moz-user-select: none;
       -ms-user-select: none;
           user-select: none;
+}
+
+.Navbar ul {
+  list-style: none;
+  margin: 0;
+  padding: 0;
 }
 
 /* =======================================
@@ -3959,7 +4014,7 @@ textarea.Form-item {
   line-height: 1.44444;
 }
 
-.Card-footer, .List-text, .List-meta, .Text.-s {
+.Text.-s {
   font-size: 0.875rem;
   line-height: 1.42857;
 }
@@ -3980,7 +4035,7 @@ textarea.Form-item {
   line-height: 1.44444;
 }
 
-.Card-footer, .List-text, .List-meta, .Text.-s {
+.Card-footer, .Text.-s {
   font-size: 0.875rem;
   line-height: 1.42857;
 }

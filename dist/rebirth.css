@@ -339,10 +339,13 @@ template {
 }
 
 /* =======================================
+ * Text Mixins
+ * ======================================= */
+/* =======================================
  * Base
  * ======================================= */
 :root {
-  background-color: #ffffff;
+  background-color: #e6e6e6;
   color: #000000;
   font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
   font-size: 16px;
@@ -434,15 +437,6 @@ img {
  * Fonts
  * ======================================= */
 /* =======================================
- * Global uncategorized placeholders
- * ======================================= */
-nav ul, .Navbar ul {
-  list-style: none;
-  margin: 0;
-  padding: 0;
-}
-
-/* =======================================
  * Typography
  * ======================================= */
 p {
@@ -518,6 +512,15 @@ h6, .h6 {
 /* =======================================
  * App
  * ======================================= */
+.App {
+  display: -webkit-box;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+          flex-direction: column;
+  min-height: 100vh;
+}
+
 /* =======================================
  * Container
  * ======================================= */
@@ -528,17 +531,18 @@ h6, .h6 {
 
 @media (min-width: 48em) {
   .Container {
-    padding-bottom: 3rem;
-    padding-top: 3rem;
+    padding-bottom: 4.5rem;
+    padding-top: 4.5rem;
   }
 }
 
 /* =======================================
  * Footer
- * =======================================
- *
- * @reusable probably true but intented to be used once
- */
+ * ======================================= */
+.Footer {
+  background-color: #ffffff;
+}
+
 /* =======================================
  * Grid
  * ======================================= */
@@ -653,11 +657,10 @@ h6, .h6 {
 
 /* =======================================
  * Template
- * =======================================
- *
- * @reusable probably true but intented to be used once
- */
+ * ======================================= */
 .Template {
+  -webkit-box-flex: 1;
+          flex: 1;
   position: relative;
   z-index: 99;
 }
@@ -926,298 +929,6 @@ h6, .h6 {
   stroke-width: 0;
   stroke: currentColor;
   width: 1em;
-}
-
-/* =======================================
- * Navbar
- * ======================================= */
-.Navbar {
-  -webkit-user-select: none;
-     -moz-user-select: none;
-      -ms-user-select: none;
-          user-select: none;
-}
-
-/* =======================================
- * Navbar - Default
- * =======================================
- *
- * @extends `.Navbar{}` in _Navbar.scss
- */
-.Navbar--default {
-  background-color: #ffffff;
-  display: -webkit-box;
-  display: flex;
-  flex-wrap: wrap;
-  /* ======
-   * Media Query Breakpoints
-   * ====== */
-}
-
-.Navbar--default.is-open > ul {
-  display: block;
-}
-
-.Navbar--default > ul {
-  display: none;
-  width: 100%;
-}
-
-.Navbar--default .Navbar-logo {
-  font-size: 1.125rem;
-  line-height: 1.44444;
-  -webkit-box-align: center;
-          align-items: center;
-  color: #000000;
-  display: -webkit-box;
-  display: flex;
-  padding: 0 1.5rem;
-}
-
-.Navbar--default .Navbar-ctrl {
-  display: -webkit-box;
-  display: flex;
-  margin-left: auto;
-  min-height: 3rem;
-}
-
-.Navbar--default .Navbar-ctrl-trigger {
-  -webkit-box-align: center;
-          align-items: center;
-  color: #000000;
-  cursor: pointer;
-  display: -webkit-box;
-  display: flex;
-  -webkit-box-pack: center;
-          justify-content: center;
-  min-width: 3rem;
-  padding: 0 0.75rem;
-}
-
-.Navbar--default .Navbar-ctrl-trigger-icon {
-  border-top: 2px solid #000000;
-  display: inline-block;
-  height: 14px;
-  position: relative;
-  top: 6px;
-  -webkit-user-select: none;
-     -moz-user-select: none;
-      -ms-user-select: none;
-          user-select: none;
-  min-width: 22px;
-}
-
-.Navbar--default .Navbar-ctrl-trigger-icon:before, .Navbar--default .Navbar-ctrl-trigger-icon:after {
-  background-color: #000000;
-  content: '';
-  display: block;
-  height: 2px;
-  position: absolute;
-  width: 22px;
-}
-
-.Navbar--default .Navbar-ctrl-trigger-icon:before {
-  top: -8px;
-}
-
-.Navbar--default .Navbar-ctrl-trigger-icon:after {
-  top: 4px;
-}
-
-.Navbar--default .Navbar-item {
-  border-top: 1px solid rgba(0, 0, 0, 0.08);
-  display: -webkit-box;
-  display: flex;
-  flex-wrap: wrap;
-}
-
-.Navbar--default .Navbar-item.is-active > .Navbar-link {
-  color: #4d4dff;
-}
-
-.Navbar--default .Navbar-item.is-open > .Navbar-trigger > .Navbar-trigger-icon {
-  -webkit-transform: rotate(0deg);
-          transform: rotate(0deg);
-}
-
-.Navbar--default .Navbar-item.is-open > .Navbar-sub {
-  display: block;
-}
-
-.Navbar--default .Navbar-link {
-  -webkit-box-align: center;
-          align-items: center;
-  color: #000000;
-  cursor: pointer;
-  display: -webkit-box;
-  display: flex;
-  -webkit-box-flex: 1;
-          flex: 1;
-  padding: 0.75rem 1.5rem;
-}
-
-.Navbar--default .Navbar-link:hover {
-  color: #4d4dff;
-}
-
-.Navbar--default .Navbar-trigger {
-  -webkit-box-align: center;
-          align-items: center;
-  color: #000000;
-  cursor: pointer;
-  display: -webkit-box;
-  display: flex;
-  -webkit-box-pack: center;
-          justify-content: center;
-  min-width: 3rem;
-  padding: 0 0.75rem;
-}
-
-.Navbar--default .Navbar-trigger-icon {
-  display: inline-block;
-  position: relative;
-  height: 8px;
-  width: 8px;
-  -webkit-transform: rotate(180deg);
-          transform: rotate(180deg);
-  pointer-events: none;
-}
-
-.Navbar--default .Navbar-trigger-icon:after {
-  border-left: 2px solid;
-  border-top: 2px solid;
-  color: #737373;
-  content: '';
-  display: block;
-  height: 8px;
-  position: absolute;
-  -webkit-transform: rotate(45deg);
-          transform: rotate(45deg);
-  width: 8px;
-  top: 3px;
-}
-
-.Navbar--default .Navbar-sub {
-  display: none;
-  background-color: #f0f0f0;
-  width: 100%;
-}
-
-.Navbar--default .Navbar-sub .Navbar-link {
-  background-color: transparent;
-}
-
-.Navbar--default .Navbar-sub .Navbar-link:hover {
-  color: #4d4dff;
-}
-
-.Navbar--default .Navbar-sub ul {
-  background-color: rgba(0, 0, 0, 0.03);
-}
-
-.Navbar--default .Navbar-sub ul .Navbar-trigger {
-  background-color: transparent;
-}
-
-@media (min-width: 64em) {
-  .Navbar--default {
-    display: -webkit-box;
-    display: flex;
-    min-height: 4.5rem;
-  }
-  .Navbar--default.is-open > ul {
-    display: -webkit-box;
-    display: flex;
-  }
-  .Navbar--default > ul {
-    display: -webkit-box;
-    display: flex;
-    margin-left: auto;
-    padding-right: 1rem;
-    width: auto;
-  }
-  .Navbar--default .Navbar-ctrl {
-    margin-left: 0;
-    -webkit-box-ordinal-group: 4;
-            order: 3;
-  }
-  .Navbar--default .Navbar-ctrl-trigger {
-    display: none;
-  }
-  .Navbar--default > ul > .Navbar-item {
-    border: 0;
-    position: relative;
-  }
-  .Navbar--default > ul > .Navbar-item > .Navbar-link {
-    border: 0;
-    padding: 0 0.75rem;
-  }
-  .Navbar--default > ul > .Navbar-item > .Navbar-trigger {
-    border: 0;
-    margin: 2px 0.75rem 0 -0.25rem;
-    min-width: 0;
-    padding: 0;
-  }
-  .Navbar--default > ul > .Navbar-item:last-child > .Navbar-sub {
-    left: auto;
-    right: 0;
-  }
-  .no-touchevents .Navbar--default .Navbar-item.is-open > .Navbar-trigger > .Navbar-trigger-icon {
-    -webkit-transform: rotate(180deg);
-            transform: rotate(180deg);
-  }
-  .Navbar--default .Navbar-sub {
-    background-color: #ffffff;
-    box-shadow: 0 rgba(0, 0, 0, 0.1);
-    border-radius: 0;
-    left: 0;
-    list-style: none;
-    margin: 0;
-    min-width: 240px;
-    padding: 0.75rem 1.5rem;
-    position: absolute;
-    top: 100%;
-    -webkit-transition: opacity 0.3s;
-    transition: opacity 0.3s;
-    z-index: 999;
-    clip: rect(0, 0, 0, 0);
-    height: 0;
-    opacity: 0;
-    /**
-   * Caret
-   */
-    /**
-   * Aligning
-   */
-    font-size: 0.875rem;
-    line-height: 1.42857;
-    border-top-left-radius: 0;
-    border-top-right-radius: 0;
-    display: block;
-    left: 0;
-  }
-  .Navbar--default .Navbar-sub .Navbar-item {
-    border: 0;
-  }
-  .Navbar--default .Navbar-sub .Navbar-link {
-    padding: 0.5rem 0;
-  }
-  .Navbar--default .Navbar-sub ul, .Navbar--default .Navbar-sub .Navbar-trigger {
-    display: none !important;
-  }
-  .has-touchevents .Navbar--default .Navbar-item.is-open > .Navbar-sub,
-  .no-touchevents .Navbar--default .Navbar-item:hover > .Navbar-sub,
-  .no-touchevents .Navbar--default .Navbar-item:focus > .Navbar-sub {
-    clip: auto;
-    height: auto;
-    opacity: 1;
-    /**
-   * Caret
-   */
-    /**
-   * Aligning
-   */
-  }
 }
 
 /* =======================================
