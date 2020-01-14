@@ -1,0 +1,35 @@
+/* =======================================
+ * Nav - Default
+ * ======================================= */
+
+.Nav--default {
+  .Nav-item {
+    align-items: center;
+    display: flex;
+    margin-bottom: rem($baseSpace / 6);
+
+    &.is-active {
+      .Nav-link, .Nav-icon:after {
+        color: $colorLink;
+      }
+    }
+  }
+
+    .Nav-link {
+      @include TextLink();
+      display: block;
+
+      &:hover {
+        .Nav-icon {
+          &:after {
+            color: inherit;
+          }
+        }
+      }
+    }
+
+      .Nav-icon {
+        @include shapeArrow('right');
+        top: rem(-2px);
+      }
+}
