@@ -3,7 +3,7 @@
  * ======================================= */
 
 .List {
-  @extend %resetList;
+  @include resetList();
   margin-bottom: rem($baseSpace);
 }
 
@@ -15,32 +15,11 @@
   }
 }
 
-  .List-text {
-    @extend %Text.-s;
-    text-align: left;
+  .List-meta {
+    @include fontSize($baseFontSize-s, $baseLineHeight-s);
+  }
+
+  .List-heading {
+    @include fontSize($baseFontSize-s, $baseLineHeight-s);
     display: block;
   }
-
-  .List-meta {
-    @extend %Text.-s;
-  }
-
-
-/* ======
- * List - Icon
- * ====== */
-
-.List--icon {
-
-  .List-item {
-    padding-left: rem($baseSpace / 1.5);
-    position: relative;
-    margin-bottom: rem($baseSpace / 4);
-  }
-
-    .List-item-icon {
-      position: absolute;
-      top: 5px;
-      left: 0;
-    }
-}

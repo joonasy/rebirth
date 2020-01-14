@@ -1,0 +1,18 @@
+/* =======================================
+ * List - Default
+ * ======================================= */
+
+.List--default {
+  > ul {
+    @include resetList();
+  }
+
+  .List-meta {
+    @include TextMeta();
+  }
+
+  .List-link {
+    @include TextLink();
+    display: block;
+  }
+}
