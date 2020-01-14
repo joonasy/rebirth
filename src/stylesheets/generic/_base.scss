@@ -3,7 +3,7 @@
  * ======================================= */
 
 :root {
-  background-color: $colorBgLightest;
+  background-color: $colorBgLight;
   color: $colorText;
   font-family: $baseFontFamily;
   font-size: $baseFontSize;
@@ -43,10 +43,6 @@ ul,
 ol,
 dl {
   padding: 0 0 0 rem($baseSpace);
-}
-
-nav ul {
-  @extend %resetList;
 }
 
 a {

@@ -26,4 +26,4 @@ Rebirths documentation, included in this repo in the root directory, is built wi
 
 ## License
 
-Copyright (c) 2018 Joonas Ylitalo (Twitter: @joonasy) Licensed under the MIT license.
+Copyright (c) 2020 Joonas Ylitalo (Twitter: [@joonasy](https://twitter.com/joonasy)). Licensed under the MIT license.
