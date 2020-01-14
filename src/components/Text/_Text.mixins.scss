@@ -1,0 +1,15 @@
+/* =======================================
+ * Text Mixins
+ * ======================================= */
+
+@mixin TextMeta() {
+  color: $colorTextLightest;
+}
+
+@mixin TextLink() {
+  color: $colorText;
+
+  &:hover, &:focus {
+    color: $colorLink;
+  }
+}

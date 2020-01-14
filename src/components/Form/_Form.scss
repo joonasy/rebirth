@@ -53,7 +53,7 @@
     margin: 0;
 
     &[disabled], fieldset[disabled] & {
-      @extend %disabled;
+      @include disabled();
     }
   }
 
@@ -96,6 +96,6 @@
 
 .Form-item {
   &.-round {
-    @extend %round;
+    border-radius: $borderRadius;
   }
 }

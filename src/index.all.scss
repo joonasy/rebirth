@@ -15,6 +15,7 @@
 @import 'stylesheets/mixins/dropdown';
 @import 'stylesheets/mixins/center';
 @import 'stylesheets/mixins/fontSize';
+@import 'stylesheets/mixins/mixins';
 @import 'stylesheets/mixins/position';
 @import 'stylesheets/mixins/shapeArrow';
 @import 'stylesheets/mixins/shapeMenu';
@@ -23,11 +24,13 @@
 @import 'stylesheets/mixins/utility';
 @import 'stylesheets/mixins/quantityQuery';
 
+// Component specific mixins
+@import 'components/Text/Text.mixins';
+
 // Generic
 @import 'stylesheets/generic/base';
 @import 'stylesheets/generic/code';
 @import 'stylesheets/generic/fonts';
-@import 'stylesheets/generic/placeholder';
 @import 'stylesheets/generic/typography';
 
 // Helpers

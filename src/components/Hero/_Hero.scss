@@ -39,7 +39,7 @@
         }
 
     .Hero-figure {
-      @extend %positionAbsoluteFill;
+      @include positionAbsoluteFill();
       background-position: center;
       background-size: cover;
       background-position: center;
@@ -175,7 +175,7 @@
 .Hero-item {
   &.-overlay {
     &:after {
-      @extend %positionAbsoluteFill;
+      @include positionAbsoluteFill();
       background-color: rgba(#000000, 0.5);
       content: '';
       z-index: 1;

@@ -60,7 +60,7 @@
 
 .Card {
   &.-round {
-    @extend %round;
+    border-radius: $borderRadius;
   }
 }
 
@@ -87,7 +87,7 @@
     width: 100%;
 
     figure {
-      @extend %positionAbsoluteFill;
+      @include positionAbsoluteFill();
       background-position: center;
       background-repeat: no-repeat;
       background-size: cover;
@@ -106,13 +106,13 @@
   background: transparent;
 
   .Card-figure {
-    @extend %positionAbsoluteFill;
+    @include positionAbsoluteFill();
   }
 
   &.-round {
     .Card-figure {
       img {
-        @extend %round;
+        border-radius: $borderRadius;
       }
     }
   }

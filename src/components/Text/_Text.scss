@@ -9,12 +9,8 @@
  * Text - Size
  * ====== */
 
-%Text.-l  { @include fontSize($baseFontSize-l, $baseLineHeight-l);   }
-%Text.-s  { @include fontSize($baseFontSize-s, $baseLineHeight-s);   }
-%Text.-xs { @include fontSize($baseFontSize-xs, $baseLineHeight-xs); }
-
 .Text {
-  &.-l  { @extend %Text.-l;  }
-  &.-s  { @extend %Text.-s;  }
-  &.-xs { @extend %Text.-xs; }
+  &.-l  { @include fontSize($baseFontSize-l, $baseLineHeight-l);   }
+  &.-s  { @include fontSize($baseFontSize-s, $baseLineHeight-s);   }
+  &.-xs { @include fontSize($baseFontSize-xs, $baseLineHeight-xs); }
 }

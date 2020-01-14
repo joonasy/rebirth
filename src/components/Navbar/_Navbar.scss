@@ -6,6 +6,6 @@
   user-select: none;
 
   ul {
-    @extend %resetList;
+    @include resetList();
   }
 }

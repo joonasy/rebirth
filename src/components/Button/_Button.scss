@@ -3,7 +3,7 @@
  * ======================================= */
 
 .Button {
-  @extend %textTruncate;
+  @include textTruncate();
   @include fontSize($Button-fontSize, rem(($Button-height) - ($Button-borderWidth * 2)));
   background-color: transparent;
   border: $Button-borderWidth solid transparent;
@@ -41,11 +41,11 @@
 
 .Button {
   &.-round {
-    @extend %round;
+    border-radius: $borderRadius;
   }
 
   &.-pill {
-    @extend %pill;
+    border-radius: 60px;
   }
 }
 
@@ -55,8 +55,8 @@
  * ====== */
 
 .Button {
-  &.is-disabled {
-    @extend %disabled;
+  &.is-disabled, [disabled] {
+    @include disabled();
   }
 
   &.is-open {
