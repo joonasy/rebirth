@@ -1,0 +1,10 @@
+/* =======================================
+ * Pagination
+ * ======================================= */
+
+.Pagination {
+  @include resetList();
+  display: flex;
+  margin-bottom: rem($baseSpace)
+}
+

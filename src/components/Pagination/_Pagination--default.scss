@@ -1,0 +1,23 @@
+/* =======================================
+ * Pagination - Default
+ * ======================================= */
+
+.Pagination--default {
+  .Pagination-link {
+    background-color: $colorBgLightest;
+    border: 1px solid $colorBorder;
+    color: $colorLink;
+    display: block;
+    margin-left: -1px;
+    padding: rem($baseSpace / 3) rem($baseSpace / 2);
+
+    &:hover {
+      background-color: $colorBgLighter;
+    }
+
+    &.is-active {
+      background-color: $colorPrimary;
+      color: $colorLight;
+    }
+  }
+}
