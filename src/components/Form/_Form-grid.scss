@@ -40,53 +40,52 @@
       }
     }
 
-    &:last-child {
+    &:last-child:not(:only-child) {
       margin-bottom: rem($baseSpace);
     }
 
-    &:first-child:not(:only-child) {
-      .-round {
-        &:first-child {
+    @if strip-unit($Form-borderRadius) > 0 {
+      &:first-child:not(:only-child) {
+        .Form-item:first-child {
           border-radius: $Form-borderRadius 0 0 0;
         }
 
-        &:last-child {
+        .Form-button:last-child,
+        .Form-item:last-child {
           border-radius: 0 $Form-borderRadius 0 0;
         }
 
-        &:only-child {
+        .Form-item:only-child {
           border-radius: $Form-borderRadius $Form-borderRadius 0 0;
         }
       }
-    }
 
-    &:last-child:not(:only-child) {
-      .-round {
-        &:first-child {
+      &:last-child:not(:only-child) {
+        .Form-item:first-child {
           border-radius: 0 0 0 $Form-borderRadius;
         }
 
-        &:last-child {
+        .Form-button:last-child,
+        .Form-item:last-child {
           border-radius: 0 0 $Form-borderRadius 0;
         }
 
-        &:only-child {
+        .Form-item:only-child {
           border-radius: 0 0 $Form-borderRadius $Form-borderRadius;
         }
       }
-    }
 
-    &:only-child {
-      .-round {
-        &:first-child {
+      &:only-child {
+        .Form-item:first-child {
           border-radius: $Form-borderRadius 0 0 $Form-borderRadius;
         }
 
-        &:last-child {
+        .Form-button:last-child,
+        .Form-item:last-child {
           border-radius: 0 $Form-borderRadius $Form-borderRadius 0;
         }
 
-        &:only-child {
+        .Form-item:only-child {
           border-radius: $Form-borderRadius $Form-borderRadius;
         }
       }

@@ -25,7 +25,7 @@
   .Form-item {
     @extend %Form-item-appearance;
     @extend %Form-item-layout;
-    border-radius: 0;
+    border-radius: $Form-borderRadius;
     display: block;
     flex: 1;
     margin-bottom: rem($baseSpace);
