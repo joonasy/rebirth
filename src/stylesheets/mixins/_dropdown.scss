@@ -4,7 +4,7 @@
 
 @mixin dropdown($align: 'left', $arrow: true, $arrowColor: lighten(#000000, 85),
   $backgroundColor: #ffffff, $borderRadius: $borderRadius, $default: true, $min-width: 240px,
-  $padding: rem($baseSpace / 2) rem($baseSpace), $boxShadow: 0 rgba(#000000, 0.1), $state: false) {
+  $padding: rem($baseSpace / 1.5) rem($baseSpace / 1.5), $boxShadow: (0 -1px 0 rgba(0, 0, 0, 0.05), 0 2px 4px rgba(0, 0, 0, 0.05)), $state: false) {
 
   @if $state == false and $default  {
     background-color: $backgroundColor;
