@@ -1,0 +1,9 @@
+/* =======================================
+ * Breadcrumb
+ * ======================================= */
+
+.Breadcrumb {
+  @include fontSize($baseFontSize-s, $baseLineHeight-s);
+  margin-bottom: rem($baseSpace)
+}
+

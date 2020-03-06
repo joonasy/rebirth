@@ -1,0 +1,13 @@
+/* =======================================
+ * Breadcrumb - Default
+ * ======================================= */
+
+.Breadcrumb--default {
+  a {
+    color: $colorLink;
+
+    &:hover {
+      color: $colorLinkHover;
+    }
+  }
+}
