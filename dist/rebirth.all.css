@@ -458,7 +458,7 @@ kbd {
   font-size: 0.875rem;
   line-height: 1.42857;
   background-color: #f7f7f7;
-  border-radius: 0;
+  border-radius: 3px;
   color: #333333;
   padding: 4px 6px;
 }
@@ -2167,13 +2167,18 @@ h6, .h6 {
   word-wrap: normal;
   font-size: 1rem;
   line-height: 2.5rem;
+  -webkit-box-align: center;
+          align-items: center;
   background-color: transparent;
   border: 1px solid transparent;
   cursor: pointer;
-  display: inline-block;
+  display: -webkit-inline-box;
+  display: inline-flex;
   font-weight: bolder;
   margin-bottom: 1.5rem;
   margin-right: 0.75rem;
+  -webkit-box-pack: center;
+          justify-content: center;
   outline: 0;
   padding: 0 1.5rem;
   position: relative;
@@ -2193,13 +2198,13 @@ h6, .h6 {
 
 .Button-dropdown {
   background-color: #ffffff;
-  box-shadow: 0 rgba(0, 0, 0, 0.1);
-  border-radius: 0;
+  box-shadow: 0 -1px 0 rgba(0, 0, 0, 0.05), 0 2px 4px rgba(0, 0, 0, 0.05);
+  border-radius: 3px;
   left: 0;
   list-style: none;
   margin: 0;
   min-width: 240px;
-  padding: 0.75rem 1.5rem;
+  padding: 1rem 1rem;
   position: absolute;
   top: 100%;
   -webkit-transition: opacity 0.3s;
@@ -2216,17 +2221,6 @@ h6, .h6 {
    */
 }
 
-.Button-dropdown:before {
-  border-bottom: 8px solid #d9d9d9;
-  border-left: 8px solid transparent;
-  border-right: 8px solid transparent;
-  content: "";
-  left: 24px;
-  margin-left: -0.25rem;
-  position: absolute;
-  top: -0.5rem;
-}
-
 .Button.is-open .Button-dropdown {
   clip: auto;
   height: auto;
@@ -2239,21 +2233,32 @@ h6, .h6 {
    */
 }
 
-/* ======
- * Button - Style
- * ====== */
-.Button.-round {
-  border-radius: 0;
+.Button-text {
+  pointer-events: none;
 }
 
-.Button.-pill {
-  border-radius: 60px;
+.Button-text + .Button-icon {
+  margin-left: 0.75rem;
+}
+
+.Button-icon {
+  -webkit-box-align: center;
+          align-items: center;
+  display: -webkit-inline-box;
+  display: inline-flex;
+  -webkit-box-pack: center;
+          justify-content: center;
+  pointer-events: none;
+}
+
+.Button-icon + .Button-text {
+  margin-left: 0.75rem;
 }
 
 /* ======
  * Button - States
  * ====== */
-.Button.is-disabled, .Button [disabled] {
+.Button.is-disabled, .Button[disabled] {
   cursor: not-allowed;
   opacity: 0.5;
   pointer-events: none;
@@ -2264,7 +2269,7 @@ h6, .h6 {
 }
 
 /* ======
- * Button - Size
+ * Button - Sizing
  * ====== */
 .Button.-l {
   font-size: 1.125rem;
@@ -2279,8 +2284,12 @@ h6, .h6 {
 }
 
 .Button.-full {
-  display: block;
   width: 100%;
+}
+
+.Button.-block {
+  height: 3rem;
+  width: 3rem;
 }
 
 /* =======================================
@@ -2316,50 +2325,6 @@ h6, .h6 {
   background-color: #f7f7f7;
 }
 
-/* =======================================
- * Button collection - Default
- * =======================================
- *
- * @extends `.Button{}` in _Button.scss
- */
-.Buttons--default {
-  display: inline-block;
-  margin-bottom: 1.5rem;
-}
-
-.Buttons--default > .Button {
-  -webkit-box-align: baseline;
-          align-items: baseline;
-  border-radius: 0;
-  display: -webkit-box;
-  display: flex;
-  -webkit-box-pack: center;
-          justify-content: center;
-  margin: 0;
-}
-
-.Buttons--default > .Button:not(:last-child) {
-  border-bottom-width: 0;
-}
-
-.Buttons--default > .-round:first-child {
-  border-radius: 4px 4px 0 0;
-}
-
-.Buttons--default > .-round:last-child {
-  border-radius: 0 0 4px 4px;
-}
-
-.Buttons--default.-justify {
-  width: 100%;
-}
-
-/* =======================================
- * Button collection - Default - Horizontal
- * =======================================
- *
- * @extend `.Buttons--default{}` in _Buttons--default.scss
- */
 /* =======================================
  * Card
  * ======================================= */
@@ -2421,7 +2386,7 @@ h6, .h6 {
  * Card - Style
  * ====== */
 .Card.-round {
-  border-radius: 0;
+  border-radius: 3px;
 }
 
 /* ======
@@ -2470,7 +2435,7 @@ h6, .h6 {
 }
 
 .Card.-figureFill.-round .Card-figure img {
-  border-radius: 0;
+  border-radius: 3px;
 }
 
 /* =======================================
@@ -2488,15 +2453,15 @@ h6, .h6 {
 }
 
 .Card--default.-round {
-  border-radius: 2px;
+  border-radius: 5px;
 }
 
 .Card--default.-round .Card-figure img {
-  border-radius: 0 0 0 0;
+  border-radius: 3px 3px 0 0;
 }
 
 .Card--default.-round .Card-footer {
-  border-radius: 0 0 0 0;
+  border-radius: 0 0 3px 3px;
 }
 
 .Card--default.-border {
@@ -2533,7 +2498,7 @@ h6, .h6 {
   width: 100%;
 }
 
-.Form-item, .Form-addon, .Form-icon {
+.Form-item {
   background-color: #ffffff;
   border: 1px solid transparent;
   color: #000000;
@@ -2541,7 +2506,7 @@ h6, .h6 {
   outline: 0;
 }
 
-.Form-item, .Form-button.Button, .Form-addon, .Form-icon {
+.Form-item, .Form-button.Button {
   font-size: 0.875rem;
   height: 3rem;
   line-height: 2.875rem;
@@ -2549,7 +2514,7 @@ h6, .h6 {
 }
 
 .Form-item {
-  border-radius: 0;
+  border-radius: 3px;
   display: block;
   -webkit-box-flex: 1;
           flex: 1;
@@ -2617,7 +2582,7 @@ textarea.Form-item {
  * Form item - Style
  * ====== */
 .Form-item.-round {
-  border-radius: 0;
+  border-radius: 3px;
 }
 
 /* =======================================
@@ -2667,119 +2632,51 @@ textarea.Form-item {
   border-top-width: 0;
 }
 
-.Form-cell:last-child {
+.Form-cell:last-child:not(:only-child) {
   margin-bottom: 1.5rem;
 }
 
-.Form-cell:first-child:not(:only-child) .-round:first-child {
-  border-radius: 0 0 0 0;
+.Form-cell:first-child:not(:only-child) .Form-item:first-child {
+  border-radius: 3px 0 0 0;
 }
 
-.Form-cell:first-child:not(:only-child) .-round:last-child {
-  border-radius: 0 0 0 0;
+.Form-cell:first-child:not(:only-child) .Form-button:last-child,
+.Form-cell:first-child:not(:only-child) .Form-item:last-child {
+  border-radius: 0 3px 0 0;
 }
 
-.Form-cell:first-child:not(:only-child) .-round:only-child {
-  border-radius: 0 0 0 0;
+.Form-cell:first-child:not(:only-child) .Form-item:only-child {
+  border-radius: 3px 3px 0 0;
 }
 
-.Form-cell:last-child:not(:only-child) .-round:first-child {
-  border-radius: 0 0 0 0;
+.Form-cell:last-child:not(:only-child) .Form-item:first-child {
+  border-radius: 0 0 0 3px;
 }
 
-.Form-cell:last-child:not(:only-child) .-round:last-child {
-  border-radius: 0 0 0 0;
+.Form-cell:last-child:not(:only-child) .Form-button:last-child,
+.Form-cell:last-child:not(:only-child) .Form-item:last-child {
+  border-radius: 0 0 3px 0;
 }
 
-.Form-cell:last-child:not(:only-child) .-round:only-child {
-  border-radius: 0 0 0 0;
+.Form-cell:last-child:not(:only-child) .Form-item:only-child {
+  border-radius: 0 0 3px 3px;
 }
 
-.Form-cell:only-child .-round:first-child {
-  border-radius: 0 0 0 0;
+.Form-cell:only-child .Form-item:first-child {
+  border-radius: 3px 0 0 3px;
 }
 
-.Form-cell:only-child .-round:last-child {
-  border-radius: 0 0 0 0;
+.Form-cell:only-child .Form-button:last-child,
+.Form-cell:only-child .Form-item:last-child {
+  border-radius: 0 3px 3px 0;
 }
 
-.Form-cell:only-child .-round:only-child {
-  border-radius: 0 0;
+.Form-cell:only-child .Form-item:only-child {
+  border-radius: 3px 3px;
 }
 
 .Form-cell > .Form-button:only-child {
   width: 100%;
-}
-
-/* =======================================
- * Form grid - Horizontal
- * =======================================
- *
- * @extends `.Form-grid{}` in _Form-grid.scss
- */
-/* =======================================
- * Form addon
- * ======================================= */
-.Form-addon {
-  text-align: center;
-  min-width: 3rem;
-}
-
-/* ======
- * Form addon - Primary variation
- * ======
- *
- * Alternatively move this inside the main `.Form--default{}`
- */
-.Form--default .Form-addon {
-  background-color: #ffffff;
-}
-
-/* =======================================
- * Form icon
- * ======================================= */
-.Form-icon {
-  background-color: transparent;
-  left: 0;
-  position: absolute;
-  text-align: center;
-  top: 0;
-  z-index: 1;
-}
-
-.Form-icon:last-child {
-  left: auto;
-  right: 0;
-}
-
-/* ======
- * Form item - Required modifiers to use with form icons
- * ======
- *
- * Alternatively move this inside the main `_Form.scss`.
- */
-.Form-item:not(.Form-item--select).-icon {
-  padding-left: 2.5rem;
-  padding-right: 2.5rem;
-}
-
-.Form-item--select.-icon > select:not(:first-child) {
-  padding-left: 2.5rem;
-  padding-right: 2.5rem;
-}
-
-/* ======
- * Form icon - Primary variation
- * ======
- *
- * Alternatively move this inside the main `.Form--default{}`.
- */
-.Form--default .Form-icon .IconCss[class*='-chevron']:after {
-  border-color: #333333;
-}
-
-.Form--default .Form-item:hover .Form-icon .IconCss[class*='-chevron']:after {
-  border-color: #000000;
 }
 
 /* =======================================
@@ -2788,7 +2685,7 @@ textarea.Form-item {
  *
  * @extends `.Form{}` in _Form.scss
  */
-.Form--default .Form-addon, .Form--default .Form-item {
+.Form--default .Form-item {
   background-color: #ffffff;
   border-color: rgba(0, 0, 0, 0.08);
   color: #000000;
@@ -3143,10 +3040,10 @@ textarea.Form-item {
 .Icon {
   display: inline-block;
   fill: currentColor;
-  height: 1em;
+  height: 1.5em;
   stroke-width: 0;
   stroke: currentColor;
-  width: 1em;
+  width: 1.5em;
 }
 
 /* =======================================
@@ -3314,6 +3211,8 @@ textarea.Form-item {
   height: 14px;
   position: relative;
   top: 6px;
+  -webkit-transition: border-color 0.075s;
+  transition: border-color 0.075s;
   -webkit-user-select: none;
      -moz-user-select: none;
       -ms-user-select: none;
@@ -3327,15 +3226,23 @@ textarea.Form-item {
   display: block;
   height: 2px;
   position: absolute;
+  -webkit-transition: -webkit-transform 0.15s;
+  transition: -webkit-transform 0.15s;
+  transition: transform 0.15s;
+  transition: transform 0.15s, -webkit-transform 0.15s;
   width: 22px;
 }
 
 .IconCss.-menu:before {
   top: -8px;
+  -webkit-transform-origin: top left;
+          transform-origin: top left;
 }
 
 .IconCss.-menu:after {
   top: 4px;
+  -webkit-transform-origin: bottom left;
+          transform-origin: bottom left;
 }
 
 /* =======================================
@@ -3531,6 +3438,7 @@ textarea.Form-item {
  */
 .Navbar--default {
   background-color: #ffffff;
+  color: #000000;
   display: -webkit-box;
   display: flex;
   flex-wrap: wrap;
@@ -3563,7 +3471,24 @@ textarea.Form-item {
   display: -webkit-box;
   display: flex;
   margin-left: auto;
-  min-height: 3rem;
+  min-height: 3.75rem;
+}
+
+.Navbar--default .Navbar-ctrl-button {
+  margin: 0;
+  padding: 0 0.5rem;
+}
+
+.Navbar--default .Navbar-ctrl-button .Button-dropdown {
+  left: auto;
+  right: -2.25rem;
+}
+
+@media (min-width: 48em) {
+  .Navbar--default .Navbar-ctrl-button .Button-dropdown {
+    right: 0;
+    min-width: 22.5rem;
+  }
 }
 
 .Navbar--default .Navbar-ctrl-trigger {
@@ -3576,7 +3501,7 @@ textarea.Form-item {
   -webkit-box-pack: center;
           justify-content: center;
   min-width: 3rem;
-  padding: 0 0.75rem;
+  padding: 0 1.5rem 0 0.75rem;
 }
 
 .Navbar--default .Navbar-ctrl-trigger-icon {
@@ -3585,6 +3510,8 @@ textarea.Form-item {
   height: 14px;
   position: relative;
   top: 6px;
+  -webkit-transition: border-color 0.075s;
+  transition: border-color 0.075s;
   -webkit-user-select: none;
      -moz-user-select: none;
       -ms-user-select: none;
@@ -3598,15 +3525,23 @@ textarea.Form-item {
   display: block;
   height: 2px;
   position: absolute;
+  -webkit-transition: -webkit-transform 0.15s;
+  transition: -webkit-transform 0.15s;
+  transition: transform 0.15s;
+  transition: transform 0.15s, -webkit-transform 0.15s;
   width: 22px;
 }
 
 .Navbar--default .Navbar-ctrl-trigger-icon:before {
   top: -8px;
+  -webkit-transform-origin: top left;
+          transform-origin: top left;
 }
 
 .Navbar--default .Navbar-ctrl-trigger-icon:after {
   top: 4px;
+  -webkit-transform-origin: bottom left;
+          transform-origin: bottom left;
 }
 
 .Navbar--default .Navbar-item {
@@ -3617,16 +3552,21 @@ textarea.Form-item {
 }
 
 .Navbar--default .Navbar-item.is-active > .Navbar-link {
-  color: #4d4dff;
+  color: #0101ff;
 }
 
 .Navbar--default .Navbar-item.is-open > .Navbar-trigger > .Navbar-trigger-icon {
   -webkit-transform: rotate(0deg);
           transform: rotate(0deg);
+  top: -2px;
 }
 
 .Navbar--default .Navbar-item.is-open > .Navbar-sub {
   display: block;
+}
+
+.no-touchevents .Navbar--default .Navbar-item.-touchOnly {
+  display: none;
 }
 
 .Navbar--default .Navbar-link {
@@ -3648,6 +3588,7 @@ textarea.Form-item {
 .Navbar--default .Navbar-trigger {
   -webkit-box-align: center;
           align-items: center;
+  border-left: 1px solid rgba(0, 0, 0, 0.08);
   color: #000000;
   cursor: pointer;
   display: -webkit-box;
@@ -3671,7 +3612,7 @@ textarea.Form-item {
 .Navbar--default .Navbar-trigger-icon:after {
   border-left: 2px solid;
   border-top: 2px solid;
-  color: #737373;
+  color: #000000;
   content: '';
   display: block;
   height: 8px;
@@ -3684,7 +3625,7 @@ textarea.Form-item {
 
 .Navbar--default .Navbar-sub {
   display: none;
-  background-color: #f0f0f0;
+  background-color: #f7f7f7;
   width: 100%;
 }
 
@@ -3697,11 +3638,7 @@ textarea.Form-item {
 }
 
 .Navbar--default .Navbar-sub ul {
-  background-color: rgba(0, 0, 0, 0.03);
-}
-
-.Navbar--default .Navbar-sub ul .Navbar-trigger {
-  background-color: transparent;
+  background-color: #f7f7f7;
 }
 
 @media (min-width: 64em) {
@@ -3709,6 +3646,7 @@ textarea.Form-item {
     display: -webkit-box;
     display: flex;
     min-height: 4.5rem;
+    padding: 0 1rem;
   }
   .Navbar--default.is-open > ul {
     display: -webkit-box;
@@ -3718,7 +3656,6 @@ textarea.Form-item {
     display: -webkit-box;
     display: flex;
     margin-left: auto;
-    padding-right: 1rem;
     width: auto;
   }
   .Navbar--default .Navbar-ctrl {
@@ -3753,13 +3690,13 @@ textarea.Form-item {
   }
   .Navbar--default .Navbar-sub {
     background-color: #ffffff;
-    box-shadow: 0 rgba(0, 0, 0, 0.1);
-    border-radius: 0;
+    box-shadow: 0 -1px 0 rgba(0, 0, 0, 0.05), 0 2px 4px rgba(0, 0, 0, 0.05);
+    border-radius: 3px;
     left: 0;
     list-style: none;
     margin: 0;
     min-width: 240px;
-    padding: 0.75rem 1.5rem;
+    padding: 1rem 1rem;
     position: absolute;
     top: 100%;
     -webkit-transition: opacity 0.3s;
@@ -3870,6 +3807,8 @@ textarea.Form-item {
   height: 14px;
   position: relative;
   top: 6px;
+  -webkit-transition: border-color 0.075s;
+  transition: border-color 0.075s;
   -webkit-user-select: none;
      -moz-user-select: none;
       -ms-user-select: none;
@@ -3884,15 +3823,23 @@ textarea.Form-item {
   display: block;
   height: 2px;
   position: absolute;
+  -webkit-transition: -webkit-transform 0.15s;
+  transition: -webkit-transform 0.15s;
+  transition: transform 0.15s;
+  transition: transform 0.15s, -webkit-transform 0.15s;
   width: 22px;
 }
 
 .Navbar--stacked .Navbar-ctrl-trigger-icon:before {
   top: -8px;
+  -webkit-transform-origin: top left;
+          transform-origin: top left;
 }
 
 .Navbar--stacked .Navbar-ctrl-trigger-icon:after {
   top: 4px;
+  -webkit-transform-origin: bottom left;
+          transform-origin: bottom left;
 }
 
 .Navbar--stacked .Navbar-item {
