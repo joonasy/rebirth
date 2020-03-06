@@ -6,14 +6,15 @@ import { $$ } from 'javascripts/utility';
 
 class Button {
   constructor() {
-    this.button = $$('.js-ButtonDropdown');
+    this.buttonDropdown = $$('.js-ButtonDropdown');
+    this.dropdown();
+  }
 
-    [].forEach.call(this.button, (button) => {
+  dropdown() {
+    [].forEach.call(this.buttonDropdown, (button) => {
       button.addEventListener(
         'click',
         (e) => {
-          e.preventDefault();
-
           if (e.target.classList.contains('is-open')) {
             e.target.classList.remove('is-open');
           } else {
@@ -21,6 +22,12 @@ class Button {
           }
         },
         false,
+      );
+    });
+
+    window.addEventListener('click', (e) => {
+      [].forEach.call(this.buttonDropdown, (button) =>
+        button.classList.remove('is-open'),
       );
     });
   }

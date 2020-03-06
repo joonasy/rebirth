@@ -5,13 +5,15 @@
 .Button {
   @include textTruncate();
   @include fontSize($Button-fontSize, rem(($Button-height) - ($Button-borderWidth * 2)));
+  align-items: center;
   background-color: transparent;
   border: $Button-borderWidth solid transparent;
   cursor: pointer;
-  display: inline-block;
+  display: inline-flex;
   font-weight: $Button-fontWeight;
   margin-bottom: rem($baseSpace);
   margin-right: rem($baseSpace / 2);
+  justify-content: center;
   outline: 0;
   padding: 0 rem($baseSpace);
   position: relative;
@@ -26,26 +28,30 @@
   }
 }
 
-  .Button-dropdown {
-    @include dropdown();
+.Button-dropdown {
+  @include dropdown($arrow: false);
 
-    .Button.is-open & {
-      @include dropdown($state: 'is-open');
-    }
+  .Button.is-open & {
+    @include dropdown($state: 'is-open');
   }
+}
 
+.Button-text {
+  pointer-events: none;
 
-/* ======
- * Button - Style
- * ====== */
-
-.Button {
-  &.-round {
-    border-radius: $borderRadius;
+  + .Button-icon {
+    margin-left: rem($baseSpace / 2);
   }
+}
 
-  &.-pill {
-    border-radius: 60px;
+.Button-icon {
+  align-items: center;
+  display: inline-flex;
+  justify-content: center;
+  pointer-events: none;
+
+  + .Button-text {
+    margin-left: rem($baseSpace / 2);
   }
 }
 
@@ -55,7 +61,7 @@
  * ====== */
 
 .Button {
-  &.is-disabled, [disabled] {
+  &.is-disabled, &[disabled] {
     @include disabled();
   }
 
@@ -66,7 +72,7 @@
 
 
 /* ======
- * Button - Size
+ * Button - Sizing
  * ====== */
 
 .Button {
@@ -81,7 +87,11 @@
   }
 
   &.-full {
-    display: block;
     width: 100%;
+  }
+
+  &.-block {
+    height: rem($baseSpace * 2);
+    width: rem($baseSpace * 2);
   }
 }
