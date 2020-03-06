@@ -9,6 +9,8 @@ All notable changes to this project will be documented in this file. The format 
 - Add Article, Nav & List components
 - Add Aside container component placeholder
 - Push footer to bottom in default layout
+- Add pagination
+- Add breadcrumb
 
 ## 0.6.0x
 

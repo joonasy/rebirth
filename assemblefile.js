@@ -19,6 +19,8 @@ const watchify = require('watchify');
 const $ = require('gulp-load-plugins')();
 const yaml = require('js-yaml');
 const uglify = require('gulp-uglify-es').default;
+const postcss = require('gulp-postcss');
+const cssnano = require('cssnano');
 
 const PRODUCTION = process.env.NODE_ENV === 'production';
 const open = process.env.npm_config_disable_open ? false : 'external';
@@ -106,7 +108,15 @@ app.task('docs-stylesheets', () => {
     return pipeline
       .pipe($.replace('./', `${config.root}assets`))
       .pipe($.combineMq({ beautify: false }))
-      .pipe($.cssnano({ mergeRules: false, zindex: false }))
+      .pipe(
+        postcss([
+          cssnano({
+            mergeRules: false,
+            zindex: false,
+            discardComments: { removeAll: true },
+          }),
+        ]),
+      )
       .pipe(app.dest('rebirth/assets'));
   }
   return pipeline.pipe(app.dest('rebirth/assets')).pipe(browserSync.stream());
@@ -295,7 +305,15 @@ app.task('stylesheets', () => {
       .pipe(app.dest('dist/'))
       .pipe($.rename({ suffix: '.min' }))
       .pipe($.combineMq({ beautify: false }))
-      .pipe($.cssnano({ mergeRules: false, zindex: false }))
+      .pipe(
+        postcss([
+          cssnano({
+            mergeRules: false,
+            zindex: false,
+            discardComments: { removeAll: true },
+          }),
+        ]),
+      )
       .pipe(app.dest('dist/'));
   }
   return pipeline.pipe(app.dest('dist/')).pipe(browserSync.stream());
