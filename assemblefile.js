@@ -9,20 +9,18 @@ const browserify = require('browserify');
 const browserSync = require('browser-sync').create();
 const handlebarsHelpers = require('handlebars-helpers')();
 const notifier = require('node-notifier');
-const path = require('path');
 const pkg = require('./package.json');
 const prettyHrtime = require('pretty-hrtime');
 const rimraf = require('rimraf');
 const source = require('vinyl-source-stream');
 const through = require('through2');
-const vfs = require('vinyl-fs');
 const watch = require('base-watch');
 const watchify = require('watchify');
 const $ = require('gulp-load-plugins')();
 const yaml = require('js-yaml');
 const uglify = require('gulp-uglify-es').default;
 
-const production = process.env.NODE_ENV === 'production';
+const PRODUCTION = process.env.NODE_ENV === 'production';
 const open = process.env.npm_config_disable_open ? false : 'external';
 
 const app = assemble();
@@ -47,8 +45,8 @@ app.helpers(handlebarsHelpers);
 app.helper('markdown', require('helper-markdown'));
 
 app.data({
-  dev: !production,
-  root: production ? config.root : '/',
+  dev: !PRODUCTION,
+  root: PRODUCTION ? config.root : '/',
   version: config.version,
 });
 
@@ -104,7 +102,7 @@ app.task('docs-stylesheets', () => {
     .on('error', $.sass.logError)
     .pipe($.autoprefixer());
 
-  if (production) {
+  if (PRODUCTION) {
     return pipeline
       .pipe($.replace('./', `${config.root}assets`))
       .pipe($.combineMq({ beautify: false }))
@@ -176,7 +174,7 @@ app.task('docs-server', () => {
 /**
  * Docs - Watch
  */
-app.task('docs-watch', () => {
+app.task('docs-watch-files', () => {
   app.watch(
     [
       'docs/{layouts,templates,partials}/**/*.hbs',
@@ -292,7 +290,7 @@ app.task('stylesheets', () => {
       }),
     );
 
-  if (production) {
+  if (PRODUCTION) {
     return pipeline
       .pipe(app.dest('dist/'))
       .pipe($.rename({ suffix: '.min' }))
@@ -381,10 +379,10 @@ app.task('docs-build', () => {
   );
 });
 
-app.task('docs-dev', () => {
+app.task('docs-watch', () => {
   rimraf.sync('rebirth');
   rimraf.sync('dist');
-  app.build(docsTasks, app.parallel(['docs-server', 'docs-watch']));
+  app.build(docsTasks, app.parallel(['docs-server', 'docs-watch-files']));
 });
 
 /* ======
@@ -466,7 +464,7 @@ function bundleJavaScripts(src, dest, scripts, rename, cb) {
   const browserifyBundle = function(entry) {
     let pipeline = browserify({
       entries: src + entry.fileName,
-      debug: !production,
+      debug: !PRODUCTION,
       paths: ['src', 'docs/assets'],
     });
 
@@ -482,7 +480,7 @@ function bundleJavaScripts(src, dest, scripts, rename, cb) {
         collect = collect.pipe($.rename({ basename: entry.rename }));
       }
 
-      if (production) {
+      if (PRODUCTION) {
         if (rename) {
           collect = collect
             .pipe(app.dest(dest))
@@ -497,7 +495,7 @@ function bundleJavaScripts(src, dest, scripts, rename, cb) {
       return collect.pipe(app.dest(dest)).on('end', reportFinished);
     };
 
-    if (!production) {
+    if (!PRODUCTION) {
       pipeline = watchify(pipeline).on('update', bundle);
     }
 

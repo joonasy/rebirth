@@ -16,10 +16,10 @@
   "repository": "https://github.com/joonasy/rebirth.git",
   "scripts": {
     "build": "NODE_ENV=production assemble build",
-    "dev": "npm run docs-dev",
+    "watch": "npm run docs-watch",
     "dist": "npm run docs-dist",
     "docs-build": "NODE_ENV=production assemble docs-build",
-    "docs-dev": "assemble docs-dev",
+    "docs-watch": "assemble docs-watch",
     "docs-dist": "npm run docs-build && assemble docs-server",
     "docs-deploy": "npm run docs-build && assemble docs-deploy",
     "prepublishOnly": "npm run build && git add package.json dist && git commit -m \"Build: $npm_package_version\" && git tag $npm_package_version && git push --follow-tags"
