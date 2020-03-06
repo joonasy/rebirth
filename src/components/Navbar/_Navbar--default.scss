@@ -6,7 +6,8 @@
  */
 
 .Navbar--default {
-  background-color: $colorBgLightest;
+  background-color: $NavbarDefault-bgColor;
+  color: $NavbarDefault-textColor;
   display: flex;
   flex-wrap: wrap;
 
@@ -22,45 +23,61 @@
   .Navbar-logo {
     @include fontSize($baseFontSize-l, $baseLineHeight-l);
     align-items: center;
-    color: $colorText;
+    color: $NavbarDefault-textColor;
     display: flex;
-    padding: 0 $uiSpace;
+    padding: 0 rem($baseSpace / 1);
   }
 
   .Navbar-ctrl {
     display: flex;
     margin-left: auto;
-    min-height: $uiSpace * 2;
+    min-height: rem($baseSpace * 2.5);
   }
 
-    .Navbar-ctrl-trigger {
-      align-items: center;
-      color: $colorText;
-      cursor: pointer;
-      display: flex;
-      justify-content: center;
-      min-width: $uiSpace * 2;
-      padding: 0 ($uiSpace / 2);
-    }
+  .Navbar-ctrl-button {
+    margin: 0;
+    padding: 0 rem($baseSpace / 3);
 
-      .Navbar-ctrl-trigger-icon {
-        @include shapeMenu();
+    .Button-dropdown {
+      left: auto;
+      right: rem($baseSpace * -1.5);
+
+      @include mq(m) {
+        right: 0;
+        min-width: rem($baseSpace * 15);
       }
+    }
+  }
+
+  .Navbar-ctrl-trigger {
+    align-items: center;
+    color: $NavbarDefault-textColor;
+    cursor: pointer;
+    display: flex;
+    justify-content: center;
+    min-width: rem($baseSpace * 2);
+    padding: 0 rem($baseSpace) 0 rem($baseSpace / 2);
+  }
+
+  .Navbar-ctrl-trigger-icon {
+    @include shapeMenu($color: $NavbarDefault-triggerColor);
+  }
 
   .Navbar-item {
-    border-top: 1px solid $colorBorder;
+    border-top: 1px solid $NavbarDefault-colorBorder;
     display: flex;
     flex-wrap: wrap;
 
     &.is-active {
       > .Navbar-link {
-        color: $colorLink;
+        color: $NavbarDefault-activeColor;
       }
     }
 
     &.is-open {
       > .Navbar-trigger > .Navbar-trigger-icon {
         transform: rotate(0deg);
+        top: -2px;
       }
 
       > .Navbar-sub {
@@ -69,53 +86,54 @@
     }
   }
 
+  .no-touchevents & .Navbar-item.-touchOnly {
+    display: none;
+  }
+
   .Navbar-link {
     align-items: center;
-    color: $colorText;
+    color: $NavbarDefault-textColor;
     cursor: pointer;
     display: flex;
     flex: 1;
-    padding: ($uiSpace / 2) $uiSpace;
+    padding: rem($baseSpace / 2) rem($baseSpace);
 
     &:hover {
-      color: $colorLink;
+      color: $NavbarDefault-linkColorHover;
     }
   }
 
   .Navbar-trigger {
     align-items: center;
-    color: $colorText;
+    border-left: 1px solid $NavbarDefault-colorBorder;
+    color: $NavbarDefault-textColor;
     cursor: pointer;
     display: flex;
     justify-content: center;
-    min-width: $uiSpace * 2;
-    padding: 0 ($uiSpace / 2);
+    min-width: rem($baseSpace * 2);
+    padding: 0 rem($baseSpace / 2);
   }
 
-    .Navbar-trigger-icon {
-      @include shapeArrow('down');
-      pointer-events: none;
-    }
+  .Navbar-trigger-icon {
+    @include shapeArrow($direction: 'down', $color: $NavbarDefault-triggerColor);
+    pointer-events: none;
+  }
 
   .Navbar-sub {
     display: none;
-    background-color: darken($colorLight, 6);
+    background-color: $NavbarDefault-subBgColor;
     width: 100%;
 
     .Navbar-link  {
       background-color: transparent;
 
       &:hover {
-        color: $colorLink;
+        color: $NavbarDefault-linkColorHover;
       }
     }
 
     ul {
-      background-color: rgba($colorDark, 0.03);
-
-      .Navbar-trigger {
-        background-color: transparent;
-      }
+      background-color: $NavbarDefault-subBgColor;
     }
   }
 
@@ -126,7 +144,8 @@
 
   @mixin NavbarDefault-expand() {
     display: flex;
-    min-height: $uiSpace * 3;
+    min-height: rem($baseSpace * 3);
+    padding: 0 rem($baseSpace / 1.5);
 
     &.is-open > ul {
       display: flex;
@@ -135,7 +154,6 @@
     > ul {
       display: flex;
       margin-left: auto;
-      padding-right: $uiSpace / 1.5;
       width: auto;
     }
 
@@ -144,9 +162,9 @@
       order: 3;
     }
 
-      .Navbar-ctrl-trigger {
-        display: none;
-      }
+    .Navbar-ctrl-trigger {
+      display: none;
+    }
 
     > ul > .Navbar-item {
       border: 0;
@@ -154,12 +172,12 @@
 
       > .Navbar-link {
         border: 0;
-        padding: 0 ($uiSpace / 2);
+        padding: 0 rem($baseSpace / 2);
       }
 
       > .Navbar-trigger {
         border: 0;
-        margin: 2px ($uiSpace / 2) 0 (-($uiSpace / 6));
+        margin: 2px rem($baseSpace / 2) 0 rem(-($baseSpace / 6));
         min-width: 0;
         padding: 0;
       }
@@ -177,7 +195,7 @@
     }
 
     .Navbar-sub {
-      @include dropdown($arrow: false);
+      @include dropdown($arrow: false, $backgroundColor: $NavbarDefault-bgColor);
       @include fontSize($baseFontSize-s, $baseLineHeight-s);
       border-top-left-radius: 0;
       border-top-right-radius: 0;
@@ -189,7 +207,7 @@
       }
 
       .Navbar-link {
-        padding: ($uiSpace / 3) 0;
+        padding: rem($baseSpace / 3) 0;
       }
 
       ul, .Navbar-trigger {

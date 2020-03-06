@@ -10,19 +10,15 @@
 
   @include mq(l) {
     align-self: flex-start;
-    // background-color: $colorBgLighter;
-    border-right: 2px solid $colorBorder;
-    // box-shadow: 2px 0 12px rgba(#000000, 0.15);
+    background-color: $colorBgLightest;
     display: block;
     height: calc(100vh - #{$docs-Header-navbarSecondaryHeight-expand});
-    // margin-bottom: -($docs-Header-navbarSecondaryHeight-expand);
-    // padding-bottom: $baseSpace * 30;
     position: sticky;
     top: $docs-Header-navbarSecondaryHeight-expand;
     width: 18%;
 
     .docs-Aside-navbar {
-      background-color: transparent;
+      border-bottom: 0;
       max-height: calc(100vh - #{$docs-Header-navbarSecondaryHeight-expand});
       margin-bottom: $docs-Header-navbarPrimaryHeight-expand;
       overflow: auto;

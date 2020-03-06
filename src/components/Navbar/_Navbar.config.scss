@@ -2,6 +2,14 @@
 // Navbar Config
 // =======================================
 
+$NavbarDefault-bgColor: $colorBgLightest;
+$NavbarDefault-textColor: $colorText;
+$NavbarDefault-linkColor: $colorText;
+$NavbarDefault-linkColorHover: $colorLink;
+$NavbarDefault-activeColor: $colorLinkHover;
+$NavbarDefault-triggerColor: $colorText;
+$NavbarDefault-colorBorder: $colorBorder;
+$NavbarDefault-subBgColor: $colorBgLighter;
 $NavbarDefault-breakpoints: (
   l: map-get($mq-breakpoints, l)
 );
