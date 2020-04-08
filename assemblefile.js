@@ -3,29 +3,32 @@
  * ======================================= */
 
 const assemble = require('assemble');
-const ghpages = require('gh-pages');
-const fs = require('fs');
+const app = assemble();
 const browserify = require('browserify');
 const browserSync = require('browser-sync').create();
+const color = require('ansi-colors');
+const cssnano = require('cssnano');
+const fs = require('fs');
+const ghpages = require('gh-pages');
+const log = require('fancy-log');
 const handlebarsHelpers = require('handlebars-helpers')();
 const notifier = require('node-notifier');
+const postcss = require('gulp-postcss');
 const pkg = require('./package.json');
 const prettyHrtime = require('pretty-hrtime');
 const rimraf = require('rimraf');
 const source = require('vinyl-source-stream');
 const through = require('through2');
+const uglify = require('gulp-uglify-es').default;
+const yaml = require('js-yaml');
 const watch = require('base-watch');
 const watchify = require('watchify');
 const $ = require('gulp-load-plugins')();
-const yaml = require('js-yaml');
-const uglify = require('gulp-uglify-es').default;
-const postcss = require('gulp-postcss');
-const cssnano = require('cssnano');
 
 const PRODUCTION = process.env.NODE_ENV === 'production';
 const open = process.env.npm_config_disable_open ? false : 'external';
 
-const app = assemble();
+
 
 /* ======
  * Docs - Tasks
@@ -100,7 +103,6 @@ app.task('docs-stylesheets', () => {
         outputStyle: 'expanded',
       }),
     )
-    .on('error', handleError)
     .on('error', $.sass.logError)
     .pipe($.autoprefixer());
 
@@ -213,16 +215,8 @@ app.task('docs-watch-files', () => {
 app.task('docs-inline', () =>
   app
     .src(['rebirth/**/*.html'], { base: 'rebirth' })
-    .pipe(
-      $.replace(inline({ matchFile: 'docs.css' }), () =>
-        inline({ file: 'docs.css' }),
-      ),
-    )
-    .pipe(
-      $.replace(inline({ matchFile: 'docs.head.js' }), () =>
-        inline({ file: 'docs.head.js' }),
-      ),
-    )
+    .pipe($.replace(findFile('docs.css'), () => inlineFile('docs.css')))
+    .pipe($.replace(findFile('docs.head.js'), () => inlineFile('docs.head.js')))
     .pipe(app.dest('rebirth')),
 );
 
@@ -290,7 +284,6 @@ app.task('stylesheets', () => {
         outputStyle: 'expanded',
       }),
     )
-    .on('error', handleError)
     .on('error', $.sass.logError)
     .pipe($.autoprefixer())
     .pipe(
@@ -408,8 +401,7 @@ app.task('docs-watch', () => {
  * ====== */
 
 function handleError(err) {
-  $.util.log(err);
-  $.util.beep();
+  log.error(err);
   notifier.notify({
     title: 'Compile Error',
     message: err.message,
@@ -417,53 +409,35 @@ function handleError(err) {
   return this.emit('end');
 }
 
-function inline(opts) {
-  opts = opts || {};
-
-  if (opts.matchFile) {
-    if (opts.matchFile.match(/.js/)) {
-      return new RegExp(
-        `<script(.*?)src="(.*?)${opts.matchFile}"(.*?)>(.*?)<\/script>`,
-      );
-    }
-
-    return new RegExp(`<link(.*?)href="(.*?)${opts.matchFile}"(.*?)>`);
-  }
-
-  if (opts.file) {
-    let content;
-    let tagBegin = '<script>';
-    let tagEnd = '</script>';
-
-    if (opts.file.match(/.js/)) {
-      content = fs.readFileSync(`rebirth/assets/${opts.file}`, 'utf8');
-    } else {
-      tagBegin = '<style>';
-      tagEnd = '</style>';
-      content = fs.readFileSync(`rebirth/assets/${opts.file}`, 'utf8');
-    }
-
-    return tagBegin + content + tagEnd;
+function inlineFile(file) {
+  if (file.match(/.js/)) {
+    const content = fs.readFileSync(`rebirth/assets/${file}`, 'utf8');
+    return `<script>${content}</script>`;
+  } else {
+    const content = fs.readFileSync(`rebirth/assets/${file}`, 'utf8');
+    return `<style>${content}</style>`;
   }
 }
 
-let startTime,
-  bundleLogger = {
-    start(filepath) {
-      startTime = process.hrtime();
-      $.util.log('Bundling', $.util.colors.green(filepath));
-    },
-    end(filepath) {
-      const taskTime = process.hrtime(startTime);
-      const prettyTime = prettyHrtime(taskTime);
-      $.util.log(
-        'Bundled',
-        $.util.colors.green(filepath),
-        'after',
-        $.util.colors.magenta(prettyTime),
-      );
-    },
-  };
+function findFile(file) {
+  if (file.match(/.js/)) {
+    return new RegExp(`<script(.*?)src="(.*?)${file}"(.*?)>(.*?)</script>`);
+  }
+  return new RegExp(`<link(.*?)href="(.*?)${file}"(.*?)>`);
+}
+
+let startTime;
+const bundleLog = {
+  start: (filepath) => {
+    startTime = process.hrtime();
+    log('Bundling', color.green(filepath));
+  },
+  end: (filepath) => {
+    let taskTime = process.hrtime(startTime);
+    let prettyTime = prettyHrtime(taskTime);
+    log(`Bundled ${color.green(filepath)} after ${color.magenta(prettyTime)}`);
+  },
+};
 
 function rmOriginalFiles() {
   return through.obj(function(file, enc, cb) {
@@ -479,15 +453,15 @@ function rmOriginalFiles() {
 function bundleJavaScripts(src, dest, scripts, rename, cb) {
   let bundleQueue = scripts.length;
 
-  const browserifyBundle = function(entry) {
+  const browserifyBundle = (entry) => {
     let pipeline = browserify({
-      entries: src + entry.fileName,
+      entries: `${src}${entry.fileName}`,
       debug: !PRODUCTION,
       paths: ['src', 'docs/assets'],
     });
 
-    const bundle = function() {
-      bundleLogger.start(entry.fileName);
+    const bundle = () => {
+      bundleLog.start(entry.fileName);
 
       let collect = pipeline
         .bundle()
@@ -517,8 +491,8 @@ function bundleJavaScripts(src, dest, scripts, rename, cb) {
       pipeline = watchify(pipeline).on('update', bundle);
     }
 
-    let reportFinished = function() {
-      bundleLogger.end(entry.fileName);
+    const reportFinished = () => {
+      bundleLog.end(entry.fileName);
       if (bundleQueue) {
         bundleQueue--;
         if (bundleQueue === 0) {
