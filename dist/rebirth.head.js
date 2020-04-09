@@ -8,8 +8,8 @@ var _feature = require("./javascripts/feature");
 /* =======================================
  * Head
  * ======================================= */
-const doc = document;
-const html = doc.documentElement;
+var doc = document;
+var html = doc.documentElement;
 html.className = html.className.replace(/(^|\s)no-js(\s|$)/, ' has-js ');
 
 if (_feature.hasTouch) {
@@ -29,22 +29,22 @@ exports.isMac = exports.isAndroid = exports.isIOS = exports.isFirefox = exports.
 /* =======================================
  * Features & User Agents
  * ======================================= */
-const ua = navigator.userAgent;
-const win = window;
-const doc = document;
+var ua = navigator.userAgent;
+var win = window;
+var doc = document;
 /**
  * Tests if touch events are supported, but doesn't necessarily reflect a
  * touchscreen device
  */
 
-const hasTouch = !!('ontouchstart' in win || win.navigator && win.navigator.msPointerEnabled && win.MSGesture || win.DocumentTouch && doc instanceof DocumentTouch);
+var hasTouch = !!('ontouchstart' in win || win.navigator && win.navigator.msPointerEnabled && win.MSGesture || win.DocumentTouch && doc instanceof DocumentTouch);
 /**
  * Internet Explorer (11)
  */
 
 exports.hasTouch = hasTouch;
 
-const isIE = () => {
+var isIE = function isIE() {
   return !!Function('/*@cc_on return document.documentMode===10@*/')() || // eslint-disable-line
   /(?:\sTrident\/7\.0.*\srv:11\.0)/i.test(ua);
 };
@@ -55,7 +55,9 @@ const isIE = () => {
 
 exports.isIE = isIE;
 
-const isEdge = () => /edge\//i.test(ua);
+var isEdge = function isEdge() {
+  return /edge\//i.test(ua);
+};
 /**
  * Firefox
  */
@@ -63,7 +65,9 @@ const isEdge = () => /edge\//i.test(ua);
 
 exports.isEdge = isEdge;
 
-const isFirefox = () => 'InstallTrigger' in window;
+var isFirefox = function isFirefox() {
+  return 'InstallTrigger' in window;
+};
 /**
  * iOS
  */
@@ -71,7 +75,9 @@ const isFirefox = () => 'InstallTrigger' in window;
 
 exports.isFirefox = isFirefox;
 
-const isIOS = () => /iP(ad|hone|od)/i.test(ua);
+var isIOS = function isIOS() {
+  return /iP(ad|hone|od)/i.test(ua);
+};
 /**
  * Android
  */
@@ -79,7 +85,9 @@ const isIOS = () => /iP(ad|hone|od)/i.test(ua);
 
 exports.isIOS = isIOS;
 
-const isAndroid = () => ua.indexOf('Android') > -1 && ua.indexOf('Mozilla/5.0') > -1 && ua.indexOf('AppleWebKit') > -1;
+var isAndroid = function isAndroid() {
+  return ua.indexOf('Android') > -1 && ua.indexOf('Mozilla/5.0') > -1 && ua.indexOf('AppleWebKit') > -1;
+};
 /**
  * Mac
  */
@@ -87,7 +95,9 @@ const isAndroid = () => ua.indexOf('Android') > -1 && ua.indexOf('Mozilla/5.0') 
 
 exports.isAndroid = isAndroid;
 
-const isMac = () => /mac/i.test(navigator.platform);
+var isMac = function isMac() {
+  return /mac/i.test(navigator.platform);
+};
 
 exports.isMac = isMac;
 
