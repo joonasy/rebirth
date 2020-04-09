@@ -11,6 +11,7 @@ All notable changes to this project will be documented in this file. The format 
 - Push footer to bottom in default layout
 - Add pagination
 - Add breadcrumb
+- Fix: Remove `"targets": { "node": "current" }` which has accidentally overriden browserslist
 
 ## 0.6.0x
 
