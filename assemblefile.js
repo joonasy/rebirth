@@ -186,7 +186,7 @@ app.task('docs-server', () => {
 /**
  * Docs - Watch
  */
-app.task('docs-watch-files', () => {
+app.task('docs-watch:files', () => {
   app.watch(
     [
       'docs/{layouts,templates,partials}/**/*.hbs',
@@ -393,7 +393,7 @@ app.task('docs-build', () => {
 app.task('docs-watch', () => {
   rimraf.sync('rebirth');
   rimraf.sync('dist');
-  app.build(docsTasks, app.parallel(['docs-server', 'docs-watch-files']));
+  app.build(docsTasks, app.parallel(['docs-server', 'docs-watch:files']));
 });
 
 /* ======

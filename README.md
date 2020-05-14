@@ -17,7 +17,7 @@ $ yo rebirth [my-new-project] --project=wordpress
 
 Other quick start options are available:
 
-- [Download the latest release](https://github.com/joonasy/rebirth/releases/tag/0.5.4)
+- [Download the latest release](https://github.com/joonasy/rebirth/releases)
 - Clone the repo: `$ git clone https://github.com/joonasy/rebirth`
 
 ## Documentation
