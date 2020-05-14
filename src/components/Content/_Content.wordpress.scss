@@ -14,4 +14,18 @@
   p:empty {
     display: none;
   }
+
+  .aligncenter {
+    margin: 0 auto rem($space) auto;
+  }
+
+  .alignleft {
+    float: left;
+    margin: 0 rem($space) rem($space) 0;
+  }
+
+  .alignright {
+    float: right;
+    margin: 0 0 rem($space) rem($space);
+  }
 }
