@@ -10,7 +10,8 @@
     "highlight.js": "^9.15.10",
     "jquery": "^3.4.1",
     "lazysizes": "^5.1.2",
-    "normalize.css": "^8.0.1"
+    "normalize.css": "^8.0.1",
+    "svg4everybody": "^2.1.9"
   },
   "main": "assemblefile.js",
   "repository": "https://github.com/joonasy/rebirth.git",

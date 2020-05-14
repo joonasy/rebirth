@@ -3,7 +3,8 @@
  * ======================================= */
 
 import './javascripts/polyfill';
-import { hasTouch } from './javascripts/feature';
+import svg4everybody from 'svg4everybody';
+import { hasTouch } from './javascripts/detect';
 
 const doc = document;
 const html = doc.documentElement;
@@ -15,3 +16,8 @@ if (hasTouch) {
 } else {
   html.classList.add('no-touchevents');
 }
+
+/**
+ * Polyfill external SVG spritemaps
+ */
+svg4everybody();
