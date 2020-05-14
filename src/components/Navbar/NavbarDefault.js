@@ -3,14 +3,12 @@
  * ======================================= */
 
 import { $$, $ } from 'javascripts/utility';
-import { hasTouch } from 'javascripts/feature';
+import { hasTouch } from 'javascripts/detect';
 
-export default class NavbarDefault {
+class NavbarDefault {
   constructor() {
     const navbarClass = '.js-NavbarDefault';
     const navbar = $$(navbarClass);
-    const navbarTrigger = $$('.js-NavbarDefaultTrigger');
-    const navbarItem = $$('.js-NavbarDefault .Navbar-item');
 
     [].forEach.call(navbar, (nav) => {
       nav.addEventListener(
@@ -37,22 +35,21 @@ export default class NavbarDefault {
               });
             }
           }
-        },
-        false,
-      );
-    });
 
-    [].forEach.call(navbarTrigger, (trigger) => {
-      trigger.addEventListener(
-        'click',
-        (e) => {
-          const parent = e.target.closest(navbarClass);
-          e.stopPropagation();
+          const isCtrlTrigger = e.target.classList.contains(
+            'Navbar-ctrl-trigger',
+          );
 
-          if (parent.classList.contains('is-open')) {
-            parent.classList.remove('is-open');
-          } else {
-            parent.classList.add('is-open');
+          if (isCtrlTrigger) {
+            const parent = e.target.closest(navbarClass);
+
+            if (parent.classList.contains('is-open')) {
+              parent.classList.remove('is-open');
+            } else {
+              parent.classList.add('is-open');
+            }
+
+            e.preventDefault();
           }
         },
         false,
@@ -60,8 +57,9 @@ export default class NavbarDefault {
     });
 
     window.addEventListener('click', (e) => {
-      [].forEach.call(navbarItem, (item) => item.classList.remove('is-open'));
       [].forEach.call(navbar, (nav) => nav.classList.remove('is-open'));
     });
   }
 }
+
+export default NavbarDefault;

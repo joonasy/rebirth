@@ -6,10 +6,10 @@
  */
 
 .Navbar--stacked {
-  background-color: $colorBgLightest;
-  border: 1px solid $colorBorder;
+  background-color: $NavbarStacked-bgColor;
+  border: 1px solid $NavbarStacked-colorBorder;
   display: flex;
-  margin-bottom: rem($baseSpace);
+  margin-bottom: rem($space);
   flex-wrap: wrap;
 
   &.is-open > ul {
@@ -22,13 +22,13 @@
   }
 
   .Navbar-logo {
-    @include fontSize($baseFontSize-s, $baseLineHeight-s);
+    @include fontSize($fontSize-s, $lineHeight-s);
     align-items: center;
-    color: $colorText;
-    font-weight: $baseFontWeightStrong;
+    color: $NavbarStacked-textColor;
+    font-weight: $fontWeightStrong;
     display: flex;
-    min-height: $uiSpace * 2;
-    padding: 0 $uiSpace;
+    min-height: $space * 2;
+    padding: 0 $space;
   }
 
   .Navbar-ctrl {
@@ -36,29 +36,29 @@
     margin-left: auto;
   }
 
-    .Navbar-ctrl-trigger {
-      align-items: center;
-      color: $colorText;
-      cursor: pointer;
-      display: flex;
-      justify-content: center;
-      min-width: $uiSpace * 2;
-      padding: 0 ($uiSpace / 2);
-    }
+  .Navbar-ctrl-trigger {
+    align-items: center;
+    color: $NavbarStacked-textColor;
+    cursor: pointer;
+    display: flex;
+    justify-content: center;
+    min-width: $space * 2;
+    padding: 0 ($space / 2);
+  }
 
-      .Navbar-ctrl-trigger-icon {
-        @include shapeMenu($colorPrimary);
-        pointer-events: none;
-      }
+  .Navbar-ctrl-trigger-icon {
+    @include shapeMenu($color: $NavbarStacked-triggerColor);
+    pointer-events: none;
+  }
 
   .Navbar-item {
-    border-top: 1px solid $colorBorder;
+    border-top: 1px solid $NavbarStacked-colorBorder;
     display: flex;
     flex-wrap: wrap;
 
     &.is-active {
       > .Navbar-link {
-        color: $colorLink;
+        color: $NavbarStacked-activeColor;
       }
     }
 
@@ -75,43 +75,43 @@
 
   .Navbar-link {
     align-items: center;
-    color: $colorText;
+    color: $NavbarStacked-textColor;
     cursor: pointer;
     display: flex;
     flex: 1;
-    padding: ($uiSpace / 2) $uiSpace;
+    padding: ($space / 2) $space;
 
     &:hover {
-      color: $colorLink;
+      color: $NavbarStacked-linkColorHover;
     }
   }
 
   .Navbar-trigger {
     align-items: center;
-    border-left: 1px solid $colorBorder;
-    color: $colorText;
+    border-left: 1px solid $NavbarStacked-colorBorder;
+    color: $NavbarStacked-textColor;
     cursor: pointer;
     display: flex;
     justify-content: center;
-    min-width: $uiSpace * 2;
-    padding: 0 ($uiSpace / 2);
+    min-width: $space * 2;
+    padding: 0 ($space / 2);
   }
 
-    .Navbar-trigger-icon {
-      @include shapeArrow('down');
-      pointer-events: none;
-    }
+  .Navbar-trigger-icon {
+    @include shapeArrow('down', $color: $NavbarStacked-triggerColor);
+    pointer-events: none;
+  }
 
   .Navbar-sub {
     display: none;
-    background-color: $colorBgLighter; //darken($colorLight, 6);
+    background-color: $NavbarDefault-subBgColor; //darken($white, 6);
     width: 100%;
 
     .Navbar-link  {
       background-color: transparent;
 
       &:hover {
-        color: $colorLink;
+        color: $NavbarStacked-linkColor;
       }
     }
 
@@ -137,7 +137,7 @@
     }
 
     .Navbar-item {
-      &.is-active {
+      &.is-open {
         .Navbar-sub {
           display: block;
         }
@@ -145,7 +145,7 @@
     }
 
     .Navbar-sub {
-      @include fontSize($baseFontSize-s, $baseLineHeight-s);
+      @include fontSize($fontSize-s, $lineHeight-s);
     }
   }
 

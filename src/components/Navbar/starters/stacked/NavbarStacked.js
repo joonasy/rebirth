@@ -4,7 +4,7 @@
 
 import { $$ } from 'javascripts/utility';
 
-export default class NavbarStacked {
+class NavbarStacked {
   constructor() {
     const navbarClass = '.js-NavbarStacked';
     const navbar = $$(navbarClass);
@@ -52,3 +52,5 @@ export default class NavbarStacked {
     });
   }
 }
+
+export default NavbarStacked;
