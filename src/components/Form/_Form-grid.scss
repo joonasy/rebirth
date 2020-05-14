@@ -1,99 +1,96 @@
 /* =======================================
  * Form grid
- * =======================================
- *
- * @extends `.Form-item{}, .Form-addon{}, .Form-button{}` in _Form.scss
- */
+ * ======================================= */
 
 .Form-grid {
   display: flex;
   flex-direction: column;
 }
 
-  .Form-cell {
-    display: flex;
-    flex: 1 0 auto;
+.Form-cell {
+  display: flex;
+  flex: 1 0 auto;
 
-    .Form-item,
-    .Form-addon,
-    .Form-button {
-      border-radius: 0;
-      margin-bottom: 0;
+  .Form-item,
+  .Form-addon,
+  .Form-button {
+    border-radius: 0;
+    margin-bottom: 0;
+  }
+
+  .Form-item,
+  .Form-addon {
+    &:first-child:not(:only-child) {
+      border-right-width: 0;
     }
+  }
 
+  .Form-item:not(textarea),
+  .Form-addon {
+    @include textTruncate();
+  }
+
+  &:not(:first-child) {
     .Form-item,
     .Form-addon {
-      &:first-child:not(:only-child) {
-        border-right-width: 0;
+      border-top-width: 0;
+    }
+  }
+
+  &:last-child:not(:only-child) {
+    margin-bottom: rem($space);
+  }
+
+  @if strip-unit($borderRadius) > 0 {
+    &:first-child:not(:only-child) {
+      .Form-item:first-child {
+        border-radius: $borderRadius 0 0 0;
       }
-    }
 
-    .Form-item:not(textarea),
-    .Form-addon {
-      @include textTruncate();
-    }
+      .Form-button:last-child,
+      .Form-item:last-child {
+        border-radius: 0 $borderRadius 0 0;
+      }
 
-    &:not(:first-child) {
-      .Form-item,
-      .Form-addon {
-        border-top-width: 0;
+      .Form-item:only-child {
+        border-radius: $borderRadius $borderRadius 0 0;
       }
     }
 
     &:last-child:not(:only-child) {
-      margin-bottom: rem($baseSpace);
-    }
-
-    @if strip-unit($Form-borderRadius) > 0 {
-      &:first-child:not(:only-child) {
-        .Form-item:first-child {
-          border-radius: $Form-borderRadius 0 0 0;
-        }
-
-        .Form-button:last-child,
-        .Form-item:last-child {
-          border-radius: 0 $Form-borderRadius 0 0;
-        }
-
-        .Form-item:only-child {
-          border-radius: $Form-borderRadius $Form-borderRadius 0 0;
-        }
+      .Form-item:first-child {
+        border-radius: 0 0 0 $borderRadius;
       }
 
-      &:last-child:not(:only-child) {
-        .Form-item:first-child {
-          border-radius: 0 0 0 $Form-borderRadius;
-        }
-
-        .Form-button:last-child,
-        .Form-item:last-child {
-          border-radius: 0 0 $Form-borderRadius 0;
-        }
-
-        .Form-item:only-child {
-          border-radius: 0 0 $Form-borderRadius $Form-borderRadius;
-        }
+      .Form-button:last-child,
+      .Form-item:last-child {
+        border-radius: 0 0 $borderRadius 0;
       }
 
-      &:only-child {
-        .Form-item:first-child {
-          border-radius: $Form-borderRadius 0 0 $Form-borderRadius;
-        }
-
-        .Form-button:last-child,
-        .Form-item:last-child {
-          border-radius: 0 $Form-borderRadius $Form-borderRadius 0;
-        }
-
-        .Form-item:only-child {
-          border-radius: $Form-borderRadius $Form-borderRadius;
-        }
+      .Form-item:only-child {
+        border-radius: 0 0 $borderRadius $borderRadius;
       }
     }
 
-    > .Form-button {
-      &:only-child {
-        width: 100%;
+    &:only-child {
+      .Form-item:first-child {
+        border-radius: $borderRadius 0 0 $borderRadius;
+      }
+
+      .Form-button:last-child,
+      .Form-item:last-child {
+        border-radius: 0 $borderRadius $borderRadius 0;
+      }
+
+      .Form-item:only-child {
+        border-radius: $borderRadius $borderRadius;
       }
     }
   }
+
+  > .Form-button {
+    &:only-child {
+      width: 100%;
+    }
+  }
+}

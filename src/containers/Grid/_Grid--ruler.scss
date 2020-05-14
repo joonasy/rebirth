@@ -5,10 +5,10 @@
  * @extends `.Grid{}` in _Grid.scss.
  */
 
-@mixin GridRuler($namespace: '') {
-  .#{$namespace}Grid--ruler {
+@mixin GridRuler($bp: '') {
+  .Grid--ruler#{$bp} {
     > .Grid-cell {
-      border-left: 1px solid $colorBorderDefault;
+      border-left: 1px solid $border;
 
       &:first-child {
         border-left: none;
@@ -21,20 +21,20 @@
   @include GridRuler();
 }
 
-@if $Grid-ruler-s {
+@if $Grid-ruler\@s {
   @include mq(s) {
-    @include GridRuler(s-);
+    @include GridRuler(\@s);
   }
 }
 
-@if $Grid-ruler-m {
+@if $Grid-ruler\@m {
   @include mq(m) {
-    @include GridRuler(m-);
+    @include GridRuler(\@m);
   }
 }
 
-@if $Grid-ruler-l {
+@if $Grid-ruler\@l {
   @include mq(l) {
-    @include GridRuler(l-);
+    @include GridRuler(\@l);
   }
 }

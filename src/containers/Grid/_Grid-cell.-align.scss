@@ -5,30 +5,30 @@
  * @extends `.Grid-cell{}` in _Grid.scss.
  */
 
- @mixin GridCellAlign($namespace: '') {
-  .Grid-cell.#{$namespace}-alignBottom { align-self: flex-end; }
-  .Grid-cell.#{$namespace}-alignCenter { align-self: center; }
-  .Grid-cell.#{$namespace}-alignTop    { align-self: flex-start; }
+@mixin GridCellAlign($bp: '') {
+  .Grid-cell.-alignBottom#{$bp} { align-self: flex-end; }
+  .Grid-cell.-alignCenter#{$bp} { align-self: center; }
+  .Grid-cell.-alignTop#{$bp}    { align-self: flex-start; }
 }
 
 @if $Grid-cellAlign {
   @include GridCellAlign();
 }
 
-@if $Grid-cellAlign-s {
+@if $Grid-cellAlign\@s {
   @include mq(s) {
-    @include GridCellAlign(-s);
+    @include GridCellAlign(\@s);
   }
 }
 
-@if $Grid-cellAlign-m {
+@if $Grid-cellAlign\@m {
   @include mq(m) {
-    @include GridCellAlign(-m);
+    @include GridCellAlign(\@m);
   }
 }
 
-@if $Grid-cellAlign-l {
+@if $Grid-cellAlign\@l {
   @include mq(l) {
-    @include GridCellAlign(-l);
+    @include GridCellAlign(\@l);
   }
 }

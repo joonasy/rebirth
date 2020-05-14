@@ -5,9 +5,9 @@
  * @extends `.Grid-cell{}` in _Grid.scss.
  */
 
-@mixin GridCellOrder($namespace: '', $amount: 4) {
+@mixin GridCellOrder($bp: '', $amount: 4) {
   @for $i from 1 through $amount {
-    .Grid-cell.#{$namespace}-order#{$i} {
+    .Grid-cell.-order--#{$i}#{$bp} {
       order: #{$i};
     }
   }
@@ -17,20 +17,20 @@
   @include GridCellOrder();
 }
 
-@if $Grid-cellOrder-s {
+@if $Grid-cellOrder\@s {
   @include mq(s) {
-    @include GridCellOrder(-s);
+    @include GridCellOrder(\@s);
   }
 }
 
-@if $Grid-cellOrder-m {
+@if $Grid-cellOrder\@m {
   @include mq(m) {
-    @include GridCellOrder(-m);
+    @include GridCellOrder(\@m);
   }
 }
 
-@if $Grid-cellOrder-l {
+@if $Grid-cellOrder\@l {
   @include mq(l) {
-    @include GridCellOrder(-l);
+    @include GridCellOrder(\@l);
   }
 }

@@ -1,9 +1,6 @@
 /* =======================================
  * Form grid - Horizontal
- * =======================================
- *
- * @extends `.Form-grid{}` in _Form-grid.scss
- */
+ * ======================================= */
 
 @mixin FormGridHorizontal($namespace: '') {
   .Form-grid.#{$namespace}-horizontal {
@@ -21,7 +18,7 @@
       &:first-child {
         .-round {
           &:first-child {
-            border-radius: $Form-borderRadius 0 0 $Form-borderRadius;
+            border-radius: $borderRadius 0 0 $borderRadius;
           }
 
           &:last-child {
@@ -42,7 +39,7 @@
           border-radius: 0;
 
           &:last-child {
-            border-radius: 0 $Form-borderRadius $Form-borderRadius 0;
+            border-radius: 0 $borderRadius $borderRadius 0;
           }
         }
       }
@@ -52,7 +49,7 @@
       border-top-width: $Form-borderWidth;
 
       &.-round {
-        border-radius: 0 $Form-borderRadius $Form-borderRadius 0;
+        border-radius: 0 $borderRadius $borderRadius 0;
       }
     }
   }
