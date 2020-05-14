@@ -6,73 +6,50 @@
   display: flex;
   flex-direction: column;
   justify-content: space-between;
-  margin-bottom: rem($baseSpace);
+  margin-bottom: rem($space);
   position: relative;
   width: 100%;
 }
 
-  .Card-figure {
-    position: relative;
+.Card-figure {
+  position: relative;
 
-    figure {
-      margin-bottom: 0;
+  figure {
+    margin-bottom: 0;
 
-      img {
-        width: 100%;
-      }
+    img {
+      width: 100%;
     }
-  }
-
-  .Card-inner {
-    padding: rem($Card-padding);
-
-    > *:last-child {
-      margin-bottom: 0;
-    }
-
-    @include mq(m) {
-      padding: rem($Card-padding * 1.5);
-    }
-  }
-
-  .Card-content {
-    position: relative;
-  }
-
-    .Card-title {}
-
-  .Card-footer {
-    @extend %Text.-s;
-    position: relative;
-
-    .Card-inner {
-      @include mq(m) {
-        padding-bottom: rem($Card-padding);
-        padding-top: rem($Card-padding);
-      }
-    }
-  }
-
-
-/* ======
- * Card - Style
- * ====== */
-
-.Card {
-  &.-round {
-    border-radius: $borderRadius;
   }
 }
 
+.Card-inner {
+  padding: rem($space);
 
-/* ======
- * Card - Color
- * ====== */
+  > *:last-child {
+    margin-bottom: 0;
+  }
 
-.Card {
-  &.-colorInverse {
-    background-color: $colorBgDark;
-    color: $colorLight;
+  @include mq(m) {
+    padding: rem($space * 1.5);
+  }
+}
+
+.Card-content {
+  position: relative;
+}
+
+.Card-title {}
+
+.Card-footer {
+  @include fontSize($fontSize-s, $lineHeight-s);
+  position: relative;
+
+  .Card-inner {
+    @include mq(m) {
+      padding-bottom: rem($space);
+      padding-top: rem($space);
+    }
   }
 }
 
@@ -81,9 +58,10 @@
  * Card - Figure modifiers
  * ====== */
 
-.Card.-figureCrop, %Card.-figureCrop {
+%Card.-figureCrop,
+.Card.-figureCrop {
   .Card-figure {
-    min-height: rem($baseSpace * 12);
+    min-height: rem($space * 12);
     width: 100%;
 
     figure {
@@ -107,13 +85,5 @@
 
   .Card-figure {
     @include positionAbsoluteFill();
-  }
-
-  &.-round {
-    .Card-figure {
-      img {
-        border-radius: $borderRadius;
-      }
-    }
   }
 }
