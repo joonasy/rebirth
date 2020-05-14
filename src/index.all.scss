@@ -5,15 +5,10 @@
 // Config
 @import 'config';
 
-// Vendors
-@import 'normalize.css/normalize';
-@import 'sass-mq/mq';
-
 // Mixins
 @import 'stylesheets/mixins/color';
 @import 'stylesheets/mixins/display';
 @import 'stylesheets/mixins/dropdown';
-@import 'stylesheets/mixins/center';
 @import 'stylesheets/mixins/fontSize';
 @import 'stylesheets/mixins/mixins';
 @import 'stylesheets/mixins/position';
@@ -23,6 +18,10 @@
 @import 'stylesheets/mixins/text';
 @import 'stylesheets/mixins/utility';
 @import 'stylesheets/mixins/quantityQuery';
+
+// Vendors
+@import 'normalize.css/normalize';
+@import 'sass-mq/mq';
 
 // Component specific mixins
 @import 'components/Text/Text.mixins';
@@ -37,7 +36,6 @@
 @import 'stylesheets/helpers/display';
 @import 'stylesheets/helpers/displayResponsive';
 @import 'stylesheets/helpers/color';
-@import 'stylesheets/helpers/layout';
 @import 'stylesheets/helpers/margin';
 @import 'stylesheets/helpers/margin@s';
 @import 'stylesheets/helpers/margin@m';
