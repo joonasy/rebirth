@@ -3,11 +3,11 @@
  * ======================================= */
 
 :root {
-  background-color: $colorBgLight;
-  color: $colorText;
-  font-family: $baseFontFamily;
-  font-size: $baseFontSize;
-  line-height: $baseLineHeight;
+  background-color: $bgLightest;
+  color: $text;
+  font-family: $fontFamily;
+  font-size: $fontSize;
+  line-height: $lineHeight;
   min-width: 300px;
   scroll-behavior: smooth;
 
@@ -36,40 +36,40 @@ pre,
 ul,
 ol,
 dl {
-  margin: 0 0 rem($baseSpace);
+  margin: 0 0 rem($space);
 }
 
 ul,
 ol,
 dl {
-  padding: 0 0 0 rem($baseSpace);
+  padding: 0 0 0 rem($space);
 }
 
 a {
-  color: $colorLink;
+  color: $link;
   text-decoration: none;
 
   &:active {
-    color: $colorLink;
+    color: $link;
   }
 
-  &:focus {
-    outline: 0;
+  &:focus:not(:hover) {
+    outline: 1px dotted $black;
   }
 
   &:hover {
-    color: $colorLinkHover;
+    color: $linkHover;
   }
 }
 
 ::-moz-selection {
-  background: $colorPrimary;
-  color: $colorLight;
+  background: $primary;
+  color: $white;
 }
 
 ::selection {
-  background: $colorPrimary;
-  color: $colorLight;
+  background: $primary;
+  color: $white;
 }
 
 img::selection {
@@ -90,4 +90,8 @@ iframe {
 img {
   height: auto;
   vertical-align: middle;
+}
+
+dialog[open] {
+  display: block;
 }
