@@ -3,6 +3,31 @@
 All notable changes to this project will be documented in this file. The format is based on [Keep a Changelog](http://keepachangelog.com/en/1.0.0/) and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.html).
 
 
+## 0.6.3x
+
+- Remove unnecessary prefixes from variable names.
+  - `$baseSpace` -> `$space`
+  - `$colorPrimary` -> `$primary` ...
+- Remove indenting of component descendants etc. which are not inside curly brackets
+- Remove empty pointless config files
+- Remove unneccesary modifiers from components which will probably never need modifiers. 
+ - `.Breadcrumb--default` -> `.Breadcrumb` ...
+- Stop encouraging of extending certain components
+- Remove pointless `@reusable` comments
+- Remove old hero material. Hero needs to be rebuild.
+- Assume we are using build tool to generate icons instead of icomoon. See generator-rebirth.
+- Polyfill external SVG spritemaps with svg4everybody
+- Remove old center mixin, remove old layout helper
+- Use wrap mixins, wrap uses global wrap config
+- Remove old center mixin, remove old layout helper. Change vendor import location.
+- Simplify navbar js, remove unnecessary prefixes, fix clicks/states
+- Add initial content component material, add content component for wp
+- Add `import 'regenerator-runtime/runtime';` ready for uncommenting to use async functions.
+- Grid: add correct prefixes,  fix large grid overflow in mobile, equalContent -> equalHeight
+- `feature.js` -> `detect.js`
+  - Add `scrollBarWidth`, `hasDialog` detects
+
+
 ## 0.6.2x
 
 - Remove placeholders and use mixins instead
