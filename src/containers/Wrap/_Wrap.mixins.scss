@@ -1,0 +1,16 @@
+// =======================================
+// Wrap Mixins
+// =======================================
+
+@mixin Wrap() {
+  margin-left: auto;
+  margin-right: auto;
+  max-width: $wrapWidth + ($wrapSpaceEdge-l * 2);
+  padding-left: $wrapSpaceEdge;
+  padding-right: $wrapSpaceEdge;
+
+  @include mq(l) {
+    padding-left: $wrapSpaceEdge-l;
+    padding-right: $wrapSpaceEdge-l;
+  }
+}
