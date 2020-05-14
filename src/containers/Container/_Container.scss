@@ -3,11 +3,11 @@
  * ======================================= */
 
 .Container {
-  padding-bottom: rem($baseSpace);
-  padding-top: rem($baseSpace);
+  padding-bottom: rem($space);
+  padding-top: rem($space);
 
   @include mq(m) {
-    padding-bottom: rem($baseSpace * 3);
-    padding-top: rem($baseSpace * 3);
+    padding-bottom: rem($space * 3);
+    padding-top: rem($space * 3);
   }
 }

@@ -4,7 +4,7 @@
 
 @mixin dropdown($align: 'left', $arrow: true, $arrowColor: lighten(#000000, 85),
   $backgroundColor: #ffffff, $borderRadius: $borderRadius, $default: true, $min-width: 240px,
-  $padding: rem($baseSpace / 1.5) rem($baseSpace / 1.5), $boxShadow: (0 -1px 0 rgba(0, 0, 0, 0.05), 0 2px 4px rgba(0, 0, 0, 0.05)), $state: false) {
+  $padding: rem($space / 1.5) rem($space / 1.5), $boxShadow: (0 -1px 0 rgba(0, 0, 0, 0.05), 0 2px 4px rgba(0, 0, 0, 0.05)), $state: false) {
 
   @if $state == false and $default  {
     background-color: $backgroundColor;
@@ -38,7 +38,7 @@
     &:before {
       @include shapeTriangle(8px, 8px, 'up',  $arrowColor);
       content: "";
-      left: $baseSpace;
+      left: $space;
       margin-left: rem(-4px);
       position: absolute;
       top: rem(-8px);
@@ -57,7 +57,7 @@
      */
     &:before {
       left: auto;
-      right: $baseSpace / 2;
+      right: $space / 2;
     }
   }
 }

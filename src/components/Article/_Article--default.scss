@@ -4,7 +4,7 @@
 
 .Article--default {
   .Article-heading {
-    margin-bottom:rem($baseSpace / 3);
+    margin-bottom:rem($space / 3);
 
     > a {
       @include TextLink();
@@ -15,12 +15,12 @@
     @include resetList();
     @include TextMeta();
     display: flex;
-    margin-bottom: rem($baseSpace / 2);
+    margin-bottom: rem($space / 2);
   }
 
     .Article-meta-item {
       &:not(:first-child) {
-        margin-left: rem($baseSpace / 3);
+        margin-left: rem($space / 3);
       }
     }
 }

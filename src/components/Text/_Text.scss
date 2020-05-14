@@ -10,7 +10,7 @@
  * ====== */
 
 .Text {
-  &.-l  { @include fontSize($baseFontSize-l, $baseLineHeight-l);   }
-  &.-s  { @include fontSize($baseFontSize-s, $baseLineHeight-s);   }
-  &.-xs { @include fontSize($baseFontSize-xs, $baseLineHeight-xs); }
+  &.-l  { @include fontSize($fontSize-l, $lineHeight-l);   }
+  &.-s  { @include fontSize($fontSize-s, $lineHeight-s);   }
+  &.-xs { @include fontSize($fontSize-xs, $lineHeight-xs); }
 }

@@ -127,13 +127,13 @@ Controlling dimensions, margins, position, and inheritable styles of a component
 /* Attaches to a nested component */
 .Excerpt-button {
   display: inline-block;
-  margin-bottom: $baseSpace;
+  margin-bottom: $space;
 }
 
 /* Wraps a nested component */
 .Excerpt-wrapButton {
   display: inline-block;
-  margin-bottom: $baseSpace;
+  margin-bottom: $space;
 }
 ```
 

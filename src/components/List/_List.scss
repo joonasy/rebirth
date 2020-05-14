@@ -4,22 +4,22 @@
 
 .List {
   @include resetList();
-  margin-bottom: rem($baseSpace);
+  margin-bottom: rem($space);
 }
 
 .List-item {
-  margin-bottom: rem($baseSpace);
+  margin-bottom: rem($space);
 
   &:last-child {
     margin-bottom: 0;
   }
 }
 
-  .List-meta {
-    @include fontSize($baseFontSize-s, $baseLineHeight-s);
-  }
+.List-meta {
+  @include fontSize($fontSize-s, $lineHeight-s);
+}
 
-  .List-heading {
-    @include fontSize($baseFontSize-s, $baseLineHeight-s);
-    display: block;
-  }
+.List-heading {
+  @include fontSize($fontSize-s, $lineHeight-s);
+  display: block;
+}

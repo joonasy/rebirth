@@ -2,20 +2,21 @@
  * Button
  * ======================================= */
 
+%Button,
 .Button {
-  @include textTruncate();
   @include fontSize($Button-fontSize, rem(($Button-height) - ($Button-borderWidth * 2)));
   align-items: center;
   background-color: transparent;
   border: $Button-borderWidth solid transparent;
+  border-radius: $borderRadius;
   cursor: pointer;
   display: inline-flex;
   font-weight: $Button-fontWeight;
-  margin-bottom: rem($baseSpace);
-  margin-right: rem($baseSpace / 2);
+  margin-bottom: rem($space);
+  margin-right: rem($space / 2);
   justify-content: center;
   outline: 0;
-  padding: 0 rem($baseSpace);
+  padding: 0 rem($space);
   position: relative;
   text-align: center;
   transition: $transitionDuration;
@@ -40,7 +41,7 @@
   pointer-events: none;
 
   + .Button-icon {
-    margin-left: rem($baseSpace / 2);
+    margin-left: rem($space / 2);
   }
 }
 
@@ -51,7 +52,7 @@
   pointer-events: none;
 
   + .Button-text {
-    margin-left: rem($baseSpace / 2);
+    margin-left: rem($space / 2);
   }
 }
 
@@ -77,13 +78,13 @@
 
 .Button {
   &.-l {
-    @include fontSize($baseFontSize-l, rem(($Button-height * $Button-l) - ($Button-borderWidth * 2)));
-    padding: 0 rem($baseSpace * $Button-l);
+    @include fontSize($fontSize-l, rem(($Button-height * $Button-l) - ($Button-borderWidth * 2)));
+    padding: 0 rem($space * $Button-l);
   }
 
   &.-s {
-    @include fontSize($baseFontSize-s, rem(($Button-height * $Button-s) - ($Button-borderWidth * 2)));
-    padding: 0 rem($baseSpace * $Button-s);
+    @include fontSize($fontSize-s, rem(($Button-height * $Button-s) - ($Button-borderWidth * 2)));
+    padding: 0 rem($space * $Button-s);
   }
 
   &.-full {
@@ -91,7 +92,7 @@
   }
 
   &.-block {
-    height: rem($baseSpace * 2);
-    width: rem($baseSpace * 2);
+    height: rem($space * 2);
+    width: rem($space * 2);
   }
 }

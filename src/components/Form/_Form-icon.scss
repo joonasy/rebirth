@@ -53,13 +53,13 @@
 .Form--default {
   .Form-icon {
     .IconCss[class*='-chevron']:after {
-      border-color: $colorTextLight;
+      border-color: $textLight;
     }
   }
 
   .Form-item:hover .Form-icon {
     .IconCss[class*='-chevron']:after {
-      border-color: $colorText;
+      border-color: $text;
     }
   }
 }

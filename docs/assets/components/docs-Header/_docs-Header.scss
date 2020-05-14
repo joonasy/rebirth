@@ -15,16 +15,16 @@
 
   .docs-Header-navbarPrimary {
     .Navbar-logo-version {
-      @include fontSize($baseFontSize-xs, $baseLineHeight-xs);
-      color: $colorTextLightest;
+      @include fontSize($fontSize-xs, $lineHeight-xs);
+      color: $textLight;
       display: inline-block;
-      margin-left: $baseSpace / 4;
+      margin-left: $space / 4;
     }
 
     &.-xs-expand {
       @include mq(xs) {
         display: flex;
-        min-height: $uiSpace * 3;
+        min-height: $space * 3;
 
         &.is-open > ul {
           display: flex;
@@ -33,7 +33,7 @@
         > ul {
           display: flex;
           margin-left: auto;
-          padding-right: $uiSpace / 1.5;
+          padding-right: $space / 1.5;
           width: auto;
         }
 
@@ -52,12 +52,12 @@
 
           > .Navbar-link {
             border: 0;
-            padding: 0 ($uiSpace / 2);
+            padding: 0 ($space / 2);
           }
 
           > .Navbar-trigger {
             border: 0;
-            margin: 2px ($uiSpace / 2) 0 (-($uiSpace / 6));
+            margin: 2px ($space / 2) 0 (-($space / 6));
             min-width: 0;
             padding: 0;
           }
@@ -76,7 +76,7 @@
 
         .Navbar-sub {
           @include dropdown($arrow: false);
-          @include fontSize($baseFontSize-s, $baseLineHeight-s);
+          @include fontSize($fontSize-s, $lineHeight-s);
           border-top-left-radius: 0;
           border-top-right-radius: 0;
           display: block;
@@ -87,7 +87,7 @@
           }
 
           .Navbar-link {
-            padding: ($uiSpace / 3) 0;
+            padding: ($space / 3) 0;
           }
 
           ul, .Navbar-trigger {
@@ -107,14 +107,14 @@
   }
 
   .docs-Header-navbarSecondary.Navbar--default {
-    border-top: 1px solid $colorBorder;
-    background-color: $colorPrimary;
+    border-top: 1px solid $border;
+    background-color: $primary;
 
     .Navbar-ctrl-trigger-icon {
-      border-color: $colorBgLightest;
+      border-color: $bgLightest;
 
       &:before, &:after {
-        background-color: $colorBgLightest;
+        background-color: $bgLightest;
       }
     }
 
@@ -133,7 +133,7 @@
     }
 
     .Navbar-link {
-      color: $colorLight;
+      color: $white;
 
       &:hover {
         color: #ffffff;
@@ -142,12 +142,12 @@
 
     .Navbar-trigger-icon {
       &:after {
-        color: rgba($colorBgLightest, 0.4);
+        color: rgba($bgLightest, 0.4);
       }
     }
 
     .Navbar-sub {
-      background-color: lighten($colorBgDark, 10);
+      background-color: lighten($bgDark, 10);
 
       .Navbar-item, .Navbar-trigger {
         border-color: rgba(#ffffff, 0.03);
@@ -157,7 +157,7 @@
     &.-m-expand {
       @include mq(m) {
         display: flex;
-        min-height: $uiSpace * 3;
+        min-height: $space * 3;
 
         &.is-open > ul {
           display: flex;
@@ -165,8 +165,8 @@
 
         > ul {
           display: flex;
-          margin-left: $uiSpace / 2;
-          padding-right: $uiSpace / 1.5;
+          margin-left: $space / 2;
+          padding-right: $space / 1.5;
           width: auto;
         }
 
@@ -185,12 +185,12 @@
 
           > .Navbar-link {
             border: 0;
-            padding: 0 ($uiSpace / 2);
+            padding: 0 ($space / 2);
           }
 
           > .Navbar-trigger {
             border: 0;
-            margin: 2px ($uiSpace / 2) 0 (-($uiSpace / 6));
+            margin: 2px ($space / 2) 0 (-($space / 6));
             min-width: 0;
             padding: 0;
           }
@@ -209,8 +209,8 @@
 
         .Navbar-sub {
           @include dropdown($arrow: false);
-          @include fontSize($baseFontSize-s, $baseLineHeight-s);
-          background-color: lighten($colorBgDark, 10);
+          @include fontSize($fontSize-s, $lineHeight-s);
+          background-color: lighten($bgDark, 10);
           border-top-left-radius: 0;
           border-top-right-radius: 0;
           display: block;
@@ -221,7 +221,7 @@
           }
 
           .Navbar-link {
-            padding: ($uiSpace / 3) 0;
+            padding: ($space / 3) 0;
           }
 
           ul, .Navbar-trigger {

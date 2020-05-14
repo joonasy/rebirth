@@ -3,7 +3,15 @@
  * ======================================= */
 
 .Breadcrumb {
-  @include fontSize($baseFontSize-s, $baseLineHeight-s);
-  margin-bottom: rem($baseSpace)
+  @include fontSize($fontSize-s, $lineHeight-s);
+  margin-bottom: rem($space);
+
+  a {
+    color: $link;
+
+    &:hover {
+      color: $linkHover;
+    }
+  }
 }
 

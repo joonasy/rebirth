@@ -1,31 +1,28 @@
 /* =======================================
  * Form - Default
- * =======================================
- *
- * @extends `.Form{}` in _Form.scss
- */
+ * ======================================= */
+
+%Form--default-Form-item {
+  @include colorPlaceholder($text);
+  background-color: #ffffff;
+  border-color: $border;
+  color: $text;
+
+  &:hover,
+  &:focus {
+    @include colorPlaceholder($text);
+    color: $text;
+  }
+}
 
 .Form--default {
-  %Form--default-Form-item, .Form-item {
-    background-color: #ffffff;
-    border-color: $colorBorderDefault;
-    color: $colorText;
-  }
-
   .Form-item {
-    @include colorPlaceholder($colorText);
-    color: $colorTextLight;
-
-    &:hover,
-    &:focus {
-      @include colorPlaceholder($colorText);
-      color: $colorText;
-    }
+    @extend %Form--default-Form-item;
   }
 
   .Form-item--select {
     select {
-      color: $colorTextLight;
+      color: $textLight;
     }
   }
 }

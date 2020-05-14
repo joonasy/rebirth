@@ -1,18 +1,15 @@
 /* =======================================
  * Button - Primary
- * =======================================
- *
- * @extends `.Button{}` in _Button.scss
- */
+ * ======================================= */
 
 .Button--primary {
-  background-color: $colorPrimary;
-  border-color: darken($colorPrimary, 4);
+  background-color: $primary;
+  border-color: darken($primary, 4);
   color: #ffffff;
 
   &:hover,
   &:focus {
-    background-color: darken($colorPrimary, 5);
+    background-color: darken($primary, 5);
     color: #ffffff;
   }
 }

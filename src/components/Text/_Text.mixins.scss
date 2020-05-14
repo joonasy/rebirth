@@ -3,13 +3,13 @@
  * ======================================= */
 
 @mixin TextMeta() {
-  color: $colorTextLightest;
+  color: $textLight;
 }
 
 @mixin TextLink() {
-  color: $colorText;
+  color: $text;
 
   &:hover, &:focus {
-    color: $colorLink;
+    color: $link;
   }
 }

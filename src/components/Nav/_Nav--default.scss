@@ -6,11 +6,11 @@
   .Nav-item {
     align-items: center;
     display: flex;
-    margin-bottom: rem($baseSpace / 6);
+    margin-bottom: rem($space / 6);
 
     &.is-active {
       .Nav-link, .Nav-icon:after {
-        color: $colorLink;
+        color: $link;
       }
     }
   }

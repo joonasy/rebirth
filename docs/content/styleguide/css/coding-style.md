@@ -44,12 +44,12 @@ But, as with anything, the specifics are somewhat irrelevant—consistency is ke
 .someSelector {
   @extend %clearfix;
   @include dropdown();
-  background-color: $colorPrimary;
+  background-color: $primary;
   box-shadow: 0 1px 2px rgba(#000000, 0.2);
-  color: $colorText;
-  font-size: $baseFontSize-s;
-  line-height: $baseLineHeight-s;
-  margin-bottom: $baseSpace;
+  color: $text;
+  font-size: $fontSize-s;
+  line-height: $lineHeight-s;
+  margin-bottom: $space;
 
   &:before,
   &:after {
@@ -69,13 +69,13 @@ Exceptions to this rule should be fairly apparent, such as similar rulesets that
 
 ```scss
 .margin {
-  margin: rem($baseSpace) !important;
+  margin: rem($space) !important;
 }
 .margin--xs {
-  margin: rem($baseSpace / 4) !important;
+  margin: rem($space / 4) !important;
 }
 .margin--s {
-  margin: rem($baseSpace / 2) !important;
+  margin: rem($space / 2) !important;
 }
 ```
 
@@ -109,29 +109,11 @@ Begin every new major section of a CSS file with a title comment:
  * sit amet, consectetur adipiscing elit. Istam voluptatem perpetuam quis.
  */
 
-.selector {
+.Component {
 }
 ```
 
 Leave a carriage return between this title and the next line of code (be that a comment, SCSS, or some CSS).
-
-This title should appear at the top of each file (.scss, .css). If you are working on a file with multiple sections, each title should be preceded by four (2) carriage returns. This extra whitespace coupled with a title makes new sections much easier to spot when scrolling through large files:
-
-```scss
-/* =======================================
- * My title
- * ======================================= */
-
-.selector {
-}
-
-/* =======================================
- * My second title
- * ======================================= */
-
-.another-selector {
-}
-```
 
 ### Second-level titles and comments
 
@@ -199,8 +181,8 @@ As a rule, use these comments to document code that would not get written out to
 // Button
 // =======================================
 
-$Button-fontSize: $baseFontSize;
-$Button-lineHeight: $baseLineHeightPx * 1.5;
+$Button-fontSize: $fontSize;
+$Button-lineHeight: $lineHeightPx * 1.5;
 
 // Dimensions of the @2x image sprite:
 $sprite-width: 920px;

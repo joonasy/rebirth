@@ -1,14 +1,11 @@
 /* =======================================
  * Button - Default
- * =======================================
- *
- * @extends `.Button{}` in _Button.scss
- */
+ * ======================================= */
 
 .Button--default {
   background-color: #ffffff;
-  border-color: $colorBorderDefault;
-  color: $colorPrimary;
+  border-color: $border;
+  color: $primary;
 
   &:hover,
   &:focus {

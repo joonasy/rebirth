@@ -7,25 +7,25 @@
 // Typography
 // =========
 
-$baseFontSize: 16px;
-$baseLineHeightPx: 24px;
-$baseLineHeight: $baseLineHeightPx / $baseFontSize;
+$fontSize: 16px;
+$lineHeightPx: 24px;
+$lineHeight: $lineHeightPx / $fontSize;
 
-$baseFontSize-l: 18px;
-$baseLineHeight-l: 26px / $baseFontSize-l;
+$fontSize-l: 18px;
+$lineHeight-l: 26px / $fontSize-l;
 
-$baseFontSize-s: 14px;
-$baseLineHeight-s: 20px / $baseFontSize-s;
+$fontSize-s: 14px;
+$lineHeight-s: 20px / $fontSize-s;
 
-$baseFontSize-xs: 12px;
-$baseLineHeight-xs: 18px / $baseFontSize-xs;
+$fontSize-xs: 12px;
+$lineHeight-xs: 18px / $fontSize-xs;
 
-$baseFontFamilySans: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
-$baseFontFamilyMono: SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace;
-$baseFontFamilySerif: serif;
-$baseFontFamily: $baseFontFamilySans;
-$baseFontWeight: 400;
-$baseFontWeightStrong: bolder;
+$fontFamilySans: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
+$fontFamilyMono: SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace;
+$fontFamilySerif: serif;
+$fontFamily: $fontFamilySans;
+$fontWeight: 400;
+$fontWeightStrong: bolder;
 
 $headingFontFamily: inherit;
 $headingFontWeight: 500;
@@ -43,6 +43,18 @@ $h5LineHeight: 24px / $h5FontSize;
 
 
 // =========
+// Spacing & Sizing
+// =========
+
+$space: $lineHeightPx;
+$spaceEdge: 6.25%;
+$wrapSpaceEdge: $spaceEdge;
+$wrapSpaceEdge-l: $space * 2;
+$wrapWidth: 1200px;
+$wrapMaxWidth: $wrapWidth + ($wrapSpaceEdge-l * 2);
+
+
+// =========
 // Breakpoints
 // =========
 
@@ -56,19 +68,10 @@ $mq-breakpoints: (
   l:  1024px,
   xl: 1140px,
   xxl: 1280px,
-  xxxl: 1528px
+  xxxl: 1528px,
+  wrapWidth: $wrapWidth,
+  wrapMaxWidth: $wrapMaxWidth,
 );
-
-$mq-base-font-size: $baseFontSize;
-
-
-// =========
-// Spacing
-// =========
-
-$baseSpace: $baseLineHeightPx;
-$baseEdgeSpace: 6.25%;
-$uiSpace: $baseLineHeightPx / $baseFontSize * 1rem;
 
 
 // =========
@@ -76,40 +79,37 @@ $uiSpace: $baseLineHeightPx / $baseFontSize * 1rem;
 // =========
 
 // Brand colors
-$colorPrimary: #000000;
+$primary: #000000;
 
 // Base colors
-$colorDark: #000000;
-$colorLight: #ffffff;
+$black: #000000;
+$white: #ffffff;
 
 // Background colors
-$colorBgLight: darken(#ffffff, 10);
-$colorBgLighter: darken(#ffffff, 3);
-$colorBgLightest: #ffffff;
-$colorBgDark: #000000;
+$bgLight: darken(#ffffff, 10);
+$bgLighter: darken(#ffffff, 3);
+$bgLightest: #ffffff;
+$bgDark: $black;
 
 // Text colors
-$colorText: #000000;
-$colorTextLight: lighten($colorText, 20);
-$colorTextLighter: lighten($colorText, 30);
-$colorTextLightest: lighten($colorText, 45);
+$text: #000000;
+$textLight: lighten($text, 30);
 
 // Heading color
-$colorHeading: inherit;
+$heading: inherit;
 
 // Link colors
-$colorLink: #4d4dff;
-$colorLinkHover: darken($colorLink, 15%);
+$link: #4d4dff;
+$linkHover: darken($link, 15%);
 
 // Border colors
-$colorBorder: rgba(#000000, 0.08);
-$colorBorderDefault: rgba(#000000, 0.08);
+$border: rgba(#000000, 0.12);
 
 // State colors
-$colorSuccess: #5cb85c;
-$colorWarning: #f0ad4e;
-$colorDanger: #d9534f;
-$colorInfo: #5bc0de;
+$success: #5cb85c;
+$warning: #f0ad4e;
+$danger: #d9534f;
+$info: #5bc0de;
 
 
 // =========

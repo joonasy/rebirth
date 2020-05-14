@@ -174,8 +174,7 @@ the component).
 
 ### ComponentName-descendantName
 
-A component descendant is a class that is attached to a descendant node of a
-component. It's responsible for applying presentation directly to the
+A component descendant is a class that is attached to a descendant node of a component. It's responsible for applying presentation directly to the
 descendant on behalf of a particular component. descendant names must be
 written in camelCase.
 
@@ -329,7 +328,7 @@ Example use of _margin_ helper which is activated in large breakpoint:
 ```scss
 @inlude mq(l) {
   .marginTop--m@l {
-    margin-top: rem($baseSpace * 2) !important;
+    margin-top: rem($space * 2) !important;
   }
 }
 ```
@@ -346,7 +345,7 @@ Example use of _margin_ helper which is activated in large breakpoint:
 
 ### Reserved prefixes and suffixes in SASS variables
 
-Default SASS variables do not need hyphens, use camelCase instead. e.g. `$baseFontSize` not `$base-fontSize`.
+Default SASS variables do not need hyphens, use camelCase instead. e.g. `$fontSize` not `$font-size`.
 
 Component SASS variables however _do_ need hyphens e.g. `$MyComponent-heading` not `$MyComponentHeading`.
 

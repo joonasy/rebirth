@@ -10,7 +10,7 @@
 
   @include mq(l) {
     align-self: flex-start;
-    background-color: $colorBgLightest;
+    background-color: $bgLightest;
     display: block;
     height: calc(100vh - #{$docs-Header-navbarSecondaryHeight-expand});
     position: sticky;
@@ -19,6 +19,7 @@
 
     .docs-Aside-navbar {
       border-bottom: 0;
+      height: 100%;
       max-height: calc(100vh - #{$docs-Header-navbarSecondaryHeight-expand});
       margin-bottom: $docs-Header-navbarPrimaryHeight-expand;
       overflow: auto;
@@ -26,17 +27,17 @@
       > ul {
         > .Navbar-item {
           &:last-child {
-            margin-bottom: $baseSpace * 4;
+            margin-bottom: $space * 4;
           }
         }
       }
 
       .Navbar-sub {
-        border-left: 1px solid $colorBorder;
-        margin-top: $uiSpace / 4;
+        border-left: 1px solid $border;
+        margin-top: $space / 4;
 
         .Navbar-link {
-          padding-left: $uiSpace;
+          padding-left: $space;
         }
       }
     }

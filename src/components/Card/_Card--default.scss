@@ -1,32 +1,30 @@
 /* =======================================
  * Card - Default
- * =======================================
- *
- * @extends `.Card{}` in _Card.scss
- */
+ * ======================================= */
 
 .Card--default {
   background-color: #ffffff;
+  border-radius: $borderRadius;
 
   .Card-footer {
-    background-color: $colorBgLight;
+    background-color: $bgLight;
   }
 
   &.-round {
-    border-radius: $Card-borderRadius + 2px;
+    border-radius: $borderRadius + 2px;
 
     .Card-figure {
       img {
-        border-radius: $Card-borderRadius $Card-borderRadius 0 0;
+        border-radius: $borderRadius $borderRadius 0 0;
       }
     }
 
     .Card-footer {
-      border-radius: 0 0 $Card-borderRadius $Card-borderRadius;
+      border-radius: 0 0 $borderRadius $borderRadius;
     }
   }
 
   &.-border {
-    box-shadow: 0 0 0 1px $colorBorderDefault;
+    box-shadow: 0 0 0 1px $border;
   }
 }

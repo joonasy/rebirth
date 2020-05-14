@@ -6,11 +6,11 @@ code,
 kbd,
 pre,
 samp {
-  font-family: $baseFontFamilyMono;
+  font-family: $fontFamilyMono;
 }
 
 code {
-  @include fontSize($baseFontSize-xs, $baseLineHeight-xs);
+  @include fontSize($fontSize-xs, $lineHeight-xs);
   color: #e83e8c;
   word-break: break-word;
 
@@ -20,11 +20,11 @@ code {
 }
 
 kbd {
-  @include fontSize($baseFontSize-s, $baseLineHeight-s);
-  background-color: $colorBgLighter;
+  @include fontSize($fontSize-s, $lineHeight-s);
+  background-color: $bgLighter;
   border-radius: $borderRadius;
-  color: $colorTextLight;
-  padding: ($baseSpace / 6) ($baseSpace / 4);
+  color: $textLight;
+  padding: ($space / 6) ($space / 4);
 
   kbd {
     font-size: 100%;
@@ -33,8 +33,8 @@ kbd {
 }
 
 pre {
-  @include fontSize($baseFontSize-xs, $baseLineHeight-xs);
-  color: $colorTextLight;
+  @include fontSize($fontSize-xs, $lineHeight-xs);
+  color: $textLight;
   display: block;
 
   code {

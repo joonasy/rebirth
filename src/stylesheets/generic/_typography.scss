@@ -3,27 +3,27 @@
  * ======================================= */
 
 p {
-  margin: 0 0 rem($baseSpace);
+  margin: 0 0 rem($space);
 }
 
 b,
 strong {
-  font-weight: $baseFontWeightStrong;
+  font-weight: $fontWeightStrong;
 }
 
 hr {
   border: 0;
-  border-top: 1px solid $colorBorderDefault;
+  border-top: 1px solid $border;
   display: block;
   height: 1px;
-  margin-bottom: rem($baseSpace);
+  margin-bottom: rem($space);
   margin-top: 0;
   padding: 0;
 }
 
 hgroup {
   > *:not(:last-child) {
-    margin-bottom: rem($baseSpace / 2);
+    margin-bottom: rem($space / 2);
   }
 }
 
@@ -33,10 +33,10 @@ h3,
 h4,
 h5,
 h6 {
-  color: $colorHeading;
+  color: $heading;
   font-family: $headingFontFamily;
   font-weight: $headingFontWeight;
-  margin: 0 0 rem($baseSpace);
+  margin: 0 0 rem($space);
 }
 
 h1, .h1 {
@@ -60,7 +60,7 @@ h5, .h5 {
 }
 
 h6, .h6 {
-  @include fontSize($baseFontSize, $baseLineHeight);
+  @include fontSize($fontSize, $lineHeight);
   text-transform: uppercase;
-  font-weight: $baseFontWeightStrong;
+  font-weight: $fontWeightStrong;
 }

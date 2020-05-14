@@ -3,8 +3,7 @@
 // =======================================
 
 $Form-borderWidth: 1px;
-$Form-borderRadius: $borderRadius;
-$Form-fontSize: $baseFontSize-s;
-$Form-fontWeight: $baseFontWeight;
-$Form-height: $baseSpace * 2;
-$Form-padding: $baseSpace / 1.5;
+$Form-fontSize: $fontSize-s;
+$Form-fontWeight: $fontWeight;
+$Form-height: $space * 2;
+$Form-padding: $space / 1.5;
