@@ -11,7 +11,7 @@
  * Heading - Size
  * ====== */
 
-%Heading.-l {
+.Heading.-l {
   @include fontSize($Heading-fontSize-l, $Heading-lineHeight-l);
 
   @include mq($until: m) {
@@ -19,7 +19,7 @@
   }
 }
 
-%Heading.-m {
+.Heading.-m {
   @include fontSize($Heading-fontSize-m, $Heading-lineHeight-m);
 
   @include mq($until: l) {
@@ -27,24 +27,10 @@
   }
 }
 
-%Heading.-s {
+.Heading.-s {
   @include fontSize($Heading-fontSize-s, $Heading-lineHeight-s);
 
   @include mq($until: m) {
     @include fontSize($h1FontSize, $h1LineHeight);
-  }
-}
-
-.Heading {
-  &.-l {
-    @extend %Heading.-l;
-  }
-
-  &.-m {
-    @extend %Heading.-m;
-  }
-
-  &.-s {
-   @extend %Heading.-s;
   }
 }

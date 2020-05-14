@@ -1,15 +1,12 @@
 /* =======================================
  * Icons
- * =======================================
- *
- * @reusable true
- */
+ * ======================================= */
 
 .Icon {
   display: inline-block;
   fill: currentColor;
-  height: 1.5em;
+  height: $Icon-size;
   stroke-width: 0;
   stroke: currentColor;
-  width: 1.5em;
+  width: $Icon-size;
 }
