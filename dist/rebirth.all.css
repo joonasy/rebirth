@@ -345,7 +345,7 @@ template {
  * Base
  * ======================================= */
 :root {
-  background-color: #e6e6e6;
+  background-color: #ffffff;
   color: #000000;
   font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
   font-size: 16px;
@@ -391,8 +391,8 @@ a:active {
   color: #4d4dff;
 }
 
-a:focus {
-  outline: 0;
+a:focus:not(:hover) {
+  outline: 1px dotted #000000;
 }
 
 a:hover {
@@ -433,6 +433,10 @@ img {
   vertical-align: middle;
 }
 
+dialog[open] {
+  display: block;
+}
+
 /* =======================================
  * Code
  * ======================================= */
@@ -459,7 +463,7 @@ kbd {
   line-height: 1.42857;
   background-color: #f7f7f7;
   border-radius: 3px;
-  color: #333333;
+  color: #4d4d4d;
   padding: 4px 6px;
 }
 
@@ -471,7 +475,7 @@ kbd kbd {
 pre {
   font-size: 0.75rem;
   line-height: 1.5;
-  color: #333333;
+  color: #4d4d4d;
   display: block;
 }
 
@@ -498,7 +502,7 @@ strong {
 
 hr {
   border: 0;
-  border-top: 1px solid rgba(0, 0, 0, 0.08);
+  border-top: 1px solid rgba(0, 0, 0, 0.12);
   display: block;
   height: 1px;
   margin-bottom: 1.5rem;
@@ -691,7 +695,7 @@ h6, .h6 {
 }
 
 .colorTextLight {
-  color: #333333 !important;
+  color: #4d4d4d !important;
 }
 
 .colorDark {
@@ -700,87 +704,6 @@ h6, .h6 {
 
 .colorBgLight {
   background-color: #e6e6e6 !important;
-}
-
-/* =======================================
- * Layout helpers
- * ======================================= */
-/**
- * Floats
- */
-.floatLeft {
-  float: left !important;
-}
-
-.floatRight {
-  float: right !important;
-}
-
-/**
- * Centering absolutely
- */
-.centerAbsolute {
-  margin: auto !important;
-  position: absolute !important;
-  top: 50% !important;
-  left: 50% !important;
-  -webkit-transform: translate(-50%, -50%) !important;
-          transform: translate(-50%, -50%) !important;
-  width: 50% !important;
-}
-
-/**
- * Centering with margin (requires width)
- */
-.centerMargin {
-  display: block !important;
-  margin-left: auto !important;
-  margin-right: auto !important;
-}
-
-/**
- * Centering with inline-block and text
- */
-.centerText {
-  text-align: center !important;
-}
-
-.centerText-item {
-  display: inline-block !important;
-  text-align: left !important;
-}
-
-/* ======
- * Positioning helpers
- * ====== */
-/**
- * Fill the space absolutely
- */
-.positionAbsoluteFill {
-  bottom: 0 !important;
-  left: 0 !important;
-  position: absolute !important;
-  right: 0 !important;
-  top: 0 !important;
-}
-
-/**
- * 1. Make sure fixed elements are promoted into a new layer, for performance
- *    reasons.
- */
-.positionFixed {
-  position: fixed !important;
-  -webkit-backface-visibility: hidden;
-          backface-visibility: hidden;
-  /* [1.] */
-}
-
-.positionRelative {
-  position: relative !important;
-}
-
-.positionStatic {
-  position: static !important;
 }
 
 /* =======================================
@@ -1757,15 +1680,6 @@ h6, .h6 {
 /* =======================================
  * App
  * ======================================= */
-.App {
-  display: -webkit-box;
-  display: flex;
-  -webkit-box-orient: vertical;
-  -webkit-box-direction: normal;
-          flex-direction: column;
-  min-height: 100vh;
-}
-
 /* =======================================
  * Container
  * ======================================= */
@@ -1805,6 +1719,7 @@ h6, .h6 {
   max-width: 100%;
   padding-left: 0.75rem;
   padding-right: 0.75rem;
+  width: 100%;
 }
 
 /* ======
@@ -1816,7 +1731,7 @@ h6, .h6 {
   width: auto;
 }
 
-.Grid.-equalContent > .Grid-cell {
+.Grid.-equalHeight > .Grid-cell {
   display: -webkit-box;
   display: flex;
   flex-wrap: wrap;
@@ -1832,24 +1747,15 @@ h6, .h6 {
   padding-right: 0rem;
 }
 
-.Grid.-xl {
-  margin-left: -3rem;
-  margin-right: -3rem;
-}
-
-.Grid.-xl > .Grid-cell {
-  padding-left: 3rem;
-  padding-right: 3rem;
-}
-
-.Grid.-l {
-  margin-left: -1.5rem;
-  margin-right: -1.5rem;
-}
-
-.Grid.-l > .Grid-cell {
-  padding-left: 1.5rem;
-  padding-right: 1.5rem;
+@media (min-width: 37.5em) {
+  .Grid.-l {
+    margin-left: -1.5rem;
+    margin-right: -1.5rem;
+  }
+  .Grid.-l > .Grid-cell {
+    padding-left: 1.5rem;
+    padding-right: 1.5rem;
+  }
 }
 
 /* ======
@@ -1904,8 +1810,6 @@ h6, .h6 {
  * Template
  * ======================================= */
 .Template {
-  -webkit-box-flex: 1;
-          flex: 1;
   position: relative;
   z-index: 99;
 }
@@ -2096,25 +2000,6 @@ h6, .h6 {
   }
 }
 
-/* ======
- * Wrap - absolute
- * ====== */
-.Wrap--absolute {
-  left: 6.25%;
-  max-width: 1200px;
-  padding: 0;
-  position: absolute;
-  right: 6.25%;
-  width: 100%;
-}
-
-@media (min-width: 64em) {
-  .Wrap--absolute {
-    left: 48px;
-    right: 48px;
-  }
-}
-
 /* =======================================
  * Alert
  * ======================================= */
@@ -2159,18 +2044,15 @@ h6, .h6 {
 /* =======================================
  * Button
  * ======================================= */
+
 .Button {
-  max-width: 100%;
-  overflow: hidden;
-  text-overflow: ellipsis;
-  white-space: nowrap;
-  word-wrap: normal;
   font-size: 1rem;
   line-height: 2.5rem;
   -webkit-box-align: center;
           align-items: center;
   background-color: transparent;
   border: 1px solid transparent;
+  border-radius: 3px;
   cursor: pointer;
   display: -webkit-inline-box;
   display: inline-flex;
@@ -2192,7 +2074,9 @@ h6, .h6 {
   vertical-align: top;
 }
 
-.Button:hover, .Button:focus {
+
+.Button:hover,
+.Button:focus {
   text-decoration: none;
 }
 
@@ -2294,10 +2178,7 @@ h6, .h6 {
 
 /* =======================================
  * Button - Primary
- * =======================================
- *
- * @extends `.Button{}` in _Button.scss
- */
+ * ======================================= */
 .Button--primary {
   background-color: #000000;
   border-color: black;
@@ -2311,13 +2192,10 @@ h6, .h6 {
 
 /* =======================================
  * Button - Default
- * =======================================
- *
- * @extends `.Button{}` in _Button.scss
- */
+ * ======================================= */
 .Button--default {
   background-color: #ffffff;
-  border-color: rgba(0, 0, 0, 0.08);
+  border-color: rgba(0, 0, 0, 0.12);
   color: #000000;
 }
 
@@ -2372,6 +2250,8 @@ h6, .h6 {
 }
 
 .Card-footer {
+  font-size: 0.875rem;
+  line-height: 1.42857;
   position: relative;
 }
 
@@ -2383,29 +2263,16 @@ h6, .h6 {
 }
 
 /* ======
- * Card - Style
- * ====== */
-.Card.-round {
-  border-radius: 3px;
-}
-
-/* ======
- * Card - Color
- * ====== */
-.Card.-colorInverse {
-  background-color: #000000;
-  color: #ffffff;
-}
-
-/* ======
  * Card - Figure modifiers
  * ====== */
-.Card.-figureCrop .Card-figure, .Card.-figureFill .Card-figure {
+.Card.-figureFill .Card-figure,
+.Card.-figureCrop .Card-figure {
   min-height: 18rem;
   width: 100%;
 }
 
-.Card.-figureCrop .Card-figure figure, .Card.-figureFill .Card-figure figure {
+.Card.-figureFill .Card-figure figure,
+.Card.-figureCrop .Card-figure figure {
   bottom: 0;
   left: 0;
   position: absolute;
@@ -2416,7 +2283,8 @@ h6, .h6 {
   background-size: cover;
 }
 
-.Card.-figureCrop .Card-figure img, .Card.-figureFill .Card-figure img {
+.Card.-figureFill .Card-figure img,
+.Card.-figureCrop .Card-figure img {
   display: block;
   height: 100%;
   object-fit: cover;
@@ -2434,18 +2302,12 @@ h6, .h6 {
   top: 0;
 }
 
-.Card.-figureFill.-round .Card-figure img {
-  border-radius: 3px;
-}
-
 /* =======================================
  * Card - Default
- * =======================================
- *
- * @extends `.Card{}` in _Card.scss
- */
+ * ======================================= */
 .Card--default {
   background-color: #ffffff;
+  border-radius: 3px;
 }
 
 .Card--default .Card-footer {
@@ -2465,7 +2327,7 @@ h6, .h6 {
 }
 
 .Card--default.-border {
-  box-shadow: 0 0 0 1px rgba(0, 0, 0, 0.08);
+  box-shadow: 0 0 0 1px rgba(0, 0, 0, 0.12);
 }
 
 /* =======================================
@@ -2536,8 +2398,8 @@ h6, .h6 {
 }
 
 /**
-   * @extends `.Button{}` in _Button.scss
-   */
+ * @extends `.Button{}` in _Button.scss
+ */
 .Form-button.Button {
   margin: 0;
 }
@@ -2578,19 +2440,9 @@ textarea.Form-item {
   display: none;
 }
 
-/* ======
- * Form item - Style
- * ====== */
-.Form-item.-round {
-  border-radius: 3px;
-}
-
 /* =======================================
  * Form grid
- * =======================================
- *
- * @extends `.Form-item{}, .Form-addon{}, .Form-button{}` in _Form.scss
- */
+ * ======================================= */
 .Form-grid {
   display: -webkit-box;
   display: flex;
@@ -2681,18 +2533,11 @@ textarea.Form-item {
 
 /* =======================================
  * Form - Default
- * =======================================
- *
- * @extends `.Form{}` in _Form.scss
- */
+ * ======================================= */
 .Form--default .Form-item {
   background-color: #ffffff;
-  border-color: rgba(0, 0, 0, 0.08);
+  border-color: rgba(0, 0, 0, 0.12);
   color: #000000;
-}
-
-.Form--default .Form-item {
-  color: #333333;
 }
 
 .Form--default .Form-item:-moz-placeholder {
@@ -2732,17 +2577,32 @@ textarea.Form-item {
 }
 
 .Form--default .Form-item--select select {
-  color: #333333;
+  color: #4d4d4d;
 }
 
 /* =======================================
  * Hero
  * ======================================= */
-.Hero {
+/* =======================================
+ * Hero
+ * ======================================= */
+.Hero--default {
   position: relative;
+  /* ======
+   * Hero - Size
+   * ====== */
+  /* ======
+   * Hero item - Color
+   * ====== */
+  /* ======
+   * Hero item - Align
+   * ====== */
+  /* ======
+  * Hero item - Various modifiers
+  * ====== */
 }
 
-.Hero-item {
+.Hero--default .Hero-item {
   background-color: #000000;
   color: #ffffff;
   position: relative;
@@ -2750,14 +2610,14 @@ textarea.Form-item {
   width: 100%;
 }
 
-.Hero-wrap {
+.Hero--default .Hero-wrap {
   display: -webkit-box;
   display: flex;
   position: relative;
   z-index: 2;
 }
 
-.Hero-content {
+.Hero--default .Hero-content {
   -webkit-box-align: start;
           align-items: flex-start;
   display: -webkit-box;
@@ -2768,19 +2628,32 @@ textarea.Form-item {
   -webkit-box-pack: center;
           justify-content: center;
   min-height: 15rem;
+  width: 80%;
 }
 
-.Hero-content-item {
+@media (min-width: 37.5em) {
+  .Hero--default .Hero-content {
+    width: 75%;
+  }
+}
+
+@media (min-width: 48em) {
+  .Hero--default .Hero-content {
+    width: 50%;
+  }
+}
+
+.Hero--default .Hero-content-item {
   max-width: 100%;
   padding-bottom: 3rem;
   padding-top: 3rem;
 }
 
-.Hero-content-item > *:last-child {
+.Hero--default .Hero-content-item > *:last-child {
   margin: 0;
 }
 
-.Hero-figure {
+.Hero--default .Hero-figure {
   bottom: 0;
   left: 0;
   position: absolute;
@@ -2793,110 +2666,98 @@ textarea.Form-item {
   z-index: 0;
 }
 
-.Hero-figure img {
+.Hero--default .Hero-figure img {
   display: block;
   height: 100%;
   object-fit: cover;
   width: 100%;
 }
 
-.Hero-figure--video {
+.Hero--default .Hero-figure--video {
   z-index: -1;
 }
 
-.no-js .Hero-figure--video {
+.no-js .Hero--default .Hero-figure--video {
   z-index: 1;
 }
 
-.Hero-figure--video video {
+.Hero--default .Hero-figure--video video {
   display: block;
   height: 100%;
   object-fit: cover;
   width: 100%;
 }
 
-.Hero-figure--video video::-webkit-media-controls {
+.Hero--default .Hero-figure--video video::-webkit-media-controls {
   display: none !important;
 }
 
-.no-object-fit .Hero-figure--video > video {
+.no-object-fit .Hero--default .Hero-figure--video > video {
   bottom: 0;
   height: auto;
   position: absolute;
 }
 
-.no-js .Hero-figure--video > video {
+.no-js .Hero--default .Hero-figure--video > video {
   display: none;
 }
 
-/* ======
- * Hero - Size
- * ====== */
-.Hero.-full .Hero-content {
+.Hero--default.-full .Hero-content {
   min-height: 100vh;
 }
 
-.Hero.-l .Hero-content {
+.Hero--default.-l .Hero-content {
   min-height: 27rem;
 }
 
 @media (min-width: 37.5em) {
-  .Hero.-l .Hero-content {
+  .Hero--default.-l .Hero-content {
     min-height: 42rem;
   }
 }
 
-.Hero.-m .Hero-content {
+.Hero--default.-m .Hero-content {
   min-height: 21rem;
 }
 
 @media (min-width: 48em) {
-  .Hero.-m .Hero-content {
+  .Hero--default.-m .Hero-content {
     min-height: 24rem;
   }
 }
 
-/* ======
- * Hero item - Color
- * ====== */
-.Hero-item.-colorInverse {
+.Hero--default .Hero-item.-colorInverse {
   background-color: #ffffff;
   color: #000000;
 }
 
-.Hero-item.-colorInverse.-overlay .Hero-overlay {
+.Hero--default .Hero-item.-colorInverse.-overlay .Hero-overlay {
   background-color: rgba(255, 255, 255, 0.75);
 }
 
-/* ======
- * Hero item - Align
- * ====== */
-.Hero-item.-alignContentCenter .Hero-wrap {
+.Hero--default .Hero-item.-alignContentCenter .Hero-wrap {
   -webkit-box-pack: center;
           justify-content: center;
 }
 
-.Hero-item.-alignContentCenter .Hero-content {
+.Hero--default .Hero-item.-alignContentCenter .Hero-content {
   -webkit-box-align: center;
           align-items: center;
   text-align: center;
 }
 
-.Hero-item.-alignContentRight .Hero-wrap {
+.Hero--default .Hero-item.-alignContentRight .Hero-wrap {
   -webkit-box-pack: end;
           justify-content: flex-end;
 }
 
-.Hero-item.-alignContentRight .Hero-content {
+.Hero--default .Hero-item.-alignContentRight .Hero-content {
   -webkit-box-align: end;
           align-items: flex-end;
   text-align: right;
 }
 
-/* ======
- * Hero item - Various modifiers
- * ====== */
-.Hero-item.-overlay:after {
+.Hero--default .Hero-item.-overlay:after {
   bottom: 0;
   left: 0;
   position: absolute;
@@ -2905,84 +2766,6 @@ textarea.Form-item {
   background-color: rgba(0, 0, 0, 0.5);
   content: '';
   z-index: 1;
-}
-
-/* =======================================
- * Hero item - Figure align
- * =======================================
- *
- * Align figure in .Hero{} component
- *
- * @extends `.Hero-item{}` in _Hero.scss */
-/* =======================================
- * Hero - Item - Default
- * =======================================
- *
- * @extends `.Hero-item{}` in _Hero-item.scss
- */
-.Hero-item--default .Hero-content {
-  width: 80%;
-}
-
-@media (min-width: 37.5em) {
-  .Hero-item--default .Hero-content {
-    width: 75%;
-  }
-}
-
-@media (min-width: 48em) {
-  .Hero-item--default .Hero-content {
-    width: 50%;
-  }
-}
-
-/* =======================================
- * Hero slider with `slick.js`
- * =======================================
- *
- * @extends `.Hero-slider{}` in _Hero.scss
- *
- * 1. Prevents slider items from collapsing during load and displays them
- *    after initialization. First item is always displayed.
- * 2. Remove the ugly outline when dragged
- */
-.Hero-slider .Hero-item {
-  display: none;
-  /* [1] */
-  outline: 0;
-  /* [2] */
-}
-
-.Hero-slider .Hero-item:first-child {
-  display: block;
-  /* [1] */
-}
-
-.Hero-slider.slick-initialized .Hero-item {
-  display: block;
-  /* [1] */
-}
-
-/* =======================================
- * Hero - Additional starters
- * ======================================= */
-/* ======
- * Hero item - Block
- * ====== */
-.Hero-item--block .Hero-wrap {
-  padding: 0;
-}
-
-.Hero-item--block .Hero-content {
-  background-color: rgba(0, 0, 0, 0.75);
-  padding: 0 6.25%;
-  max-width: 30rem;
-}
-
-@media (min-width: 48em) {
-  .Hero-item--block .Hero-content {
-    padding: 0 3rem;
-  }
 }
 
 /* ========================================
@@ -3033,10 +2816,7 @@ textarea.Form-item {
 
 /* =======================================
  * Icons
- * =======================================
- *
- * @reusable true
- */
+ * ======================================= */
 .Icon {
   display: inline-block;
   fill: currentColor;
@@ -3060,7 +2840,7 @@ textarea.Form-item {
 }
 
 .IconCss[class*='-arrow']:before {
-  background-color: #737373;
+  background-color: #4d4d4d;
   content: '';
   display: block;
   height: 16px;
@@ -3074,7 +2854,7 @@ textarea.Form-item {
 .IconCss[class*='-arrow']:after {
   border-left: 2px solid;
   border-top: 2px solid;
-  color: #737373;
+  color: #4d4d4d;
   content: '';
   display: block;
   height: 10px;
@@ -3150,7 +2930,7 @@ textarea.Form-item {
 .IconCss[class*='-chevron']:after {
   border-left: 2px solid;
   border-top: 2px solid;
-  color: #737373;
+  color: #4d4d4d;
   content: '';
   display: block;
   height: 8px;
@@ -3268,7 +3048,7 @@ textarea.Form-item {
 
 .Indicator li button {
   background: transparent;
-  border: 2px solid rgba(0, 0, 0, 0.08);
+  border: 2px solid rgba(0, 0, 0, 0.12);
   border-radius: 50%;
   color: transparent;
   cursor: pointer;
@@ -3319,7 +3099,7 @@ textarea.Form-item {
  * ====== */
 .Label--default {
   background-color: #ffffff;
-  box-shadow: inset 0 0 0 1px rgba(0, 0, 0, 0.08);
+  box-shadow: inset 0 0 0 1px rgba(0, 0, 0, 0.12);
   color: #000000;
 }
 
@@ -3402,7 +3182,7 @@ textarea.Form-item {
 }
 
 .List--default .List-meta {
-  color: #737373;
+  color: #4d4d4d;
 }
 
 .List--default .List-link {
@@ -3517,6 +3297,7 @@ textarea.Form-item {
       -ms-user-select: none;
           user-select: none;
   min-width: 22px;
+  pointer-events: none;
 }
 
 .Navbar--default .Navbar-ctrl-trigger-icon:before, .Navbar--default .Navbar-ctrl-trigger-icon:after {
@@ -3545,7 +3326,7 @@ textarea.Form-item {
 }
 
 .Navbar--default .Navbar-item {
-  border-top: 1px solid rgba(0, 0, 0, 0.08);
+  border-top: 1px solid rgba(0, 0, 0, 0.12);
   display: -webkit-box;
   display: flex;
   flex-wrap: wrap;
@@ -3588,7 +3369,7 @@ textarea.Form-item {
 .Navbar--default .Navbar-trigger {
   -webkit-box-align: center;
           align-items: center;
-  border-left: 1px solid rgba(0, 0, 0, 0.08);
+  border-left: 1px solid rgba(0, 0, 0, 0.12);
   color: #000000;
   cursor: pointer;
   display: -webkit-box;
@@ -3750,7 +3531,7 @@ textarea.Form-item {
  */
 .Navbar--stacked {
   background-color: #ffffff;
-  border: 1px solid rgba(0, 0, 0, 0.08);
+  border: 1px solid rgba(0, 0, 0, 0.12);
   display: -webkit-box;
   display: flex;
   margin-bottom: 1.5rem;
@@ -3778,8 +3559,8 @@ textarea.Form-item {
   font-weight: bolder;
   display: -webkit-box;
   display: flex;
-  min-height: 3rem;
-  padding: 0 1.5rem;
+  min-height: 48px;
+  padding: 0 24px;
 }
 
 .Navbar--stacked .Navbar-ctrl {
@@ -3797,8 +3578,8 @@ textarea.Form-item {
   display: flex;
   -webkit-box-pack: center;
           justify-content: center;
-  min-width: 3rem;
-  padding: 0 0.75rem;
+  min-width: 48px;
+  padding: 0 12px;
 }
 
 .Navbar--stacked .Navbar-ctrl-trigger-icon {
@@ -3843,14 +3624,14 @@ textarea.Form-item {
 }
 
 .Navbar--stacked .Navbar-item {
-  border-top: 1px solid rgba(0, 0, 0, 0.08);
+  border-top: 1px solid rgba(0, 0, 0, 0.12);
   display: -webkit-box;
   display: flex;
   flex-wrap: wrap;
 }
 
 .Navbar--stacked .Navbar-item.is-active > .Navbar-link {
-  color: #4d4dff;
+  color: #0101ff;
 }
 
 .Navbar--stacked .Navbar-item.is-open > .Navbar-trigger > .Navbar-trigger-icon {
@@ -3871,7 +3652,7 @@ textarea.Form-item {
   display: flex;
   -webkit-box-flex: 1;
           flex: 1;
-  padding: 0.75rem 1.5rem;
+  padding: 12px 24px;
 }
 
 .Navbar--stacked .Navbar-link:hover {
@@ -3881,15 +3662,15 @@ textarea.Form-item {
 .Navbar--stacked .Navbar-trigger {
   -webkit-box-align: center;
           align-items: center;
-  border-left: 1px solid rgba(0, 0, 0, 0.08);
+  border-left: 1px solid rgba(0, 0, 0, 0.12);
   color: #000000;
   cursor: pointer;
   display: -webkit-box;
   display: flex;
   -webkit-box-pack: center;
           justify-content: center;
-  min-width: 3rem;
-  padding: 0 0.75rem;
+  min-width: 48px;
+  padding: 0 12px;
 }
 
 .Navbar--stacked .Navbar-trigger-icon {
@@ -3905,7 +3686,7 @@ textarea.Form-item {
 .Navbar--stacked .Navbar-trigger-icon:after {
   border-left: 2px solid;
   border-top: 2px solid;
-  color: #737373;
+  color: #000000;
   content: '';
   display: block;
   height: 8px;
@@ -3927,7 +3708,7 @@ textarea.Form-item {
 }
 
 .Navbar--stacked .Navbar-sub .Navbar-link:hover {
-  color: #4d4dff;
+  color: #000000;
 }
 
 .Navbar--stacked .Navbar-sub ul .Navbar-trigger {
@@ -3941,7 +3722,7 @@ textarea.Form-item {
   .Navbar--stacked .Navbar-ctrl {
     display: none;
   }
-  .Navbar--stacked .Navbar-item.is-active .Navbar-sub {
+  .Navbar--stacked .Navbar-item.is-open .Navbar-sub {
     display: block;
   }
   .Navbar--stacked .Navbar-sub {
@@ -3954,7 +3735,7 @@ textarea.Form-item {
  * Text
  * ======================================= */
 /* ======
- * Text - Size
+ * Size
  * ====== */
 .Text.-l {
   font-size: 1.125rem;
@@ -3971,6 +3752,24 @@ textarea.Form-item {
   line-height: 1.5;
 }
 
+/* ======
+ * Lead
+ * ====== */
+.Text--lead {
+  font-size: 1.625rem;
+  line-height: 36px;
+  color: #4d4d4d;
+  font-weight: 300;
+  margin-bottom: 2.25rem;
+}
+
+@media (max-width: 37.49em) {
+  .Text--lead {
+    font-size: 1.125rem;
+    line-height: 1.44444;
+  }
+}
+
 /* =======================================
  * Text
  * ======================================= */
@@ -3982,7 +3781,7 @@ textarea.Form-item {
   line-height: 1.44444;
 }
 
-.Card-footer, .Text.-s {
+.Text.-s {
   font-size: 0.875rem;
   line-height: 1.42857;
 }
@@ -3998,7 +3797,7 @@ textarea.Form-item {
 .Text--lead {
   font-size: 1.625rem;
   line-height: 36px;
-  color: #737373;
+  color: #4d4d4d;
   font-weight: 300;
   margin-bottom: 2.25rem;
 }

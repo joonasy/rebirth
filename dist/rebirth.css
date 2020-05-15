@@ -345,7 +345,7 @@ template {
  * Base
  * ======================================= */
 :root {
-  background-color: #e6e6e6;
+  background-color: #ffffff;
   color: #000000;
   font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
   font-size: 16px;
@@ -391,8 +391,8 @@ a:active {
   color: #4d4dff;
 }
 
-a:focus {
-  outline: 0;
+a:focus:not(:hover) {
+  outline: 1px dotted #000000;
 }
 
 a:hover {
@@ -433,6 +433,10 @@ img {
   vertical-align: middle;
 }
 
+dialog[open] {
+  display: block;
+}
+
 /* =======================================
  * Fonts
  * ======================================= */
@@ -450,7 +454,7 @@ strong {
 
 hr {
   border: 0;
-  border-top: 1px solid rgba(0, 0, 0, 0.08);
+  border-top: 1px solid rgba(0, 0, 0, 0.12);
   display: block;
   height: 1px;
   margin-bottom: 1.5rem;
@@ -512,15 +516,6 @@ h6, .h6 {
 /* =======================================
  * App
  * ======================================= */
-.App {
-  display: -webkit-box;
-  display: flex;
-  -webkit-box-orient: vertical;
-  -webkit-box-direction: normal;
-          flex-direction: column;
-  min-height: 100vh;
-}
-
 /* =======================================
  * Container
  * ======================================= */
@@ -560,6 +555,7 @@ h6, .h6 {
   max-width: 100%;
   padding-left: 0.75rem;
   padding-right: 0.75rem;
+  width: 100%;
 }
 
 /* ======
@@ -571,7 +567,7 @@ h6, .h6 {
   width: auto;
 }
 
-.Grid.-equalContent > .Grid-cell {
+.Grid.-equalHeight > .Grid-cell {
   display: -webkit-box;
   display: flex;
   flex-wrap: wrap;
@@ -587,24 +583,15 @@ h6, .h6 {
   padding-right: 0rem;
 }
 
-.Grid.-xl {
-  margin-left: -3rem;
-  margin-right: -3rem;
-}
-
-.Grid.-xl > .Grid-cell {
-  padding-left: 3rem;
-  padding-right: 3rem;
-}
-
-.Grid.-l {
-  margin-left: -1.5rem;
-  margin-right: -1.5rem;
-}
-
-.Grid.-l > .Grid-cell {
-  padding-left: 1.5rem;
-  padding-right: 1.5rem;
+@media (min-width: 37.5em) {
+  .Grid.-l {
+    margin-left: -1.5rem;
+    margin-right: -1.5rem;
+  }
+  .Grid.-l > .Grid-cell {
+    padding-left: 1.5rem;
+    padding-right: 1.5rem;
+  }
 }
 
 /* ======
@@ -659,8 +646,6 @@ h6, .h6 {
  * Template
  * ======================================= */
 .Template {
-  -webkit-box-flex: 1;
-          flex: 1;
   position: relative;
   z-index: 99;
 }
@@ -851,25 +836,6 @@ h6, .h6 {
   }
 }
 
-/* ======
- * Wrap - absolute
- * ====== */
-.Wrap--absolute {
-  left: 6.25%;
-  max-width: 1200px;
-  padding: 0;
-  position: absolute;
-  right: 6.25%;
-  width: 100%;
-}
-
-@media (min-width: 64em) {
-  .Wrap--absolute {
-    left: 48px;
-    right: 48px;
-  }
-}
-
 /* ========================================
  * Heading
  * ======================================== */
@@ -918,10 +884,7 @@ h6, .h6 {
 
 /* =======================================
  * Icons
- * =======================================
- *
- * @reusable true
- */
+ * ======================================= */
 .Icon {
   display: inline-block;
   fill: currentColor;

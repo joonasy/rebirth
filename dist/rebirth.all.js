@@ -12161,7 +12161,7 @@ exports.default = void 0;
 
 var _utility = require("javascripts/utility");
 
-var _feature = require("javascripts/feature");
+var _detect = require("javascripts/detect");
 
 function _toConsumableArray(arr) { return _arrayWithoutHoles(arr) || _iterableToArray(arr) || _nonIterableSpread(); }
 
@@ -12178,8 +12178,6 @@ var NavbarDefault = function NavbarDefault() {
 
   var navbarClass = '.js-NavbarDefault';
   var navbar = (0, _utility.$$)(navbarClass);
-  var navbarTrigger = (0, _utility.$$)('.js-NavbarDefaultTrigger');
-  var navbarItem = (0, _utility.$$)('.js-NavbarDefault .Navbar-item');
   [].forEach.call(navbar, function (nav) {
     nav.addEventListener('click', function (e) {
       var isTrigger = e.target.className === 'Navbar-trigger';
@@ -12188,7 +12186,7 @@ var NavbarDefault = function NavbarDefault() {
       var hasDropdown = (0, _utility.$)('.Navbar-sub', parent);
       e.stopPropagation();
 
-      if (isTrigger || isLink && _feature.hasTouch && hasDropdown) {
+      if (isTrigger || isLink && _detect.hasTouch && hasDropdown) {
         e.preventDefault();
 
         if (parent.classList.contains('is-open')) {
@@ -12203,33 +12201,33 @@ var NavbarDefault = function NavbarDefault() {
           });
         }
       }
-    }, false);
-  });
-  [].forEach.call(navbarTrigger, function (trigger) {
-    trigger.addEventListener('click', function (e) {
-      var parent = e.target.closest(navbarClass);
-      e.stopPropagation();
 
-      if (parent.classList.contains('is-open')) {
-        parent.classList.remove('is-open');
-      } else {
-        parent.classList.add('is-open');
+      var isCtrlTrigger = e.target.classList.contains('Navbar-ctrl-trigger');
+
+      if (isCtrlTrigger) {
+        var _parent = e.target.closest(navbarClass);
+
+        if (_parent.classList.contains('is-open')) {
+          _parent.classList.remove('is-open');
+        } else {
+          _parent.classList.add('is-open');
+        }
+
+        e.preventDefault();
       }
     }, false);
   });
   window.addEventListener('click', function (e) {
-    [].forEach.call(navbarItem, function (item) {
-      return item.classList.remove('is-open');
-    });
     [].forEach.call(navbar, function (nav) {
       return nav.classList.remove('is-open');
     });
   });
 };
 
-exports.default = NavbarDefault;
+var _default = NavbarDefault;
+exports.default = _default;
 
-},{"javascripts/feature":451,"javascripts/utility":452}],446:[function(require,module,exports){
+},{"javascripts/detect":451,"javascripts/utility":452}],446:[function(require,module,exports){
 "use strict";
 
 var _NavbarDefault = _interopRequireDefault(require("./NavbarDefault"));
@@ -12292,7 +12290,8 @@ var NavbarStacked = function NavbarStacked() {
   });
 };
 
-exports.default = NavbarStacked;
+var _default = NavbarStacked;
+exports.default = _default;
 
 },{"javascripts/utility":452}],448:[function(require,module,exports){
 "use strict";
@@ -12891,10 +12890,10 @@ require("./components/Navbar");
 Object.defineProperty(exports, "__esModule", {
   value: true
 });
-exports.isMac = exports.isAndroid = exports.isIOS = exports.isFirefox = exports.isEdge = exports.isIE = exports.hasTouch = void 0;
+exports.scrollBarWidth = exports.hasDialog = exports.isMac = exports.isAndroid = exports.isIOS = exports.isFirefox = exports.isEdge = exports.isIE = exports.hasTouch = void 0;
 
 /* =======================================
- * Features & User Agents
+ * Detects, Features & User Agents
  * ======================================= */
 var ua = navigator.userAgent;
 var win = window;
@@ -12910,63 +12909,75 @@ var hasTouch = !!('ontouchstart' in win || win.navigator && win.navigator.msPoin
  */
 
 exports.hasTouch = hasTouch;
-
-var isIE = function isIE() {
-  return !!Function('/*@cc_on return document.documentMode===10@*/')() || // eslint-disable-line
-  /(?:\sTrident\/7\.0.*\srv:11\.0)/i.test(ua);
-};
+var isIE = window.document.documentMode;
 /**
  * Edge
  */
 
-
 exports.isIE = isIE;
-
-var isEdge = function isEdge() {
-  return /edge\//i.test(ua);
-};
+var isEdge = /edge\//i.test(ua);
 /**
  * Firefox
  */
 
-
 exports.isEdge = isEdge;
-
-var isFirefox = function isFirefox() {
-  return 'InstallTrigger' in window;
-};
+var isFirefox = 'InstallTrigger' in window;
 /**
  * iOS
  */
 
-
 exports.isFirefox = isFirefox;
-
-var isIOS = function isIOS() {
-  return /iP(ad|hone|od)/i.test(ua);
-};
+var isIOS = /iP(ad|hone|od)/i.test(ua);
 /**
  * Android
  */
 
-
 exports.isIOS = isIOS;
-
-var isAndroid = function isAndroid() {
-  return ua.indexOf('Android') > -1 && ua.indexOf('Mozilla/5.0') > -1 && ua.indexOf('AppleWebKit') > -1;
-};
+var isAndroid = ua.indexOf('Android') > -1 && ua.indexOf('Mozilla/5.0') > -1 && ua.indexOf('AppleWebKit') > -1;
 /**
  * Mac
  */
 
-
 exports.isAndroid = isAndroid;
-
-var isMac = function isMac() {
-  return /mac/i.test(navigator.platform);
-};
+var isMac = /mac/i.test(navigator.platform);
+/**
+ * Dialog
+ */
 
 exports.isMac = isMac;
+var hasDialog = 'show' in document.createElement('dialog');
+/**
+ * Detect scrollbar width
+ */
+
+exports.hasDialog = hasDialog;
+
+var getScrollBarWidth = function getScrollBarWidth() {
+  /**
+   * Create the measurement node
+   */
+  var scrollDiv = document.createElement('div');
+  scrollDiv.style.width = '100px';
+  scrollDiv.style.height = '100px';
+  scrollDiv.style.overflow = 'scroll';
+  scrollDiv.style.position = 'absolute';
+  scrollDiv.style.top = '-999px';
+  document.documentElement.appendChild(scrollDiv);
+  /**
+   * Get the scrollbar width
+   */
+
+  var scrollBarWidth = scrollDiv.offsetWidth - scrollDiv.clientWidth;
+  /**
+   * Delete the node
+   */
+
+  document.documentElement.removeChild(scrollDiv);
+  return scrollBarWidth;
+};
+
+var scrollBarWidth = getScrollBarWidth();
+exports.scrollBarWidth = scrollBarWidth;
 
 },{}],452:[function(require,module,exports){
 "use strict";
