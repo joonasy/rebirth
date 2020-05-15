@@ -19,3 +19,14 @@
   opacity: 0.5;
   pointer-events: none;
 }
+
+//
+// Clear fix
+//
+@mixin clearfix() {
+  &:after {
+    display: block;
+    content: "";
+    clear: both;
+  }
+}
