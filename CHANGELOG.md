@@ -5,6 +5,7 @@ All notable changes to this project will be documented in this file. The format 
 
 ## 0.6.3x
 
+- Docs/Build: Fix docs build, use svg symbols, use postcss to remove comments and sort mq. Rename symbols to match line awesome for clarity. Move generated symbols into their own folder. Add symbols to build for now.
 - Remove unnecessary prefixes from variable names.
   - `$baseSpace` -> `$space`
   - `$colorPrimary` -> `$primary` ...
@@ -26,7 +27,6 @@ All notable changes to this project will be documented in this file. The format 
 - Grid: add correct prefixes,  fix large grid overflow in mobile, equalContent -> equalHeight
 - `feature.js` -> `detect.js`
   - Add `scrollBarWidth`, `hasDialog` detects
-
 
 ## 0.6.2x
 
