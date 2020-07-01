@@ -5,6 +5,7 @@
 const ua = navigator.userAgent;
 const win = window;
 const doc = document;
+const html = doc.documentElement;
 
 /**
  * Tests if touch events are supported, but doesn't necessarily reflect a
@@ -55,30 +56,26 @@ export const isMac = /mac/i.test(navigator.platform);
 export const hasDialog = 'show' in document.createElement('dialog');
 
 /**
+ * Object fit
+ */
+export const hasObjectFit = 'objectFit' in html.style !== false;
+
+/**
  * Detect scrollbar width
  */
 const getScrollBarWidth = () => {
-  /**
-   * Create the measurement node
-   */
   const scrollDiv = document.createElement('div');
-  scrollDiv.style.width = '100px';
   scrollDiv.style.height = '100px';
   scrollDiv.style.overflow = 'scroll';
   scrollDiv.style.position = 'absolute';
   scrollDiv.style.top = '-999px';
+  scrollDiv.style.width = '100px';
 
-  document.documentElement.appendChild(scrollDiv);
+  html.appendChild(scrollDiv);
 
-  /**
-   * Get the scrollbar width
-   */
   const scrollBarWidth = scrollDiv.offsetWidth - scrollDiv.clientWidth;
 
-  /**
-   * Delete the node
-   */
-  document.documentElement.removeChild(scrollDiv);
+  html.removeChild(scrollDiv);
 
   return scrollBarWidth;
 };
