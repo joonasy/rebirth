@@ -36,7 +36,7 @@ const DIST = process.env.DIST;
  * Config
  */
 const config = {
-  root: 'https://joonasy.github.io/rebirth/',
+  root: 'https://joonassandell.github.io/rebirth/',
   version: pkg.version,
 };
 
