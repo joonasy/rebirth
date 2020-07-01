@@ -13,7 +13,6 @@ const ghpages = require('gh-pages');
 const log = require('fancy-log');
 const handlebarsHelpers = require('handlebars-helpers')();
 const notifier = require('node-notifier');
-const postcss = require('gulp-postcss');
 const pkg = require('./package.json');
 const prettyHrtime = require('pretty-hrtime');
 const rimraf = require('rimraf');
@@ -26,8 +25,7 @@ const watchify = require('watchify');
 const $ = require('gulp-load-plugins')();
 
 const PRODUCTION = process.env.NODE_ENV === 'production';
-const open = process.env.npm_config_disable_open ? false : 'external';
-
+const DIST = process.env.DIST;
 
 
 /* ======
@@ -51,7 +49,7 @@ app.helper('markdown', require('helper-markdown'));
 
 app.data({
   dev: !PRODUCTION,
-  root: PRODUCTION ? config.root : '/',
+  root: PRODUCTION && !DIST ? config.root : '/',
   version: config.version,
 });
 
@@ -109,14 +107,14 @@ app.task('docs-stylesheets', () => {
   if (PRODUCTION) {
     return pipeline
       .pipe($.replace('./', `${config.root}assets`))
-      .pipe($.combineMq({ beautify: false }))
       .pipe(
-        postcss([
+        $.postcss([
           cssnano({
+            autoprefixer: false,
             mergeRules: false,
-            zindex: false,
-            discardComments: { removeAll: true },
           }),
+          require('postcss-discard-comments')({ removeAll: true }),
+          require('postcss-sort-media-queries')(),
         ]),
       )
       .pipe(app.dest('rebirth/assets'));
@@ -155,6 +153,29 @@ app.task('docs-images', () =>
     .pipe(app.dest('rebirth/assets/images/')),
 );
 
+app.task('docs-images:svgSymbols', () => {
+  return app
+    .src('docs/assets/images/symbols/*.svg')
+    .pipe(
+      $.imagemin([
+        $.imagemin.svgo({
+          plugins: [{ removeViewBox: false }, { cleanupIDs: false }],
+        }),
+      ]),
+    )
+    .pipe(
+      $.svgSymbols({
+        id: 'Icon--%f',
+        class: '.Icon--%f',
+        title: `%f icon`,
+        slug: (name) => name,
+        templates: ['default-svg'],
+      }),
+    )
+    .on('error', handleError)
+    .pipe(app.dest('rebirth/assets/images/'));
+});
+
 /**
  * Docs - Fonts
  */
@@ -171,7 +192,7 @@ app.task('docs-fonts', () =>
  */
 app.task('docs-server', () => {
   browserSync.init({
-    open,
+    open: process.env.DISABLE_OPEN ? false : 'external',
     port: 9001,
     notify: false,
     server: {
@@ -204,6 +225,12 @@ app.task('docs-watch:files', () => {
   app.watch('docs/assets/fonts/*.{eot,svg,ttf,woff,woff2}', ['docs-fonts']);
   app.watch('docs/assets/images/*.{jpg,jpeg,png,gif,webp,svg}', [
     'docs-images',
+  ]);
+  app.watch('docs/assets/images/symbols/*.svg', [
+    'docs-images:svgSymbols',
+  ]);
+  app.watch('src/images/symbols/*.svg', [
+    'images:svgSymbols',
   ]);
   app.watch('docs/assets/**/**/*.scss', ['docs-stylesheets']);
   app.watch('src/**/**/*.scss', ['docs-stylesheets', 'stylesheets']);
@@ -297,14 +324,14 @@ app.task('stylesheets', () => {
     return pipeline
       .pipe(app.dest('dist/'))
       .pipe($.rename({ suffix: '.min' }))
-      .pipe($.combineMq({ beautify: false }))
       .pipe(
-        postcss([
+        $.postcss([
           cssnano({
+            autoprefixer: false,
             mergeRules: false,
-            zindex: false,
-            discardComments: { removeAll: true },
           }),
+          require('postcss-discard-comments')({ removeAll: true }),
+          require('postcss-sort-media-queries')(),
         ]),
       )
       .pipe(app.dest('dist/'));
@@ -334,6 +361,29 @@ app.task('javascripts', (callback) => {
   return bundleJavaScripts('src/', 'dist/', scripts, true, callback);
 });
 
+app.task('images:svgSymbols', () => {
+  return app
+    .src('src/images/symbols/*.svg')
+    .pipe(
+      $.imagemin([
+        $.imagemin.svgo({
+          plugins: [{ removeViewBox: false }, { cleanupIDs: false }],
+        }),
+      ]),
+    )
+    .pipe(
+      $.svgSymbols({
+        id: 'Icon--%f',
+        class: '.Icon--%f',
+        title: `%f icon`,
+        slug: (name) => name,
+        templates: ['default-svg'],
+      }),
+    )
+    .on('error', handleError)
+    .pipe(app.dest('dist/images/'));
+});
+
 /**
  * Rebirth - Clean up build
  */
@@ -357,12 +407,12 @@ app.task('eslint', () =>
  * Rebirth - Collected tasks
  * ====== */
 
-const tasks = ['stylesheets', 'javascripts'];
+const tasks = ['stylesheets', 'javascripts', 'images:svgSymbols'];
 
 app.task('build', () => {
   rimraf.sync('dist');
 
-  app.build(tasks.concat(['cleanUp']), (err) => {
+  app.build(tasks, (err) => {
     if (err) throw err;
   });
 });
@@ -375,6 +425,7 @@ const docsTasks = tasks.concat([
   'docs-javascripts',
   'docs-stylesheets',
   'docs-images',
+  'docs-images:svgSymbols',
   'docs-fonts',
   'docs-html',
 ]);
@@ -383,7 +434,11 @@ app.task('docs-build', () => {
   rimraf.sync('rebirth');
 
   app.build(
-    docsTasks.concat(['docs-inline', 'docs-rev', 'docs-updateReferences']),
+    docsTasks.concat([
+      'docs-inline',
+      'docs-rev',
+      'docs-updateReferences',
+    ]),
     (err) => {
       if (err) throw err;
     },
