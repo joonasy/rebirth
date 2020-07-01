@@ -391,6 +391,10 @@ a:active {
   color: #4d4dff;
 }
 
+a:focus {
+  outline: 0;
+}
+
 a:focus:not(:hover) {
   outline: 1px dotted #000000;
 }

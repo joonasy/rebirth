@@ -12820,7 +12820,7 @@ require("./components/Navbar");
 Object.defineProperty(exports, "__esModule", {
   value: true
 });
-exports.scrollBarWidth = exports.hasDialog = exports.isMac = exports.isAndroid = exports.isIOS = exports.isFirefox = exports.isEdge = exports.isIE = exports.hasTouch = void 0;
+exports.scrollBarWidth = exports.hasObjectFit = exports.hasDialog = exports.isMac = exports.isAndroid = exports.isIOS = exports.isFirefox = exports.isEdge = exports.isIE = exports.hasTouch = void 0;
 
 /* =======================================
  * Detects, Features & User Agents
@@ -12828,6 +12828,7 @@ exports.scrollBarWidth = exports.hasDialog = exports.isMac = exports.isAndroid =
 var ua = navigator.userAgent;
 var win = window;
 var doc = document;
+var html = doc.documentElement;
 /**
  * Tests if touch events are supported, but doesn't necessarily reflect a
  * touchscreen device
@@ -12877,32 +12878,27 @@ var isMac = /mac/i.test(navigator.platform);
 exports.isMac = isMac;
 var hasDialog = 'show' in document.createElement('dialog');
 /**
- * Detect scrollbar width
+ * Object fit
  */
 
 exports.hasDialog = hasDialog;
+var hasObjectFit = 'objectFit' in html.style !== false;
+/**
+ * Detect scrollbar width
+ */
+
+exports.hasObjectFit = hasObjectFit;
 
 var getScrollBarWidth = function getScrollBarWidth() {
-  /**
-   * Create the measurement node
-   */
   var scrollDiv = document.createElement('div');
-  scrollDiv.style.width = '100px';
   scrollDiv.style.height = '100px';
   scrollDiv.style.overflow = 'scroll';
   scrollDiv.style.position = 'absolute';
   scrollDiv.style.top = '-999px';
-  document.documentElement.appendChild(scrollDiv);
-  /**
-   * Get the scrollbar width
-   */
-
+  scrollDiv.style.width = '100px';
+  html.appendChild(scrollDiv);
   var scrollBarWidth = scrollDiv.offsetWidth - scrollDiv.clientWidth;
-  /**
-   * Delete the node
-   */
-
-  document.documentElement.removeChild(scrollDiv);
+  html.removeChild(scrollDiv);
   return scrollBarWidth;
 };
 
