@@ -20,7 +20,7 @@
 
 
 /* ======
- * Grid - Sizing and layout
+ * Sizing & Layout
  * ====== */
 
 @mixin GridSize($amount: 0) {
@@ -61,7 +61,7 @@
 
 
 /* ======
- * Grid - Justify
+ * Justify
  * ====== */
 
 @mixin GridJustify($bp: '') {
@@ -101,13 +101,13 @@
 
 
 /* ======
- * Grid - Aligning of cells
+ * Aligning of Cells
  * ====== */
 
 @mixin GridAlign($bp: '') {
-  .Grid.-alignBottom#{$bp} { align-items: flex-end; }
+  .Grid.-alignEnd#{$bp}    { align-items: flex-end; }
   .Grid.-alignCenter#{$bp} { align-items: center; }
-  .Grid.-alignTop#{$bp}    { align-items: flex-start; }
+  .Grid.-alignStart#{$bp}  { align-items: flex-start; }
 }
 
 @if $Grid-align {

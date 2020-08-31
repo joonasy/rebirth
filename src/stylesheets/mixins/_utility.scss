@@ -31,20 +31,6 @@
 }
 
 //
-// Simple image urls
-//
-@function imageUrl($path) {
-  @return url('./images/#{$path}');
-}
-
-//
-// Simple font urls
-//
-@function fontUrl($path) {
-  @return url('./fonts/#{$path}');
-}
-
-//
 // Capitalize string
 //
 @function capitalize($string) {

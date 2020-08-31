@@ -17,7 +17,4 @@ if (hasTouch) {
   html.classList.add('no-touchevents');
 }
 
-/**
- * Polyfill external SVG spritemaps
- */
 svg4everybody();

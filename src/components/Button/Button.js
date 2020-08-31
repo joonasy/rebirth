@@ -15,6 +15,8 @@ class Button {
       button.addEventListener(
         'click',
         (e) => {
+          e.stopPropagation();
+
           if (e.target.classList.contains('is-open')) {
             e.target.classList.remove('is-open');
           } else {

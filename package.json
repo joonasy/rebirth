@@ -23,7 +23,7 @@
     "docs-watch": "assemble docs-watch",
     "docs-dist": "NODE_ENV=production DIST=true assemble docs-build && assemble docs-server",
     "docs-deploy": "npm run docs-build && assemble docs-deploy",
-    "prepublishOnly": "npm run build && git add package.json dist && git commit -m \"Build: $npm_package_version\" && git tag $npm_package_version && git push --follow-tags"
+    "prepublishOnly": "npm run build && git add package.json package-lock.json dist && git commit -m \"Build: $npm_package_version\" && git tag $npm_package_version && git push --follow-tags"
   },
   "husky": {
     "hooks": {

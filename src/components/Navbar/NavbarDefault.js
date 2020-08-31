@@ -16,11 +16,14 @@ class NavbarDefault {
         (e) => {
           const isTrigger = e.target.className === 'Navbar-trigger';
           const isLink = e.target.className === 'Navbar-link';
+          const isHash =
+            (isLink && e.target.getAttribute('href') === null) ||
+            e.target.getAttribute('href') === '#';
           const parent = e.target.closest('.Navbar-item');
           const hasDropdown = $('.Navbar-sub', parent);
           e.stopPropagation();
 
-          if (isTrigger || (isLink && hasTouch && hasDropdown)) {
+          if (isTrigger || (isLink && hasTouch && hasDropdown) || isHash) {
             e.preventDefault();
 
             if (parent.classList.contains('is-open')) {
