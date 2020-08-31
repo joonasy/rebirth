@@ -8,8 +8,7 @@
 // =========
 
 $fontSize: 16px;
-$lineHeightPx: 24px;
-$lineHeight: $lineHeightPx / $fontSize;
+$lineHeight: 24px;
 
 $fontSize-xl: 24px;
 $lineHeight-xl: 32px / $fontSize-xl;
@@ -34,28 +33,28 @@ $headingFontFamily: inherit;
 $headingFontWeight: 500;
 
 $h1FontSize: 64px;
-$h1LineHeight: 72px / $h1FontSize;
+$h1LineHeight: 68px;
 $h2FontSize: 48px;
-$h2LineHeight: 56px / $h2FontSize;
+$h2LineHeight: 56px;
 $h3FontSize: 40px;
-$h3LineHeight: 48px / $h3FontSize;
+$h3LineHeight: 48px;
 $h4FontSize: 32px;
-$h4LineHeight: 40px / $h4FontSize;
+$h4LineHeight: 40px;
 $h5FontSize: 28px;
-$h5LineHeight: 36px / $h5FontSize;
+$h5LineHeight: 36px;
 $h6FontSize: 20px;
-$h6LineHeight: 24px / $h6FontSize;
+$h6LineHeight: 24px;
 
 
 // =========
 // Spacing & Sizing
 // =========
 
-$space: $lineHeightPx;
+$space: $lineHeight;
 $spaceEdge: 6.25%;
 $wrapSpaceEdge: $spaceEdge;
 $wrapSpaceEdge-l: $space * 2;
-$wrapWidth: 1200px;
+$wrapWidth: 1280px;
 $wrapMaxWidth: $wrapWidth + ($wrapSpaceEdge-l * 2);
 
 
@@ -84,7 +83,7 @@ $mq-breakpoints: (
 // =========
 
 // Brand colors
-$primary: #000000;
+$primary: #4d4dff;
 
 // Base colors
 $black: #000000;
