@@ -2,7 +2,7 @@
  * Text Mixins
  * ======================================= */
 
-@mixin TextMeta() {
+@mixin TextLight() {
   color: $textLight;
 }
 
@@ -19,13 +19,18 @@
   }
 }
 
-@mixin TextLead() {
-  @include fontSize(26px, 36px);
-  color: $textLight;
-  font-weight: 300;
-  margin-bottom: rem($space * 1.5);
+@mixin TextLinkHighlight() {
+  background-color: rgba($primary, 0.2);
+  color: $link;
+  text-decoration: underline;
+  text-decoration-color: $link;
 
-  @include mq($until: s) {
-    @include fontSize($fontSize-l, $lineHeight-l);
+  &:hover, &:focus {
+    color: $linkHover;
   }
+}
+
+@mixin TextLead() {
+  @include fontSize($fontSize-xl, $lineHeight-xl);
+  hyphens: auto;
 }

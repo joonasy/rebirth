@@ -16,10 +16,10 @@
 }
 
 .List-meta {
-  @include fontSize($fontSize-s, $lineHeight-s);
+  @extend %Text.-s;
 }
 
 .List-heading {
-  @include fontSize($fontSize-s, $lineHeight-s);
+  @extend %Text.-s;
   display: block;
 }

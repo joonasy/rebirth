@@ -18,4 +18,10 @@
   p:empty {
     display: none;
   }
+
+  a:not([class]) {
+    @include TextLinkHighlight();
+    white-space: pre-wrap;
+    word-wrap: break-word;
+  }
 }

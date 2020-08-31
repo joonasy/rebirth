@@ -13,7 +13,7 @@
 
   .Article-meta {
     @include resetList();
-    @include TextMeta();
+    @include TextLight();
     display: flex;
     margin-bottom: rem($space / 2);
   }
