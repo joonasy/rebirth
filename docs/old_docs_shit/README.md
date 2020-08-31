@@ -2,7 +2,7 @@
 
 > Project instructions, development information and structure
 
-Please read Rebirth [CSS Styleguide](https://github.com/joonasy/rebirth/tree/master/docs/css) and [JavaScript Styleguide](https://github.com/joonasy/rebirth/tree/master/docs/js)
+Please read Rebirth [CSS Styleguide](https://github.com/joonassandell/rebirth/tree/master/docs/css) and [JavaScript Styleguide](https://github.com/joonassandell/rebirth/tree/master/docs/js)
 
 Project specific instructions:
 
@@ -40,7 +40,7 @@ src/                         # [1]
 ```
 
 - **1.** Source folder of your project type (theme, extension, src)
-- **2.** This folder contains all assets which follow the [Rebirth project structure](https://github.com/joonasy/rebirth/tree/master/docs/markdown), [Rebirth CSS styleguide](https://github.com/joonasy/rebirth/tree/master/docs/markdown/css) and [Rebirth JavaScript styleguide](https://github.com/joonasy/rebirth/tree/master/docs/markdown/js). Lettercase may vary
+- **2.** This folder contains all assets which follow the [Rebirth project structure](https://github.com/joonassandell/rebirth/tree/master/docs/markdown), [Rebirth CSS styleguide](https://github.com/joonassandell/rebirth/tree/master/docs/markdown/css) and [Rebirth JavaScript styleguide](https://github.com/joonassandell/rebirth/tree/master/docs/markdown/js). Lettercase may vary
 - **3.** This folder contains all [Bower](http://bower.io) components \*
 - **4.** This folder contains all [Npm](https://www.npmjs.com/) modules \*
 - **5.** [EditorConfig](http://editorconfig.org/) settings

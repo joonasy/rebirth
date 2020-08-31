@@ -34,7 +34,7 @@ extension/                        # [1]
 ```
 
 - **1.** Extension folder
-- **2.** This folder contains all assets which follow the [Rebirth project structure](https://github.com/joonasy/rebirth/tree/master/docs/markdown), [Rebirth CSS styleguide](https://github.com/joonasy/rebirth/tree/master/docs/markdown/css) and [Rebirth JavaScript styleguide](https://github.com/joonasy/rebirth/tree/master/docs/markdown/js)
+- **2.** This folder contains all assets which follow the [Rebirth project structure](https://github.com/joonassandell/rebirth/tree/master/docs/markdown), [Rebirth CSS styleguide](https://github.com/joonassandell/rebirth/tree/master/docs/markdown/css) and [Rebirth JavaScript styleguide](https://github.com/joonassandell/rebirth/tree/master/docs/markdown/js)
 - **3. / 4.** Typo3 settings
 - **5.** Public and private files
 - **6.** Site layouts, partials and templates
@@ -82,4 +82,4 @@ project-folder/
 
 ## Issues and FAQ
 
-Head to [Github issues](https://github.com/joonasy/generator-rebirth/issues?utf8=%E2%9C%93&q=is%3Aissue%20is%3Aclosed%20is%3Aopen%20label%3Atypo3%20)
+Head to [Github issues](https://github.com/joonassandell/generator-rebirth/issues?utf8=%E2%9C%93&q=is%3Aissue%20is%3Aclosed%20is%3Aopen%20label%3Atypo3%20)

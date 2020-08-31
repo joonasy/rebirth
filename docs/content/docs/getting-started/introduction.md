@@ -10,7 +10,7 @@ Rebirth provides you with a solid architectural baseline with predefined HTML, C
 
 ## Generate a project
 
-So far the preferred way to start a new Rebirth project is together with [generator-rebirth](https://github.com/joonasy/generator-rebirth.git) which setups Rebirth and scaffolds new [Rebirth](https://github.com/joonasy/rebirth.git), [WordPress](wordpress.org), [TYPO3](https://typo3.org/), [HTML (Assemble)](https://github.com/assemble/assemble/) or custom (TODO) project.
+So far the preferred way to start a new Rebirth project is together with [generator-rebirth](https://github.com/joonassandell/generator-rebirth.git) which setups Rebirth and scaffolds new [Rebirth](https://github.com/joonassandell/rebirth.git), [WordPress](wordpress.org), [TYPO3](https://typo3.org/), [HTML (Assemble)](https://github.com/assemble/assemble/) or custom (TODO) project.
 
 ```shell
 $ npm install yo -g && npm install generator-rebirth -g
@@ -28,7 +28,7 @@ If you are building a _Typo3 project_ all special characters are removed from th
 
 Rebirth project is a beta so the custom installation needs to be manually if you have your own project. Make sure you meet the [requirements](/docs/getting-started/requirements). Installation so far is to import components explicitly. To start with a default list of modules see `app.scss` and `app.js`.
 
-1. Clone Rebirth repository somewhere: `$ git clone https://github.com/joonasy/rebirth`
+1. Clone Rebirth repository somewhere: `$ git clone https://github.com/joonassandell/rebirth`
 2. Copy the `src/` folders contents to your project location
 3. Delete the components and files you don't need
 
