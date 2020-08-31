@@ -114,7 +114,6 @@ app.task('docs-stylesheets', () => {
             mergeRules: false,
           }),
           require('postcss-discard-comments')({ removeAll: true }),
-          require('postcss-sort-media-queries')(),
         ]),
       )
       .pipe(app.dest('rebirth/assets'));
@@ -331,7 +330,6 @@ app.task('stylesheets', () => {
             mergeRules: false,
           }),
           require('postcss-discard-comments')({ removeAll: true }),
-          require('postcss-sort-media-queries')(),
         ]),
       )
       .pipe(app.dest('dist/'));
