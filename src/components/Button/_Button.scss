@@ -19,7 +19,9 @@
   padding: 0 rem($space);
   position: relative;
   text-align: center;
-  transition: $transitionDuration;
+  transition: background-color $transitionDuration,
+              border-color $transitionDuration,
+              color $transitionDuration;
   user-select: none;
   vertical-align: top;
 

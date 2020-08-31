@@ -2,7 +2,7 @@
  * Button
  * ======================================= */
 
-import { $$ } from 'javascripts/utility';
+import { $$ } from '../../javascripts/utility';
 
 class Button {
   constructor() {

@@ -2,8 +2,8 @@
  * Navbar - Default
  * ======================================= */
 
-import { $$, $ } from 'javascripts/utility';
-import { hasTouch } from 'javascripts/detect';
+import { $$, $ } from '../../javascripts/utility';
+import { hasTouch } from '../../javascripts/detect';
 
 class NavbarDefault {
   constructor() {
