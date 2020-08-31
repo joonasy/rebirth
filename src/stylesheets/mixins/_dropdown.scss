@@ -14,21 +14,18 @@
     list-style: none;
     margin: 0;
     min-width: $min-width;
+    opacity: 0;
     padding: $padding;
     position: absolute;
     top: 100%;
     transition: opacity ($transitionDuration * 2);
+    visibility: hidden;
     z-index: 999;
-
-    clip: rect(0,0,0,0);
-    height: 0;
-    opacity: 0;
   }
 
   @if $state == 'is-open' {
-    clip: auto;
-    height: auto;
     opacity: 1;
+    visibility: visible;
   }
 
   /**
