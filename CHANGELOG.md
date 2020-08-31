@@ -5,6 +5,13 @@ All notable changes to this project will be documented in this file. The format 
 
 ## 0.6.3x
 
+- Add/tweak bunch of text mixins, setup proper font sizing for gutenberg things
+- Add fluid font size mixin as default way to build typography / scale site
+- Update node version, update links
+- Make display helpers contain the responsive helpers by default
+- Hide dropdown in a simpler way
+- Typography edits, try to manage without `.Heading{}` component by default (e.g. use h1)
+- Remove pointless url helpers
 - Docs/Build: Fix docs build, use svg symbols, use postcss to remove comments and sort mq. Rename symbols to match line awesome for clarity. Move generated symbols into their own folder. Add symbols to build for now.
 - Remove unnecessary prefixes from variable names.
   - `$baseSpace` -> `$space`
