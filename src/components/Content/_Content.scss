@@ -11,6 +11,10 @@
     }
   }
 
+  h1 {
+    @extend %h2;
+  }
+
   p:empty {
     display: none;
   }

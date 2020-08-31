@@ -6,11 +6,22 @@
 
 
 /* ======
- * Text - Size
+ * Size
  * ====== */
 
 .Text {
+  &.-xl { @include fontSize($fontSize-xl, $lineHeight-xl); }
   &.-l  { @include fontSize($fontSize-l, $lineHeight-l);   }
   &.-s  { @include fontSize($fontSize-s, $lineHeight-s);   }
   &.-xs { @include fontSize($fontSize-xs, $lineHeight-xs); }
+}
+
+
+/* ======
+ * Modifiers
+ * ====== */
+
+.Text--subtitle {
+  @include fontSize($fontSize-s, $lineHeight-s);
+  @include TextSubtitle();
 }

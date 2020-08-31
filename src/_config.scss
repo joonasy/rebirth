@@ -11,6 +11,9 @@ $fontSize: 16px;
 $lineHeightPx: 24px;
 $lineHeight: $lineHeightPx / $fontSize;
 
+$fontSize-xl: 24px;
+$lineHeight-xl: 32px / $fontSize-xl;
+
 $fontSize-l: 18px;
 $lineHeight-l: 26px / $fontSize-l;
 
@@ -30,16 +33,18 @@ $fontWeightStrong: bolder;
 $headingFontFamily: inherit;
 $headingFontWeight: 500;
 
-$h1FontSize: 32px;
-$h1LineHeight: 38px / $h1FontSize;
-$h2FontSize: 26px;
-$h2LineHeight: 32px / $h2FontSize;
-$h3FontSize: 22px;
-$h3LineHeight: 28px / $h3FontSize;
-$h4FontSize: 20px;
-$h4LineHeight: 26px / $h4FontSize;
-$h5FontSize: 18px;
-$h5LineHeight: 24px / $h5FontSize;
+$h1FontSize: 64px;
+$h1LineHeight: 72px / $h1FontSize;
+$h2FontSize: 48px;
+$h2LineHeight: 56px / $h2FontSize;
+$h3FontSize: 40px;
+$h3LineHeight: 48px / $h3FontSize;
+$h4FontSize: 32px;
+$h4LineHeight: 40px / $h4FontSize;
+$h5FontSize: 28px;
+$h5LineHeight: 36px / $h5FontSize;
+$h6FontSize: 20px;
+$h6LineHeight: 24px / $h6FontSize;
 
 
 // =========
@@ -113,7 +118,7 @@ $info: #5bc0de;
 
 
 // =========
-// Various global settings
+// Various Global Settings
 // =========
 
 $borderRadius: 3px;

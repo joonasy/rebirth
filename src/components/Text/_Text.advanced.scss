@@ -10,6 +10,7 @@
  * ====== */
 
 .Text {
+  &.-xl { @include fontSize($fontSize-xl, $lineHeight-xl); }
   &.-l  { @include fontSize($fontSize-l, $lineHeight-l);   }
   &.-s  { @include fontSize($fontSize-s, $lineHeight-s);   }
   &.-xs { @include fontSize($fontSize-xs, $lineHeight-xs); }
@@ -21,13 +22,14 @@
  * ====== */
 
 .Text--lead {
-  @include fontSize(26px, 36px);
-  color: $textLight;
-  font-weight: 300;
-  margin-bottom: rem($space * 1.5);
-
-  @include mq($until: s) {
-    @include fontSize($fontSize-l, $lineHeight-l);
-  }
+  @include TextLead();
 }
 
+
+/* ======
+ * Subtitle
+ * ====== */
+
+.Text--subtitle {
+  @include TextSubtitle();
+}
