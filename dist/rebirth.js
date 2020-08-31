@@ -12159,9 +12159,9 @@ Object.defineProperty(exports, "__esModule", {
 });
 exports.default = void 0;
 
-var _utility = require("javascripts/utility");
+var _utility = require("../../javascripts/utility");
 
-var _detect = require("javascripts/detect");
+var _detect = require("../../javascripts/detect");
 
 function _toConsumableArray(arr) { return _arrayWithoutHoles(arr) || _iterableToArray(arr) || _nonIterableSpread(); }
 
@@ -12182,11 +12182,12 @@ var NavbarDefault = function NavbarDefault() {
     nav.addEventListener('click', function (e) {
       var isTrigger = e.target.className === 'Navbar-trigger';
       var isLink = e.target.className === 'Navbar-link';
+      var isHash = isLink && e.target.getAttribute('href') === null || e.target.getAttribute('href') === '#';
       var parent = e.target.closest('.Navbar-item');
       var hasDropdown = (0, _utility.$)('.Navbar-sub', parent);
       e.stopPropagation();
 
-      if (isTrigger || isLink && _detect.hasTouch && hasDropdown) {
+      if (isTrigger || isLink && _detect.hasTouch && hasDropdown || isHash) {
         e.preventDefault();
 
         if (parent.classList.contains('is-open')) {
@@ -12227,7 +12228,7 @@ var NavbarDefault = function NavbarDefault() {
 var _default = NavbarDefault;
 exports.default = _default;
 
-},{"javascripts/detect":448,"javascripts/utility":449}],446:[function(require,module,exports){
+},{"../../javascripts/detect":448,"../../javascripts/utility":449}],446:[function(require,module,exports){
 "use strict";
 
 var _NavbarDefault = _interopRequireDefault(require("./NavbarDefault"));
