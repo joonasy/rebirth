@@ -515,6 +515,13 @@ hgroup > *:not(:last-child) {
 }
 
 h1, .h1 {
+  color: inherit;
+  font-family: inherit;
+  font-weight: 500;
+  margin: 0 0 1.5rem;
+}
+
+h1, .h1 {
   font-size: 20px;
 }
 
@@ -530,6 +537,13 @@ h1, .h1 {
     font-size: 64px;
     line-height: 68px;
   }
+}
+
+h2, .h2 {
+  color: inherit;
+  font-family: inherit;
+  font-weight: 500;
+  margin: 0 0 1.5rem;
 }
 
 h2, .h2 {
@@ -551,6 +565,13 @@ h2, .h2 {
 }
 
 h3, .h3 {
+  color: inherit;
+  font-family: inherit;
+  font-weight: 500;
+  margin: 0 0 1.5rem;
+}
+
+h3, .h3 {
   font-size: 20px;
 }
 
@@ -569,6 +590,13 @@ h3, .h3 {
 }
 
 h4, .h4 {
+  color: inherit;
+  font-family: inherit;
+  font-weight: 500;
+  margin: 0 0 1.5rem;
+}
+
+h4, .h4 {
   font-size: 20px;
 }
 
@@ -584,6 +612,13 @@ h4, .h4 {
     font-size: 32px;
     line-height: 40px;
   }
+}
+
+h5, .h5 {
+  color: inherit;
+  font-family: inherit;
+  font-weight: 500;
+  margin: 0 0 1.5rem;
 }
 
 h5, .h5 {
