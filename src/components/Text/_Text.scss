@@ -9,12 +9,11 @@
  * Size
  * ====== */
 
-%Text,
 .Text {
-  &.-xl { @include fontSize($fontSize-xl, $lineHeight-xl);       }
-  &.-l  { @include fontSize($fontSize-l, $lineHeight-l);         }
-  &.-s  { @include fontSize($fontSize-s, $lineHeight-s, true);   }
-  &.-xs { @include fontSize($fontSize-xs, $lineHeight-xs, true); }
+  &.-xl { @include text('xl'); }
+  &.-l  { @include text('l'); }
+  &.-s  { @include text('s');  }
+  &.-xs { @include text('xs'); }
 }
 
 
@@ -22,13 +21,12 @@
  * Modifiers
  * ====== */
 
-%Text--subtitle,
 .Text--subtitle {
-  @include fontSize($fontSize-s, $lineHeight-s);
-  @include TextSubtitle();
+  @include text($style: 'subtitle');
+  color: $primary;
+  margin-bottom: rem($space / 2);
 }
 
-%Text--lead,
 .Text--lead {
-  @include TextLead();
+  @include text($style: 'lead');
 }

@@ -1,6 +1,53 @@
 // =======================================
-// Text related mixins
+// Text mixins
 // =======================================
+
+
+// ======
+// Text sizes & styles
+// ======
+
+@mixin text($size: null, $style: null) {
+  @if $size == 'xl' {
+    @include fontSizeFluid($fontSize, $fontSize-xl, $lineHeight, $lineHeight-xl);
+  } @else if $size == 'l' {
+    @include fontSizeFluid($fontSize-l, $fontSize-xl, $lineHeight, $lineHeight-l);
+  } @else if $size == 'm' {
+    @include fontSize($fontSize, $lineHeight);
+  } @else if $size == 's' {
+    @include fontSize($fontSize-s, $lineHeight-s);
+  } @else if $size == 'xs' {
+    @include fontSize($fontSize-xs, $lineHeight-xs);
+  }
+
+  @if $style == 'light' {
+    color: $textLight;
+  } @else if $style == 'subtitle' {
+    @if $size == null { @include fontSize($fontSize-s, $lineHeight-s); }
+    font-weight: $fontWeightStrong;
+    letter-spacing: 0.05em;
+    text-transform: uppercase;
+  } @else if $style == 'textLink' {
+    @if $size == null { @include fontSize($fontSize-s, $lineHeight-s); }
+    color: $text;
+
+    &:hover, &:focus {
+      color: $link;
+    }
+  } @else if $style == 'lead' {
+    @if $size == null { @include fontSize($fontSize-xl, $lineHeight-xl); }
+    hyphens: auto;
+  } @else if $style == 'textLinkHighlight' {
+    background-color: rgba($primary, 0.2);
+    color: $link;
+    text-decoration: underline;
+    text-decoration-color: $link;
+
+    &:hover, &:focus {
+      color: $linkHover;
+    }
+  }
+}
 
 
 // ======

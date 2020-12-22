@@ -34,7 +34,7 @@
   }
 
   a:not([class]) {
-    @include TextLinkHighlight();
+    @include text('textLinkHighlight');
     white-space: pre-wrap;
     word-wrap: break-word;
   }

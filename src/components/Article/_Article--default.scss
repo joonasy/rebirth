@@ -7,13 +7,13 @@
     margin-bottom:rem($space / 3);
 
     > a {
-      @include TextLink();
+      @include text('textLink');
     }
   }
 
   .Article-meta {
     @include resetList();
-    @include TextLight();
+    @include text('light');
     display: flex;
     margin-bottom: rem($space / 2);
   }

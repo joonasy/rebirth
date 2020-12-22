@@ -8,11 +8,11 @@
   }
 
   .List-meta {
-    @include TextLight();
+    @include text('light');
   }
 
   .List-link {
-    @include TextLink();
+    @include text('textLink');
     display: block;
   }
 }

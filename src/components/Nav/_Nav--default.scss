@@ -16,7 +16,7 @@
   }
 
     .Nav-link {
-      @include TextLink();
+      @include text('textLink');
       display: block;
 
       &:hover {
