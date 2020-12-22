@@ -3,6 +3,7 @@
  * ======================================= */
 
 import 'core-js';
+import './javascripts/scripts';
 // import 'regenerator-runtime/runtime';
 
 /**
