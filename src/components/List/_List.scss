@@ -16,10 +16,10 @@
 }
 
 .List-meta {
-  @extend %Text.-s;
+  @include text('s');
 }
 
 .List-heading {
-  @extend %Text.-s;
+  @include text('s');
   display: block;
 }

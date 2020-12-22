@@ -37,6 +37,7 @@
   } @else if $style == 'lead' {
     @if $size == null { @include fontSize($fontSize-xl, $lineHeight-xl); }
     hyphens: auto;
+    font-weight: $fontWeight;
   } @else if $style == 'textLinkHighlight' {
     background-color: rgba($primary, 0.2);
     color: $link;
