@@ -5,6 +5,11 @@ All notable changes to this project will be documented in this file. The format 
 
 ## 0.6.3x
 
+- Add new class utilities and focus script
+- Accessibility enhancements
+- Add new breakpoints, 
+- _mixins.scss -> _various.scss
+- Replace Text.mixins with text mixin
 - Add/tweak bunch of text mixins, setup proper font sizing for gutenberg things
 - Add fluid font size mixin as default way to build typography / scale site
 - Update node version, update links

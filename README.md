@@ -20,6 +20,9 @@ Other quick start options are available:
 - [Download the latest release](https://github.com/joonassandell/rebirth/releases)
 - Clone the repo: `$ git clone https://github.com/joonassandell/rebirth`
 
+## Development
+
+Remember to link rebirth: `$ npm link`
 ## Documentation
 
 Rebirths documentation, included in this repo in the root directory, is built with Assemble and publicly hosted on GitHub Pages at [https://joonassandell.github.io/rebirth](https://joonassandell.github.io/rebirth). The docs may also be run locally.
