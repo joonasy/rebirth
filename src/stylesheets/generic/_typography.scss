@@ -28,23 +28,23 @@ hgroup {
 }
 
 h1, .h1 {
-  @include fontSizeFluid($h6FontSize, $h1FontSize, $lineHeight, $h1LineHeight);
+  @include heading('h1');
 }
 
 h2, .h2 {
-  @include fontSizeFluid($h6FontSize, $h2FontSize, $lineHeight, $h2LineHeight);
+  @include heading('h2');
 }
 
 h3, .h3 {
-  @include fontSizeFluid($h6FontSize, $h3FontSize, $h6LineHeight, $h3LineHeight);
+  @include heading('h3');
 }
 
 h4, .h4 {
-  @include fontSizeFluid($h6FontSize, $h4FontSize, $h6LineHeight, $h4LineHeight);
+  @include heading('h4');
 }
 
 h5, .h5 {
-  @include fontSizeFluid($h6FontSize, $h5FontSize, $h6LineHeight, $h5LineHeight);
+  @include heading('h5');
 }
 
 h6, .h6 {
