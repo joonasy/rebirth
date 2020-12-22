@@ -339,16 +339,13 @@ template {
 }
 
 /* =======================================
- * Text Mixins
- * ======================================= */
-/* =======================================
  * Base
  * ======================================= */
 :root {
   background-color: #ffffff;
   color: #000000;
   font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
-  line-height: 24px;
+  line-height: 1.5;
   min-width: 300px;
   scroll-behavior: smooth;
   -moz-osx-font-smoothing: grayscale;
@@ -406,30 +403,13 @@ a:active {
   color: #4d4dff;
 }
 
-a:focus {
-  outline: 0;
-}
-
-a:focus:not(:hover) {
-  outline: 1px dotted #000000;
-}
-
 a:hover {
   color: #0101ff;
-}
-
-::-moz-selection {
-  background: #4d4dff;
-  color: #ffffff;
 }
 
 ::selection {
   background: #4d4dff;
   color: #ffffff;
-}
-
-img::-moz-selection {
-  background: transparent;
 }
 
 img::selection {
@@ -484,18 +464,6 @@ hr {
 
 hgroup > *:not(:last-child) {
   margin-bottom: 0.75rem;
-}
-
-h1,
-h2,
-h3,
-h4,
-h5,
-h6 {
-  color: inherit;
-  font-family: inherit;
-  font-weight: 500;
-  margin: 0 0 1.5rem;
 }
 
 h1, .h1 {
@@ -589,7 +557,14 @@ h5, .h5 {
 }
 
 h6, .h6 {
-  letter-spacing: 0.1em;
+  color: inherit;
+  font-family: inherit;
+  font-weight: 500;
+  margin: 0 0 1.5rem;
+  font-size: 0.875rem;
+  line-height: 20px;
+  font-weight: bolder;
+  letter-spacing: 0.05em;
   text-transform: uppercase;
 }
 
@@ -641,7 +616,6 @@ h6, .h6 {
  * Grid
  * ======================================= */
 .Grid {
-  display: -webkit-box;
   display: flex;
   flex-wrap: wrap;
   list-style: none;
@@ -661,13 +635,11 @@ h6, .h6 {
  * Sizing & Layout
  * ====== */
 .Grid.-auto > .Grid-cell:not([class*="Width"]) {
-  -webkit-box-flex: 1;
-          flex: 1 0 0%;
+  flex: 1 0 0%;
   width: auto;
 }
 
 .Grid.-equalHeight > .Grid-cell {
-  display: -webkit-box;
   display: flex;
   flex-wrap: wrap;
 }
@@ -701,36 +673,30 @@ h6, .h6 {
 }
 
 .Grid.-justifyBetween {
-  -webkit-box-pack: justify;
-          justify-content: space-between;
+  justify-content: space-between;
 }
 
 .Grid.-justifyCenter {
-  -webkit-box-pack: center;
-          justify-content: center;
+  justify-content: center;
 }
 
 .Grid.-justifyEnd {
-  -webkit-box-pack: end;
-          justify-content: flex-end;
+  justify-content: flex-end;
 }
 
 /* ======
  * Aligning of Cells
  * ====== */
 .Grid.-alignEnd {
-  -webkit-box-align: end;
-          align-items: flex-end;
+  align-items: flex-end;
 }
 
 .Grid.-alignCenter {
-  -webkit-box-align: center;
-          align-items: center;
+  align-items: center;
 }
 
 .Grid.-alignStart {
-  -webkit-box-align: start;
-          align-items: flex-start;
+  align-items: flex-start;
 }
 
 /* =======================================
@@ -926,6 +892,7 @@ h6, .h6 {
   max-width: 1376px;
   padding-left: 6.25%;
   padding-right: 6.25%;
+  width: 100%;
 }
 
 @media (min-width: 64em) {
@@ -953,46 +920,70 @@ h6, .h6 {
 /* ======
  * Size
  * ====== */
-
 .Text.-xl {
-  font-size: 1.5rem;
-  line-height: 1.33333;
+  font-size: 16px;
 }
 
+@media all {
+  .Text.-xl {
+    font-size: calc(16px + 8 * ((100vw - 0px) / 1528));
+    line-height: calc(24px + 8 * ((100vw - 0px) / 1528));
+  }
+}
+
+@media (min-width: 95.5em) {
+  .Text.-xl {
+    font-size: 24px;
+    line-height: 32px;
+  }
+}
 
 .Text.-l {
-  font-size: 1.125rem;
-  line-height: 1.44444;
+  font-size: 18px;
 }
 
+@media all {
+  .Text.-l {
+    font-size: calc(18px + 6 * ((100vw - 0px) / 1528));
+    line-height: calc(24px + 2 * ((100vw - 0px) / 1528));
+  }
+}
+
+@media (min-width: 95.5em) {
+  .Text.-l {
+    font-size: 24px;
+    line-height: 26px;
+  }
+}
 
 .Text.-s {
-  font-size: 14px;
-  line-height: 1.42857;
+  font-size: 0.875rem;
+  line-height: 20px;
 }
 
-
 .Text.-xs {
-  font-size: 12px;
-  line-height: 1.5;
+  font-size: 0.75rem;
+  line-height: 18px;
 }
 
 /* ======
  * Modifiers
  * ====== */
-
 .Text--subtitle {
   font-size: 0.875rem;
-  line-height: 1.42857;
-  letter-spacing: 0.1em;
+  line-height: 20px;
+  font-weight: bolder;
+  letter-spacing: 0.05em;
   text-transform: uppercase;
+  color: #4d4dff;
+  margin-bottom: 0.75rem;
 }
-
 
 .Text--lead {
   font-size: 1.5rem;
-  line-height: 1.33333;
+  line-height: 32px;
   -webkit-hyphens: auto;
       -ms-hyphens: auto;
           hyphens: auto;
+  font-weight: 400;
 }

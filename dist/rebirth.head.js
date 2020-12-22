@@ -169,7 +169,7 @@ var isEdge = /edge\//i.test(ua);
  */
 
 exports.isEdge = isEdge;
-var isFirefox = 'InstallTrigger' in window;
+var isFirefox = ('InstallTrigger' in window);
 /**
  * iOS
  */
@@ -193,7 +193,7 @@ var isMac = /mac/i.test(navigator.platform);
  */
 
 exports.isMac = isMac;
-var hasDialog = 'show' in document.createElement('dialog');
+var hasDialog = ('show' in document.createElement('dialog'));
 /**
  * Object fit
  */
