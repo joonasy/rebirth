@@ -7,7 +7,7 @@
   background-color: $bgLightest;
   color: $text;
   font-family: $fontFamily;
-  line-height: $lineHeight;
+  line-height: $lineHeight / $fontSize;
   min-width: 300px;
   scroll-behavior: smooth;
 
@@ -51,14 +51,6 @@ a {
 
   &:active {
     color: $link;
-  }
-
-  &:focus {
-    outline: 0;
-  }
-
-  &:focus:not(:hover) {
-    outline: 1px dotted $black;
   }
 
   &:hover {

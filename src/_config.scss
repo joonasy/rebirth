@@ -11,16 +11,16 @@ $fontSize: 16px;
 $lineHeight: 24px;
 
 $fontSize-xl: 24px;
-$lineHeight-xl: 32px / $fontSize-xl;
+$lineHeight-xl: 32px;
 
 $fontSize-l: 18px;
-$lineHeight-l: 26px / $fontSize-l;
+$lineHeight-l: 26px;
 
 $fontSize-s: 14px;
-$lineHeight-s: 20px / $fontSize-s;
+$lineHeight-s: 20px;
 
 $fontSize-xs: 12px;
-$lineHeight-xs: 18px / $fontSize-xs;
+$lineHeight-xs: 18px;
 
 $fontFamilySans: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
 $fontFamilyMono: SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace;
@@ -53,9 +53,10 @@ $h6LineHeight: 24px;
 $space: $lineHeight;
 $spaceEdge: 6.25%;
 $wrapSpaceEdge: $spaceEdge;
-$wrapSpaceEdge-l: $space * 2;
+$wrapSpaceEdgeLeft-l: $space * 2;
+$wrapSpaceEdgeRight-l: $space * 2;
 $wrapWidth: 1280px;
-$wrapMaxWidth: $wrapWidth + ($wrapSpaceEdge-l * 2);
+$wrapMaxWidth: $wrapWidth + ($wrapSpaceEdgeLeft-l + $wrapSpaceEdgeRight-l);
 
 
 // =========
@@ -73,6 +74,8 @@ $mq-breakpoints: (
   xl: 1140px,
   xxl: 1280px,
   xxxl: 1528px,
+  xxxxl: 1920px,
+  xxxxxl: 2560px,
   wrapWidth: $wrapWidth,
   wrapMaxWidth: $wrapMaxWidth,
 );

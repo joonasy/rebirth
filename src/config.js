@@ -44,6 +44,14 @@ const config = {
       px: 1528,
       mq: 'all and (min-width: 1528px)',
     },
+    xxxxl: {
+      px: 1920,
+      mq: 'all and (min-width: 1920px)',
+    },
+    xxxxxl: {
+      px: 2560,
+      mq: 'all and (min-width: 2560px)',
+    },
   },
 };
 
