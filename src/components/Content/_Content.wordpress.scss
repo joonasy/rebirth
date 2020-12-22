@@ -12,11 +12,11 @@
   }
 
   h1 {
-    @extend %h2;
+    @include heading('h2');
   }
 
   .has-small-font-size {
-    @extend %Text.-s;
+    @include text('s');
   }
 
   .has-medium-font-size {
@@ -26,7 +26,7 @@
   .has-medium-font-size,
   .has-huge-font-size,
   .has-large-font-size {
-    @extend %Text--lead;
+    @include text($style: 'lead');
   }
 
   p:empty {

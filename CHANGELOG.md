@@ -5,6 +5,7 @@ All notable changes to this project will be documented in this file. The format 
 
 ## 0.6.3x
 
+- Add _heading.scss mixin
 - Add new class utilities and focus script
 - Accessibility enhancements
 - Add new breakpoints, 
